@@ -4,12 +4,12 @@ description: Vytvořte online tržiště pro prodej nabídek poskytovatele Cloud
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d64deff9b002b861c9f48d076feb5841af727e3d
-ms.sourcegitcommit: 57620e249e218edc4af7c83c2ce8a3008a4adf4e
+ms.openlocfilehash: 83ae0c789f95485ec3eb272434e57421a8f93fb6
+ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "97766820"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99505318"
 ---
 # <a name="csp-customer-storefront-builder-quick-start-guide"></a>Úvodní příručka pro tvůrce výkladních skříní pro zákazníky CSP
 
@@ -25,10 +25,10 @@ Customer prezentace Builder pro poskytovatele CSP pomáhá partnerům snadno vyt
 
 Tento web je plně vlastněn, podporován a udržován partnery a společnost Microsoft neshromažďuje žádná data ani telemetrie z webu. Tvůrce prezentace Customer CSP vytvoří web pro partnera, který plně dodržuje [standard zabezpečení dat v odvětví platebních karet](https://www.pcisecuritystandards.org/) (PCI DSS).
 
-Kód tvůrce prezentace pro poskytovatele CSP podléhá licenci dostupné v [smlouvě EULA partnerského centra SDK](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK).
+Kód tvůrce prezentace pro poskytovatele CSP podléhá licenci dostupné v [smlouvě EULA partnerského centra SDK](/legal/partner-center/eula-partner-center-sdk).
 
 >[!NOTE]
->Zodpovídáte za správu webu prezentace, údržbu a všechny problémy, které by mohly nastat při vytváření webů. Přečtěte si podmínky v tématu [smlouva EULA partnerského centra SDK](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK)a porozumět jim.
+>Zodpovídáte za správu webu prezentace, údržbu a všechny problémy, které by mohly nastat při vytváření webů. Přečtěte si podmínky v tématu [smlouva EULA partnerského centra SDK](/legal/partner-center/eula-partner-center-sdk)a porozumět jim.
 
 Další informace najdete také v následujících článcích: [poskytovatel CSP web prezentace](csp-customer-web-storefront.md) a [testovací aplikace konzoly](console-test-app.md).
 
@@ -52,7 +52,7 @@ Customer prezentace Builder pro poskytovatele CSP je určený jako rychlý způs
 
 - Konfigurace platby PayU bude v současnosti fungovat jenom v Indii. Dostupnost a podpora PayU se řídí výhradně PayU a může být kdykoli ukončená PayU.
 
-- Přečtěte si podmínky v tématu [smlouva EULA partnerského centra SDK](https://partnercenter.microsoft.com/partner/EULA_Partner_Center_SDK)a porozumět jim.
+- Přečtěte si podmínky v tématu [smlouva EULA partnerského centra SDK](/legal/partner-center/eula-partner-center-sdk)a porozumět jim.
 
 ## <a name="using-the-csp-customer-storefront-builder"></a>Pomocí Tvůrce prezentace Customer CSP
 
@@ -66,7 +66,7 @@ Proces vytvoření webu prezentace je následující:
 
 3. [Transact na prezentace](#transact)
 
-### <a name="deploy"></a>Nasazení
+### <a name="deploy"></a>Nasadit
 
 Možnosti nasazení:
 
