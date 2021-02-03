@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Dokumentace k Partnerskému centru pro vývojáře
+summary: Spolupráce s Microsoftem na vývoji funkcí a možností pro partnery
+metadata:
+  title: Dokumentace k Partnerskému centru pro vývojáře
+  description: Spolupráce s Microsoftem na vývoji funkcí a možností pro partnery
+  ms.service: partner-dashboard
+  ms.subservice: partnercenter-sdk
+  ms.topic: landing-page
+  ms.collection: collection
+  author: jasonwhowell
+  ms.author: jasonh
+  ms.date: 01/08/2020
+  ms.openlocfilehash: 12c6cba5f489b9ab7c3394629c319a43d2d9163b
+  ms.sourcegitcommit: 529b07030a874d644cf947790f4b53cdff438dd4
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 09/22/2020
+  ms.locfileid: "97766607"
+landingContent:
+- title: Vývoj s využitím Partnerského centra
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurace vývojářského účtu a ověřování
+      url: partner-center-authentication.md
+    - text: Nastavení prostředí
+      url: get-started.md
+  - linkListType: whats-new
+    links:
+    - text: Vytvoření plánu Azure s využitím rozhraní API
+      url: create-azure-plan.md
+  - linkListType: concept
+    links:
+    - text: Ukázky kódů
+      url: partner-center-samples.md
+    - text: Příklady scénářů
+      url: scenarios.md
+- title: Použití sady .NET SDK (v1.16.1-preview)
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Sada .NET SDK pro Partnerské centrum
+      url: https://www.nuget.org/packages/Microsoft.Store.PartnerCenter
+    - text: Ukázky v .NET pro Partnerské centrum
+      url: https://github.com/microsoft/Partner-Center-DotNet-Samples
+  - linkListType: reference
+    links:
+    - text: Reference ke spravovaným rozhraním .NET API
+      url: /dotnet/api/
+    - text: Poznámky k verzi pro verze sady .NET SDK
+      url: dotnet-release-notes.md
+- title: Použití rozhraní REST API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Referenční informace k rozhraní REST API pro Partnerské centrum
+      url: partner-center-rest-api-reference.md
+- title: Použití sady Java SDK (open source)
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Stažení sady Java SDK pro Partnerské centrum
+      url: https://search.maven.org/artifact/com.microsoft.store/partnercenter
+    - text: Úložiště GitHub sady Java SDK (pro otázky, příspěvky a problémy)
+      url: https://github.com/microsoft/Partner-Center-Java
+  - linkListType: reference
+    links:
+    - text: Referenční dokumentace k rozhraní API v Javě
+      url: /java/partnercenter/overview
+- title: Použití modulu PowerShell (open source)
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Instalace modulu PowerShellu
+      url: https://www.powershellgallery.com/packages/PartnerCenter
+    - text: Úložiště modulu PowerShellu na GitHubu (pro dotazy, příspěvky a problémy)
+      url: https://github.com/microsoft/Partner-Center-PowerShell
+  - linkListType: reference
+    links:
+    - text: Příkazy prostředí PowerShell
+      url: /powershell/partnercenter
+- title: Použití rozhraní Swaggeru pro partnery CSP
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Reference k rozhraním API Swaggeru pro služby Partnerského centra (pro partnery CSP)
+      url: https://apidocs.microsoft.com/services/partnercenter

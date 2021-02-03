@@ -1,0 +1,55 @@
+---
+title: Prostředky převodu
+description: Přečtěte si informace o použití prostředků pro převod z partnerského centra rozhraní API, které vám pomůžou převést zkušební předplatné na placené předplatné.
+ms.date: 05/23/2019
+ms.service: partner-dashboard
+ms.subservice: partnercenter-sdk
+ms.openlocfilehash: d3ade5a5af76e7c637962b6bfe076ac806f337bf
+ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "97767107"
+---
+# <a name="conversion-resources-to-convert-trial-subscriptions-to-paid"></a><span data-ttu-id="4d973-103">Převod prostředků na převod předplatných zkušební verze na placené</span><span class="sxs-lookup"><span data-stu-id="4d973-103">Conversion resources to convert trial subscriptions to paid</span></span>
+
+<span data-ttu-id="4d973-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="4d973-104">**Applies to:**</span></span>
+
+- <span data-ttu-id="4d973-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="4d973-105">Partner Center</span></span>
+- <span data-ttu-id="4d973-106">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="4d973-106">Partner Center operated by 21Vianet</span></span>
+- <span data-ttu-id="4d973-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="4d973-107">Partner Center for Microsoft Cloud Germany</span></span>
+- <span data-ttu-id="4d973-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="4d973-108">Partner Center for Microsoft Cloud for US Government</span></span>
+
+<span data-ttu-id="4d973-109">Převod prostředků podporuje převod zkušebního předplatného na placené předplatné.</span><span class="sxs-lookup"><span data-stu-id="4d973-109">Conversion resources support the conversion of a trial subscription to a paid subscription.</span></span>
+
+## <a name="conversion"></a><span data-ttu-id="4d973-110">Převod</span><span class="sxs-lookup"><span data-stu-id="4d973-110">Conversion</span></span>
+
+<span data-ttu-id="4d973-111">Obsahuje informace, které slouží k převodu zkušebního předplatného na placené předplatné.</span><span class="sxs-lookup"><span data-stu-id="4d973-111">Contains information used to convert a trial subscription to a paid subscription.</span></span>
+
+| <span data-ttu-id="4d973-112">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="4d973-112">Property</span></span> | <span data-ttu-id="4d973-113">Typ</span><span class="sxs-lookup"><span data-stu-id="4d973-113">Type</span></span> | <span data-ttu-id="4d973-114">Description</span><span class="sxs-lookup"><span data-stu-id="4d973-114">Description</span></span> |
+| -------- | ---- | ----------- |
+| <span data-ttu-id="4d973-115">Hodnotami OfferId</span><span class="sxs-lookup"><span data-stu-id="4d973-115">offerId</span></span> | <span data-ttu-id="4d973-116">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-116">string</span></span> | <span data-ttu-id="4d973-117">Identifikátor nabídky původní nabídky zkušební verze.</span><span class="sxs-lookup"><span data-stu-id="4d973-117">The offer identifier of the original, trial offer.</span></span> |
+| <span data-ttu-id="4d973-118">targetOfferId</span><span class="sxs-lookup"><span data-stu-id="4d973-118">targetOfferId</span></span> | <span data-ttu-id="4d973-119">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-119">string</span></span> | <span data-ttu-id="4d973-120">Identifikátor nabídky cílové nabídky</span><span class="sxs-lookup"><span data-stu-id="4d973-120">The offer identifier for the target offer.</span></span> |
+| <span data-ttu-id="4d973-121">Seskup</span><span class="sxs-lookup"><span data-stu-id="4d973-121">orderId</span></span> | <span data-ttu-id="4d973-122">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-122">string</span></span> | <span data-ttu-id="4d973-123">Identifikátor objednávky.</span><span class="sxs-lookup"><span data-stu-id="4d973-123">The order identifier.</span></span> |
+| <span data-ttu-id="4d973-124">quantity</span><span class="sxs-lookup"><span data-stu-id="4d973-124">quantity</span></span> | <span data-ttu-id="4d973-125">int</span><span class="sxs-lookup"><span data-stu-id="4d973-125">int</span></span> | <span data-ttu-id="4d973-126">Počet licencí.</span><span class="sxs-lookup"><span data-stu-id="4d973-126">The number of licenses.</span></span> <span data-ttu-id="4d973-127">Výchozí hodnota je počet licencí ve zkušebním předplatném.</span><span class="sxs-lookup"><span data-stu-id="4d973-127">The default is the number of licenses in the trial subscription.</span></span> |
+| <span data-ttu-id="4d973-128">billingCycle</span><span class="sxs-lookup"><span data-stu-id="4d973-128">billingCycle</span></span> | <span data-ttu-id="4d973-129">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-129">string</span></span> | <span data-ttu-id="4d973-130">Určuje, jak často se má partner účtovat za předplatné.</span><span class="sxs-lookup"><span data-stu-id="4d973-130">Indicates how often the partner is charged for the subscription.</span></span> <span data-ttu-id="4d973-131">Možné hodnoty: **měsíčně** (partner se účtuje měsíčně), **roční** (účtuje se za rok) nebo **žádné** (partner se fakturuje).</span><span class="sxs-lookup"><span data-stu-id="4d973-131">Possible values: **Monthly** (partner is billed monthly), **Annual** (partner is billed annually), or **None** (Partner isn't billed.</span></span> <span data-ttu-id="4d973-132">Používá se pro zkušební verze předplatného.</span><span class="sxs-lookup"><span data-stu-id="4d973-132">Used for trial subscriptions).</span></span> |
+
+## <a name="conversionerror"></a><span data-ttu-id="4d973-133">ConversionError</span><span class="sxs-lookup"><span data-stu-id="4d973-133">ConversionError</span></span>
+
+<span data-ttu-id="4d973-134">Představuje chybu, k níž došlo během převodu.</span><span class="sxs-lookup"><span data-stu-id="4d973-134">Represents an error that occurred during conversion.</span></span>
+
+| <span data-ttu-id="4d973-135">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="4d973-135">Property</span></span> | <span data-ttu-id="4d973-136">Typ</span><span class="sxs-lookup"><span data-stu-id="4d973-136">Type</span></span> | <span data-ttu-id="4d973-137">Description</span><span class="sxs-lookup"><span data-stu-id="4d973-137">Description</span></span> |
+| -------- | ---- | ----------- |
+| <span data-ttu-id="4d973-138">kód</span><span class="sxs-lookup"><span data-stu-id="4d973-138">code</span></span> | <span data-ttu-id="4d973-139">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-139">string</span></span> | <span data-ttu-id="4d973-140">Kód chyby přidružený k problému.</span><span class="sxs-lookup"><span data-stu-id="4d973-140">The error code associated with the issue.</span></span> <span data-ttu-id="4d973-141">Možné hodnoty: **jiné** (obecná chyba), **ConversionsNotFound** (nejdou najít žádné převody zkušebního předplatného, na které se má převést).</span><span class="sxs-lookup"><span data-stu-id="4d973-141">Possible values: **Other** (general error), **ConversionsNotFound** (can't find any conversions for the trial subscription to convert to).</span></span>
+| <span data-ttu-id="4d973-142">description</span><span class="sxs-lookup"><span data-stu-id="4d973-142">description</span></span> | <span data-ttu-id="4d973-143">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-143">string</span></span> | <span data-ttu-id="4d973-144">Popisný text popisující problém.</span><span class="sxs-lookup"><span data-stu-id="4d973-144">The friendly text describing the issue.</span></span> |
+
+## <a name="conversionresult"></a><span data-ttu-id="4d973-145">ConversionResult</span><span class="sxs-lookup"><span data-stu-id="4d973-145">ConversionResult</span></span>
+
+<span data-ttu-id="4d973-146">Představuje výsledek provádění převodu předplatného.</span><span class="sxs-lookup"><span data-stu-id="4d973-146">Represents the result of performing a subscription conversion.</span></span>
+
+| <span data-ttu-id="4d973-147">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="4d973-147">Property</span></span>       | <span data-ttu-id="4d973-148">Typ</span><span class="sxs-lookup"><span data-stu-id="4d973-148">Type</span></span>                                | <span data-ttu-id="4d973-149">Description</span><span class="sxs-lookup"><span data-stu-id="4d973-149">Description</span></span>                                                            |
+|----------------|-------------------------------------|------------------------------------------------------------------------|
+| <span data-ttu-id="4d973-150">subscriptionId</span><span class="sxs-lookup"><span data-stu-id="4d973-150">subscriptionId</span></span> | <span data-ttu-id="4d973-151">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-151">string</span></span>                              | <span data-ttu-id="4d973-152">Identifikátor předplatného.</span><span class="sxs-lookup"><span data-stu-id="4d973-152">The subscription identifier.</span></span>                                           |
+| <span data-ttu-id="4d973-153">Hodnotami OfferId</span><span class="sxs-lookup"><span data-stu-id="4d973-153">offerId</span></span>        | <span data-ttu-id="4d973-154">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-154">string</span></span>                              | <span data-ttu-id="4d973-155">Původní identifikátor nabídky</span><span class="sxs-lookup"><span data-stu-id="4d973-155">The original offer identifier.</span></span>                                         |
+| <span data-ttu-id="4d973-156">targetOfferId</span><span class="sxs-lookup"><span data-stu-id="4d973-156">targetOfferId</span></span>  | <span data-ttu-id="4d973-157">řetězec</span><span class="sxs-lookup"><span data-stu-id="4d973-157">string</span></span>                              | <span data-ttu-id="4d973-158">Identifikátor nabídky cílové nabídky</span><span class="sxs-lookup"><span data-stu-id="4d973-158">The offer identifier for the target offer.</span></span>                             |
+| <span data-ttu-id="4d973-159">error</span><span class="sxs-lookup"><span data-stu-id="4d973-159">error</span></span>          | [<span data-ttu-id="4d973-160">ConversionError</span><span class="sxs-lookup"><span data-stu-id="4d973-160">ConversionError</span></span>](#conversionerror) | <span data-ttu-id="4d973-161">Došlo k chybě při pokusu o převod, pokud je k dispozici..</span><span class="sxs-lookup"><span data-stu-id="4d973-161">The error encountered while attempting the conversion, if applicable..</span></span> |
