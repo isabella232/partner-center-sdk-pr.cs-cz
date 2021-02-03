@@ -1,0 +1,559 @@
+- name: Materiály k Partnerskému centru pro vývojáře
+  href: index.yml
+- name: Začínáme
+  href: get-started.md
+  items:
+    - name: Vývoj pro Partnerské centrum pro národní cloudy Microsoftu
+      href: developing-for-partner-center-for-microsoft-national-cloud.md
+      items:
+        - name: Registrace podrobností o aplikaci pro Partnerské centrum
+          href: create-apps-for-partner-center-for-microsoft-national-clouds.md
+    - name: Ukázky pro Partnerské centrum
+      href: partner-center-samples.md
+      items:
+        - name: Webová výkladní skříň pro zákazníky CSP
+          href: csp-customer-web-storefront.md
+        - name: Úvodní příručka pro tvůrce výkladních skříní pro zákazníky CSP
+          href: csp-customer-storefront-builder-quick-start-guide-.md
+        - name: Aplikace pro testování konzoly
+          href: console-test-app.md
+    - name: Nastavení přístupu k rozhraní API v Partnerském centru
+      href: set-up-api-access-in-partner-center.md
+    - name: Pokyny k omezování rozhraní API
+      href: api-throttling-guidance.md
+    - name: Ověřování v Partnerském centru
+      href: partner-center-authentication.md
+    - name: Povolení zabezpečeného aplikačního modelu
+      href: enable-secure-app-model.md
+    - name: "Program pro uživatele v\_rané fázi"
+      href: early-adopter-program.md
+- name: Scénáře
+  href: scenarios.md
+  items:
+    - name: Analýzy
+      href: usage-analytics.md
+      items:
+        - name: Analýzy Partnerského centra – prostředky
+          href: partner-center-analytics-resources.md
+    - name: Získání všech analytických informací o využití Azure
+      href: get-all-azure-usage-analytics.md
+      items:
+        - name: Získání všech analytických informací o nepřímých prodejcích
+          href: get-all-indirect-resellers-analytics.md
+        - name: Získání všech analytických informací o referencích
+          href: get-all-referrals-analytics.md
+        - name: Získání všech analytických informací o hledání
+          href: get-all-search-analytics.md
+        - name: Získání všech analytických informací o předplatných
+          href: get-all-subscription-analytics.md
+        - name: Získání analytických informací o předplatných filtrovaných podle vyhledávacího dotazu
+          href: get-subscription-analytics-by-search-query.md
+        - name: Získání analytických informací o předplatných seskupených podle dat nebo podmínek
+          href: get-subscription-analytics-grouped-by-dates-or-terms.md
+        - name: Získání informací o nasazení licencí
+          href: get-licenses-deployment-information.md
+        - name: Získání informací o využití licencí
+          href: get-licenses-usage-information.md
+        - name: Získání informací o nasazení licencí pro zákazníky
+          href: get-customer-licenses-deployment-information.md
+        - name: Získání informací o využití licencí pro zákazníky
+          href: get-customer-licenses-usage-information.md
+        - name: Získání informací o nasazení licencí pro partnery
+          href: get-partner-licenses-deployment-information.md
+        - name: Získání informací o využití licencí pro partnery
+          href: get-partner-licenses-usage-information.md
+    - name: Operace auditu
+      href: audit.md
+      items:
+        - name: Získání záznamu o aktivitě Partnerského centra
+          href: get-a-record-of-partner-center-activity-by-user.md
+    - name: Nasazení zařízení
+      href: device-deployment.md
+      items:
+        - name: Vytvoření nových zásad konfigurace pro konkrétního zákazníka
+          href: create-a-new-configuration-policy-for-the-specified-customer.md
+        - name: Odstranění zásad konfigurace pro konkrétního zákazníka
+          href: delete-a-configuration-policy-for-the-specified-customer.md
+        - name: Získání seznamu zásad zákazníka
+          href: get-a-list-of-a-customer-s-policies.md
+        - name: Načtení zásad konfigurace zákazníka
+          href: retrieve-a-customer-s-configuration-policy.md
+        - name: Aktualizace zásad konfigurace pro konkrétního zákazníka
+          href: update-a-configuration-policy-for-the-specified-customer.md
+        - name: Získání stavu nahrání dávek zařízení
+          href: get-the-status-of-a-device-batch-upload.md
+        - name: Získání seznamu dávek zařízení pro konkrétního zákazníka
+          href: get-the-list-of-device-batches-for-the-specified-customer.md
+        - name: Získání seznamu zařízení pro konkrétní dávku a zákazníka
+          href: get-a-list-of-devices-for-the-specified-batch-and-customer.md
+        - name: Nahrání seznamu zařízení pro vytvoření nové dávky pro konkrétního zákazníka
+          href: upload-a-list-of-devices-to-create-a-new-batch-for-the-specified-customer.md
+        - name: Nahrání seznamu zařízení do stávající dávky pro konkrétního zákazníka
+          href: upload-a-list-of-devices-for-the-specified-customer.md
+        - name: Aktualizace seznamu zařízení s využitím zásad
+          href: update-a-list-of-devices-with-a-policy.md
+        - name: Odstraní zařízení pro konkrétního zákazníka
+          href: delete-a-device-for-the-specified-customer.md
+    - name: Správa účtů a profilů
+      href: manage-profiles-and-information.md
+      items:
+        - name: Získání předplatných zákazníka podle ID MPN partnera
+          href: get-all-subscriptions-by-partner.md
+        - name: Získání profilu organizace
+          href: get-an-organization-profile.md
+        - name: Získání zákazníků nepřímého prodejce
+          href: get-customers-of-an-indirect-reseller.md
+        - name: Získání nepřímých prodejců zákazníka
+          href: get-indirect-resellers-of-a-customer.md
+        - name: Získání profilu programu Microsoft Partner Network
+          href: get-partner-network-profile.md
+        - name: Získání fakturačního profilu partnera
+          href: get-partner-billing-profile.md
+        - name: Ověření ID MPN partnera
+          href: get-partner-by-mpn-id.md
+        - name: Ověření stavu podepsání Smlouvy s partnerem Microsoftu pro nepřímého prodejce
+          href: verify-indirect-reseller-mpa-status.md
+        - name: Získání profilu podpory
+          href: get-support-profile.md
+        - name: Získání oficiálního obchodního profilu partnera
+          href: get-legal-business-profile.md
+        - name: Načtení seznamu nepřímých prodejců
+          href: retrieve-a-list-of-indirect-resellers.md
+        - name: Aktualizace profilu organizace
+          href: update-an-organization-profile.md
+        - name: Aktualizace fakturačního profilu partnera
+          href: update-partner-billing-profile.md
+        - name: Aktualizace profilu podpory
+          href: update-support-profile.md
+        - name: Aktualizace oficiálního obchodního profilu partnera
+          href: update-legal-business-profile.md
+    - name: Správa vyúčtování
+      href: manage-billing.md
+      items:
+        - name: Změna fakturačního cyklu
+          href: change-the-billing-cycle.md
+        - name: Získání souhrnu nákladů na služby zákazníka
+          href: get-a-customer-s-service-costs-summary.md
+        - name: Získání řádkových položek nákladů na služby zákazníka
+          href: get-a-customer-s-service-costs-line-items.md
+        - name: Získání kolekce faktur
+          href: get-a-collection-of-invoices.md
+        - name: Získání záznamů o využití Azure zákazníkem
+          href: get-a-customer-s-utilization-record-for-azure.md
+        - name: Získání faktury podle ID
+          href: get-invoice-by-id.md
+        - name: Získání fakturovaných řádkových položek spotřeby na faktuře
+          href: get-invoice-billed-consumption-lineitems.md
+        - name: Získání odkazů na odhad faktury
+          href: get-invoice-estimate-links.md
+        - name: Získání řádkových položek faktury
+          href: get-invoiceline-items.md
+        - name: Získání příjmových výkazů faktur
+          href: get-invoice-receipt-statement.md
+        - name: Získání výkazů faktur
+          href: get-invoice-statement.md
+        - name: Získání přehledu faktur
+          href: get-invoice-summaries.md
+        - name: Získání nefakturovaných řádkových položek spotřeby na faktuře
+          href: get-invoice-unbilled-consumption-lineitems.md
+        - name: Získání nefakturovaných řádkových položek odsouhlasení
+          href: get-invoice-unbilled-recon-lineitems.md
+        - name: Získání cen pro Microsoft Azure
+          href: get-prices-for-microsoft-azure.md
+        - name: Získání cen pro partnerské sdílené služby Microsoft Azure
+          href: get-prices-for-microsoft-azure-partner-shared-services.md
+        - name: Získání aktuálního zůstatku na účtu partnera
+          href: get-the-reseller-s-current-account-balance.md
+    - name: Útrata v Azure
+      href: azure-spending.md
+      items:
+        - name: Získání souhrnu využití pro partnera
+          href: get-a-partner-usage-summary.md
+        - name: Získání všech záznamů o zákaznickém využití pro partnera
+          href: get-a-customer-s-usage-records.md
+        - name: Získání souhrnu zákaznického využití
+          href: get-a-customer-usage-summary.md
+        - name: Získání všech záznamů o využití předplatných pro zákazníka
+          href: get-a-customer-subscription-s-usage-records.md
+        - name: Získání souhrnu využití předplatných
+          href: get-a-customer-subscription-usage-summary.md
+        - name: Získání všech záznamů o měsíčním využití pro předplatné
+          href: get-all-monthly-usage-records-for-a-subscription.md
+        - name: Získat data o využití pro předplatné podle prostředku
+          href: get-a-customer-subscription-resource-usage-records.md
+        - name: Získání dat o využití pro předplatné podle měřiče
+          href: get-a-customer-subscription-meter-usage-records.md
+        - name: Získání prostředků záznamů o využití měřičů
+          href: meter-usage-resources.md
+        - name: Získání prostředků záznamů o využití prostředků
+          href: resource-usage-resources.md
+        - name: Získání rozpočtu zákaznického využití
+          href: get-a-customer-s-usage-spending-budget.md
+        - name: Aktualizace rozpočtu zákaznického využití
+          href: update-a-customer-s-usage-spending-budget.md
+        - name: Prostředky pro upgrade produktů
+          href: product-upgrade-resources.md
+          items:
+            - name: Získání stavu upgradu produktů
+              href: get-product-upgrade-status.md
+            - name: Získání způsobilosti pro upgrade produktů
+              href: get-eligibility-for-product-upgrade.md
+            - name: Vytvoření entity pro upgrade produktů pro zákazníka
+              href: create-product-upgrade-entity.md
+        - name: Získání seznamu nároků Azure pro předplatné
+          href: get-a-list-of-azure-entitlements-for-subscription.md
+    - name: Správa zákaznických účtů
+      href: manage-customers.md
+      items:
+        - name: Přidání ověřené domény pro zákazníka
+          href: add-a-verified-domain-for-a-customer.md
+        - name: Přiřazení licencí uživateli
+          href: assign-licenses-to-a-user.md
+        - name: Získání metadat smluv pro Smlouvu o službách Microsoft Cloud
+          href: get-agreement-metadata.md
+        - name: Získání metadat smluv pro Smlouvu se zákazníkem Microsoftu
+          href: get-customer-agreement-metadata.md
+        - name: Získání potvrzení přijetí Smlouvy o službách Microsoft Cloud ze strany zákazníka
+          href: get-confirmation-of-customer-consent.md
+        - name: Stažení šablony Smlouvy se zákazníkem Microsoftu
+          href: download-customer-agreement-template.md
+        - name: Získání potvrzení přijetí Smlouvy se zákazníkem Microsoftu ze strany zákazníka
+          href: get-confirmation-of-customer-agreement.md
+        - name: Získání stavu přímého podepsání (přímého přijetí) pro Smlouvu se zákazníkem Microsoftu
+          href: get-direct-sign-status-of-customer-agreement.md
+        - name: Potvrzení přijetí Smlouvy se zákazníkem Microsoftu ze strany zákazníka
+          href: confirm-customer-consent-customer-agreement.md
+        - name: Získání licencí přiřazených uživateli
+          href: check-which-licenses-are-assigned-to-a-user.md
+        - name: Získání licencí přiřazených uživateli podle skupiny licencí
+          href: get-licenses-assigned-to-a-user-by-license-group.md
+        - name: Vytvoření zákazníka
+          href: create-a-customer.md
+        - name: Vytvoření zákazníka pro nepřímého prodejce
+          href: create-a-customer-for-an-indirect-reseller.md
+        - name: Vytvoření uživatelských účtů pro zákazníka
+          href: create-user-accounts-for-a-customer.md
+        - name: Odstranění uživatelských účtů pro zákazníka
+          href: delete-user-accounts-for-a-customer.md
+        - name: Získání kolekce nároků
+          href: get-a-collection-of-entitlements.md
+        - name: Získání zákazníka podle ID
+          href: get-a-customer-by-id.md
+        - name: Získání fakturačního profilu zákazníka
+          href: get-all-of-a-customer-s-billing-profiles.md
+        - name: Získání firemního profilu zákazníka
+          href: get-a-customer-s-company-profile.md
+        - name: Získání kvalifikace zákazníka
+          items:
+            - name: Použití asynchronních rozhraní API
+              href: get-customer-qualification-asynchronous.md
+            - name: Použití synchronních rozhraní API
+              href: get-customer-qualification-synchronous.md
+        - name: Získání všech objednávek zákazníka
+          href: get-all-of-a-customer-s-orders.md
+        - name: Získání předplatných zákazníka
+          href: get-all-of-a-customer-s-subscriptions.md
+        - name: Získání způsobilosti pro převod předplatných zákazníka
+          href: get-customer-s-subscriptions-transfer-eligibility.md
+        - name: Získání převodů zákazníka
+          href: get-all-of-a-customer-s-transfers.md
+        - name: Získání podrobných informací o převodech zákazníka
+          href: get-transfer-by-id.md
+        - name: Získání seznamu všech uživatelských účtů pro zákazníka
+          href: get-a-list-of-all-user-accounts-for-a-customer.md
+        - name: Získání seznamu dostupných licencí
+          href: get-a-list-of-available-licenses.md
+        - name: Získání seznamu dostupných licencí podle skupiny licencí
+          href: get-a-list-of-available-licenses-by-license-group.md
+        - name: Získání seznamu zákazníků
+          href: get-a-list-of-customers.md
+        - name: Získání seznamu zákazníků filtrovaných podle vyhledávacího pole
+          href: get-a-customer-by-name.md
+        - name: Získání seznamu objednávek podle typu fakturačního cyklu a zákazníka
+          href: get-a-list-of-orders-by-customer-and-billing-cycle-type.md
+        - name: Získání ověřovacích kódů partnera
+          href: get-a-partner-s-validation-codes.md
+        - name: Získání uživatelského účtu podle ID
+          href: get-a-user-account-by-id.md
+        - name: Získání uživatelských rolí pro zákazníka
+          href: get-user-roles-for-a-customer.md
+        - name: Odebrání uživatele zákazníka z role
+          href: remove-customer-user-from-a-role.md
+        - name: Odebrání vztahu prodejce se zákazníkem
+          href: remove-a-reseller-relationship-with-a-customer.md
+        - name: Načtení adresy URL žádosti o vztah
+          href: request-reseller-relationship.md
+        - name: Resetování uživatelského hesla pro zákazníka
+          href: reset-user-password-for-a-customer.md
+        - name: Obnovení odstraněného uživatele pro zákazníka
+          href: restore-a-user-for-a-customer.md
+        - name: Nastavení uživatelských rolí pro zákazníka
+          href: set-user-roles-for-a-customer.md
+        - name: Aktualizace fakturačního profilu zákazníka
+          href: update-a-customer-s-billing-profile.md
+        - name: Aktualizace kvalifikace zákazníka
+          items:
+            - name: Použití asynchronních rozhraní API
+              href: update-customer-qualification-asynchronous.md
+            - name: Použití synchronních rozhraní API
+              href: update-customer-qualification-synchronous.md
+        - name: Aktualizace přezdívky pro předplatné
+          href: update-the-nickname-for-a-subscription.md
+        - name: Odvolání převodu pro zákazníka
+          href: withdraw-a-transfer.md
+        - name: Vytvoření převodu pro zákazníka
+          href: create-a-transfer.md
+        - name: Potvrzení převodu pro zákazníka
+          href: accept-a-transfer.md
+        - name: Zamítnutí převodu pro zákazníka
+          href: reject-a-transfer.md
+        - name: Aktualizace uživatelských účtů pro zákazníka
+          href: update-user-accounts-for-a-customer.md
+        - name: Zobrazení odstraněných uživatelů pro zákazníka
+          href: view-a-deleted-user.md
+        - name: Vytvoření samoobslužných zásad
+          href: create-a-self-serve-policy.md
+        - name: Odstranění samoobslužných zásad
+          href: delete-a-self-serve-policy.md
+        - name: Získání seznamu samoobslužných zásad
+          href: get-a-list-of-self-serve-policies.md
+        - name: Získání samoobslužné zásady podle ID
+          href: get-a-self-serve-policy-by-id.md
+        - name: Aktualizace samoobslužných zásad
+          href: update-a-self-serve-policy.md
+    - name: Správa objednávek
+      href: manage-orders.md
+      items:
+        - name: Nákup plánu Azure
+          href: create-azure-plan.md
+        - name: Nákup rezervací Azure
+          href: purchase-azure-reservations.md
+        - name: Nákup předplatného pro produkty na komerčním marketplace
+          href: create-subscription-azure-marketplace-products.md
+        - name: Zrušení předplatného na komerčním marketplace
+          href: cancel-an-azure-marketplace-subscription.md
+        - name: Zrušení nákupů předplatného
+          href: cancel-software-purchases.md
+        - name: Změna objemu předplatného
+          href: change-the-quantity-of-a-subscription.md
+        - name: Převod zkušební verze předplatného na placenou
+          href: convert-a-trial-subscription-to-paid.md
+        - name: Kontrola inventáře
+          href: check-inventory.md
+        - name: Odbavení košíku
+          href: checkout-a-cart.md
+        - name: Vytvoření košíku
+          href: create-a-cart.md
+        - name: Vytvoření košíku s doplňky
+          href: create-a-cart-with-add-ons.md
+        - name: Vytvoření objednávky
+          href: create-an-order.md
+        - name: Vytvoření objednávky pro zákazníka nepřímého prodejce
+          href: create-an-order-for-a-customer-of-an-indirect-reseller.md
+        - name: Získání seznamu doplňků pro předplatné
+          href: get-a-list-of-add-ons-for-a-subscription.md
+        - name: Získání seznamu dostupností pro skladovou položku (podle země)
+          href: get-a-list-of-availabilities-for-a-sku.md
+        - name: Získání seznamu dostupností pro skladovou položku (podle zákazníka)
+          href: get-a-list-of-availabilities-for-a-sku-by-customer.md
+        - name: Získání seznamu kategorií nabídek podle trhu
+          href: get-a-list-of-offer-categories-by-country-and-locale.md
+        - name: Získání seznamu nabídek pro trh
+          href: get-a-list-of-offers-for-a-market.md
+        - name: Získání seznamu produktů (podle země)
+          href: get-a-list-of-products.md
+        - name: Získání seznamu produktů (podle zákazníka)
+          href: get-a-list-of-products-by-customer.md
+        - name: Získání seznamu skladových položek pro produkt (podle země)
+          href: get-a-list-of-skus-for-a-product.md
+        - name: Získání seznamu skladových položek pro produkt (podle zákazníka)
+          href: get-a-list-of-skus-for-a-product-by-customer.md
+        - name: Získání seznamu předplatných podle objednávky
+          href: get-a-list-of-subscriptions-by-order.md
+        - name: Získání seznamu nabídek převod zkušebních verzí
+          href: get-a-list-of-trial-conversion-offers.md
+        - name: Získání produktu podle ID
+          href: get-a-product-by-id.md
+        - name: Získání skladové položky podle ID
+          href: get-a-sku-by-id.md
+        - name: Získání předplatného podle ID
+          href: get-a-subscription-by-id.md
+        - name: Získání aktivačního odkazu podle položky řádku objednávky
+          href: get-activation-link-by-order-line-item.md
+        - name: Získání doplňků pro ID nabídky
+          href: get-addon-offers-by-offer-id.md
+        - name: Získání dostupnosti podle ID
+          href: get-an-availability-by-id.md
+        - name: Získání nabídky podle ID
+          href: get-an-offer-by-id.md
+        - name: Získání objednávky podle ID
+          href: get-an-order-by-id.md
+        - name: Získání stavu zřizování předplatných
+          href: get-subscription-provisioning-status.md
+        - name: Získání stavu registrace předplatných
+          href: get-subscription-registration-status.md
+        - name: Provedení jednorázového nákupu
+          href: make-a-one-time-purchase.md
+        - name: Nákup doplňku k předplatnému
+          href: purchase-an-add-on-to-a-subscription.md
+        - name: Nákup položek katalogu
+          href: purchase-catalog-items.md
+        - name: Opětovná aktivace pozastaveného předplatného
+          href: reactivate-a-suspended-a-subscription.md
+        - name: Registrace předplatného
+          href: register-a-subscription.md
+        - name: Pozastavení předplatného
+          href: suspend-a-subscription.md
+        - name: Převod předplatného
+          href: transition-a-subscription.md
+        - name: Aktualizace košíku
+          href: update-a-cart.md
+        - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
+          href: update-autorenew-for-an-azure-marketplace-subscription.md
+    - name: Poskytování podpory
+      href: provide-support.md
+      items:
+        - name: Získání kontaktu podpory pro předplatné
+          href: get-a-subscription-s-support-contact.md
+        - name: Získání všech žádostí o službu pro zákazníka
+          href: get-all-service-requests-for-a-customer.md
+        - name: Získání podrobností žádostí o službu podle ID
+          href: get-service-request-details-by-id.md
+        - name: Získání spravovaných služeb pro zákazníka podle ID
+          href: get-the-managed-services-for-a-customer-by-id.md
+        - name: "Aktualizace žádosti o\_službu"
+          href: update-a-service-request.md
+        - name: Aktualizace kontaktu podpory pro předplatné
+          href: update-a-subscription-s-support-contact.md
+- name: Sandbox pro integraci
+  items:
+    - name: 'Možnosti partnerského sandboxu, které podporují vztah s prodejci'
+      href: sandbox-scenario.md
+    - name: Testování a ladění sandboxu
+      href: test-and-debug.md
+    - name: Zrušení objednávky ze sandboxu pro integraci
+      href: cancel-an-order-from-the-integration-sandbox.md
+    - name: Aktivovace předplatného sandboxu
+      href: activate-sandbox-subscription-azure-marketplace-products.md
+    - name: Odstranění zákaznického účet ze sandboxu pro integraci
+      href: delete-a-customer-account-from-the-integration-sandbox.md
+- name: Reference
+  href: /partner/develop/referrals
+  items:
+    - name: Vytvoření reference
+      href: /partner/develop/create-a-referral
+    - name: Získání seznamu referencí
+      href: /partner/develop/get-a-list-of-referrals
+    - name: Získání reference podle ID
+      href: /partner/develop/get-a-referral-by-id
+    - name: Aktualizace reference
+      href: /partner/develop/update-a-referral
+- name: Nástroje
+  href: utilities.md
+  items:
+    - name: Ověření adresy
+      href: validate-an-address.md
+    - name: Získání pravidel formátování adres podle trhu
+      href: get-market-specific-validation-data.md
+    - name: Ověření dostupnosti domény
+      href: verify-domain-availability.md
+- name: Zabezpečení
+  href: partner-security-requirements.md
+  items:
+    - name: Získání požadavků na portál bez MFA
+      href: get-portal-requests-without-mfa.md
+    - name: Získání souhrnu žádostí rozhraní API
+      href: get-api-request-summary.md
+    - name: Získání podrobností žádostí rozhraní API
+      href: get-api-request-details.md
+- name: Referenční informace k rozhraní REST API pro Partnerské centrum
+  href: partner-center-rest-api-reference.md
+  items:
+    - name: Protokol změn rozhraní REST API pro Partnerské centrum
+      href: api-change-log.md
+    - name: Adresy URL rozhraní REST pro Partnerské centrum
+      href: partner-center-rest-urls.md
+    - name: Hlavičky rozhraní REST pro Partnerské centrum
+      href: headers.md
+    - name: Prostředky rozhraní REST pro Partnerské centrum
+      href: partner-center-rest-resources.md
+      items:
+        - name: Smlouva
+          href: agreement-resources.md
+        - name: Metadata smlouvy
+          href: agreement-metadata-resources.md
+        - name: Prostředky dokumentů smlouvy (Preview)
+          href: agreement-document-resources.md
+        - name: Stav přímého podepsání (přímého přijetí) smlouvy se zákazníkem
+          href: customer-agreement-direct-sign-status-resource.md
+        - name: Analýzy
+          href: analytics-resources.md
+        - name: Auditování
+          href: auditing-resources.md
+        - name: Sazebník Azure
+          href: azure-rate-card-resources.md
+        - name: Záznam o využití Azure
+          href: azure-utilization-record-resources.md
+        - name: Košík
+          href: cart-resources.md
+        - name: Převody
+          href: conversions-resources.md
+        - name: "Informace o\_zemi"
+          href: country-information-resources.md
+        - name: Customer (Zákazník)
+          href: customer-resources.md
+        - name: Zákaznické využití
+          href: customer-usage-resources.md
+        - name: Nasazení zařízení
+          href: device-deployment-resources.md
+        - name: Nárok
+          href: entitlement-resources.md
+        - name: Faktura
+          href: invoice-resources.md
+        - name: Licence
+          href: license-resources.md
+        - name: Spravovaná služba
+          href: managed-service-resources.md
+        - name: Nabídka
+          href: offer-resources.md
+        - name: Objednávka
+          href: order-resources.md
+        - name: Profil
+          href: profile-resources.md
+        - name: Produkty
+          href: product-resources.md
+        - name: Relace
+          href: relationships-resources.md
+        - name: Samoobslužné zásady
+          href: self-serve-policy-resources.md
+        - name: Náklady na služby
+          href: service-costs-resources.md
+        - name: "Žádost o\_službu"
+          href: service-request-resources.md
+        - name: Předplatné
+          href: subscription-resources.md
+        - name: Využití předplatného
+          href: subscription-usage-resources.md
+        - name: Upgrade
+          href: upgrade-resources.md
+        - name: Uživatel
+          href: user-resources.md
+        - name: Pomocné prostředky
+          href: utility-resources.md
+    - name: Kódy chyb rozhraní REST Partnerského centra
+      href: error-codes.md
+    - name: Události rozhraní REST pro Partnerské centrum
+      href: partner-center-webhook-events.md
+    - name: Podporované jazyka a lokality pro Partnerské centrum
+      href: partner-center-supported-languages-and-locales.md
+    - name: Webhooky Partnerského centra
+      href: partner-center-webhooks.md
+- name: Referenční informace ke spravovanému rozhraní .NET API pro Partnerské centrum
+  href: /dotnet/api/
+  items:
+    - name: Poznámky k verzi rozhraní .NET API pro Partnerské centrum
+      href: dotnet-release-notes.md
+- name: Referenční informace k rozhraní Java API pro Partnerské centrum
+  href: /java/partnercenter
+- name: Příkazy PowerShellu pro Partnerské centrum
+  href: /powershell/partnercenter
