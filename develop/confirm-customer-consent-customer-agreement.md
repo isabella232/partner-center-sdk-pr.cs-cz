@@ -1,15 +1,15 @@
 ---
 title: Potvrzení přijetí Smlouvy se zákazníkem Microsoftu ze strany zákazníka
 description: Přečtěte si, jak potvrdit přijetí zákaznických smluv Microsoftu pomocí rozhraní API partnerského centra.
-ms.date: 02/04/2020
+ms.date: 02/08/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 239ca43c70fb8aa7f0d06e564e6c0726b235ffbe
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 62a6cebd5d6d093377dd5940dcff6204b7095c70
+ms.sourcegitcommit: ebb36208d6e2dea705f62b7d60d471f10c55132e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767109"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006062"
 ---
 # <a name="confirm-customer-acceptance-of-the-microsoft-customer-agreement-using-partner-center-apis"></a>Potvrzení souhlasu zákazníka se zákaznickou smlouvou Microsoftu pomocí rozhraní API partnerského centra
 
@@ -40,6 +40,20 @@ Tento článek popisuje, jak ověřit nebo znovu potvrdit přijetí smlouvy o z�
   - Příjmení
   - E-mailová adresa
   - Telefonní číslo (volitelné)
+- Pokud se u zákazníka změní následující hodnoty, Partnerské centrum umožní vytvoření jiné smlouvy pro daného zákazníka: křestní jméno příjmení jméno e-mailové adresy. v opačném případě získají partneři následující kód chyby, protože se vytvořil duplicitní zákazník.
+
+
+```
+{
+"code": 600061,
+"message": "A partner confirmed agreement already exists for the customer.",
+"description": "A partner confirmed agreement already exists for the customer.",
+"errorName": "PartnerConfirmedAgreementAlreadyExists",
+"isRetryable": false,
+"parameters": {},
+"errorMessageExtended": "InternalErrorCode=600061"
+}
+ ```
 
 ## <a name="net"></a>.NET
 
@@ -102,7 +116,7 @@ Použijte následující parametr dotazu k určení zákazníka, kterého si pot
 
 | Název               | Typ | Vyžadováno | Popis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| Customer-tenant-ID | Identifikátor GUID | Yes | Hodnota je **číslo zákazníka**, který je ve formátu GUID, což je identifikátor, který umožňuje zadat zákazníka. |
+| Customer-tenant-ID | Identifikátor GUID | Ano | Hodnota je **číslo zákazníka**, který je ve formátu GUID, což je identifikátor, který umožňuje zadat zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
