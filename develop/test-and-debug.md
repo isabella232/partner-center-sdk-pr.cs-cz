@@ -4,12 +4,12 @@ description: Naučte se používat účet izolovaného prostoru (a související
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 95e80000a199ae00a31bddc5ecae8c19ab77c64e
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: e5b8f6cc2eb239b7a8b8a8722b231f290e768004
+ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767071"
+ms.lasthandoff: 02/13/2021
+ms.locfileid: "100335791"
 ---
 # <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Testování a ladění pomocí izolovaného prostoru integrace partnerského centra, aby nedošlo k neočekávaným poplatkům
 
@@ -27,10 +27,6 @@ Pokud chcete otestovat svůj kód, měli byste použít svůj účet integrace i
 Pokud spustíte testy automatizovaného ověřování sestavení, provádíte testování v produkčním prostředí nebo provádíte Manuální testování v izolovaném prostoru (sandboxu) integrace, můžete dosáhnout maximálního limitu pro integraci izolovaného prostoru. Tato omezení jsou 75 zákazníci, 5 předplatných na zákazníka a 25 licencí na předplatné.
 
 - Limit 25 licencí znamená, že nemůžete získat nabídku v izolovaném prostoru (sandbox), která má minimální licenční požadavek, který překračuje 25 licencí. Toto omezení zahrnuje zkušební verze.
-
-- Pro účty izolovaného prostoru (sandbox) nelze získat Souhrn využití, protože tyto účty jsou pro účely testování.
-
-- Rozhraní API související s fakturací a fakturou nebudou v izolovaném prostoru (sandboxu) fungovat, protože pro testovací účet nejsou vygenerovány žádné faktury.
 
 
 ### <a name="azure-plan"></a>Plán Azure
