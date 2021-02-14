@@ -4,12 +4,12 @@ description: Pomocí rozhraní API partnerského centra můžete získat podrobn
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 50dac1bbc96776d395014dc7ee5a5990f0710484
-ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
+ms.openlocfilehash: e797f549e1344268c8167259a231122e7c669a2e
+ms.sourcegitcommit: 9f8ba784171ab4f980ed0c60ef6f2323849c4a98
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2021
-ms.locfileid: "100335808"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100499894"
 ---
 # <a name="get-invoice-line-items"></a>Získání řádkových položek faktury
 
@@ -158,7 +158,7 @@ Při vytváření žádosti použijte následující identifikátor URI a parame
 | Název                   | Typ   | Vyžadováno | Popis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
 | ID faktury             | řetězec | Yes      | Řetězec, který identifikuje fakturu.                             |
-| fakturace – poskytovatel       | řetězec | Yes      | Zprostředkovatel fakturace: "Office", "Azure", "jednorázová". Ve starší verzi máme pro Office & transakcí Azure samostatné datové modely. V moderních případech máme jeden datový model ve všech produktech filtrovaných prostřednictvím hodnoty "jednorázová".            |
+| fakturace – poskytovatel       | řetězec | Yes      | Zprostředkovatel fakturace: "Office", "Azure", "jednorázová". Ve starší verzi máme pro Office & transakcí Azure samostatné datové modely. Moderní ale má jeden jeden datový model ve všech transakcích filtrovaných pomocí hodnoty "jednorázová".            |
 | faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "BillingLineItems", "UsageLineItems". |
 | size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí maximální velikost = 2000    |
 | posun                 | číslo | No       | Index založený na nule první položky řádku, který se má vrátit.            |

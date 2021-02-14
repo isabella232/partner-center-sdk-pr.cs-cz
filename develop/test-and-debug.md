@@ -4,12 +4,12 @@ description: Naučte se používat účet izolovaného prostoru (a související
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e5b8f6cc2eb239b7a8b8a8722b231f290e768004
-ms.sourcegitcommit: a8ebfa97db9e43c6b5ff05bb37ecead6b3565721
+ms.openlocfilehash: 3ff4a7ec3ad984b09c60d3d820423c614fb8020d
+ms.sourcegitcommit: 9f8ba784171ab4f980ed0c60ef6f2323849c4a98
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2021
-ms.locfileid: "100335791"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100499877"
 ---
 # <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Testování a ladění pomocí izolovaného prostoru integrace partnerského centra, aby nedošlo k neočekávaným poplatkům
 
@@ -26,7 +26,17 @@ Pokud chcete otestovat svůj kód, měli byste použít svůj účet integrace i
 
 Pokud spustíte testy automatizovaného ověřování sestavení, provádíte testování v produkčním prostředí nebo provádíte Manuální testování v izolovaném prostoru (sandboxu) integrace, můžete dosáhnout maximálního limitu pro integraci izolovaného prostoru. Tato omezení jsou 75 zákazníci, 5 předplatných na zákazníka a 25 licencí na předplatné.
 
-- Limit 25 licencí znamená, že nemůžete získat nabídku v izolovaném prostoru (sandbox), která má minimální licenční požadavek, který překračuje 25 licencí. Toto omezení zahrnuje zkušební verze.
+Limit 25 licencí znamená, že nemůžete získat nabídku v izolovaném prostoru (sandbox), která má minimální licenční požadavek, který překračuje 25 licencí. Toto omezení zahrnuje zkušební verze.
+
+V prostředích izolovaného prostoru (sandboxu) jsou k dispozici různé soubory faktury a odsouhlasení, ale ne všechny jsou k dispozici na starších nebo moderních platformách. Ověřte následující tabulku, abyste se dozvěděli víc.
+
+| **Soubory**                    | **K dispozici ve starší verzi** | **K dispozici v moderních** |
+| ---------------------------- | ------------------------ | ------------------------ |
+| Faktura v PDF                  | No                       | Yes                      |
+| Soubor odsouhlasení faktury | No                       | Yes                      |
+| Soubor odhadu faktury       | No                       | Yes                      |
+| Denní fakturované soubor využití     | No                       | Yes                      |
+| Denní nefakturovaný soubor využití   | No                       | Yes                      |
 
 
 ### <a name="azure-plan"></a>Plán Azure
