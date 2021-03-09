@@ -4,12 +4,12 @@ description: Pomocí rozhraní API partnerského centra můžete získat informa
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 594946db712c28983dd390207fb06c8d9f62f18b
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8d3bbe7921029dc6c40c65fb8d82baaa944089b6
+ms.sourcegitcommit: 160296667833366fb3f4021d042094606e1032ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766977"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102472678"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Získat fakturovatelné položky řádkové spotřeby pro komerční spotřebu
 
@@ -129,11 +129,11 @@ Při vytváření žádosti použijte následující identifikátor URI a parame
 
 | Název                   | Typ   | Vyžadováno | Popis                                                                     |
 |------------------------|--------|----------|---------------------------------------------------------------------------------|
-| Zprostředkovatel               | řetězec | Yes      | Zprostředkovatel: "**jednorázová**".                                                |
-| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "**UsageLineItems**", "**UsageLineItems**".               |
-| currencyCode           | řetězec | Yes      | Kód měny pro nefakturovatelné položky řádku                                  |
-| period                 | řetězec | Yes      | Období pro nefakturované rekognoskaci (například: **Current**, **Previous**).<br/><br/>**Předchozí** – Pokud je fakturační cyklus 01/01/2020 – 01/31/2020 a pak s největší pravděpodobnější, že se vaše faktura vygenerovala mezi 02/06/2020 a časem 02/08/2020 UTC. Pokud potřebujete zadat dotaz na data o neúčtovaném využití fakturačního cyklu (01/01/2020 – 01/31/2020) kdykoli mezi 02/01/2020 a datem vygenerování faktury (mezi 02/06/2020 a 02/08/2020 času UTC), pak musíte zvolit perioda jako "předchozí".<br/><br/>**Current** – Pokud je fakturační cyklus 01/01/2020 – 01/31/2020 02/08/2020 a pak je pravděpodobně vygenerována vaše faktura mezi 02/06/2020 a časem UTC. Pokud potřebujete zadat dotaz na nefakturovaná data o využití fakturačního cyklu (01/01/2020 – 01/31/2020), kdykoli mezi 01/01/2020 a 01/31/2020, která jsou v rámci fakturačního cyklu, musíte zvolit perioda jako "aktuální". |
-| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                    |
+| Zprostředkovatel               | řetězec | Ano      | Zprostředkovatel: "**jednorázová**".                                                |
+| faktura-line-Item-Type | řetězec | Ano      | Typ podrobností o faktuře: "**UsageLineItems**", "**UsageLineItems**".               |
+| currencyCode           | řetězec | Ano      | Kód měny pro nefakturovatelné položky řádku                                  |
+| period                 | řetězec | Ano      | Období pro nefakturované rekognoskaci (například: **Current**, **Previous**). Předpokládejme, že v lednu potřebujete zadat dotaz na nefakturovaná data o využití fakturačního cyklu (01/01/2020 – 01/31/2020), vyberte perioda jako **aktuální,** jinak **předchozí.** |
+| size                   | číslo | Ne       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                    |
 | seekOperation          | řetězec | No       | Nastavte `seekOperation=Next` , aby se získala další stránka položek řádku odsouhlasení.                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
