@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: e0390e8a9c2a277dcb9e18b026f12625400ae176
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: 703585eeaba93b6d7a510a3174a78a28f22e1510
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97767146"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711929"
 ---
 # <a name="update-a-customers-qualifications-asynchronously"></a>Asynchronní aktualizace kvalifikací zákazníka
 
@@ -23,7 +23,7 @@ Naučte se asynchronně aktualizovat kvalifikace zákazníka prostřednictvím r
 
 Partner může provést asynchronní aktualizaci kvalifikací zákazníka, pokud jde o "vzdělávání" nebo "GovernmentCommunityCloud". Další hodnoty, "none" a "neziskové" nelze nastavit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
 
@@ -90,5 +90,5 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Související články
 
-- [Získání kvalifikace zákazníka](get-a-customer-s-qualifications.md)
+- [Získání kvalifikace zákazníka](./get-customer-qualification-asynchronous.md)
 - [Získání ověřovacích kódů partnera](get-a-partner-s-validation-codes.md)

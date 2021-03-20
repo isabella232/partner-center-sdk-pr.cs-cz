@@ -5,12 +5,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.topic: reference
 ms.date: 12/15/2020
-ms.openlocfilehash: 79359414276a1259117a8f506bbfae4441cdcbed
-ms.sourcegitcommit: f8ca3a14a763013fefafd3262d0a740881d1d7b1
+ms.openlocfilehash: b2c2cac36a8bd1bec7aa5bf6e5d1aa73b4779535
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97767666"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711844"
 ---
 # <a name="december-2020-changes-to-partner-center-rest-apis"></a>Z prosince 2020 změny rozhraní REST API pro partnerský Center
 
@@ -24,8 +24,8 @@ Tady najdete změny rozhraní REST API pro partnerské Centrum.
 
 V současné době má rozhraní API partnerského centra získat a dát kvalifikaci k ověření nároku na vzdělávání zákazníků. Rozhraní API pro získání kvalifikace nebude nijak nijak měnit. Přidali jsme ale návratový případ do rozhraní API kvalifikace PUT.
 
-- ZÍSKAT změny. [Aktuální článek o rozhraní API](get-a-customer-s-qualification.md)
-- Přidá se případ vrácení vložení. [Aktuální článek o rozhraní API](update-a-customer-s-qualification.md)
+- ZÍSKAT změny. [Aktuální článek o rozhraní API](./get-customer-qualification-synchronous.md)
+- Přidá se případ vrácení vložení. [Aktuální článek o rozhraní API](./update-customer-qualification-synchronous.md)
 
 Tato rozhraní API budou vyřazena na konci února 2021, která budou nahrazena novými rozhraními API, jak je popsáno níže.
 

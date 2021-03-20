@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 7faab68d20c698f5b040a76f4776dbdf14180640
-ms.sourcegitcommit: 0c98496e972aebe10eba23822aa229125bfc035d
+ms.openlocfilehash: c202d95beab771241a9665243be5f08ab6f82fd5
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97767147"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711963"
 ---
 # <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizace kvalifikace zákazníka prostřednictvím synchronního ověřování
 
@@ -23,7 +23,7 @@ Naučte se synchronně aktualizovat kvalifikace zákazníka prostřednictvím ro
 
 Partner může aktualizovat kvalifikaci zákazníka na "vzdělávání" nebo "GovernmentCommunityCloud". Další hodnoty, "none" a "neziskové" nelze nastavit.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
 
@@ -39,7 +39,7 @@ Pokud chcete aktualizovat kvalifikaci zákazníka na "vzdělávání", zavolejte
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.Education);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: CustomerQualificationOperations.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: CustomerQualificationOperations. cs
 
 Aktualizace kvalifikace zákazníka tak, aby se **GovernmentCommunityCloud** na stávajícího zákazníkovi bez kvalifikace.  Partner je taky nutný k zahrnutí [**ValidationCode**](utility-resources.md#validationcode)zákazníka.
 
@@ -107,5 +107,5 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="related-articles"></a>Související články
 
-- [Získání kvalifikace zákazníka](get-a-customer-s-qualification.md)
+- [Získání kvalifikace zákazníka](./get-customer-qualification-synchronous.md)
 - [Získání ověřovacích kódů partnera](get-a-partner-s-validation-codes.md)

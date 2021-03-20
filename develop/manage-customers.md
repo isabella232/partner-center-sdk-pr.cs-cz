@@ -4,19 +4,19 @@ description: V této části se dozvíte, jak mohou partneři poskytovatele Clou
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b76829bf8bfae51c135ea815e3360376a5ff294d
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: fa1a032735037b1b3a543d21bf4c868b52c13017
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766918"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711946"
 ---
 # <a name="manage-customers"></a>Správa zákazníků
 
 **Platí pro**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
@@ -53,8 +53,8 @@ Tato část popisuje způsob, jakým partneři poskytovatele Cloud Solution Prov
 - [Získání stavu přímého podepsání (přímého přijetí) pro Smlouvu se zákazníkem Microsoftu](get-direct-sign-status-of-customer-agreement.md)
 - [Potvrzení přijetí Smlouvy se zákazníkem Microsoftu ze strany zákazníka](confirm-customer-consent-customer-agreement.md)
 - [Získání ověřovacích kódů partnera](get-a-partner-s-validation-codes.md)
-- [Získání kvalifikace zákazníka](get-a-customer-s-qualification.md)
-- [Aktualizace kvalifikace zákazníka](update-a-customer-s-qualification.md)
+- [Získání kvalifikace zákazníka](./get-customer-qualification-synchronous.md)
+- [Aktualizace kvalifikace zákazníka](./update-customer-qualification-synchronous.md)
 
 ## <a name="manage-user-accounts-and-assign-licenses"></a>Správa uživatelských účtů a přiřazování licencí
 

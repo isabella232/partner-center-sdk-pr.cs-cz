@@ -4,12 +4,12 @@ description: Pomocí rozhraní AgreementStatus API můžete ověřit, jestli se 
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9501f245a6c98fa90e77de7bc0caed8ca51fa4f2
-ms.sourcegitcommit: 40baf4d825ce0ca6a254b5f368c308f025be7034
+ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
+ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100537572"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104711886"
 ---
 # <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a>Ověření stavu podepisování smlouvy Microsoft Partner pro nepřímý prodejce
 
@@ -20,7 +20,7 @@ ms.locfileid: "100537572"
 
 Můžete ověřit, jestli nepřímý prodejce podepsal smlouvu s partnerem Microsoftu pomocí svého Microsoft Partner Network (MPN) ID (PGA/PLA) nebo ID tenanta Cloud Solution Provider (Microsoft ID). Jeden z těchto identifikátorů můžete použít ke kontrole stavu podepisování smlouvy Microsoft Partner pomocí rozhraní **AgreementStatus** API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
 
@@ -44,7 +44,7 @@ var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementS
 
 - Ukázka: **[aplikace testů konzoly](console-test-app.md)**
 - Projekt: **PartnerCenterSDK. FeaturesSamples**
-- Třída: **GetAgreementSignatureStatus.cs**
+- Třída: **GetAgreementSignatureStatus. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -60,8 +60,8 @@ Chcete-li identifikovat partnera, je nutné zadat jeden z následujících dvou 
 
 | Název | Typ | Vyžadováno | Popis |
 | ---- | ---- | -------- | ----------- |
-| **MpnId** | int | Ne | ID Microsoft Partner Network (PGA/PLA), které identifikuje nepřímý prodejce. |
-| **TenantId** | Identifikátor GUID | Ne | ID společnosti Microsoft, které identifikuje účet CSP nepřímého prodejce. |
+| **MpnId** | int | No | ID Microsoft Partner Network (PGA/PLA), které identifikuje nepřímý prodejce. |
+| **TenantId** | Identifikátor GUID | No | ID společnosti Microsoft, které identifikuje účet CSP nepřímého prodejce. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -240,7 +240,7 @@ Connection: close
 
 #### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a>Oblast nepřímých poskytovatelů CSP a oblast nepřímých prodejců CSP se neshoduje.
 
-Následující příklad odpovědi se vrátí, pokud oblast nepřímých prodejců (PGA/PLA) neodpovídá oblasti nepřímého zprostředkovatele. [Přečtěte si další informace](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq) o oblastech CSP.
+Následující příklad odpovědi se vrátí, pokud oblast nepřímých prodejců (PGA/PLA) neodpovídá oblasti nepřímého zprostředkovatele. [Přečtěte si další informace](/partner-center/mpa-indirect-provider-faq) o oblastech CSP.
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -264,7 +264,7 @@ Connection: close
 
 #### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a>Účet nepřímého prodejce CSP existuje v partnerském centru, ale nepodepsal aktivaci.
 
-Následující příklad odpovědi se vrátí, když účet nepřímý prodejce CSP v partnerském centru nepodepsal aktivaci. [Další informace](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Následující příklad odpovědi se vrátí, když účet nepřímý prodejce CSP v partnerském centru nepodepsal aktivaci. [Další informace](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -288,7 +288,7 @@ Connection: close
 
 #### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a>K danému ID MPN není přidružený žádný účet nepřímý prodejce CSP.
 
-Následující příklad odpovědi se vrátí, když partnerské Centrum dokáže rozpoznat ID MPN (PGA/PLA) předané v žádosti, ale k danému ID MPN (PGA/PLA) se nepřidruží žádný zápis CSP. [Další informace](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Následující příklad odpovědi se vrátí, když partnerské Centrum dokáže rozpoznat ID MPN (PGA/PLA) předané v žádosti, ale k danému ID MPN (PGA/PLA) se nepřidruží žádný zápis CSP. [Další informace](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -334,7 +334,7 @@ Connection: close
 
 #### <a name="no-mpa-found-with-the-given-tenant-id"></a>Nenašly se žádné technologie MPA s daným ID tenanta.
 
-Následující příklad odpovědi se vrátí, když Partnerská centra nemůže najít žádný signaturu technologie MPA s daným ID tenanta. [Další informace](https://docs.microsoft.com/partner-center/mpa-indirect-provider-faq)
+Následující příklad odpovědi se vrátí, když Partnerská centra nemůže najít žádný signaturu technologie MPA s daným ID tenanta. [Další informace](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
