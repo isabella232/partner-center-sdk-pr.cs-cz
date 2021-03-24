@@ -4,16 +4,45 @@ description: Poznámky k verzi pro nejnovější verzi sady SDK partnerského ce
 ms.date: 09/18/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6be8f62e0c202a00b194f5af1dc8904006f8d637
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 2fe309500cc80e962c101ad97f0712bef7e11eb3
+ms.sourcegitcommit: f7fce0b35ab1579e59136abc357b71cf768b81b4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767155"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104895529"
 ---
 # <a name="net-sdk-release-notes"></a>Poznámky k verzi sady .NET SDK
 
 Následující poznámky k verzi jsou k dispozici pro nové verze [sady Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter). [Ukázky sady .NET SDK](https://github.com/Microsoft/Partner-Center-DotNet-Samples) najdete na GitHubu. Reference k rozhraní [.NET API partnerského centra](/dotnet/api/?view=partnercenter-dotnet-latest&preserve-view=true) najdete v prohlížeči rozhraní .NET API.
+
+## <a name="version-1170"></a>1.17.0 verze
+
+[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.17.0) v 1.17.0 je teď obecně dostupný. K dispozici jsou také aktualizované [ukázky GitHubu](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+
+* Aktualizované audit – byly přidány nové typy operací pro znalost, kdy zákazník schválil a ukončil příznak DAP.
+  * [DapAdminRelationshipApproved](auditing-resources.md)
+  * [DapAdminRelationshipTerminated](auditing-resources.md)
+
+* Audit byl aktualizován – byly přidány nové typy prostředků a operací pro podporu scénáře pro roli adresáře zákazníka.
+  * Typ prostředku "[CustomerDirectoryRole](auditing-resources.md)"
+  * Typy operací "[AddUserMember](auditing-resources.md)" a "[RemoveUserMember](auditing-resources.md)"
+
+* Aktualizace sady SDK na účet Customers – podpora pro následující rozhraní API
+  * ZÍSKAT/customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus
+  * ZÍSKAT/Customers/{Customer-tenant-ID}/Qualifications 
+  * POST/Customers/{customer_id}/Qualifications? Code = {validationCode}
+
+* **Po změnách zavedených v rámci nového obchodování, které jsou aktuálně k dispozici na základě pozvánky jenom pro partnery, kteří jsou součástí M365/D365 New Commerce Experience Technical Preview.** Partneři, kteří nejsou součástí nového obchodní privátní verze Preview, by neměli poznamenat dopady a měly by být zpětně kompatibilní.
+  * Změny katalogu:
+    * ZÍSKAT/Products/{Product-ID}/skus/{SKU-ID}
+  * Nákup a správa:
+    * ZÍSKAT/customers/{customerId}/subscriptions
+    * ZÍSKAT/customers/{customerId}/subscriptions/{subscriptionId}
+    * /Customers/{customerId}/subscriptions/{subscriptionId} opravy
+    * ZÍSKAT/customers/{customerId}/subscriptions/{subscriptionId}/transitioneligibilities
+    * ZÍSKAT/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+    * PŘÍSPĚVEK/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+
 
 ## <a name="version-1163"></a>1.16.3 verze
 
