@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: c202d95beab771241a9665243be5f08ab6f82fd5
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 0ffe6d1a236a8a07e1ff71163e7639ef1f3437e1
+ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711963"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105030585"
 ---
 # <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizace kvalifikace zákazníka prostřednictvím synchronního ověřování
 
@@ -23,7 +23,7 @@ Naučte se synchronně aktualizovat kvalifikace zákazníka prostřednictvím ro
 
 Partner může aktualizovat kvalifikaci zákazníka na "vzdělávání" nebo "GovernmentCommunityCloud". Další hodnoty, "none" a "neziskové" nelze nastavit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
 
@@ -41,7 +41,7 @@ var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer
 
 **Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: CustomerQualificationOperations. cs
 
-Aktualizace kvalifikace zákazníka tak, aby se **GovernmentCommunityCloud** na stávajícího zákazníkovi bez kvalifikace.  Partner je taky nutný k zahrnutí [**ValidationCode**](utility-resources.md#validationcode)zákazníka.
+Pokud chcete aktualizovat kvalifikaci zákazníka tak, aby se **GovernmentCommunityCloud** na stávajícího zákazníkovi bez kvalifikace, musí partner zahrnovat [**ValidationCode**](utility-resources.md#validationcode)zákazníka.
 
 ``` csharp
 // CustomerQualification is an enum

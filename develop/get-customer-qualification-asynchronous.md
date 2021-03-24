@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 2c860d4a35104131197e06d4712f4ef41ba0008e
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 09801792c059873b9f6b842e99286eda09d38b1a
+ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711904"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105030561"
 ---
 # <a name="get-a-customers-qualification-asynchronously"></a>Asynchronní získání kvalifikace zákazníka
 
@@ -21,11 +21,23 @@ ms.locfileid: "104711904"
 
 Jak získat asynchronně kvalifikaci zákazníka.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
 - ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+
+## <a name="c"></a>C\#
+
+Chcete-li získat kvalifikace zákazníka, zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak pomocí vlastnosti [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Nakonec zavolejte `GetQualifications()` nebo `GetQualificationsAsync()` načtěte kvalifikace zákazníka.
+
+``` csharp
+// IAggregatePartner partnerOperations;
+// string customerId;
+var customerQualifications = partnerOperations.Customers.ById(customerId).Qualification.GetQualifications();
+```
+
+**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: **Třída** SdkSamples: GetCustomerQualifications. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -79,14 +91,12 @@ Content-Length:
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
-{
-    "qualifications": [
-        {
-            "qualification": "Education",
-            "vettingStatus": "Approved",
-        }
-    ]
-}
+[
+    {
+        "qualification": "Education",
+        "vettingStatus": "Approved",
+    }
+]
 
 ```
 
@@ -98,15 +108,13 @@ Content-Length:
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
-{
-    "qualifications": [
-        {
-            "qualification": "Education",
-            "vettingStatus": "InReview",
-            "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
-        }
-    ]
-}
+[
+    {
+        "qualification": "Education",
+        "vettingStatus": "InReview",
+        "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+    }
+]
 
 ```
 
@@ -118,16 +126,14 @@ Content-Length:
 Content-Type: application/json
 MS-CorrelationId: 7d2456fd-2d79-46d0-9f8e-5d7ecd5f8745
 MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
-{
-    "qualifications": [
-        {
-            "qualification": "Education",
-            "vettingStatus": "Denied",
-            "vettingReason": "Not an Education Customer", // example Vetting Reason
-            "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
-        }
-    ]
-}
+[
+    {
+        "qualification": "Education",
+        "vettingStatus": "Denied",
+        "vettingReason": "Not an Education Customer", // example Vetting Reason
+        "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+    }
+]
 
 ```
 
