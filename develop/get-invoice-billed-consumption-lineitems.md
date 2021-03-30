@@ -6,47 +6,47 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: a13b62903e44165ef9811ea7798fcea666d483dc
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1e19792da6a7510bf02dd11b3e77f40a8365be2b
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766982"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730191"
 ---
-# <a name="get-invoice-billed-commercial-consumption-line-items"></a><span data-ttu-id="3eda5-103">Získat položky řádku komerčního vyúčtování faktury</span><span class="sxs-lookup"><span data-stu-id="3eda5-103">Get invoice billed commercial consumption line items</span></span>
+# <a name="get-invoice-billed-commercial-consumption-line-items"></a><span data-ttu-id="2e61f-103">Získat položky řádku komerčního vyúčtování faktury</span><span class="sxs-lookup"><span data-stu-id="2e61f-103">Get invoice billed commercial consumption line items</span></span>
 
-<span data-ttu-id="3eda5-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="3eda5-104">**Applies to:**</span></span>
+<span data-ttu-id="2e61f-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="2e61f-104">**Applies to:**</span></span>
 
-- <span data-ttu-id="3eda5-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="3eda5-105">Partner Center</span></span>
+- <span data-ttu-id="2e61f-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="2e61f-105">Partner Center</span></span>
 
-<span data-ttu-id="3eda5-106">Následující metody můžete použít k získání shromažďování podrobností o položkách řádků faktury pro komerční spotřebu (označované také jako uzavřené položky řádku s vyhodnoceným řádkem využití) pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="3eda5-106">You can use the following methods to get a collection of details for commercial consumption invoice line items (also known as closed daily rated usage line items) for a specified invoice.</span></span>
+<span data-ttu-id="2e61f-106">Následující metody můžete použít k získání shromažďování podrobností o položkách řádků faktury pro komerční spotřebu (označované také jako uzavřené položky řádku s vyhodnoceným řádkem využití) pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="2e61f-106">You can use the following methods to get a collection of details for commercial consumption invoice line items (also known as closed daily rated usage line items) for a specified invoice.</span></span>
 
-<span data-ttu-id="3eda5-107">Toto rozhraní API také podporuje typy poskytovatelů **Azure** pro odběry Microsoft Azure AZR (MS--0145P).</span><span class="sxs-lookup"><span data-stu-id="3eda5-107">This API also supports **azure** provider types for Microsoft Azure (MS-AZR-0145P) subscriptions.</span></span> <span data-ttu-id="3eda5-108">To znamená, že toto rozhraní API je zpětně kompatibilní funkce.</span><span class="sxs-lookup"><span data-stu-id="3eda5-108">This means this API is a backward-compatible feature.</span></span>
+<span data-ttu-id="2e61f-107">Toto rozhraní API také podporuje typy poskytovatelů **Azure** pro odběry Microsoft Azure AZR (MS--0145P).</span><span class="sxs-lookup"><span data-stu-id="2e61f-107">This API also supports **azure** provider types for Microsoft Azure (MS-AZR-0145P) subscriptions.</span></span> <span data-ttu-id="2e61f-108">To znamená, že toto rozhraní API je zpětně kompatibilní funkce.</span><span class="sxs-lookup"><span data-stu-id="2e61f-108">This means this API is a backward-compatible feature.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="3eda5-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="3eda5-109">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2e61f-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="2e61f-109">Prerequisites</span></span>
 
-- <span data-ttu-id="3eda5-110">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="3eda5-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="3eda5-111">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="3eda5-111">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="2e61f-110">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="2e61f-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="2e61f-111">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="2e61f-111">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="3eda5-112">Identifikátor faktury</span><span class="sxs-lookup"><span data-stu-id="3eda5-112">An invoice identifier.</span></span> <span data-ttu-id="3eda5-113">Určuje fakturu, pro kterou se mají načíst položky řádku.</span><span class="sxs-lookup"><span data-stu-id="3eda5-113">This identifies the invoice for which to retrieve the line items.</span></span>
+- <span data-ttu-id="2e61f-112">Identifikátor faktury</span><span class="sxs-lookup"><span data-stu-id="2e61f-112">An invoice identifier.</span></span> <span data-ttu-id="2e61f-113">Určuje fakturu, pro kterou se mají načíst položky řádku.</span><span class="sxs-lookup"><span data-stu-id="2e61f-113">This identifies the invoice for which to retrieve the line items.</span></span>
 
-## <a name="c"></a><span data-ttu-id="3eda5-114">C\#</span><span class="sxs-lookup"><span data-stu-id="3eda5-114">C\#</span></span>
+## <a name="c"></a><span data-ttu-id="2e61f-114">C\#</span><span class="sxs-lookup"><span data-stu-id="2e61f-114">C\#</span></span>
 
-<span data-ttu-id="3eda5-115">Chcete-li získat položky komerčních řádků pro určenou fakturu, je nutné načíst objekt faktury:</span><span class="sxs-lookup"><span data-stu-id="3eda5-115">To get the commercial line items for the specified invoice, you must retrieve the invoice object:</span></span>
+<span data-ttu-id="2e61f-115">Chcete-li získat položky komerčních řádků pro určenou fakturu, je nutné načíst objekt faktury:</span><span class="sxs-lookup"><span data-stu-id="2e61f-115">To get the commercial line items for the specified invoice, you must retrieve the invoice object:</span></span>
 
-1. <span data-ttu-id="3eda5-116">Zavolejte metodu [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , která získá rozhraní k fakturaci operace pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="3eda5-116">Call the [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) method to get an interface to invoice operations for the specified invoice.</span></span>
+1. <span data-ttu-id="2e61f-116">Zavolejte metodu [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , která získá rozhraní k fakturaci operace pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="2e61f-116">Call the [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) method to get an interface to invoice operations for the specified invoice.</span></span>
 
-2. <span data-ttu-id="3eda5-117">Pro načtení objektu faktury zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) .</span><span class="sxs-lookup"><span data-stu-id="3eda5-117">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the invoice object.</span></span> <span data-ttu-id="3eda5-118">Objekt faktury obsahuje všechny informace o zadané faktuře.</span><span class="sxs-lookup"><span data-stu-id="3eda5-118">The invoice object contains all of the information for the specified invoice.</span></span>
+2. <span data-ttu-id="2e61f-117">Pro načtení objektu faktury zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) .</span><span class="sxs-lookup"><span data-stu-id="2e61f-117">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the invoice object.</span></span> <span data-ttu-id="2e61f-118">Objekt faktury obsahuje všechny informace o zadané faktuře.</span><span class="sxs-lookup"><span data-stu-id="2e61f-118">The invoice object contains all of the information for the specified invoice.</span></span>
 
-<span data-ttu-id="3eda5-119">**Poskytovatel** identifikuje zdroj fakturovaných podrobných informací (například **jednorázová**).</span><span class="sxs-lookup"><span data-stu-id="3eda5-119">The **Provider** identifies the source of the billed detail information (for example, **onetime**).</span></span> <span data-ttu-id="3eda5-120">**InvoiceLineItemType** určuje typ (například **UsageLineItem**).</span><span class="sxs-lookup"><span data-stu-id="3eda5-120">The **InvoiceLineItemType** specifies the type (for example, **UsageLineItem**).</span></span>
+<span data-ttu-id="2e61f-119">**Poskytovatel** identifikuje zdroj fakturovaných podrobných informací (například **jednorázová**).</span><span class="sxs-lookup"><span data-stu-id="2e61f-119">The **Provider** identifies the source of the billed detail information (for example, **onetime**).</span></span> <span data-ttu-id="2e61f-120">**InvoiceLineItemType** určuje typ (například **UsageLineItem**).</span><span class="sxs-lookup"><span data-stu-id="2e61f-120">The **InvoiceLineItemType** specifies the type (for example, **UsageLineItem**).</span></span>
 
-<span data-ttu-id="3eda5-121">Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce položek řádků.</span><span class="sxs-lookup"><span data-stu-id="3eda5-121">The following example code uses a **foreach** loop to process the line items collection.</span></span> <span data-ttu-id="3eda5-122">Pro každou **InvoiceLineItemType** se načte samostatná kolekce položek čáry.</span><span class="sxs-lookup"><span data-stu-id="3eda5-122">A separate collection of line items is retrieved for each **InvoiceLineItemType**.</span></span>
+<span data-ttu-id="2e61f-121">Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2e61f-121">The following example code uses a **foreach** loop to process the line items collection.</span></span> <span data-ttu-id="2e61f-122">Pro každou **InvoiceLineItemType** se načte samostatná kolekce položek čáry.</span><span class="sxs-lookup"><span data-stu-id="2e61f-122">A separate collection of line items is retrieved for each **InvoiceLineItemType**.</span></span>
 
-<span data-ttu-id="3eda5-123">Získání kolekce položek řádků, které odpovídají instanci **InvoiceDetail** :</span><span class="sxs-lookup"><span data-stu-id="3eda5-123">To get a collection of line items that correspond to an **InvoiceDetail** instance:</span></span>
+<span data-ttu-id="2e61f-123">Získání kolekce položek řádků, které odpovídají instanci **InvoiceDetail** :</span><span class="sxs-lookup"><span data-stu-id="2e61f-123">To get a collection of line items that correspond to an **InvoiceDetail** instance:</span></span>
 
-1. <span data-ttu-id="3eda5-124">Předejte **BillingProvider** a **InvoiceLineItemType** instance do metody [**podle**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .</span><span class="sxs-lookup"><span data-stu-id="3eda5-124">Pass the instance's **BillingProvider** and **InvoiceLineItemType** to the [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) method.</span></span>
+1. <span data-ttu-id="2e61f-124">Předejte **BillingProvider** a **InvoiceLineItemType** instance do metody [**podle**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .</span><span class="sxs-lookup"><span data-stu-id="2e61f-124">Pass the instance's **BillingProvider** and **InvoiceLineItemType** to the [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) method.</span></span>
 
-2. <span data-ttu-id="3eda5-125">Zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) pro načtení přidružených položek řádků.</span><span class="sxs-lookup"><span data-stu-id="3eda5-125">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the associated line items.</span></span>
-3. <span data-ttu-id="3eda5-126">Vytvořte enumerátor pro procházení kolekce, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="3eda5-126">Create an enumerator to traverse the collection as shown in the following example.</span></span>
+2. <span data-ttu-id="2e61f-125">Zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) pro načtení přidružených položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2e61f-125">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the associated line items.</span></span>
+3. <span data-ttu-id="2e61f-126">Vytvořte enumerátor pro procházení kolekce, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="2e61f-126">Create an enumerator to traverse the collection as shown in the following example.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -105,67 +105,67 @@ while (fetchNext)
 }
 ```
 
-<span data-ttu-id="3eda5-127">Podobný příklad naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="3eda5-127">For a similar example, see the following:</span></span>
+<span data-ttu-id="2e61f-127">Podobný příklad naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="2e61f-127">For a similar example, see the following:</span></span>
 
-- <span data-ttu-id="3eda5-128">Ukázka: [aplikace testů konzoly](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="3eda5-128">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="3eda5-129">Projekt: **ukázky sady SDK pro partnerských Center**</span><span class="sxs-lookup"><span data-stu-id="3eda5-129">Project: **Partner Center SDK Samples**</span></span>
-- <span data-ttu-id="3eda5-130">Třída: **GetBilledConsumptionReconLineItemsPaging.cs**</span><span class="sxs-lookup"><span data-stu-id="3eda5-130">Class: **GetBilledConsumptionReconLineItemsPaging.cs**</span></span>
+- <span data-ttu-id="2e61f-128">Ukázka: [aplikace testů konzoly](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="2e61f-128">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="2e61f-129">Projekt: **ukázky sady SDK pro partnerských Center**</span><span class="sxs-lookup"><span data-stu-id="2e61f-129">Project: **Partner Center SDK Samples**</span></span>
+- <span data-ttu-id="2e61f-130">Třída: **GetBilledConsumptionReconLineItemsPaging. cs**</span><span class="sxs-lookup"><span data-stu-id="2e61f-130">Class: **GetBilledConsumptionReconLineItemsPaging.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="3eda5-131">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="3eda5-131">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="2e61f-131">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="2e61f-131">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="3eda5-132">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="3eda5-132">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="2e61f-132">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="2e61f-132">Request syntax</span></span>
 
-<span data-ttu-id="3eda5-133">Použijte první syntaxi a vraťte úplný seznam všech položek řádku pro danou fakturu.</span><span class="sxs-lookup"><span data-stu-id="3eda5-133">Use the first syntax to return a full list of every line item for the given invoice.</span></span> <span data-ttu-id="3eda5-134">U velkých faktur použijte druhou syntaxi se zadaným rozměrem a posunem založenou na 0 pro vrácení stránkovaného seznamu položek řádků.</span><span class="sxs-lookup"><span data-stu-id="3eda5-134">For large invoices, use the second syntax with a specified size and 0-based offset to return a paged list of line items.</span></span> <span data-ttu-id="3eda5-135">K získání další stránky rekognoskaci řádků pomocí použijte třetí syntax `seekOperation = "Next"` .</span><span class="sxs-lookup"><span data-stu-id="3eda5-135">Use the third syntax to get the next page of recon line items using `seekOperation = "Next"`.</span></span>
+<span data-ttu-id="2e61f-133">Použijte první syntaxi a vraťte úplný seznam všech položek řádku pro danou fakturu.</span><span class="sxs-lookup"><span data-stu-id="2e61f-133">Use the first syntax to return a full list of every line item for the given invoice.</span></span> <span data-ttu-id="2e61f-134">U velkých faktur použijte druhou syntaxi se zadaným rozměrem a posunem založenou na 0 pro vrácení stránkovaného seznamu položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2e61f-134">For large invoices, use the second syntax with a specified size and 0-based offset to return a paged list of line items.</span></span> <span data-ttu-id="2e61f-135">K získání další stránky rekognoskaci řádků pomocí použijte třetí syntax `seekOperation = "Next"` .</span><span class="sxs-lookup"><span data-stu-id="2e61f-135">Use the third syntax to get the next page of recon line items using `seekOperation = "Next"`.</span></span>
 
-| <span data-ttu-id="3eda5-136">Metoda</span><span class="sxs-lookup"><span data-stu-id="3eda5-136">Method</span></span>  | <span data-ttu-id="3eda5-137">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="3eda5-137">Request URI</span></span>                                                                                                                                                     |
+| <span data-ttu-id="2e61f-136">Metoda</span><span class="sxs-lookup"><span data-stu-id="2e61f-136">Method</span></span>  | <span data-ttu-id="2e61f-137">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="2e61f-137">Request URI</span></span>                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="3eda5-138">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="3eda5-138">**GET**</span></span> | <span data-ttu-id="3eda5-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {CURRENCYCODE} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="3eda5-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode} HTTP/1.1</span></span>                              |
-| <span data-ttu-id="3eda5-140">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="3eda5-140">**GET**</span></span> | <span data-ttu-id="3eda5-141">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &velikost = {Size} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="3eda5-141">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size} HTTP/1.1</span></span>  |
-| <span data-ttu-id="3eda5-142">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="3eda5-142">**GET**</span></span> | <span data-ttu-id="3eda5-143">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &size = {size} &SeekOperation = Next</span><span class="sxs-lookup"><span data-stu-id="3eda5-143">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size}&seekOperation=Next</span></span>                               |
+| <span data-ttu-id="2e61f-138">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2e61f-138">**GET**</span></span> | <span data-ttu-id="2e61f-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {CURRENCYCODE} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2e61f-139">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode} HTTP/1.1</span></span>                              |
+| <span data-ttu-id="2e61f-140">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2e61f-140">**GET**</span></span> | <span data-ttu-id="2e61f-141">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &velikost = {Size} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2e61f-141">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size} HTTP/1.1</span></span>  |
+| <span data-ttu-id="2e61f-142">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2e61f-142">**GET**</span></span> | <span data-ttu-id="2e61f-143">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &size = {size} &SeekOperation = Next</span><span class="sxs-lookup"><span data-stu-id="2e61f-143">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&size={size}&seekOperation=Next</span></span>                               |
 
-#### <a name="uri-parameters"></a><span data-ttu-id="3eda5-144">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="3eda5-144">URI parameters</span></span>
+#### <a name="uri-parameters"></a><span data-ttu-id="2e61f-144">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="2e61f-144">URI parameters</span></span>
 
-<span data-ttu-id="3eda5-145">Při vytváření žádosti použijte následující identifikátor URI a parametry dotazu.</span><span class="sxs-lookup"><span data-stu-id="3eda5-145">Use the following URI and query parameters when creating the request.</span></span>
+<span data-ttu-id="2e61f-145">Při vytváření žádosti použijte následující identifikátor URI a parametry dotazu.</span><span class="sxs-lookup"><span data-stu-id="2e61f-145">Use the following URI and query parameters when creating the request.</span></span>
 
-| <span data-ttu-id="3eda5-146">Název</span><span class="sxs-lookup"><span data-stu-id="3eda5-146">Name</span></span>                   | <span data-ttu-id="3eda5-147">Typ</span><span class="sxs-lookup"><span data-stu-id="3eda5-147">Type</span></span>   | <span data-ttu-id="3eda5-148">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="3eda5-148">Required</span></span> | <span data-ttu-id="3eda5-149">Popis</span><span class="sxs-lookup"><span data-stu-id="3eda5-149">Description</span></span>                                                       |
+| <span data-ttu-id="2e61f-146">Název</span><span class="sxs-lookup"><span data-stu-id="2e61f-146">Name</span></span>                   | <span data-ttu-id="2e61f-147">Typ</span><span class="sxs-lookup"><span data-stu-id="2e61f-147">Type</span></span>   | <span data-ttu-id="2e61f-148">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="2e61f-148">Required</span></span> | <span data-ttu-id="2e61f-149">Popis</span><span class="sxs-lookup"><span data-stu-id="2e61f-149">Description</span></span>                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| <span data-ttu-id="3eda5-150">ID faktury</span><span class="sxs-lookup"><span data-stu-id="3eda5-150">invoice-id</span></span>             | <span data-ttu-id="3eda5-151">řetězec</span><span class="sxs-lookup"><span data-stu-id="3eda5-151">string</span></span> | <span data-ttu-id="3eda5-152">Yes</span><span class="sxs-lookup"><span data-stu-id="3eda5-152">Yes</span></span>      | <span data-ttu-id="3eda5-153">Řetězec, který identifikuje fakturu.</span><span class="sxs-lookup"><span data-stu-id="3eda5-153">A string that identifies the invoice.</span></span>                             |
-| <span data-ttu-id="3eda5-154">Zprostředkovatel</span><span class="sxs-lookup"><span data-stu-id="3eda5-154">provider</span></span>               | <span data-ttu-id="3eda5-155">řetězec</span><span class="sxs-lookup"><span data-stu-id="3eda5-155">string</span></span> | <span data-ttu-id="3eda5-156">Yes</span><span class="sxs-lookup"><span data-stu-id="3eda5-156">Yes</span></span>      | <span data-ttu-id="3eda5-157">Zprostředkovatel: "jednorázová".</span><span class="sxs-lookup"><span data-stu-id="3eda5-157">The provider: "OneTime".</span></span>                                  |
-| <span data-ttu-id="3eda5-158">faktura-line-Item-Type</span><span class="sxs-lookup"><span data-stu-id="3eda5-158">invoice-line-item-type</span></span> | <span data-ttu-id="3eda5-159">řetězec</span><span class="sxs-lookup"><span data-stu-id="3eda5-159">string</span></span> | <span data-ttu-id="3eda5-160">Yes</span><span class="sxs-lookup"><span data-stu-id="3eda5-160">Yes</span></span>      | <span data-ttu-id="3eda5-161">Typ podrobností o faktuře: "UsageLineItems".</span><span class="sxs-lookup"><span data-stu-id="3eda5-161">The type of invoice detail: "UsageLineItems".</span></span> |
-| <span data-ttu-id="3eda5-162">currencyCode</span><span class="sxs-lookup"><span data-stu-id="3eda5-162">currencyCode</span></span>           | <span data-ttu-id="3eda5-163">řetězec</span><span class="sxs-lookup"><span data-stu-id="3eda5-163">string</span></span> | <span data-ttu-id="3eda5-164">Yes</span><span class="sxs-lookup"><span data-stu-id="3eda5-164">Yes</span></span>      | <span data-ttu-id="3eda5-165">Kód měny pro účtované řádkové položky.</span><span class="sxs-lookup"><span data-stu-id="3eda5-165">The currency code for the billed line items.</span></span>                    |
-| <span data-ttu-id="3eda5-166">period</span><span class="sxs-lookup"><span data-stu-id="3eda5-166">period</span></span>                 | <span data-ttu-id="3eda5-167">řetězec</span><span class="sxs-lookup"><span data-stu-id="3eda5-167">string</span></span> | <span data-ttu-id="3eda5-168">Yes</span><span class="sxs-lookup"><span data-stu-id="3eda5-168">Yes</span></span>      | <span data-ttu-id="3eda5-169">Období pro fakturované rekognoskaci</span><span class="sxs-lookup"><span data-stu-id="3eda5-169">The period for billed recon.</span></span> <span data-ttu-id="3eda5-170">Příklad: Current, Previous.</span><span class="sxs-lookup"><span data-stu-id="3eda5-170">example: current, previous.</span></span>        |
-| <span data-ttu-id="3eda5-171">size</span><span class="sxs-lookup"><span data-stu-id="3eda5-171">size</span></span>                   | <span data-ttu-id="3eda5-172">číslo</span><span class="sxs-lookup"><span data-stu-id="3eda5-172">number</span></span> | <span data-ttu-id="3eda5-173">No</span><span class="sxs-lookup"><span data-stu-id="3eda5-173">No</span></span>       | <span data-ttu-id="3eda5-174">Maximální počet položek, které se mají vrátit.</span><span class="sxs-lookup"><span data-stu-id="3eda5-174">The maximum number of items to return.</span></span> <span data-ttu-id="3eda5-175">Výchozí velikost je 2000.</span><span class="sxs-lookup"><span data-stu-id="3eda5-175">Default size is 2000</span></span>       |
-| <span data-ttu-id="3eda5-176">seekOperation</span><span class="sxs-lookup"><span data-stu-id="3eda5-176">seekOperation</span></span>          | <span data-ttu-id="3eda5-177">řetězec</span><span class="sxs-lookup"><span data-stu-id="3eda5-177">string</span></span> | <span data-ttu-id="3eda5-178">No</span><span class="sxs-lookup"><span data-stu-id="3eda5-178">No</span></span>       | <span data-ttu-id="3eda5-179">Nastavte seekOperation = Next pro získání další stránky rekognoskaci položek řádků.</span><span class="sxs-lookup"><span data-stu-id="3eda5-179">Set seekOperation=Next to get the next page of recon line items.</span></span> |
+| <span data-ttu-id="2e61f-150">ID faktury</span><span class="sxs-lookup"><span data-stu-id="2e61f-150">invoice-id</span></span>             | <span data-ttu-id="2e61f-151">řetězec</span><span class="sxs-lookup"><span data-stu-id="2e61f-151">string</span></span> | <span data-ttu-id="2e61f-152">Ano</span><span class="sxs-lookup"><span data-stu-id="2e61f-152">Yes</span></span>      | <span data-ttu-id="2e61f-153">Řetězec, který identifikuje fakturu.</span><span class="sxs-lookup"><span data-stu-id="2e61f-153">A string that identifies the invoice.</span></span>                             |
+| <span data-ttu-id="2e61f-154">Zprostředkovatel</span><span class="sxs-lookup"><span data-stu-id="2e61f-154">provider</span></span>               | <span data-ttu-id="2e61f-155">řetězec</span><span class="sxs-lookup"><span data-stu-id="2e61f-155">string</span></span> | <span data-ttu-id="2e61f-156">Ano</span><span class="sxs-lookup"><span data-stu-id="2e61f-156">Yes</span></span>      | <span data-ttu-id="2e61f-157">Zprostředkovatel: "jednorázová".</span><span class="sxs-lookup"><span data-stu-id="2e61f-157">The provider: "OneTime".</span></span>                                  |
+| <span data-ttu-id="2e61f-158">faktura-line-Item-Type</span><span class="sxs-lookup"><span data-stu-id="2e61f-158">invoice-line-item-type</span></span> | <span data-ttu-id="2e61f-159">řetězec</span><span class="sxs-lookup"><span data-stu-id="2e61f-159">string</span></span> | <span data-ttu-id="2e61f-160">Ano</span><span class="sxs-lookup"><span data-stu-id="2e61f-160">Yes</span></span>      | <span data-ttu-id="2e61f-161">Typ podrobností o faktuře: "UsageLineItems".</span><span class="sxs-lookup"><span data-stu-id="2e61f-161">The type of invoice detail: "UsageLineItems".</span></span> |
+| <span data-ttu-id="2e61f-162">currencyCode</span><span class="sxs-lookup"><span data-stu-id="2e61f-162">currencyCode</span></span>           | <span data-ttu-id="2e61f-163">řetězec</span><span class="sxs-lookup"><span data-stu-id="2e61f-163">string</span></span> | <span data-ttu-id="2e61f-164">Ano</span><span class="sxs-lookup"><span data-stu-id="2e61f-164">Yes</span></span>      | <span data-ttu-id="2e61f-165">Kód měny pro účtované řádkové položky.</span><span class="sxs-lookup"><span data-stu-id="2e61f-165">The currency code for the billed line items.</span></span>                    |
+| <span data-ttu-id="2e61f-166">period</span><span class="sxs-lookup"><span data-stu-id="2e61f-166">period</span></span>                 | <span data-ttu-id="2e61f-167">řetězec</span><span class="sxs-lookup"><span data-stu-id="2e61f-167">string</span></span> | <span data-ttu-id="2e61f-168">Ano</span><span class="sxs-lookup"><span data-stu-id="2e61f-168">Yes</span></span>      | <span data-ttu-id="2e61f-169">Období pro fakturované rekognoskaci</span><span class="sxs-lookup"><span data-stu-id="2e61f-169">The period for billed recon.</span></span> <span data-ttu-id="2e61f-170">Příklad: Current, Previous.</span><span class="sxs-lookup"><span data-stu-id="2e61f-170">example: current, previous.</span></span>        |
+| <span data-ttu-id="2e61f-171">size</span><span class="sxs-lookup"><span data-stu-id="2e61f-171">size</span></span>                   | <span data-ttu-id="2e61f-172">číslo</span><span class="sxs-lookup"><span data-stu-id="2e61f-172">number</span></span> | <span data-ttu-id="2e61f-173">Ne</span><span class="sxs-lookup"><span data-stu-id="2e61f-173">No</span></span>       | <span data-ttu-id="2e61f-174">Maximální počet položek, které se mají vrátit.</span><span class="sxs-lookup"><span data-stu-id="2e61f-174">The maximum number of items to return.</span></span> <span data-ttu-id="2e61f-175">Výchozí velikost je 2000.</span><span class="sxs-lookup"><span data-stu-id="2e61f-175">Default size is 2000</span></span>       |
+| <span data-ttu-id="2e61f-176">seekOperation</span><span class="sxs-lookup"><span data-stu-id="2e61f-176">seekOperation</span></span>          | <span data-ttu-id="2e61f-177">řetězec</span><span class="sxs-lookup"><span data-stu-id="2e61f-177">string</span></span> | <span data-ttu-id="2e61f-178">No</span><span class="sxs-lookup"><span data-stu-id="2e61f-178">No</span></span>       | <span data-ttu-id="2e61f-179">Nastavte seekOperation = Next pro získání další stránky rekognoskaci položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2e61f-179">Set seekOperation=Next to get the next page of recon line items.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="3eda5-180">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="3eda5-180">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="2e61f-180">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="2e61f-180">Request headers</span></span>
 
-<span data-ttu-id="3eda5-181">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="3eda5-181">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="2e61f-181">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="2e61f-181">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="3eda5-182">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="3eda5-182">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="2e61f-182">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="2e61f-182">Request body</span></span>
 
-<span data-ttu-id="3eda5-183">Žádné</span><span class="sxs-lookup"><span data-stu-id="3eda5-183">None.</span></span>
+<span data-ttu-id="2e61f-183">Žádné</span><span class="sxs-lookup"><span data-stu-id="2e61f-183">None.</span></span>
 
-## <a name="rest-response"></a><span data-ttu-id="3eda5-184">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="3eda5-184">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="2e61f-184">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="2e61f-184">REST response</span></span>
 
-<span data-ttu-id="3eda5-185">V případě úspěchu obsahuje odpověď kolekci podrobností položky řádku.</span><span class="sxs-lookup"><span data-stu-id="3eda5-185">If successful, the response contains the collection of line item details.</span></span>
+<span data-ttu-id="2e61f-185">V případě úspěchu obsahuje odpověď kolekci podrobností položky řádku.</span><span class="sxs-lookup"><span data-stu-id="2e61f-185">If successful, the response contains the collection of line item details.</span></span>
 
-<span data-ttu-id="3eda5-186">Pro položku řádku **ChargeType** je hodnota **Nákup** namapována na **New (nový**).</span><span class="sxs-lookup"><span data-stu-id="3eda5-186">For the line item **ChargeType**, the value **Purchase** is mapped to **New**.</span></span> <span data-ttu-id="3eda5-187">**Náhrada** hodnoty je namapována na **Zrušit**.</span><span class="sxs-lookup"><span data-stu-id="3eda5-187">The value **Refund** is mapped to **Cancel**.</span></span>
+<span data-ttu-id="2e61f-186">Pro položku řádku **ChargeType** je hodnota **Nákup** namapována na **New (nový**).</span><span class="sxs-lookup"><span data-stu-id="2e61f-186">For the line item **ChargeType**, the value **Purchase** is mapped to **New**.</span></span> <span data-ttu-id="2e61f-187">**Náhrada** hodnoty je namapována na **Zrušit**.</span><span class="sxs-lookup"><span data-stu-id="2e61f-187">The value **Refund** is mapped to **Cancel**.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="3eda5-188">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="3eda5-188">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="2e61f-188">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="2e61f-188">Response success and error codes</span></span>
 
-<span data-ttu-id="3eda5-189">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="3eda5-189">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="3eda5-190">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="3eda5-190">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="3eda5-191">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="3eda5-191">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="2e61f-189">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="2e61f-189">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="2e61f-190">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="2e61f-190">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="2e61f-191">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="2e61f-191">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-## <a name="rest-examples"></a><span data-ttu-id="3eda5-192">Příklady REST</span><span class="sxs-lookup"><span data-stu-id="3eda5-192">REST examples</span></span>
+## <a name="rest-examples"></a><span data-ttu-id="2e61f-192">Příklady REST</span><span class="sxs-lookup"><span data-stu-id="2e61f-192">REST examples</span></span>
 
-### <a name="request-response-example-1"></a><span data-ttu-id="3eda5-193">Požadavek-odpověď – příklad 1</span><span class="sxs-lookup"><span data-stu-id="3eda5-193">Request-response example 1</span></span>
+### <a name="request-response-example-1"></a><span data-ttu-id="2e61f-193">Požadavek-odpověď – příklad 1</span><span class="sxs-lookup"><span data-stu-id="2e61f-193">Request-response example 1</span></span>
 
-<span data-ttu-id="3eda5-194">Podrobnosti pro tento ukázkový požadavek a odpověď REST jsou následující:</span><span class="sxs-lookup"><span data-stu-id="3eda5-194">The details for this example REST request and response are as follows:</span></span>
+<span data-ttu-id="2e61f-194">Podrobnosti pro tento ukázkový požadavek a odpověď REST jsou následující:</span><span class="sxs-lookup"><span data-stu-id="2e61f-194">The details for this example REST request and response are as follows:</span></span>
 
-- <span data-ttu-id="3eda5-195">**Zprostředkovatel**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="3eda5-195">**Provider**: **OneTime**</span></span>
-- <span data-ttu-id="3eda5-196">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="3eda5-196">**InvoiceLineItemType**: **UsageLineItems**</span></span>
-- <span data-ttu-id="3eda5-197">**Období**: **předchozí**</span><span class="sxs-lookup"><span data-stu-id="3eda5-197">**Period**: **Previous**</span></span>
+- <span data-ttu-id="2e61f-195">**Zprostředkovatel**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="2e61f-195">**Provider**: **OneTime**</span></span>
+- <span data-ttu-id="2e61f-196">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="2e61f-196">**InvoiceLineItemType**: **UsageLineItems**</span></span>
+- <span data-ttu-id="2e61f-197">**Období**: **předchozí**</span><span class="sxs-lookup"><span data-stu-id="2e61f-197">**Period**: **Previous**</span></span>
 
-#### <a name="request-example-1"></a><span data-ttu-id="3eda5-198">Příklad žádosti 1</span><span class="sxs-lookup"><span data-stu-id="3eda5-198">Request example 1</span></span>
+#### <a name="request-example-1"></a><span data-ttu-id="2e61f-198">Příklad žádosti 1</span><span class="sxs-lookup"><span data-stu-id="2e61f-198">Request example 1</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/T000001234/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode=usd&period=previous&size=2000 HTTP/1.1
@@ -178,7 +178,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-1"></a><span data-ttu-id="3eda5-199">Příklad odpovědi 1</span><span class="sxs-lookup"><span data-stu-id="3eda5-199">Response example 1</span></span>
+#### <a name="response-example-1"></a><span data-ttu-id="2e61f-199">Příklad odpovědi 1</span><span class="sxs-lookup"><span data-stu-id="2e61f-199">Response example 1</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -238,6 +238,7 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "billingCurrency": "USD",
             "pricingPreTaxTotal": 0.486031696515249,
             "pricingCurrency": "USD",
+            "creditType": "Credit Not Applied",
             "invoiceLineItemType": "usage_line_items",
             "billingProvider": "marketplace",
             "attributes": {
@@ -295,6 +296,8 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
             "effectiveUnitPrice": 0.1999968000511991808131,
             "rateOfPartnerEarnedCredit": 0,
+            "rateOfCredit": 1,
+            "creditType": "Azure Credit Applied",
             "invoiceLineItemType": "usage_line_items",
             "billingProvider": "marketplace",
             "attributes": {
@@ -325,16 +328,16 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a><span data-ttu-id="3eda5-200">Požadavek-odpověď – příklad 2</span><span class="sxs-lookup"><span data-stu-id="3eda5-200">Request-response example 2</span></span>
+### <a name="request-response-example-2"></a><span data-ttu-id="2e61f-200">Požadavek-odpověď – příklad 2</span><span class="sxs-lookup"><span data-stu-id="2e61f-200">Request-response example 2</span></span>
 
-<span data-ttu-id="3eda5-201">Podrobnosti pro tento ukázkový požadavek a odpověď REST jsou následující:</span><span class="sxs-lookup"><span data-stu-id="3eda5-201">The details for this example REST request and response are as follows:</span></span>
+<span data-ttu-id="2e61f-201">Podrobnosti pro tento ukázkový požadavek a odpověď REST jsou následující:</span><span class="sxs-lookup"><span data-stu-id="2e61f-201">The details for this example REST request and response are as follows:</span></span>
 
-- <span data-ttu-id="3eda5-202">**Zprostředkovatel**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="3eda5-202">**Provider**: **OneTime**</span></span>
-- <span data-ttu-id="3eda5-203">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="3eda5-203">**InvoiceLineItemType**: **UsageLineItems**</span></span>
-- <span data-ttu-id="3eda5-204">**Období**: **předchozí**</span><span class="sxs-lookup"><span data-stu-id="3eda5-204">**Period**: **Previous**</span></span>
-- <span data-ttu-id="3eda5-205">**SeekOperation**: **Další**</span><span class="sxs-lookup"><span data-stu-id="3eda5-205">**SeekOperation**: **Next**</span></span>
+- <span data-ttu-id="2e61f-202">**Zprostředkovatel**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="2e61f-202">**Provider**: **OneTime**</span></span>
+- <span data-ttu-id="2e61f-203">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="2e61f-203">**InvoiceLineItemType**: **UsageLineItems**</span></span>
+- <span data-ttu-id="2e61f-204">**Období**: **předchozí**</span><span class="sxs-lookup"><span data-stu-id="2e61f-204">**Period**: **Previous**</span></span>
+- <span data-ttu-id="2e61f-205">**SeekOperation**: **Další**</span><span class="sxs-lookup"><span data-stu-id="2e61f-205">**SeekOperation**: **Next**</span></span>
 
-#### <a name="request-example-2"></a><span data-ttu-id="3eda5-206">Příklad žádosti 2</span><span class="sxs-lookup"><span data-stu-id="3eda5-206">Request example 2</span></span>
+#### <a name="request-example-2"></a><span data-ttu-id="2e61f-206">Příklad žádosti 2</span><span class="sxs-lookup"><span data-stu-id="2e61f-206">Request example 2</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/T000001234/lineitems?provider=onetime&invoiceLineItemType=usagelineitems&currencyCode=usd&period=previous&size=2000&seekoperation=next HTTP/1.1
@@ -348,7 +351,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="response-example-2"></a><span data-ttu-id="3eda5-207">Příklad odpovědi 2</span><span class="sxs-lookup"><span data-stu-id="3eda5-207">Response example 2</span></span>
+## <a name="response-example-2"></a><span data-ttu-id="2e61f-207">Příklad odpovědi 2</span><span class="sxs-lookup"><span data-stu-id="2e61f-207">Response example 2</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -414,7 +417,8 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
             "effectiveUnitPrice": 0.1835431430074643112595,
             "rateOfPartnerEarnedCredit": 0.15,
-
+            "rateOfCredit": 0.15,
+            "creditType": "Partner Earned Credit Applied",
             "attributes": {
                 "objectType": "DailyRatedUsageLineItem"
             }
