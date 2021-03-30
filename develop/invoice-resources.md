@@ -4,19 +4,19 @@ description: Přes rozhraní API partnerského centra jsou k dispozici více pro
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bd2caefe4ae18c81a31083d084f1e87da1288dd9
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8977b3b649cd930bb517965572d0efe51d6985a0
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766719"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730208"
 ---
 # <a name="invoice-resources"></a>Fakturovat prostředky
 
 **Platí pro:**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
@@ -24,7 +24,7 @@ Prostřednictvím rozhraní API partnerského centra jsou k dispozici následuj�
 
 ## <a name="invoice"></a>Faktura
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | id | řetězec | Identifikátor faktury |
 | invoiceDate | řetězec ve formátu data a času standardu UTC | Datum, kdy byla faktura vygenerována. |
@@ -47,7 +47,7 @@ Prostřednictvím rozhraní API partnerského centra jsou k dispozici následuj�
 
 Faktura obsahuje kolekci fakturovaných položek a každá položka je reprezentovaná InvoiceDetail prostředkem.
 
-| Vlastnost            | Typ                                                           | Description                                                                       |
+| Vlastnost            | Typ                                                           | Popis                                                                       |
 |---------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | invoiceLineItemType | řetězec                                                         | Typ podrobností faktury: "none", " \_ položky řádků použití \_ ", "fakturace \_ \_ položek řádků". |
 | billingProvider     | řetězec                                                         | Zprostředkovatel fakturace: "none", "Office", "Azure" nebo "Azure \_ data \_ Market".         |
@@ -58,7 +58,7 @@ Faktura obsahuje kolekci fakturovaných položek a každá položka je reprezent
 
 Každý jednotlivý poplatek v rámci faktury je reprezentován jako InvoiceLineItem.
 
-| Vlastnost            | Typ                                                           | Description                                                                          |
+| Vlastnost            | Typ                                                           | Popis                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | invoiceLineItemType | řetězec                                                         | Typ položky řádku faktury: "none", " \_ položky řádků použití \_ ", "fakturace \_ \_ položek řádků". |
 | billingProvider     | řetězec                                                         | Zprostředkovatel fakturace: "none", "Office", "Azure" nebo "Azure \_ data \_ Market".            |
@@ -68,7 +68,7 @@ Každý jednotlivý poplatek v rámci faktury je reprezentován jako InvoiceLine
 
 Popisuje souhrn zůstatku a celkové náklady na fakturu.
 
-| Vlastnost                 | Typ                                                           | Description                                                           |
+| Vlastnost                 | Typ                                                           | Popis                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | balanceAmount            | číslo                                                         | Zůstatek faktury Toto je celková částka neplacených faktur. |
 | currencyCode             | řetězec                                                         | Kód, který označuje měnu použitou pro částku zůstatku.       |
@@ -86,7 +86,7 @@ Popisuje souhrn zůstatku a celkové náklady na fakturu.
 
 Představuje souhrn jednotlivých podrobností typu faktury (například opakovaný, jednorázový \_ ).
 
-| Vlastnost            | Typ                                                           | Description                                                                          |
+| Vlastnost            | Typ                                                           | Popis                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | invoiceType         | řetězec                                                         | Typ faktury: "periodický", "jednorázový" \_ .                                       |
 | shrnutí             | Objekt [InvoiceSummary](#invoicesummary)                       | Souhrn faktury za typ faktury                                         |
@@ -95,7 +95,7 @@ Představuje souhrn jednotlivých podrobností typu faktury (například opakova
 
 Představuje kolekci typů [InvoiceSummary](#invoicesummary) , které obsahují jednotlivé podrobnosti typu faktury na měnu.
 
-| Vlastnost            | Typ                                                           | Description                                                                          |
+| Vlastnost            | Typ                                                           | Popis                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | collectionOfSummary | pole objektů [InvoiceSummary](#invoicesummary)             | Souhrn faktury za typ faktury na jednu měnu                            |
 
@@ -103,7 +103,7 @@ Představuje kolekci typů [InvoiceSummary](#invoicesummary) , které obsahují 
 
 Představuje položku fakturačního řádku faktury pro předplatné založené na licencích.
 
-| Vlastnost                 | Typ                                                           | Description                                                           |
+| Vlastnost                 | Typ                                                           | Popis                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | úroveň                   | řetězec                                                         | Získá nebo nastaví celkovou částku. Celková částka = Jednotková cena * množství.  |
 | atributy               | řetězec                                                         | Získá atributy.                                                  |
@@ -141,7 +141,7 @@ Představuje položku fakturačního řádku faktury pro předplatné založené
 
 Představuje položku řádku fakturace faktury pro odběry založené na využití.
 
-| Vlastnost                 | Typ                                                           | Description                                                           |
+| Vlastnost                 | Typ                                                           | Popis                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | atributy               | řetězec                                                         | Získá atributy.                                                  |
 | billingCycleType         | řetězec                                                         | Získá nebo nastaví typ fakturačního cyklu.                                  |
@@ -188,7 +188,7 @@ Představuje položku řádku fakturace faktury pro odběry založené na využi
 
 Představuje operace dostupné v příkazu faktury v Application/PDF.
 
-| Vlastnost                 | Typ                                                           | Description                                                           |
+| Vlastnost                 | Typ                                                           | Popis                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | httpResponseMessage      | object                                                         | ByteArrayContent s contentType = Application/PDF.                  |
 
@@ -196,7 +196,7 @@ Představuje operace dostupné v příkazu faktury v Application/PDF.
 
 Představuje položku fakturačního řádku faktury pro odběry na základě licencí.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | --- | --- | --- |
 | PartnerId | řetězec | Získá nebo nastaví ID partnerského tenanta. |
 | CustomerId | řetězec | Získá nebo nastaví ID tenanta zákazníka. |
@@ -230,6 +230,7 @@ Představuje položku fakturačního řádku faktury pro odběry na základě li
 | TermAndBillingCycle | řetězec | Získá nebo nastaví termín a fakturační cyklus spojený s tímto nákupem. |
 | AlternateId | řetězec | Získá nebo nastaví alternativní ID (ID nabídky). |
 | PriceAdjustmentDescription | řetězec | Získá nebo nastaví popis úpravy ceny. |
+| CreditReasonCode | řetězec | Získá nebo nastaví kód důvodu kreditu. |
 | DiscountDetails | řetězec |  **Zastaralé**. Získá nebo nastaví informace o slevě přidružené k tomuto nákupu. |
 | PricingCurrency | řetězec | Získá nebo nastaví kód cenové měny. |
 | PCToBCExchangeRate | decimal | Získá nebo nastaví cenovou měnu směnného kurzu pro fakturační měnu. |
@@ -245,7 +246,7 @@ Představuje položku fakturačního řádku faktury pro odběry na základě li
 
 Představuje nefakturovatelné a účtované položky řádku odsouhlasení pro denní hodnocené využití.
 
-| Vlastnost | Typ | Description |
+| Vlastnost | Typ | Popis |
 | --- | --- | --- |
 | PartnerId | řetězec | Získá nebo nastaví ID partnerského tenanta. |
 | PartnerName | řetězec | Získá nebo nastaví název partnera. |
@@ -297,6 +298,8 @@ Představuje nefakturovatelné a účtované položky řádku odsouhlasení pro 
 | PCToBCExchangeRateDate | DateTime | Získá nebo nastaví cenovou měnu na datum směnného kurzu fakturační měny. |
 | EffectiveUnitPrice | decimal | Získá nebo nastaví efektivní jednotkovou cenu. |
 | RateOfPartnerEarnedCredit | decimal | Získá nebo nastaví počet získaných kreditů pro partnery. |
-| hasPartnerEarnedCredit | bool | Get nebo set je aplikován kredit získaný partnerem. |
+| HasPartnerEarnedCredit | bool | Get nebo set je aplikován kredit získaný partnerem. |
+| RateOfCredit | decimal | Získá nebo nastaví sazbu kreditu pro daný typ kreditu. |
+| CreditType | řetězec | Získá nebo nastaví typ kreditu. |
 | InvoiceLineItemType | InvoiceLineItemType | Vrátí typ položky řádku faktury. |
 | BillingProvider | BillingProvider | Vrátí zprostředkovatele fakturace. |

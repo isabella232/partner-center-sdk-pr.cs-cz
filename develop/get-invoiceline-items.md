@@ -4,19 +4,19 @@ description: Pomocí rozhraní API partnerského centra můžete získat podrobn
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e797f549e1344268c8167259a231122e7c669a2e
-ms.sourcegitcommit: 9f8ba784171ab4f980ed0c60ef6f2323849c4a98
+ms.openlocfilehash: ddc49e4d83518b809402a65f990f3e9c2658e64b
+ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100499894"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105730224"
 ---
 # <a name="get-invoice-line-items"></a>Získání řádkových položek faktury
 
 **Platí pro:**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
@@ -103,7 +103,7 @@ Podobný příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
 - Projekt: **ukázky sady SDK pro partnerských Center**
-- Třída: **GetInvoiceLineItems.cs**
+- Třída: **GetInvoiceLineItems. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -157,13 +157,13 @@ Při vytváření žádosti použijte následující identifikátor URI a parame
 
 | Název                   | Typ   | Vyžadováno | Popis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| ID faktury             | řetězec | Yes      | Řetězec, který identifikuje fakturu.                             |
-| fakturace – poskytovatel       | řetězec | Yes      | Zprostředkovatel fakturace: "Office", "Azure", "jednorázová". Ve starší verzi máme pro Office & transakcí Azure samostatné datové modely. Moderní ale má jeden jeden datový model ve všech transakcích filtrovaných pomocí hodnoty "jednorázová".            |
-| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "BillingLineItems", "UsageLineItems". |
-| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí maximální velikost = 2000    |
-| posun                 | číslo | No       | Index založený na nule první položky řádku, který se má vrátit.            |
+| ID faktury             | řetězec | Ano      | Řetězec, který identifikuje fakturu.                             |
+| fakturace – poskytovatel       | řetězec | Ano      | Zprostředkovatel fakturace: "Office", "Azure", "jednorázová". Ve starší verzi máme pro Office & transakcí Azure samostatné datové modely. Moderní ale má jeden jeden datový model ve všech transakcích filtrovaných pomocí hodnoty "jednorázová".            |
+| faktura-line-Item-Type | řetězec | Ano      | Typ podrobností o faktuře: "BillingLineItems", "UsageLineItems". |
+| size                   | číslo | Ne       | Maximální počet položek, které se mají vrátit. Výchozí maximální velikost = 2000    |
+| posun                 | číslo | Ne       | Index založený na nule první položky řádku, který se má vrátit.            |
 | seekOperation          | řetězec | No       | Pokud se pro **fakturaci** rovná **jednorázová**, nastavte **seekOperation** na hodnotu **Další** a získejte další stránku položek řádků faktury. |
-| hasPartnerEarnedCredit | bool | No | Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu. Poznámka: Tento parametr bude použit, pouze pokud je typ poskytovatele fakturace jednorázová a InvoiceLineItemType je UsageLineItems. |
+| hasPartnerEarnedCredit | bool | Ne | Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu. Poznámka: Tento parametr bude použit, pouze pokud je typ poskytovatele fakturace jednorázová a InvoiceLineItemType je UsageLineItems. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -633,6 +633,7 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
             "termAndBillingCycle": "1 Month Subscription",
             "alternateId": "1234278124b8",
             "priceAdjustmentDescription": "[\"100.0% Tier 1 Discount\"]",
+            "creditReasonCode": "Azure Consumption Credit",
             "pricingCurrency": "USD",
             "pcToBCExchangeRate": 1,
             "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
