@@ -1,17 +1,17 @@
 ---
 title: Vytvoření zákazníka pro nepřímého prodejce
 description: Zjistěte, jak může nepřímý poskytovatel použít rozhraní API partnerského centra k vytvoření zákazníka pro nepřímý prodejce.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e2386f1963a5bb3ea4269bcbf4327c75987f3b91
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 13cd1b051abb536d397dcd4000228f67fe3206b8
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97767140"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103942"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Vytvoření zákazníka pro nepřímý prodejce pomocí rozhraní API partnerského centra
 
@@ -77,7 +77,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateCustomerforIndirectReseller.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateCustomerforIndirectReseller. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -101,7 +101,7 @@ Tato tabulka popisuje požadované vlastnosti v textu žádosti.
 | [CompanyProfile](#company-profile)             | object | Yes      | Informace o profilu společnosti zákazníka.                                                               
 | [AssociatedPartnerId](customer-resources.md#customer) | řetězec | Yes      | ID nepřímého prodejce. Nepřímý prodejce, který je uveden zde, musí mít partnerství s nepřímým zprostředkovatelem nebo se požadavek nezdaří. Všimněte si také, že pokud není zadána hodnota AssociatedPartnerId, zákazník je vytvořen jako přímý zákazník nepřímého poskytovatele, nikoli jako nepřímý prodejce. |
 |Doména| Řetězec| Yes|Název domény zákazníka, například contoso.onmicrosoft.com.|
-|organizationRegistrationNumber|    řetězec|Yes|     Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích. Arménie (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA). Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích by neměl být určen.|
+|organizationRegistrationNumber|    řetězec|Yes|     Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Maďarsko, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.|
 
 
 

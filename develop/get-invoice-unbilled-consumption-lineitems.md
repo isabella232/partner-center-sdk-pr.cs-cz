@@ -4,12 +4,12 @@ description: Pomocí rozhraní API partnerského centra můžete získat informa
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0b0ce9d4c8d310243d8b799445e5a64975f2d05d
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: 8b6ca8d6ff7af53dd2a258ea20e6eaeb26421440
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730242"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274661"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Získat fakturovatelné položky řádkové spotřeby pro komerční spotřebu
 
@@ -117,24 +117,24 @@ Podobný příklad najdete v těchto tématech:
 
 V závislosti na vašem případu použití můžete pro požadavek REST použít následující syntaxe. Další informace najdete v popisech jednotlivých syntaxí.
 
- | Metoda  | Identifikátor URI žádosti         | Popis případu použití syntaxe |                                                                                                                                            |
-|---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &perioda = {period} HTTP/1.1                              | Pomocí této syntaxe vrátíte úplný seznam všech položek řádku pro danou fakturu. |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} HTTP/1.1  | Použijte tuto syntaxi pro velké faktury. Tuto syntaxi použijte se zadanou velikostí a 0 posunutím pro vrácení stránkovaného seznamu položek řádků. |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next                               | Tuto syntaxi použijte k získání další stránky položek řádku odsouhlasení pomocí `seekOperation = "Next"` . |
+| Metoda  | Identifikátor URI žádosti                                                                                                                                                                                              | Popis případu použití syntaxe                                                                                                     |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &perioda = {period} HTTP/1.1                       | Pomocí této syntaxe vrátíte úplný seznam všech položek řádku pro danou fakturu.                                                    |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} HTTP/1.1           | Použijte tuto syntaxi pro velké faktury. Tuto syntaxi použijte se zadanou velikostí a 0 posunutím pro vrácení stránkovaného seznamu položek řádků. |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next | Tuto syntaxi použijte k získání další stránky položek řádku odsouhlasení pomocí `seekOperation = "Next"` .                                  |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 Při vytváření žádosti použijte následující identifikátor URI a parametry dotazu.
 
-| Název                   | Typ   | Vyžadováno | Popis                                                                     |
-|------------------------|--------|----------|---------------------------------------------------------------------------------|
-| Zprostředkovatel               | řetězec | Ano      | Zprostředkovatel: "**jednorázová**".                                                |
-| faktura-line-Item-Type | řetězec | Ano      | Typ podrobností o faktuře: "**UsageLineItems**", "**UsageLineItems**".               |
-| currencyCode           | řetězec | Ano      | Kód měny pro nefakturovatelné položky řádku                                  |
-| period                 | řetězec | Ano      | Období pro nefakturované rekognoskaci (například: **Current**, **Previous**). Předpokládejme, že v lednu potřebujete zadat dotaz na nefakturovaná data o využití fakturačního cyklu (01/01/2020 – 01/31/2020), vyberte perioda jako **aktuální,** jinak **předchozí.** |
-| size                   | číslo | Ne       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                    |
-| seekOperation          | řetězec | No       | Nastavte `seekOperation=Next` , aby se získala další stránka položek řádku odsouhlasení.                |
+| Název                   | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                                |
+|------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Zprostředkovatel               | řetězec | Yes      | Zprostředkovatel: "**jednorázová**".                                                                                                                                                                                                               |
+| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
+| currencyCode           | řetězec | Yes      | Kód měny pro nefakturovatelné položky řádku                                                                                                                                                                                             |
+| period                 | řetězec | Yes      | Období pro nefakturované rekognoskaci (například: **Current**, **Previous**). Předpokládejme, že v lednu potřebujete zadat dotaz na nefakturovaná data o využití fakturačního cyklu (01/01/2020 – 01/31/2020), vyberte perioda jako **aktuální,** jinak **předchozí.** |
+| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                                                                                                                                                                           |
+| seekOperation          | řetězec | No       | Nastavte `seekOperation=Next` , aby se získala další stránka položek řádku odsouhlasení.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

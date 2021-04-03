@@ -1,24 +1,24 @@
 ---
 title: Vytvoření zákazníka
 description: Přečtěte si, jak může partner Cloud Solution Provider (CSP) použít rozhraní API partnerského centra k vytvoření nového zákazníka. Článek popisuje požadavky a další akce.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 3bc8081c682bdf522bcb0ca218f16cafab7b3a99
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 73286e6068663187b973827df1b5b49d44b95532
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767153"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103993"
 ---
 # <a name="create-a-customer-using-partner-center-apis"></a>Vytvoření zákazníka pomocí rozhraní API partnerského centra
 
 **Platí pro:**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek vysvětluje, jak vytvořit nového zákazníka.
@@ -92,7 +92,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateCustomer.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateCustomer. cs
 
 ## <a name="java"></a>Java
 
@@ -194,7 +194,7 @@ Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerCompa
 | Název   | Typ   | Description                                                  |
 |--------|--------|--------------------------------------------------------------|
 | doména | řetězec | Název domény zákazníka, například contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích. Arménie (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA). Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích by neměl být určen.|
+|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Maďarsko, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.|
 
 
 ### <a name="request-example"></a>Příklad požadavku

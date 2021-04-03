@@ -1,22 +1,22 @@
 ---
 title: Pomocné prostředky
 description: REST API partnerského centra obsahuje mnoho prostředků, které popisují modely dat pro obecné účely používané v celé sadě SDK.
-ms.date: 11/13/2020
+ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 53d39e4f76684128d48eacdce75706d853c7ce74
-ms.sourcegitcommit: f5178dca1d9a51059738972810235d8858e6a67a
+ms.openlocfilehash: 115b0508f956c4b60e4db53193ef2585fa0c9a34
+ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "97767104"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106103976"
 ---
 # <a name="utility-resources"></a>Pomocné prostředky
 
 **Platí pro**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
@@ -30,8 +30,8 @@ Adresa, která se má použít pro profily zákazníků nebo partnerů. Další 
 |--------------|--------|-------------------|--------------------------------------------------------------------------------------------------|
 | AddressLine1 | řetězec | (1, 200)          | První řádek adresy                                                                   |
 | AddressLine2 | řetězec | (0, 200)          | Druhý řádek adresy. Tato vlastnost je nepovinná.                                       |
-| City         | řetězec | Není k dispozici               | Město.                                                                                        |
-| State        | řetězec | (0, 2)            | Stav                                                                                       |
+| City (Město)         | řetězec | Není k dispozici               | Město.                                                                                        |
+| Stav        | řetězec | (0, 2)            | Stav                                                                                       |
 | PostalCode   | řetězec | Není k dispozici               | Poštovní směrovací číslo nebo PSČ.                                                                     |
 | Země      | řetězec | (2, 2)            | Země nebo oblast ve formátu kódu země ISO                                                   |
 | Oblast       | řetězec | Není k dispozici               | Oblast.                                                                                      |
@@ -39,7 +39,7 @@ Adresa, která se má použít pro profily zákazníků nebo partnerů. Další 
 | MiddleName   | řetězec | (1, 50)           | Prostřední jméno kontaktu na společnosti nebo organizaci zákazníka Tato vlastnost je nepovinná.  |
 | LastName     | řetězec | (1, 50)           | Příjmení kontaktu na firmu nebo organizaci zákazníka                               |
 | PhoneNumber  | řetězec | Není k dispozici               | Telefonní číslo kontaktu na společnosti nebo organizaci zákazníka Tato vlastnost je nepovinná.|
-|PhoneNumber|řetězec|Není k dispozici|Telefonní číslo kontaktu na společnosti nebo organizaci zákazníka V profilu zákazníka je tato vlastnost pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích, povinná. Arménie (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA). V opačném případě je to volitelné.|
+|PhoneNumber|řetězec|Není k dispozici|Telefonní číslo kontaktu na společnosti nebo organizaci zákazníka V profilu zákazníka je tato vlastnost pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích, povinná: Arménie (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA)), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Myanmar, Irák, Jižní Súdán a Venezuela. V opačném případě je to volitelné...|
 
 
 ## <a name="contact"></a>Kontakt
