@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 73286e6068663187b973827df1b5b49d44b95532
-ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
+ms.openlocfilehash: bc8e9d38353511e747ba4da99b11be40d08781e3
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106103993"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274593"
 ---
 # <a name="create-a-customer-using-partner-center-apis"></a>Vytvoření zákazníka pomocí rozhraní API partnerského centra
 
@@ -194,8 +194,7 @@ Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerCompa
 | Název   | Typ   | Description                                                  |
 |--------|--------|--------------------------------------------------------------|
 | doména | řetězec | Název domény zákazníka, například contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Maďarsko, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.|
-
+|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadováno jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Brazílie (BR), Indie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Myanmar, Irák, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.|
 
 ### <a name="request-example"></a>Příklad požadavku
 

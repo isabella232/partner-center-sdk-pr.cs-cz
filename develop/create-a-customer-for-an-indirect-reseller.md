@@ -1,17 +1,17 @@
 ---
 title: Vytvoření zákazníka pro nepřímého prodejce
 description: Zjistěte, jak může nepřímý poskytovatel použít rozhraní API partnerského centra k vytvoření zákazníka pro nepřímý prodejce.
-ms.date: 03/30/2021
+ms.date: 04/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 13cd1b051abb536d397dcd4000228f67fe3206b8
-ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
+ms.openlocfilehash: 0de40d08e9fc2b9cf87b7c3c41214fdd34ad26f3
+ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106103942"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106274576"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Vytvoření zákazníka pro nepřímý prodejce pomocí rozhraní API partnerského centra
 
@@ -124,7 +124,7 @@ Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerCompa
 | Název   | Typ   | Vyžadováno | Popis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
 | doména | řetězec | Yes     | Název domény zákazníka, například contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | řetězec | Závisí na podmínce | Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). <br/><br/>Toto pole se vyžaduje jenom v případě, že se společnost nebo organizace zákazníka nacházejí v následujících zemích: <br/><br/>– Arménská (AM) <br/>-Ázerbájdžán (AZ)<br/>-Bělorusko (do)<br/>-Maďarsko (HU)<br/>-Kazachstán (KZ)<br/>-Kyrgyzstán (KG)<br/>-Moldávie (MD)<br/>– Rusko (RU)<br/>-Tádžikistán (TJ)<br/>-Uzbekistán (UZ)<br/>– Ukrajina (UA)<br/><br/>Toto pole není vyžadováno, pokud se společnost nebo organizace zákazníka nacházejí v jiných zemích, než je zde zobrazená.  |
+| organizationRegistrationNumber | řetězec | Závisí na podmínce | Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). <br/><br/>Toto pole se vyžaduje jenom v případě, že se společnost nebo organizace zákazníka nacházejí v následujících zemích: <br/><br/>– Arménská (AM) <br/>-Ázerbájdžán (AZ)<br/>-Bělorusko (do)<br/>-Maďarsko (HU)<br/>-Kazachstán (KZ)<br/>-Kyrgyzstán (KG)<br/>-Moldávie (MD)<br/>– Rusko (RU)<br/>-Tádžikistán (TJ)<br/>-Uzbekistán (UZ)<br/>– Ukrajina (UA)<br/>– Indie <br/>– Brazílie <br/>– Jižní Afrika <br/>– Polsko <br/>– Spojené arabské emiráty <br/>– Saúdská Arábie <br/>– Turecko <br/>– Thajsko <br/>– Vietnam <br/>– Myanmar <br/>– Irák <br/>– Jižní Súdán <br/>– Venezuela<br/> <br/>Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.  |
 
 ### <a name="request-example"></a>Příklad požadavku
 
