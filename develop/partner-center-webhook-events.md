@@ -1,24 +1,24 @@
 ---
 title: Události Webhooku partnerského centra
-description: Dokumentace pro všechny události Webhooku podporované partnerským centrem
+description: Naučte se testovat a používat události Webhooku, abyste poznamenali, kdy se předplatné a další události mění v partnerském centru.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 5358aab8efdd68ad52c583936304f99ffae12708
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 03ee1d4e74408b8cf69e2971054bf9060650cb77
+ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766834"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106500035"
 ---
 # <a name="partner-center-webhook-events"></a>Události Webhooku partnerského centra
 
 **Platí pro**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
