@@ -1,17 +1,17 @@
 ---
 title: Pokyny k omezování rozhraní API
 description: Pro partnery, kteří volají rozhraní API partnerského centra, se dozvíte, která rozhraní API mají vliv na omezování a osvědčené postupy rozhraní Microsoft API, abyste zabránili omezení nebo lepšímu omezování procesů.
-ms.date: 09/09/2020
+ms.date: 04/14/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vijvala
 ms.author: vijvala
-ms.openlocfilehash: a52751a97e699050075c1aac910cc51e94514f26
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: ab1138e19e06111299ab43ea13a6f033274aaa5d
+ms.sourcegitcommit: 3c3a21e73aaadf3023cf4c13b09809ceae5f027a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767154"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496140"
 ---
 # <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>Pokyny k omezování rozhraní API pro partnery, kteří volají rozhraní API partnerského centra 
 
@@ -62,10 +62,10 @@ Pokud chcete použít prodlevu po opakování, udělejte toto:
 
 ## <a name="apis-currently-impacted-by-throttling"></a>Rozhraní API, která v současnosti ovlivňují omezování
 
-V dlouhodobém běhu budou všechna samostatná rozhraní API partnerského centra, která volají koncový bod "api.partnercenter.microsoft.com/", omezená. Omezení omezování se v současné době uplatní jenom u několika rozhraní API uvedených níže. Partnerské centrum bude shromažďovat telemetrii na každé z rozhraní API a bude dynamicky upravovat limity omezování. V následující tabulce jsou uvedena rozhraní API, kde je omezování aktuálně vynutilo.  
+V dlouhodobém běhu budou všechna samostatná rozhraní API partnerského centra, která volají koncový bod "api.partnercenter.microsoft.com/", omezená. V současné době se omezení omezování uplatní jenom na rozhraních API uvedených níže. Partnerské centrum bude shromažďovat telemetrii na každé z rozhraní API a bude dynamicky upravovat limity omezování. V následující tabulce jsou uvedena rozhraní API, kde je omezování aktuálně vynutilo.  
 
 
-|**Operace**| **Dokumentace k Partnerskému centru**|       
+|**Operace**| **Dokumentace k Partnerskému centru**|
 |------------------------|----------------------------|
 |{baseURL}/v1/Customers/{customer_id}/Orders|[vytvoření objednávky](create-an-order.md)|
 |{baseURL}/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription}/upgrades|[převod předplatného](transition-a-subscription.md)|
@@ -79,6 +79,18 @@ V dlouhodobém běhu budou všechna samostatná rozhraní API partnerského cent
 |{baseURL}/v1/Customers/{Customer-tenant-ID}|[získat zákazníka podle ID](get-a-customer-by-id.md)|
 |{baseURL}/v1/productUpgrades/eligibility|[získat nárok na upgrade produktu](get-eligibility-for-product-upgrade.md)|
 |{baseURL}/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription} |[Spravovat předplatné](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/Customers/{customer_id}/Subscriptions |[Get-All-of-Customer](get-all-of-a-customer-s-subscriptions.md)|
+|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}|[Získání předplatného podle ID](get-a-subscription-by-id.md)|
+|{baseURL}/v1/Customers/{customer_id}/Orders|[Získat všechny zákaznické objednávky](get-all-of-a-customer-s-orders.md)|
+|{baseURL}/v1/Customers/{customer_id}/Orders/{order_id}|[Získání objednávky podle ID](get-an-order-by-id.md)|
+|{baseURL}/v1/Customers/{customer_id}/Orders/{order_id}/provisioningstatus|[Získání stavu zřizování předplatných](get-subscription-provisioning-status.md)|
+|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}|[Správa objednávek a Správa předplatného](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}/addons|[Získání seznamu doplňků pro předplatné](get-a-list-of-add-ons-for-a-subscription.md)|
+|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}/azureEntitlements|[Získat seznam nároků na Azure pro předplatné](get-a-list-of-azure-entitlements-for-subscription.md)|
+|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}/registrationstatus|[Získání stavu registrace předplatných](get-subscription-registration-status.md)|
+|{baseURL}/v1/Customers/{Customer-tenant-ID}/Transfers|[Získat všechny přenosy zákazníka](get-all-of-a-customer-s-transfers.md)|
+|{baseURL}/v1/productUpgrades/{upgrade-id}/status|[Získání stavu upgradu produktů](get-product-upgrade-status.md)|
+|{baseURL}/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/Conversions|[Získání seznamu nabídek převod zkušebních verzí](get-a-list-of-trial-conversion-offers.md)|
 
 
 ### <a name="error-code-response"></a>Odpověď kódu chyby:
