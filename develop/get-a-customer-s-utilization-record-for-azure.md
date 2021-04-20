@@ -1,15 +1,15 @@
 ---
 title: Získání záznamů o využití Azure zákazníkem
 description: Rozhraní API využití Azure můžete použít k získání záznamů o využití předplatného Azure zákazníka za zadané časové období.
-ms.date: 11/01/2019
+ms.date: 04/19/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bcdeb51b04039fd05b923150c85119385c0537e0
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 23c8d18462081c6d6c95c1d969f269cbb3f8754b
+ms.sourcegitcommit: abefe11421edc421491f14b257b2408b4f29b669
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766865"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107745588"
 ---
 # <a name="get-a-customers-utilization-records-for-azure"></a>Získání záznamů o využití Azure zákazníkem
 
@@ -29,7 +29,7 @@ Záznamy o využití předplatného Azure zákazníka můžete získat v zadané
 
 - Identifikátor předplatného.
 
-Toto rozhraní API vrátí denní a hodinovou spotřebu nehodnoceného času pro libovolný časový rozsah. *Toto rozhraní API se ale pro plány Azure nepodporuje*. Pokud máte plán Azure, podívejte se na články [získat faktury za neúčtované řádky spotřeby](get-invoice-unbilled-consumption-lineitems.md) a místo toho [Získejte položky na řádcích spotřeby faktury](get-invoice-billed-consumption-lineitems.md) . Tyto články popisují, jak získat hodnocenou spotřebu na denní úrovni pro každý měřič na jeden prostředek. Tato spotřeba je rovnocenná datům denních zrn poskytovaných rozhraním API využití Azure. K načtení fakturovaných dat o využití budete muset použít identifikátor faktury. Nebo můžete použít aktuální a předchozí období k získání nefakturovaných odhadů využití. *Pro prostředky předplatného Azure Plan se v současné době nepodporují data s hodinovou zrnitou a libovolné filtry rozsahu kalendářních dat*.
+Toto rozhraní API vrátí denní a hodinovou spotřebu nehodnoceného času pro libovolný časový rozsah. *Toto rozhraní API se ale pro plány Azure nepodporuje*. Pokud máte plán Azure, přečtěte si článek články [získat faktury za položky řádků neúčtované spotřeby](get-invoice-unbilled-consumption-lineitems.md) a místo toho [získat faktury účtované na faktuře](get-invoice-billed-consumption-lineitems.md) . Tyto články popisují, jak získat hodnocenou spotřebu na denní úrovni pro každý měřič na jeden prostředek. Tato spotřeba je rovnocenná datům denních zrn poskytovaných rozhraním API využití Azure. K načtení fakturovaných dat o využití budete muset použít identifikátor faktury. Nebo můžete použít aktuální a předchozí období, abyste získali nevyfakturované odhady využití. *Pro prostředky předplatného Azure Plan se v současné době nepodporují data s hodinovou zrnitou a libovolné filtry rozsahu kalendářních dat*.
 
 ## <a name="azure-utilization-api"></a>Rozhraní API využití Azure
 
@@ -38,6 +38,12 @@ Toto rozhraní API využití Azure poskytuje přístup k záznamům o využití 
 Například fakturační systém má stejná data o využití a pro určení toho, co se účtuje v souboru pro odsouhlasení, aplikují pravidla pro pozdě. Po uzavření fakturačního období bude veškeré využití až do konce dne, kdy se v souboru pro odsouhlasení zařadí fakturační období. Jakékoli pozdní využití v rámci fakturačního období, které se nahlásí během 24 hodin od konce fakturačního období, se účtuje v dalším souboru pro odsouhlasení. Pravidla pro pozdě, jak se partner účtuje, najdete v tématu [získání dat o spotřebě pro předplatné Azure](/previous-versions/azure/reference/mt219001(v=azure.100)).
 
 Tato REST API jsou stránkovaná. Pokud je datová část odpovědi větší než jedna stránka, je nutné použít následující odkaz k získání další stránky záznamů o využití.
+
+### <a name="scenario--partner-a-has-transferred-billing-ownership-of-azure-legacy-subscription-145p-to-partner-b"></a>Scénář: partner A převedl na partnera B vlastnictví fakturace předplatného Azure starší verze (145P).
+
+Pokud partner přenese vlastnictví fakturace předplatného Azure staršího na jiného partnera, když nový partner rozhraní API pro přenesené předplatné zavolá, musí použít ID předplatného Commerce (které se zobrazí v účtu partnerského centra) místo ID nároku Azure. ID nároku Azure se zobrazuje pro partnera B jenom v případě, že se jedná o správce jménem (ADMINISTRATE) na Azure Portal zákazníka. 
+
+K úspěšnému volání rozhraní API pro přenesené předplatné vyžaduje, aby nový partner používal ID předplatného Commerce.
 
 ## <a name="c"></a>C\#
 
@@ -51,7 +57,7 @@ Získání záznamů o využití Azure:
 
 - **Ukázka**: [aplikace testů konzoly](console-test-app.md)
 - **Projekt**: ukázky sady SDK pro partnerských Center
-- **Třída**: GetAzureSubscriptionUtilization.cs
+- **Třída**: GetAzureSubscriptionUtilization. cs
 
 ```csharp
 // IAggregatePartner partnerOperations;
