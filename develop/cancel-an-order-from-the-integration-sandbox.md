@@ -1,29 +1,29 @@
 ---
 title: Zrušení objednávky z integrace izolovaného prostoru
 description: Naučte se používat rozhraní API partnerského centra ke zrušení různých typů objednávek předplatného z účtů izolovaného prostoru integrace.
-ms.date: 08/16/2019
+ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 363bf209e27d5223259c8c533710a3b35bbef1e6
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: c3bf862c62804a56e6f73dd3ec36d2e9eb65f997
+ms.sourcegitcommit: f59a9311c8a37d45695caf74794ec1697426acc9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767112"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108210015"
 ---
 # <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Zrušení objednávky z izolovaného prostoru integrace pomocí rozhraní API partnerského centra
 
 **Platí pro:**
 
 - Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
+- Partnerské centrum provozované společností 21Vianet
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek popisuje, jak pomocí rozhraní API partnerského centra zrušit různé typy objednávek předplatného z účtů karantény integrace. Takové objednávky můžou zahrnovat rezervované instance, software a komerční objednávky předplatného SaaS (software jako služba) na webu Marketplace.
 
->[!NOTE]
->Pamatujte na to, že zrušení rezervovaných instancí nebo komerčních předplatných SaaS na webu Marketplace je možné pouze z účtů karantény integrace.  
+>[!NOTE] 
+>Pamatujte na to, že zrušení rezervovaných instancí nebo komerčních předplatných SaaS na webu Marketplace je možné pouze z účtů karantény integrace. Jakékoli objednávky izolovaného prostoru (sandbox), které jsou starší než 60 dní, nelze zrušit z partnerského centra. Pokud potřebujete pomoc, můžete se obrátit na podporu partnerského centra. 
 
 Pokud chcete zrušit výrobní zakázky softwaru prostřednictvím rozhraní API, použijte [Zrušit – software – nákupy](cancel-software-purchases.md).
 Pomocí [zrušit nákup](/partner-center/csp-software-subscriptions)můžete také zrušit výrobní zakázky softwaru prostřednictvím řídicího panelu.
@@ -71,7 +71,7 @@ K odstranění zákazníka použijte následující parametr dotazu.
 | Název                   | Typ     | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Customer-tenant-ID** | **guid** | Y        | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
-| **ID objednávky** | **řetezce** | Y        | Hodnota je řetězec, který označuje ID objednávek, které je třeba zrušit. |
+| **ID objednávky** | **řetězec** | Y        | Hodnota je řetězec, který označuje ID objednávek, které je třeba zrušit. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
