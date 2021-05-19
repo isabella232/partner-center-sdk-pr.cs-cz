@@ -1,17 +1,17 @@
 ---
 title: Získání kvalifikace zákazníka
 description: Naučte se používat asynchronní ověřování k získání kvalifikace zákazníka prostřednictvím rozhraní API partnerského centra. Partneři to můžou použít k ověření zákazníků vzdělávání.
-ms.date: 01/21/2021
+ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 09801792c059873b9f6b842e99286eda09d38b1a
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: df605e4d400d29e14fd0b44bef34f88bbc7ca8b2
+ms.sourcegitcommit: 7d59c58ee36b217bd5cac089f918059e9dbb8a62
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030561"
+ms.lasthandoff: 05/19/2021
+ms.locfileid: "110027924"
 ---
 # <a name="get-a-customers-qualification-asynchronously"></a>Asynchronní získání kvalifikace zákazníka
 
@@ -41,23 +41,23 @@ var customerQualifications = partnerOperations.Customers.ById(customerId).Qualif
 
 ## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Qualifications HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/kvalifikace HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání všech kvalifikací.
+Tato tabulka uvádí požadovaný parametr dotazu pro získání veškeré kvalifikace.
 
 | Název               | Typ   | Vyžadováno | Popis                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| **Customer-tenant-ID** | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| **customer-tenant-id** | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -75,11 +75,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci kvalifikací v těle odpovědi.  Níže jsou uvedeny příklady volání **Get** na zákazníka s kvalifikací pro **vzdělávání** .
+V případě úspěchu vrátí tato metoda v textu odpovědi kolekci kvalifikace.  Níže jsou uvedené příklady volání **GET** u zákazníka s **kvalifikaceí na vzdělávání.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. Ke čtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-examples"></a>Příklady odpovědí
 
@@ -132,6 +132,71 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
         "vettingStatus": "Denied",
         "vettingReason": "Not an Education Customer", // example Vetting Reason
         "vettingCreatedDate": "2020-12-03T10:37:38.885Z" // UTC
+    }
+]
+
+```
+
+#### <a name="state-owned-entity-samples"></a>Ukázky entit vlastněných státem
+
+**Entita vlastněná státem prostřednictvím ukázky POST**
+
+```csharp
+
+//SOE
+POST {customer_id}/qualifications
+{
+“qualification”: “StateOwnedEntity”
+}
+
+//
+
+```
+
+**Ukázka státem vlastněné entity prostřednictvím získání kvalifikace**
+
+```csharp
+
+//SOE:
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “StateOwnedEntity”
+    }
+]
+
+```
+
+**Entita vlastněná státem prostřednictvím získání kvalifikace se vzděláváním**
+
+```csharp
+
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “Education”,
+        “vettingStatus”: “Approved”
+    },
+{
+        “qualification”: “StateOwnedEntity”
+    }
+]
+
+```
+
+**Vlastní entita s příslušným stavem prostřednictvím získání kvalifikací v RSZ**
+
+```csharp
+
+GET {customer_id}/qualifications
+[
+    {
+        “qualification”: “GovernmentCommunityCloud”,
+        “vettingStatus”: “Approved”,
+        “vettingCreateDate”: “2021-05-06T19:59:56.6832021+00:00”
+    },
+{
+        “qualification”: “StateOwnedEntity”
     }
 ]
 
