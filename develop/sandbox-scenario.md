@@ -1,17 +1,17 @@
 ---
-title: Možnosti partnerského sandboxu, které podporují vztah s prodejci
-description: Partner izolovaného prostoru (sandbox) má schopnost podporovat vztahy mezi partnerem a zákazníkem.
-ms.date: 11/10/2020
+title: Možnosti sandboxu pro vztah prodejce
+description: Partnerský sandbox může podporovat vztahy mezi partnerem a zákazníkem.
+ms.date: 05/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: af46811b3615e1f904a9619de85b0aca7622490b
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 9bef4a15685ebbdc2212988f5ac5724b946cfd54
+ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711861"
+ms.lasthandoff: 05/21/2021
+ms.locfileid: "110243380"
 ---
-# <a name="partner-sandbox-capabilities-that-support-reseller-relationship"></a>Možnosti partnerského sandboxu, které podporují vztah s prodejci
+# <a name="sandbox-capabilities-for-reseller-relationship"></a>Možnosti sandboxu pro vztah prodejce
 
 **Platí pro:**
 
@@ -20,68 +20,68 @@ ms.locfileid: "104711861"
 - Partnerské centrum pro Microsoft Cloud pro Německo
 - Partnerské centrum pro Microsoft Cloud for US Government
 
-Tento článek vysvětluje, co je podporováno v izolovaném prostoru (sandbox) pro vztahy prodejců mezi partnerem a zákazníkem. 
+Tento článek vysvětluje, co sandbox podporuje pro vztahy prodejce mezi partnerem a zákazníkem. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje účtu partnerského centra Scénář izolovaného prostoru (sandbox) podporuje ověřování jak pro samostatnou aplikaci, tak i pro přihlašovací údaje uživatele a aplikace.
-- ID zákazníka (Customer-tenant-ID). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard/home)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka (Customer-tenant-ID).
-- Před odstraněním zákazníka z karantény integrace s tipem se musí zrušit všechny nákupní objednávky Azure Reserved Virtual Machine Instances a softwaru.
+- Partnerské centrum přihlašovací údaje účtu. Scénář sandboxu podporuje ověřování pomocí samostatné aplikace i přihlašovacích údajů aplikace a uživatele.
+- ID zákazníka (customer-tenant-id) Pokud ID zákazníka neznáme, můžete ho hledat na řídicím panelu Partnerské centrum [.](https://partner.microsoft.com/dashboard/home) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte ID **Microsoftu** v části **Informace o účtu** zákazníka. ID Microsoftu je stejné jako ID zákazníka (customer-tenant-id).
+- Všechny Azure Reserved Virtual Machine Instances a nákupní objednávky softwaru se musí před odstraněním zákazníka z sandboxu integrace tipů zrušit.
 
 ## <a name="scenarios-supporting-reseller-relationship"></a>Scénáře podporující vztah prodejce
 
-1.  Partneři izolovaného prostoru (sandboxu) a nepřímá poskytovatelé můžou vytvářet relace s zákazníkem izolovaného prostoru. 
-2.  Partneři izolovaného prostoru (sandboxu) a nepřímá poskytovatelé můžou pozvat zákazníky izolovaného prostoru
+1.  Partneři s přímým vyúčtováním sandboxu a nepřímí poskytovatelé mohou vytvářet vztahy se zákazníkem sandboxu. 
+2.  Partneři sandboxu s přímým vyúčtováním a nepřímí poskytovatelé nemohou pozvat zákazníky sandboxu.
+
+3. Partneři s přímým vyúčtováním sandboxu a nepřímí poskytovatelé zprostředkovatelé mohou odebrat vztah prodejce Partnerské centrum uživatelském rozhraní a rozhraní API.
+
+4. Sandbox Remove Reseller Relationship zavolá příkaz Delete customer AP (Odstranit přístupový bod zákazníka). Tím odeberete relaci a odstraníte tenanta zákazníka. {baseURL}/v1/Customers/{customer-Tenant-id}
 
 
+    ### <a name="in-the-sandbox"></a>V izolovaném prostoru
 
-### <a name="in-the-sandbox"></a>V izolovaném prostoru
+    **Partneři s přímým účtováním**:
 
-**Partneři s přímým účtováním**:
+    - Může přidat existující zákazníky.
 
-• Může přidat existující zákazníky.
+    - Vztahy s novými zákazníky nejde vyžádat.
 
-• Nemůžou vyžádat relace s novými zákazníky.
+    **Nepřímí zprostředkovatelé**:
 
-**Nepřímí zprostředkovatelé**:
+    - Může přidat existující zákazníky.
 
-• Může přidat existující zákazníky.
+    - Vztahy s novými zákazníky nejde vyžádat.
 
-• Nemůžou vyžádat relace s novými zákazníky.
+    - Nemůže mít relaci s nepřímým prodejcem.
 
-• Nemůže mít relaci s nepřímým prodejcem
+    **Nepřímý prodejce**: 
 
-**Nepřímý prodejce**: (už brzy)
+    -   Můžou mít relace s existujícími zákazníky.
 
-• Může mít relace s existujícími zákazníky.
+    -   Nejde požádat o nové relace ani přidat nové zákazníky.
 
-• Nemůžete požádat o nové relace ani přidat nové zákazníky.
+    ### <a name="in-partner-center"></a>V partnerském centru
 
-### <a name="in-partner-center"></a>V partnerském centru
+    **Partneři s přímým účtováním**:
 
-**Partneři s přímým účtováním**:
+    -   Může přidat nové zákazníky.
 
-• Může přidat nové zákazníky.
+    -   Může vyžádat vztahy s novými zákazníky.
 
-• Může vyžádat relace s novými zákazníky
+    **Nepřímí zprostředkovatelé**:
 
-**Nepřímí zprostředkovatelé**:
+    -   Může přidat nové zákazníky.
 
-• Může přidat nové zákazníky.
+    -   Může vyžádat vztahy s novými zákazníky.
 
-• Může vyžádat relace s novými zákazníky
+    -   Může mít relace s nepřímými prodejci
 
-• Může mít relace s nepřímými prodejci.
+    **Nepřímí prodejci**:
 
-**Nepřímí prodejci**:
+    -   Nejde přidat nové zákazníky.
 
-• Nemůžete přidávat nové zákazníky.
+    -   Může vyžádat vztahy s novými zákazníky.
 
-• Může vyžádat relace s novými zákazníky
-
-3. Partner s přímým přístupem k izolovanému prostoru a nepřímá poskytovatelé můžou odebrat vztah prodejce z uživatelského rozhraní a rozhraní API partnerského centra.
-
-4. V izolovaném prostoru odeberte vztah prodejce, který bude volat odstranění přístupového bodu zákazníka. Tato akce odebere vztah a odstraní tenanta zákazníka. {baseURL}/v1/Customers/{customer-Tenant-id}
 
 Podrobnější informace pro zákazníka získáte pomocí [vztahu odebrat prodejce](remove-a-reseller-relationship-with-a-customer.md) . Existují však určité rozdíly mezi funkcemi produktu a izolovaného prostoru (sandbox).
 
