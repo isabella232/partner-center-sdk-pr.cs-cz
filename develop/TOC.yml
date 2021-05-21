@@ -427,10 +427,12 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox pro integraci
   items:
-    - name: 'Možnosti partnerského sandboxu, které podporují vztah s prodejci'
+    - name: Možnosti izolovaného prostoru pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
+    - name: Možnosti nepřímých poskytovatelů CSP v izolovaném prostoru
+      href: indirect-provider-sandbox-capabilities.md
     - name: Zrušení objednávky ze sandboxu pro integraci
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivovace předplatného sandboxu
