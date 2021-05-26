@@ -427,18 +427,20 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox pro integraci
   items:
-    - name: Možnosti izolovaného prostoru pro vztah prodejce
+    - name: Možnosti sandboxu pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
-    - name: Možnosti nepřímých poskytovatelů CSP v izolovaném prostoru
+    - name: Možnosti nepřímého poskytovatele CSP v sandboxu
       href: indirect-provider-sandbox-capabilities.md
     - name: Zrušení objednávky ze sandboxu pro integraci
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivovace předplatného sandboxu
       href: activate-sandbox-subscription-azure-marketplace-products.md
-    - name: Odstranění zákaznického účet ze sandboxu pro integraci
-      href: delete-a-customer-account-from-the-integration-sandbox.md
+    - name: Vytvoření nepřímého prodejce v Sandboxu
+      href: create-indirect-reseller-in-sandbox.md
+    - name: Odstranění nepřímého prodejce v Sandboxu
+      href: delete-indirect-reseller-in-sandbox.md
 - name: Reference
   href: /partner/develop/referrals
   items:
