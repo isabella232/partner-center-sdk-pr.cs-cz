@@ -471,14 +471,17 @@
     - name: Získání podrobností žádostí rozhraní API
       href: get-api-request-details.md
 - name: Referenční informace k rozhraní REST API pro Partnerské centrum
-  href: partner-center-rest-api-reference.md
   items:
+    - name: Partnerské centrum REST API úvod
+      href: partner-center-rest-api-reference.md
     - name: Protokol změn rozhraní REST API pro Partnerské centrum
       href: api-change-log.md
     - name: Adresy URL rozhraní REST pro Partnerské centrum
       href: partner-center-rest-urls.md
     - name: Hlavičky rozhraní REST pro Partnerské centrum
       href: headers.md
+    - name: Referenční informace k rozhraní REST API pro Partnerské centrum
+      href: /rest/api/partner-center-rest/
     - name: Prostředky rozhraní REST pro Partnerské centrum
       href: partner-center-rest-resources.md
       items:
@@ -553,7 +556,7 @@
     - name: Webhooky Partnerského centra
       href: partner-center-webhooks.md
 - name: Referenční informace ke spravovanému rozhraní .NET API pro Partnerské centrum
-  href: /dotnet/api/
+  href: /dotnet/api/microsoft.store.partnercenter
   items:
     - name: Poznámky k verzi rozhraní .NET API pro Partnerské centrum
       href: dotnet-release-notes.md
