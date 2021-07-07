@@ -4,20 +4,16 @@ description: Jak aktualizovat zásady pro samoobslužné zpracování.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4d53ab8e5b8ef5b7be83360a3f43ec7791b2e3b4
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: d94382e73fd2a79751fe5f8f8414df2befde584f
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767158"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445251"
 ---
 # <a name="update-a-selfservepolicy"></a>Aktualizovat SelfServePolicy
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Toto téma vysvětluje, jak aktualizovat zásadu samoobslužného zpracování.
+Tento článek vysvětluje, jak aktualizovat zásadu samoobslužného zpracování.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +49,7 @@ partnerOperations.SelfServePolicies.ById(policy.id).Put(policy);
 ### <a name="request-headers"></a>Hlavičky požadavku
 
 - Identifikátor požadavku a identifikátor korelace jsou povinné.
-- Další informace najdete v tématu [záhlaví REST v partnerském centru](headers.md) .
+- Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 

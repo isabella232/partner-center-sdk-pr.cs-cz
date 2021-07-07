@@ -1,84 +1,80 @@
 ---
 title: Vytvoření plánu Azure
-description: Vývojáři můžou prostřednictvím rozhraní API partnerského centra koupit, vytvořit a spravovat plány Azure.
+description: Vývojáři mohou plány Azure nakupovat, vytvářet a spravovat programově pomocí Partnerské centrum API.
 ms.date: 01/02/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: mowrim
 ms.author: mowrim
-ms.openlocfilehash: 372b94ac7217899ca560cf943bf11a7e8906872d
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: f329b6a3f9a61522a9fad1f0ead021563c393118
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766856"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973402"
 ---
 # <a name="create-an-azure-plan"></a>Vytvoření plánu Azure
 
-**Platí pro:**
-
-* Partnerské centrum
-
-Plán Azure můžete koupit, vytvořit a spravovat pomocí rozhraní API partnerského centra. Tento proces je podobný jako při vytváření předplatného Microsoft Azure (MS-AZR-0145P). Musíte [získat položku katalogu pro plán Azure](#get-the-catalog-item-for-azure-plan)a pak [vytvořit a odeslat objednávku](#create-and-submit-an-order).
+Plán Azure můžete zakoupit, vytvořit a spravovat pomocí rozhraní PARTNERSKÉ CENTRUM API. Postup se podobá vytvoření předplatného Microsoft Azure (MS-AZR-0145P). Musíte získat [položku katalogu pro plán Azure](#get-the-catalog-item-for-azure-plan)a pak vytvořit a odeslat [objednávku](#create-and-submit-an-order).
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Přihlašovací údaje pro [ověření partnerského centra](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
-* Identifikátor zákazníka. Pokud nemáte identifikátor zákazníka, postupujte podle kroků v části [získání seznamu zákazníků](get-a-list-of-customers.md). Případně se přihlaste do partnerského centra, vyberte zákazníka ze seznamu zákazníků, vyberte možnost **účet** a uložte své **ID společnosti Microsoft**.
-* [Potvrzení souhlasu zákazníka s zákaznickou smlouvou Microsoftu](/partner-center/confirm-customer-agreement).
+* [Partnerské centrum přihlašovací údaje](partner-center-authentication.md) pro ověřování. Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+* Identifikátor zákazníka. Pokud identifikátor zákazníka nemáte, postupujte podle kroků v části [Získání seznamu zákazníků.](get-a-list-of-customers.md) Případně se přihlaste k Partnerské centrum, v seznamu zákazníků vyberte zákazníka, vyberte Účet a pak uložte **jeho Microsoft ID**. 
+* [Potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu](/partner-center/confirm-customer-agreement).
 
-## <a name="get-the-catalog-item-for-azure-plan"></a>Získat položku katalogu pro plán Azure
+## <a name="get-the-catalog-item-for-azure-plan"></a>Získání položky katalogu pro plán Azure
 
-Než budete moct vytvořit plán Azure pro zákazníka, musíte načíst odpovídající položku katalogu. Můžete načíst položku katalogu pomocí stávajících rozhraní API katalogu pro partnerský Center s následujícími modely prostředků.
+Před vytvořením plánu Azure pro zákazníka musíte načíst odpovídající položku katalogu. Položku katalogu můžete načíst pomocí existujících rozhraní API Partnerské centrum katalogu s využitím následujících modelů prostředků.
 
-* **[Produkt](product-resources.md#product)**: seskupovací konstrukce pro kupní zboží nebo služby. Produkt sám o sobě není položka, která je k nákupu.
-* **[SKU](product-resources.md#sku)**: kupní jednotka (SKU) na skladě v rámci produktu. SKU reprezentují různé tvary produktu.
-* **[Dostupnost](product-resources.md#availability)**: konfigurace, ve které je k DISpozici SKU k nákupu (například země, Měna nebo odvětví odvětví).
+* **[Produkt:](product-resources.md#product)** Seskupovací konstrukce pro nákup zboží nebo služeb. Samotný produkt není položka, kterou si můžete koupit.
+* **[SKU:](product-resources.md#sku)** SKU (Purchasable Stock Keeping Unit) v rámci produktu. SKU představují různé tvary produktu.
+* **[Dostupnost:](product-resources.md#availability)** Konfigurace, ve které je skladová položku k dispozici pro nákup (například země, měna nebo segment odvětví).
 
 Pokud chcete získat položku katalogu pro plán Azure, proveďte následující kroky:
 
-1. Identifikujte a načtěte identifikátor *produktu* pro plán Azure. Postupujte podle kroků v části [získání seznamu produktů](get-a-list-of-products.md) a zadání **targetView** jako **MicrosoftAzure**. (Pokud už znáte identifikátor *produktu* pro plán Azure, můžete místo toho použít postup v části [získání produktu pomocí ID produktu](get-a-product-by-id.md) .)
+1. Identifikujte a *načtěte* identifikátor produktu pro plán Azure. Postupujte podle kroků v [části Získání seznamu produktů a](get-a-list-of-products.md) jako **targetView** zadejte **MicrosoftAzure.** (Pokud už identifikátor *produktu* pro plán Azure znáte, můžete místo toho postupovat podle kroků v části Získání produktu [pomocí ID](get-a-product-by-id.md) produktu.)
 
-2. Načtěte **SKU** z produktu pro plán Azure. Postupujte podle kroků v části [získání seznamu SKU pro produkt](get-a-list-of-skus-for-a-product.md). Pokud už znáte identifikátor SKU pro plán Azure, můžete místo toho postupovat podle kroků v části [získání SKU pomocí ID SKU](get-a-sku-by-id.md) .
+2. Načtěte **SKU** z produktu pro plán Azure. Postupujte podle kroků [v části Získání seznamu skladových položek pro produkt](get-a-list-of-skus-for-a-product.md). Pokud už znáte identifikátor SKU pro plán Azure, můžete místo toho postupovat podle kroků v části Získání SKU pomocí [ID SKU.](get-a-sku-by-id.md)
 
-3. Načtěte **dostupnost** z SKU pro plán Azure. Postupujte podle kroků v části [získání seznamu dostupnosti pro skladovou](get-a-list-of-availabilities-for-a-sku.md)položku. Pokud už znáte identifikátor potřebné dostupnosti, můžete místo toho postupovat podle kroků v části [získání dostupnosti pomocí ID dostupnosti](get-an-availability-by-id.md) . *Nezapomeňte si poznamenat hodnotu vlastnosti **CatalogItemId** dostupnosti pro plán Azure. Tuto hodnotu budete potřebovat k vytvoření objednávky.*
+3. **Načtěte dostupnost** ze SKU pro plán Azure. Postupujte podle kroků [v části Získání seznamu dostupnosti pro SKU](get-a-list-of-availabilities-for-a-sku.md). Pokud už znáte identifikátor pro dostupnost, kterou potřebujete, můžete místo toho použít postup v části Získání dostupnosti [pomocí ID](get-an-availability-by-id.md) dostupnosti. *Nezapomeňte si poznamenat hodnotu vlastnosti **CatalogItemId** dostupnosti plánu Azure. Tuto hodnotu budete potřebovat k vytvoření objednávky.*
 
 ## <a name="create-and-submit-an-order"></a>Vytvoření a odeslání objednávky
 
-K odeslání objednávky plánu Azure použijte tento postup:
+Pokud chcete odeslat objednávku plánu Azure, postupujte takto:
 
-1. [Vytvořte košík](create-a-cart.md) pro uložení kolekce položek katalogu, které máte v úmyslu koupit. Při vytváření [košíku](cart-resources.md#cart)se [položky řádku vozíku](cart-resources.md#cartlineitem) automaticky seskupují podle toho, co se dá koupit společně ve stejném [pořadí](order-resources.md#order). (Můžete také [Aktualizovat košík](update-a-cart.md).)
+1. [Vytvořte košík pro](create-a-cart.md) kolekci položek katalogu, které chcete koupit. Když vytvoříte [košík,](cart-resources.md#cart) [](cart-resources.md#cartlineitem) řádkové položky košíku se automaticky seskupí podle toho, co je možné zakoupit společně ve stejné [objednávce.](order-resources.md#order) (Můžete také [aktualizovat košík.)](update-a-cart.md)
 
-2. [Podívejte se na košík](checkout-a-cart.md), který má za následek vytvoření [objednávky](order-resources.md#order).
+2. [Podívejte se na košík](checkout-a-cart.md), jehož výsledkem je vytvoření [objednávky](order-resources.md#order).
 
-## <a name="get-order-details"></a>Získat podrobnosti objednávky
+## <a name="get-order-details"></a>Získání podrobností objednávky
 
-[Pomocí ID objednávky můžete načíst podrobnosti o jednotlivých objednávkách](get-an-order-by-id.md). Můžete také [načíst seznam všech objednávek pro konkrétního zákazníka](get-all-of-a-customer-s-orders.md).
+Podrobnosti o [jednotlivé objednávce můžete načíst pomocí ID objednávky](get-an-order-by-id.md). Můžete také [načíst seznam všech objednávek pro konkrétního zákazníka](get-all-of-a-customer-s-orders.md).
 
 >[!NOTE]
->Po odeslání objednávky dojde k prodlevě až 15 minut, než se objednávka objeví v seznamu objednávek zákazníka.
+>Po odeslané objednávce existuje zpoždění až 15 minut, než se objednávka objeví v seznamu objednávek tohoto zákazníka.
 
 ## <a name="manage-azure-plans"></a>Správa plánů Azure
 
-Po úspěšném zpracování objednávky se pro plán Azure vytvoří prostředek **odběru** partnerského centra. Pomocí následujících metod můžete spravovat prostředky **předplatného** partnerského centra pro správu plánu Azure:
+Po úspěšném zpracování objednávky se pro  Partnerské centrum Azure vytvoří prostředek předplatného. Ke správě plánu Azure můžete použít následující Partnerské centrum **prostředků** předplatného:
 
 * [Získání předplatných zákazníka](get-all-of-a-customer-s-subscriptions.md)
 * [Získání seznamu předplatných podle objednávky](get-a-list-of-subscriptions-by-order.md)
 
-Při vytvoření plánu Azure v partnerském centru se v Azure vytvoří taky odpovídající předplatné Azure Usage. Můžete také vytvořit další předplatná Azure v rámci stejného plánu Azure pomocí webu Azure Portal a rozhraní API Azure. Identifikátory všech předplatných Azure, které jsou přidružené k plánu Azure, můžete získat podle kroků v části [získání seznamu oprávnění Azure pro předplatné partnerského centra](get-a-list-of-azure-entitlements-for-subscription.md) .
+Když se v Azure vytvoří plán Azure Partnerské centrum, vytvoří se v Azure také odpovídající předplatné využití Azure. Můžete také vytvořit další předplatná využití Azure v rámci stejného plánu Azure pomocí Azure Portal a rozhraní API Azure. Identifikátory všech předplatných využití Azure přidružených k plánu Azure můžete získat pomocí postupu v části Získání seznamu nároků Azure pro Partnerské centrum [předplatného.](get-a-list-of-azure-entitlements-for-subscription.md)
 
 ## <a name="lifecycle-management"></a>Správa životního cyklu
 
-Stávající plán Azure můžete pozastavit pomocí postupu v části [pozastavení předplatného](suspend-a-subscription.md).
+Existující plán Azure můžete pozastavit podle kroků v části [Pozastavení předplatného.](suspend-a-subscription.md)
 
-*Stávající plán Azure můžete pozastavit jenom v případě, že už k němu nejsou přidružené žádné aktivní prostředky využití, včetně předplatných Azure a rezervací Azure.*
+*Stávající plán Azure můžete pozastavit pouze v případě, že už k tomuto plánu nejsou přidružené žádné aktivní prostředky využití, včetně předplatných využití Azure a rezervací Azure.*
 
-Podrobnosti o tom, jak zakázat odběry využití Azure, najdete v tématu [Azure API při správě životního cyklu předplatného](/rest/api/resources/subscriptions).
+Podrobnosti o tom, jak zakázat předplatná využití Azure, najdete v tématu [Azure API o správě životního cyklu předplatného.](/rest/api/resources/subscriptions)
 
-Pokud chcete odebrat existující rezervace Azure, musíte [Zrušit rezervace](/partner-center/azure-reservations-manage#cancel-or-exchange-a-reservation).
-Po pozastavení plánu Azure ho můžete znovu aktivovat.
+Pokud chcete odebrat existující rezervace Azure, [musíte rezervace zrušit.](/partner-center/azure-reservations-manage#cancel-or-exchange-a-reservation)
+Po pozastavení můžete plán Azure znovu aktivovat.
 
-Podrobnosti o tom, jak znovu aktivovat plán Azure, najdete v tématu [Opětovná aktivace pozastaveného předplatného](reactivate-a-suspended-a-subscription.md) .
+Podrobnosti o tom, jak znovu aktivovat plán Azure, najdete v tématu [Opětovná aktivace pozastaveného předplatného.](reactivate-a-suspended-a-subscription.md)
 
 ## <a name="transition-existing-csp-offers-to-azure-plan"></a>Převod stávajících nabídek CSP na plán Azure
 
@@ -90,7 +86,7 @@ Pro stávajícího zákazníka s předplatným Microsoft Azure (MS-AZR-0145P) ne
 
 ## <a name="azure-spending"></a>Útrata v Azure
 
-Můžete sledovat [výdaje na Azure](azure-spending.md) pomocí dotazů na shrnutí využití a podrobné záznamy o využití pomocí následujících metod:
+Útratu [za Azure můžete sledovat](azure-spending.md) dotazem na souhrn využití a podrobné záznamy o využití pomocí následujících metod:
 
 * [Získání souhrnu využití pro partnera](get-a-partner-usage-summary.md)
 * [Získání všech záznamů o zákaznickém využití pro partnera](get-a-customer-s-usage-records.md)
@@ -102,21 +98,21 @@ Můžete sledovat [výdaje na Azure](azure-spending.md) pomocí dotazů na shrnu
 * [Získání prostředků záznamů o využití měřičů](meter-usage-resources.md)
 * [Získání prostředků záznamů o využití prostředků](resource-usage-resources.md)
 
-Můžete také nastavit a spravovat rozpočty využití zákazníka pomocí následujících metod:
+Rozpočet využití zákazníků můžete také nastavit a spravovat následujícími způsoby:
 
 * [Získání rozpočtu zákaznického využití](get-a-customer-s-usage-spending-budget.md)
 * [Aktualizace rozpočtu zákaznického využití](update-a-customer-s-usage-spending-budget.md)
 
 ## <a name="invoice-and-reconciliation"></a>Faktura a odsouhlasení
 
-Můžete spravovat faktury a data o odsouhlasení pomocí následujících metod:
+Faktury a data odsouhlasení můžete spravovat následujícími způsoby:
 
 * [Získání kolekce faktur](get-a-collection-of-invoices.md)
 * [Získání odkazů na odhad faktury](get-invoice-estimate-links.md)
-* [Získat fakturu podle ID](get-invoice-by-id.md)
+* [Získání faktury podle ID](get-invoice-by-id.md)
 * [Získání výkazů faktur](get-invoice-statement.md)
 * [Získání přehledu faktur](get-invoice-summaries.md)
 * [Získání fakturovaných řádkových položek spotřeby na faktuře](get-invoice-billed-consumption-lineitems.md)
 * [Získání nefakturovaných řádkových položek spotřeby na faktuře](get-invoice-unbilled-consumption-lineitems.md)
-* [Získat položky řádku rekognoskaci s fakturací](get-invoiceline-items.md)
+* [Získání řádkovaných položek odsoustavy fakturovaných faktur](get-invoiceline-items.md)
 * [Získání nefakturovaných řádkových položek odsouhlasení](get-invoice-unbilled-recon-lineitems.md)

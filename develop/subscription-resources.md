@@ -1,62 +1,57 @@
 ---
 title: Prostředky předplatného
-description: Prostředky předplatného můžou poskytovat další informace o předplatných v průběhu životního cyklu, jako je podpora, refundace, nároky na Azure.
+description: Prostředky předplatného mohou poskytovat další informace o předplatných v průběhu životního cyklu, jako jsou podpora, refundace nebo nároky Azure.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd835e46e99b1fcb1e0b0e694ad73b1dca1240c9
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 35d8c86ab061797109b3c152eff02f354b7ea23a
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766739"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547445"
 ---
 # <a name="subscription-resources"></a>Prostředky předplatného
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Předplatné umožní zákazníkovi používat službu po určitou dobu. Ne všechna pole budou použita pro všechna předplatná. Mnoho polí se vztahuje pouze na určité body životního cyklu, jako je například pozastavení nebo zrušení odběru.
+Předplatné umožňuje zákazníkovi používat službu po určitou dobu. Ne všechna pole se použijí pro všechna předplatná. Mnoho polí se používá pouze v určitých bodech životního cyklu, například v případě, že je předplatné pozastavené nebo zrušené.
 
 ## <a name="subscription"></a>Předplatné
 
 >[!NOTE]
->Prostředek **odběru** má omezení frekvence 500 požadavků za minutu na identifikátor tenanta.
+>U **prostředku předplatného** platí omezení rychlosti 500 požadavků za minutu na identifikátor tenanta.
 
-Prostředek **předplatného** představuje životní cyklus předplatného a obsahuje vlastnosti definující stavy v rámci životního cyklu předplatného.
+Prostředek **Předplatné** představuje životní cyklus předplatného a zahrnuje vlastnosti, které definují stavy v průběhu životního cyklu předplatného.
 
 | Vlastnost             | Typ                                                          | Description                                                                                                                                                                   |
 |----------------------|---------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id                   | řetězec                                                        | Identifikátor předplatného.                                                                                                                                                  |
-| Hodnotami OfferId              | řetězec                                                        | Identifikátor nabídky                                                                                                                                                         |
-| entitlementId        | řetězec                                                        | Identifikátor nároku (ID předplatného Azure)                                                                                                                        |
-| offerName            | řetězec                                                        | Název nabídky                                                                                                                                                               |
-| friendlyName         | řetězec                                                        | Popisný název předplatného definovaného partnerem, který vám umožní určit nejednoznačnost.                                                                                           |
-| quantity             | číslo                                                        | Množství. Například v případě fakturace na základě licence je tato vlastnost nastavena na počet licencí.                                                            |
-| Jednotkách UnitType             | řetězec                                                        | Jednotky definující množství pro předplatné.                                                                                                                             |
-| parentSubscriptionId | řetězec                                                        | Získá nebo nastaví nadřazený identifikátor předplatného.                                                                                                                              |
-| creationDate         | řetězec                                                        | Získá nebo nastaví datum vytvoření ve formátu data a času.                                                                                                                          |
-| effectiveStartDate   | řetězec ve formátu data a času UTC                                | Získá nebo nastaví platné počáteční datum pro toto předplatné ve formátu data a času. Používá se k datu zálohování migrovaného předplatného nebo k jeho zarovnávání jiným.                |
-| commitmentEndDate    | řetězec ve formátu data a času UTC                                | Koncové datum závazku pro toto předplatné ve formátu data a času. U předplatných, která nejsou automaticky obnovitelné, představuje datum v budoucnosti.       |
-| status               | řetězec                                                        | Stav předplatného: "none", "Active", "pending", "Suspended" nebo "Deleted".                                                                                                         |
-| autoRenewEnabled     | boolean                                                       | Načte hodnotu, která označuje, jestli se předplatné obnovuje automaticky.                                                                                                    |
-| billingType          | řetězec                                                        | Určuje, jak se má předplatné fakturovat: "none", "Usage" nebo "License".                                                                                                      |
-| billingCycle         | řetězec                                                        | Určuje četnost, s jakou se má partner fakturovat v této objednávce. Podporované hodnoty jsou názvy členů nalezené v [**BillingCycleType**](product-resources.md#billingcycletype). |
-| hasPurchasableAddons | boolean                                                       | Získává nebo nastavuje hodnotu, která indikuje, jestli má předplatné k možnost nákupu doplňků.                                                                                             |
-| Zkušební verze              | boolean                                                       | Hodnota, která označuje, zda se jedná o zkušební předplatné.                                                                                                                      |
-| isMicrosoftProduct   | boolean                                                       | Hodnota, která označuje, zda se jedná o produkt společnosti Microsoft.                                                                                                                       |
-| publisherName        | řetězec                                                        | Název vydavatele                                                                                                                                                           |
-| akce              | pole řetězců                                              | Získá nebo nastaví akce, které jsou povoleny. Možné hodnoty: "Upravit", "Storno"                                                                                                  |
-| partnerId            | řetězec                                                        | ID MPN prodejce záznamu používaného v modelu nepřímých partnerů.                                                                                                     |
-| suspensionReasons    | pole řetězců                                              | Jen pro čtení. Pokud se předplatné pozastavilo, indikuje, proč.                                                                                                                  |
-| contractType         | řetězec                                                        | Jen pro čtení. Typ kontraktu: "Subscription", "productKey" nebo "redemptionCode".                                                                                           |
-| refundOptions        | pole prostředků [RefundOption](#refundoption)   | Jen pro čtení. Sada možností refundace dostupných pro toto předplatné.                                                                                              |
-| odkazy                | [SubscriptionLinks](#subscriptionlinks)                       | Získá nebo nastaví odkazy na odběr.                                                                                                                                          |
-| Seskup              | řetězec                                                        | ID pořadí, ve kterém bylo zahájeno předplatné.                                                                                                                |
+| ID nabídky              | řetězec                                                        | Identifikátor nabídky.                                                                                                                                                         |
+| entitlementId (ID nároku)        | řetězec                                                        | Identifikátor nároku (ID předplatného Azure).                                                                                                                        |
+| název_nabídky            | řetězec                                                        | Název nabídky                                                                                                                                                               |
+| Friendlyname         | řetězec                                                        | Popisný název předplatného definovaného partnerem, který pomáhá jednoznačně rozpoznat.                                                                                           |
+| quantity             | číslo                                                        | Množství Například v případě fakturace na základě licencí je tato vlastnost nastavená na počet licencí.                                                            |
+| Unittype             | řetězec                                                        | Jednotky definující množství pro předplatné.                                                                                                                             |
+| PARENTSubscriptionId | řetězec                                                        | Získá nebo nastaví identifikátor nadřazeného předplatného.                                                                                                                              |
+| datum vytvoření         | řetězec                                                        | Získá nebo nastaví datum vytvoření ve formátu data a času.                                                                                                                          |
+| effectiveStartDate   | řetězec ve formátu data a času UTC                                | Získá nebo nastaví efektivní počáteční datum pro toto předplatné ve formátu data a času. Slouží k obnovení data migrovaných předplatných nebo k jeho sladění s jiným.                |
+| datum ukončení závazku    | řetězec ve formátu data a času UTC                                | Koncové datum závazku pro toto předplatné ve formátu data a času. U předplatných, která není možné automaticky obnovit, představuje datum daleko do budoucna.       |
+| status               | řetězec                                                        | Stav předplatného: žádné, Aktivní, Čekající, Pozastaveno nebo Odstraněno.                                                                                                         |
+| autoRenewEnabled     | boolean                                                       | Získá hodnotu určující, jestli se odběr obnovil automaticky.                                                                                                    |
+| typ fakturace          | řetězec                                                        | Určuje, jak se předplatné účtuje: "žádné", "využití" nebo "licence".                                                                                                      |
+| billingCycle         | řetězec                                                        | Určuje frekvenci, s jakou se partner účtuje za tuto objednávku. Podporované hodnoty jsou názvy členů, které najdete v [**části BillingCycleType**](product-resources.md#billingcycletype). |
+| hasPurchasableAddons | boolean                                                       | Získá nebo nastaví hodnotu určující, jestli má předplatné doplňky, které je možné koupit.                                                                                             |
+| isTrial (aplikace isTrial)              | boolean                                                       | Hodnota určující, jestli se jedná o zkušební předplatné.                                                                                                                      |
+| isMicrosoftProduct   | boolean                                                       | Hodnota, která určuje, jestli se jedná o produkt Microsoftu.                                                                                                                       |
+| publisherName        | řetězec                                                        | Název vydavatele.                                                                                                                                                           |
+| akce              | pole řetězců                                              | Získá nebo nastaví akce, které jsou povoleny. Možné hodnoty: edit (upravit), cancel (zrušit).                                                                                                  |
+| ID partnera            | řetězec                                                        | ID MPN záznamu prodejce použitého v modelu nepřímého partnera.                                                                                                     |
+| suspensionReasons    | pole řetězců                                              | Jen pro čtení. Pokud bylo předplatné pozastavené, indikuje důvod.                                                                                                                  |
+| contractType (Typ kontraktu)         | řetězec                                                        | Jen pro čtení. Typ kontraktu: "subscription", "productKey" nebo "redemptionCode".                                                                                           |
+| refundOptions        | pole prostředků [RefundOption](#refundoption)   | Jen pro čtení. Sada možností refundace, které jsou k dispozici pro toto předplatné.                                                                                              |
+| Odkazy                | [Odkazy na předplatné](#subscriptionlinks)                       | Získá nebo nastaví odkazy na předplatné.                                                                                                                                          |
+| Kódobjednávky              | řetězec                                                        | ID objednávky, která byla umístěna za účelem zahájení odběru.                                                                                                                |
 | termDuration         | řetězec                                                        | ISO 8601 reprezentace doby trvání období. Aktuální podporované hodnoty jsou **P1M** (1 měsíc), **P1Y** (1 rok) a **P3Y** (3 roky).                                                        |
 | atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající předplatnému.                                                                                                                    |
 | renewalTermDuration  | řetězec                                                        | ISO 8601 reprezentace doby trvání období. Aktuální podporované hodnoty jsou **P1M** (1 měsíc) a **P1Y** (1 rok).                                                        |
@@ -67,15 +62,15 @@ Prostředek **SubscriptionLinks** popisuje kolekci odkazů připojených k prost
 
 | Vlastnost           | Typ                               | Description                           |
 |--------------------|------------------------------------|---------------------------------------|
-| offer              | [Odkaz](utility-resources.md#link) | Získá nebo nastaví nabídku.               |
-| parentSubscription | [Odkaz](utility-resources.md#link) | Získá nebo nastaví nadřazený odběr. |
-| product            | [Odkaz](utility-resources.md#link) | Získá produkt přidružený k předplatnému. |
-| skladové                | [Odkaz](utility-resources.md#link) | Získá skladovou položku produktu přidruženou k předplatnému. |
-| dostupnosti       | [Odkaz](utility-resources.md#link) | Získá dostupnost SKU produktu přidružená k předplatnému. |
-| activationLinks    | [Odkaz](utility-resources.md#link) | Získá seznam aktivačních odkazů přidružených k předplatnému. |
-| samorozbalující               | [Odkaz](utility-resources.md#link) | Identifikátor URI samostatného.                         |
-| generace               | [Odkaz](utility-resources.md#link) | Další stránka položek               |
-| předchozí           | [Odkaz](utility-resources.md#link) | Předchozí stránka položek           |
+| offer              | [Propojit](utility-resources.md#link) | Získá nebo nastaví nabídku.               |
+| parentSubscription | [Propojit](utility-resources.md#link) | Získá nebo nastaví nadřazený odběr. |
+| product            | [Propojit](utility-resources.md#link) | Získá produkt přidružený k předplatnému. |
+| skladové                | [Propojit](utility-resources.md#link) | Získá skladovou položku produktu přidruženou k předplatnému. |
+| dostupnosti       | [Propojit](utility-resources.md#link) | Získá dostupnost SKU produktu přidružená k předplatnému. |
+| activationLinks    | [Propojit](utility-resources.md#link) | Získá seznam aktivačních odkazů přidružených k předplatnému. |
+| samorozbalující               | [Propojit](utility-resources.md#link) | Identifikátor URI pro sebe.                         |
+| generace               | [Propojit](utility-resources.md#link) | Další stránka položek               |
+| předchozí           | [Propojit](utility-resources.md#link) | Předchozí stránka položek           |
 
 ## <a name="subscriptionprovisioningstatus"></a>SubscriptionProvisioningStatus
 
@@ -96,7 +91,7 @@ Prostředek **SubscriptionRegistrationStatus** popisuje kolekci odkazů připoje
 | Vlastnost           | Typ                               | Description                                                                           |
 |--------------------|------------------------------------|---------------------------------------------------------------------------------------|
 | subscriptionId     | řetězec                             | Identifikátor předplatného.                                                          |
-| status             | řetězec                             | Určuje stav registrace: "registrované", "Register" nebo "notregistered".    |
+| status             | řetězec                             | Určuje stav registrace: "registrované", "registrace" nebo "notregistered".    |
 
 ## <a name="supportcontact"></a>SupportContact
 

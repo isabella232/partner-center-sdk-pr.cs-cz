@@ -4,18 +4,14 @@ description: Jak získat kolekci nároků.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d2cc485429941dd2080bd285553333a01fc0ffd1
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 7bb8d3aefb11fae0af4bce790b41598d935de57c
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766848"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906427"
 ---
 # <a name="get-a-collection-of-entitlements"></a>Získání kolekce nároků
-
-**Platí pro**
-
-- Partnerské centrum
 
 Jak získat kolekci nároků.
 
@@ -307,7 +303,7 @@ Následující příklady vám ukážou, jak načíst informace o produktech a r
 
 ### <a name="c-example"></a>\#Příklad C
 
-Pokud chcete získat další podrobnosti týkající se rezervací virtuálních počítačů od nároku, vyvolejte identifikátor URI vystavený v rámci entitledArtifacts. Propojte s artifactType = virtual_machine_reserved_instance.
+Chcete-li získat další podrobnosti týkající se rezervací virtuálních počítačů od nároku, vyvolejte identifikátor URI vystavený v rámci entitledArtifacts.link s artifactType = virtual_machine_reserved_instance.
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("VirtualMachineReservedInstance").Get();
@@ -409,4 +405,4 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 
 ### <a name="api-consumers"></a>Příjemci rozhraní API
 
-Partneři, kteří používají rozhraní API k dotazování na nároky na rezervované instance virtuálního počítače – aktualizujte identifikátor URI požadavku z **/Customers/{customerId}/Entitlements na/Customers/{customerId}/Entitlements? entitlementType = virtualmachinereservedinstance** , aby se zachovala zpětná kompatibilita. Aby bylo možné využívat virtuální počítač nebo Azure SQL s pokročilou smlouvou, aktualizujte identifikátor URI žádosti na **/Customers/{customerId}/Entitlements? entitlementType = reservedinstance**.
+Partneři, kteří používají rozhraní API k dotazování na nároky na rezervované instance virtuálního počítače – aktualizujte identifikátor URI požadavku z **/Customers/{customerId}/Entitlements na/Customers/{customerId}/Entitlements? entitlementType = virtualmachinereservedinstance** , aby se zachovala zpětná kompatibilita. pokud chcete využívat virtuální počítač nebo Azure SQL se zdokonalenou smlouvou, aktualizujte identifikátor URI žádosti na **/customers/{customerId}/entitlements? entitlementType = reservedinstance**.

@@ -4,18 +4,14 @@ description: Popisuje prostředky související se službami zakoupenými zákaz
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c0236329d93d8ddc9019a15fb67a81a3af3e7620
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: dbddc1973dd9a904cedd549c1772cd4c74c69a60
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766817"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547406"
 ---
 # <a name="service-costs-resources"></a>Prostředky nákladů na službu
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Popisuje prostředky související se službami zakoupenými zákazníkem.
 
@@ -57,7 +53,7 @@ Popisuje prostředky související se službami zakoupenými zákazníkem.
 **ServiceCostLineItem** popisuje jednu položku zakoupenou zákazníkem.
 
 > [!IMPORTANT]
-> Následující vlastnosti *platí jenom pro položky s náklady na* službu, u kterých je produkt *jednorázové nákupy*: **ProductID**, **ProductName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **Publisher**, **termAndBillingCycle**, **discountDetails**. Tyto vlastnosti se *nevztahují na* položky řádku služby, ve kterých je produkt *opakovaný nákup*. Tyto vlastnosti se například *nevztahují* na sady Office 365 a Azure založené na předplatném.
+> Následující vlastnosti *platí jenom pro položky s náklady na* službu, u kterých je produkt *jednorázové nákupy*: **ProductID**, **ProductName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **Publisher**, **termAndBillingCycle**, **discountDetails**. Tyto vlastnosti se *nevztahují na* položky řádku služby, ve kterých je produkt *opakovaný nákup*. tyto vlastnosti se například *nevztahují* na Office 365 a Azure na základě předplatného.
 
 | Vlastnost                 | Typ                           | Description                                                          |
 |--------------------------|--------------------------------|----------------------------------------------------------------------|
@@ -68,7 +64,7 @@ Popisuje prostředky související se službami zakoupenými zákazníkem.
 | Seskup                  | řetězec                         | Identifikátor objednávky.                                                |
 | Hodnotami OfferId                  | řetězec                         | Identifikátor nabídky                                                |
 | offerName                | řetězec                         | Název nabídky                                                      |
-| resellerMPNId            | řetězec                         | Používá se jenom ve dvou partnerských scénářích. Odkazuje na identifikátor MPN. |
+| resellerMPNId            | řetězec                         | Používá se jenom ve scénářích partnerských partnerů. Odkazuje na identifikátor MPN. |
 | chargeType               | řetězec                         | Typ přidruženého účtování                                          |
 | quantity                 | číslo                         | Množství použitých nebo zakoupených jednotek.                             |
 | unitPrice                | číslo                         | Cena za jednotku                                                  |
@@ -94,5 +90,5 @@ Popisuje prostředky související se službami zakoupenými zákazníkem.
 
 | Vlastnost             | Typ                               | Description                         |
 |----------------------|------------------------------------|-------------------------------------|
-| serviceCostLineItems | [Odkaz](utility-resources.md#link) | Identifikátor URI pro načtení položek čáry |
-| samorozbalující                 | [Odkaz](utility-resources.md#link) | Identifikátor URI samostatného.                       |
+| serviceCostLineItems | [Propojit](utility-resources.md#link) | Identifikátor URI pro načtení položek čáry |
+| samorozbalující                 | [Propojit](utility-resources.md#link) | Identifikátor URI pro sebe.                       |

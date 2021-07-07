@@ -6,18 +6,14 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 9d5ec9172ed92d33e6ff291eafd523cbc13bfbbd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 27a2391a22a9439461fb53764b87c1cafa68b875
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766782"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873883"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-country"></a>Získání seznamu skladových položek pro produkt (podle země)
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Můžete získat kolekci SKU dostupných v zemi pro určitý produkt pomocí rozhraní API partnerského centra.
 
@@ -129,7 +125,7 @@ K získání seznamu SKU pro produkt použijte následující cestu a parametry 
 | ID produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
 | kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
 | cíl – segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý pro filtrování. |
-| reservationScope | řetězec   | No | Při dotazování na seznam SKU pro produkt rezervované instance Azure určete, `reservationScope=AzurePlan` že se má získat seznam SKU, které platí pro AzurePlan. Vyloučením tohoto parametru získáte seznam SKU pro produkty rezervace Azure, které se vztahují na předplatná Microsoft Azure (MS-AZR-0145P).  |
+| reservationScope | řetězec   | No | Při dotazování na seznam SKU pro produkt rezervované instance Azure určete, `reservationScope=AzurePlan` že se má získat seznam SKU, které platí pro AzurePlan. vyloučením tohoto parametru získáte seznam sku pro rezervované produkty Azure, které platí pro předplatná Microsoft Azure (MS-AZR-0145P).  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -151,7 +147,7 @@ MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d
 MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 ```
 
-Získejte seznam SKU pro produkt rezervované instance Azure. Zahrnout jenom SKU, které platí pro plány Azure Microsoft Azure a předplatné AZR (MS--0145P):
+Získejte seznam SKU pro produkt rezervované instance Azure. zahrnout jenom sku, které platí pro plány Azure Microsoft Azure a předplatné AZR (MS--0145P):
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ5S/skus?country=US&reservationScope=AzurePlan HTTP/1.1
@@ -161,7 +157,7 @@ MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d
 MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 ```
 
-Získejte seznam SKU pro produkt rezervované instance Azure. Zahrnout jenom SKU, které platí pro předplatná Microsoft Azure (MS-AZR-0145P) a ne plány Azure:
+Získejte seznam SKU pro produkt rezervované instance Azure. zahrnout jenom sku, které platí pro předplatná Microsoft Azure (MS-AZR-0145P) a ne plány Azure:
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ5S/skus?country=US HTTP/1.1

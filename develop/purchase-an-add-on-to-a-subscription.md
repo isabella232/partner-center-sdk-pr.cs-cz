@@ -4,20 +4,16 @@ description: Jak zakoupit doplněk do stávajícího předplatného.
 ms.date: 11/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 975a2516bccdc6274bfec5d6a3286a649fc4f808
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: d8b700a2ad41a37ca0ad745f3e7767449974b18a
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766970"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547678"
 ---
 # <a name="purchase-an-add-on-to-a-subscription"></a>Nákup doplňku k předplatnému
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak zakoupit doplněk do stávajícího předplatného.
 
@@ -33,7 +29,7 @@ Jak zakoupit doplněk do stávajícího předplatného.
 
 ## <a name="purchasing-an-add-on-through-code"></a>Nákup doplňku prostřednictvím kódu
 
-Když si nakoupíte doplněk k předplatnému, které aktualizujete původní pořadí předplatného, s pořadím pro doplněk. V následujícím seznamu je KódZákazníka ID zákazníka, subscriptionId je ID předplatného a addOnOfferId je ID nabídky pro doplněk.
+Při nákupu doplňku k předplatnému se aktualizuje původní pořadí předplatného s pořadím pro doplněk. V následujícím seznamu je KódZákazníka ID zákazníka, subscriptionId je ID předplatného a addOnOfferId je ID nabídky pro doplněk.
 
 Tady je postup:
 
@@ -49,7 +45,7 @@ Tady je postup:
     var parentSubscription = subscriptionOperations.Get();
     ```
 
-3.  Vytvoří instanci objektu New [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) . Tato instance objednávky se používá k aktualizaci původního pořadí používaného k zakoupení předplatného. Přidejte jednu položku řádku do objednávky, která představuje doplněk.
+3.  Vytvoří instanci objektu New [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) . Tato instance objednávky se používá k aktualizaci původního pořadí používaného k zakoupení předplatného. Přidejte do pořadí, který představuje doplněk, jednu položku s jedním řádkem.
     ``` csharp
     var orderToUpdate = new Order()
     {
@@ -75,7 +71,7 @@ Tady je postup:
 
 ## <a name="c"></a>C\#
 
-Chcete-li zakoupit doplněk, Začněte získáním rozhraní pro operace předplatného voláním metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, který identifikuje zákazníka, a pomocí metody [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) pro identifikaci předplatného, které obsahuje nabídku doplňku. Použijte toto [**rozhraní**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) k načtení podrobností o předplatném voláním [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Proč potřebujete podrobnosti o předplatném? Protože potřebujete ID objednávky pořadí předplatného. To je pořadí, v jakém se má doplněk aktualizovat.
+Chcete-li zakoupit doplněk, Začněte získáním rozhraní pro operace předplatného voláním metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, který identifikuje zákazníka, a pomocí metody [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) pro identifikaci předplatného, které obsahuje nabídku doplňku. Použijte toto [**rozhraní**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) k načtení podrobností o předplatném voláním [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Podrobnosti o předplatném obsahují ID objednávky pořadí předplatného, což je pořadí, v jakém se má doplněk aktualizovat.
 
 Dále vytvořte instanci objektu New [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) a naplňte ji jednou instancí [**LineItem**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) , která obsahuje informace pro identifikaci doplňku, jak je znázorněno v následujícím fragmentu kódu. Pomocí tohoto nového objektu aktualizujete pořadí předplatného pomocí doplňku. Nakonec zavolejte metodu [**patch**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.patch) a aktualizujte pořadí předplatného, a to po prvním identifikaci zákazníka pomocí [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) a ORDER by Order [**. ById**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid).
 
@@ -113,7 +109,7 @@ var orderToUpdate = new Order()
 Order updatedOrder = partnerOperations.Customers.ById(customerId).Orders.ById(parentSubscription.OrderId).Patch(orderToUpdate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: AddSubscriptionAddOn.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: AddSubscriptionAddOn. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -157,10 +153,10 @@ V následujících tabulkách jsou popsány vlastnosti v textu požadavku.
 | LineItemNumber       | číslo | Y        | Číslo položky řádku začínající na 0.                       |
 | Hodnotami OfferId              | řetězec | Y        | ID nabídky doplňku                                  |
 | SubscriptionId       | řetězec | N        | ID zakoupeného předplatného doplňku.                 |
-| ParentSubscriptionId | řetězec | Y        | ID nadřazeného předplatného, které má nabídku doplňku. |
-| FriendlyName         | řetězec | N        | Popisný název této položky řádku                        |
-| Množství             | číslo | Y        | Počet licencí.                                      |
-| PartnerIdOnRecord    | řetězec | N        | ID MPN partnera záznamu                         |
+| ID nadřazeného odběru | řetězec | Y        | ID nadřazeného předplatného, které má nabídku doplňku. |
+| Friendlyname         | řetězec | N        | Popisný název této řádkové položky.                        |
+| Množství             | číslo | Y        | Počet licencí                                      |
+| Id partneraZáznam    | řetězec | N        | ID MPN záznamu partnera.                         |
 | Atributy           | object | N        | Obsahuje "ObjectType": "OrderLineItem".                      |
 
 ### <a name="request-example"></a>Příklad požadavku
@@ -202,11 +198,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí aktualizované pořadí předplatného v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi aktualizované pořadí odběru.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

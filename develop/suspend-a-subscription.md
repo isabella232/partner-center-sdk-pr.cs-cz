@@ -4,21 +4,16 @@ description: Pozastaví prostředek předplatného, který se shoduje s ID záka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f351c87efe2bdc810a66c64a9d01b7d376f8a6e3
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 7dae7c3422a403c48a2b10424c4ae5dbdbc498ea
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766950"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547338"
 ---
 # <a name="suspend-a-subscription"></a>Pozastavení předplatného
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Pozastaví prostředek [předplatného](subscription-resources.md) , který se shoduje s ID zákazníka a předplatného, kvůli podvodům nebo nedoplatkům.
 
@@ -48,7 +43,7 @@ updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subsc
    });
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: UpdateSubscription.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: UpdateSubscription. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

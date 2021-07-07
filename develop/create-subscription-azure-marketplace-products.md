@@ -4,18 +4,14 @@ description: Vývojáři můžou vytvořit a spravovat předplatné pro produkty
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: df2a3707e00ba36a11c404b102304c08d105244e
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: ae2e4b0a1ffa2e63e68864887093673e32079d9f
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766688"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973362"
 ---
 # <a name="create-a-subscription-for-commercial-marketplace-products"></a>Vytvoření předplatného pro produkty z komerčního tržiště
-
-**Platí pro:**
-
-* Partnerské centrum
 
 Předplatné pro produkty komerčního tržiště můžete vytvořit pomocí rozhraní API partnerského centra. Musíte [získat seznam nabídek pro trh](#get-a-list-of-offers-for-a-market), [vytvořit a odeslat objednávku](#create-and-submit-an-order) pro předplatné komerčního tržiště a pak [načíst aktivační odkaz](#get-activation-link).
 

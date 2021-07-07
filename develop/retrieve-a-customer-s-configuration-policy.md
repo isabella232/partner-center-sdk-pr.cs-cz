@@ -4,19 +4,16 @@ description: Jak načíst zadané zásady konfigurace pro zadaného zákazníka.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8d5d4ee83d1a66f33872d8b1f1327f47eeb4465e
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f9a8cb435c63d8d02c3b4633abc8723353116f37
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767014"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547491"
 ---
 # <a name="retrieve-a-customers-configuration-policy"></a>Načtení zásad konfigurace zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Jak načíst zadané zásady konfigurace pro zadaného zákazníka.
 
@@ -41,7 +38,7 @@ ConfigurationPolicy retrievedConfigurationPolicy =
     partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedConfigurationPolicyId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetConfigurationPolicy.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetConfigurationPolicy. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -66,7 +63,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

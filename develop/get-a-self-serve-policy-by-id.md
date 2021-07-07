@@ -1,30 +1,26 @@
 ---
-title: Získání samoobslužné zásady podle ID
-description: Načte zadané samoobslužné zásady pomocí jejího ID.
+title: Získat samoobslužnou zásadu podle ID
+description: Získá zadanou zásadu samoobslužného zpracování pomocí jejího ID.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ec01d0d9b7c3858cdacf1dbaad3b2b0bb7b6a1a4
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 074d7ba65c7aab91687a67f50e871cee913fc2bb
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766780"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873832"
 ---
-# <a name="get-a-self-serve-policy-by-id"></a>Získání samoobslužné zásady podle ID
+# <a name="get-a-self-serve-policy-by-id"></a>Získat samoobslužnou zásadu podle ID
 
-**Platí pro**
-
-- Partnerské centrum
-
-Načte zadané samoobslužné zásady pomocí jejího ID.
+Získá zadanou zásadu samoobslužného zpracování pomocí jejího ID.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
-- ID zásad samostatného poskytování.
+- ID zásady, která slouží samy na sebe.
 
 ## <a name="examples"></a>Příklady
 
@@ -43,11 +39,11 @@ K získání zadaného produktu použijte následující parametry cesty.
 
 | Název                       | Typ         | Vyžadováno | Popis                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy-ID**     | **řetezce**   | Yes      | Řetězec, který identifikuje zásadu samoobslužného ovládání.                 |
+| **SelfServePolicy-ID**     | **řetězec**   | Yes      | Řetězec, který identifikuje zásadu samoobslužného zpracování.                 |
 
 **Hlavičky požadavku**
 
-- Další informace najdete v [záhlavích](headers.md) .
+- Další informace naleznete v části [Headers](headers.md).
 
 **Text žádosti**
 
@@ -75,7 +71,7 @@ Tato metoda vrací následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 404                  | 600039       | Zásady samoobslužné obsluhy nebyly nalezeny.                                                     |
+| 404                  | 600039       | Zásady samoobslužného ovládání nebyly nalezeny.                                                     |
 
 **Příklad odpovědi**
 

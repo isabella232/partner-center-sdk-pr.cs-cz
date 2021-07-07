@@ -1,26 +1,21 @@
 ---
 title: Scénáře rozhraní API partnerského centra
-description: Přečtěte si, jak partneři programu Cloud Solution Provider můžou používat rozhraní API partnerského centra k programové správě účtů, objednávek, podpory a fakturace zákazníků.
+description: přečtěte si, jak Cloud Solution Provider partneři programu můžou pomocí rozhraní API partnerského centra spravovat účty zákazníků, objednávky, podporu a fakturace prostřednictvím služby.
 ms.date: 10/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 14dbd501e3d075c3880fae6f362feef797cba133
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: d74400a975323d5f0f276dbdece3621d8b47a609
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767070"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547474"
 ---
 # <a name="partner-center-api-scenarios-that-let-you-programmatically-manage-customer-accounts"></a>Scénáře rozhraní API partnerského centra, které umožňují programově spravovat účty zákazníků
 
-**Platí pro:**
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Vycentrovat pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tento článek popisuje některé způsoby, jak partneři v programu Cloud Solution Provider můžou pomocí rozhraní API partnerského centra programově spravovat oblasti, jako je:
+tento článek popisuje některé způsoby, jak partneři v Cloud Solution Provider programu můžou použít rozhraní API partnerského centra pro programové správu oblastí, jako je:
 
 - Zákaznické účty
 - Orders (Objednávky)

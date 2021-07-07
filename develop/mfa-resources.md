@@ -4,18 +4,14 @@ description: Pochopte podrobnosti o přijetí vícefaktorového ověřování (M
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: 5eb77c3c10e95c9dc835cfe05e014b9256531b51
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b41a0e46fa6e0643e82a5a2dbfb7141f54a0f824
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766702"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445540"
 ---
 # <a name="partner-security-requirements-resources"></a>Prostředky požadavků na zabezpečení partnerů
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Tento článek vám pomůže porozumět podrobnostem o přijetí vícefaktorového ověřování (MFA), které vaší organizaci pomůžou splnit stav požadavků na zabezpečení partnerů. 
 

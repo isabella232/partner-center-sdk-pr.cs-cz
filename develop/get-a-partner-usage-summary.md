@@ -6,20 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: ba1885f46043a75274595239fe61ce3ef0998acf
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: f003980f1b521ad0ac26dbfd0d4821b9096fdd27
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766763"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873900"
 ---
 # <a name="get-a-usage-summary-for-a-partner"></a>Získání souhrnu využití pro partnera
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Pomocí prostředku **PartnerUsageSummary** můžete získat přehled o využití partnerů pro všechny zákazníky, kteří během aktuálního fakturačního období zakoupili určitou službu nebo prostředek Azure.
 
@@ -46,8 +42,8 @@ Pokud chcete získat shrnutí využití pro všechny zákazníky, kteří během
 Příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
-- Třída: **GetPartnerUsageSummary.cs**
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **GetPartnerUsageSummary. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 

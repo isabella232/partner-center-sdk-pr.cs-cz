@@ -4,20 +4,16 @@ description: Jak načíst adresu URL požadavku vztahu pro odeslání zákazník
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5f899734b774ff460e005e20df8658275b2ce9d5
-ms.sourcegitcommit: d4e652e3b73c6137704d43d4a472cc5aa5549f11
+ms.openlocfilehash: 07804b36dfe0892cf8b531e0731188260c014f49
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "97767664"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547442"
 ---
 # <a name="retrieve-a-relationship-request-url"></a>Načtení adresy URL žádosti o vztah
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo
 
 Jak načíst adresu URL požadavku vztahu pro odeslání zákazníkovi.
 
@@ -35,7 +31,7 @@ Pokud chcete načíst adresu URL požadavku vztahu, nejdřív použijte [**IAggr
 var customerRelationshipRequest = partnerOperations.Customers.RelationshipRequest.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetCustomerRelationshipRequest.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetCustomerRelationshipRequest. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -51,7 +47,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

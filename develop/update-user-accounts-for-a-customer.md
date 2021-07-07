@@ -4,18 +4,14 @@ description: Aktualizujte podrobnosti v existujícím uživatelském účtu pro 
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 52a43341bf2c3ba64d8c232af01f3fbae6765d82
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 6ebfdbb5df1d56416835af771fd6b70190776012
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766812"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445268"
 ---
 # <a name="update-user-accounts-for-a-customer"></a>Aktualizace uživatelských účtů pro zákazníka
-
-**Platí pro**
-
-- Partnerské centrum
 
 Aktualizujte podrobnosti v existujícím uživatelském účtu pro zákazníka.
 
@@ -50,7 +46,7 @@ User updatedCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomer
 
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: CustomerUserUpdate.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **třída**: CustomerUserUpdate. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6690a6886eeb31a78cdb556280d4bdc2b4beb124
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 75f21a3f76e5502ba40b89995aa26bd0e668b3fa
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766960"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873815"
 ---
 # <a name="get-a-subscription-by-id"></a>Získání předplatného podle ID
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá prostředek [předplatného](subscription-resources.md) , který odpovídá ID zákazníka a ID předplatného.
 
@@ -44,7 +39,7 @@ Chcete-li získat předplatné podle ID, Začněte získáním rozhraní pro ope
 var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionID).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetSubscription.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** samples SDK pro partnery: getsubscription. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

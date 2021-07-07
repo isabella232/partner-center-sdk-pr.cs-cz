@@ -4,18 +4,14 @@ description: Načte seznam odstraněných prostředků CustomerUser pro zákazn�
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9b1a9b85e3eba7ae7ec1dab8e951134d03371604
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f4fec958a9a6bb580d35de1cf3007e1db3b2b650
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766929"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445302"
 ---
 # <a name="view-deleted-users-for-a-customer"></a>Zobrazení odstraněných uživatelů pro zákazníka
-
-**Platí pro**
-
-- Partnerské centrum
 
 Načte seznam odstraněných prostředků CustomerUser pro zákazníka podle ID zákazníka. Volitelně můžete nastavit velikost stránky. Je nutné, abyste zadali filtr.
 
@@ -27,7 +23,7 @@ Načte seznam odstraněných prostředků CustomerUser pro zákazníka podle ID 
 
 ## <a name="what-happens-when-you-delete-a-user-account"></a>Co se stane, když odstraníte uživatelský účet?
 
-Stav uživatele je nastaven na "neaktivní" při odstranění uživatelského účtu. Zůstane to po dobu třiceti dnů, po jejímž uplynutí se uživatelský účet a jeho přidružená data vyprázdní a provedou neobnovitelné. Pokud chcete obnovit odstraněný uživatelský účet v rámci třiceti dnů, přečtěte si téma [Obnovení odstraněného uživatele pro zákazníka](restore-a-user-for-a-customer.md). Po odstranění a označení "neaktivní" již uživatelský účet nebude vrácen jako člen kolekce uživatelů (například pomocí příkazu [získat seznam všech uživatelských účtů pro zákazníka](get-a-list-of-all-user-accounts-for-a-customer.md)). Chcete-li získat seznam odstraněných uživatelů, které ještě nebyly smazány, je nutné zadat dotaz na uživatelské účty, které byly nastaveny na neaktivní.
+Stav uživatele je nastaven na "neaktivní" při odstranění uživatelského účtu. Trvá to po dobu 30 dnů, po jejímž uplynutí se uživatelský účet a jeho přidružená data vyprázdní a provedou jako neobnovitelné. Pokud chcete obnovit odstraněný uživatelský účet v rámci 30denního okna, přečtěte si téma [Obnovení odstraněného uživatele pro zákazníka](restore-a-user-for-a-customer.md). Po odstranění a označení "neaktivní" již uživatelský účet nebude vrácen jako člen kolekce uživatelů (například pomocí příkazu [získat seznam všech uživatelských účtů pro zákazníka](get-a-list-of-all-user-accounts-for-a-customer.md)). Chcete-li získat seznam odstraněných uživatelů, které ještě nebyly smazány, je nutné zadat dotaz na uživatelské účty, které byly nastaveny na neaktivní.
 
 ## <a name="c"></a>C\#
 
@@ -47,7 +43,7 @@ var simpleQueryWithFilter = QueryFactory.Instance.BuildIndexedQuery(customerUser
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Query(simpleQueryWithFilter);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetCustomerInactiveUsers.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetCustomerInactiveUsers. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

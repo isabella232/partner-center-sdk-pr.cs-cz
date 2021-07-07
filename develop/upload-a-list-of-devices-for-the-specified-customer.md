@@ -4,19 +4,16 @@ description: Jak nahrát seznam informací o zařízeních do existující dávk
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d01ac1a42c50416487167070be9d104562300baf
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 3fa9cff39113130c54cecfaef1f8ca28e0ac5adf
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766999"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530306"
 ---
 # <a name="upload-a-list-of-devices-to-an-existing-batch-for-the-specified-customer"></a>Nahrání seznamu zařízení do stávající dávky pro konkrétního zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Jak nahrát seznam informací o zařízeních do existující dávky pro zadaného zákazníka. Tím se zařízení přidruží k již vytvořené dávce zařízení.
 
@@ -74,7 +71,7 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.Create(devicesToBeUploaded);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateDevices.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CreateDevices. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

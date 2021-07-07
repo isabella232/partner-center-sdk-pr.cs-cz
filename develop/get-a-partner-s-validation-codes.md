@@ -1,27 +1,23 @@
 ---
-title: Získání kódů pro ověření cloudu komunity státní správy
-description: Jak získat kódy pro ověření cloudového komunitního partnera pro státní správu.
+title: získání ověřovacích kódů Government Community Cloud partnera
+description: jak získat ověřovací kódy Government Community Cloud partnera.
 ms.date: 11/08/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: d84a3d3c69d835e42565c4e6f1edb06ab338340a
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 04bccf587628337004a5825b534048945f791839
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766846"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873866"
 ---
 # <a name="get-a-partners-validation-codes"></a>Získání ověřovacích kódů partnera
 
-**Platí pro**
+tento článek popisuje, jak získat kolekci ověřovacích kódů Government Community Cloud partnerů. Ověřovací kód je nutný k vytvoření zákazníka v cloudu pro státní správu komunity.
 
-- Partnerské centrum
-
-Jak získat kolekci kódů pro ověření cloudu státní správy z partnerské komunity. Ověřovací kód je nutný k vytvoření zákazníka v cloudu pro státní správu komunity.
-
-Pokud vás zajímá, že máte vaši organizaci nebo organizaci schválenou pro Microsoft Office 365 pro poskytovatele CSP, přečtěte si téma [Office 365 vládní RSZ pro poskytovatele CSP a kritéria nároku na zákazníky/partner-Center/CSP-RSZ-Validate).
+pokud vás zajímá, že vaše organizace nebo organizace zákazníka jsou schválené pro Office 365 Government GCC pro csp, přečtěte si téma [Office 365 Government GCC pro poskytovatele csp a kritéria nároku na zákazníky](/partner-center/csp-gcc-validate).
 
 ## <a name="prerequisites"></a>Požadavky
 

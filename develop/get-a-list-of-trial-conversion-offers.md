@@ -4,18 +4,14 @@ description: Jak načíst seznam nabídek zkušebního převodu.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e1eadecde9efa0b59fc7790bd474889bb32821dc
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 981910560faf7b7957b28e643c09a003826b9cff
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766931"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873917"
 ---
 # <a name="get-a-list-of-trial-conversion-offers"></a>Získání seznamu nabídek převod zkušebních verzí
-
-**Platí pro**
-
-- Partnerské centrum
 
 Jak načíst seznam nabídek zkušebního převodu.
 

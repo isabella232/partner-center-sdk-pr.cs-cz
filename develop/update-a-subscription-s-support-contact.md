@@ -1,39 +1,35 @@
 ---
 title: Aktualizace kontaktu podpory pro předplatné
-description: Jak aktualizovat kontakt na podporu pro předplatné na jednu z hodnot partnera, který přidal prodejce.
+description: Jak aktualizovat kontakt podpory předplatného na jednoho z prodejců s přidanou hodnotou partnera.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c8c6b658cfe6e14c75b0c06b177920ce3eb1b4ed
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8c89f91fc9e89384a7be1237c08d7a9a1cfe3164
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766947"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530357"
 ---
 # <a name="update-a-subscriptions-support-contact"></a>Aktualizace kontaktu podpory pro předplatné
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak aktualizovat kontakt na podporu pro předplatné na jednu z hodnot partnera, který přidal prodejce.
+Jak aktualizovat kontakt podpory předplatného na jednoho z prodejců s přidanou hodnotou partnera.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Identifikátor předplatného.
 
-- Informace o novém kontaktu podpory: identifikátor tenanta, identifikátor Microsoft Partner Network a název. Kontakt na podporu musí být jednou z hodnot partnera, který přidal prodejce.
+- Informace o novém kontaktu podpory: identifikátor tenanta, Microsoft Partner Network identifikátor a název. Kontakt podpory musí být jedním z prodejců s přidanou hodnotou partnera.
 
 ## <a name="c"></a>C\#
 
-Chcete-li aktualizovat kontakt podpory předplatného, nejprve vytvořte instanci a naplňte objekt [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact) novými hodnotami. Potom k identifikaci zákazníka použijte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Dále Získejte rozhraní pro operace předplatného voláním metody [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) s ID předplatného. Pak pomocí vlastnosti [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) Získejte rozhraní pro podporu operací kontaktů. Nakonec zavolejte metodu [**Update**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.update) nebo [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.updateasync) s naplněným objektem SupportContact, abyste aktualizovali kontakt na podporu.
+Pokud chcete aktualizovat kontakt podpory předplatného, nejprve vytvořte instanci objektu [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.supportcontact) a naplňte ho novými hodnotami. Pak k identifikaci zákazníka použijte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Dále získejte rozhraní pro operace předplatného voláním metody [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) s ID předplatného. Potom pomocí vlastnosti [**SupportContact**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.supportcontact) získejte rozhraní pro podporu kontaktních operací. Nakonec zavolejte [**metodu Update**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.update) nebo [**UpdateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionsupportcontact.updateasync) s vyplněnou objektem SupportContact a aktualizujte kontakt podpory.
 
 ``` csharp
 // IAggregatePartner partnerOperations.
@@ -52,15 +48,15 @@ var supportContact = new SupportContact()
 var updatedSupportContact = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionID).SupportContact.Update(supportContact);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: UpdateSubscriptionSupportContact.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** UpdateSubscriptionSupportContact.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                    |
 |---------|--------------------------------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/supportcontact HTTP/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscriptions/{ID_předplatného}/podporaContact HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -68,16 +64,16 @@ K identifikaci zákazníka a předplatného použijte následující parametry c
 
 | Název            | Typ   | Vyžadováno | Popis                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| ID zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.           |
-| ID předplatného | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zkušební předplatné. |
+| id zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.           |
+| id předplatného | řetězec | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje zkušební předplatné. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Do textu žádosti musíte zahrnout naplněný prostředek [SupportContact](subscription-resources.md#supportcontact) . Kontakt na podporu musí být stávající prodejce s vztahem k partnerovi.
+Do textu požadavku musíte zahrnout vyplněný prostředek [SupportContact.](subscription-resources.md#supportcontact) Kontakt podpory musí být stávajícím prodejcem se vztahem k partnerovi.
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -112,11 +108,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi prostředek [SupportContact](subscription-resources.md#supportcontact) .
+V případě úspěchu bude tělo odpovědi obsahovat prostředek [SupportContact.](subscription-resources.md#supportcontact)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

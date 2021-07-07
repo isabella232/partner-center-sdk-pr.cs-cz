@@ -4,28 +4,24 @@ description: Jak zakoupit položky katalogu pomocí rozhraní API partnerského 
 ms.date: 07/12/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f2b3a34cdb6b29cb7eaaf5d977e4588f538fff09
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d3e0deedff194b1c836d9266c2201a2b3a52cc1b
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766712"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445353"
 ---
 # <a name="purchase-catalog-items"></a>Nákup položek katalogu
-
-**Platí pro**
-
-- Partnerské centrum
 
 Následující scénář ukazuje obecný proces nákupu položek z katalogu pomocí rozhraní API partnerského centra.
 
 ## <a name="discovery"></a>Zjišťování
 
-Vyberte produkty a SKU a ověřte jejich dostupnost pomocí následujících modelů rozhraní API partnerského centra:
+Vyberte produkty a skladové jednotky (SKU) a ověřte jejich dostupnost pomocí následujících modelů rozhraní API partnerského centra:
 
 - [Produkt](product-resources.md#product) – seskupovací konstrukce pro kupní zboží nebo služby. Produkt sám o sobě není položkou, která je k nákupu.
-- [SKU](product-resources.md#sku) – skladová jednotka (SKU), která je v rámci produktu kupní. Tyto prvky jsou znázorněny v různých tvarech produktu.
-- [Dostupnost](product-resources.md#availability) – konfigurace, v níž je k dispozici skladová položka k nákupu (například země, měna a oborové segmenty).
+- [SKU](product-resources.md#sku) – skladová SKU v rámci produktu. Tyto prvky jsou znázorněny v různých tvarech produktu.
+- [Dostupnost](product-resources.md#availability) – konfigurace, v níž je k DISpozici SKU k nákupu (například země, měna a odvětví).
 
 Pokud chcete položku zakoupit z katalogu, proveďte následující kroky:
 

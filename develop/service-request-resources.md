@@ -4,20 +4,16 @@ description: Partneři můžou podávat žádosti o služby prostřednictvím sp
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 072f9eddaf9d854f1dcc8cc65f7928b6c95700fa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 02a02e6a873ad8785150368f3d4b89af2b588529
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766726"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547355"
 ---
 # <a name="service-request-resources"></a>Prostředky žádosti o služby
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Partneři můžou podávat žádosti o služby prostřednictvím spisu jménem svých partnerů, aby nahlásily služby, které společnost Microsoft poskytuje, nebo aby požádaly o jinou technickou podporu, že nepodporují poskytování.
 
@@ -38,7 +34,7 @@ Popisuje žádost o službu podanou partnerem, včetně toho, jak probíhá pož
 | PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Primární kontakt na žádost o službu                                              |
 | LastUpdatedBy    | [ServiceRequestContact](#servicerequestcontact)               | "Poslední aktualizace": kontaktuje změny žádosti o službu.                        |
 | ProductName      | řetězec                                                        | Název produktu, který odpovídá žádosti o služby.                     |
-| ProductId        | řetězec                                                        | ID produktu                                                               |
+| ProductId        | řetězec                                                        | ID produktu.                                                               |
 | CreatedDate      | date                                                          | Datum vytvoření žádosti o službu.                                          |
 | LastModifiedDate. | date                                                          | Datum poslední změny žádosti o službu.                                 |
 | LastClosedDate   | date                                                          | Datum poslední uzavření žádosti o službu.                                   |
