@@ -4,34 +4,30 @@ description: Získejte stav předplatného, které je zaregistrované pro použi
 ms.date: 03/19/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e06cf8a450d6c281f7f83a68c899d1e5b29e9855
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 9e39f94c0eac402a0be3afde84279aa637868f96
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767034"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445948"
 ---
 # <a name="get-subscription-registration-status"></a>Získání stavu registrace předplatných
 
-**Platí pro**
+Jak získat stav registrace předplatného pro zákaznické předplatné, které bylo povoleno pro nákup Azure Reserved VM Instances.
 
-- Partnerské centrum
-
-Jak získat stav registrace předplatného u zákaznického předplatného, u kterého je povolené nakupování Azure Reserved VM Instances.
-
-K zakoupení rezervované instance virtuálního počítače Azure pomocí rozhraní API partnerského centra musíte mít aspoň jedno stávající předplatné Azure CSP. Metoda [Register a Subscription](register-a-subscription.md) umožňuje zaregistrovat stávající předplatné Azure CSP a povolit ho pro nákup Azure Reserved VM Instances. Tato metoda umožňuje načíst stav této registrace.
+Pokud si chcete koupit rezervovanou instanci virtuálního počítače Azure pomocí rozhraní PARTNERSKÉ CENTRUM API, musíte mít alespoň jedno stávající předplatné Azure CSP. Metoda [Registrace předplatného](register-a-subscription.md) vám umožní zaregistrovat stávající předplatné Azure CSP a povolit ho pro nákup Azure Reserved VM Instances. Tato metoda umožňuje načíst stav této registrace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat stav registrace předplatného, začněte tím, že k identifikaci zákazníka použijete metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Potom Získejte rozhraní k operacím předplatného voláním metody [**Subscription. ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) s ID předplatného k identifikaci předplatného. Dále pomocí vlastnosti RegistrationStatus Získejte rozhraní pro operace stavu registrace aktuálního předplatného a zavolejte metodu **Get** nebo **GetAsync** pro načtení objektu **SubscriptionRegistrationStatus** .
+Pokud chcete získat stav registrace předplatného, začněte tím, že k identifikaci zákazníka použijte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Pak získejte rozhraní pro operace předplatného voláním metody [**Subscription.ById()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) s ID předplatného pro identifikaci předplatného. Dále pomocí vlastnosti RegistrationStatus získejte rozhraní pro operace stavu registrace aktuálního předplatného a zavolejte metodu **Get** nebo **GetAsync** pro načtení **objektu SubscriptionRegistrationStatus.**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,13 +38,13 @@ Pokud chcete získat stav registrace předplatného, začněte tím, že k ident
 var subscriptionRegistrationDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).RegistrationStatus.Get();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                                                        |
 |-----------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/registrationstatus HTTP/1.1 |
+| **Dostat**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscriptions/{ID_předplatného}/stav registrace HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -56,12 +52,12 @@ K identifikaci zákazníka a předplatného použijte následující parametry c
 
 | Název                    | Typ       | Vyžadováno | Popis                                                   |
 |-------------------------|------------|----------|---------------------------------------------------------------|
-| ID zákazníka             | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
-| ID předplatného         | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje odběr.     |
+| id zákazníka             | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
+| id předplatného         | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje odběr.     |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -83,11 +79,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi prostředek [SubscriptionRegistrationStatus](subscription-resources.md#subscriptionregistrationstatus) .
+V případě úspěchu bude tělo odpovědi obsahovat [prostředek SubscriptionRegistrationStatus.](subscription-resources.md#subscriptionregistrationstatus)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

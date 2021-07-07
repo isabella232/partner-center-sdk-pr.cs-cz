@@ -4,18 +4,14 @@ description: V rámci účtu zákazníka je k dispozici sada rolí adresáře. K
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f42120e40e54ff8bd6242634d97268091abf8e1c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: a035d711ffa91200fa7b479ed5ec53929aa4feaf
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766948"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446696"
 ---
 # <a name="set-user-roles-for-a-customer"></a>Nastavení uživatelských rolí pro zákazníka
-
-**Platí pro**
-
-- Partnerské centrum
 
 V rámci účtu zákazníka je k dispozici sada rolí adresáře. K těmto rolím můžete přiřadit uživatelské účty.
 
@@ -47,7 +43,7 @@ UserMember userMemberToAdd = new UserMember()
 var userMemberAdded = partnerOperations.Customers.ById(selectedCustomer.Id).DirectoryRoles.ById(selectedRole.Id).UserMembers.Create(userMemberToAdd);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: AddUserMemberToDirectoryRole.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: AddUserMemberToDirectoryRole. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -76,9 +72,9 @@ Tato tabulka popisuje požadované vlastnosti v textu žádosti.
 
 | Název                  | Typ       | Vyžadováno | Popis                            |
 |-----------------------|------------|----------|----------------------------------------|
-| **Účet**                | **řetezce** | Y        | ID uživatele, kterého chcete přidat do role. |
-| **DisplayName**       | **řetezce** | Y        | Popisné zobrazované jméno uživatele |
-| **Třídy** | **řetezce** | Y        | Název objektu zabezpečení uživatele.        |
+| **Účet**                | **řetězec** | Y        | ID uživatele, kterého chcete přidat do role. |
+| **DisplayName**       | **řetězec** | Y        | Popisné zobrazované jméno uživatele |
+| **Třídy** | **řetězec** | Y        | Název objektu zabezpečení uživatele.        |
 | **Atributy**        | **předmětů** | Y        | Obsahuje ObjectType: "UserMember"     |
 
 ### <a name="request-example"></a>Příklad požadavku

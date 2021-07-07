@@ -1,39 +1,35 @@
 ---
 title: Registrace předplatného
-description: Zaregistrujte stávající předplatné, aby bylo povolené řazení rezervací Azure.
+description: Zaregistrujte stávající předplatné, aby bylo povolené pro objednávání rezervací Azure.
 ms.date: 07/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9a96bb350f22430c9fd7a1759e336cc9f3ca1939
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: d26a7c77f60e6ef817cde80b9e97c88bd8bdc786
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766968"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446611"
 ---
 # <a name="register-a-subscription"></a>Registrace předplatného
 
-**Platí pro**
+Zaregistrujte stávající [předplatné,](subscription-resources.md) aby bylo povolené pro objednávání rezervací Azure.
 
-- Partnerské centrum
-
-Zaregistrujte stávající [předplatné](subscription-resources.md) , aby bylo povolené řazení rezervací Azure.
-
-Pokud si chcete koupit rezervaci Azure, musíte mít aspoň jedno stávající předplatné Azure CSP. Tato metoda umožňuje zaregistrovat stávající předplatné Azure CSP a povolit ho k nákupu rezervací Azure.
+Pokud si chcete koupit rezervaci Azure, musíte mít alespoň jedno stávající předplatné Azure CSP. Tato metoda vám umožní zaregistrovat stávající předplatné Azure CSP a umožnit mu nákup rezervací Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete zaregistrovat předplatné zákazníka, načtěte rozhraní k operacím předplatného tak, že zavoláte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka k identifikaci zákazníka. Pak zavolejte metodu [**Subscription. ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) s ID předplatného k identifikaci předplatného, které zaregistrujete.
+Pokud chcete zaregistrovat předplatné zákazníka, načtěte rozhraní pro operace předplatného voláním metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a identifikujte zákazníka. Potom zavolejte [**metodu Subscription.ById()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) s ID předplatného a identifikujte předplatné, které registrujete.
 
-Nakonec zavolejte metodu Register **. Register ()** pro registraci předplatného a NAČTĚTE identifikátor URI, který se dá použít k získání stavu registrace předplatného. Další informace najdete v tématu [získání stavu registrace předplatného](get-subscription-registration-status.md).
+Nakonec zavolejte **metodu Registration.Register()** pro registraci předplatného a načtěte identifikátor URI, který lze použít k získání stavu registrace předplatného. Další informace najdete v tématu [Získání stavu registrace předplatného.](get-subscription-registration-status.md)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,13 +40,13 @@ Nakonec zavolejte metodu Register **. Register ()** pro registraci předplatnéh
 var subscriptionRegistrationDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).Registration.Register();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                                                        |
 |-----------|------------------------------------------------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/registrations HTTP/1.1 |
+| **Příspěvek**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscriptions/{ID_předplatného}/registrace HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -58,12 +54,12 @@ K identifikaci zákazníka a předplatného použijte následující parametry c
 
 | Název                    | Typ       | Vyžadováno | Popis                                                   |
 |-------------------------|------------|----------|---------------------------------------------------------------|
-| ID zákazníka             | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
-| ID předplatného         | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje odběr.     |
+| id zákazníka             | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
+| id předplatného         | řetězec     | Yes      | Řetězec ve formátu GUID, který identifikuje odběr.     |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -85,11 +81,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu odpověď obsahuje hlavičku **umístění** s identifikátorem URI, který lze použít k načtení stavu registrace předplatného. Uložte tento identifikátor URI pro použití s dalšími souvisejícími rozhraními REST API. Příklad toho, jak načíst stav, najdete v tématu [získání stavu registrace předplatného](get-subscription-registration-status.md).
+V případě úspěchu odpověď obsahuje **hlavičku Location** s identifikátorem URI, který lze použít k načtení stavu registrace předplatného. Uložte si tento identifikátor URI pro použití s dalšími souvisejícími rozhraními REST API. Příklad načtení stavu najdete v tématu Získání [stavu registrace předplatného.](get-subscription-registration-status.md)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

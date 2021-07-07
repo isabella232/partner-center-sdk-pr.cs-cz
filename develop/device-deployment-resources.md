@@ -1,40 +1,37 @@
 ---
 title: Prostředky nasazení zařízení
-description: Prostředky související s nasazením zařízení v partnerském centru
+description: Prostředky související s Partnerské centrum nasazením zařízení
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a464cdad3979c305df16a3bdc9133ce70a7ac688
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c85f0bd6a633ac18aa8e56e5a89bfc5c8f0398cc
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766679"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906501"
 ---
 # <a name="device-deployment-resources"></a>Prostředky nasazení zařízení
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud (Německo)
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+Následující zdroje informací souvisejí s nasazením zařízení.
 
-Následující prostředky souvisejí s nasazením zařízení.
-
-## <a name="configurationpolicy"></a>ConfigurationPolicy
+## <a name="configurationpolicy"></a>Zásady konfigurace
 
 **ConfigurationPolicy** poskytuje informace o zásadách konfigurace.
 
 | Vlastnost             | Typ                                                           | Description                                                        |
 |----------------------|----------------------------------------------|--------------------------------------------------------------------------------------|
-| id                   | řetězec                                       | Řetězec ve formátu GUID, který identifikuje zásadu.                                  |
+| id                   | řetězec                                       | Řetězec formátovaný identifikátorem GUID, který identifikuje zásadu.                                  |
 | name                 | řetězec                                       | Popisný název zásady.                                                    |
 | category             | řetězec                                       | Kategorie.                                                                        |
 | description          | řetězec                                       | Popis zásady.                                                              |
-| devicesAssignedCount | číslo                                       | Počet zařízení, která jsou přiřazena k této zásadě.                                       |
-| policySettings       | pole řetězců                             | Nastavení zásad: "žádné", "odebrat \_ \_ předinstalované výrobci OEM", "OOBE \_ Uživatel \_ není \_ místním \_ správcem", "Přeskočit \_ expresní \_ nastavení", "Přeskočit \_ registraci OEM \_ ", "Přeskočit \_ smlouvu EULA".    |
-| createdDate          | řetězec ve formátu data a času standardu UTC               | Datum a čas, kdy byla zásada vytvořena.                                            |
-| lastModifiedDate     | řetězec ve formátu data a času standardu UTC               | Datum a čas poslední změny zásady                                      |
-| atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat.                                            |
+| devicesAssignedCount | číslo                                       | Počet zařízení přiřazených k této zásadám                                       |
+| nastavení zásad       | pole řetězců                             | Nastavení zásad: none,"remove \_ oem \_ preinstalls", "oobe \_ user not local \_ admin", skip express \_ \_ \_ \_ settings", "skip \_ oem \_ registration", "skip \_ eula".    |
+| datum vytvoření          | řetězec ve formátu data a času UTC               | Datum a čas vytvoření zásady                                            |
+| lastModifiedDate     | řetězec ve formátu data a času UTC               | Datum a čas poslední změny zásady                                      |
+| atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat.                                            |
 
 ## <a name="device"></a>Zařízení
 
@@ -44,41 +41,41 @@ Následující prostředky souvisejí s nasazením zařízení.
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------|
 | id                  | řetězec                                                         | Řetězec ve formátu GUID, který identifikuje zařízení.                      |
 | serialNumber        | řetězec                                                         | Sériové číslo jednoznačně přidružené k zařízení.                   |
-| productKey          | řetězec                                                         | Kód Product Key jednoznačně přidružený k zařízení                     |
-| hardwareHash        | řetězec                                                         | Hodnota hash hardwaru je jedinečně přidružená k zařízení.                   |
-| modelName           | řetězec                                                         | Název modelu, který je přidružený k zařízení.                               |
-| oemManufacturerName | řetězec                                                         | Jméno výrobce OEM přidruženého k zařízení.             |
+| Productkey          | řetězec                                                         | Kód Product Key jednoznačně přidružený k zařízení.                     |
+| hardwareHash        | řetězec                                                         | Hodnota hash hardwaru jedinečně přidružená k zařízení.                   |
+| název_modelu           | řetězec                                                         | Název modelu přidružený k zařízení.                               |
+| oemManufacturerName | řetězec                                                         | Název výrobce OEM přidruženého k zařízení.             |
 | Zásady            | pole objektů                                               | Seznam zásad přiřazených k zařízení.                             |
-| uploadedDate        | řetězec ve formátu data a času standardu UTC                                 | Datum a čas odeslání podrobností o zařízení.                      |
-| allowedOperations   | pole řetězců                                               | Seznam metod HTTP povolených v zařízení se synchronizuje jako GET, PATCH, DELETE. |
-| atributy          | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atributy metadat.                                                 |
+| datum nahrání        | řetězec ve formátu data a času UTC                                 | Datum a čas nahrání podrobností o zařízení.                      |
+| allowedOperations   | pole řetězců                                               | Seznam metod HTTP povolených v synchronizaci zařízení jako GET, PATCH, DELETE. |
+| atributy          | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat.                                                 |
 
 ## <a name="batchuploaddetails"></a>BatchUploadDetails
 
-**BatchUploadDetails** popisuje stav zařízení dávkového nahrání informací o jednotlivých zařízeních v seznamu zařízení.
+**BatchUploadDetails** popisuje stav dávkového nahrávání informací o jednotlivých zařízeních v seznamu zařízení.
 
 | Vlastnost        | Typ     | Description                                                                  |
 |-----------------|----------|------------------------------------------------------------------------------|
-| batchTrackingId | řetězec   | Řetězec ve formátu GUID, který je přidružený k dávce nahraných zařízení. |
-| status          | řetězec   | Stav dávkového nahrávání: "neznámé", "zařazeno", "zpracování", "dokončeno", "dokončeno \_ s \_ chybami". |
-| startedTime     | řetězec ve formátu data a času standardu UTC | Datum a čas spuštění procesu dávkového nahrání.   |
-| completedTime   | řetězec ve formátu data a času standardu UTC  | Datum a čas dokončení procesu dávkového nahrání.   |
-| devicesStatus   | pole prostředků [DeviceUploadDetails](#deviceuploaddetails) | Pole objektů, které určují stav jednotlivých odeslání informací o zařízení. |
-| atributy      | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat.  |
+| ID batchTrackingId | řetězec   | Řetězec ve formátu GUID, který je přidružený k dávce nahraných zařízení. |
+| status          | řetězec   | Stav dávkového nahrávání: "neznámý", "zařazený do fronty", "zpracování", "dokončeno", \_ "dokončeno \_ s chybami". |
+| čas spuštění     | řetězec ve formátu data a času UTC | Datum a čas zahájení procesu dávkového nahrávání   |
+| completedTime (čas dokončení)   | řetězec ve formátu data a času UTC  | Datum a čas dokončení procesu dávkového nahrávání   |
+| stav zařízení   | pole prostředků [DeviceUploadDetails](#deviceuploaddetails) | Pole objektů, které určují stav jednotlivých nahrávek informací o zařízení. |
+| atributy      | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat.  |
 
-## <a name="deviceuploaddetails"></a>DeviceUploadDetails
+## <a name="deviceuploaddetails"></a>Podrobnosti o deviceuploaddetails
 
 **DeviceUploadDetails** popisuje stav nahrávání informací o zařízení.
 
 | Vlastnost         | Typ                    | Description                                 |
 |------------------|-------------------------|---------------------------------------------|
-| deviceId         | řetězec                  | Řetězec ve formátu GUID, který je přidružen k zařízení. |
+| deviceId         | řetězec                  | Řetězec ve formátu GUID, který je přidružený k zařízení. |
 | serialNumber     | řetězec                  | Sériové číslo jednoznačně přidružené k zařízení. |
-| productKey       | řetězec                  | Kód Product Key jednoznačně přidružený k zařízení |
-| status           | řetězec                  | Stav nahrání informací o zařízení: "probíhá", "dokončeno", "dokončeno \_ s \_ chybami". |
-| errorCode        | řetězec                  | Kód chyby stavu HTTP se vrátí v případě, že se nahrávání zařízení nepovede. |
-| errorDescription | řetězec                  | Popis chyby HTTP, pokud nahrávání zařízení selhalo. |
-| atributy       | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat.   |
+| Productkey       | řetězec                  | Kód Product Key jednoznačně přidružený k zařízení. |
+| status           | řetězec                  | Stav nahrávání informací o zařízení: Probíhá, Dokončeno, Dokončeno \_ \_ s chybami. |
+| Errorcode        | řetězec                  | Pokud nahrávání zařízení selže, vrátí se kód chyby stavu HTTP. |
+| Popis chyby | řetězec                  | Popis chyby HTTP, pokud se nahrávání zařízení nezdaří. |
+| atributy       | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat.   |
 
 ## <a name="devicebatch"></a>DeviceBatch
 
@@ -86,28 +83,28 @@ Následující prostředky souvisejí s nasazením zařízení.
 
 | Vlastnost     | Typ                                                           | Description                                                           |
 |--------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| id           | řetězec                                                         | Řetězec ve formátu GUID, který je přidružen k dávce zařízení. |
-| createdBy    | řetězec                                                         | Název tenanta, který kolekci vytvořil.                   |
-| creationDate | řetězec ve formátu data a času standardu UTC                                 | Data a čas vytvoření kolekce.                    |
-| Počet zařízení  | číslo                                                         | Počet zařízení v kolekci.                              |
-| devicesLink  | [Odkaz](utility-resources.md#link)                              | Odkaz na zařízení obsažená v této dávce.                        |
-| atributy   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
+| id           | řetězec                                                         | Řetězec formátovaný identifikátorem GUID, který je přidružený k dávce zařízení. |
+| createdBy (vytvořil)    | řetězec                                                         | Název tenanta, který kolekci vytvořil.                   |
+| datum vytvoření | řetězec ve formátu data a času UTC                                 | Data a čas vytvoření kolekce.                    |
+| deviceCount  | číslo                                                         | Počet zařízení v kolekci                              |
+| zařízeníOdkaz  | [Odkaz](utility-resources.md#link)                              | Odkaz na zařízení obsažená v této dávce.                        |
+| atributy   | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
 
 ## <a name="devicebatchcreationrequest"></a>DeviceBatchCreationRequest
 
-**DeviceBatchCreationRequest** poskytuje informace potřebné k vytvoření dávky zařízení a jejímu naplnění pomocí zařízení.
+**DeviceBatchCreationRequest** poskytuje informace potřebné k vytvoření dávky zařízení a naplní ji zařízeními.
 
 | Vlastnost     | Typ                                                           | Description                                                           |
 |--------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| ID dávky      | řetězec                                                         | Řetězec ve formátu GUID, který je přidružen k dávce zařízení. |
-| zařízení      | pole objektů [zařízení](#device)                             | Každý objekt určuje zařízení. Jsou přijaty následující kombinace polí pro identifikaci zařízení: hardwareHash + productKey, hardwareHash + sériové, hardwareHash + productKey + sériové, pouze hardwareHash, pouze productKey, sériové + oemManufacturerName + model. |
-| atributy   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
+| ID dávky      | řetězec                                                         | Řetězec formátovaný identifikátorem GUID, který je přidružený k dávce zařízení. |
+| zařízení      | pole [objektů](#device) zařízení                             | Každý objekt určuje zařízení. Akceptují se následující kombinace polí pro identifikaci zařízení: hardwareHash + productKey, hardwareHash + serialNumber, hardwareHash + productKey + serialNumber, jenom hardwareHash, jenom productKey, serialNumber + oemManufacturerName + modelName. |
+| atributy   | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
 
 ## <a name="devicepolicyupdaterequest"></a>DevicePolicyUpdateRequest
 
-**DevicePolicyUpdateRequest** poskytuje informace potřebné k aktualizaci seznamu zařízení se zásadami.
+**DevicePolicyUpdateRequest** poskytuje informace potřebné k aktualizaci seznamu zařízení pomocí zásad.
 
 | Vlastnost     | Typ                                                           | Description                                                           |
 |--------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| zařízení      | pole objektů [zařízení](#device)                             | Každý objekt určuje zařízení. Jsou vyžadovány následující vlastnosti: ID, zásady. |
-| atributy   | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
+| zařízení      | pole [objektů](#device) zařízení                             | Každý objekt určuje zařízení. Jsou vyžadovány následující vlastnosti: Id, Zásady. |
+| atributy   | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |

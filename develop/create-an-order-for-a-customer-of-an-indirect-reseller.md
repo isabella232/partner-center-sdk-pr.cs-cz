@@ -1,21 +1,17 @@
 ---
 title: Vytvořit objednávku zákazníka pro nepřímý prodejce
-description: Naučte se používat rozhraní API partnerského centra k vytvoření objednávky pro zákazníka nepřímého prodejce. Článek zahrnuje požadavky, kroky a Exmaples.
+description: Naučte se používat rozhraní API partnerského centra k vytvoření objednávky pro zákazníka nepřímého prodejce. Článek obsahuje požadavky, kroky a příklady.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f72ecec8d82e6b8a1bc53c277206cafd7d8a4e03
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 6253ba2289ea1f58e7d8eaa960d7d0daaa887f0d
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97767134"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973535"
 ---
 # <a name="create-an-order-for-a-customer-of-an-indirect-reseller"></a>Vytvoření objednávky pro zákazníka nepřímého prodejce
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Jak vytvořit objednávku pro zákazníka nepřímého prodejce.
 
@@ -81,7 +77,7 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Ukázka**:**projekt** [aplikace testů konzoly](console-test-app.md): ukázkové **třídy** SDK pro partnerských Center: PlaceOrderForCustomer.cs
+**ukázka**: [konzola test app](console-test-app.md)**Project**: **třída** pro ukázkové sady SDK partnerského centra: PlaceOrderForCustomer. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

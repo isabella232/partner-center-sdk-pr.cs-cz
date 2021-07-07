@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 78622258880ab77ca99eae98082cc66acb3b66a7
-ms.sourcegitcommit: 204e518e794b6b076a17488ee9ca1aaaa4beaaec
+ms.openlocfilehash: 7d76de33c9a0d28e9d3fb0b0821cbd37ad67e7af
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106103959"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973141"
 ---
 # <a name="customer-resources"></a>Zdroje informací o zákaznících
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 ## <a name="customer"></a>Zákazník
 
@@ -36,7 +31,7 @@ Prostředek **zákazníka** představuje zákazníka nebo prodejce. Obecně plat
 | companyProfile        | [CustomerCompanyProfile](#customercompanyprofile)                | Další informace o společnosti nebo organizaci                                                                                    |
 | billingProfile        | [CustomerBillingProfile](#customerbillingprofile)                | Další informace, které se používají k fakturaci.                                                                                                     |
 | relationshipToPartner | řetězec                                                           | Definuje licenční program, který partner používá pro tohoto zákazníka: "none", "prodejce", "Advisor", "syndikace" nebo " \_ Podpora Microsoftu". |
-| allowDelegatedAccess  | boolean                                                          | Zda má partner udělena oprávnění delegovaného správce tohoto zákazníka. Tato vlastnost je k dispozici pouze při získávání zákazníka podle ID, nikoli podle seznamu.                                                         |
+| allowDelegatedAccess  | boolean                                                          | Určuje, jestli má partner udělena oprávnění delegovaného správce tohoto zákazníka. Tato vlastnost je k dispozici pouze při získávání zákazníka podle ID, nikoli podle seznamu.                                                         |
 | userCredentials       | [UserCredentials](user-resources.md#usercredentials) | Přihlašovací údaje uživatele                                                                                                                        |
 | customDomains         | pole řetězců                                                 | Seznam vlastních domén zákazníka.                                                                                                        |
 | associatedPartnerId   | řetězec                                                           | Nepřímý prodejce přidružený k tomuto účtu zákazníka. Tuto hodnotu můžou nastavit jenom nepřímí partneři CSP.                              |
@@ -54,7 +49,7 @@ Prostředek **CustomerCompanyProfile** je další informace o společnosti nebo 
 | Společnosti | řetězec                                                         | Název společnosti nebo organizace.                                          |
 | odkazy       | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky obsažené v profilu.                                  |
 | atributy  | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu.                             |
-|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Maďarsko, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích by neměl být určen.|
+|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Maďarsko, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích by to nemělo být určeno.|
 
 
 ## <a name="customerbillingprofile"></a>CustomerBillingProfile

@@ -1,39 +1,35 @@
 ---
 title: Získání požadavků na portál bez MFA
-description: Získejte seznam uživatelských požadavků bez vícefaktorového ověřování (MFA) pomocí REST API partnera.
+description: Seznam uživatelských požadavků bez vícefaktorového ověřování (MFA) získáte pomocí partnerského REST API.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
-ms.openlocfilehash: fd350aa3301f00926942ae6c6af359b0d0edc423
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 41627751d3402d7712d96c15c4281a25ed9a44a7
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766776"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445574"
 ---
 # <a name="get-portal-requests-without-mfa"></a>Získání požadavků na portál bez MFA
 
-Platí pro:
-
-- Rozhraní API partnerského centra
-
-Tento článek vysvětluje, jak získat seznam nejaktuálnějších požadavků od uživatelů, kteří přistupují k portálu partnerského centra bez dokončení vícefaktorového ověřování (MFA).
+Tento článek vysvětluje, jak získat seznam nejnovějších požadavků od uživatelů, kteří přistupují k portálu Partnerské centrum, aniž by se dokončilo vícefaktorové ověřování (MFA).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                  |
 |---------|--------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/nonMfaCompliantPartnerPrincipals |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Další informace najdete v tématu [záhlaví REST v partnerském centru](headers.md) .
+- Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -54,11 +50,11 @@ Connection: keep-alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků [žádosti portálu](mfa-resources.md#portal-request-without-mfa) v těle odpovědi.
+V případě úspěchu tato metoda vrátí kolekci prostředků [požadavku portálu](mfa-resources.md#portal-request-without-mfa) v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

@@ -1,36 +1,32 @@
 ---
 title: Získání informací o využití licencí pro zákazníky
-description: Jak získat přehled o využití licencí pro konkrétního zákazníka.
+description: Jak získat přehledy využití licencí pro konkrétního zákazníka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1ee19e458ec65faa21034dd230b5388f7de981b2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cfec12d37ce4f5f50baad57bfd45770388f8a2dc
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766987"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446424"
 ---
 # <a name="get-customer-licenses-usage-information"></a>Získání informací o využití licencí pro zákazníky
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak získat přehledy o nasazení licencí pro konkrétního zákazníka.
+Jak získat přehledy nasazení licencí pro konkrétního zákazníka
 
 > [!NOTE]
-> Tento scénář je nahrazen [informacemi o využití licencí získat](get-licenses-usage-information.md).
+> Tento scénář nahrazuje možnost Získat [informace o využití licencí.](get-licenses-usage-information.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Chcete-li načíst agregovaná data v nasazení pro určitého zákazníka, nejprve zavolejte metodu [**IAggregatePartner. Customer. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a Identifikujte zákazníka. Pak z [**analytické**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.analytics) vlastnosti Získejte rozhraní operace shromažďování na úrovni zákazníka. Pak z vlastnosti [**licence**](/dotnet/api/microsoft.store.partnercenter.analytics.icustomeranalyticscollection.licenses) načtěte rozhraní pro kolekci Customer License License Analytics. Nakonec zavolejte metodu [**Usage. Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) , která získá agregovaná data o využití licencí. Pokud je metoda úspěšná, získáte kolekci objektů [**CustomerLicensesUsageInsights**](/dotnet/api/microsoft.store.partnercenter.models.analytics.customerlicensesusageinsights) .
+Pokud chcete načíst agregovaná data v nasazení pro konkrétního zákazníka, nejprve zavolejte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a identifikujte zákazníka. Pak z vlastnosti Analytics získejte rozhraní pro operace shromažďování [**analytických**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.analytics) dat na úrovni zákazníka. Dále z vlastnosti Licence načtěte rozhraní analytické kolekce licencí na [**úrovni**](/dotnet/api/microsoft.store.partnercenter.analytics.icustomeranalyticscollection.licenses) zákazníka. Nakonec zavolejte [**metodu Usage.Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) a získejte agregovaná data o využití licencí. Pokud je metoda úspěšná, získáte kolekci objektů [**CustomerLicensesUsageInsights.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.customerlicensesusageinsights)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,13 +35,13 @@ Chcete-li načíst agregovaná data v nasazení pro určitého zákazníka, nejp
 var customerLicensesDeploymentAnalytics = partnerOperations.Customers.ById(customerIdToRetrieve).Analytics.Licenses.Usage.Get();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                              |
 |---------|----------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Analytics/licenses/Usage HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/analytics/licence/využití HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -53,11 +49,11 @@ K identifikaci zákazníka použijte následující parametr cesty.
 
 | Název        | Typ | Vyžadováno | Popis                                                |
 |-------------|------|----------|------------------------------------------------------------|
-| ID zákazníka | guid | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka. |
+| id zákazníka | guid | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -78,11 +74,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [CustomerLicensesUsageInsights](analytics-resources.md#customerlicensesusageinsights) , které poskytují informace o využití licencí.
+V případě úspěchu text odpovědi obsahuje kolekci prostředků [CustomerLicensesUsageInsights,](analytics-resources.md#customerlicensesusageinsights) které poskytují informace o využití licencí.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

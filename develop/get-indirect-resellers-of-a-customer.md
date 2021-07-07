@@ -6,18 +6,14 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: d69abf9530548f110820ca04fefb698e0e37556c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 8697c40c22d5c19979c066b8d3a1de733e211f71
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766981"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446237"
 ---
 # <a name="get-indirect-resellers-of-a-customer"></a>Získání nepřímých prodejců zákazníka
-
-**Platí pro**
-
-- Partnerské centrum
 
 Jak získat seznam nepřímých prodejců, kteří mají relaci se zadaným zákazníkem.
 
@@ -38,7 +34,7 @@ Pokud chcete načíst seznam nepřímých prodejců, se kterými má zadaný zá
  var indirectResellers = partnerOperations.Customers[customerId].Relationships.Get();
 ```
 
-**Ukázka**:**projekt** [aplikace testů konzoly](console-test-app.md): ukázkové **třídy** SDK pro partnerských Center: GetIndirectResellersOfCustomer.cs
+**ukázka**: [konzola test app](console-test-app.md)**Project**: **třída** pro ukázkové sady SDK partnerského centra: GetIndirectResellersOfCustomer. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

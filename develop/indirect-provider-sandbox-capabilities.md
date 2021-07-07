@@ -1,60 +1,52 @@
 ---
-title: Schopnosti nepřímých poskytovatelů CSP v izolovaném prostoru
-description: Nepřímá poskytovatelé můžou vytvořit nepřímé prodejce v izolovaném prostoru (sandbox) pro účely testování.
+title: Možnosti nepřímého poskytovatele CSP v sandboxu
+description: Nepřímí poskytovatelé mohou pro účely testování vytvářet nepřímé prodejce v Sandboxu.
 ms.date: 05/20/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vinayks-ms
 ms.author: vinayks
-ms.openlocfilehash: bd0f38103e6b6f93ab5da386042b00801b683ccd
-ms.sourcegitcommit: 1aeaa12705a5945b8aab6bca254fedebd9c8bc4e
+ms.openlocfilehash: da35dadd4e13247e923259a1cf3a67852f4b9e00
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2021
-ms.locfileid: "110244601"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445897"
 ---
-# <a name="csp-indirect-provider-sandbox-capabilities-for-creating-indirect-reseller-accounts"></a>Funkce izolovaného prostoru nepřímých poskytovatelů CSP pro vytváření nepřímých účtů prodejců 
+# <a name="csp-indirect-provider-sandbox-capabilities-for-creating-indirect-reseller-accounts"></a>Možnosti sandboxu nepřímého poskytovatele CSP pro vytváření účtů nepřímých prodejců 
 
-**Platí pro**
+**Odpovídající role:** Nepřímý poskytovatel
 
-- Partnerské centrum
-
-**Příslušné role**
-
-- Nepřímý poskytovatel
-
-Zprostředkovatelé nepřímých poskytovatelů CSP můžou vytvořit účet nepřímého prodejce CSP prostřednictvím vlastního účtu izolovaného prostoru (sandboxu) na portálu pro partnery v partnerském centru.
+Nepřímí poskytovatelé CSP si CSP Indirect Reseller sandboxu prostřednictvím svého vlastního účtu sandboxu vrstvy 2 na Partnerské centrum Portal.
 
 
 ## <a name="prerequisites"></a>Požadavky 
 
-Přihlašovací údaje k izolovanému prostoru nepřímých zprostředkovatelů (vrstvy 2) partnerského centra Scénář izolovaného prostoru (sandbox) podporuje ověřování jak pro samostatnou aplikaci, tak i pro přihlašovací údaje uživatele a aplikace. 
+Partnerské centrum sandboxu nepřímého poskytovatele (vrstva 2). Scénář sandboxu podporuje ověřování pomocí samostatné aplikace i přihlašovacích údajů aplikace a uživatele. 
  
 
-## <a name="sandbox-indirect-provider--create-sandbox-indirect-reseller-using-the-partner-center-user-interface"></a>Nepřímý poskytovatel izolovaného prostoru – vytvoření nepřímého prodejce izolovaného prostoru pomocí uživatelského rozhraní partnerského centra 
+## <a name="sandbox-indirect-provider--create-sandbox-indirect-reseller-using-the-partner-center-user-interface"></a>Nepřímý poskytovatel sandboxu – Vytvoření nepřímého prodejce sandboxu pomocí Partnerské centrum rozhraní 
 
- Jedná se o funkci pouze izolovaného prostoru, která umožňuje nepřímým poskytovatelům izolovaného prostoru vytvořit účet nepřímých prodejců izolovaného prostoru prostřednictvím portálu pro partnery služby.
+ Jedná se o funkci pouze pro sandbox, která nepřímým poskytovatelům sandboxu umožňuje vytvořit účet nepřímého prodejce sandboxu prostřednictvím Partnerské centrum Portal.
 
-Následující scénáře se dají nepřímým poskytovatelům provádět u nepřímých prodejců v izolovaném prostoru (sandbox) prostřednictvím uživatelského rozhraní partnerského centra: 
+Nepřímí poskytovatelé mohou pro nepřímé prodejce v Sandboxu dělat následující scénáře prostřednictvím Partnerské centrum rozhraní: 
 
-1. Nepřímá poskytovatelé CSP můžou vytvořit účet nepřímých prodejců CSP prostřednictvím vlastního účtu izolovaného prostoru (sandboxu) v portálu pro partnery v partnerském centru.
-2. Nepřímým prodejcům CSP můžou zákazníka zobrazit nepřímými poskytovateli. 
+1. Nepřímí poskytovatelé CSP si CSP Indirect Reseller sandboxu prostřednictvím vlastního účtu sandboxu vrstvy 2 na Partnerské centrum Portal.
+2. Nepřímí prodejci CSP mohou zobrazit zákazníka podle nepřímých poskytovatelů. 
 
-1. Nepřímí prodejci CSP můžou spravovat účet zákazníka pomocí delegovaných oprávnění správce.
+1. Nepřímí prodejci CSP mohou spravovat zákaznický účet pomocí delegovaných oprávnění správce.
 
-1. Nepřímá poskytovatelé CSP můžou pozvat nepřímým prodejcům CSP.
+1. Nepřímí poskytovatelé CSP mohou pozvat nepřímé prodejce CSP.
  
-1. Nepřímá poskytovatelé CSP mohou odstranit účet nepřímého prodejce CSP prostřednictvím vlastního účtu izolovaného prostoru (sandbox) v portálu pro partnery.
+1. Nepřímí poskytovatelé CSP mohou odstranit účet CSP Indirect Reseller sandboxu prostřednictvím vlastního účtu sandboxu vrstvy 2 na Partnerské centrum Portal.
 
-    a.  Když nepřímý poskytovatel izolovaného prostoru odstraní relaci s nepřímým prodejcem izolovaného prostoru.
+    a.  Když nepřímý poskytovatel sandboxu odstraní relaci s nepřímým prodejcem sandboxu, zkontrolujte, jestli má nepřímý prodejce nějaký jiný vztah s jinými poskytovateli. Pokud ano, odebere se pouze vztah s tímto konkrétním nepřímým poskytovatelem.
 
-    b.  Zkontroluje, jestli má nepřímý prodejce jiné vztahy s ostatními poskytovateli. Pokud ano, bude odebrán pouze vztah s tímto konkrétním nepřímým zprostředkovatelem.
+    c. Pokud je to jediný vztah pro nepřímého prodejce, nepřímý prodejce se odstraní.
 
-    c. Pokud se jedná o jediný vztah pro IR, bude IR odstraněn.
+1. Nepřímí poskytovatelé CSP mohou odstranit CSP Indirect Reseller.
 
-1. CSP Indirect Provider můžete odstranit CSP Indirect Reseller.
-
-    a. Jedná se o funkci sandboxu, která umožňuje nepřímým poskytovatelům sandboxu odstranit nepřímé prodejce Sandboxu.
+    a. Jedná se o funkci pouze sandboxu, která umožňuje nepřímým poskytovatelům sandboxu odstranit nepřímé prodejce sandboxu.
      
 1. Předpoklady pro odstranění nepřímého prodejce sandboxu:
 
@@ -62,13 +54,13 @@ Následující scénáře se dají nepřímým poskytovatelům provádět u nep�
 
     1. Odstraňte všechny zákazníky nepřímého prodejce.
 
-1. Povolený limit 5 nepřímých prodejců sandboxu na nepřímého poskytovatele sandboxu. Po odstranění nepřímého prodejce sandboxu se kvóta resetuje.
+1. Povolený limit pěti nepřímých prodejců sandboxu na nepřímého poskytovatele sandboxu. Po odstranění nepřímého prodejce sandboxu se kvóta resetuje.
 
 ### <a name="pre-requisites"></a>Požadavky
 
-- Povolený limit 5 nepřímých prodejců sandboxu na nepřímého poskytovatele sandboxu. 
+- Povolený limit pěti nepřímých prodejců sandboxu na nepřímého poskytovatele sandboxu. 
 
-- Stejné ID MPN můžete použít k vytvoření několika účtů sandboxu nepřímého prodejce, pokud je země MPN ID země a země sandboxu nepřímého prodejce stejné. Pokud máte k dispozici testovací ID MPN, můžete ho použít nebo můžete získat seznam ID MPN prostřednictvím našeho [kanálu Yammeru]( https://www.yammer.com/cloudpartnercommunity/#/files/929991598080 ). Pokud nemáte přístup k Yammeru, Yammer vás požádá o přístup.
+- Stejné ID MPN můžete použít k vytvoření několika účtů sandboxu nepřímého prodejce, pokud je země MPN ID země a země sandboxu nepřímého prodejce stejné. Pokud máte k dispozici testovací ID MPN, můžete ho použít nebo můžete získat seznam ID MPN prostřednictvím našeho [Yammer kanálu]( https://www.yammer.com/cloudpartnercommunity/#/files/929991598080 ). Pokud nemáte přístup k Yammer, Yammer požádat o přístup.
  
 - Na nepřímého poskytovatele sandboxu je povolených jenom 75 zákazníků.
 
@@ -78,46 +70,46 @@ Následující scénáře se dají nepřímým poskytovatelům provádět u nep�
 
 2. V levé nabídce přejděte na Indirect Resellers (Nepřímí prodejci). 
 
-3. Klikněte na tlačítko Add Reseller Sandbox (Přidat sandbox prodejce). 
+3. Vyberte tlačítko **Add Reseller Sandbox (Přidat sandbox prodejce).** 
 
 4. Vyplňte formulář pro registraci účtu. Je to samozřejmé, ale nezapomeňte, že vytváříte účet sandboxu pro nepřímého prodejce. Tento účet se nebude prověřovat a aktivuje se ihned po dokončení registrace účtu.  
 
-5. Po vytvoření účtu získáte na portálu přihlašovací údaje globálního správce pro účet sandboxu nepřímého prodejce. Nezapomeňte ho uložit hned, jinak se nebudete moct přihlásit jako nepřímý prodejce prodejců. 
+5. Po vytvoření účtu získáte na portálu přihlašovací údaje globálního správce pro účet sandboxu nepřímého prodejce. Nezapomeňte ho uložit okamžitě, jinak se nebudete moct přihlásit jako sandbox nepřímého prodejce. 
 
-6. Odhlaste se a znovu se přihlaste do partnerského centra pomocí nových přihlašovacích údajů pro nepřímý izolovaný prostor prodejce. Prozkoumejte možnosti, které můžete udělat jako nepřímý prodejce. Některé věci:  
+6. Odhlásit se a znovu se přihlásit Partnerské centrum pomocí nových přihlašovacích údajů pro Sandbox nepřímého prodejce. Prozkoumejte možnosti, které můžete dělat jako nepřímý prodejce. Tady jsou některé věci:  
 
     - Správa profilů  
 
     - Správa uživatelů a skupin 
 
-    - Správa nepřímých zprostředkovatelů 
+    - Správa nepřímých poskytovatelů 
 
-    - Správa zákazníků v izolovaném prostoru (CSP) 
+    - Správa zákazníků csp sandboxu 
 
     - Správa relací
     
      
-## <a name="sandbox-indirect-provider--delete-sandbox-indirect-reseller-using-the-partner-center-user-interface"></a>Nepřímý poskytovatel izolovaného prostoru – odstranění nepřímého prodejce izolovaného prostoru pomocí uživatelského rozhraní partnerského centra
+## <a name="sandbox-indirect-provider--delete-sandbox-indirect-reseller-using-the-partner-center-user-interface"></a>Nepřímý poskytovatel sandboxu – Odstranění nepřímého prodejce sandboxu pomocí Partnerské centrum rozhraní
 
- Jedná se o funkci pouze izolovaného prostoru, která umožňuje nepřímým poskytovatelům izolovaného prostoru odstranit stávající účet nepřímých prodejců izolovaného prostoru prostřednictvím portálu pro partnery. 
+ Jedná se o funkci sandboxu, která umožňuje nepřímým poskytovatelům sandboxu odstranit existující účet nepřímého prodejce sandboxu přes Partnerské centrum Portal. 
 
-### <a name="pre-requisites-to-delete-sandbox-indirect-reseller"></a>Požadavky na odstranění nepřímého prodejce izolovaného prostoru:
+### <a name="pre-requisites-to-delete-sandbox-indirect-reseller"></a>Předpoklady pro odstranění nepřímého prodejce sandboxu:
 
-Existující účet izolovaného prostoru nepřímých prodejců CSP přidružený k vlastnímu účtu izolovaného poskytovatele CSP – 2.  
+Existující účet CSP Indirect Reseller Sandbox přidružený k vašemu vlastnímu účtu CSP Indirect Provider Tier-2 Sandbox.  
  
 
-## <a name="delete-csp-indirect-reseller-sandbox-account"></a>Odstranit účet izolovaného prostoru nepřímých prodejců CSP
+## <a name="delete-csp-indirect-reseller-sandbox-account"></a>Odstranění CSP Indirect Reseller sandboxu
 
-1. Přihlaste se k partnerskému centru pomocí účtu sandboxu vrstvy 2. 
+1. Přihlaste se Partnerské centrum účtu sandboxu úrovně 2. 
 
-2. V nabídce vlevo přejděte na nepřímé prodejce. 
+2. V levé nabídce přejděte na Indirect Resellers (Nepřímí prodejci). 
 
-3. Klikněte na odkaz **Odstranit prodejce izolovaného prostoru** vedle nepřímým účtem izolovaného prostoru (sandbox) prodejce, který chcete odstranit. Účet izolovaného prostoru pro prodejce se trvale odstraní a nebude možné ho obnovit. 
+3. Vyberte odkaz **Delete Reseller Sandbox (Odstranit sandbox prodejce)** vedle účtu sandboxu nepřímého prodejce, který chcete odstranit. Účet sandboxu nepřímého prodejce se trvale odstraní a není možné ho obnovit. 
 
 ## <a name="api-references"></a>Referenční informace k rozhraní API
 
-- Vytvořit nepřímý prodejce 
-- Odstranit nepřímý prodejce 
+- Vytvoření nepřímého prodejce 
+- Odstranění nepřímého prodejce 
 
  
 

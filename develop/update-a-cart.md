@@ -1,37 +1,33 @@
 ---
 title: Aktualizace košíku
-description: Jak aktualizovat objednávku pro zákazníka na vozíku
+description: Jak aktualizovat objednávku zákazníka v košíku
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7c0806ccc87281b9b34005f22cd8d6ad57fb5de5
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8954d4dad39f9b1a1b9a2f213e0231f01856fcd2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766731"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446679"
 ---
 # <a name="update-a-cart"></a>Aktualizace košíku
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak aktualizovat objednávku pro zákazníka na vozíku
+Jak aktualizovat objednávku zákazníka v košíku
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- ID košíku pro existující košík.
+- ID košíku pro existující košík
 
 ## <a name="c"></a>C\#
 
-Chcete-li aktualizovat objednávku pro zákazníka, Získejte pomocí metody **Get ()** vozík pomocí funkce **ById ()** . Proveďte potřebné změny košíku. Nyní zavolejte metodu **Put** pomocí ID zákazníka a košíku pomocí metody **ById ()** .
+Pokud chcete aktualizovat objednávku zákazníka, získejte košík pomocí metody **Get()** předáním ID zákazníků a košíků pomocí funkce **ById().** Proveďte potřebné změny v košíku. Teď zavolejte **metodu Put** pomocí ID zákazníků a košíků pomocí metody **ById().**
 
-Nakonec zavolejte metodu **Put ()** nebo **PutAsync ()** pro vytvoření objednávky.
+Nakonec zavolejte **metodu Put()** nebo **PutAsync()** a vytvořte pořadí.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -45,54 +41,54 @@ cart.LineItems.ToArray()[0].Quantity++;
 var updatedCart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Put(cart);
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                 |
 |---------|-------------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/carts/{Cart-ID} HTTP/1.1              |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/carts/{ID_košíku} HTTP/1.1              |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-K identifikaci zákazníka použijte následující parametry cesty a určete, který vozík se má aktualizovat.
+Pomocí následujících parametrů cesty identifikujte zákazníka a zadejte košík, který se má aktualizovat.
 
 | Název            | Typ     | Vyžadováno | Popis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **ID zákazníka** | řetězec   | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka.             |
-| **košík – ID**     | řetězec   | Yes      | Identifikátor košíku formátovaného identifikátorem GUID, který identifikuje vozík.                     |
+| **id zákazníka** | řetězec   | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka.             |
+| **cart-id**     | řetězec   | Yes      | Identifikátor CART-ID formátovaný identifikátorem GUID, který identifikuje košík.                     |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje vlastnosti [košíku](cart-resources.md) v textu žádosti.
+Tato tabulka popisuje vlastnosti [Cart](cart-resources.md) (Košík) v textu požadavku.
 
 | Vlastnost              | Typ             | Vyžadováno        | Popis                                                                                               |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
-| id                    | řetězec           | No              | Identifikátor košíku, který se zadal po úspěšném vytvoření košíku.                                  |
-| creationTimeStamp     | DateTime         | No              | Datum, kdy byl košík vytvořen, ve formátu data a času. Použito po úspěšném vytvoření košíku.        |
-| lastModifiedTimeStamp | DateTime         | No              | Datum poslední aktualizace košíku ve formátu data a času. Použito po úspěšném vytvoření košíku.    |
-| expirationTimeStamp   | DateTime         | No              | Datum, kdy vyprší platnost košíku, ve formátu data a času.  Použito po úspěšném vytvoření košíku.            |
-| lastModifiedUser      | řetězec           | No              | Uživatel, který kartu naposledy aktualizoval. Použito po úspěšném vytvoření košíku.                             |
-| Položky řádku             | Pole objektů | Yes             | Pole prostředků [CartLineItem](cart-resources.md#cartlineitem)                                               |
+| id                    | řetězec           | No              | Identifikátor košíku, který se dodá po úspěšném vytvoření košíku.                                  |
+| creationTimeStamp     | DateTime         | No              | Datum vytvoření košíku ve formátu data a času. Použije se při úspěšném vytvoření košíku.        |
+| lastModifiedTimeStamp | DateTime         | No              | Datum poslední aktualizace košíku ve formátu data a času Použije se při úspěšném vytvoření košíku.    |
+| expirationTimeStamp   | DateTime         | No              | Datum, kdy vyprší platnost košíku ve formátu data a času.  Použije se při úspěšném vytvoření košíku.            |
+| lastModifiedUser      | řetězec           | No              | Uživatel, který naposledy aktualizoval košík Použije se při úspěšném vytvoření košíku.                             |
+| položky řádku             | Pole objektů | Yes             | Pole prostředků [CartLineItem](cart-resources.md#cartlineitem)                                               |
 
 Tato tabulka popisuje vlastnosti [CartLineItem](cart-resources.md#cartlineitem) v textu požadavku.
 
 | Vlastnost             | Typ                        | Vyžadováno     | Popis                                                                                        |
 |----------------------|-----------------------------|--------------|----------------------------------------------------------------------------------------------------|
-| id                   | řetězec                      | No           | Jedinečný identifikátor položky řádku košíku Použito po úspěšném vytvoření košíku.                |
-| catalogId            | řetězec                      | Yes          | Identifikátor položky katalogu                                                                       |
-| friendlyName         | řetězec                      | No           | Nepovinný parametr. Popisný název položky definované partnerem, který vám umožní určit nejednoznačnost.              |
-| quantity             | int                         | Yes          | Počet licencí nebo instancí.     |
-| currencyCode         | řetězec                      | No           | Kód měny.                                                                                 |
-| billingCycle         | Objekt                      | Yes          | Typ fakturačního cyklu nastaveného pro aktuální období.                                              |
-| členům         | Seznam párů řetězců objektů | No           | Kolekce účastníků na nákupu                                                      |
-| provisioningContext  | Řetězec<slovníku, řetězec>  | No           | Kontext použitý ke zřízení nabídky.                                                          |
-| pořadí           | řetězec                      | No           | Skupina, která označuje, které položky lze umístit dohromady.                                            |
-| error                | Objekt                      | No           | Používá se po vytvoření košíku v případě chyby.                                                 |
+| id                   | řetězec                      | No           | Jedinečný identifikátor řádkové položky košíku. Použije se při úspěšném vytvoření košíku.                |
+| id katalogu            | řetězec                      | Yes          | Identifikátor položky katalogu.                                                                       |
+| Friendlyname         | řetězec                      | No           | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.              |
+| quantity             | int                         | Yes          | Počet licencí nebo instancí     |
+| currencyCode         | řetězec                      | No           | Kód měny                                                                                 |
+| billingCycle         | Objekt                      | Yes          | Typ fakturačního cyklu nastavený pro aktuální období                                              |
+| Účastníci         | Seznam párů řetězců objektů | No           | Kolekce účastníků nákupu.                                                      |
+| provisioningContext  | Slovníkový<řetězec, řetězec>  | No           | Kontext používaný ke zřízení nabídky.                                                          |
+| orderGroup           | řetězec                      | No           | Skupina, která označuje, které položky lze umístit dohromady.                                            |
+| error                | Objekt                      | No           | Použije se po vytvoření košíku v případě chyby.                                                 |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -136,11 +132,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek vyplněné [vozíku](cart-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi naplněný prostředek [Cart.](cart-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

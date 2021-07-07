@@ -1,29 +1,25 @@
 ---
-title: Získat dostupnost podle ID
+title: Získání dostupnosti podle ID
 description: Získá dostupnost pro zadaný produkt a SKU pomocí ID dostupnosti.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 824303d40e1dcb0405246c8e29562c4527d147fd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c31bc12d8d484cc8042f36aa865145600d9e6738
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766671"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760194"
 ---
-# <a name="get-the-availability-by-id"></a>Získat dostupnost podle ID
-
-**Platí pro**
-
-- Partnerské centrum
+# <a name="get-the-availability-by-id"></a>Získání dostupnosti podle ID
 
 Získá dostupnost pro zadaný produkt a SKU pomocí ID dostupnosti.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 - ID produktu.
 
@@ -33,7 +29,7 @@ Získá dostupnost pro zadaný produkt a SKU pomocí ID dostupnosti.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat podrobnosti o konkrétní [dostupnosti](product-resources.md#availability), začněte pomocí kroků v části [získání skladové položky podle ID](get-a-sku-by-id.md) , abyste získali rozhraní pro konkrétní [skladové](product-resources.md#sku) operace. Ve výsledném rozhraní vyberte vlastnost **Nákup** a získejte rozhraní s dostupnými operacemi pro nákup dostupnosti. Potom předejte ID dostupnosti metodě **ById ()** , abyste získali operace pro konkrétní dostupnost a pak volali **Get ()** nebo **GetAsync ()** pro načtení podrobností o dostupnosti.
+Pokud chcete získat podrobnosti o konkrétní [dostupnosti,](product-resources.md#availability)začněte postupem v tématu Získání [SKU podle ID](get-a-sku-by-id.md) a získejte rozhraní pro operace [konkrétní SKU.](product-resources.md#sku) Ve výsledném rozhraní vyberte vlastnost **Availabilities** a získejte rozhraní s dostupnými operacemi pro dostupnost. Potom předejte ID dostupnosti metodě **ById(),** abyste získali operace pro tuto konkrétní dostupnost, a potom zavoláte **Get()** nebo **GetAsync()** a načtete podrobnosti o dostupnosti.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -50,7 +46,7 @@ var availability = partnerOperations.Products.ByCountry(countryCode).ById(produc
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Pokud chcete získat podrobnosti o konkrétní [dostupnosti](product-resources.md#availability), začněte pomocí kroků v části [získání skladové položky podle ID](get-a-sku-by-id.md) , abyste získali rozhraní pro konkrétní [skladové](product-resources.md#sku) operace. Z výsledného rozhraní vyberte funkci **getAvailabilities** , abyste získali rozhraní s dostupnými operacemi pro nákup dostupnosti. Potom předejte ID dostupnosti funkci **byId ()** , abyste získali operace pro konkrétní dostupnost a pak zavolali funkci **Get ()** pro načtení podrobností o dostupnosti.
+Pokud chcete získat podrobnosti o konkrétní [dostupnosti,](product-resources.md#availability)začněte postupem v tématu Získání [SKU podle ID](get-a-sku-by-id.md) a získejte rozhraní pro operace [konkrétní SKU.](product-resources.md#sku) Ve výsledném rozhraní vyberte funkci **getAvailabilities** a získejte rozhraní s dostupnými operacemi pro dostupnost. Potom předejte ID dostupnosti do funkce **byId(),** abyste získali operace pro tuto konkrétní dostupnost, a potom zavoláte funkci **get(),** která načte podrobnosti o dostupnosti.
 
 ```java
 IAggregatePartner partnerOperations;
@@ -67,34 +63,34 @@ Availability availability = partnerOperations.getProducts().byCountry(countryCod
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Chcete-li získat podrobnosti o [konkrétní dostupnosti](product-resources.md#availability), spusťte příkaz [**Get-PartnerProductAvailability**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductAvailability.md) a zadejte parametry **AvailabilityId**, **CountryCode**, **ProductID** a **SkuId** pro načtení podrobností o dostupnosti.
+Pokud chcete získat podrobnosti o konkrétní [dostupnosti,](product-resources.md#availability)spusťte [**get-PartnerProductAvailability**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductAvailability.md) a zadáním parametrů **AvailabilityId**, **CountryCode**, **ProductId** a **SkuId** načtěte podrobnosti o dostupnosti.
 
 ```powershell
 Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId $availabilityId
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}/skus/{SKU-ID}/availabilities/{Availability-ID}? Country = {Country-Code} HTTP/1.1         |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{ID_produktu}/skus/{ID_SKU}/availabilities/{ID_dostupnosti}?country={kód_země} HTTP/1.1         |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K získání konkrétní dostupnosti pomocí ID dostupnosti použijte následující cestu a parametry dotazu.
+Pomocí následující cesty a parametrů dotazu získejte konkrétní dostupnost pomocí ID dostupnosti.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| ID produktu             | řetězec   | Yes      | Řetězec ve formátu GUID, který identifikuje produkt.            |
-| SKU – ID                 | řetězec   | Yes      | Řetězec ve formátu GUID, který identifikuje SKU.                |
-| ID dostupnosti        | řetězec   | Yes      | Řetězec ve formátu GUID, který identifikuje dostupnost.       |
+| id produktu             | řetězec   | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje produkt.            |
+| sku-id                 | řetězec   | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje SKU.                |
+| ID dostupnosti        | řetězec   | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje dostupnost.       |
 | kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -115,18 +111,18 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi prostředek [dostupnosti](product-resources.md#availability) .
+V případě úspěchu bude tělo odpovědi obsahovat [prostředek](product-resources.md#availability) dostupnosti.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
-Tato metoda vrací následující kódy chyb:
+Tato metoda vrátí následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 404                  | 400013       | Produkt nebyl nalezen.                                                                                    |
-| 404                  | 400018       | SKU se nepovedlo najít.                                                                                        |
+| 404                  | 400013       | Produkt se nenašel.                                                                                    |
+| 404                  | 400018       | SKU se nenašla.                                                                                        |
 | 404                  | 400019       | Dostupnost se nenašla.                                                                                   |
 
 ### <a name="response-example"></a>Příklad odpovědi

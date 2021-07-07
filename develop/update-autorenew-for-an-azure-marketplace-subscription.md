@@ -4,18 +4,14 @@ description: Aktualizujte vlastnost autorenew pro prostředek předplatného, kt
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8dccec57901ea4ea429b74044e3b6c28178c43f6
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: cc0b4c4bff5e8762ffcc2552b2e9e36bcf93686c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766946"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446662"
 ---
 # <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Aktualizace automatického obnovení pro předplatné na komerčním marketplace
-
-**Platí pro**
-
-- Partnerské centrum
 
 Aktualizujte vlastnost autorenew pro zdroj [předplatného](subscription-resources.md) komerčního tržiště, který odpovídá ID zákazníka a předplatného.
 
@@ -43,7 +39,7 @@ selectedSubscription.AutoRenewEnabled = false;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: UpdateSubscription.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: UpdateSubscription. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

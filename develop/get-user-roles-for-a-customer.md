@@ -4,18 +4,14 @@ description: Získá seznam všech rolí/oprávnění připojených k uživatels
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8dad5c035c08905c3d39052de07ebb912452a16b
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8f58e8b7eae5bb47265bb1ac83fcdcd160f735d2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766720"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445914"
 ---
 # <a name="get-user-roles-for-a-customer"></a>Získání uživatelských rolí pro zákazníka
-
-**Platí pro**
-
-- Partnerské centrum
 
 Získá seznam všech rolí/oprávnění připojených k uživatelskému účtu. Mezi varianty patří získání seznamu všech oprávnění pro zákazníka a získání seznamu uživatelů, kteří mají danou roli.
 
@@ -36,7 +32,7 @@ Pokud chcete načíst všechny role adresáře pro určitého zákazníka, např
 var directoryRoles = partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetCustomerDirectoryRoles.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetCustomerDirectoryRoles. cs
 
 Pokud chcete načíst seznam zákaznických uživatelů, kteří mají danou roli, nejdřív načtěte zadané ID zákazníka a ID role adresáře. Pak použijte svou kolekci **IAggregatePartner. Customers** a zavolejte metodu **ById ()** . Pak zavolejte vlastnost **DirectoryRoles** , potom metodu **ById ()** , pak vlastnost **UserMembers** , za kterou následuje metoda **Get ()** nebo **GetAsync ()** .
 
@@ -48,7 +44,7 @@ Pokud chcete načíst seznam zákaznických uživatelů, kteří mají danou rol
 var userMembers = partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selectedDirectoryRoleId).UserMembers.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: GetCustomerDirectoryRoleUserMembers.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **třída**: GetCustomerDirectoryRoleUserMembers. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

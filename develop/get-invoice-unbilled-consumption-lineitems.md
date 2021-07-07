@@ -1,53 +1,49 @@
 ---
-title: Získat fakturovatelné položky řádkové spotřeby pro komerční spotřebu
-description: Pomocí rozhraní API partnerského centra můžete získat informace o neúčtovaných podrobnostech o položkách na řádcích komerční spotřeby pro zadanou fakturu.
+title: Získání nefakturovaných řádkových položek komerční spotřeby na faktuře
+description: Pomocí rozhraní API pro fakturaci můžete získat kolekci nefakturovaných podrobností řádkových položek komerční spotřeby Partnerské centrum faktury.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8b6ca8d6ff7af53dd2a258ea20e6eaeb26421440
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: 1b7dba3333aaec8df73f0e8147b0bbbc78b9b184
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274661"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446142"
 ---
-# <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Získat fakturovatelné položky řádkové spotřeby pro komerční spotřebu
+# <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Získání nefakturovaných řádkových položek komerční spotřeby na faktuře
 
-**Platí pro:**
+Jak získat kolekci nefaktované podrobnosti o řádkových položkách komerční spotřeby.
 
-- Partnerské centrum
-
-Jak získat informace o nefakturovatelné položce komerčního řádku spotřeby.
-
-Pomocí následujících metod můžete získat kolekci podrobností o neúčtovaných položkách na řádcích komerční spotřeby (označují se také jako otevřené položky řádků použití) prostřednictvím kódu programu.
+Následující metody můžete použít k programovému získání kolekce nefaktované položky na řádku komerční spotřeby (označované také jako otevřené položky řádku využití).
 
 >[!NOTE]
->Denní hodnocení využití obvykle trvá 24 hodin, než se zobrazí v partnerském centru nebo je k němu možné přistupovat prostřednictvím rozhraní API.
+>Zobrazení denního využití obvykle trvá 24 hodin Partnerské centrum nebo se k němu přistupuje prostřednictvím rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- Identifikátor faktury Určuje fakturu, pro kterou se mají načíst položky řádku.
+- Identifikátor faktury. Tím se identifikuje faktura, pro kterou se mají načíst řádkové položky.
 
 ## <a name="c"></a>C\#
 
-Získání položek řádků pro určenou fakturu:
+Získání řádových položek pro zadanou fakturu:
 
-1. Zavolejte metodu [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , která získá rozhraní k fakturaci operace pro zadanou fakturu.
+1. Voláním [**metody ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) získáte rozhraní pro operace s fakturou pro zadanou fakturu.
 
-2. Pro načtení objektu faktury zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) .
+2. Voláním [**metody Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) načtěte objekt faktury.
 
-**Objekt faktury** obsahuje všechny informace o zadané faktuře. **Zprostředkovatel** identifikuje zdroj nefakturovaných podrobných informací (například **jednorázová**). **InvoiceLineItemType** určuje typ (například **UsageLineItem**).
+Objekt **faktury obsahuje** všechny informace pro zadanou fakturu. **Zprostředkovatel** identifikuje zdroj nefaktografových podrobných informací (například **OneTime**). **InvoiceLineItemType** určuje typ (například **UsageLineItem**).
 
-Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce **InvoiceLineItems** . Pro každou **InvoiceLineItemType** se načte samostatná kolekce položek čáry.
+Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce **InvoiceLineItems.** Pro každý typ InvoiceLineItemType se načte samostatná kolekce **řádových položek.**
 
-Získání kolekce položek řádků, které odpovídají instanci **InvoiceDetail** :
+Získání kolekce řádových položek, které odpovídají instanci **InvoiceDetail:**
 
-1. Předejte **BillingProvider** a **InvoiceLineItemType** instance do metody [**podle**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .
+1. Do metody [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) předejte **vlastnosti BillingProvider** a **InvoiceLineItemType** instance.
 
-2. Zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) pro načtení přidružených položek řádků.
-3. Vytvořte enumerátor pro procházení kolekce, jak je znázorněno v následujícím příkladu.
+2. Voláním [**metody Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) načtěte přidružené řádkové položky.
+3. Vytvořte enumerátor pro přechod kolekce, jak je znázorněno v následujícím příkladu.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -105,40 +101,40 @@ while (fetchNext)
 }
 ```
 
-Podobný příklad najdete v těchto tématech:
+Podobný příklad najdete v tématu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **ukázky sady SDK pro partnerských Center**
-- Třída: **GetUnBilledConsumptionReconLineItemsPaging. cs**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **SDK pro Partnerské centrum ukázky**
+- Třída: **GetUnBilledConsumptionReconLineItemsPaging.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 V závislosti na vašem případu použití můžete pro požadavek REST použít následující syntaxe. Další informace najdete v popisech jednotlivých syntaxí.
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                                                                                              | Popis případu použití syntaxe                                                                                                     |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &perioda = {period} HTTP/1.1                       | Pomocí této syntaxe vrátíte úplný seznam všech položek řádku pro danou fakturu.                                                    |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} HTTP/1.1           | Použijte tuto syntaxi pro velké faktury. Tuto syntaxi použijte se zadanou velikostí a 0 posunutím pro vrácení stránkovaného seznamu položek řádků. |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = usagelineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next | Tuto syntaxi použijte k získání další stránky položek řádku odsouhlasení pomocí `seekOperation = "Next"` .                                  |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period} HTTP/1.1                       | Pomocí této syntaxe můžete vrátit úplný seznam všech řádových položek pro danou fakturu.                                                    |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size} HTTP/1.1           | Tuto syntaxi použijte pro velké faktury. Pomocí této syntaxe se zadanou velikostí a posunem na základě 0 vrátíte stránkovaný seznam řádových položek. |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode={currencycode}&period={period}&size={size}&seekOperation=Next | Pomocí této syntaxe můžete získat další stránku položek řádku odsouhlasení pomocí `seekOperation = "Next"` .                                  |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Při vytváření žádosti použijte následující identifikátor URI a parametry dotazu.
+Při vytváření požadavku použijte následující identifikátor URI a parametry dotazu.
 
 | Název                   | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                                |
 |------------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Zprostředkovatel               | řetězec | Yes      | Zprostředkovatel: "**jednorázová**".                                                                                                                                                                                                               |
-| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "**UsageLineItems**", "**UsageLineItems**".                                                                                                                                                                    |
-| currencyCode           | řetězec | Yes      | Kód měny pro nefakturovatelné položky řádku                                                                                                                                                                                             |
-| period                 | řetězec | Yes      | Období pro nefakturované rekognoskaci (například: **Current**, **Previous**). Předpokládejme, že v lednu potřebujete zadat dotaz na nefakturovaná data o využití fakturačního cyklu (01/01/2020 – 01/31/2020), vyberte perioda jako **aktuální,** jinak **předchozí.** |
-| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                                                                                                                                                                           |
-| seekOperation          | řetězec | No       | Nastavte `seekOperation=Next` , aby se získala další stránka položek řádku odsouhlasení.                                                                                                                                                                |
+| Zprostředkovatel               | řetězec | Yes      | Poskytovatel:**OneTime.**                                                                                                                                                                                                               |
+| invoice-line-item-type | řetězec | Yes      | Podrobnosti o typu faktury:**UsageLineItems,****UsageLineItems.**                                                                                                                                                                    |
+| currencyCode           | řetězec | Yes      | Kód měny pro nefaktované řádkové položky.                                                                                                                                                                                             |
+| period                 | řetězec | Yes      | Období nefakfaktované rekonsekce (například **aktuální**, **předchozí**). Předpokládejme, že se v lednu potřebujete dotazovat na nefaktuovaná data o využití fakturačního cyklu (1. 1. 2020 – 31. 1. 2020), jinak zvolte období **Aktuální,** **jinak předchozí.** |
+| size                   | číslo | No       | Maximální počet položek, které se budou vracet. Výchozí velikost je 2000.                                                                                                                                                                           |
+| seekOperation          | řetězec | No       | Nastavte `seekOperation=Next` na získání další stránky položek řádku odsouhlasení.                                                                                                                                                                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -146,25 +142,25 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje odpověď kolekci podrobností položky řádku.
+V případě úspěchu odpověď obsahuje kolekci podrobností řádkové položky.
 
-*Pro položku řádku **ChargeType** je hodnota **Nákup** namapována na hodnotu **New** a **náhrada** hodnoty je namapována na **Canceled**.*
+*U položky řádku **ChargeType** se hodnota **Purchase** (Nákup) mapuje na **New** (Nový) a refundace **se** mapuje na **Cancel (Zrušit).***
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ## <a name="request-response-examples"></a>Příklady požadavků a odpovědí
 
-### <a name="request-response-example-1"></a>Požadavek-odpověď – příklad 1
+### <a name="request-response-example-1"></a>Příklad požadavku a odpovědi 1
 
-Následující podrobnosti se vztahují na tento příklad:
+Následující podrobnosti se vztahují k tomuto příkladu:
 
-- **Zprostředkovatel**: **jednorázová**
-- **InvoiceLineItemType**: **UsageLineItems**
-- **Období**: **předchozí**
+- **Poskytovatel:** **OneTime**
+- **InvoiceLineItemType:** **UsageLineItems**
+- **Period**: **Previous**
 
-#### <a name="request-example-1"></a>Příklad žádosti 1
+#### <a name="request-example-1"></a>Příklad požadavku 1
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1//invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=usagelineitems&currencycode=usd&period=previous&size=2000 HTTP/1.1
@@ -334,12 +330,12 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a>Požadavek-odpověď – příklad 2
+### <a name="request-response-example-2"></a>Příklad požadavku a odpovědi 2
 
-Následující podrobnosti se vztahují na tento příklad:
+Následující podrobnosti se vztahují k tomuto příkladu:
 
-- **Zprostředkovatel**: **jednorázová**
-- **InvoiceLineItemType**: **UsageLineItems**
+- **Poskytovatel:** **OneTime**
+- **InvoiceLineItemType:** **UsageLineItems**
 - **Období**: **předchozí**
 - **SeekOperation**: **Další**
 

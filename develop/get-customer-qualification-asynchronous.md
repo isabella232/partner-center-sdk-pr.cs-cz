@@ -1,35 +1,31 @@
 ---
 title: Získání kvalifikace zákazníka
-description: Naučte se používat asynchronní ověřování k získání kvalifikace zákazníka prostřednictvím rozhraní API partnerského centra. Partneři to můžou použít k ověření zákazníků vzdělávání.
+description: Zjistěte, jak pomocí asynchronního ověřování získat kvalifikaci zákazníka prostřednictvím Partnerské centrum API. Partneři můžou tuto metodu použít k ověření zákazníků v oblasti vzdělávání.
 ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: df605e4d400d29e14fd0b44bef34f88bbc7ca8b2
-ms.sourcegitcommit: 7d59c58ee36b217bd5cac089f918059e9dbb8a62
+ms.openlocfilehash: 4795b6e1ad008f9d854dc7efbee0c2099aefa609
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110027924"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446305"
 ---
 # <a name="get-a-customers-qualification-asynchronously"></a>Asynchronní získání kvalifikace zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak získat asynchronně kvalifikaci zákazníka.
+Jak asynchronně získat kvalifikaci zákazníka
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat kvalifikace zákazníka, zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak pomocí vlastnosti [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Nakonec zavolejte `GetQualifications()` nebo `GetQualificationsAsync()` načtěte kvalifikace zákazníka.
+Pokud chcete získat kvalifikaci zákazníka, zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Potom pomocí [**vlastnosti Kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Nakonec zavolejte `GetQualifications()` nebo `GetQualificationsAsync()` , abyste získali kvalifikaci zákazníka.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -37,9 +33,9 @@ Chcete-li získat kvalifikace zákazníka, zavolejte metodu [**IAggregatePartner
 var customerQualifications = partnerOperations.Customers.ById(customerId).Qualification.GetQualifications();
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: **Třída** SdkSamples: GetCustomerQualifications. cs
+**Ukázka:** [Konzolová ukázková aplikace](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples **– třída:** GetCustomerQualifications.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
 ### <a name="request-syntax"></a>Syntaxe požadavku
 
@@ -75,11 +71,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda v textu odpovědi kolekci kvalifikace.  Níže jsou uvedené příklady volání **GET** u zákazníka s **kvalifikaceí na vzdělávání.**
+V případě úspěchu vrátí tato metoda v textu odpovědi kolekci kvalifikace.  Níže jsou uvedené příklady volání **GET** u zákazníka s **kvalifikaceí pro vzdělávání.**
 
 ### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. Ke čtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-examples"></a>Příklady odpovědí
 
@@ -184,7 +180,7 @@ GET {customer_id}/qualifications
 
 ```
 
-**Vlastní entita s příslušným stavem prostřednictvím získání kvalifikací v RSZ**
+**Entita vlastněná státem prostřednictvím získání kvalifikace s GCC**
 
 ```csharp
 

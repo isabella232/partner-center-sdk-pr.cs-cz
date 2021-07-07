@@ -1,45 +1,41 @@
 ---
 title: Odebrání vztahu prodejce se zákazníkem
-description: Postup odebrání vztahu prodejce k zákazníkovi, se kterým již transakce nemáte.
+description: Jak odebrat vztah prodejce se zákazníkem, se kterou už nemáte transakce.
 ms.date: 01/12/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 084797997e57c63b5c447379bb08ecb88ebd0cc4
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 45eca3564c3b9078e04d1f8155d08849a589d52f
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766952"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446594"
 ---
 # <a name="remove-a-reseller-relationship-with-a-customer"></a>Odebrání vztahu prodejce se zákazníkem
 
-**Platí pro**
-
-- Partnerské centrum
-
-Odeberte vztah prodejce se zákazníkem, se kterým již nebudete mít transakce.
+Odeberte vztah prodejce se zákazníkem, se kterou už nemáte transakce.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Před odebráním vztahu prodejce se musí zrušit všechny objednávky rezervovaných instancí virtuálních počítačů Azure. Zavolejte podporu Azure pro zrušení všech otevřených objednávek rezervované instance virtuálního počítače Azure.
+- Před odebráním vztahu prodejce je nutné zrušit všechny objednávky rezervovaných instancí virtuálních počítače Azure. Pokud podpora Azure všechny otevřené objednávky rezervovaných instancí virtuálních počítače Azure, zavolejte na e-účet.
 
 ## <a name="c"></a>C\#
 
-Chcete-li odebrat vztah prodejce pro zákazníka, nejprve zajistěte, aby všechny aktivní Azure Reserved VM Instances pro tohoto zákazníka byly zrušeny. Dále zajistěte, aby všechny aktivní odběry pro tohoto zákazníka byly pozastaveny. Provedete to tak, že určíte ID zákazníka, pro kterého chcete odstranit vztah prodejce. V následujícím příkladu kódu se uživateli zobrazí výzva k zadání identifikátoru zákazníka.
+Pokud chcete odebrat vztah prodejce pro zákazníka, nejprve se ujistěte, že jsou Azure Reserved VM Instances všechny aktivní položky pro tohoto zákazníka zrušené. Dále se ujistěte, že jsou všechna aktivní předplatná pro tohoto zákazníka pozastavená. Pokud to chcete udělat, určete ID zákazníka, pro kterého chcete odstranit vztah prodejce. V následujícím příkladu kódu se uživateli zobrazí výzva k zadání identifikátoru zákazníka.
 
-Chcete-li určit, zda je nutné zrušit některý Azure Reserved VM Instances pro zákazníka, načtěte kolekci nároků voláním metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) pomocí identifikátoru zákazníka a určete zákazníka a vlastnost [**oprávnění**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) k načtení rozhraní pro operace shromažďování nároků. Pro načtení kolekce nároků zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) . Vyfiltrujte kolekci pro všechna oprávnění s hodnotou [**EntitlementType**](entitlement-resources.md#entitlementtype) [**EntitlementType. VirtualMachineReservedInstance**](entitlement-resources.md#entitlementtype) , a pokud existují, zrušte je voláním podpory, než budete pokračovat.
+Pokud chcete zjistit, jestli je nutné zrušit jakoukoli Azure Reserved VM Instances pro zákazníka, načtěte kolekci nároků voláním metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s použitím identifikátoru zákazníka k určení zákazníka a vlastnosti [**Entitlements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) pro načtení rozhraní pro operace kolekce nároků. Voláním [**metody Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) načtěte kolekci nároků. Vyfiltrujte kolekci pro jakákoli oprávnění s hodnotou [**EntitlementType.VirtualMachineReservedInstance,**](entitlement-resources.md#entitlementtype) a pokud existují, zrušte je voláním podpory před pokračováním. [](entitlement-resources.md#entitlementtype)
 
-Pak načtěte kolekci předplatných zákazníka voláním metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) pomocí identifikátoru zákazníka a zadejte zákazníka a vlastnost [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) pro načtení rozhraní pro operace shromažďování předplatných. Nakonec voláním metody [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) načtěte kolekci předplatných zákazníka. Prochází kolekci předplatných a zajistěte, aby žádné odběry neměly [**předplatné.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) hodnota vlastnosti status [**SubscriptionStatus. Active**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus). Pokud je předplatné pořád aktivní, přečtěte si téma [pozastavení předplatného](https://review.docs.microsoft.com/partner-center/develop/suspend-a-subscription) , kde najdete informace o tom, jak ho pozastavit.
+Potom načtěte kolekci předplatných zákazníka voláním metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s použitím identifikátoru zákazníka k určení zákazníka a vlastnosti [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) pro načtení rozhraní pro operace shromažďování předplatných. Nakonec zavolejte [**metodu Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.getasync) a načtěte kolekci předplatných zákazníka. Prohlédněte kolekci předplatného a ujistěte se, že žádné z předplatných nemají hodnotu vlastnosti [**Subscriptions.Status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) [**vlastnosti SubscriptionStatus.Active.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus) Pokud je předplatné stále aktivní, informace o [tom,](suspend-a-subscription.md) jak předplatné pozastavit, najdete v tématu Pozastavení předplatného.
 
-Po potvrzení, že se všechny aktivní Azure Reserved VM Instances pro tohoto zákazníka zruší a že se všechna aktivní předplatná pozastaví, můžete pro zákazníka odebrat vztah prodejce. Nejprve vytvořte nový objekt [Customer/dotnet/API/Microsoft. Store. partnercenter. Models. Customers. Customer. Customer. Customer. Customers. Customer. [](/dotnet/api/microsoft.store.partnercenter.models.customers.customerpartnerrelationship) Potom zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) pomocí identifikátoru zákazníka pro určení zákazníka a zavolejte metodu **patch** a předejte ji do nového objektu Customer.
+Po potvrzení, že jsou Azure Reserved VM Instances všechny aktivní předplatné pro tohoto zákazníka zrušené a všechna aktivní předplatná jsou pozastavená, můžete pro zákazníka odebrat vztah prodejce. Nejprve vytvořte nový objekt [Customer/dotnet/api/microsoft.store.partnercenter.models.customers.customer) s vlastností [Customer.RelationshipToPartner/dotnet/api/microsoft.store.partnercenter.models.customers.customer.relationshiptopartner) nastavenou na [**Hodnotu CustomerPartnerRelationship.None**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerpartnerrelationship). Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) pomocí identifikátoru zákazníka a určete zákazníka a zavolejte metodu **Patch,** která předá nový objekt zákazníka.
 
-Chcete-li znovu vytvořit relaci, opakujte postup [vyžadování vztahu prodejce/partner-Center/vývoj/vývoj/požadavek-prodejce – vztah).
+Pokud chcete vztah znovu vytvořit, opakujte postup [vyžádání vztahu prodejce/ partnerského centra / vývoje / vztahu žádost-prodejce).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -81,15 +77,15 @@ if (customer.RelationshipToPartner == CustomerPartnerRelationship.None)
 }
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: DeletePartnerCustomerRelationship.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSample **– třída:** DeletePartnerCustomerRelationship.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda     | Identifikátor URI žádosti                                                                                                                           |
 |------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| **POUŽITA**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/HTTP/1.1 |
+| **Oprava**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/ HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -97,15 +93,15 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro odebrání vzt
 
 | Název                   | Typ     | Vyžadováno | Popis                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Hodnota je identifikátor **zákazníka (zákazníka** ), který identifikuje zákazníka. |
+| **customer-tenant-id** | **guid** | Y        | Hodnota je IDENTIFIKÁTOR GUID **naformátovaný jako customer-tenant-id,** který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V textu žádosti se vyžaduje prostředek **zákazníka** . Ujistěte se, že vlastnost **RelationshipToPartner** byla nastavena na hodnotu None.
+V **textu** požadavku se vyžaduje prostředek zákazníka. Ujistěte **se, že vlastnost RelationshipToPartner** je nastavená na hodnotu none.
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -130,9 +126,9 @@ Date: Fri, 12 Jan 2018 00:31:55 GMT
 
 V případě úspěchu tato metoda odebere vztah prodejce pro zadaného zákazníka.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

@@ -1,46 +1,41 @@
 ---
-title: Zrušení objednávky z integrace izolovaného prostoru
-description: Naučte se používat rozhraní API partnerského centra ke zrušení různých typů objednávek předplatného z účtů izolovaného prostoru integrace.
+title: Zrušení objednávky z integračního sandboxu
+description: Zjistěte, jak pomocí Partnerské centrum API zrušit různé typy objednávek předplatných z účtů sandboxu integrace.
 ms.date: 04/28/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c3bf862c62804a56e6f73dd3ec36d2e9eb65f997
-ms.sourcegitcommit: f59a9311c8a37d45695caf74794ec1697426acc9
+ms.openlocfilehash: 4c4b658f406e420d8d3cd425688364fe3d440d3d
+ms.sourcegitcommit: a3a78ec0f5078645b5a4f3b534165eef30f2c822
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108210015"
+ms.lasthandoff: 06/30/2021
+ms.locfileid: "113104967"
 ---
-# <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Zrušení objednávky z izolovaného prostoru integrace pomocí rozhraní API partnerského centra
+# <a name="cancel-an-order-from-the-integration-sandbox-using-partner-center-apis"></a>Zrušení objednávky z integračního sandboxu pomocí Partnerské centrum API
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Tento článek popisuje, jak pomocí Partnerské centrum API zrušit různé typy objednávek předplatného z účtů sandboxu integrace. Tyto objednávky mohou zahrnovat rezervované instance, software a objednávky předplatného SaaS (Software jako služba) na komerčním marketplace.
 
-Tento článek popisuje, jak pomocí rozhraní API partnerského centra zrušit různé typy objednávek předplatného z účtů karantény integrace. Takové objednávky můžou zahrnovat rezervované instance, software a komerční objednávky předplatného SaaS (software jako služba) na webu Marketplace.
+> [!NOTE] 
+> Upozorňujeme, že zrušení rezervovaných instancí nebo objednávek předplatného SaaS na komerčním marketplace je možné pouze z účtů sandboxu integrace. Všechny objednávky sandboxu, které jsou starší než 60 dnů, není možné zrušit z Partnerské centrum.
 
->[!NOTE] 
->Pamatujte na to, že zrušení rezervovaných instancí nebo komerčních předplatných SaaS na webu Marketplace je možné pouze z účtů karantény integrace. Jakékoli objednávky izolovaného prostoru (sandbox), které jsou starší než 60 dní, nelze zrušit z partnerského centra. Pokud potřebujete pomoc, můžete se obrátit na podporu partnerského centra. 
-
-Pokud chcete zrušit výrobní zakázky softwaru prostřednictvím rozhraní API, použijte [Zrušit – software – nákupy](cancel-software-purchases.md).
-Pomocí [zrušit nákup](/partner-center/csp-software-subscriptions)můžete také zrušit výrobní zakázky softwaru prostřednictvím řídicího panelu.
+Pokud chcete zrušit produkční objednávky softwaru prostřednictvím rozhraní API, [použijte příkaz cancel-software-purchases](cancel-software-purchases.md).
+Můžete také zrušit produkční objednávky softwaru prostřednictvím řídicího panelu pomocí [zrušení nákupu](/partner-center/csp-software-subscriptions).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- Partnerský účet integrace izolovaného prostoru (sandbox) se zákazníkem s aktivní rezervovanou instancí/softwarem nebo SaaS předplatnými třetích stran.
+- Partnerský účet sandboxu pro integraci se zákazníkem, který má aktivní rezervované instance, software nebo objednávky předplatného SaaS třetích stran.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete objednávku zrušit z karantény integrace Integration, předejte přihlašovací údaje účtu do [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) metody, abyste získali [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) rozhraní pro získání partnerských operací.
+Pokud chcete zrušit objednávku z sandboxu integrace, předejte přihlašovací údaje svého účtu metodě , abyste získali rozhraní pro [**`CreatePartnerOperations`**](/dotnet/api/microsoft.store.partnercenter.partnerservice.instance) [**`IPartner`**](/dotnet/api/microsoft.store.partnercenter.ipartner) získání partnerských operací.
 
-Chcete-li vybrat konkrétní [objednávku](order-resources.md#order), použijte operace partnera a [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) metodu volání s identifikátorem zákazníka a určete tak zákazníka, následovaný **`Orders.ById()`** identifikátorem objednávky a určete tak objednávku a nakonec **`Get`** nebo **`GetAsync`** metodu, kterou chcete načíst.
+Pokud chcete vybrat konkrétní [objednávku,](order-resources.md#order)pomocí operací partnera a volání metody s identifikátorem zákazníka určete zákazníka a pak s identifikátorem objednávky určete objednávku a nakonec metodu nebo metodu pro [**`Customers.ById()`**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) **`Orders.ById()`** **`Get`** **`GetAsync`** načtení.
 
-Nastavte [**`Order.Status`**](order-resources.md#order) vlastnost na `cancelled` a použijte **`Patch()`** metodu pro aktualizaci pořadí.
+Nastavte [**`Order.Status`**](order-resources.md#order) vlastnost na a pomocí metody `cancelled` **`Patch()`** aktualizujte pořadí.
 
 ``` csharp
 // IPartnerCredentials tipAccountCredentials;
@@ -56,13 +51,13 @@ order = tipAccountPartnerOperations.Customers.ById(customerTenantId).Orders.ById
 
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda     | Identifikátor URI žádosti                                                                            |
 |------------|----------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Orders/{Order-ID} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/orders/{ID_objednávky} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -70,12 +65,12 @@ K odstranění zákazníka použijte následující parametr dotazu.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
-| **ID objednávky** | **řetězec** | Y        | Hodnota je řetězec, který označuje ID objednávek, které je třeba zrušit. |
+| **customer-tenant-id** | **guid** | Y        | Hodnota je IDENTIFIKÁTOR GUID naformátovaný jako **customer-tenant-id,** který umožňuje prodejci filtrovat výsledky pro daného zákazníka, který patří k prodejci. |
+| **ID objednávky** | **řetězec** | Y        | Hodnota je řetězec označující ID objednávek, které je potřeba zrušit. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -102,11 +97,11 @@ MS-CorrelationId: 1438ea3d-b515-45c7-9ec1-27ee0cc8e6bd
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda objednávku Canceled.
+V případě úspěchu tato metoda vrátí zrušenou objednávku.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

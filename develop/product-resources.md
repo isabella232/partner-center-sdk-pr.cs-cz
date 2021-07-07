@@ -4,18 +4,14 @@ description: Prostředky představující kupní zboží nebo služby. Zahrnuje 
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6a3cfacd3654e85a9824759295f97792ff740d85
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 1d536cb78c070bd06f4ab9434e066e51fb4c008c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766827"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445880"
 ---
 # <a name="products-resources"></a>Prostředky produktů
-
-**Platí pro**
-
-- Partnerské centrum
 
 Prostředky představující kupní zboží nebo služby. Zahrnuje prostředky pro popis typu produktu a tvaru (SKU) a pro kontrolu dostupnosti produktu v inventáři.
 
@@ -41,7 +37,7 @@ Představuje typ produktu.
 |-----------------|-------------------------------|--------------------------------------------------------------------------------------|
 | id              | řetězec                        | Identifikátor typu.                                                                 |
 | displayName     | řetězec                        | Zobrazovaný název pro tento typ.                                                      |
-| Podtyp         | [ItemType](#itemtype)         | Nepovinný parametr. Objekt, který popisuje kategorizaci dílčího typu pro tento typ položky.     |
+| Podtyp         | [ItemType](#itemtype)         | Nepovinný parametr. Objekt, který popisuje kategorizaci podtypu pro tento typ položky.     |
 
 ## <a name="productlinks"></a>ProductLinks
 
@@ -49,7 +45,7 @@ Obsahuje seznam odkazů na [produkt](#product).
 
 | Vlastnost        | Typ                                                          | Description                                          |
 |-----------------|---------------------------------------------------------------|------------------------------------------------------|
-| SKU            | [Odkaz](utility-resources.md#link)                             | Odkaz pro přístup k podkladovým skladovým položkám          |
+| SKU            | [Propojit](utility-resources.md#link)                             | Odkaz pro přístup k podkladovým skladovým položkám          |
 | odkazy           | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky obsažené v rámci tohoto prostředku.   |
 
 ## <a name="sku"></a>Skladová jednotka (SKU)
@@ -69,7 +65,7 @@ Představuje kupní jednotku (SKU), která je v produktu k disměrné jednotce. 
 | purchasePrerequisites  | pole řetězců | Seznam požadovaných kroků nebo akcí, které jsou nutné před nákupem této položky. Podporované hodnoty jsou:<br/>  "InventoryCheck" – Určuje, že před pokusem o zakoupení této položky je nutné vyhodnotit inventář položky.<br/> "AzureSubscriptionRegistration" – označuje, že je potřeba předplatné Azure, a před tím, než se pokusíte koupit tuto položku, musí být zaregistrované.  |
 | inventoryVariables     | pole řetězců | Seznam proměnných potřebných ke spuštění kontroly inventáře u této položky. Podporované hodnoty jsou:<br/> "CustomerId" – ID zákazníka, pro kterého se má koupit.<br/> "AzureSubscriptionId" – ID předplatného Azure, které se použije při nákupu rezervací Azure.</br> "ArmRegionName" – oblast, pro kterou chcete ověřit inventář. Tato hodnota musí odpovídat hodnotě "ArmRegionName" z DynamicAttributes SKU. |
 | provisioningVariables  | pole řetězců | Seznam proměnných, které musí být poskytnuty do kontextu zřizování [položky řádku košíku](cart-resources.md#cartlineitem) při nákupu této položky. Podporované hodnoty jsou:<br/> Rozsah – rozsah nákupu rezervace Azure: "Single", "Shared".<br/> SubscriptionId – ID předplatného Azure, které se použije pro nákup rezervace Azure.<br/> "Doba trvání" – doba trvání rezervace Azure: "1Year", "3Year".  |
-| dynamicAttributes      | páry klíč/hodnota  | Slovník dynamických vlastností, které se vztahují na tuto položku. Všimněte si, že vlastnosti v tomto slovníku jsou dynamické a mohou se měnit bez předchozího upozornění. Neměli byste vytvářet silné závislosti na konkrétních klíčích existujících v hodnotě této vlastnosti.    |
+| dynamicAttributes      | páry klíč/hodnota  | Slovník dynamických vlastností, které se vztahují na tuto položku. Vlastnosti v tomto slovníku jsou dynamické a můžou se měnit bez předchozího upozornění. Neměli byste vytvářet silné závislosti na konkrétních klíčích existujících v hodnotě této vlastnosti.    |
 | odkazy                  | [ResourceLinks](utility-resources.md#resourcelinks) | Odkazy na prostředky obsažené v této SKU.                   |
 
 ## <a name="availability"></a>Dostupnost
@@ -139,7 +135,7 @@ Představuje podrobnosti omezení inventáře. To platí jenom pro výsledky vý
 | Hodnota              | Pozice     | Description                                                                                |
 |--------------------|--------------|--------------------------------------------------------------------------------------------|
 | Neznámý            | 0            | Inicializátor výčtu.                                                                          |
-| Měsíčně            | 1            | Indikuje, že se partner bude účtovat měsíčně.                                        |
+| měsíčně            | 1            | Indikuje, že se partner bude účtovat měsíčně.                                        |
 | ročně             | 2            | Indikuje, že se partner bude účtovat ročně.                                       |
-| Žádné               | 3            | Indikuje, že se partner nebude účtovat. Tato hodnota se dá použít pro položky zkušební verze.    |
+| Žádná               | 3            | Indikuje, že se partner nebude účtovat. Tato hodnota se dá použít pro položky zkušební verze.    |
 | Jednorázová            | 4            | Indikuje, že se partner účtuje jednou za jeden čas.                                       |

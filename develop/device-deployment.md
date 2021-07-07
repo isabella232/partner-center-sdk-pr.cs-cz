@@ -4,19 +4,16 @@ description: Mezi funkce nasazení zařízení rozhraní API partnerského centr
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 72292ee59955bb35be7ad9d59789a3e109d5f7ec
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 46fd8b53d6d42816d498103192122a81b5f6564f
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766676"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906484"
 ---
 # <a name="device-deployment"></a>Nasazení zařízení
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Rozhraní API partnerského centra poskytují přístup k funkcím pro nasazení s nulovými gesty, takže můžete zjednodušit nastavení zařízení pro vaše zákazníky.
 

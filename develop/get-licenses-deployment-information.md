@@ -1,23 +1,19 @@
 ---
 title: Získání informací o nasazení licencí
-description: Jak získat informace o nasazení pro licence na Office a Dynamics
+description: jak získat informace o nasazení pro licence Office a Dynamics.
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ef0e5d73d34bc51e4cc58143db6c9fc49cb58fcb
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 9eb0dc655affb2216b11635e58e00ed6464d6792
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766896"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445659"
 ---
 # <a name="get-licenses-deployment-information"></a>Získání informací o nasazení licencí
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak získat informace o nasazení pro licence na Office a Dynamics
+jak získat informace o nasazení pro licence Office a Dynamics.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -42,7 +38,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 | top               | řetězec   | Počet řádků dat, který má být vrácen v požadavku. Maximální hodnota a výchozí hodnota, pokud není zadána, je 10000. Pokud je v dotazu více řádků, tělo odpovědi obsahuje další odkaz, který můžete použít k vyžádání další stránky dat. | No |
 | Přeskočit              | int      | Počet řádků, které mají být v dotazu přeskočeny. Tento parametr použijte pro stránku s velkými datovými sadami. Například Top = 10000 a Skip = 0 načte prvních 10000 řádků dat, Top = 10000 a Skip = 10000 načte další 10000 řádků dat a tak dále. | No |
 | filter            | řetězec   | Parametr *filtru* požadavku obsahuje jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou spojeny s `eq` `ne` operátory nebo, a příkazy lze kombinovat pomocí operátoru OR `and` `or` . Tady je několik příkladů parametrů *filtru* :<br/><br/> *Filter = serviceCode EQ ' O365 '*<br/> *Filter = serviceCode EQ ' O365 '* nebo (*Channel EQ ' prodejce '*)<br/><br/> Můžete zadat následující pole:<br/><br/>**serviceCode**<br/>**serviceName**<br/>**kanál**<br/>**customerTenantId**<br/>**customerName**<br/>**productId**<br/>**NázevVýrobku**  | No |
-| GroupBy           | řetězec   | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>**serviceCode**<br/>**serviceName**<br/>**kanál**<br/>**customerTenantId**<br/>**customerName**<br/>**productId**<br/>**NázevVýrobku**<br/><br/> Vrácené řádky dat budou obsahovat pole zadaná v parametru *GroupBy* a také následující:<br/><br/>**licensesDeployed**<br/>**licensesSold**  | No |
+| GroupBy           | řetězec   | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>**serviceCode**<br/>**serviceName**<br/>**kanál**<br/>**customerTenantId**<br/>**customerName**<br/>**productId**<br/>**NázevVýrobku**<br/><br/> Vrácené řádky dat budou obsahovat pole zadaná v parametru *GroupBy* a následující:<br/><br/>**licensesDeployed**<br/>**licensesSold**  | No |
 | processedDateTime | DateTime | Jedna z nich může určovat datum, ze kterého byla zpracována data o využití. Výchozí hodnota je poslední datum, kdy byla data zpracována. | No |
 
 ### <a name="request-example"></a>Příklad požadavku

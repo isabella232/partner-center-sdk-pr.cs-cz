@@ -4,21 +4,16 @@ description: Jak získat všechny informace o analýze vyhledávání.
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 967f8d0ed2d276e0f68a047204b64d83dc69da95
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: e789a013b01fb63a38c72f4fe94864ecf21f7e4b
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766670"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760160"
 ---
 # <a name="get-all-search-analytics-information"></a>Získání všech analytických informací o hledání
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak získat všechny informace o analýze vyhledávání pro vaše zákazníky.
 

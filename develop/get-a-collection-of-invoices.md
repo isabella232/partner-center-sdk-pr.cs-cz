@@ -1,40 +1,35 @@
 ---
 title: Získání kolekce faktur
-description: Jak načíst kolekci faktur partnera.
+description: Jak načíst kolekci faktur partnera
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: f56c3de8dd227f573921e5b969c2217c2f743a21
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 7698d85df3341ae4cbff0377bd0a1bb47cd36740
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766847"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906433"
 ---
 # <a name="get-a-collection-of-invoices"></a>Získání kolekce faktur
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak načíst kolekci faktur partnera.
+Jak načíst kolekci faktur partnera
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat kolekci všech dostupných faktur, použijte vlastnost [**faktur**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) k získání rozhraní k fakturaci operace a poté zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.getasync) pro načtení kolekce.
+Pokud chcete získat kolekci všech dostupných faktur, pomocí vlastnosti [**Invoices**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) získejte rozhraní pro operace s fakturami a potom zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.get) nebo [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.getasync) která kolekci načte.
 
-Chcete-li získat stránkované kolekce faktur, nejprve zavolejte metodu [**BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) a předejte jí velikost stránky pro vytvoření objektu [**IQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) . Dále pomocí vlastnosti [**faktury**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) Získejte rozhraní k fakturaci operací a pak předejte objekt IQuery do [**dotazu**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) nebo metody [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) k odeslání požadavku a získání první stránky.
+Pokud chcete získat stránkované kolekce faktur, nejprve zavolejte metodu [**BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) a předejte jí velikost stránky pro vytvoření [**objektu IQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) Dále pomocí vlastnosti [**Invoices**](/dotnet/api/microsoft.store.partnercenter.ipartner.invoices) získejte rozhraní pro operace s fakturami a pak předejte objekt IQuery metodě [**Query**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.query) nebo [**QueryAsync,**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.queryasync) která odešle požadavek a získá první stránku.
 
-Dále pomocí vlastnosti [**enumerátory**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) Získejte rozhraní pro kolekci podporovaných enumerátorů kolekcí prostředků a potom zavolejte [**faktury. Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) k vytvoření enumerátoru pro procházení kolekce faktur. Nakonec použijte enumerátor pro načtení a práci s každou stránkou faktury, jak je znázorněno v následujícím příkladu kódu. Každé volání metody [**Next**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) pošle požadavek na další stránku faktury na základě velikosti stránky.
+Dále pomocí vlastnosti [**Enumerators**](/dotnet/api/microsoft.store.partnercenter.ipartner.enumerators) získejte rozhraní pro kolekci podporovaných enumerátorů kolekce prostředků a potom zavolejte [**metodu Invoices.Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) a vytvořte enumerátor pro procházení kolekce faktur. Nakonec pomocí enumerátoru načtěte a pracujte s každou stránkou faktur, jak je znázorněno v následujícím příkladu kódu. Každé volání metody [**Next**](/dotnet/api/microsoft.store.partnercenter.enumerators.iresourcecollectionenumerator-1.next) odešle požadavek na další stránku faktur na základě velikosti stránky.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -75,35 +70,35 @@ while (invoicesEnumerator.HasValue)
 }
 ```
 
-Trochu odlišný příklad naleznete v tématu **Ukázka**: [aplikace test Console](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetPagedInvoices.cs
+Trochu jiný příklad najdete v **tématu** Ukázka: [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **:** GetPagedInvoices.cs
 
 > [!NOTE] 
-> Stejné rozhraní API se používá pro všechny moderní komerční nákupy i pro licence na 145p a Office. Velikost a posun se považují jenom za starší faktury. U všech moderních komerčních nákupů se hodnota PageSize & posunu bude ignorovat.
+> Stejné rozhraní API se používá pro všechny moderní komerční nákupy a také pro 145p a Office licence. Velikost a posun se zvažuje pouze u starších faktur. U všech moderních komerčních nákupů se velikost & bude ignorovat.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices? size = {size} &posun = {offset} HTTP/1.1  |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices?size={size}&offset={offset} HTTP/1.1  |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Při vytváření žádosti použijte následující parametry dotazu.
+Při vytváření požadavku použijte následující parametry dotazu.
 
 | Název   | Typ | Vyžadováno | Popis                                                                            |
 |--------|------|----------|----------------------------------------------------------------------------------------|
-| size   | int  | No       | Počet fakturovaných prostředků, které se mají vrátit v odpovědi Tento parametr je volitelný. |
-| posun | int  | No       | Index založený na nule první faktury, která se má vrátit                                   |
+| size   | int  | No       | Počet prostředků faktury, které se v odpovědi vrátí. Tento parametr je volitelný. |
+| posun | int  | No       | Index první faktury, která se má vrátit, založený na nule.                                   |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -120,11 +115,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci zdrojů [faktury](invoice-resources.md#invoice) .
+V případě úspěchu bude text odpovědi obsahovat kolekci prostředků [faktury.](invoice-resources.md#invoice)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

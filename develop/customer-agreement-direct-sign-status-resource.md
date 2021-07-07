@@ -6,26 +6,20 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 9c4fd12ac3319057f3c4034aa0c8d93dcda726c6
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d4d97667b5fd6b92c85889f1288dd770c2d1c035
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766683"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973107"
 ---
 # <a name="direct-signing-direct-acceptance-status-of-a-customer-agreement"></a>Stav přímého podepisování (přímé přijetí) pro zákaznickou smlouvu
 
-**Platí pro:**
+**Platí pro**: partnerské Centrum
 
-- Partnerské centrum
+Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Partner Center v současné době podporuje prostředek **DirectSignedCustomerAgreementStatus** jenom ve veřejném cloudu Microsoftu.
-
-Tento prostředek *nelze použít* pro:
-
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
 
 Prostředek **DirectSignedCustomerAgreementStatus** představuje stav přímého přijetí smlouvy se zákazníkem.
 

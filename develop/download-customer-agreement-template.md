@@ -1,54 +1,50 @@
 ---
-title: Získat odkaz ke stažení pro šablonu zákaznických smluv Microsoftu
-description: Získejte odkaz ke stažení pro šablonu zákaznických smluv Microsoftu.
+title: Získání odkazu ke stažení Smlouva se zákazníkem Microsoftu šablony
+description: Získejte odkaz ke stažení Smlouva se zákazníkem Microsoftu šablony.
 ms.date: 02/12/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 8c794d264ad64a42fa6ca823ddfc3841248c01cd
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: fccb9e3d4a837f3e8043f8c7ae1e3911d819afd7
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766809"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906523"
 ---
-# <a name="get-a-download-link-for-the-microsoft-customer-agreement-template"></a>Získat odkaz ke stažení pro šablonu zákaznických smluv Microsoftu
+# <a name="get-a-download-link-for-the-microsoft-customer-agreement-template"></a>Získání odkazu ke stažení Smlouva se zákazníkem Microsoftu šablony
 
-**Platí pro:**
+**Platí pro:** Partnerské centrum
 
-- Partnerské centrum
+**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partner Center v současné době podporuje prostředek **AgreementDocument** jenom ve *veřejném cloudu Microsoftu*. Tento prostředek se nevztahuje na:
+Prostředek **AgreementDocument** v současné době podporuje Partnerské centrum ve veřejném cloudu Microsoftu.
 
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tento článek popisuje, jak získat odkaz ke stažení šablony smlouvy o zákaznících Microsoftu na základě země a jazyka zákazníka.
+Tento článek popisuje, jak získat odkaz na stažení šablony Smlouva se zákazníkem Microsoftu na základě země a jazyka zákazníka.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud používáte sadu SDK partnerského centra .NET, verze 1,14 nebo novější je povinná.
+- Pokud používáte sadu .NET SDK Partnerské centrum, vyžaduje se verze 1.14 nebo novější.
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). Tento scénář podporuje jenom ověřování aplikací a uživatelů.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](./partner-center-authentication.md) Tento scénář podporuje pouze ověřování aplikací a uživatelů.
 
-- Země zákazníka, na kterou se vztahuje Šablona smlouvy o zákaznících Microsoftu.
+- Země zákazníka, na kterou se šablona Smlouva se zákazníkem Microsoftu vztahuje.
 
-- Jazyk, ve kterém má být lokalizovaná Šablona smlouvy Microsoft Customer Agreement
+- Jazyk, ve kterém by Smlouva se zákazníkem Microsoftu šablony měla být lokalizována.
 
 > [!IMPORTANT]
 >
-> - Smlouva o zákaznících Microsoftu je specifická pro danou zemi. Při žádosti o odkaz ke stažení šablony smlouvy o zákaznících Microsoftu Nezapomeňte zadat správnou zemi na základě umístění zákazníka. nebo seznam podporovaných zemí, přečtěte si [seznam podporovaných zemí a jazyků](#list-of-supported-countries-and-languages).
+> - Tento Smlouva se zákazníkem Microsoftu je specifický pro jednotlivé země. Pokud žádáte o odkaz na stažení Smlouva se zákazníkem Microsoftu šablony, nezapomeňte zadat správnou zemi na základě polohy zákazníka. nebo seznam podporovaných zemí najdete v seznamu [podporovaných zemí a jazyků](#list-of-supported-countries-and-languages).
 >
-> - V některých zemích je smlouva o zákaznících Microsoftu k dispozici v několika jazycích. Pro nejlepší prostředí pro zákazníky vyberte jazyk, který nejlépe odpovídá potřebám zákazníka. Seznam podporovaných jazyků najdete v [seznamu podporovaných zemí a jazyků](#list-of-supported-countries-and-languages).
-> - Tato metoda je podporována pouze se zákaznickou smlouvou Microsoftu.
+> - V některých zemích je Smlouva se zákazníkem Microsoftu k dispozici ve více jazycích. Pro co nejlepší zkušenosti zákazníků vyberte jazyk, který nejlépe odpovídá potřebám zákazníka. Seznam podporovaných jazyků najdete v seznamu [podporovaných zemí a jazyků.](#list-of-supported-countries-and-languages)
+> - Tato metoda je podporována pouze s Smlouva se zákazníkem Microsoftu.
 
 ## <a name="net"></a>.NET
 
-Načtení odkazu na stažení šablony smlouvy o zákaznících Microsoftu:
+Načtení odkazu pro stažení Smlouva se zákazníkem Microsoftu šablony:
 
-1. Načtěte metadata smlouvy pro zákaznickou smlouvu Microsoftu. Musíte získat **TemplateID** smlouvy o zákaznících Microsoftu. Další informace najdete v tématu [získání metadat smlouvy pro zákaznickou smlouvu Microsoftu](get-customer-agreement-metadata.md).
+1. Načtěte metadata smlouvy pro Smlouva se zákazníkem Microsoftu. Je nutné získat **templateId** Smlouva se zákazníkem Microsoftu. Další informace najdete v tématu [Získání metadat smlouvy pro Smlouva se zákazníkem Microsoftu](get-customer-agreement-metadata.md).
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -58,17 +54,17 @@ Načtení odkazu na stažení šablony smlouvy o zákaznících Microsoftu:
    AgreementMetaData microsoftCustomerAgreementDetails = partnerOperations.AgreementDetails.   ByAgreementType(agreementType).Get().Items.Single();
    ```
 
-2. Použijte kolekci IAggregatePartner. AgreementTemplates.
+2. Použijte kolekci IAggregatePartner.AgreementTemplates.
 
-3. Zavolejte metodu **ById** a určete **TemplateID** smlouvy o zákaznících Microsoftu.
+3. Zavolejte **metodu ById** a zadejte **templateId** Smlouva se zákazníkem Microsoftu.
 
-4. Načte vlastnost **dokumentu** .
+4. Načítá **vlastnost** Document.
 
-5. Zavolejte metodu **ByCountry** a zadejte zemi zákazníka, na kterou se vztahuje Šablona smlouvy. V případě, že metoda není zadána, je ve výchozím nastavení dotaz na hodnotu *US* . Seznam podporovaných kódů zemí najdete v [seznamu podporovaných zemí a jazyků](#list-of-supported-countries-and-languages). Tato metoda rozlišuje **velká a malá písmena**.
+5. Zavolejte **metodu ByCountry** a zadejte zemi zákazníka, na kterou se šablona smlouvy vztahuje. Pokud není zadaná metoda *,* dotaz je ve výchozím nastavení USA. Seznam podporovaných kódů zemí najdete v seznamu [podporovaných zemí](#list-of-supported-countries-and-languages)a jazyků. Tato metoda **rozlišuje velká a malá písmena.**
 
-6. Zavolejte metodu **ByLanguage** a určete jazyk, ve kterém má být Šablona smlouvy lokalizována. Pokud není metoda zadaná nebo není pro zadanou zemi podporovaný zadaný kód země, použije se výchozí dotaz na *en-US* . Seznam podporovaných kódů jazyků najdete v [seznamu podporovaných zemí a jazyků](#list-of-supported-countries-and-languages).
+6. Zavolejte **metodu ByLanguage** a určete jazyk, ve které se má šablona smlouvy lokalizovat. Pokud není zadaná metoda nebo zadaný kód země není pro zadanou zemi podporovaný, dotaz je ve výchozím nastavení *en-US.* Seznam podporovaných kódů jazyků najdete v seznamu [podporovaných zemí](#list-of-supported-countries-and-languages)a jazyků.
 
-7. Zavolejte metodu **Get** nebo **GetAsync** .
+7. Volejte **metodu Get** **nebo GetAsync.**
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -80,41 +76,41 @@ Načtení odkazu na stažení šablony smlouvy o zákaznících Microsoftu:
    var agreementDocument = partnerOperations.   AgreementTemplates.ById   (microsoftCustomerAgreementDetails.   TemplateId).Document.ByCountry   (customerCountry).ByLanguage   (languageForLocalization).Get();
    ```
 
-Kompletní ukázku najdete ve třídě [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) z projektu [testovací aplikace konzoly](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) .
+Úplnou ukázku najdete ve třídě [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) z projektu [konzolové testovací aplikace.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-Načtení odkazu na stažení šablony smlouvy o zákaznících Microsoftu:
+Načtení odkazu pro stažení Smlouva se zákazníkem Microsoftu šablony:
 
-1. Načtěte metadata smlouvy pro zákaznickou smlouvu Microsoftu. Musíte získat **TemplateID** smlouvy o zákaznících Microsoftu. Další informace najdete v tématu [získání metadat smlouvy pro zákaznickou smlouvu Microsoftu](get-customer-agreement-metadata.md).
+1. Načtěte metadata smlouvy pro Smlouva se zákazníkem Microsoftu. Je nutné získat **templateId** Smlouva se zákazníkem Microsoftu. Další informace najdete v tématu [Získání metadat smlouvy pro Smlouva se zákazníkem Microsoftu](get-customer-agreement-metadata.md).
 
-2. Vytvořte žádost REST pro načtení [prostředku **AgreementDocument**](./agreement-document-resources.md). Příklad najdete v příkladu [syntaxe žádosti](#request-syntax) . Je nutné zadat následující informace:
+2. Vytvořte požadavek REST pro načtení prostředku [ **AgreementDocument.**](./agreement-document-resources.md) Příklad syntaxe [požadavku.](#request-syntax) Musíte zadat následující informace:
 
-    - **TemplateID** smlouvy o zákaznících Microsoftu.
-    - Země, na kterou se vztahuje Šablona smlouvy o zákaznících Microsoftu
-    - Jazyk, ve kterém má být lokalizovaná Šablona smlouvy Microsoft Customer Agreement
+    - TemplateId **(ID** šablony) Smlouva se zákazníkem Microsoftu.
+    - Země, na kterou se šablona Smlouva se zákazníkem Microsoftu vztahuje.
+    - Jazyk, ve kterém by Smlouva se zákazníkem Microsoftu šablony měla být lokalizována.
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
-Pro tento prostředek použijte následující syntaxi žádosti:
+Pro tento prostředek použijte následující syntaxi požadavku:
 
 | Metoda | Identifikátor URI žádosti |
 |--------|---------------------------------------------------------------------|
-| GET | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/agreementtemplates/{Agreement-Template-ID}/Document? jazyk = {Language} &země = {Country} HTTP/1.1 |
+| GET | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/agreementtemplates/{agreement-template-id}/document?language={language}&country={country} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-S vaším požadavkem můžete použít následující parametry identifikátoru URI:
+S požadavkem můžete použít následující parametry identifikátoru URI:
 
 | Název                   | Typ   | Vyžadováno | Popis                                 |
 |------------------------|--------|----------|---------------------------------------------|
-| smlouva-ID šablony  | řetězec | Yes      | Jedinečný identifikátor typu smlouvy TemplateId pro smlouvu o zákaznících Microsoftu můžete získat tak, že načtěte metadata smlouvy pro zákaznickou smlouvu Microsoftu. Další informace najdete v tématu [získání metadat smlouvy pro zákaznickou smlouvu Microsoftu](./get-customer-agreement-metadata.md). Tento parametr rozlišuje **velká a malá písmena**.|
-| country                | řetězec | No       | Určuje zemi, na kterou se vztahuje Šablona smlouvy. Pokud parametr není zadaný, použije se výchozí dotaz na hodnotu *US* . Seznam podporovaných kódů zemí najdete v [seznamu podporovaných zemí a jazyků](#list-of-supported-countries-and-languages).|
-| language               | řetězec | No       | Určuje jazyk, ve kterém má být Šablona smlouvy lokalizována. Pokud parametr není zadaný, použije se ve výchozím nastavení dotaz na hodnotu *en-US* , nebo pokud je zadaný kód země In't podporovaný pro zadanou zemi. Seznam podporovaných kódů zemí najdete v [seznamu podporovaných zemí a jazyků](#list-of-supported-countries-and-languages).|
+| agreement-template-id  | řetězec | Yes      | Jedinečný identifikátor typu smlouvy Můžete získat templateId pro Smlouva se zákazníkem Microsoftu načtením metadat smlouvy pro Smlouva se zákazníkem Microsoftu. Další informace najdete v tématu [Získání metadat smlouvy pro Smlouva se zákazníkem Microsoftu](./get-customer-agreement-metadata.md). Tento parametr **rozlišuje velká a malá písmena.**|
+| country                | řetězec | No       | Určuje zemi, na kterou se šablona smlouvy vztahuje. Pokud parametr není zadaný, výchozí hodnota dotazu je *US.* Seznam podporovaných kódů zemí najdete v seznamu [podporovaných zemí](#list-of-supported-countries-and-languages)a jazyků.|
+| language               | řetězec | No       | Určuje jazyk, ve kterém se má šablona smlouvy lokalizovat. Výchozí hodnota dotazu je *en-US,* pokud není zadaný parametr nebo pokud pro zadanou zemi není podporovaný kód země zadaný v . Seznam podporovaných kódů zemí najdete v seznamu [podporovaných zemí a jazyků.](#list-of-supported-countries-and-languages)|
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -132,15 +128,15 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek [ **AgreementDocument**](./agreement-document-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi prostředek [ **AgreementDocument.**](./agreement-document-resources.md)
 
-Prostředek má vlastnost **downloadUri** , která obsahuje řetězec adresy URL, který lze použít ke stažení šablony smlouvy. Při každém provedení dotazu se vrátí jiný odkaz. Platnost tohoto odkazu vyprší po pěti minutách.
+Prostředek má vlastnost **downloadUri,** která obsahuje řetězec adresy URL, který lze použít ke stažení šablony smlouvy. Při každém dotazu se vrátí jiný odkaz. Platnost tohoto odkazu vyprší po pěti minutách.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.
 
-Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 
@@ -161,9 +157,9 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 ## <a name="list-of-supported-countries-and-languages"></a>Seznam podporovaných zemí a jazyků
 
 > [!IMPORTANT]
-> Vlastnost Code země rozlišuje velká a malá písmena. Ujistěte se prosím, že používáte správná velká a malá písmena uvedená v následující tabulce.
+> U vlastnosti s kódem země se rozlišují malá a velká písmena. Ujistěte se, že používáte správné použití správného kaskády určeného v následující tabulce.
 
-| Země                   | Kód země   | Podporované kódy jazyků |
+| Země                   | Kód země   | Podporované kódy jazyka |
 |------------------------|--------|----------|
 | Ostrovy Aland | AX | en-US |
 | Afghánistán | AF | en-US |
@@ -200,38 +196,38 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Britské indickooceánské území | OPERACE | en-US |
 | Britské Panenské ostrovy | VG | en-US |
 | Brunej | BN | en-US |
-| Bulharsko | BG | EN-US, BG-BG |
+| Bulharsko | BG | en-US, bg-BG |
 | Burkina Faso | BF | en-US |
 | Burundi | BI | en-US |
-| Côte d’Ivoire (Pobřeží slonoviny) | CI | EN-US, fr-FR |
-| Cabo Verde | CV | EN-US, pt-PT |
+| Côte d’Ivoire (Pobřeží slonoviny) | CI | en-US, fr-FR |
+| Cabo Verde | CV | en-US, pt-PT |
 | Kambodža | KH | en-US |
-| Kamerun | CM | EN-US, fr-FR |
-| Kanada | CA | EN-US, fr-FR |
-| Kajmanské ostrovy | KY | EN-US, en-US |
+| Kamerun | CM | en-US, fr-FR |
+| Kanada | CA | en-US, fr-FR |
+| Kajmanské ostrovy | KY | en-US, en-US |
 | Středoafrická republika | CF | en-US |
 | Čad | TD | en-US |
-| Chile | CL | EN-US, ES-ES |
+| Chile | CL | en-US, es-ES |
 | Vánoční ostrov | CX | en-US |
 | Kokosové ostrovy | CC | en-US |
-| Kolumbie | CO | EN-US, ES-ES |
-| Komory | KLÍČŮ | en-US |
+| Kolumbie | CO | en-US, es-ES |
+| Komory | Km | en-US |
 | Konžská demokratická republika | CD | en-US |
-| Kongo | CG | en-US |
-| Cookovy ostrovy | CK | en-US |
-| Kostarika | CR | EN-US, ES-ES |
-| Chorvatsko | HR | EN-US, HR-HR |
-| Curaçao | Skupina | en-US |
+| Kongo | Cg | en-US |
+| Cookovy ostrovy | Ck | en-US |
+| Kostarika | CR | en-US, es-ES |
+| Chorvatsko | HR | en-US, hr-HR |
+| Curaçao | Cw | en-US |
 | Kypr | CY | en-US |
-| Czechia | CZ | EN-US, cs-CZ |
-| Dánsko | DK | EN-US, da-DK |
-| Džibutsko | PŘEHRÁVAČE | en-US |
+| Čeština | CZ | en-US, cs-CZ |
+| Dánsko | DK | en-US, da-DK |
+| Džibutsko | Dj | en-US |
 | Dominika | DM | en-US |
-| Dominikánská republika | DO | EN-US, ES-ES |
+| Dominikánská republika | DO | en-US, es-ES |
 | Ekvádor | EC | en-US |
-| Egypt | EG | EN-US, ar – SA |
-| Salvador | SV | EN-US, ES-ES |
-| Rovníková Guinea | GQ | en-US |
+| Egypt | EG | en-US, ar-SA |
+| Salvador | SV | en-US, es-ES |
+| Rovníková Guinea | Gq | en-US |
 | Eritrea | ER | en-US |
 | Estonsko | EE | EN-US, et-EE |
 | eSwatini | SZ | en-US |
@@ -266,36 +262,36 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Hongkong – zvláštní administrativní oblast | HK | EN-US, zh-HK |
 | Maďarsko | HU | EN-US, hu-HU |
 | Island | IS | en-US |
-| Indie | IN | EN-US, dobrý den |
-| Indonésie | ID | EN-US, ID-ID |
-| Irák | IQ | EN-US, ar – SA |
+| Indie | IN | en-US, hi-IN |
+| Indonésie | ID | en-US, id-ID |
+| Irák | IQ | en-US, ar-SA |
 | Irsko | IE | en-US |
 | Ostrov Man | IM | en-US |
-| Izrael | IL | EN-US, he-IL |
-| Itálie | IT | EN-US, IT |
+| Izrael | IL | en-US, he-IL |
+| Itálie | IT | en-US, it-IT |
 | Jamajka | JM | en-US |
-| Jan Mayen | XJ | en-US |
-| Japonsko | JP | EN-US, ja-JP |
-| Jersey | VARIABILNÍ | en-US |
-| Jordánsko | JO | EN-US, ar – SA |
-| Kazachstán | KZ | EN-US, KK-KZ |
+| Jan Mayen | Xj | en-US |
+| Japonsko | JP | en-US, ja-JP |
+| Jersey | JE (Je) | en-US |
+| Jordánsko | JO | en-US, ar-SA |
+| Kazachstán | KZ | en-US, kk-KZ |
 | Keňa | KE | en-US |
 | Kiribati | KI | en-US |
-| Jižní Korea | KR | EN-US, ko-KR |
-| Kosovo | XK | en-US |
-| Kuvajt | KW | EN-US, ar – SA |
-| Kyrgyzstán | KG | EN-US, ru-RU |
+| Jižní Korea | KR | en-US, ko-KR |
+| Kosovo | Xk | en-US |
+| Kuvajt | KW | en-US, ar-SA |
+| Kyrgyzstán | KG | en-US, ru-RU |
 | Laos | LA | en-US |
-| Lotyšsko | LV | EN-US, LV-LV |
-| Libanon | LB | EN-US, ar – SA |
+| Lotyšsko | LV | en-US, lv-LV |
+| Libanon | LB | en-US, ar-SA |
 | Lesotho | LS | en-US |
 | Libérie | LR | en-US |
-| Libye | LY | EN-US, ar – SA |
-| Lichtenštejnsko | LI | EN-US, de-DE |
-| Litva | LT | EN-US, lt-LT |
-| Lucembursko | LU | EN-US, fr-FR |
-| Macao – zvláštní administrativní oblast | MO | EN-US, zh-HK |
-| Makedonie – BRJ | MK | en-US |
+| Libye | LY | en-US, ar-SA |
+| Lichtenštejnsko | LI | en-US, de-DE |
+| Litva | LT | en-US, lt-LT |
+| Lucembursko | LU | en-US, fr-FR |
+| Macao – zvláštní administrativní oblast | MO | en-US, zh-HK |
+| Bývalá republika Bývalá Republika | MK | en-US |
 | Madagaskar | MG | en-US |
 | Malawi | MW | en-US |
 | Malajsie | MY | EN-US, MS-MY |
@@ -317,7 +313,7 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Maroko | MA | EN-US, fr-FR, en-US |
 | Mosambik | MZ | en-US |
 | Myanmar | MM | en-US |
-| Namibie | Není k dispozici | en-US |
+| Namibie | NA | en-US |
 | Nauru | NR | en-US |
 | Nepál | NP | en-US |
 | Nizozemsko | NL | EN-US, nl – NL |

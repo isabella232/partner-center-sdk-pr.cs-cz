@@ -1,31 +1,27 @@
 ---
 title: Načtení seznamu nepřímých prodejců
-description: Jak načíst seznam nepřímých prodejců partnera, který je přihlášený.
+description: Jak načíst seznam nepřímých prodejců přihlášených partnerů.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e53237b97fa26d3a987f0ee7de491084b596af4a
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767013"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446560"
 ---
 # <a name="retrieve-a-list-of-indirect-resellers"></a>Načtení seznamu nepřímých prodejců
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak načíst seznam nepřímých prodejců partnera, který je přihlášený.
+Jak načíst seznam nepřímých prodejců přihlášených partnerů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Chcete-li načíst seznam nepřímých prodejců, se kterými má přihlášený partner relaci, nejprve získejte rozhraní pro operace shromažďování relací z vlastnosti [**partnerOperations. relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) . Pak zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) nebo [**Get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) , předáním členu výčtu [**PartnerRelationshipType**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) Identifikujte typ vztahu. K načtení nepřímých prodejců musíte použít IsIndirectCloudSolutionProviderOf.
+Pokud chcete načíst seznam nepřímých prodejců, se kterými má přihlášený partner vztah, nejprve z vlastnosti [**partnerOperations.Relationships**](/dotnet/api/microsoft.store.partnercenter.ipartner.relationships) získejte rozhraní pro operace shromažďování relací. Potom zavolejte [**metodu Get**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.get) nebo [**Get \_ Async**](/dotnet/api/microsoft.store.partnercenter.relationships.irelationshipcollection.getasync) a předáte člena výčtu [**PartnerRelationshipType,**](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype) abyste identifikovali typ vztahu. Pokud chcete načíst nepřímé prodejce, musíte použít IsIndirectCloudSolutionProviderOf.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -33,27 +29,27 @@ Chcete-li načíst seznam nepřímých prodejců, se kterými má přihlášený
 var indirectResellers = partnerOperations.Relationships.Get(PartnerRelationshipType.IsIndirectCloudSolutionProviderOf);
 ```
 
-**Ukázka**:**projekt** [aplikace testů konzoly](console-test-app.md): ukázkové **třídy** SDK pro partnerských Center: GetIndirectResellers.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md)**Project:** SDK pro Partnerské centrum Samples **Class:** GetIndirectResellers.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Relationships? \_ typ vztahu = IsIndirectCloudSolutionProviderOf HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/relationships?relationship \_ type=IsIndirectCloudSolutionProviderOf HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K identifikaci typu vztahu použijte následující parametr dotazu.
+Pomocí následujícího parametru dotazu identifikujte typ relace.
 
 | Název               | Typ    | Vyžadováno  | Popis                         |
 |--------------------|---------|-----------|-------------------------------------|
-| relationship_type  | řetězec  | Yes       | Hodnota je řetězcová reprezentace jednoho z názvů členů nalezených v [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Pokud je partner přihlášený jako poskytovatel a chcete získat seznam nepřímých prodejců, se kterými navázali relaci, použijte IsIndirectCloudSolutionProviderOf.<br/><br/> Pokud je partner přihlášený jako prodejce a chcete získat seznam nepřímých zprostředkovatelů, se kterými navázali relaci, použijte IsIndirectResellerOf.    |
+| relationship_type  | řetězec  | Yes       | Hodnota je řetězcová reprezentace jednoho z názvů členů nalezených v [PartnerRelationshipType](/dotnet/api/microsoft.store.partnercenter.models.relationships.partnerrelationshiptype).<br/><br/> Pokud je partner přihlášený jako poskytovatel a chcete získat seznam nepřímých prodejců, se kterými navázal vztah, použijte IsIndirectCloudSolutionProviderOf.<br/><br/> Pokud je partner přihlášený jako prodejce a chcete získat seznam nepřímých poskytovatelů, se kterými se na navázat vztah, použijte IsIndirectResellerOf.    |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -73,11 +69,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [PartnerRelationship](relationships-resources.md) k identifikaci prodejců.
+V případě úspěchu obsahuje text odpovědi kolekci prostředků [PartnerRelationship,](relationships-resources.md) které identifikují prodejce.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

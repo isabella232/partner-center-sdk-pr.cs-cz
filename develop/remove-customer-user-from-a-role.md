@@ -4,18 +4,14 @@ description: Jak odebrat uživatele z role adresáře v rámci účtu zákazník
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6253e86f3733bbf2b9c593c5ca3f3e2fccce7c2c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 36dc742c4f713131b4996d7dc945b6dd008a3ef5
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766967"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445642"
 ---
 # <a name="remove-a-customer-user-from-a-role"></a>Odebrání uživatele zákazníka z role
-
-**Platí pro**
-
-- Partnerské centrum
 
 Jak odebrat uživatele z role adresáře v rámci účtu zákazníka
 
@@ -38,7 +34,7 @@ Chcete-li odebrat uživatele z role adresáře, vyberte zákazníka s uživatele
 partnerOperations.Customers.ById(selectedCustomerId).DirectoryRoles.ById(selectedRoleId).UserMembers.ById(selectedUserMemberId).Delete();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: RemoveCustomerUserMemberFromDirectoryRole.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: RemoveCustomerUserMemberFromDirectoryRole. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

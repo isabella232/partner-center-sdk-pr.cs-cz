@@ -1,42 +1,38 @@
 ---
-title: Projděte si nárok zákazníka na upgrade na plán Azure
-description: Prostředek ProductUpgradeRequest můžete použít k vrácení prostředku ProductUpgradesEligibility, abyste zjistili, jestli má zákazník nárok na upgrade z předplatného Microsoft Azure (MS-AZR-0145P) na plán Azure.
+title: Kontrola způsobilosti zákazníka k upgradu na plán Azure
+description: Pomocí prostředku ProductUpgradeRequest můžete vrátit prostředek ProductUpgradesEligibility a zjistit, jestli má zákazník nárok na upgrade z předplatného Microsoft Azure (MS-AZR-0145P) na plán Azure.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 568ed3f4cff7d9cd520e608d43cb89bb78e00ccc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 34a20611c7d92042b5432c5ffb3ba4702d77e0c2
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766659"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446254"
 ---
-# <a name="check-a-customers-eligibility-for-upgrading-to-an-azure-plan"></a>Projděte si nárok zákazníka na upgrade na plán Azure
+# <a name="check-a-customers-eligibility-for-upgrading-to-an-azure-plan"></a>Kontrola způsobilosti zákazníka k upgradu na plán Azure
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Pomocí prostředku [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) můžete ověřit, jestli má zákazník nárok na upgrade na plán Azure z předplatného služby Microsoft Azure (MS-AZR-0145P). Tato metoda vrátí prostředek [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) s nárokem na upgrade produktu zákazníka.
+Pomocí prostředku [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) můžete zkontrolovat, jestli má zákazník nárok na upgrade na plán Azure z předplatného Microsoft Azure (MS-AZR-0145P). Tato metoda vrátí prostředek [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) s nárokem zákazníka na upgrade produktu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele. Použijte [zabezpečený model aplikace](enable-secure-app-model.md) při použití ověřování aplikací a uživatelů s rozhraními API partnerského centra.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele. Při použití [ověřování aplikací a uživatelů](enable-secure-app-model.md) s využitím rozhraní API pro Partnerské centrum aplikací postupujte podle modelu zabezpečené aplikace.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Produktová řada.
+- Produktová skupina.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete zjistit, jestli má zákazník nárok na upgrade na plán Azure, postupujte takto:
+Pokud chcete zkontrolovat, jestli má zákazník nárok na upgrade na plán Azure:
 
-1. Vytvořte objekt **ProductUpgradesRequest** a zadejte identifikátor zákazníka a "Azure" jako produktovou řadu.
+1. Vytvořte objekt **ProductUpgradesRequest** a jako produktové skupiny zadejte identifikátor zákazníka a "Azure".
 
-2. Použijte kolekci **IAggregatePartner. ProductUpgrades** .
-3. Zavolejte metodu **CheckEligibility** a předejte ji do objektu **ProductUpgradesRequest** , který vrátí objekt **ProductUpgradesEligibility** .
+2. Použijte **kolekci IAggregatePartner.ProductUpgrades.**
+3. Zavolejte **metodu CheckEligibility** a předejte objekt **ProductUpgradesRequest,** který vrátí objekt **ProductUpgradesEligibility.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -60,21 +56,21 @@ if (productUpgradeEligibility.IsEligibile)
 
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productUpgrades/eligibility HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productUpgrades/eligibility HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tělo žádosti musí obsahovat prostředek [**ProductUpgradeRequest**](product-upgrade-resources.md#productupgraderequest) .
+Text požadavku musí obsahovat prostředek [**ProductUpgradeRequest.**](product-upgrade-resources.md#productupgraderequest)
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -99,11 +95,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek [**ProductUpgradesEligibility**](product-upgrade-resources.md#productupgradeseligibility) v těle.
+V případě úspěchu vrátí tato metoda v těle prostředek [**ProductUpgradesEligibility.**](product-upgrade-resources.md#productupgradeseligibility)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

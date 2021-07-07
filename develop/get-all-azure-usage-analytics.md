@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: c281dcdeb93771a69a388ad64e1127b24156c809
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 7fe987c7dc50d55b26cd72d5aead52963eb1cfbe
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766898"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760211"
 ---
 # <a name="get-all-azure-usage-analytics-information"></a>Získání všech analytických informací o využití Azure
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak získat všechny informace o analýze využití Azure pro vaše zákazníky.
 
@@ -45,7 +40,7 @@ Jak získat všechny informace o analýze využití Azure pro vaše zákazníky.
 |filter           | řetězec                     | Parametr *filtru* požadavku obsahuje jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou spojeny s `eq` `ne` operátory nebo, a příkazy lze kombinovat pomocí operátoru OR `and` `or` . Můžete zadat následující řetězce:<br/><br/>                                                       `customerTenantId`<br/> `customerName`<br/> `subscriptionId`<br/> `subscriptionName`<br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>**Příklad:**<br/> `.../usage/azure?filter=meterCategory eq 'Data Management'`<br/><br/> **Příklad:**<br/>`.../usage/azure?filter=meterCategory eq 'Data Management' or (usageDate le cast('2018-01-01', Edm.DateTimeOffset) and usageDate le cast('2018-04-01', Edm.DateTimeOffset))`                        |
 |aggregationLevel | řetězec                    | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: `day` , `week` , nebo `month` . Je-li tento parametr zadán, je použita výchozí hodnota `day` .<br/><br/>                                              `aggregationLevel`Parametr není podporován bez `groupby` . `aggregationLevel`Parametr platí pro všechna pole kalendářních dat přítomná v `groupby` .                                                      |
 |OrderBy          |řetězec                     | Příkaz, který seřadí hodnoty výsledných dat pro každou instalaci. Syntaxe je `...&orderby=field [order],field [order],...`. `field`Parametr může být jeden z následujících řetězců:<br/><br/>                    `customerTenantId`<br/>`customerName`<br/>`subscriptionId`<br/>`subscriptionName`<br/>`usageDate`<br/>`resourceLocation`<br/>`meterCategory`<br/>`meterSubcategory`<br/>`meterUnit`<br/> `reservationOrderId` <br/> `reservationId`<br/> `consumptionMeterId` <br/> `serviceType` <br/><br/> Parametr *Order* je volitelný a může být `asc` nebo `desc` určen pro každé pole ve vzestupném nebo sestupném pořadí. Výchozí formát je `asc`.<br/><br/>**Příklad:**<br/> `...&orderby=meterCategory,meterUnit`                                                                                           |
-|GroupBy          |řetězec                    | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>                                                                                                                     `customerTenantId`<br/>`customerName`<br/> `subscriptionId` <br/> `subscriptionName` <br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit` <br/> `reservationOrderId` <br/> `reservationId` <br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>Vrácené řádky dat budou obsahovat pole zadaná v `groupby`  parametru a také *množství*.<br/><br/>`groupby`Parametr lze použít s `aggregationLevel` parametrem.<br/><br/>**Příklad:**<br/>`...&groupby=meterCategory,meterUnit` |
+|GroupBy          |řetězec                    | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>                                                                                                                     `customerTenantId`<br/>`customerName`<br/> `subscriptionId` <br/> `subscriptionName` <br/> `usageDate` <br/> `resourceLocation` <br/> `meterCategory` <br/> `meterSubcategory` <br/> `meterUnit` <br/> `reservationOrderId` <br/> `reservationId` <br/> `consumptionMeterId` <br/> `serviceType` <br/><br/>Vrácené řádky dat budou obsahovat pole zadaná v `groupby`  parametru a *množství*.<br/><br/>`groupby`Parametr lze použít s `aggregationLevel` parametrem.<br/><br/>**Příklad:**<br/>`...&groupby=meterCategory,meterUnit` |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

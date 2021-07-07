@@ -4,19 +4,16 @@ description: Jak odstranit zařízení, které patří k zadanému zákazníkovi
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 69b5440f2cf07d3cb4ecd5addf429acd64530257
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: a1e05ceb8615d6f84c1df101c542342f9a6eb04b
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766880"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973073"
 ---
 # <a name="delete-a-device-for-the-specified-customer"></a>Odstraní zařízení pro konkrétního zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Tento článek vysvětluje, jak odstranit zařízení, které patří k zadanému zákazníkovi.
 
@@ -51,7 +48,7 @@ string selectedDeviceId;
 partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.ById(selectedDeviceId).Delete();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: DeleteDevice.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: DeleteDevice. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -77,7 +74,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

@@ -4,18 +4,14 @@ description: Jak získat agregované informace o využití partnerských licenc�
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 93d003fb269a3421b8efd8cebe8f396f97599a10
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f3d05d61ac4f2c90b0d8a4bfd93fe24e94bd5c1b
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767052"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445591"
 ---
 # <a name="get-partner-licenses-usage-information"></a>Získání informací o využití licencí pro partnery
-
-**Platí pro**
-
-- Partnerské centrum
 
 Jak získat agregované informace o využití partnerských licencí, aby zahrnovaly všechny zákazníky.
 

@@ -1,56 +1,51 @@
 ---
 title: Získání všech analytických informací o předplatných
-description: Jak získat všechny informace o analýze předplatných.
+description: Jak získat všechny analytické informace o předplatném
 ms.date: 08/02/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: f32fb99ad52939ae8e9de26276588d3022f18fbc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: e1f16c92569a02bc51c96a85ecb642fbeb76a9a7
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766669"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760245"
 ---
 # <a name="get-all-subscription-analytics-information"></a>Získání všech analytických informací o předplatných
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tento článek popisuje, jak získat všechny informace o analýze předplatného pro vaše zákazníky.
+Tento článek popisuje, jak získat všechny analytické informace o předplatném pro vaše zákazníky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pouze s přihlašovacími údaji uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů uživatele.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti |
 |--------|-------------|
-| **Čtěte** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/Subscriptions HTTP/1.1 |
+| **Dostat** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/subscriptions HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-V následující tabulce jsou uvedeny volitelné parametry a jejich popisy:
+Následující tabulka uvádí volitelné parametry a jejich popisy:
 
 | Parametr | Typ |  Description |
 |-----------|------|--------------|
-| top | int | Počet řádků dat, který má být vrácen v požadavku. Pokud hodnota není zadaná, maximální hodnota a výchozí hodnota je `10000` . Pokud je v dotazu více řádků, tělo odpovědi obsahuje další odkaz, který můžete použít k vyžádání další stránky dat. |
-| Přeskočit | int | Počet řádků, které mají být v dotazu přeskočeny. Tento parametr použijte pro stránku s velkými datovými sadami. Například `top=10000` `skip=0` načte první 10000 řádků dat a `top=10000` `skip=10000` načte další 10000 řádků dat. |
-| filter | řetězec | Jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz filtru obsahuje název pole z textu odpovědi a hodnotu, která je přidružena k **`eq`** , **`ne`** nebo pro určitá pole **`contains`** operátor. Příkazy lze kombinovat pomocí operátoru **`and`** OR **`or`** . Řetězcové hodnoty musí být obklopeny jednoduchými uvozovkami v parametru **Filter** . Seznam polí, která lze filtrovat, a operátory, které jsou s těmito poli podporovány, naleznete v následující části. |
-| aggregationLevel | řetězec | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: **den**, **týden** nebo **měsíc**. Pokud hodnota není zadaná, výchozí hodnota je **DateRange**. Tento parametr platí pouze v případě, že je pole data předáno jako součást parametru **GroupBy** . |
-| groupBy | řetězec | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. |
+| top | int | Počet řádků dat, které se v požadavku vrátí. Pokud hodnota není zadaná, maximální a výchozí hodnota jsou `10000` . Pokud dotaz obsahuje více řádků, obsahuje text odpovědi další odkaz, který můžete použít k vyžádání další stránky dat. |
+| Přeskočit | int | Počet řádků, které se v dotazu přeskočí Tento parametr použijte k stránkování velkých datových sad. Například a načte prvních 10 000 řádků dat a načte dalších `top=10000` `skip=0` `top=10000` `skip=10000` 1 0000 řádků dat. |
+| filter | řetězec | Jeden nebo více příkazů, které filtruje řádky v odpovědi. Každý příkaz filtru obsahuje název pole z textu odpovědi a hodnotu přidruženou k operátoru , nebo pro **`eq`** **`ne`** určitá **`contains`** pole. Příkazy lze kombinovat pomocí **`and`** nebo **`or`** . Řetězcové hodnoty musí být v parametru filtru v jednoduchých **uvozovkách.** V následující části najdete seznam polí, která lze filtrovat, a operátory, které jsou u těchto polí podporovány. |
+| aggregationLevel | řetězec | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: **den,** **týden** nebo **měsíc**. Pokud hodnota není zadaná, výchozí hodnota je **dateRange**. Tento parametr platí pouze v případě, že je pole data předáno jako součást **parametru groupBy.** |
+| Groupby | řetězec | Příkaz, který použije agregaci dat pouze na zadaná pole. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -68,11 +63,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [**předplatného**](partner-center-analytics-resources.md#subscription-resource) .
+V případě úspěchu bude text odpovědi obsahovat kolekci prostředků [**předplatného.**](partner-center-analytics-resources.md#subscription-resource)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

@@ -1,46 +1,42 @@
 ---
-title: Získá všechny měsíční záznamy o využití pro předplatné.
-description: Pomocí kolekce prostředků AzureResourceMonthlyUsageRecord můžete získat seznam služeb v rámci předplatného zákazníka a jejich přidružených informací o využití.
+title: Získání všech záznamů o měsíčním využití pro předplatné
+description: Pomocí kolekce prostředků AzureResourceMonthlyUsageRecord můžete získat seznam služeb v rámci předplatného zákazníka a informace o jejich přidruženém hodnocení využití.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1dd09d4976c9626e088cda02ce36669dd7121a99
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: ee4bd413eec7d5a2dddbe3803df8839589ab7504
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766996"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760279"
 ---
-# <a name="get-all-monthly-usage-records-for-a-subscription"></a>Získá všechny měsíční záznamy o využití pro předplatné.
+# <a name="get-all-monthly-usage-records-for-a-subscription"></a>Získání všech záznamů o měsíčním využití pro předplatné
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Pomocí kolekce prostředků [**AzureResourceMonthlyUsageRecord**](/dotnet/api/microsoft.store.partnercenter.models.usage.azureresourcemonthlyusagerecord) můžete získat seznam služeb v rámci předplatného zákazníka a jejich přidružených informací o využití.
+Pomocí kolekce prostředků [**AzureResourceMonthlyUsageRecord**](/dotnet/api/microsoft.store.partnercenter.models.usage.azureresourcemonthlyusagerecord) můžete získat seznam služeb v rámci předplatného zákazníka a informace o jejich přidruženém hodnocení využití.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Identifikátor předplatného.
 
-*Toto rozhraní API podporuje jenom odběry Microsoft Azure (MS-AZR-0145P). Pokud používáte plán Azure, přečtěte si místo toho část [získat data o využití pro předplatné podle měřičů](get-a-customer-subscription-meter-usage-records.md) .*
+*Toto rozhraní API podporuje Microsoft Azure předplatná MS-AZR-0145P. Pokud používáte plán Azure, podívejte se místo toho na získání dat o využití [pro předplatné podle měřiče.](get-a-customer-subscription-meter-usage-records.md)*
 
 ## <a name="c"></a>C\#
 
-Získání informací o využití prostředků u předplatného:
+Získání informací o využití prostředků předplatného:
 
-1. Použijte svou kolekci **IAggregatePartner. Customers** pro volání metody **ById ()** .
+1. K volání metody **ById()** použijte kolekci **IAggregatePartner.Customers.**
 
-2. Zavolejte vlastnost **Subscriptions** a také **UsageRecords** a pak vlastnost **Resources (prostředky** ).
-3. Zavolejte metody **Get ()** nebo **GetAsync ()** .
+2. Zavolejte **vlastnost Subscriptions** a **UsageRecords** a pak **vlastnost Resources.**
+3. Volejte **metody Get()** nebo **GetAsync().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -50,32 +46,32 @@ Získání informací o využití prostředků u předplatného:
 var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).UsageRecords.Resources.Get();
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSample**
 - Třída: **SubscriptionResourceUsageRecords.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                                       |
 |---------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription}/usagerecords/Resources HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné}/usagerecords/resources HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání informací o hodnocení využití.
+Tato tabulka obsahuje seznam požadovaných parametrů dotazu k získání informací o hodnocení využití.
 
 | Název                    | Typ     | Vyžadováno | Popis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Customer-tenant-ID**  | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID předplatného** | **guid** | Y        | Identifikátor GUID, který odpovídá předplatnému. |
+| **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
+| **id předplatného** | **guid** | Y        | Identifikátor GUID odpovídající předplatnému. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -93,11 +89,11 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků **AzureResourceMonthlyUsageRecord** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi kolekci prostředků **AzureResourceMonthlyUsageRecord.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

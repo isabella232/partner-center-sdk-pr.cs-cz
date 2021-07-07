@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 0a39d7142e5bf97f9fb345416964d4ed6bb935ad
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 2cb2822935113fe1c5337b4ffc899fccff333d2f
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767041"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760177"
 ---
 # <a name="get-an-order-by-id"></a>Získání objednávky podle ID
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá zdroj [objednávky](order-resources.md) , který odpovídá ID zákazníka a objednávky.
 
@@ -49,7 +44,7 @@ Postup získání objednávky zákazníka podle ID:
 var order = partnerOperations.Customers.ById(selectedCustomerId).Orders.ById(selectedOrderId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: GetOrder.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: getorder. cs
 
 ## <a name="java"></a>Java
 

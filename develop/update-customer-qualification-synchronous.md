@@ -1,37 +1,33 @@
 ---
 title: Aktualizace kvalifikace zákazníka
-description: Naučte se aktualizovat kvalifikace zákazníka prostřednictvím synchronního screeningu nebo dozvíte ČSFD, včetně adresy přidružené k profilu.
+description: Zjistěte, jak aktualizovat kvalifikace zákazníka prostřednictvím synchronního prověřování nebo prověřování, včetně adresy přidružené k profilu.
 ms.date: 12/07/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 0ffe6d1a236a8a07e1ff71163e7639ef1f3437e1
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: 5047743afdef02033d9494e3d8c16c9ab96b3fe9
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030585"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446645"
 ---
-# <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizace kvalifikace zákazníka prostřednictvím synchronního ověřování
+# <a name="update-a-customers-qualification-via-synchronous-validation"></a>Aktualizace kvalifikace zákazníka prostřednictvím synchronního ověření
 
-**Platí pro**
+Zjistěte, jak synchronně aktualizovat kvalifikace zákazníka prostřednictvím Partnerské centrum API. Informace o tom, jak to provést asynchronně, najdete v tématu Aktualizace kvalifikace zákazníka [prostřednictvím asynchronního ověřování](update-customer-qualification-asynchronous.md).
 
-- Partnerské centrum
-
-Naučte se synchronně aktualizovat kvalifikace zákazníka prostřednictvím rozhraní API partnerského centra. Informace o tom, jak to provést asynchronně, najdete v tématu [aktualizace kvalifikace zákazníka prostřednictvím asynchronního ověřování](update-customer-qualification-asynchronous.md).
-
-Partner může aktualizovat kvalifikaci zákazníka na "vzdělávání" nebo "GovernmentCommunityCloud". Další hodnoty, "none" a "neziskové" nelze nastavit.
+Partner může aktualizovat kvalifikace zákazníka na "Vzdělávání" nebo "GovernmentCommunityCloud". Ostatní hodnoty None (Žádný) a Nonprofit (Neziskové organizace) nelze nastavit.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Pokud chcete aktualizovat kvalifikaci zákazníka na "vzdělávání", zavolejte **[Update/dotnet/API/Microsoft. Store. partnercenter. kvalifikaci. icustomerqualification. Update)** na stávajícím  [**zákazníkovi**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer).
+Pokud chcete aktualizovat kvalifikace zákazníka na "Vzdělávání", zavolejte **[Update/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification.update)** u stávajícího  [**zákazníka**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer).
 
 ``` csharp
 // CustomerQualification is an enum
@@ -39,9 +35,9 @@ Pokud chcete aktualizovat kvalifikaci zákazníka na "vzdělávání", zavolejte
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.Education);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: CustomerQualificationOperations. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSamples **– třída:** CustomerQualificationOperations.cs
 
-Pokud chcete aktualizovat kvalifikaci zákazníka tak, aby se **GovernmentCommunityCloud** na stávajícího zákazníkovi bez kvalifikace, musí partner zahrnovat [**ValidationCode**](utility-resources.md#validationcode)zákazníka.
+Pokud chcete aktualizovat kvalifikace zákazníka na **GovernmentCommunityCloud** u stávajícího zákazníka bez kvalifikace, musí partner zahrnout ověřovací kód [**zákazníka.**](utility-resources.md#validationcode)
 
 ``` csharp
 // CustomerQualification is an enum
@@ -50,13 +46,13 @@ Pokud chcete aktualizovat kvalifikaci zákazníka tak, aby se **GovernmentCommun
 var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.Update(CustomerQualification.GovernmentCommunityCloud, gccValidation);
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer_ID}/Qualification? kód = {VALIDATIONCODE} HTTP/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer_id}/qualification?code={validationCode} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -64,16 +60,16 @@ K aktualizaci kvalifikace použijte následující parametr dotazu.
 
 | Název                   | Typ | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | Identifikátor GUID | Yes      | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
-| **validationCode**     | int  | No       | Je potřeba jenom pro cloudovou komunitu státní správy.                                                                                                            |
+| **customer-tenant-id** | Identifikátor GUID | Yes      | Hodnota je IDENTIFIKÁTOR GUID naformátovaný jako **customer-tenant-id,** který umožňuje prodejci filtrovat výsledky pro daného zákazníka, který patří k prodejci. |
+| **validationCode (kód ověření)**     | int  | No       | Je potřeba jenom pro Government Community Cloud.                                                                                                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Celočíselná hodnota z výčtu [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) .
+Celočíselná hodnota z [**výčtu CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification)
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -88,11 +84,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí aktualizovanou vlastnost [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi [**aktualizovanou**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) vlastnost Kvalifikace.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

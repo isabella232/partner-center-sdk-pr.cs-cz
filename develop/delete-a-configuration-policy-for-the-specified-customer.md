@@ -1,42 +1,39 @@
 ---
 title: Odstranění zásad konfigurace pro konkrétního zákazníka
-description: Jak odstranit zásadu konfigurace pro zadaný identifikátor zákazníka a zásady.
+description: Jak odstranit zásady konfigurace pro zadaného zákazníka a identifikátor zásady.
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 586878367fc0873ef0fb1415799b2b7022954053
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 2d6a7d392bd6af6850eb7716528e6745943bb7bb
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766881"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973022"
 ---
 # <a name="delete-a-configuration-policy-for-the-specified-customer"></a>Odstranění zásad konfigurace pro konkrétního zákazníka
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud (Německo)
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-
-Jak odstranit zásadu konfigurace pro zadaný identifikátor zákazníka a zásady.
+Jak odstranit zásady konfigurace pro zadaného zákazníka a identifikátor zásady.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Identifikátor zásady.
 
 ## <a name="c"></a>C\#
 
-Postup odstranění zásad konfigurace pro určitého zákazníka:
+Odstranění zásad konfigurace pro konkrétního zákazníka:
 
-1. Zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, aby se načetlo rozhraní pro operace zadaného zákazníka.
+1. Voláním [**metody IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka načtěte rozhraní pro operace u zadaného zákazníka.
 
-2. Voláním metody [**ConfigurationPolicies. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) s ID zásad načtěte rozhraní pro operace zásad konfigurace pro zadané zásady.
+2. Voláním [**metody ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) s ID zásady načtěte rozhraní pro operace zásad konfigurace pro zadané zásady.
 
-3. Chcete-li odstranit zásadu konfigurace, zavolejte metodu [**Delete**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.delete) nebo [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.deleteasync) .
+3. Pokud chcete [**odstranit zásady**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.delete) konfigurace, zavolejte metodu Delete nebo [**DeleteAsync.**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.deleteasync)
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -46,32 +43,32 @@ string selectedPolicyId;
 partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedPolicyId).Delete();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: DeleteConfigurationPolicy.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class**: DeleteConfigurationPolicy.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda     | Identifikátor URI žádosti                                                                                          |
 |------------|------------------------------------------------------------------------------------------------------|
-| **DSTRANIT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/policies/{Policy-ID} HTTP/1.1 |
+| **Odstranit** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/policies/{ID_zásad} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Při vytváření žádosti použít následující parametry cesty.
+Při vytváření požadavku použijte následující parametry cesty.
 
 | Název        | Typ   | Vyžadováno | Popis                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| ID zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
-| ID zásady   | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zásadu, která se má odstranit. |
+| id zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
+| ID zásady   | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zásadu, kterou chcete odstranit. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -88,11 +85,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí odpověď 204 bez stavového kódu obsahu.
+V případě úspěchu vrátí odpověď stavový kód 204 Žádný obsah.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

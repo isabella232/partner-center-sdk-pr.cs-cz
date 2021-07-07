@@ -7,32 +7,28 @@ MS-HAID:
 ms.date: 06/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7882846de0c591b21fe73345f560613f535d1788
-ms.sourcegitcommit: 529b07030a874d644cf947790f4b53cdff438dd4
+ms.openlocfilehash: d38a35fb88b4835716e429aeed731a0d55d9a669
+ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766888"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111906465"
 ---
 # <a name="developing-for-partner-center-for-microsoft-national-clouds"></a>Vývoj pro partnerského centra pro národní cloudy Microsoftu
 
-**Platí pro:**
-
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Partnerské centrum má jednu sadu dokumentace k sadě SDK. Některé funkce ale nemusí být k dispozici ve verzích partnerského centra pro národní cloudy Microsoftu.
 
 Vývojáři musí zvážit změny v sadě SDK pro následující verze partnerského centra:
 
-- [Partnerské centrum provozovaný společností 21Vianet](#partner-center-operated-by-21vianet)
+- [Partnerské centrum provozované společností 21Vianet](#partner-center-operated-by-21vianet)
 - [Partnerské centrum pro Microsoft Cloud pro Německo](#partner-center-for-microsoft-cloud-germany)
 - [Partnerské centrum pro Microsoft Cloud for US Government](#partner-center-for-microsoft-cloud-for-us-government)
 
 Každý článek o sadě SDK partnerského centra obsahuje příslušné verze partnerského centra. Každý článek spravovaných referencí obsahuje také informace o příslušných verzích partnerského centra v části **požadavky** .
 
-## <a name="partner-center-operated-by-21vianet"></a>Partnerské centrum provozovaný společností 21Vianet
+## <a name="partner-center-operated-by-21vianet"></a>Partnerské centrum provozované společností 21Vianet
 
 Mezi partnery partnerského *centra* a *partnerským centrem provozovaným společností 21Vianet* jsou rozdíly:
 
@@ -40,7 +36,7 @@ Mezi partnery partnerského *centra* a *partnerským centrem provozovaným spole
 
 - Odběry Azure nejsou k dispozici.
 
-- Licence pro uživatele zákazníka nemůžete spravovat. Místo toho musí vaši zákazníci spravovat své licence pomocí centra pro správu Office 365.
+- Licence pro uživatele zákazníka nemůžete spravovat. místo toho musí vaši zákazníci spravovat své licence pomocí centra pro správu Office 365.
 
 - Všechny žádosti o podporu se spravují prostřednictvím partnerského centra provozovaného společností 21Vianet. Žádosti o služby a aktualizace služby se nevztahují.
 
@@ -55,31 +51,31 @@ Mezi partnery *partnerského centra* a *partnerským centrem pro Microsoft Cloud
 
 - Partneři nemůžou vytvořit uživatele pro organizaci svého zákazníka nebo role přiřadit.
   - Partneři mohou číst pole, ale nemohou je zapisovat ani aktualizovat.
-  - Partneři musí ručně vytvořit nebo aktualizovat uživatele Customers v centru pro správu Office 365 nebo prostřednictvím Azure Portal. Viz [dokumentace Azure Active Directory](/azure/active-directory/).
+  - partneři musí ručně vytvořit nebo aktualizovat uživatele zákazníků v centru pro správu Office 365 nebo prostřednictvím Azure Portal. viz [dokumentace Azure Active Directory](/azure/active-directory/).
 
-- Licence pro uživatele zákazníka nemůžete spravovat pomocí partnerského centra pro Microsoft Cloud německý portál nebo rozhraní API. Místo toho musíte ke správě svých licencí použít Centrum pro správu Office 365 nebo službu Azure Active Group License Management (již brzy).
-  - (Volitelné) můžete použít Graph API Azure AD. Viz [přiřazení licencí uživateli](/graph/api/user-assignlicense). U partnerského centra pro Microsoft Cloud Německo nezapomeňte použít koncový bod grafu `https://graph.cloudapi.de` místo `https://graph.windows.net` .
+- Licence pro uživatele zákazníka nemůžete spravovat pomocí partnerského centra pro Microsoft Cloud německý portál nebo rozhraní API. místo toho je nutné ke správě licencí použít centrum pro správu Office 365 nebo službu Azure Active Group license management (již brzy).
+  - (volitelné) můžete použít Graph API Azure AD. Viz [přiřazení licencí uživateli](/graph/api/user-assignlicense). u partnerského centra pro Microsoft Cloud německo nezapomeňte použít koncový bod Graph `https://graph.cloudapi.de` namísto `https://graph.windows.net` .
 
-- Nemůžete programově resetovat heslo pro uživatele zákazníka nebo úplného partnerského uživatele. Použijte centrum pro správu Office 365 nebo Azure Portal. Viz [resetování hesla pro uživatele v Azure Active Directory](/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal). V kroku 1 se musíte přihlásit k Azure Portal Microsoft Cloud Německu.
+- Nemůžete programově resetovat heslo pro uživatele zákazníka nebo úplného partnerského uživatele. použijte centrum pro správu Office 365 nebo Azure Portal. Viz [resetování hesla pro uživatele v Azure Active Directory](/azure/active-directory/fundamentals/active-directory-users-reset-password-azure-portal). V kroku 1 se musíte přihlásit k Azure Portal Microsoft Cloud Německu.
 
 - Vývojáři musí své ID aplikace zaregistrovat ručně, aby mohli integrovat funkce partnerského centra rozhraní API/sady SDK do aplikace pro partnerského centra pro Microsoft Cloud Německo. Další informace najdete v tématu [registrace podrobností aplikace pro partnerského centra pro národní Cloud společnosti Microsoft](create-apps-for-partner-center-for-microsoft-national-clouds.md).
 
 ## <a name="partner-center-for-microsoft-cloud-for-us-government"></a>Partnerské centrum pro Microsoft Cloud for US Government
 
-Mezi partnery *partnerského centra* a *partnerským centrem pro Microsoft Cloud pro státní správu USA* jsou rozdíly:
+mezi partnery *partnerského centra* a *partnerským centrem pro Microsoft Cloud for US Government* jsou tyto rozdíly:
 
-- Předplatné Office 365 není aktuálně dostupné pro partnerského centra pro státní správu USA Microsoft Cloud.
+- Office 365 předplatná nejsou aktuálně k dispozici pro partnerské centrum pro Microsoft Cloud for US Government.
 
-- Stávající partneři podporující Microsoft Cloud pro státní správu USA musí vytvořit nové účty v partnerském centru pro Microsoft Cloud pro státní správu USA.
+- stávající partneři podporující Microsoft Cloud for US Government musí vytvořit nové účty v partnerském centru pro Microsoft Cloud for US Government.
 
-- Microsoft Cloud pro státní správu USA musí být v režimu Transact s jediným partnerem.
-  - Ve scénářích pro státní správu USA se nevztahují na vícekanálový a s více partnery a žádosti s existujícím zákazníkem v rámci Microsoft Cloud. Toto omezení je způsobeno tím, že sada Office 365 není aktuálně k dispozici.
+- Microsoft Cloud for US Government zákazníci musí s jedním partnerem provádět transakce.
+  - ve scénářích s Microsoft Cloud for US Government se nevztahují na vícekanálový a více partnerských vztahů a žádostí s existujícím zákazníkem. toto omezení je způsobeno tím, že Office 365 není aktuálně k dispozici.
 
 - Partneři nemůžou vytvořit uživatele pro organizaci svého zákazníka nebo role přiřadit.
-  - Partneři mohou číst pole, ale nemohou je zapisovat ani aktualizovat. Partneři musí ručně vytvořit nebo aktualizovat uživatele zákazníků v Azure Portal. Viz [dokumentace Azure Active Directory](/azure/active-directory/).
+  - Partneři mohou číst pole, ale nemohou je zapisovat ani aktualizovat. Partneři musí ručně vytvořit nebo aktualizovat uživatele zákazníků v Azure Portal. viz [dokumentace Azure Active Directory](/azure/active-directory/).
 
-- Nemůžete programově resetovat heslo pro uživatele zákazníka nebo úplného partnerského uživatele. Použijte Azure Portal. Viz [resetování hesla pro uživatele v Azure Active Directory](/azure/active-directory/active-directory-users-reset-password-azure-portal). V kroku 1 se musíte přihlásit k Azure Portal Microsoft Cloud pro státní správu USA.
+- Nemůžete programově resetovat heslo pro uživatele zákazníka nebo úplného partnerského uživatele. Použijete Azure Portal Viz [resetování hesla pro uživatele v Azure Active Directory](/azure/active-directory/active-directory-users-reset-password-azure-portal). V kroku 1 se musíte ke službě Azure Portal přihlašovat Microsoft Cloud for US Government.
 
-- Koncové body REST pro partnerské Centrum pro Microsoft Cloud pro státní správu USA jsou stejné jako u partnerského centra: `https://api.partnercenter.microsoft.com` .
+- koncové body REST pro partnerského centra pro Microsoft Cloud for US Government jsou stejné jako u partnerského centra: `https://api.partnercenter.microsoft.com` .
 
-- Vývojáři musí své ID aplikace zaregistrovat ručně, aby mohli integrovat funkce partnerského centra rozhraní API/sady SDK ve své aplikaci pro partnerského centra pro státní správu USA Microsoft Cloud. Další informace najdete v tématu [registrace podrobností aplikace pro partnerského centra pro národní Cloud společnosti Microsoft](create-apps-for-partner-center-for-microsoft-national-clouds.md).
+- Vývojáři musí své ID aplikace zaregistrovat ručně, aby mohli integrovat funkce partnerského centra rozhraní API/sady SDK do aplikace pro partnerského centra pro Microsoft Cloud for US Government. Další informace najdete v tématu [registrace podrobností aplikace pro partnerského centra pro národní Cloud společnosti Microsoft](create-apps-for-partner-center-for-microsoft-national-clouds.md).

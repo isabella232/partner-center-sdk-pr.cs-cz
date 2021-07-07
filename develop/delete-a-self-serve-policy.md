@@ -1,35 +1,31 @@
 ---
-title: Odstranění zásady samostatného poskytování
-description: Jak odstranit zásadu samoobslužného ovládání.
+title: Odstranění samoobslužných zásad
+description: Postup odstranění samoobslužných zásad
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3450145d6daf2ffca5e2886245e592406cb0886d
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 063cf98d4c78e82622e486427baeb1a5721715e5
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767152"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973090"
 ---
-# <a name="delete-a-selfservepolicy"></a>Odstranit SelfServePolicy
+# <a name="delete-a-selfservepolicy"></a>Odstranění zásady SelfServePolicy
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Toto téma vysvětluje, jak aktualizovat zásadu samoobslužného zpracování.
+Tento článek vysvětluje, jak aktualizovat samoobslužné zásady.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Postup odstranění samoobslužné zásady:
+Odstranění samoobslužných zásad:
 
-1. Voláním metody [**IAggregatePartner. SelfServePolicies. ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) s identifikátorem entity načtěte rozhraní pro operace s těmito zásadami.
+1. Voláním [**metody IAggregatePartner.SelfServePolicies.ById**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.byid) s identifikátorem entity načtěte rozhraní operací se zásadami.
 
-2. Voláním metody [**Delete**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.delete) nebo [**DeleteAsync**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.deleteasync) odstraníte zásadu samoobslužné obsluhy.
+2. Pokud chcete [**odstranit samoobslužné**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.delete) zásady, zavolejte metodu Delete nebo [**DeleteAsync.**](/dotnet/api/microsoft.store.partnercenter.SelfServePolicies.deleteasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,19 +38,19 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 partnerOperations.SelfServePolicies.ById(policyId).Delete();
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSamples**
 - Třída: **DeleteSelfServePolicies.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **DSTRANIT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{ID} HTTP/1.1 |
+| **Odstranit** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy/{id} HTTP/1.1 |
 
 **Parametr URI**
 
@@ -62,12 +58,12 @@ K získání zadaného produktu použijte následující parametry cesty.
 
 | Název                       | Typ         | Vyžadováno | Popis                                                     |
 |----------------------------|--------------|----------|-----------------------------------------------------------------|
-| **SelfServePolicy-ID**     | **řetezce**   | Yes      | Řetězec, který identifikuje zásadu samoobslužného zpracování.                 |
+| **SelfServePolicy-id**     | **řetězec**   | Yes      | Řetězec, který identifikuje samoobslužné zásady.                 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Vyžaduje se ID žádosti a ID korelace.
-- Další informace najdete v tématu [záhlaví REST v partnerském centru](headers.md) .
+- Vyžaduje se ID požadavku a ID korelace.
+- Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -90,9 +86,9 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

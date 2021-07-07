@@ -6,22 +6,18 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: e39ace3b598736abed6ab22021a8b93d473486a3
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: d215ddb105efe3acd1182c4ff4bb25b045b121f0
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711879"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446339"
 ---
 # <a name="get-a-customers-qualification-via-synchronous-validation"></a>Získat kvalifikaci zákazníka prostřednictvím synchronního ověřování
 
-**Platí pro**
-
-- Partnerské centrum
-
 Naučte se synchronně získat kvalifikaci zákazníka prostřednictvím rozhraní API partnerského centra. Informace o tom, jak to provést asynchronně, najdete v tématu [získání kvalifikace zákazníka prostřednictvím asynchronního ověřování](get-customer-qualification-asynchronous.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 

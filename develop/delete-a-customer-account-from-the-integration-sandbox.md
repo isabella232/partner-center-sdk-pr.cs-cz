@@ -4,21 +4,16 @@ description: Jak odstranit účet zákazníka z karantény integrace v produkčn
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e3a1642c0202c174ddd4f65a6aeda2752def9176
-ms.sourcegitcommit: b1ff781b67b1d322820bbcac2c583229201a8c07
+ms.openlocfilehash: b9d9e44ac9c40bd4e3c7e1a9e04253f853dfd96c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "97766892"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973124"
 ---
 # <a name="delete-a-customer-account-from-the-integration-sandbox"></a>Odstranění zákaznického účet ze sandboxu pro integraci
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek vysvětluje, jak přerušit vztah mezi partnerem a účtem zákazníka a znovu získáte kvótu pro testování v izolovaném prostoru integrace (Tip) Integration.
 
@@ -64,7 +59,7 @@ Odstranění zákazníka z izolovaného prostoru integrace s tipem:
 
     IPartner tipAccountPartnerOperations = PartnerService.Instance.CreatePartnerOperations(tipAccountCredentials);
 
-    // Get all entitlements whose order must be cancelled.
+    // Get all entitlements whose order must be canceled.
     ResourceCollection<Entitlement> entitlements = tipAccountPartnerOperations.Customers.ById(customerTenantId).Entitlements.Get();
 
     // Cancel all orders
@@ -79,7 +74,7 @@ Odstranění zákazníka z izolovaného prostoru integrace s tipem:
     bool proceed = true;
     do
     {
-        // Check if all the orders were cancelled.
+        // Check if all the orders were canceled.
         foreach (var entitlement in entitlements)
         {
             var order = tipAccountPartnerOperations.Customers.ById(customerTenantId).Orders.ById(entitlement.ReferenceOrder.Id).Get();
@@ -99,7 +94,7 @@ Odstranění zákazníka z izolovaného prostoru integrace s tipem:
 
 5. Zajistěte, aby byly všechny objednávky zrušené voláním metody **Delete** pro zákazníka.
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: Partnerská **Třída** PartnerCenterSDK. FeaturesSamples: DeleteCustomerFromTipAccount.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: partnerská **třída** PartnerCenterSDK. FeaturesSamples: DeleteCustomerFromTipAccount. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

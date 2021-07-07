@@ -1,50 +1,46 @@
 ---
-title: Získat položky řádku komerčního vyúčtování faktury
-description: Pomocí rozhraní API partnerského centra můžete získat podrobnosti o položce řádku faktury pro komerční spotřebu (uzavřenou položku řádku s údaji o denním hodnocení) pro zadanou fakturu.
+title: Získání fakturovaných řádkových položek komerční spotřeby na faktuře
+description: Kolekci podrobností řádkových položek faktury ke komerční spotřebě (uzavřená položka řádku s denním hodnocením využití) pro zadanou fakturu můžete získat pomocí rozhraní API Partnerské centrum využití.
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 1406938b16e5a363a73c36ef0338eb5fc4305279
-ms.sourcegitcommit: 89aefbff6dbe740b6f27a888492ffc2e5f98b1e9
+ms.openlocfilehash: 285b6fbda774c9396dee8947550ed774d52bf901
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2021
-ms.locfileid: "110325441"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446220"
 ---
-# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Získat položky řádku komerčního vyúčtování faktury
+# <a name="get-invoice-billed-commercial-consumption-line-items"></a>Získání fakturovaných řádkových položek komerční spotřeby na faktuře
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Následující metody můžete použít k získání shromažďování podrobností o položkách řádků faktury pro komerční spotřebu (označované také jako uzavřené položky řádku s vyhodnoceným řádkem využití) pro zadanou fakturu.
+Pomocí následujících metod můžete získat kolekci podrobností o řádkových položkách faktury ke komerční spotřebě (označované také jako uzavřené řádkové položky s denním hodnocením využití) pro zadanou fakturu.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- Identifikátor faktury Určuje fakturu, pro kterou se mají načíst položky řádku.
+- Identifikátor faktury. Tím se identifikuje faktura, pro kterou se mají načíst řádkové položky.
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat položky komerčních řádků pro určenou fakturu, je nutné načíst objekt faktury:
+Pokud chcete získat komerční řádkové položky pro zadanou fakturu, musíte načíst objekt faktury:
 
-1. Zavolejte metodu [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , která získá rozhraní k fakturaci operace pro zadanou fakturu.
+1. Voláním [**metody ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) získáte rozhraní pro operace s fakturou pro zadanou fakturu.
 
-2. Pro načtení objektu faktury zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) . Objekt faktury obsahuje všechny informace o zadané faktuře.
+2. Voláním [**metody Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) načtěte objekt faktury. Objekt faktury obsahuje všechny informace pro zadanou fakturu.
 
-**Poskytovatel** identifikuje zdroj fakturovaných podrobných informací (například **jednorázová**). **InvoiceLineItemType** určuje typ (například **UsageLineItem**).
+**Zprostředkovatel** identifikuje zdroj fakturovaných podrobných informací (například **jednou).** **InvoiceLineItemType** určuje typ (například **UsageLineItem**).
 
-Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce položek řádků. Pro každou **InvoiceLineItemType** se načte samostatná kolekce položek čáry.
+Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce položek řádku. Pro každý typ InvoiceLineItemType se načte samostatná kolekce **řádových položek.**
 
-Získání kolekce položek řádků, které odpovídají instanci **InvoiceDetail** :
+Získání kolekce řádových položek, které odpovídají instanci **InvoiceDetail:**
 
-1. Předejte **BillingProvider** a **InvoiceLineItemType** instance do metody [**podle**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .
+1. Do metody [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) předejte **vlastnosti BillingProvider** a **InvoiceLineItemType** instance.
 
-2. Zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) pro načtení přidružených položek řádků.
+2. Voláním [**metody Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) načtěte přidružené řádkové položky.
 3. Vytvořte enumerátor pro přechod kolekce, jak je znázorněno v následujícím příkladu.
 
 ``` csharp
@@ -107,7 +103,7 @@ while (fetchNext)
 Podobný příklad najdete v následujícím příkladu:
 
 - Ukázka: [Konzolová testovací aplikace](console-test-app.md)
-- Projekt: **SDK pro Partnerské centrum ukázky**
+- Project: **SDK pro Partnerské centrum ukázky**
 - Třída: **GetBilledConsumptionReconLineItemsPaging.cs**
 
 ## <a name="rest-request"></a>Požadavek REST
@@ -129,16 +125,16 @@ Při vytváření požadavku použijte následující identifikátor URI a param
 | Název                   | Typ   | Vyžadováno | Popis                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
 | id faktury             | řetězec | Yes      | Řetězec, který identifikuje fakturu.                             |
-| Zprostředkovatel               | řetězec | Yes      | Zprostředkovatel: "jednorázová".                                  |
-| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "UsageLineItems". |
-| currencyCode           | řetězec | Yes      | Kód měny pro účtované řádkové položky.                    |
-| period                 | řetězec | Yes      | Období pro fakturované rekognoskaci Příklad: Current, Previous.        |
-| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.       |
-| seekOperation          | řetězec | No       | Nastavte seekOperation = Next pro získání další stránky rekognoskaci položek řádků. |
+| Zprostředkovatel               | řetězec | Yes      | Poskytovatel: "OneTime".                                  |
+| invoice-line-item-type | řetězec | Yes      | Podrobnosti o typu faktury: UsageLineItems. |
+| currencyCode           | řetězec | Yes      | Kód měny pro fakturované řádkové položky.                    |
+| period                 | řetězec | Yes      | Období pro fakturované odsoustavy example: current, previous.        |
+| size                   | číslo | No       | Maximální počet položek, které se budou vracet. Výchozí velikost je 2 000.       |
+| seekOperation          | řetězec | No       | Pokud chcete získat další stránku řádových položek odsouváte, nastavte seekOperation=Next. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -146,17 +142,17 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje odpověď kolekci podrobností položky řádku.
+V případě úspěchu odpověď obsahuje kolekci podrobností řádkové položky.
 
-Pro položku řádku **ChargeType** je hodnota **Nákup** namapována na **New (nový**). **Náhrada** hodnoty je namapována na **Zrušit**.
+Pro položku řádku **ChargeType** se hodnota **Purchase** namapuje na **New**. Hodnota **Refundace se mapuje** na **Hodnotu Zrušit.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ## <a name="rest-examples"></a>Příklady REST
 
-### <a name="request-response-example-1"></a>Požadavek-odpověď – příklad 1
+### <a name="request-response-example-1"></a>Příklad požadavku a odpovědi 1
 
 Podrobnosti pro tento příklad požadavku a odpovědi REST jsou následující:
 
@@ -334,9 +330,9 @@ Podrobnosti pro tento příklad požadavku a odpovědi REST jsou následující:
 - **Poskytovatel:** **OneTime**
 - **InvoiceLineItemType:** **UsageLineItems**
 - **Period**: **Previous**
-- **SeekOperation:** **Next**
+- **SeekOperation**: **Další**
 
-#### <a name="request-example-2"></a>Příklad požadavku 2
+#### <a name="request-example-2"></a>Příklad žádosti 2
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/T000001234/lineitems?provider=onetime&invoiceLineItemType=usagelineitems&currencyCode=usd&period=previous&size=2000&seekoperation=next HTTP/1.1
