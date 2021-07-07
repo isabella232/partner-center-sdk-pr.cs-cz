@@ -1,71 +1,66 @@
 ---
 title: Webhooky Partnerského centra
-description: Webhooky umožňují partnerům registrovat se na události změny prostředků.
+description: Webhooky umožňují partnerům registrovat události změny prostředků.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 8225623ade7e922ac23ebf0ed9215686b0601244
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 74d5981436ba29ea4f6f93a5693ec6da82777eb4
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766826"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547729"
 ---
-# <a name="partner-center-webhooks"></a><span data-ttu-id="753ab-103">Webhooky Partnerského centra</span><span class="sxs-lookup"><span data-stu-id="753ab-103">Partner Center webhooks</span></span>
+# <a name="partner-center-webhooks"></a><span data-ttu-id="bcc79-103">Webhooky Partnerského centra</span><span class="sxs-lookup"><span data-stu-id="bcc79-103">Partner Center webhooks</span></span>
 
-<span data-ttu-id="753ab-104">**Platí pro**</span><span class="sxs-lookup"><span data-stu-id="753ab-104">**Applies To**</span></span>
+<span data-ttu-id="bcc79-104">**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="bcc79-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="753ab-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="753ab-105">Partner Center</span></span>
-- <span data-ttu-id="753ab-106">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="753ab-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="753ab-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="753ab-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="753ab-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="753ab-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="bcc79-105">Rozhraní API Partnerské centrum webhooku umožňují partnerům registrovat události změny prostředků.</span><span class="sxs-lookup"><span data-stu-id="bcc79-105">The Partner Center Webhook APIs allow partners to register for resource change events.</span></span> <span data-ttu-id="bcc79-106">Tyto události se doručí do registrované adresy URL partnera ve formě požadavků HTTP.</span><span class="sxs-lookup"><span data-stu-id="bcc79-106">These events are delivered in the form of HTTP POSTs to the partner's registered URL.</span></span> <span data-ttu-id="bcc79-107">Aby partneři mohli přijímat události Partnerské centrum, budou hostovat zpětné volání, Partnerské centrum může událost změny prostředku POST.</span><span class="sxs-lookup"><span data-stu-id="bcc79-107">To receive an event from Partner Center, partners will host a callback where Partner Center can POST the resource change event.</span></span> <span data-ttu-id="bcc79-108">Událost bude digitálně podepsaná, aby partner mohl ověřit, že se odeslala z Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="bcc79-108">The event will be digitally signed so that the partner can verify that it was sent from Partner Center.</span></span>
 
-<span data-ttu-id="753ab-109">Rozhraní API Webhooku partnerského centra umožňují partnerům registrovat se na události změny prostředků.</span><span class="sxs-lookup"><span data-stu-id="753ab-109">The Partner Center Webhook APIs allow partners to register for resource change events.</span></span> <span data-ttu-id="753ab-110">Tyto události se doručí ve formě příspěvků HTTP na registrovanou adresu URL partnera.</span><span class="sxs-lookup"><span data-stu-id="753ab-110">These events are delivered in the form of HTTP POSTs to the partner's registered URL.</span></span> <span data-ttu-id="753ab-111">Aby partneři mohli získat událost z partnerského centra, bude hostovat zpětné volání, které může partnerské Centrum publikovat událost změny prostředku.</span><span class="sxs-lookup"><span data-stu-id="753ab-111">To receive an event from Partner Center, partners will host a callback where Partner Center can POST the resource change event.</span></span> <span data-ttu-id="753ab-112">Událost bude digitálně podepsaná, aby partner mohl ověřit, že byla odeslána z partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-112">The event will be digitally signed so that the partner can verify that it was sent from Partner Center.</span></span>
+<span data-ttu-id="bcc79-109">Partneři si mohou vybrat z událostí webhooku, jako jsou následující příklady, které podporuje Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="bcc79-109">Partners can select from Webhook events, like the following examples, that are supported by Partner Center.</span></span>
 
-<span data-ttu-id="753ab-113">Partneři můžou vybírat z událostí Webhooku, jako jsou následující příklady, které jsou podporované partnerským centrem.</span><span class="sxs-lookup"><span data-stu-id="753ab-113">Partners can select from Webhook events, like the following examples, that are supported by Partner Center.</span></span>
+- <span data-ttu-id="bcc79-110">**Testovací událost ("test-created")**</span><span class="sxs-lookup"><span data-stu-id="bcc79-110">**Test Event ("test-created")**</span></span>
 
-- <span data-ttu-id="753ab-114">**Testovací událost ("test-Created")**</span><span class="sxs-lookup"><span data-stu-id="753ab-114">**Test Event ("test-created")**</span></span>
+    <span data-ttu-id="bcc79-111">Tato událost vám umožní registraci sama onboardovat a otestovat tak, že si vyžádáte testovací událost a pak budete sledovat její průběh.</span><span class="sxs-lookup"><span data-stu-id="bcc79-111">This event allows you to self-onboard and test your registration by requesting a test event and then tracking its progress.</span></span> <span data-ttu-id="bcc79-112">Uvidíte zprávy o selhání, které microsoft přijímá při pokusu o doručení události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-112">You can see the failure messages that are being received from Microsoft while trying to deliver the event.</span></span> <span data-ttu-id="bcc79-113">Toto omezení se vztahuje pouze na události vytvořené testem.</span><span class="sxs-lookup"><span data-stu-id="bcc79-113">This restriction only applies to "test-created" events.</span></span> <span data-ttu-id="bcc79-114">Data starší než sedm dnů se vyprázdní.</span><span class="sxs-lookup"><span data-stu-id="bcc79-114">Data older than seven days will be purged.</span></span>
 
-    <span data-ttu-id="753ab-115">Tato událost umožňuje samoobslužné zprovoznění a testování registrace tím, že požaduje testovací událost a pak sleduje jeho průběh.</span><span class="sxs-lookup"><span data-stu-id="753ab-115">This event allows you to self-onboard and test your registration by requesting a test event and then tracking its progress.</span></span> <span data-ttu-id="753ab-116">Při pokusu o doručení události můžete zobrazit zprávy o chybách, které jsou přijímány od společnosti Microsoft.</span><span class="sxs-lookup"><span data-stu-id="753ab-116">You can see the failure messages that are being received from Microsoft while trying to deliver the event.</span></span> <span data-ttu-id="753ab-117">Toto omezení se vztahuje pouze na události "vytvořené testem".</span><span class="sxs-lookup"><span data-stu-id="753ab-117">This restriction only applies to "test-created" events.</span></span> <span data-ttu-id="753ab-118">Data starší než sedm dní se vyprázdní.</span><span class="sxs-lookup"><span data-stu-id="753ab-118">Data older than seven days will be purged.</span></span>
+- <span data-ttu-id="bcc79-115">**Událost aktualizace předplatného (aktualizace předplatného)**</span><span class="sxs-lookup"><span data-stu-id="bcc79-115">**Subscription Updated Event ("subscription-updated")**</span></span>
 
-- <span data-ttu-id="753ab-119">**Událost aktualizace předplatného (předplatné-Aktualizováno)**</span><span class="sxs-lookup"><span data-stu-id="753ab-119">**Subscription Updated Event ("subscription-updated")**</span></span>
-
-    <span data-ttu-id="753ab-120">Tato událost se vyvolá při změně předplatného.</span><span class="sxs-lookup"><span data-stu-id="753ab-120">This event is raised when the subscription changes.</span></span> <span data-ttu-id="753ab-121">Tyto události budou vygenerovány v případě, že dojde k vnitřní změně kromě změny prostřednictvím rozhraní API partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-121">These events will be generated when there is an internal change in addition to when changes are made through the Partner Center API.</span></span>
+    <span data-ttu-id="bcc79-116">Tato událost se vyvolala při změně předplatného.</span><span class="sxs-lookup"><span data-stu-id="bcc79-116">This event is raised when the subscription changes.</span></span> <span data-ttu-id="bcc79-117">Tyto události se vygenerují v případě, že dojde k interní změně kromě toho, že se změny provádí prostřednictvím Partnerské centrum API.</span><span class="sxs-lookup"><span data-stu-id="bcc79-117">These events will be generated when there is an internal change in addition to when changes are made through the Partner Center API.</span></span>
 
     >[!NOTE]
-    ><span data-ttu-id="753ab-122">Mezi časem změny předplatného a aktivací události aktualizace předplatného dojde k prodlevě až 48 hodin.</span><span class="sxs-lookup"><span data-stu-id="753ab-122">There is a delay of up to 48 hours between the time a subscription changes and when the Subscription Updated event is triggered.</span></span>
+    ><span data-ttu-id="bcc79-118">Mezi změnou předplatného a aktivací události Aktualizace předplatného je zpoždění až 48 hodin.</span><span class="sxs-lookup"><span data-stu-id="bcc79-118">There is a delay of up to 48 hours between the time a subscription changes and when the Subscription Updated event is triggered.</span></span>
 
-- <span data-ttu-id="753ab-123">**Událost překročení prahové hodnoty ("usagerecords-thresholdExceeded")**</span><span class="sxs-lookup"><span data-stu-id="753ab-123">**Threshold Exceeded Event ("usagerecords-thresholdExceeded")**</span></span>
+- <span data-ttu-id="bcc79-119">**Událost překročení prahové hodnoty (usagerecords-thresholdExceeded)**</span><span class="sxs-lookup"><span data-stu-id="bcc79-119">**Threshold Exceeded Event ("usagerecords-thresholdExceeded")**</span></span>
 
-    <span data-ttu-id="753ab-124">Tato událost se vyvolá v případě, že množství využití Microsoft Azure pro každého zákazníka přesáhne rozpočet výdajů na využití (jejich prahovou hodnotu).</span><span class="sxs-lookup"><span data-stu-id="753ab-124">This event is raised when the amount of Microsoft Azure usage for any customer exceeds their usage spending budget (their threshold).</span></span> <span data-ttu-id="753ab-125">Další informace najdete v tématu [nastavení rozpočtu útraty Azure pro vaše zákazníky/partnery – Center/set-a-Azure-útraty-rozpočet-pro zákazníky).</span><span class="sxs-lookup"><span data-stu-id="753ab-125">For more information, see  [Set an Azure spending budget for your customers/partner-center/set-an-azure-spending-budget-for-your-customers).</span></span>
+    <span data-ttu-id="bcc79-120">Tato událost se nastane, když výše Microsoft Azure využití u všech zákazníků překročí rozpočet útraty za využití (jejich prahovou hodnotu).</span><span class="sxs-lookup"><span data-stu-id="bcc79-120">This event is raised when the amount of Microsoft Azure usage for any customer exceeds their usage spending budget (their threshold).</span></span> <span data-ttu-id="bcc79-121">Další informace najdete v tématu [Nastavení rozpočtu útraty Azure pro zákazníky/partnerské centrum/set-an-azure-spending-budget-for-your-customers).</span><span class="sxs-lookup"><span data-stu-id="bcc79-121">For more information, see  [Set an Azure spending budget for your customers/partner-center/set-an-azure-spending-budget-for-your-customers).</span></span>
 
-- <span data-ttu-id="753ab-126">**Událost vytvořená odkazem (odkaz – vytvořeno)**</span><span class="sxs-lookup"><span data-stu-id="753ab-126">**Referral Created Event ("referral-created")**</span></span>
+- <span data-ttu-id="bcc79-122">**Událost vytvoření referenčního seznamu ("vytvoření referenčního seznamu")**</span><span class="sxs-lookup"><span data-stu-id="bcc79-122">**Referral Created Event ("referral-created")**</span></span>
 
-    <span data-ttu-id="753ab-127">Tato událost je aktivována při vytvoření odkazu.</span><span class="sxs-lookup"><span data-stu-id="753ab-127">This event is raised when the referral is created.</span></span>
+    <span data-ttu-id="bcc79-123">Tato událost se vyvolala při vytvoření referenčního odkazu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-123">This event is raised when the referral is created.</span></span>
 
-- <span data-ttu-id="753ab-128">**Událost aktualizovaného odkazu (odkaz-Aktualizováno)**</span><span class="sxs-lookup"><span data-stu-id="753ab-128">**Referral Updated Event ("referral-updated")**</span></span>
+- <span data-ttu-id="bcc79-124">**Aktualizovaná událost referenčního seznamu (aktualizace referenčních seznamu)**</span><span class="sxs-lookup"><span data-stu-id="bcc79-124">**Referral Updated Event ("referral-updated")**</span></span>
 
-    <span data-ttu-id="753ab-129">Tato událost je aktivována při aktualizaci odkazu.</span><span class="sxs-lookup"><span data-stu-id="753ab-129">This event is raised when the referral is updated.</span></span>
+    <span data-ttu-id="bcc79-125">Tato událost se vyvolala při aktualizaci referenčního odkazu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-125">This event is raised when the referral is updated.</span></span>
 
-- <span data-ttu-id="753ab-130">**Událost připravena k faktuře ("faktura-připravena")**</span><span class="sxs-lookup"><span data-stu-id="753ab-130">**Invoice Ready Event ("invoice-ready")**</span></span>
+- <span data-ttu-id="bcc79-126">**Událost připravenou na fakturu (připravenou k fakturaci)**</span><span class="sxs-lookup"><span data-stu-id="bcc79-126">**Invoice Ready Event ("invoice-ready")**</span></span>
 
-    <span data-ttu-id="753ab-131">Tato událost se vyvolá, když je nová faktura připravena.</span><span class="sxs-lookup"><span data-stu-id="753ab-131">This event is raised when the new invoice is ready.</span></span>
+    <span data-ttu-id="bcc79-127">Tato událost se vyvolala, když je nová faktura připravená.</span><span class="sxs-lookup"><span data-stu-id="bcc79-127">This event is raised when the new invoice is ready.</span></span>
 
-<span data-ttu-id="753ab-132">Další události Webhooku se přidají pro prostředky, které se změní v systému, který partner neovládá, a provede se další aktualizace, aby se tyto události dostaly co nejblíže "reálnému času".</span><span class="sxs-lookup"><span data-stu-id="753ab-132">Future Webhook events will be added for resources that change in the system that the partner isn't in control of, and further updates will be made to get those events as close to "real time" as possible.</span></span> <span data-ttu-id="753ab-133">Názory partnerů, na kterých události přidávají hodnotu do jejich podnikání, budou užitečné při určování nových událostí, které se mají přidat.</span><span class="sxs-lookup"><span data-stu-id="753ab-133">Feedback from Partners on which events add value to their business will be useful in determining what new events to add.</span></span>
+<span data-ttu-id="bcc79-128">Budoucí události webhooku budou přidány pro prostředky, které se mění v systému, nad který partner nemá kontrolu, a budou provedeny další aktualizace, aby se tyto události dostaly co nejvíce do "v reálném čase".</span><span class="sxs-lookup"><span data-stu-id="bcc79-128">Future Webhook events will be added for resources that change in the system that the partner isn't in control of, and further updates will be made to get those events as close to "real time" as possible.</span></span> <span data-ttu-id="bcc79-129">Názory partnerů na to, které události přidávají do své firmy přidanou hodnotu, budou užitečné při určování nových událostí, které se mají přidat.</span><span class="sxs-lookup"><span data-stu-id="bcc79-129">Feedback from Partners on which events add value to their business will be useful in determining what new events to add.</span></span>
 
-<span data-ttu-id="753ab-134">Úplný seznam událostí Webhooku podporovaných partnerským centrem najdete v tématu [události Webhooku partnerského centra](partner-center-webhook-events.md).</span><span class="sxs-lookup"><span data-stu-id="753ab-134">For a complete list of Webhook events supported by Partner Center, see [Partner Center webhook events](partner-center-webhook-events.md).</span></span>
+<span data-ttu-id="bcc79-130">Úplný seznam událostí webhooku podporovaných webhookem podporovaných Partnerské centrum najdete [v Partnerské centrum událostí webhooku.](partner-center-webhook-events.md)</span><span class="sxs-lookup"><span data-stu-id="bcc79-130">For a complete list of Webhook events supported by Partner Center, see [Partner Center webhook events](partner-center-webhook-events.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="753ab-135">Požadavky</span><span class="sxs-lookup"><span data-stu-id="753ab-135">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bcc79-131">Požadavky</span><span class="sxs-lookup"><span data-stu-id="bcc79-131">Prerequisites</span></span>
 
-- <span data-ttu-id="753ab-136">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="753ab-136">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="753ab-137">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="753ab-137">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="bcc79-132">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="bcc79-132">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="bcc79-133">Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="bcc79-133">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="receiving-events-from-partner-center"></a><span data-ttu-id="753ab-138">Příjem událostí z partnerského centra</span><span class="sxs-lookup"><span data-stu-id="753ab-138">Receiving events from Partner Center</span></span>
+## <a name="receiving-events-from-partner-center"></a><span data-ttu-id="bcc79-134">Příjem událostí z Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="bcc79-134">Receiving events from Partner Center</span></span>
 
-<span data-ttu-id="753ab-139">Pokud chcete přijímat události z partnerského centra, musíte zveřejnit veřejně přístupný koncový bod.</span><span class="sxs-lookup"><span data-stu-id="753ab-139">To receive events from Partner Center, you must expose a publicly accessible endpoint.</span></span> <span data-ttu-id="753ab-140">Vzhledem k tomu, že je tento koncový bod vystavený, musíte ověřit, jestli je komunikace z partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-140">Because this endpoint is exposed, you must validate that the communication is from Partner Center.</span></span> <span data-ttu-id="753ab-141">Všechny události Webhooku, které jste obdrželi, jsou digitálně podepsané certifikátem, který je zřetězený do kořenového adresáře společnosti Microsoft.</span><span class="sxs-lookup"><span data-stu-id="753ab-141">All Webhook events that you receive are digitally signed with a certificate that chains to the Microsoft Root.</span></span> <span data-ttu-id="753ab-142">Bude také k dispozici odkaz na certifikát použitý k podepsání události.</span><span class="sxs-lookup"><span data-stu-id="753ab-142">A link to the certificate used to sign the event will also be provided.</span></span> <span data-ttu-id="753ab-143">Tím umožníte prodloužení platnosti certifikátu, aniž byste museli službu znovu nasazovat nebo překonfigurovat.</span><span class="sxs-lookup"><span data-stu-id="753ab-143">This will allow the certificate to be renewed without you having to redeploy or reconfigure your service.</span></span> <span data-ttu-id="753ab-144">Partnerským centrem se 10 pokusí o doručení události.</span><span class="sxs-lookup"><span data-stu-id="753ab-144">Partner Center will make 10 attempts to deliver the event.</span></span> <span data-ttu-id="753ab-145">Pokud se událost ještě doručí po 10 pokusech, přesune se do offline fronty a žádné další pokusy se neuskuteční při doručení.</span><span class="sxs-lookup"><span data-stu-id="753ab-145">If the event is still not delivered after 10 attempts, it will be moved into an offline queue and no further attempts will be made at delivery.</span></span>
+<span data-ttu-id="bcc79-135">Pokud chcete přijímat události Partnerské centrum, musíte zveřejnit veřejně přístupný koncový bod.</span><span class="sxs-lookup"><span data-stu-id="bcc79-135">To receive events from Partner Center, you must expose a publicly accessible endpoint.</span></span> <span data-ttu-id="bcc79-136">Vzhledem k tomu, že je tento koncový bod vystavený, musíte ověřit, že komunikace pochází z Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="bcc79-136">Because this endpoint is exposed, you must validate that the communication is from Partner Center.</span></span> <span data-ttu-id="bcc79-137">Všechny události webhooku, které obdržíte, jsou digitálně podepsané certifikátem, který se zřetězuje s kořenem Microsoftu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-137">All Webhook events that you receive are digitally signed with a certificate that chains to the Microsoft Root.</span></span> <span data-ttu-id="bcc79-138">Bude také poskytnut odkaz na certifikát použitý k podepsání události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-138">A link to the certificate used to sign the event will also be provided.</span></span> <span data-ttu-id="bcc79-139">To umožní obnovení certifikátu bez nutnosti opětovného nasazení nebo překonfigurování služby.</span><span class="sxs-lookup"><span data-stu-id="bcc79-139">This will allow the certificate to be renewed without you having to redeploy or reconfigure your service.</span></span> <span data-ttu-id="bcc79-140">Partnerské centrum 10 pokusů o doručení události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-140">Partner Center will make 10 attempts to deliver the event.</span></span> <span data-ttu-id="bcc79-141">Pokud se událost ani po 10 pokusech doručí, přesune se do offline fronty a žádné další pokusy nebudou provedeny při doručení.</span><span class="sxs-lookup"><span data-stu-id="bcc79-141">If the event is still not delivered after 10 attempts, it will be moved into an offline queue and no further attempts will be made at delivery.</span></span>
 
-<span data-ttu-id="753ab-146">Následující ukázka ukazuje událost zveřejněnou z partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-146">The following sample shows an event posted from Partner Center.</span></span>
+<span data-ttu-id="bcc79-142">Následující příklad ukazuje událost z webu Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="bcc79-142">The following sample shows an event posted from Partner Center.</span></span>
 
 ```http
 POST /webhooks/callback
@@ -87,48 +82,48 @@ Content-Length: 195
 ```
 
 >[!NOTE]
-><span data-ttu-id="753ab-147">Autorizační hlavička má schéma "signatura".</span><span class="sxs-lookup"><span data-stu-id="753ab-147">The Authorization header has a scheme of "Signature".</span></span> <span data-ttu-id="753ab-148">Toto je signatura s kódováním base64 obsahu.</span><span class="sxs-lookup"><span data-stu-id="753ab-148">This is a base64 encoded signature of the content.</span></span>
+><span data-ttu-id="bcc79-143">Autorizační hlavička má schéma Podpis.</span><span class="sxs-lookup"><span data-stu-id="bcc79-143">The Authorization header has a scheme of "Signature".</span></span> <span data-ttu-id="bcc79-144">Jedná se o signaturu obsahu s kódováním Base64.</span><span class="sxs-lookup"><span data-stu-id="bcc79-144">This is a base64 encoded signature of the content.</span></span>
 
-## <a name="how-to-authenticate-the-callback"></a><span data-ttu-id="753ab-149">Ověření zpětného volání</span><span class="sxs-lookup"><span data-stu-id="753ab-149">How to authenticate the callback</span></span>
+## <a name="how-to-authenticate-the-callback"></a><span data-ttu-id="bcc79-145">Ověření zpětného volání</span><span class="sxs-lookup"><span data-stu-id="bcc79-145">How to authenticate the callback</span></span>
 
-<span data-ttu-id="753ab-150">K ověření události zpětného volání přijatého z partnerského centra použijte následující postup:</span><span class="sxs-lookup"><span data-stu-id="753ab-150">To authenticate the callback event received from Partner Center, follow these steps:</span></span>
+<span data-ttu-id="bcc79-146">Pokud chcete ověřit událost zpětného volání přijatou z Partnerské centrum, postupujte takto:</span><span class="sxs-lookup"><span data-stu-id="bcc79-146">To authenticate the callback event received from Partner Center, follow these steps:</span></span>
 
-1. <span data-ttu-id="753ab-151">Ověřte, zda jsou k dispozici požadovaná záhlaví (autorizace, x-MS-Certificate-URL, x-MS-Signature-Algorithm).</span><span class="sxs-lookup"><span data-stu-id="753ab-151">Verify the required headers are present (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).</span></span>
+1. <span data-ttu-id="bcc79-147">Ověřte, že jsou k dispozici požadované hlavičky (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).</span><span class="sxs-lookup"><span data-stu-id="bcc79-147">Verify the required headers are present (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).</span></span>
 
-2. <span data-ttu-id="753ab-152">Stáhněte si certifikát použitý k podepsání obsahu (x-MS-Certificate-URL).</span><span class="sxs-lookup"><span data-stu-id="753ab-152">Download the certificate used to sign the content (x-ms-certificate-url).</span></span>
+2. <span data-ttu-id="bcc79-148">Stáhněte si certifikát použitý k podepsání obsahu (x-ms-certificate-url).</span><span class="sxs-lookup"><span data-stu-id="bcc79-148">Download the certificate used to sign the content (x-ms-certificate-url).</span></span>
 
-3. <span data-ttu-id="753ab-153">Ověřte řetěz certifikátů.</span><span class="sxs-lookup"><span data-stu-id="753ab-153">Verify the Certificate Chain.</span></span>
+3. <span data-ttu-id="bcc79-149">Ověřte řetěz certifikátů.</span><span class="sxs-lookup"><span data-stu-id="bcc79-149">Verify the Certificate Chain.</span></span>
 
-4. <span data-ttu-id="753ab-154">Ověřte "organizaci" certifikátu.</span><span class="sxs-lookup"><span data-stu-id="753ab-154">Verify the "Organization" of the certificate.</span></span>
+4. <span data-ttu-id="bcc79-150">Ověřte organizaci certifikátu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-150">Verify the "Organization" of the certificate.</span></span>
 
-5. <span data-ttu-id="753ab-155">Přečtěte si obsah s kódováním UTF8 do vyrovnávací paměti.</span><span class="sxs-lookup"><span data-stu-id="753ab-155">Read the content with UTF8 encoding into a buffer.</span></span>
+5. <span data-ttu-id="bcc79-151">Načtěte obsah s kódováním UTF8 do vyrovnávací paměti.</span><span class="sxs-lookup"><span data-stu-id="bcc79-151">Read the content with UTF8 encoding into a buffer.</span></span>
 
-6. <span data-ttu-id="753ab-156">Vytvořte poskytovatele kryptografických služeb RSA.</span><span class="sxs-lookup"><span data-stu-id="753ab-156">Create an RSA Crypto Provider.</span></span>
+6. <span data-ttu-id="bcc79-152">Vytvořte zprostředkovatele kryptografických služeb RSA.</span><span class="sxs-lookup"><span data-stu-id="bcc79-152">Create an RSA Crypto Provider.</span></span>
 
-7. <span data-ttu-id="753ab-157">Ověřte, že data odpovídají údajům, které byly podepsány zadaným algoritmem hash (například SHA256).</span><span class="sxs-lookup"><span data-stu-id="753ab-157">Verify the data matches what was signed with the specified hash algorithm (for example SHA256).</span></span>
+7. <span data-ttu-id="bcc79-153">Ověřte, že data odpovídají tomu, co bylo podepsáno zadaným hashovacím algoritmem (například SHA256).</span><span class="sxs-lookup"><span data-stu-id="bcc79-153">Verify the data matches what was signed with the specified hash algorithm (for example SHA256).</span></span>
 
-8. <span data-ttu-id="753ab-158">Pokud je ověření úspěšné, zpracujte zprávu.</span><span class="sxs-lookup"><span data-stu-id="753ab-158">If the verification succeeds, process the message.</span></span>
+8. <span data-ttu-id="bcc79-154">Pokud ověření proběhne úspěšně, zpracujte zprávu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-154">If the verification succeeds, process the message.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="753ab-159">Ve výchozím nastavení se token podpisu pošle v autorizační hlavičce.</span><span class="sxs-lookup"><span data-stu-id="753ab-159">By default, the signature token will be sent in an Authorization header.</span></span> <span data-ttu-id="753ab-160">Pokud jste v registraci nastavili **SignatureTokenToMsSignatureHeader** na hodnotu true, token podpisu se místo toho pošle v hlavičce x-MS-Signature.</span><span class="sxs-lookup"><span data-stu-id="753ab-160">If you set **SignatureTokenToMsSignatureHeader** to true in your registration, the signature token will be sent in the x-ms-signature header instead.</span></span>
+> <span data-ttu-id="bcc79-155">Ve výchozím nastavení se token podpisu odesílá v autorizační hlavičce.</span><span class="sxs-lookup"><span data-stu-id="bcc79-155">By default, the signature token will be sent in an Authorization header.</span></span> <span data-ttu-id="bcc79-156">Pokud ve své registraci nastavíte **SignatureTokenToMsSignatureHeader** na true, token podpisu se místo toho odesílá v hlavičce x-ms-signature.</span><span class="sxs-lookup"><span data-stu-id="bcc79-156">If you set **SignatureTokenToMsSignatureHeader** to true in your registration, the signature token will be sent in the x-ms-signature header instead.</span></span>
 
-## <a name="event-model"></a><span data-ttu-id="753ab-161">Model událostí</span><span class="sxs-lookup"><span data-stu-id="753ab-161">Event model</span></span>
+## <a name="event-model"></a><span data-ttu-id="bcc79-157">Model událostí</span><span class="sxs-lookup"><span data-stu-id="bcc79-157">Event model</span></span>
 
-<span data-ttu-id="753ab-162">Následující tabulka popisuje vlastnosti události partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-162">The following table describes the properties of a Partner Center event.</span></span>
+<span data-ttu-id="bcc79-158">Následující tabulka popisuje vlastnosti události Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="bcc79-158">The following table describes the properties of a Partner Center event.</span></span>
 
-### <a name="properties"></a><span data-ttu-id="753ab-163">Vlastnosti</span><span class="sxs-lookup"><span data-stu-id="753ab-163">Properties</span></span>
+### <a name="properties"></a><span data-ttu-id="bcc79-159">Vlastnosti</span><span class="sxs-lookup"><span data-stu-id="bcc79-159">Properties</span></span>
 
-| <span data-ttu-id="753ab-164">Název</span><span class="sxs-lookup"><span data-stu-id="753ab-164">Name</span></span>                      | <span data-ttu-id="753ab-165">Description</span><span class="sxs-lookup"><span data-stu-id="753ab-165">Description</span></span>                                                                           |
+| <span data-ttu-id="bcc79-160">Název</span><span class="sxs-lookup"><span data-stu-id="bcc79-160">Name</span></span>                      | <span data-ttu-id="bcc79-161">Description</span><span class="sxs-lookup"><span data-stu-id="bcc79-161">Description</span></span>                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------|
-| <span data-ttu-id="753ab-166">**EventName**</span><span class="sxs-lookup"><span data-stu-id="753ab-166">**EventName**</span></span>             | <span data-ttu-id="753ab-167">Název události.</span><span class="sxs-lookup"><span data-stu-id="753ab-167">The name of the event.</span></span> <span data-ttu-id="753ab-168">Ve formátu {Resource} – {Action}.</span><span class="sxs-lookup"><span data-stu-id="753ab-168">In the form {resource}-{action}.</span></span> <span data-ttu-id="753ab-169">Například "test-Created".</span><span class="sxs-lookup"><span data-stu-id="753ab-169">For example, "test-created".</span></span>  |
-| <span data-ttu-id="753ab-170">**ResourceUri**</span><span class="sxs-lookup"><span data-stu-id="753ab-170">**ResourceUri**</span></span>           | <span data-ttu-id="753ab-171">Identifikátor URI prostředku, který se změnil.</span><span class="sxs-lookup"><span data-stu-id="753ab-171">The URI of the resource that changed.</span></span>                                                 |
-| <span data-ttu-id="753ab-172">**ResourceName**</span><span class="sxs-lookup"><span data-stu-id="753ab-172">**ResourceName**</span></span>          | <span data-ttu-id="753ab-173">Název prostředku, který se změnil.</span><span class="sxs-lookup"><span data-stu-id="753ab-173">The name of the resource that changed.</span></span>                                                |
-| <span data-ttu-id="753ab-174">**AuditUrl**</span><span class="sxs-lookup"><span data-stu-id="753ab-174">**AuditUrl**</span></span>              | <span data-ttu-id="753ab-175">Nepovinný parametr.</span><span class="sxs-lookup"><span data-stu-id="753ab-175">Optional.</span></span> <span data-ttu-id="753ab-176">Identifikátor URI záznamu auditu</span><span class="sxs-lookup"><span data-stu-id="753ab-176">The URI of the Audit record.</span></span>                                                |
-| <span data-ttu-id="753ab-177">**ResourceChangeUtcDate**</span><span class="sxs-lookup"><span data-stu-id="753ab-177">**ResourceChangeUtcDate**</span></span> | <span data-ttu-id="753ab-178">Datum a čas ve formátu UTC, kdy došlo ke změně prostředků.</span><span class="sxs-lookup"><span data-stu-id="753ab-178">The date and time, in UTC format, when the resource change occurred.</span></span>                  |
+| <span data-ttu-id="bcc79-162">**EventName**</span><span class="sxs-lookup"><span data-stu-id="bcc79-162">**EventName**</span></span>             | <span data-ttu-id="bcc79-163">Název události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-163">The name of the event.</span></span> <span data-ttu-id="bcc79-164">Ve tvaru {resource}-{action}.</span><span class="sxs-lookup"><span data-stu-id="bcc79-164">In the form {resource}-{action}.</span></span> <span data-ttu-id="bcc79-165">Například "test-created".</span><span class="sxs-lookup"><span data-stu-id="bcc79-165">For example, "test-created".</span></span>  |
+| <span data-ttu-id="bcc79-166">**Identifikátor URI prostředku**</span><span class="sxs-lookup"><span data-stu-id="bcc79-166">**ResourceUri**</span></span>           | <span data-ttu-id="bcc79-167">Identifikátor URI prostředku, který se změnil.</span><span class="sxs-lookup"><span data-stu-id="bcc79-167">The URI of the resource that changed.</span></span>                                                 |
+| <span data-ttu-id="bcc79-168">**Název prostředku**</span><span class="sxs-lookup"><span data-stu-id="bcc79-168">**ResourceName**</span></span>          | <span data-ttu-id="bcc79-169">Název prostředku, který se změnil.</span><span class="sxs-lookup"><span data-stu-id="bcc79-169">The name of the resource that changed.</span></span>                                                |
+| <span data-ttu-id="bcc79-170">**AuditUrl**</span><span class="sxs-lookup"><span data-stu-id="bcc79-170">**AuditUrl**</span></span>              | <span data-ttu-id="bcc79-171">Nepovinný parametr.</span><span class="sxs-lookup"><span data-stu-id="bcc79-171">Optional.</span></span> <span data-ttu-id="bcc79-172">Identifikátor URI záznamu Auditu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-172">The URI of the Audit record.</span></span>                                                |
+| <span data-ttu-id="bcc79-173">**ResourceChangeUtcDate**</span><span class="sxs-lookup"><span data-stu-id="bcc79-173">**ResourceChangeUtcDate**</span></span> | <span data-ttu-id="bcc79-174">Datum a čas ve formátu UTC, kdy došlo ke změně prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-174">The date and time, in UTC format, when the resource change occurred.</span></span>                  |
 
-### <a name="sample"></a><span data-ttu-id="753ab-179">Ukázka</span><span class="sxs-lookup"><span data-stu-id="753ab-179">Sample</span></span>
+### <a name="sample"></a><span data-ttu-id="bcc79-175">Ukázka</span><span class="sxs-lookup"><span data-stu-id="bcc79-175">Sample</span></span>
 
-<span data-ttu-id="753ab-180">Následující příklad ukazuje strukturu události partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-180">The following sample shows the structure of a Partner Center event.</span></span>
+<span data-ttu-id="bcc79-176">Následující příklad ukazuje strukturu události Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="bcc79-176">The following sample shows the structure of a Partner Center event.</span></span>
 
 ```http
 {
@@ -140,21 +135,21 @@ Content-Length: 195
 }
 ```
 
-## <a name="webhook-apis"></a><span data-ttu-id="753ab-181">Rozhraní API Webhooku</span><span class="sxs-lookup"><span data-stu-id="753ab-181">Webhook APIs</span></span>
+## <a name="webhook-apis"></a><span data-ttu-id="bcc79-177">Rozhraní API webhooků</span><span class="sxs-lookup"><span data-stu-id="bcc79-177">Webhook APIs</span></span>
 
-### <a name="authentication"></a><span data-ttu-id="753ab-182">Authentication</span><span class="sxs-lookup"><span data-stu-id="753ab-182">Authentication</span></span>
+### <a name="authentication"></a><span data-ttu-id="bcc79-178">Authentication</span><span class="sxs-lookup"><span data-stu-id="bcc79-178">Authentication</span></span>
 
-<span data-ttu-id="753ab-183">Všechna volání rozhraní API Webhooku se ověřují pomocí nosných tokenů v autorizační hlavičce.</span><span class="sxs-lookup"><span data-stu-id="753ab-183">All calls to the Webhook APIs are authenticated using the Bearer token in the Authorization Header.</span></span> <span data-ttu-id="753ab-184">Získání přístupového tokenu pro přístup `https://api.partnercenter.microsoft.com` .</span><span class="sxs-lookup"><span data-stu-id="753ab-184">Acquire an access token to access `https://api.partnercenter.microsoft.com`.</span></span> <span data-ttu-id="753ab-185">Tento token je stejný token, který se používá pro přístup ke zbytkům rozhraní API partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-185">This token is the same token that is used to access the rest of the Partner Center APIs.</span></span>
+<span data-ttu-id="bcc79-179">Všechna volání rozhraní API webhooku se ověřují pomocí tokenu Bearer v autorizační hlavičce.</span><span class="sxs-lookup"><span data-stu-id="bcc79-179">All calls to the Webhook APIs are authenticated using the Bearer token in the Authorization Header.</span></span> <span data-ttu-id="bcc79-180">Získání přístupového tokenu pro přístup k `https://api.partnercenter.microsoft.com` .</span><span class="sxs-lookup"><span data-stu-id="bcc79-180">Acquire an access token to access `https://api.partnercenter.microsoft.com`.</span></span> <span data-ttu-id="bcc79-181">Tento token je stejný token, který se používá pro přístup ke zbývajícím Partnerské centrum API.</span><span class="sxs-lookup"><span data-stu-id="bcc79-181">This token is the same token that is used to access the rest of the Partner Center APIs.</span></span>
 
-### <a name="get-a-list-of-events"></a><span data-ttu-id="753ab-186">Získat seznam událostí</span><span class="sxs-lookup"><span data-stu-id="753ab-186">Get a list of events</span></span>
+### <a name="get-a-list-of-events"></a><span data-ttu-id="bcc79-182">Získání seznamu událostí</span><span class="sxs-lookup"><span data-stu-id="bcc79-182">Get a list of events</span></span>
 
-<span data-ttu-id="753ab-187">Vrátí seznam událostí, které jsou aktuálně podporovány rozhraními API Webhooku.</span><span class="sxs-lookup"><span data-stu-id="753ab-187">Returns a list of the events that are currently supported by the Webhook APIs.</span></span>
+<span data-ttu-id="bcc79-183">Vrátí seznam událostí, které jsou aktuálně podporovány rozhraními API webhooku.</span><span class="sxs-lookup"><span data-stu-id="bcc79-183">Returns a list of the events that are currently supported by the Webhook APIs.</span></span>
 
-### <a name="resource-url"></a><span data-ttu-id="753ab-188">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="753ab-188">Resource URL</span></span>
+### <a name="resource-url"></a><span data-ttu-id="bcc79-184">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-184">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration/events`
 
-### <a name="request-example"></a><span data-ttu-id="753ab-189">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="753ab-189">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bcc79-185">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="bcc79-185">Request example</span></span>
 
 ```http
 GET /webhooks/v1/registration/events
@@ -164,7 +159,7 @@ accept: */*
 host: api.partnercenter.microsoft.com
 ```
 
-### <a name="response-example"></a><span data-ttu-id="753ab-190">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="753ab-190">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bcc79-186">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="bcc79-186">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -180,15 +175,15 @@ X-Locale: en-US
 [ "subscription-updated", "test-created", "usagerecords-thresholdExceeded" ]
 ```
 
-### <a name="register-to-receive-events"></a><span data-ttu-id="753ab-191">Registrace pro příjem událostí</span><span class="sxs-lookup"><span data-stu-id="753ab-191">Register to receive events</span></span>
+### <a name="register-to-receive-events"></a><span data-ttu-id="bcc79-187">Registrace pro příjem událostí</span><span class="sxs-lookup"><span data-stu-id="bcc79-187">Register to receive events</span></span>
 
-<span data-ttu-id="753ab-192">Zaregistruje tenanta pro příjem zadaných událostí.</span><span class="sxs-lookup"><span data-stu-id="753ab-192">Registers a tenant to receive the specified events.</span></span>
+<span data-ttu-id="bcc79-188">Zaregistruje tenanta pro příjem zadaných událostí.</span><span class="sxs-lookup"><span data-stu-id="bcc79-188">Registers a tenant to receive the specified events.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="753ab-193">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="753ab-193">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="bcc79-189">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-189">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration`
 
-### <a name="request-example"></a><span data-ttu-id="753ab-194">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="753ab-194">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bcc79-190">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="bcc79-190">Request example</span></span>
 
 ```http
 POST /webhooks/v1/registration
@@ -205,7 +200,7 @@ Content-Length: 219
 }
 ```
 
-### <a name="response-example"></a><span data-ttu-id="753ab-195">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="753ab-195">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bcc79-191">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="bcc79-191">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -224,15 +219,15 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="view-a-registration"></a><span data-ttu-id="753ab-196">Zobrazit registraci</span><span class="sxs-lookup"><span data-stu-id="753ab-196">View a registration</span></span>
+### <a name="view-a-registration"></a><span data-ttu-id="bcc79-192">Zobrazení registrace</span><span class="sxs-lookup"><span data-stu-id="bcc79-192">View a registration</span></span>
 
-<span data-ttu-id="753ab-197">Vrátí registraci události webhooků pro tenanta.</span><span class="sxs-lookup"><span data-stu-id="753ab-197">Returns the Webhooks event registration for a tenant.</span></span>
+<span data-ttu-id="bcc79-193">Vrátí registraci události webhooků pro tenanta.</span><span class="sxs-lookup"><span data-stu-id="bcc79-193">Returns the Webhooks event registration for a tenant.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="753ab-198">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="753ab-198">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="bcc79-194">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-194">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration`
 
-### <a name="request-example"></a><span data-ttu-id="753ab-199">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="753ab-199">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bcc79-195">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="bcc79-195">Request example</span></span>
 
 ```http
 GET /webhooks/v1/registration
@@ -243,7 +238,7 @@ Host: api.partnercenter.microsoft.com
 Accept-Encoding: gzip, deflate
 ```
 
-### <a name="response-example"></a><span data-ttu-id="753ab-200">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="753ab-200">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bcc79-196">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="bcc79-196">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -262,15 +257,15 @@ X-Locale: en-US
 }
 ```
 
-### <a name="update-an-event-registration"></a><span data-ttu-id="753ab-201">Aktualizace registrace události</span><span class="sxs-lookup"><span data-stu-id="753ab-201">Update an event registration</span></span>
+### <a name="update-an-event-registration"></a><span data-ttu-id="bcc79-197">Aktualizace registrace události</span><span class="sxs-lookup"><span data-stu-id="bcc79-197">Update an event registration</span></span>
 
-<span data-ttu-id="753ab-202">Aktualizuje existující registraci události.</span><span class="sxs-lookup"><span data-stu-id="753ab-202">Updates an existing event registration.</span></span>
+<span data-ttu-id="bcc79-198">Aktualizuje existující registraci události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-198">Updates an existing event registration.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="753ab-203">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="753ab-203">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="bcc79-199">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-199">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration`
 
-### <a name="request-example"></a><span data-ttu-id="753ab-204">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="753ab-204">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bcc79-200">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="bcc79-200">Request example</span></span>
 
 ```http
 PUT /webhooks/v1/registration
@@ -287,7 +282,7 @@ Content-Length: 258
 }
 ```
 
-### <a name="response-example"></a><span data-ttu-id="753ab-205">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="753ab-205">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bcc79-201">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="bcc79-201">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -306,18 +301,18 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="send-a-test-event-to-validate-your-registration"></a><span data-ttu-id="753ab-206">Odeslat testovací událost pro ověření vaší registrace</span><span class="sxs-lookup"><span data-stu-id="753ab-206">Send a test event to validate your registration</span></span>
+### <a name="send-a-test-event-to-validate-your-registration"></a><span data-ttu-id="bcc79-202">Odeslat testovací událost pro ověření vaší registrace</span><span class="sxs-lookup"><span data-stu-id="bcc79-202">Send a test event to validate your registration</span></span>
 
-<span data-ttu-id="753ab-207">Vygeneruje testovací událost pro ověření registrace webhooků.</span><span class="sxs-lookup"><span data-stu-id="753ab-207">Generates a test event to validate the Webhooks registration.</span></span> <span data-ttu-id="753ab-208">Tento test je určen k ověření, že můžete přijímat události z partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="753ab-208">This test is intended to validate that you can receive events from Partner Center.</span></span> <span data-ttu-id="753ab-209">Data pro tyto události budou odstraněna sedm dní od vytvoření počáteční události.</span><span class="sxs-lookup"><span data-stu-id="753ab-209">Data for these events will be deleted seven days after the initial event is created.</span></span> <span data-ttu-id="753ab-210">Před odesláním události ověření musíte být registrováni pro událost vytvářenou pomocí registračního rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="753ab-210">You must be registered for the "test-created" event, using the registration API, before sending a validation event.</span></span>
+<span data-ttu-id="bcc79-203">Vygeneruje testovací událost pro ověření registrace webhooků.</span><span class="sxs-lookup"><span data-stu-id="bcc79-203">Generates a test event to validate the Webhooks registration.</span></span> <span data-ttu-id="bcc79-204">Tento test je určen k ověření, že můžete přijímat události z partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="bcc79-204">This test is intended to validate that you can receive events from Partner Center.</span></span> <span data-ttu-id="bcc79-205">Data pro tyto události budou odstraněna sedm dní od vytvoření počáteční události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-205">Data for these events will be deleted seven days after the initial event is created.</span></span> <span data-ttu-id="bcc79-206">Před odesláním události ověření musíte být registrováni pro událost vytvářenou pomocí registračního rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="bcc79-206">You must be registered for the "test-created" event, using the registration API, before sending a validation event.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="753ab-211">Při odesílání události ověření existuje omezení počtu 2 požadavků za minutu.</span><span class="sxs-lookup"><span data-stu-id="753ab-211">There is a throttle limit of 2 requests per minute when posting a validation event.</span></span>
+><span data-ttu-id="bcc79-207">Při odesílání události ověření existuje omezení počtu 2 požadavků za minutu.</span><span class="sxs-lookup"><span data-stu-id="bcc79-207">There is a throttle limit of 2 requests per minute when posting a validation event.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="753ab-212">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="753ab-212">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="bcc79-208">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-208">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration/validationEvents`
 
-### <a name="request-example"></a><span data-ttu-id="753ab-213">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="753ab-213">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bcc79-209">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="bcc79-209">Request example</span></span>
 
 ```http
 POST /webhooks/v1/registration/validationEvents
@@ -329,7 +324,7 @@ Accept-Encoding: gzip, deflate
 Content-Length:
 ```
 
-### <a name="response-example"></a><span data-ttu-id="753ab-214">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="753ab-214">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bcc79-210">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="bcc79-210">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -345,15 +340,15 @@ X-Locale: en-US
 { "correlationId": "04af2aea-d413-42db-824e-f328001484d1" }
 ```
 
-### <a name="verify-that-the-event-was-delivered"></a><span data-ttu-id="753ab-215">Ověření doručení události</span><span class="sxs-lookup"><span data-stu-id="753ab-215">Verify that the event was delivered</span></span>
+### <a name="verify-that-the-event-was-delivered"></a><span data-ttu-id="bcc79-211">Ověření doručení události</span><span class="sxs-lookup"><span data-stu-id="bcc79-211">Verify that the event was delivered</span></span>
 
-<span data-ttu-id="753ab-216">Vrátí aktuální stav události ověření.</span><span class="sxs-lookup"><span data-stu-id="753ab-216">Returns the current state of the validation event.</span></span> <span data-ttu-id="753ab-217">Toto ověření může být užitečné při řešení problémů s doručováním událostí.</span><span class="sxs-lookup"><span data-stu-id="753ab-217">This verification can be helpful for troubleshooting event delivery issues.</span></span> <span data-ttu-id="753ab-218">Odpověď obsahuje výsledek pro každý pokus, který je proveden pro doručení události.</span><span class="sxs-lookup"><span data-stu-id="753ab-218">The Response contains a result for each attempt that is made to deliver the event.</span></span>
+<span data-ttu-id="bcc79-212">Vrátí aktuální stav události ověření.</span><span class="sxs-lookup"><span data-stu-id="bcc79-212">Returns the current state of the validation event.</span></span> <span data-ttu-id="bcc79-213">Toto ověření může být užitečné při řešení problémů s doručováním událostí.</span><span class="sxs-lookup"><span data-stu-id="bcc79-213">This verification can be helpful for troubleshooting event delivery issues.</span></span> <span data-ttu-id="bcc79-214">Odpověď obsahuje výsledek pro každý pokus, který je proveden pro doručení události.</span><span class="sxs-lookup"><span data-stu-id="bcc79-214">The Response contains a result for each attempt that is made to deliver the event.</span></span>
 
-#### <a name="resource-url"></a><span data-ttu-id="753ab-219">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="753ab-219">Resource URL</span></span>
+#### <a name="resource-url"></a><span data-ttu-id="bcc79-215">Adresa URL prostředku</span><span class="sxs-lookup"><span data-stu-id="bcc79-215">Resource URL</span></span>
 
 `https://api.partnercenter.microsoft.com/webhooks/v1/registration/validationEvents/{correlationId}`
 
-### <a name="request-example"></a><span data-ttu-id="753ab-220">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="753ab-220">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="bcc79-216">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="bcc79-216">Request example</span></span>
 
 ```http
 GET /webhooks/v1/registration/validationEvents/04af2aea-d413-42db-824e-f328001484d1
@@ -364,7 +359,7 @@ Host: api.partnercenter.microsoft.com
 Accept-Encoding: gzip, deflate
 ```
 
-### <a name="response-example"></a><span data-ttu-id="753ab-221">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="753ab-221">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="bcc79-217">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="bcc79-217">Response example</span></span>
 
 ```http
 HTTP/1.1 200
@@ -391,9 +386,9 @@ X-Locale: en-US
 }
 ```
 
-## <a name="example-for-signature-validation"></a><span data-ttu-id="753ab-222">Příklad pro ověřování podpisů</span><span class="sxs-lookup"><span data-stu-id="753ab-222">Example for Signature Validation</span></span>
+## <a name="example-for-signature-validation"></a><span data-ttu-id="bcc79-218">Příklad pro ověřování podpisů</span><span class="sxs-lookup"><span data-stu-id="bcc79-218">Example for Signature Validation</span></span>
 
-### <a name="sample-callback-controller-signature-aspnet"></a><span data-ttu-id="753ab-223">Ukázkový podpis kontroleru zpětného volání (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="753ab-223">Sample Callback Controller signature (ASP.NET)</span></span>
+### <a name="sample-callback-controller-signature-aspnet"></a><span data-ttu-id="bcc79-219">Ukázkový podpis kontroleru zpětného volání (ASP.NET)</span><span class="sxs-lookup"><span data-stu-id="bcc79-219">Sample Callback Controller signature (ASP.NET)</span></span>
 
 ``` csharp
 [AuthorizeSignature]
@@ -401,9 +396,9 @@ X-Locale: en-US
 public IHttpActionResult Post(PartnerResourceChangeCallBack callback)
 ```
 
-### <a name="signature-validation"></a><span data-ttu-id="753ab-224">Ověření podpisu</span><span class="sxs-lookup"><span data-stu-id="753ab-224">Signature Validation</span></span>
+### <a name="signature-validation"></a><span data-ttu-id="bcc79-220">Ověření podpisu</span><span class="sxs-lookup"><span data-stu-id="bcc79-220">Signature Validation</span></span>
 
-<span data-ttu-id="753ab-225">Následující příklad ukazuje, jak přidat autorizační atribut do kontroleru, který přijímá zpětná volání z událostí Webhooku.</span><span class="sxs-lookup"><span data-stu-id="753ab-225">The following example shows how to add an Authorization Attribute to the controller that is receiving callbacks from Webhook events.</span></span>
+<span data-ttu-id="bcc79-221">Následující příklad ukazuje, jak přidat autorizační atribut do kontroleru, který přijímá zpětná volání z událostí Webhooku.</span><span class="sxs-lookup"><span data-stu-id="bcc79-221">The following example shows how to add an Authorization Attribute to the controller that is receiving callbacks from Webhook events.</span></span>
 
 ``` csharp
 namespace Webhooks.Security

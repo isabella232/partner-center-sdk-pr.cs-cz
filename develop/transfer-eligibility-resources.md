@@ -1,30 +1,26 @@
 ---
-title: Prostředky TransferEligibility
-description: Partner vytvoří přenos, pokud chce zákazník své předplatné s partnerem přenést na jiného partnera.
+title: PřevodSchůdnost prostředků
+description: Partner může vytvořit převod, když zákazník požádá o převod předplatného s partnerem na jiného partnera.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: dcac5724a1f708bc540a3aac7ce74b2eda60a296
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8f121d499abffb4c4dda688c2a91c25f83d2e863
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766738"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530204"
 ---
-# <a name="transfereligibility-resources"></a><span data-ttu-id="820bc-103">Prostředky TransferEligibility</span><span class="sxs-lookup"><span data-stu-id="820bc-103">TransferEligibility resources</span></span>
+# <a name="transfereligibility-resources"></a><span data-ttu-id="fba1c-103">PřevodSchůdnost prostředků</span><span class="sxs-lookup"><span data-stu-id="fba1c-103">TransferEligibility resources</span></span>
 
-<span data-ttu-id="820bc-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="820bc-104">**Applies to:**</span></span>
+<span data-ttu-id="fba1c-104">Partner může vytvořit převod, když zákazník požádá o převod předplatného s partnerem na jiného partnera.</span><span class="sxs-lookup"><span data-stu-id="fba1c-104">A partner can create a transfer when a customer requests their subscription with the partner to be transferred to another partner.</span></span> <span data-ttu-id="fba1c-105">Pomocí možnosti TransferEligibility (Nárok na převod) zkontrolujte, jestli má předplatné nárok na převod.</span><span class="sxs-lookup"><span data-stu-id="fba1c-105">Use TransferEligibility to check whether a subscription is eligible to be transferred.</span></span>
 
-- <span data-ttu-id="820bc-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="820bc-105">Partner Center</span></span>
+## <a name="transfereligibility"></a><span data-ttu-id="fba1c-106">PřevodOchemiitelnost</span><span class="sxs-lookup"><span data-stu-id="fba1c-106">TransferEligibility</span></span>
 
-<span data-ttu-id="820bc-106">Partner vytvoří přenos, pokud chce zákazník své předplatné s partnerem přenést na jiného partnera.</span><span class="sxs-lookup"><span data-stu-id="820bc-106">A partner creates a transfer when a customer wants their subscription with the partner to be transferred to another partner.</span></span>
+<span data-ttu-id="fba1c-107">Popisuje přenositelnost.</span><span class="sxs-lookup"><span data-stu-id="fba1c-107">Describes a transferEligibility.</span></span>
 
-## <a name="transfereligibility"></a><span data-ttu-id="820bc-107">TransferEligibility</span><span class="sxs-lookup"><span data-stu-id="820bc-107">TransferEligibility</span></span>
-
-<span data-ttu-id="820bc-108">Popisuje transferEligibility.</span><span class="sxs-lookup"><span data-stu-id="820bc-108">Describes a transferEligibility.</span></span>
-
-| <span data-ttu-id="820bc-109">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="820bc-109">Property</span></span>              | <span data-ttu-id="820bc-110">Typ</span><span class="sxs-lookup"><span data-stu-id="820bc-110">Type</span></span>             | <span data-ttu-id="820bc-111">Description</span><span class="sxs-lookup"><span data-stu-id="820bc-111">Description</span></span>                                                                              |
+| <span data-ttu-id="fba1c-108">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="fba1c-108">Property</span></span>              | <span data-ttu-id="fba1c-109">Typ</span><span class="sxs-lookup"><span data-stu-id="fba1c-109">Type</span></span>             | <span data-ttu-id="fba1c-110">Description</span><span class="sxs-lookup"><span data-stu-id="fba1c-110">Description</span></span>                                                                              |
 |-----------------------|------------------|------------------------------------------------------------------------------------------|
-| <span data-ttu-id="820bc-112">id</span><span class="sxs-lookup"><span data-stu-id="820bc-112">id</span></span>                    | <span data-ttu-id="820bc-113">řetězec</span><span class="sxs-lookup"><span data-stu-id="820bc-113">string</span></span>           | <span data-ttu-id="820bc-114">Identifikátor předplatného zákazníka.</span><span class="sxs-lookup"><span data-stu-id="820bc-114">The customer's subscription identifier.</span></span>                                                  |
-| <span data-ttu-id="820bc-115">Oprávněné</span><span class="sxs-lookup"><span data-stu-id="820bc-115">isEligible</span></span>            | <span data-ttu-id="820bc-116">bool</span><span class="sxs-lookup"><span data-stu-id="820bc-116">bool</span></span>             | <span data-ttu-id="820bc-117">Uvádí, zda má předplatné nárok na přenos.</span><span class="sxs-lookup"><span data-stu-id="820bc-117">Indicates whether the subscription is eligible for the transfer.</span></span>                         |
-| <span data-ttu-id="820bc-118">Důvod</span><span class="sxs-lookup"><span data-stu-id="820bc-118">Reason</span></span>                | <span data-ttu-id="820bc-119">řetězec</span><span class="sxs-lookup"><span data-stu-id="820bc-119">string</span></span>           | <span data-ttu-id="820bc-120">Vlastnost důvod vysvětluje, proč odběr není způsobilý pro přenos.</span><span class="sxs-lookup"><span data-stu-id="820bc-120">The reason property explains why the subscription isn't eligible for transfer.</span></span> |
+| <span data-ttu-id="fba1c-111">id</span><span class="sxs-lookup"><span data-stu-id="fba1c-111">id</span></span>                    | <span data-ttu-id="fba1c-112">řetězec</span><span class="sxs-lookup"><span data-stu-id="fba1c-112">string</span></span>           | <span data-ttu-id="fba1c-113">Identifikátor předplatného zákazníka.</span><span class="sxs-lookup"><span data-stu-id="fba1c-113">The customer's subscription identifier.</span></span>                                                  |
+| <span data-ttu-id="fba1c-114">isEligible</span><span class="sxs-lookup"><span data-stu-id="fba1c-114">isEligible</span></span>            | <span data-ttu-id="fba1c-115">bool</span><span class="sxs-lookup"><span data-stu-id="fba1c-115">bool</span></span>             | <span data-ttu-id="fba1c-116">Určuje, jestli má předplatné nárok na převod.</span><span class="sxs-lookup"><span data-stu-id="fba1c-116">Indicates whether the subscription is eligible for the transfer.</span></span>                         |
+| <span data-ttu-id="fba1c-117">Důvod</span><span class="sxs-lookup"><span data-stu-id="fba1c-117">Reason</span></span>                | <span data-ttu-id="fba1c-118">řetězec</span><span class="sxs-lookup"><span data-stu-id="fba1c-118">string</span></span>           | <span data-ttu-id="fba1c-119">Vlastnost reason vysvětluje, proč předplatné nemá nárok na převod.</span><span class="sxs-lookup"><span data-stu-id="fba1c-119">The reason property explains why the subscription isn't eligible for transfer.</span></span> |

@@ -1,39 +1,35 @@
 ---
-title: Prostředky dokumentu smlouvy
-description: Prostředek AgreementDocument je dokument s smlouvou Microsoftu pro náhled a stažení. Podporuje ho Partnerská centra ve veřejném cloudu Microsoftu.
+title: Zdroje informací k dokumentu smlouvy
+description: Prostředek AgreementDocument je dokument smlouvy Microsoftu pro verzi Preview a ke stažení. Podporuje ji Partnerské centrum ve veřejném cloudu Microsoftu.
 ms.date: 08/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 4805d25b0838bf922b81bebd998810c3f6a809c3
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 1a81da4f75594f241669db831125bd437872561c
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97767094"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025662"
 ---
-# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a><span data-ttu-id="d2a88-104">Prostředky dokumentů smlouvy podporované partnerským centrem ve veřejném cloudu Microsoftu</span><span class="sxs-lookup"><span data-stu-id="d2a88-104">Agreement document resources supported by Partner Center in the Microsoft public cloud</span></span>
+# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a><span data-ttu-id="4c1b7-104">Prostředky dokumentů smlouvy podporované Partnerské centrum ve veřejném cloudu Microsoftu</span><span class="sxs-lookup"><span data-stu-id="4c1b7-104">Agreement document resources supported by Partner Center in the Microsoft public cloud</span></span>
 
-<span data-ttu-id="d2a88-105">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="d2a88-105">**Applies to:**</span></span>
+<span data-ttu-id="4c1b7-105">**Platí pro:** Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="4c1b7-105">**Applies to**: Partner Center</span></span>
 
-- <span data-ttu-id="d2a88-106">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="d2a88-106">Partner Center</span></span>
+<span data-ttu-id="4c1b7-106">**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="4c1b7-106">**Does not apply to**: Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-<span data-ttu-id="d2a88-107">Partner Center v současné době podporuje prostředek **AgreementDocument** jenom ve *veřejném cloudu Microsoftu*.</span><span class="sxs-lookup"><span data-stu-id="d2a88-107">The **AgreementDocument** resource is currently supported by Partner Center only in the *Microsoft public cloud*.</span></span> <span data-ttu-id="d2a88-108">Tento prostředek se nedá použít pro:</span><span class="sxs-lookup"><span data-stu-id="d2a88-108">This resource not applicable to:</span></span>
+<span data-ttu-id="4c1b7-107">Prostředek **AgreementDocument** v současné době podporuje Partnerské centrum ve veřejném cloudu Microsoftu.</span><span class="sxs-lookup"><span data-stu-id="4c1b7-107">The **AgreementDocument** resource is currently supported by Partner Center only in the Microsoft public cloud.</span></span>
 
-- <span data-ttu-id="d2a88-109">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="d2a88-109">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="d2a88-110">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="d2a88-110">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="d2a88-111">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="d2a88-111">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="4c1b7-108">Prostředek **AgreementDocument** představuje dokument smlouvy Microsoftu, který je k dispozici ve verzi Preview a ke stažení.</span><span class="sxs-lookup"><span data-stu-id="4c1b7-108">The **AgreementDocument** resource represents a Microsoft agreement document that is available for preview and download.</span></span>
 
-<span data-ttu-id="d2a88-112">Prostředek **AgreementDocument** představuje dokument smlouvy Microsoft, který je k dispozici pro náhled a stažení.</span><span class="sxs-lookup"><span data-stu-id="d2a88-112">The **AgreementDocument** resource represents a Microsoft agreement document that is available for preview and download.</span></span>
+## <a name="agreementdocument"></a><span data-ttu-id="4c1b7-109">Dokument smlouvy</span><span class="sxs-lookup"><span data-stu-id="4c1b7-109">AgreementDocument</span></span>
 
-## <a name="agreementdocument"></a><span data-ttu-id="d2a88-113">AgreementDocument</span><span class="sxs-lookup"><span data-stu-id="d2a88-113">AgreementDocument</span></span>
+<span data-ttu-id="4c1b7-110">Prostředek **AgreementDocument** obsahuje následující vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="4c1b7-110">An **AgreementDocument** resource includes the following properties:</span></span>
 
-<span data-ttu-id="d2a88-114">Prostředek **AgreementDocument** obsahuje následující vlastnosti:</span><span class="sxs-lookup"><span data-stu-id="d2a88-114">An **AgreementDocument** resource includes the following properties:</span></span>
-
-| <span data-ttu-id="d2a88-115">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="d2a88-115">Property</span></span>       | <span data-ttu-id="d2a88-116">Typ</span><span class="sxs-lookup"><span data-stu-id="d2a88-116">Type</span></span>   | <span data-ttu-id="d2a88-117">Description</span><span class="sxs-lookup"><span data-stu-id="d2a88-117">Description</span></span>                                                                                               |
+| <span data-ttu-id="4c1b7-111">Vlastnost</span><span class="sxs-lookup"><span data-stu-id="4c1b7-111">Property</span></span>       | <span data-ttu-id="4c1b7-112">Typ</span><span class="sxs-lookup"><span data-stu-id="4c1b7-112">Type</span></span>   | <span data-ttu-id="4c1b7-113">Description</span><span class="sxs-lookup"><span data-stu-id="4c1b7-113">Description</span></span>                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="d2a88-118">country</span><span class="sxs-lookup"><span data-stu-id="d2a88-118">country</span></span> | <span data-ttu-id="d2a88-119">řetězec</span><span class="sxs-lookup"><span data-stu-id="d2a88-119">string</span></span> | <span data-ttu-id="d2a88-120">Země nebo trh, na který se vztahuje tento dokument.</span><span class="sxs-lookup"><span data-stu-id="d2a88-120">The country or market to which this document applies.</span></span> |
-| <span data-ttu-id="d2a88-121">language</span><span class="sxs-lookup"><span data-stu-id="d2a88-121">language</span></span> | <span data-ttu-id="d2a88-122">řetězec</span><span class="sxs-lookup"><span data-stu-id="d2a88-122">string</span></span> | <span data-ttu-id="d2a88-123">Jazyk, ve kterém je tento dokument lokalizován.</span><span class="sxs-lookup"><span data-stu-id="d2a88-123">The language in which this document is localized.</span></span> |
-| <span data-ttu-id="d2a88-124">displayUri</span><span class="sxs-lookup"><span data-stu-id="d2a88-124">displayUri</span></span> | <span data-ttu-id="d2a88-125">řetězec</span><span class="sxs-lookup"><span data-stu-id="d2a88-125">string</span></span> | <span data-ttu-id="d2a88-126">Odkaz na náhled dokumentu smlouvy v prohlížeči</span><span class="sxs-lookup"><span data-stu-id="d2a88-126">A link to preview the agreement document in a browser.</span></span>  |
-| <span data-ttu-id="d2a88-127">downloadUri</span><span class="sxs-lookup"><span data-stu-id="d2a88-127">downloadUri</span></span> |<span data-ttu-id="d2a88-128">řetězec</span><span class="sxs-lookup"><span data-stu-id="d2a88-128">string</span></span> | <span data-ttu-id="d2a88-129">Odkaz ke stažení dokumentu smlouvy (ve formátu aplikace Microsoft Word).</span><span class="sxs-lookup"><span data-stu-id="d2a88-129">A link to download the agreement document (in Microsoft Word format).</span></span> |
+| <span data-ttu-id="4c1b7-114">country</span><span class="sxs-lookup"><span data-stu-id="4c1b7-114">country</span></span> | <span data-ttu-id="4c1b7-115">řetězec</span><span class="sxs-lookup"><span data-stu-id="4c1b7-115">string</span></span> | <span data-ttu-id="4c1b7-116">Země nebo trh, na který se tento dokument vztahuje.</span><span class="sxs-lookup"><span data-stu-id="4c1b7-116">The country or market to which this document applies.</span></span> |
+| <span data-ttu-id="4c1b7-117">language</span><span class="sxs-lookup"><span data-stu-id="4c1b7-117">language</span></span> | <span data-ttu-id="4c1b7-118">řetězec</span><span class="sxs-lookup"><span data-stu-id="4c1b7-118">string</span></span> | <span data-ttu-id="4c1b7-119">Jazyk, ve kterém je tento dokument lokalizován.</span><span class="sxs-lookup"><span data-stu-id="4c1b7-119">The language in which this document is localized.</span></span> |
+| <span data-ttu-id="4c1b7-120">DisplayUri</span><span class="sxs-lookup"><span data-stu-id="4c1b7-120">displayUri</span></span> | <span data-ttu-id="4c1b7-121">řetězec</span><span class="sxs-lookup"><span data-stu-id="4c1b7-121">string</span></span> | <span data-ttu-id="4c1b7-122">Odkaz na náhled dokumentu smlouvy v prohlížeči</span><span class="sxs-lookup"><span data-stu-id="4c1b7-122">A link to preview the agreement document in a browser.</span></span>  |
+| <span data-ttu-id="4c1b7-123">DownloadUri</span><span class="sxs-lookup"><span data-stu-id="4c1b7-123">downloadUri</span></span> |<span data-ttu-id="4c1b7-124">řetězec</span><span class="sxs-lookup"><span data-stu-id="4c1b7-124">string</span></span> | <span data-ttu-id="4c1b7-125">Odkaz na stažení dokumentu smlouvy (ve Microsoft Word formátu).</span><span class="sxs-lookup"><span data-stu-id="4c1b7-125">A link to download the agreement document (in Microsoft Word format).</span></span> |

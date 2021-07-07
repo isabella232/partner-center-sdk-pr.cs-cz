@@ -1,38 +1,35 @@
 ---
-title: Ověření stavu podepisování smlouvy Microsoft Partner pro nepřímý prodejce
-description: Pomocí rozhraní AgreementStatus API můžete ověřit, jestli se nepřímý prodejce zaregistroval v rámci smlouvy o partnerovi Microsoftu.
+title: Ověření stavu podepisování Smlouva s partnerem Microsoftu prodejce
+description: Pomocí rozhraní AGREEMENTStatus API můžete ověřit, jestli nepřímý prodejce smlouvu Smlouva s partnerem Microsoftu.
 ms.date: 07/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fa9480424eccc933bc9c28c3879a195fbd5f2bb1
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: f83acc61624a72354c390905b1250bc021dd39aa
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711886"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529830"
 ---
-# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a><span data-ttu-id="2ffcf-103">Ověření stavu podepisování smlouvy Microsoft Partner pro nepřímý prodejce</span><span class="sxs-lookup"><span data-stu-id="2ffcf-103">Verify an indirect reseller's Microsoft Partner Agreement signing status</span></span>
+# <a name="verify-an-indirect-resellers-microsoft-partner-agreement-signing-status"></a><span data-ttu-id="6e4f3-103">Ověření stavu podepisování Smlouva s partnerem Microsoftu prodejce</span><span class="sxs-lookup"><span data-stu-id="6e4f3-103">Verify an indirect reseller's Microsoft Partner Agreement signing status</span></span>
 
-<span data-ttu-id="2ffcf-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-104">**Applies to:**</span></span>
+<span data-ttu-id="6e4f3-104">**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="6e4f3-104">**Applies to**: Partner Center | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="2ffcf-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="2ffcf-105">Partner Center</span></span>
-- <span data-ttu-id="2ffcf-106">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="2ffcf-106">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="6e4f3-105">Pomocí ID tenanta (Microsoft ID) Microsoft Partner Network (PGA/PLA) nebo CLOUD SOLUTION PROVIDER (CSP) můžete ověřit, jestli nepřímý prodejce smlouvu Smlouva s partnerem Microsoftu podepsal.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-105">You can verify whether an indirect reseller has signed the Microsoft Partner Agreement using their Microsoft Partner Network (MPN) ID (PGA/PLA) or Cloud Solution Provider (CSP) tenant ID (Microsoft ID).</span></span> <span data-ttu-id="6e4f3-106">Pomocí jednoho z těchto identifikátorů můžete zkontrolovat stav podepisování Smlouva s partnerem Microsoftu pomocí rozhraní **AgreementStatus** API.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-106">You can use one of these identifiers to check the Microsoft Partner Agreement signing status using the **AgreementStatus** API.</span></span>
 
-<span data-ttu-id="2ffcf-107">Můžete ověřit, jestli nepřímý prodejce podepsal smlouvu s partnerem Microsoftu pomocí svého Microsoft Partner Network (MPN) ID (PGA/PLA) nebo ID tenanta Cloud Solution Provider (Microsoft ID).</span><span class="sxs-lookup"><span data-stu-id="2ffcf-107">You can verify whether an indirect reseller has signed the Microsoft Partner Agreement using their Microsoft Partner Network (MPN) ID (PGA/PLA) or Cloud Solution Provider (CSP) tenant ID (Microsoft ID).</span></span> <span data-ttu-id="2ffcf-108">Jeden z těchto identifikátorů můžete použít ke kontrole stavu podepisování smlouvy Microsoft Partner pomocí rozhraní **AgreementStatus** API.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-108">You can use one of these identifiers to check the Microsoft Partner Agreement signing status using the **AgreementStatus** API.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="6e4f3-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="6e4f3-107">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2ffcf-109">Předpoklady</span><span class="sxs-lookup"><span data-stu-id="2ffcf-109">Prerequisites</span></span>
+- <span data-ttu-id="6e4f3-108">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="6e4f3-109">Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-109">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="2ffcf-110">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="2ffcf-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="2ffcf-111">Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-111">This scenario supports authentication with App+User credentials only.</span></span>
+- <span data-ttu-id="6e4f3-110">ID MPN (PGA/PLA) nebo ID tenanta CSP (Microsoft ID) nepřímého prodejce.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-110">The MPN ID (PGA/PLA) or the CSP tenant ID (Microsoft ID) of the indirect reseller.</span></span> <span data-ttu-id="6e4f3-111">*Musíte použít jeden z těchto dvou identifikátorů.*</span><span class="sxs-lookup"><span data-stu-id="6e4f3-111">*You must use one of these two identifiers.*</span></span>
 
-- <span data-ttu-id="2ffcf-112">ID MPN (PGA/PLA) nebo ID tenanta CSP (Microsoft ID) nepřímého prodejce.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-112">The MPN ID (PGA/PLA) or the CSP tenant ID (Microsoft ID) of the indirect reseller.</span></span> <span data-ttu-id="2ffcf-113">*Je nutné použít jeden z těchto dvou identifikátorů.*</span><span class="sxs-lookup"><span data-stu-id="2ffcf-113">*You must use one of these two identifiers.*</span></span>
+## <a name="c"></a><span data-ttu-id="6e4f3-112">C\#</span><span class="sxs-lookup"><span data-stu-id="6e4f3-112">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="2ffcf-114">C\#</span><span class="sxs-lookup"><span data-stu-id="2ffcf-114">C\#</span></span>
+<span data-ttu-id="6e4f3-113">Získání stavu Smlouva s partnerem Microsoftu podpisu nepřímého prodejce:</span><span class="sxs-lookup"><span data-stu-id="6e4f3-113">To get the Microsoft Partner Agreement signature status of an indirect reseller:</span></span>
 
-<span data-ttu-id="2ffcf-115">Postup získání stavu podpisu partnerské smlouvy Microsoftu pro nepřímý prodejce:</span><span class="sxs-lookup"><span data-stu-id="2ffcf-115">To get the Microsoft Partner Agreement signature status of an indirect reseller:</span></span>
+1. <span data-ttu-id="6e4f3-114">Pomocí kolekce **IAggregatePartner.Compliance** zavolejte vlastnost **AgreementSignatureStatus.**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-114">Use your **IAggregatePartner.Compliance** collection to call the **AgreementSignatureStatus** property.</span></span>
 
-1. <span data-ttu-id="2ffcf-116">Pomocí kolekce **IAggregatePartner. dodržování předpisů** zavolejte vlastnost **AgreementSignatureStatus** .</span><span class="sxs-lookup"><span data-stu-id="2ffcf-116">Use your **IAggregatePartner.Compliance** collection to call the **AgreementSignatureStatus** property.</span></span>
-
-2. <span data-ttu-id="2ffcf-117">Zavolejte metodu [**Get ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) nebo [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) .</span><span class="sxs-lookup"><span data-stu-id="2ffcf-117">Call the [**Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) method.</span></span>
+2. <span data-ttu-id="6e4f3-115">Volejte [**metodu Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) nebo [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-115">Call the [**Get()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.get) or [**GetAsync()**](/dotnet/api/microsoft.store.partnercenter.compliance.iagreementsignaturestatus.getasync) method.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,36 +39,36 @@ var agreementSignatureStatusByMpnId = partnerOperations.Compliance.AgreementSign
 var agreementSignatureStatusByTenantId = partnerOperations.Compliance.AgreementSignatureStatus.Get(tenantId: "Enter Tenant Id");
 ```
 
-- <span data-ttu-id="2ffcf-118">Ukázka: **[aplikace testů konzoly](console-test-app.md)**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-118">Sample: **[Console test app](console-test-app.md)**</span></span>
-- <span data-ttu-id="2ffcf-119">Projekt: **PartnerCenterSDK. FeaturesSamples**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-119">Project: **PartnerCenterSDK.FeaturesSamples**</span></span>
-- <span data-ttu-id="2ffcf-120">Třída: **GetAgreementSignatureStatus. cs**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-120">Class: **GetAgreementSignatureStatus.cs**</span></span>
+- <span data-ttu-id="6e4f3-116">Ukázka: **[Konzolová testovací aplikace](console-test-app.md)**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-116">Sample: **[Console test app](console-test-app.md)**</span></span>
+- <span data-ttu-id="6e4f3-117">Project: **PartnerCenterSDK.FeaturesSamples**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-117">Project: **PartnerCenterSDK.FeaturesSamples**</span></span>
+- <span data-ttu-id="6e4f3-118">Třída: **GetAgreementSignatureStatus.cs**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-118">Class: **GetAgreementSignatureStatus.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="2ffcf-121">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="2ffcf-121">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="6e4f3-119">Požadavek REST</span><span class="sxs-lookup"><span data-stu-id="6e4f3-119">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="2ffcf-122">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="2ffcf-122">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="6e4f3-120">Syntaxe požadavku</span><span class="sxs-lookup"><span data-stu-id="6e4f3-120">Request syntax</span></span>
 
-| <span data-ttu-id="2ffcf-123">Metoda</span><span class="sxs-lookup"><span data-stu-id="2ffcf-123">Method</span></span> | <span data-ttu-id="2ffcf-124">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="2ffcf-124">Request URI</span></span> |
+| <span data-ttu-id="6e4f3-121">Metoda</span><span class="sxs-lookup"><span data-stu-id="6e4f3-121">Method</span></span> | <span data-ttu-id="6e4f3-122">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="6e4f3-122">Request URI</span></span> |
 | ------ | ----------- |
-| <span data-ttu-id="2ffcf-125">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-125">**GET**</span></span> | <span data-ttu-id="2ffcf-126">*[{baseURL}](partner-center-rest-urls.md)*/v1/Compliance/{programname}/agreementstatus? mpnId = {mpnId} &tenantId = {tenantId}</span><span class="sxs-lookup"><span data-stu-id="2ffcf-126">*[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId}</span></span> |
+| <span data-ttu-id="6e4f3-123">**Dostat**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-123">**GET**</span></span> | <span data-ttu-id="6e4f3-124">*[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{Název Programu}/agreementstatus?mpnId={MpnId}&tenantId={ID tenanta}</span><span class="sxs-lookup"><span data-stu-id="6e4f3-124">*[{baseURL}](partner-center-rest-urls.md)*/v1/compliance/{ProgramName}/agreementstatus?mpnId={MpnId}&tenantId={TenantId}</span></span> |
 
-#### <a name="uri-parameters"></a><span data-ttu-id="2ffcf-127">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="2ffcf-127">URI parameters</span></span>
+#### <a name="uri-parameters"></a><span data-ttu-id="6e4f3-125">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="6e4f3-125">URI parameters</span></span>
 
-<span data-ttu-id="2ffcf-128">Chcete-li identifikovat partnera, je nutné zadat jeden z následujících dvou parametrů dotazu.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-128">You must provide one of the following two query parameters to identify the partner.</span></span> <span data-ttu-id="2ffcf-129">Pokud neposkytnete jeden z těchto dvou parametrů dotazu, zobrazí se chyba **400 (chybná žádost)** .</span><span class="sxs-lookup"><span data-stu-id="2ffcf-129">If you don't provide one of these two query parameters, you will receive a **400 (Bad request)** error.</span></span>
+<span data-ttu-id="6e4f3-126">K identifikaci partnera musíte zadat jeden z následujících dvou parametrů dotazu.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-126">You must provide one of the following two query parameters to identify the partner.</span></span> <span data-ttu-id="6e4f3-127">Pokud jeden z těchto dvou parametrů dotazu nezadáte, zobrazí se **chyba 400 (Chybný** požadavek).</span><span class="sxs-lookup"><span data-stu-id="6e4f3-127">If you don't provide one of these two query parameters, you will receive a **400 (Bad request)** error.</span></span>
 
-| <span data-ttu-id="2ffcf-130">Název</span><span class="sxs-lookup"><span data-stu-id="2ffcf-130">Name</span></span> | <span data-ttu-id="2ffcf-131">Typ</span><span class="sxs-lookup"><span data-stu-id="2ffcf-131">Type</span></span> | <span data-ttu-id="2ffcf-132">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="2ffcf-132">Required</span></span> | <span data-ttu-id="2ffcf-133">Popis</span><span class="sxs-lookup"><span data-stu-id="2ffcf-133">Description</span></span> |
+| <span data-ttu-id="6e4f3-128">Název</span><span class="sxs-lookup"><span data-stu-id="6e4f3-128">Name</span></span> | <span data-ttu-id="6e4f3-129">Typ</span><span class="sxs-lookup"><span data-stu-id="6e4f3-129">Type</span></span> | <span data-ttu-id="6e4f3-130">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="6e4f3-130">Required</span></span> | <span data-ttu-id="6e4f3-131">Popis</span><span class="sxs-lookup"><span data-stu-id="6e4f3-131">Description</span></span> |
 | ---- | ---- | -------- | ----------- |
-| <span data-ttu-id="2ffcf-134">**MpnId**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-134">**MpnId**</span></span> | <span data-ttu-id="2ffcf-135">int</span><span class="sxs-lookup"><span data-stu-id="2ffcf-135">int</span></span> | <span data-ttu-id="2ffcf-136">No</span><span class="sxs-lookup"><span data-stu-id="2ffcf-136">No</span></span> | <span data-ttu-id="2ffcf-137">ID Microsoft Partner Network (PGA/PLA), které identifikuje nepřímý prodejce.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-137">A Microsoft Partner Network ID (PGA/PLA) that identifies the indirect reseller.</span></span> |
-| <span data-ttu-id="2ffcf-138">**TenantId**</span><span class="sxs-lookup"><span data-stu-id="2ffcf-138">**TenantId**</span></span> | <span data-ttu-id="2ffcf-139">Identifikátor GUID</span><span class="sxs-lookup"><span data-stu-id="2ffcf-139">GUID</span></span> | <span data-ttu-id="2ffcf-140">No</span><span class="sxs-lookup"><span data-stu-id="2ffcf-140">No</span></span> | <span data-ttu-id="2ffcf-141">ID společnosti Microsoft, které identifikuje účet CSP nepřímého prodejce.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-141">A Microsoft ID that identifies the CSP account of the indirect reseller.</span></span> |
+| <span data-ttu-id="6e4f3-132">**ID mpn**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-132">**MpnId**</span></span> | <span data-ttu-id="6e4f3-133">int</span><span class="sxs-lookup"><span data-stu-id="6e4f3-133">int</span></span> | <span data-ttu-id="6e4f3-134">No</span><span class="sxs-lookup"><span data-stu-id="6e4f3-134">No</span></span> | <span data-ttu-id="6e4f3-135">ID Microsoft Partner Network (PGA/PLA), které identifikuje nepřímého prodejce.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-135">A Microsoft Partner Network ID (PGA/PLA) that identifies the indirect reseller.</span></span> |
+| <span data-ttu-id="6e4f3-136">**ID tenanta**</span><span class="sxs-lookup"><span data-stu-id="6e4f3-136">**TenantId**</span></span> | <span data-ttu-id="6e4f3-137">Identifikátor GUID</span><span class="sxs-lookup"><span data-stu-id="6e4f3-137">GUID</span></span> | <span data-ttu-id="6e4f3-138">No</span><span class="sxs-lookup"><span data-stu-id="6e4f3-138">No</span></span> | <span data-ttu-id="6e4f3-139">Id Microsoftu, které identifikuje účet CSP nepřímého prodejce.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-139">A Microsoft ID that identifies the CSP account of the indirect reseller.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="2ffcf-142">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="2ffcf-142">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="6e4f3-140">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="6e4f3-140">Request headers</span></span>
 
-<span data-ttu-id="2ffcf-143">Další informace najdete v [partnerském centru REST](headers.md).</span><span class="sxs-lookup"><span data-stu-id="2ffcf-143">For more information, see [Partner Center REST](headers.md).</span></span>
+<span data-ttu-id="6e4f3-141">Další informace najdete v tématu [Partnerské centrum REST.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-141">For more information, see [Partner Center REST](headers.md).</span></span>
 
-### <a name="request-examples"></a><span data-ttu-id="2ffcf-144">Příklady požadavků</span><span class="sxs-lookup"><span data-stu-id="2ffcf-144">Request examples</span></span>
+### <a name="request-examples"></a><span data-ttu-id="6e4f3-142">Příklady požadavků</span><span class="sxs-lookup"><span data-stu-id="6e4f3-142">Request examples</span></span>
 
-#### <a name="request-using-mpn-id-pgapla"></a><span data-ttu-id="2ffcf-145">Žádost s použitím ID MPN (PGA/PLA)</span><span class="sxs-lookup"><span data-stu-id="2ffcf-145">Request using MPN ID (PGA/PLA)</span></span>
+#### <a name="request-using-mpn-id-pgapla"></a><span data-ttu-id="6e4f3-143">Žádost s využitím ID MPN (PGA/PLA)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-143">Request using MPN ID (PGA/PLA)</span></span>
 
-<span data-ttu-id="2ffcf-146">Následující příklad žádosti získá nepřímý prodejce na stav podepisování smlouvy o partnerovi Microsoftu pomocí Microsoft Partner Network ID nepřímého prodejce.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-146">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's Microsoft Partner Network ID.</span></span>
+<span data-ttu-id="6e4f3-144">Následující příklad požadavku získá stav podepisování Smlouva s partnerem Microsoftu nepřímého prodejce s použitím ID Microsoft Partner Network prodejce.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-144">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's Microsoft Partner Network ID.</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?mpnid=1234567 HTTP/1.1
@@ -83,9 +80,9 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="request-using-csp-tenant-id"></a><span data-ttu-id="2ffcf-147">Žádost o použití ID tenanta CSP</span><span class="sxs-lookup"><span data-stu-id="2ffcf-147">Request using CSP tenant ID</span></span>
+#### <a name="request-using-csp-tenant-id"></a><span data-ttu-id="6e4f3-145">Žádost s využitím ID tenanta CSP</span><span class="sxs-lookup"><span data-stu-id="6e4f3-145">Request using CSP tenant ID</span></span>
 
-<span data-ttu-id="2ffcf-148">Následující příklad žádosti získá nepřímý prodejce na stav podepisování smlouvy o partnerovi Microsoftu pomocí ID tenanta CSP nepřímého prodejce (Microsoft ID).</span><span class="sxs-lookup"><span data-stu-id="2ffcf-148">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's CSP tenant ID (Microsoft ID).</span></span>
+<span data-ttu-id="6e4f3-146">Následující příklad požadavku získá stav podepisování Smlouva s partnerem Microsoftu nepřímého prodejce pomocí ID tenanta CSP nepřímého prodejce (Microsoft ID).</span><span class="sxs-lookup"><span data-stu-id="6e4f3-146">The following example request gets the indirect reseller's Microsoft Partner Agreement signing status using the indirect reseller's CSP tenant ID (Microsoft ID).</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/compliance/csp/agreementstatus?tenantId=a2898e3a-06ca-454e-a0d0-c73b0ee36bba HTTP/1.1
@@ -97,15 +94,15 @@ X-Locale: en-US
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="2ffcf-149">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="2ffcf-149">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="6e4f3-147">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="6e4f3-147">REST response</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="2ffcf-150">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="2ffcf-150">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="6e4f3-148">Kódy chyb a úspěšné odpovědi</span><span class="sxs-lookup"><span data-stu-id="6e4f3-148">Response success and error codes</span></span>
 
-<span data-ttu-id="2ffcf-151">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-151">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="2ffcf-152">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-152">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="2ffcf-153">Úplný seznam najdete v tématu [Chyba REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="2ffcf-153">For the full list, see [Partner Center REST error](error-codes.md).</span></span>
+<span data-ttu-id="6e4f3-149">Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-149">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="6e4f3-150">K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-150">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="6e4f3-151">Úplný seznam najdete v Partnerské centrum [REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-151">For the full list, see [Partner Center REST error](error-codes.md).</span></span>
 
-### <a name="response-example-success"></a><span data-ttu-id="2ffcf-154">Příklad odpovědi (úspěch)</span><span class="sxs-lookup"><span data-stu-id="2ffcf-154">Response example (success)</span></span>
+### <a name="response-example-success"></a><span data-ttu-id="6e4f3-152">Příklad odpovědi (úspěch)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-152">Response example (success)</span></span>
 
-<span data-ttu-id="2ffcf-155">Následující příklad odpovědi úspěšně vrátí, jestli nepřímý prodejce podepsal smlouvu s partnerem Microsoftu.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-155">The following example response successfully returns whether the indirect reseller has signed the Microsoft Partner Agreement.</span></span>
+<span data-ttu-id="6e4f3-153">Následující příklad odpovědi úspěšně vrátí, jestli nepřímý prodejce smlouvu Smlouva s partnerem Microsoftu.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-153">The following example response successfully returns whether the indirect reseller has signed the Microsoft Partner Agreement.</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -122,13 +119,13 @@ Connection: close
 }
 ```
 
-### <a name="response-examples-failure"></a><span data-ttu-id="2ffcf-156">Příklady odezvy (neúspěch)</span><span class="sxs-lookup"><span data-stu-id="2ffcf-156">Response examples (failure)</span></span>
+### <a name="response-examples-failure"></a><span data-ttu-id="6e4f3-154">Příklady odpovědí (selhání)</span><span class="sxs-lookup"><span data-stu-id="6e4f3-154">Response examples (failure)</span></span>
 
-<span data-ttu-id="2ffcf-157">Pokud stav podepisování smlouvy Microsoft Partner na nepřímý prodejce nemůžete vrátit, můžete dostávat odpovědi podobné následujícím příkladům.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-157">You may receive responses similar to the following examples when the signing status of the indirect reseller's Microsoft Partner Agreement can't be returned.</span></span>
+<span data-ttu-id="6e4f3-155">Odpovědi podobné následujícím příkladům můžete dostávat v případě, že stav podepisování nepřímého prodejce Smlouva s partnerem Microsoftu nelze vrátit.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-155">You may receive responses similar to the following examples when the signing status of the indirect reseller's Microsoft Partner Agreement can't be returned.</span></span>
 
-#### <a name="non-guid-formatted-csp-tenant-id"></a><span data-ttu-id="2ffcf-158">ID tenanta CSP naformátovaného jiným IDENTIFIKÁTORem</span><span class="sxs-lookup"><span data-stu-id="2ffcf-158">Non-GUID formatted CSP tenant ID</span></span>
+#### <a name="non-guid-formatted-csp-tenant-id"></a><span data-ttu-id="6e4f3-156">ID tenanta CSP, který není formátovaný guid</span><span class="sxs-lookup"><span data-stu-id="6e4f3-156">Non-GUID formatted CSP tenant ID</span></span>
 
-<span data-ttu-id="2ffcf-159">V případě, že ID tenanta CSP, které jste předali do rozhraní API, není identifikátor GUID, vrátí se následující příklad odpovědi.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-159">The following example response is returned when the CSP tenant ID that you passed to the API isn't a GUID.</span></span>
+<span data-ttu-id="6e4f3-157">Následující příklad odpovědi se vrátí, když ID tenanta CSP, které jste předáli rozhraní API, není identifikátor GUID.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-157">The following example response is returned when the CSP tenant ID that you passed to the API isn't a GUID.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -148,9 +145,9 @@ Connection: close
 }
 ```
 
-#### <a name="non-numeric-mpn-id"></a><span data-ttu-id="2ffcf-160">ID programu MPN, které není číselné</span><span class="sxs-lookup"><span data-stu-id="2ffcf-160">Non-numeric MPN ID</span></span>
+#### <a name="non-numeric-mpn-id"></a><span data-ttu-id="6e4f3-158">Necílové ID MPN</span><span class="sxs-lookup"><span data-stu-id="6e4f3-158">Non-numeric MPN ID</span></span>
 
-<span data-ttu-id="2ffcf-161">Následující příklad odpovědi se vrátí, když ID MPN (PGA/PLA), které jste předali do rozhraní API, není číselné.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-161">The following example response is returned when the MPN ID (PGA/PLA) that you passed to the API is non-numeric.</span></span>
+<span data-ttu-id="6e4f3-159">Následující příklad odpovědi se vrátí, když ID MPN (PGA/PLA), které jste předali rozhraní API, není číselné.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-159">The following example response is returned when the MPN ID (PGA/PLA) that you passed to the API is non-numeric.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -170,9 +167,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpn-id-or-csp-tenant-id"></a><span data-ttu-id="2ffcf-162">Žádné ID MPN nebo ID tenanta CSP</span><span class="sxs-lookup"><span data-stu-id="2ffcf-162">No MPN ID or CSP tenant ID</span></span>
+#### <a name="no-mpn-id-or-csp-tenant-id"></a><span data-ttu-id="6e4f3-160">Žádné ID MPN nebo ID tenanta CSP</span><span class="sxs-lookup"><span data-stu-id="6e4f3-160">No MPN ID or CSP tenant ID</span></span>
 
-<span data-ttu-id="2ffcf-163">Následující příklad odpovědi se vrátí, když jste neprošli předáním ID MPN (PGA/PLA) nebo ID tenanta CSP do rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-163">The following example response is returned when you haven't passed an MPN ID (PGA/PLA) or CSP tenant ID to the API.</span></span> <span data-ttu-id="2ffcf-164">Do rozhraní API musíte předat jeden ze dvou typů ID.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-164">You must pass one of the two ID types to the API.</span></span>
+<span data-ttu-id="6e4f3-161">Následující příklad odpovědi se vrátí, když do rozhraní API předáte ID MPN (PGA/PLA) nebo ID tenanta CSP.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-161">The following example response is returned when you haven't passed an MPN ID (PGA/PLA) or CSP tenant ID to the API.</span></span> <span data-ttu-id="6e4f3-162">Rozhraní API musíte předat jeden ze dvou typů ID.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-162">You must pass one of the two ID types to the API.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -192,9 +189,9 @@ Connection: close
 }
 ```
 
-#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a><span data-ttu-id="2ffcf-165">Bylo předáno ID MPN i ID tenanta CSP.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-165">Both MPN ID and CSP tenant ID passed</span></span>
+#### <a name="both-mpn-id-and-csp-tenant-id-passed"></a><span data-ttu-id="6e4f3-163">Předané ID tenanta MPN i ID tenanta CSP</span><span class="sxs-lookup"><span data-stu-id="6e4f3-163">Both MPN ID and CSP tenant ID passed</span></span>
 
-<span data-ttu-id="2ffcf-166">Následující příklad odpovědi je vrácen při předání ID MPN (PGA/PLA) a ID tenanta CSP do rozhraní API.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-166">The following example response is returned when you pass both the MPN ID (PGA/PLA) and CSP tenant ID to the API.</span></span> <span data-ttu-id="2ffcf-167">Rozhraní API musíte předat *jenom jeden* ze dvou typů identifikátorů.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-167">You must pass *only one* of the two identifier types to the API.</span></span>
+<span data-ttu-id="6e4f3-164">Následující příklad odpovědi se vrátí, když do rozhraní API předáte ID MPN (PGA/PLA) i ID tenanta CSP.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-164">The following example response is returned when you pass both the MPN ID (PGA/PLA) and CSP tenant ID to the API.</span></span> <span data-ttu-id="6e4f3-165">Rozhraní API *musíte předat* pouze jeden ze dvou typů identifikátorů.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-165">You must pass *only one* of the two identifier types to the API.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -214,9 +211,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a><span data-ttu-id="2ffcf-168">ID programu MPN pro nepřímý prodej CSP (PGA/PLA) není platné nebo se nemigruje z partnerského centra pro členství do partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-168">CSP Indirect Reseller MPN Id (PGA/PLA) is either invalid or not migrated from Partner Membership Center to Partner Center</span></span>
+#### <a name="csp-indirect-reseller-mpn-id-pgapla-is-either-invalid-or-not-migrated-from-partner-membership-center-to-partner-center"></a><span data-ttu-id="6e4f3-166">CSP Indirect Reseller ID MPN (PGA/PLA) je neplatné nebo se nemigruje z Partner Membership Center na Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="6e4f3-166">CSP Indirect Reseller MPN ID (PGA/PLA) is either invalid or not migrated from Partner Membership Center to Partner Center</span></span>
 
-<span data-ttu-id="2ffcf-169">Následující příklad odpovědi se vrátí, když předaný nepřímý prodejce MPN (PGA/PLA) buď není platný, nebo není migrován z partnerského centra členství v partnerském centru.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-169">The following example response is returned when Indirect reseller MPN ID (PGA/PLA) passed is either invalid or it is not migrated from Partner Membership Center to Partner Center.</span></span> [<span data-ttu-id="2ffcf-170">Další informace</span><span class="sxs-lookup"><span data-stu-id="2ffcf-170">Learn More</span></span>](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
+<span data-ttu-id="6e4f3-167">Následující příklad odpovědi se vrátí, když je předané ID MPN nepřímého prodejce (PGA nebo PLA) neplatné nebo se nemigruje z Partner Membership Center na Partnerské centrum.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-167">The following example response is returned when Indirect reseller MPN ID (PGA/PLA) passed is either invalid or it is not migrated from Partner Membership Center to Partner Center.</span></span> [<span data-ttu-id="6e4f3-168">Další informace</span><span class="sxs-lookup"><span data-stu-id="6e4f3-168">Learn More</span></span>](https://partner.microsoft.com/resources/detail/migrate-pmc-pc-mpa-guide-pptx)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -238,9 +235,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a><span data-ttu-id="2ffcf-171">Oblast nepřímých poskytovatelů CSP a oblast nepřímých prodejců CSP se neshoduje.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-171">CSP Indirect Provider region and CSP Indirect Reseller region does not match</span></span>
+#### <a name="csp-indirect-provider-region-and-csp-indirect-reseller-region-does-not-match"></a><span data-ttu-id="6e4f3-169">CSP Indirect Provider oblasti CSP Indirect Reseller oblasti se neshodují.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-169">CSP Indirect Provider region and CSP Indirect Reseller region does not match</span></span>
 
-<span data-ttu-id="2ffcf-172">Následující příklad odpovědi se vrátí, pokud oblast nepřímých prodejců (PGA/PLA) neodpovídá oblasti nepřímého zprostředkovatele.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-172">The following example response is returned when region of Indirect reseller MPN ID (PGA/PLA) doesn't match with region of the Indirect Provider.</span></span> <span data-ttu-id="2ffcf-173">[Přečtěte si další informace](/partner-center/mpa-indirect-provider-faq) o oblastech CSP.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-173">[Learn more](/partner-center/mpa-indirect-provider-faq) about CSP Regions.</span></span>
+<span data-ttu-id="6e4f3-170">Následující příklad odpovědi se vrátí, když se oblast ID MPN nepřímého prodejce (PGA/PLA) neshoduje s oblastí nepřímého poskytovatele.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-170">The following example response is returned when region of Indirect reseller MPN ID (PGA/PLA) doesn't match with region of the Indirect Provider.</span></span> <span data-ttu-id="6e4f3-171">[Přečtěte si další](/partner-center/mpa-indirect-provider-faq) informace o oblastech CSP.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-171">[Learn more](/partner-center/mpa-indirect-provider-faq) about CSP Regions.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -262,9 +259,9 @@ Connection: close
 }
 ```
 
-#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a><span data-ttu-id="2ffcf-174">Účet nepřímého prodejce CSP existuje v partnerském centru, ale nepodepsal aktivaci.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-174">CSP Indirect Reseller account exists in Partner Center but hasn't signed the MPA</span></span>
+#### <a name="csp-indirect-reseller-account-exists-in-partner-center-but-hasnt-signed-the-mpa"></a><span data-ttu-id="6e4f3-172">CSP Indirect Reseller účet existuje v Partnerské centrum, ale ještě nepodepsal MPA.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-172">CSP Indirect Reseller account exists in Partner Center but hasn't signed the MPA</span></span>
 
-<span data-ttu-id="2ffcf-175">Následující příklad odpovědi se vrátí, když účet nepřímý prodejce CSP v partnerském centru nepodepsal aktivaci.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-175">The following example response is returned when CSP Indirect Reseller account in Partner Center hasn't signed the MPA.</span></span> [<span data-ttu-id="2ffcf-176">Další informace</span><span class="sxs-lookup"><span data-stu-id="2ffcf-176">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
+<span data-ttu-id="6e4f3-173">Následující příklad odpovědi se vrátí, CSP Indirect Reseller účet v Partnerské centrum ještě podepsání MPA.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-173">The following example response is returned when CSP Indirect Reseller account in Partner Center hasn't signed the MPA.</span></span> [<span data-ttu-id="6e4f3-174">Další informace</span><span class="sxs-lookup"><span data-stu-id="6e4f3-174">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -286,9 +283,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a><span data-ttu-id="2ffcf-177">K danému ID MPN není přidružený žádný účet nepřímý prodejce CSP.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-177">No CSP Indirect Reseller account is associated with the given MPN ID</span></span>
+#### <a name="no-csp-indirect-reseller-account-is-associated-with-the-given-mpn-id"></a><span data-ttu-id="6e4f3-175">K CSP Indirect Reseller ID MPN není přidružený žádný účet.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-175">No CSP Indirect Reseller account is associated with the given MPN ID</span></span>
 
-<span data-ttu-id="2ffcf-178">Následující příklad odpovědi se vrátí, když partnerské Centrum dokáže rozpoznat ID MPN (PGA/PLA) předané v žádosti, ale k danému ID MPN (PGA/PLA) se nepřidruží žádný zápis CSP.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-178">The following example response is returned when Partner Center can recognize the MPN ID (PGA/PLA) passed in the request but there is no CSP enrollment associated to the given MPN ID (PGA/PLA).</span></span> [<span data-ttu-id="2ffcf-179">Další informace</span><span class="sxs-lookup"><span data-stu-id="2ffcf-179">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
+<span data-ttu-id="6e4f3-176">Následující příklad odpovědi se vrátí, když Partnerské centrum rozpozná ID MPN (PGA/PLA) předané v požadavku, ale k danému ID MPN (PGA/PLA) není přidružená žádná registrace CSP.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-176">The following example response is returned when Partner Center can recognize the MPN ID (PGA/PLA) passed in the request but there is no CSP enrollment associated to the given MPN ID (PGA/PLA).</span></span> [<span data-ttu-id="6e4f3-177">Další informace</span><span class="sxs-lookup"><span data-stu-id="6e4f3-177">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -310,9 +307,9 @@ Connection: close
 }
 ```
 
-#### <a name="invalid-tenant-id"></a><span data-ttu-id="2ffcf-180">Neplatné ID tenanta</span><span class="sxs-lookup"><span data-stu-id="2ffcf-180">Invalid Tenant ID</span></span>
+#### <a name="invalid-tenant-id"></a><span data-ttu-id="6e4f3-178">Neplatné ID tenanta</span><span class="sxs-lookup"><span data-stu-id="6e4f3-178">Invalid Tenant ID</span></span>
 
-<span data-ttu-id="2ffcf-181">Následující příklad odpovědi se vrátí, když Partnerská centra nenajde žádný účet přidružený k ID tenanta předanému v žádosti.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-181">The following example response is returned when Partner Center doesn't find any account associated to the Tenant ID passed in the request.</span></span>
+<span data-ttu-id="6e4f3-179">Následující příklad odpovědi se vrátí, Partnerské centrum nenajde žádný účet přidružený k ID tenanta předané v požadavku.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-179">The following example response is returned when Partner Center doesn't find any account associated to the Tenant ID passed in the request.</span></span>
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -332,9 +329,9 @@ Connection: close
 }
 ```
 
-#### <a name="no-mpa-found-with-the-given-tenant-id"></a><span data-ttu-id="2ffcf-182">Nenašly se žádné technologie MPA s daným ID tenanta.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-182">No MPA found with the given Tenant ID</span></span>
+#### <a name="no-mpa-found-with-the-given-tenant-id"></a><span data-ttu-id="6e4f3-180">S daným ID tenanta se nenašlo žádné MPA</span><span class="sxs-lookup"><span data-stu-id="6e4f3-180">No MPA found with the given Tenant ID</span></span>
 
-<span data-ttu-id="2ffcf-183">Následující příklad odpovědi se vrátí, když Partnerská centra nemůže najít žádný signaturu technologie MPA s daným ID tenanta.</span><span class="sxs-lookup"><span data-stu-id="2ffcf-183">The following example response is returned when Partner Center can't find any MPA signature with the given Tenant ID.</span></span> [<span data-ttu-id="2ffcf-184">Další informace</span><span class="sxs-lookup"><span data-stu-id="2ffcf-184">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
+<span data-ttu-id="6e4f3-181">Následující příklad odpovědi se vrátí, Partnerské centrum nemůže najít žádný podpis MPA s daným ID tenanta.</span><span class="sxs-lookup"><span data-stu-id="6e4f3-181">The following example response is returned when Partner Center can't find any MPA signature with the given Tenant ID.</span></span> [<span data-ttu-id="6e4f3-182">Další informace</span><span class="sxs-lookup"><span data-stu-id="6e4f3-182">Learn More</span></span>](/partner-center/mpa-indirect-provider-faq)
 
 ```http
 HTTP/1.1 400 Bad Request
