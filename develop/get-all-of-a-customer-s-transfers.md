@@ -4,50 +4,46 @@ description: Jak získat seznam převodů zákazníka
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4a25a9f6ccba0a3d64934b23ccd83a535da05e4a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: a5892e25953bc2eec4451bdbbd5accea008828b8
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766673"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760228"
 ---
-# <a name="get-a-customers-transfers"></a><span data-ttu-id="b5fc2-103">Získání převodů zákazníka</span><span class="sxs-lookup"><span data-stu-id="b5fc2-103">Get a customer's transfers</span></span>
+# <a name="get-a-customers-transfers"></a><span data-ttu-id="99fbd-103">Získání převodů zákazníka</span><span class="sxs-lookup"><span data-stu-id="99fbd-103">Get a customer's transfers</span></span>
 
-<span data-ttu-id="b5fc2-104">**Platí pro**</span><span class="sxs-lookup"><span data-stu-id="b5fc2-104">**Applies To**</span></span>
+<span data-ttu-id="99fbd-104">Jak získat seznam převodů zákazníka</span><span class="sxs-lookup"><span data-stu-id="99fbd-104">How to get a list of a customer's transfers.</span></span>
 
-- <span data-ttu-id="b5fc2-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="b5fc2-105">Partner Center</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="99fbd-105">Požadavky</span><span class="sxs-lookup"><span data-stu-id="99fbd-105">Prerequisites</span></span>
 
-<span data-ttu-id="b5fc2-106">Jak získat seznam převodů zákazníka</span><span class="sxs-lookup"><span data-stu-id="b5fc2-106">How to get a list of a customer's transfers.</span></span>
+- <span data-ttu-id="99fbd-106">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="99fbd-106">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="99fbd-107">Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="99fbd-107">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="b5fc2-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="b5fc2-107">Prerequisites</span></span>
+- <span data-ttu-id="99fbd-108">ID zákazníka ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="99fbd-108">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="99fbd-109">Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard)</span><span class="sxs-lookup"><span data-stu-id="99fbd-109">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="99fbd-110">V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.**</span><span class="sxs-lookup"><span data-stu-id="99fbd-110">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="99fbd-111">V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.**</span><span class="sxs-lookup"><span data-stu-id="99fbd-111">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="99fbd-112">Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka.</span><span class="sxs-lookup"><span data-stu-id="99fbd-112">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="99fbd-113">Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="99fbd-113">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
 
-- <span data-ttu-id="b5fc2-108">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="b5fc2-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="b5fc2-109">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-109">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="99fbd-114">Syntaxe požadavku</span><span class="sxs-lookup"><span data-stu-id="99fbd-114">Request syntax</span></span>
 
-- <span data-ttu-id="b5fc2-110">ID zákazníka ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="b5fc2-110">A customer ID (`customer-tenant-id`).</span></span> <span data-ttu-id="b5fc2-111">Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-111">If you don't know the customer's ID, you can look it up in the Partner Center [dashboard](https://partner.microsoft.com/dashboard).</span></span> <span data-ttu-id="b5fc2-112">V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-112">Select **CSP** from the Partner Center menu, followed by **Customers**.</span></span> <span data-ttu-id="b5fc2-113">Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-113">Select the customer from the customer list, then select **Account**.</span></span> <span data-ttu-id="b5fc2-114">Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** .</span><span class="sxs-lookup"><span data-stu-id="b5fc2-114">On the customer’s Account page, look for the **Microsoft ID** in the **Customer Account Info** section.</span></span> <span data-ttu-id="b5fc2-115">ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).</span><span class="sxs-lookup"><span data-stu-id="b5fc2-115">The Microsoft ID is the same as the customer ID  (`customer-tenant-id`).</span></span>
-
-### <a name="request-syntax"></a><span data-ttu-id="b5fc2-116">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="b5fc2-116">Request syntax</span></span>
-
-| <span data-ttu-id="b5fc2-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="b5fc2-117">Method</span></span>  | <span data-ttu-id="b5fc2-118">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="b5fc2-118">Request URI</span></span>                                                                                          |
+| <span data-ttu-id="99fbd-115">Metoda</span><span class="sxs-lookup"><span data-stu-id="99fbd-115">Method</span></span>  | <span data-ttu-id="99fbd-116">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="99fbd-116">Request URI</span></span>                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="b5fc2-119">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="b5fc2-119">**GET**</span></span> | <span data-ttu-id="b5fc2-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Transfers HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="b5fc2-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span></span> |
+| <span data-ttu-id="99fbd-117">**Dostat**</span><span class="sxs-lookup"><span data-stu-id="99fbd-117">**GET**</span></span> | <span data-ttu-id="99fbd-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/transfers HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="99fbd-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer-tenant-id}/transfers HTTP/1.1</span></span> |
 
-### <a name="uri-parameter"></a><span data-ttu-id="b5fc2-121">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="b5fc2-121">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="99fbd-119">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="99fbd-119">URI parameter</span></span>
 
-<span data-ttu-id="b5fc2-122">Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání všech předplatných.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-122">This table lists the required query parameter to get all the subscriptions.</span></span>
+<span data-ttu-id="99fbd-120">Tato tabulka uvádí požadovaný parametr dotazu pro získání všech předplatných.</span><span class="sxs-lookup"><span data-stu-id="99fbd-120">This table lists the required query parameter to get all the subscriptions.</span></span>
 
-| <span data-ttu-id="b5fc2-123">Název</span><span class="sxs-lookup"><span data-stu-id="b5fc2-123">Name</span></span>               | <span data-ttu-id="b5fc2-124">Typ</span><span class="sxs-lookup"><span data-stu-id="b5fc2-124">Type</span></span>   | <span data-ttu-id="b5fc2-125">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="b5fc2-125">Required</span></span> | <span data-ttu-id="b5fc2-126">Popis</span><span class="sxs-lookup"><span data-stu-id="b5fc2-126">Description</span></span>                                           |
+| <span data-ttu-id="99fbd-121">Název</span><span class="sxs-lookup"><span data-stu-id="99fbd-121">Name</span></span>               | <span data-ttu-id="99fbd-122">Typ</span><span class="sxs-lookup"><span data-stu-id="99fbd-122">Type</span></span>   | <span data-ttu-id="99fbd-123">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="99fbd-123">Required</span></span> | <span data-ttu-id="99fbd-124">Popis</span><span class="sxs-lookup"><span data-stu-id="99fbd-124">Description</span></span>                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| <span data-ttu-id="b5fc2-127">Customer-tenant-ID</span><span class="sxs-lookup"><span data-stu-id="b5fc2-127">customer-tenant-id</span></span> | <span data-ttu-id="b5fc2-128">řetězec</span><span class="sxs-lookup"><span data-stu-id="b5fc2-128">string</span></span> | <span data-ttu-id="b5fc2-129">Yes</span><span class="sxs-lookup"><span data-stu-id="b5fc2-129">Yes</span></span>      | <span data-ttu-id="b5fc2-130">Řetězec ve formátu GUID, který identifikuje zákazníka.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-130">A GUID-formatted string that identifies the customer.</span></span> |
+| <span data-ttu-id="99fbd-125">customer-tenant-id</span><span class="sxs-lookup"><span data-stu-id="99fbd-125">customer-tenant-id</span></span> | <span data-ttu-id="99fbd-126">řetězec</span><span class="sxs-lookup"><span data-stu-id="99fbd-126">string</span></span> | <span data-ttu-id="99fbd-127">Yes</span><span class="sxs-lookup"><span data-stu-id="99fbd-127">Yes</span></span>      | <span data-ttu-id="99fbd-128">Řetězec ve formátu GUID, který identifikuje zákazníka.</span><span class="sxs-lookup"><span data-stu-id="99fbd-128">A GUID-formatted string that identifies the customer.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="b5fc2-131">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="b5fc2-131">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="99fbd-129">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="99fbd-129">Request headers</span></span>
 
-<span data-ttu-id="b5fc2-132">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="b5fc2-132">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="99fbd-130">Další informace najdete v Partnerské centrum [REST.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="99fbd-130">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="b5fc2-133">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="b5fc2-133">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="99fbd-131">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="99fbd-131">Request body</span></span>
 
-<span data-ttu-id="b5fc2-134">Žádné</span><span class="sxs-lookup"><span data-stu-id="b5fc2-134">None.</span></span>
+<span data-ttu-id="99fbd-132">Žádné</span><span class="sxs-lookup"><span data-stu-id="99fbd-132">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="b5fc2-135">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="b5fc2-135">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="99fbd-133">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="99fbd-133">Request example</span></span>
 
 ```http
 GET /v1/customers/b67f0b00-f9e8-4c57-bcb5-0b8b95c6ccf0/transfers HTTP/1.1
@@ -58,15 +54,15 @@ MS-CorrelationId: dec58181-67b5-4831-c2c9-2fa099122f5d
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="b5fc2-136">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="b5fc2-136">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="99fbd-134">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="99fbd-134">REST response</span></span>
 
-<span data-ttu-id="b5fc2-137">V případě úspěchu tato metoda vrátí seznam prostředků [TransferEntity](transfer-entity-resources.md) v těle odpovědi.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-137">If successful, this method returns a list of [TransferEntity](transfer-entity-resources.md) resources in the response body.</span></span>
+<span data-ttu-id="99fbd-135">V případě úspěchu vrátí tato metoda v textu odpovědi seznam prostředků [TransferEntity.](transfer-entity-resources.md)</span><span class="sxs-lookup"><span data-stu-id="99fbd-135">If successful, this method returns a list of [TransferEntity](transfer-entity-resources.md) resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="b5fc2-138">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="b5fc2-138">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="99fbd-136">Kódy chyb a úspěšné odpovědi</span><span class="sxs-lookup"><span data-stu-id="99fbd-136">Response success and error codes</span></span>
 
-<span data-ttu-id="b5fc2-139">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-139">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="b5fc2-140">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="b5fc2-140">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="b5fc2-141">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="b5fc2-141">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="99fbd-137">Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="99fbd-137">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="99fbd-138">K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě.</span><span class="sxs-lookup"><span data-stu-id="99fbd-138">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="99fbd-139">Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="99fbd-139">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="b5fc2-142">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="b5fc2-142">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="99fbd-140">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="99fbd-140">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
