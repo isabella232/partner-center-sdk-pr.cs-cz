@@ -4,18 +4,14 @@ description: Jak získat seznam licencí přiřazených uživateli pro zadané s
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 28c10e3e2acb30e4110213344959a87d4ddfcffb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 54acf6f315e3062d03903a98d0c6c1946065f95e
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766974"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445999"
 ---
 # <a name="get-licenses-assigned-to-a-user-by-license-group"></a>Získání licencí přiřazených uživateli podle skupiny licencí
-
-**Platí pro**
-
-- Partnerské centrum
 
 Jak získat seznam licencí přiřazených uživateli pro zadané skupiny licencí.
 
@@ -69,7 +65,7 @@ K identifikaci zákazníka, uživatele a skupin licencí použijte následujíc�
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.                                                                                                                                                                                                                 |
 | user-id         | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje uživatele.                                                                                                                                                                                                                     |
-| licenseGroupIds | řetězec | No       | Hodnota výčtu, která označuje skupinu licencí přiřazených licencí. Platné hodnoty: group1, Skupina2 Group1 – Tato skupina obsahuje všechny produkty, jejichž licence se dají spravovat v Azure Active Directory (AAD). Skupina2 – Tato skupina má pouze licence na produkty Minecraftu. |
+| licenseGroupIds | řetězec | No       | Hodnota výčtu, která označuje skupinu licencí přiřazených licencí. Platné hodnoty: group1, Skupina2 Group1 – Tato skupina obsahuje všechny produkty, jejichž licence se dají spravovat v Azure Active Directory (AAD). skupina2 – tato skupina má pouze licence na produkt Minecraft. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

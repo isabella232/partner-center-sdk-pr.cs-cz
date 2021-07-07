@@ -4,21 +4,16 @@ description: Přečtěte si informace o použití prostředků pro převod z par
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d3ade5a5af76e7c637962b6bfe076ac806f337bf
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 1863c365627807d8de2534a2d3116807a5de70e1
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767107"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973889"
 ---
 # <a name="conversion-resources-to-convert-trial-subscriptions-to-paid"></a>Převod prostředků na převod předplatných zkušební verze na placené
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Převod prostředků podporuje převod zkušebního předplatného na placené předplatné.
 
@@ -52,4 +47,4 @@ Představuje výsledek provádění převodu předplatného.
 | subscriptionId | řetězec                              | Identifikátor předplatného.                                           |
 | Hodnotami OfferId        | řetězec                              | Původní identifikátor nabídky                                         |
 | targetOfferId  | řetězec                              | Identifikátor nabídky cílové nabídky                             |
-| error          | [ConversionError](#conversionerror) | Došlo k chybě při pokusu o převod, pokud je k dispozici.. |
+| error          | [ConversionError](#conversionerror) | Došlo k chybě při pokusu o převod, pokud je to možné. |

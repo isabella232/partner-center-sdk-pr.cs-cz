@@ -1,33 +1,29 @@
 ---
 title: Vytvoření samoobslužné zásady
-description: Vytvoření nových samoobslužných zásad.
+description: Jak vytvořit nové samoobslužné zásady
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd1579b2775ead57a440db0d6afb3bf22164c319
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: 14f46e22fbd294c765b745204cf62474250cbfbd
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767150"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973684"
 ---
-# <a name="create-a-selfservepolicy"></a>Vytvoření SelfServePolicy
+# <a name="create-a-selfservepolicy"></a>Vytvoření zásady SelfServePolicy
 
-**Platí pro:**
-
-- Partnerské centrum
-
-V tomto tématu se dozvíte, jak vytvořit nové zásady pro samoobslužné zpracování.
+Tento článek vysvětluje, jak vytvořit nové samoobslužné zásady.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
 Vytvoření samoobslužné zásady:
 
-1. Zavolejte metodu [**IAggregatePartner. SelfServePolicies. Create**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.create) nebo [**IAggregatePartner. SelfServePolicies. CreateAsync**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.createasync) s informacemi o zásadách, které samy o sobě slouží.
+1. Zavolejte [**metodu IAggregatePartner.SelfServePolicies.Create**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.create) nebo [**IAggregatePartner.SelfServePolicies.CreateAsync**](/dotnet/api/microsoft.store.partnercenter.iselfservepoliciescollection.createasync) s informacemi o samoobslužných zásadách.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -62,43 +58,43 @@ IPartner scopedPartnerOperations = partnerOperations.With(RequestContextFactory.
 SelfServePolicy createdSelfServePolicy = scopedPartnerOperations.selfServePolicies.Create(selfServePolicy);
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSamples**
 - Třída: **CreateSelfServePolicies.cs**
 
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                       |
 |----------|-------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/SelfServePolicy HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Vyžaduje se ID žádosti a ID korelace.
-- Další informace najdete v tématu [záhlaví REST v partnerském centru](headers.md) .
+- Vyžaduje se ID požadavku a ID korelace.
+- Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje požadované vlastnosti v textu žádosti.
+Tato tabulka popisuje požadované vlastnosti v textu požadavku.
 
 | Název                              | Typ   | Description                                 |
 |------------------------------------------------------------------|--------|---------------------------------------------|
-| [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy)| object | Informace o zásadách samostatného poskytování. |
+| [Samoobslužné zásady](self-serve-policy-resources.md#selfservepolicy)| object | Informace o samoobslužné zásadách. |
 
-#### <a name="selfservepolicy"></a>SelfServePolicy
+#### <a name="selfservepolicy"></a>Samoobslužné zásady
 
-Tato tabulka popisuje minimální požadovaná pole z prostředku [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) , který je potřeba k vytvoření nových samoobslužných zásad.
+Tato tabulka popisuje minimální povinná pole z prostředku [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) potřebná k vytvoření nové samoobslužné zásady.
 
 | Vlastnost              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| SelfServeEntity       | SelfServeEntity  | Entita, která má udělen přístup k sobě.                                                     |
-| Udělovatel               | Udělovatel          | Uděluje udělení přístupu.                                                                    |
-| Oprávnění           | Pole oprávnění| Pole prostředků [oprávnění](self-serve-policy-resources.md#permission)                                                                     |
+| Samoobslužná rezervace       | Samoobslužná rezervace  | Samoobslužná entita, které je udělen přístup.                                                     |
+| Grantor               | Grantor          | Grantor, který uděluje přístup.                                                                    |
+| Oprávnění           | Pole oprávnění| Pole [prostředků](self-serve-policy-resources.md#permission) oprávnění.                                                                     |
 
 
 ### <a name="request-example"></a>Příklad požadavku
@@ -134,17 +130,17 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-Pokud je toto rozhraní API úspěšné, vrátí [SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) prostředek pro nové zásady samoobslužného zpracování.
+V případě úspěchu toto rozhraní API vrátí [prostředek SelfServePolicy](self-serve-policy-resources.md#selfservepolicy) pro nové samoobslužné zásady.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
-Tato metoda vrací následující kódy chyb:
+Tato metoda vrátí následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 409                  | 600041       | Samoobslužná zásada již existuje.                                                     |
+| 409                  | 600041       | Samoobslužné zásady už existují.                                                     |
 
 
 ### <a name="response-example"></a>Příklad odpovědi

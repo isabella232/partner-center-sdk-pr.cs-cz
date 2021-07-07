@@ -4,18 +4,14 @@ description: Naučte se, jak přiřadit licence uživateli zákazníka prostřed
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6eb0b953b9157e48074415bb3207e2946cfb2ab4
-ms.sourcegitcommit: d1104d5c27f8fb3908a87532f80c432f0147ef5d
+ms.openlocfilehash: 88ce0f185b0b043c4a7862b7f9808fb8805d40b9
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "97767087"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974365"
 ---
 # <a name="assign-licenses-to-a-user-via-partner-center-apis"></a>Přiřazení licencí uživateli prostřednictvím partnerských rozhraní API partnerského centra
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Jak přiřadit licence uživateli zákazníka.
 
@@ -110,7 +106,7 @@ updateLicense.LicensesToAssign = licenseList;
 var assignLicense = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).LicenseUpdates.Create(updateLicense);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CustomerUserAssignLicenses.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CustomerUserAssignLicenses. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

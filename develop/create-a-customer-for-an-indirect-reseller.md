@@ -1,45 +1,41 @@
 ---
 title: Vytvoření zákazníka pro nepřímého prodejce
-description: Zjistěte, jak může nepřímý poskytovatel použít rozhraní API partnerského centra k vytvoření zákazníka pro nepřímý prodejce.
+description: Zjistěte, jak může nepřímý poskytovatel Partnerské centrum rozhraní API k vytvoření zákazníka pro nepřímého prodejce.
 ms.date: 04/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 0de40d08e9fc2b9cf87b7c3c41214fdd34ad26f3
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: 9a6218aeb61f3775c89d34b4d57a17741e3a1e93
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274576"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973736"
 ---
-# <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Vytvoření zákazníka pro nepřímý prodejce pomocí rozhraní API partnerského centra
+# <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Vytvoření zákazníka pro nepřímého prodejce pomocí Partnerské centrum API
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Nepřímý poskytovatel může vytvořit zákazníka pro nepřímý prodejce.
+Nepřímý poskytovatel může vytvořit zákazníka pro nepřímého prodejce.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
 - Identifikátor tenanta nepřímého prodejce.
 
-- Nepřímý prodejce musí mít partnerství s nepřímým zprostředkovatelem.
+- Nepřímý prodejce musí mít partnerství s nepřímým poskytovatelem.
 
 ## <a name="c"></a>C\#
 
-Přidání nového zákazníka pro nepřímý prodejce:
+Přidání nového zákazníka pro nepřímého prodejce:
 
-1. Vytvořte instanci nového objektu [**zákazníka**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) a potom vytvořte instanci a naplňte [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) a [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile). Nezapomeňte přiřadit ID nepřímého prodejce k vlastnosti [**AssociatedPartnerID**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer.associatedpartnerid) .
+1. Vytvořte instanci nového [**objektu Customer**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) a pak vytvořte instanci a naplňte profily [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) a [**CompanyProfile.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile) Nezapomeňte přiřadit ID nepřímého prodejce k vlastnosti [**AssociatedPartnerID.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer.associatedpartnerid)
 
-2. K získání rozhraní pro operace shromažďování zákazníka použijte vlastnost [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) .
+2. Pomocí vlastnosti [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) získejte rozhraní pro operace shromažďování zákazníků.
 
-3. Voláním metody [**Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync) vytvořte zákazníka.
+3. Pokud chcete [**vytvořit zákazníka,**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) zavolejte metodu Create nebo [**CreateAsync.**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync)
 
-### <a name="c-example"></a>\#Příklad C
+### <a name="c-example"></a>Příklad \# jazyka C
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -77,54 +73,54 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateCustomerforIndirectReseller. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** CreateCustomerforIndirectReseller.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                       |
 |----------|-------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje požadované vlastnosti v textu žádosti.
+Tato tabulka popisuje požadované vlastnosti v textu požadavku.
 
 | Název                                          | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                                                                                                                                           |
 |-----------------------------------------------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [BillingProfile](#billing-profile)             | object | Yes      | Informace o fakturačním profilu zákazníka                                                                                                                                                                                                                                                                                                           |
-| [CompanyProfile](#company-profile)             | object | Yes      | Informace o profilu společnosti zákazníka.                                                               
-| [AssociatedPartnerId](customer-resources.md#customer) | řetězec | Yes      | ID nepřímého prodejce. Nepřímý prodejce, který je uveden zde, musí mít partnerství s nepřímým zprostředkovatelem nebo se požadavek nezdaří. Všimněte si také, že pokud není zadána hodnota AssociatedPartnerId, zákazník je vytvořen jako přímý zákazník nepřímého poskytovatele, nikoli jako nepřímý prodejce. |
+| [Profil fakturace](#billing-profile)             | object | Yes      | Informace o fakturačním profilu zákazníka.                                                                                                                                                                                                                                                                                                           |
+| [Profil společnosti](#company-profile)             | object | Yes      | Informace o profilu společnosti zákazníka.                                                               
+| [AssociatedPartnerId (ID přidruženéhopartneru)](customer-resources.md#customer) | řetězec | Yes      | ID nepřímého prodejce. Nepřímý prodejce uvedený zde uvedeným ID musí mít partnerství s nepřímým poskytovatelem, jinak se žádost nezdaří. Všimněte si také, že pokud není zadaná hodnota AssociatedPartnerId, zákazník se místo nepřímého prodejce vytvoří jako přímý zákazník nepřímého poskytovatele. |
 |Doména| Řetězec| Yes|Název domény zákazníka, například contoso.onmicrosoft.com.|
-|organizationRegistrationNumber|    řetězec|Yes|     Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadované jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Indie, Brazílie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Maďarsko, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.|
+|organizationRegistrationNumber|    řetězec|Yes|     Registrační číslo organizace zákazníka (v určitých zemích se také označuje jako číslo INN). Vyžaduje se pouze pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménie (AM), Narština (AM), Kaskádština (AZ), Kaskády (BY), Kaskády (HU), KZ (KZ), Sidean (KG), Nar (MD), Korea (RU), Tádžština (TJ), Zamíce (UZ), Indie, Brazílie, Jižní Afrika, Saúdská Arábie, Saúdská Arábie, Malajsie, Malajsie, Zamísťování, Zamísťování, Jižní Asie a Malajsie. Pro společnost nebo organizaci zákazníka v jiných zemích se jedná o volitelné pole.|
 
 
 
 #### <a name="billing-profile"></a>Fakturační profil
 
-Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerBillingProfile](customer-resources.md#customerbillingprofile) , který je potřeba k vytvoření nového zákazníka.
+Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerBillingProfile](customer-resources.md#customerbillingprofile) potřebná k vytvoření nového zákazníka.
 
 | Název             | Typ                                     | Vyžadováno | Popis                                                                                                                                                                                                     |
 |------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | e-mail            | řetězec                                   | Yes      | E-mailová adresa zákazníka                                                                                                                                                                                   |
-| jazyková verze          | řetězec                                   | Yes      | Upřednostňovaná jazyková verze pro komunikaci a měnu, jako je "en-US". Podporované jazykové verze najdete v tématu [podporované jazyky a národní prostředí partnerského centra](partner-center-supported-languages-and-locales.md) . |
-| language         | řetězec                                   | Yes      | Výchozí jazyk. Jsou podporovány dva znakové kódy jazyka (například `en` nebo `fr` ).                                                                                                                                |
-| \_název společnosti    | řetězec                                   | Yes      | Registrovaný název společnosti nebo organizace.                                                                                                                                                                       |
-| výchozí \_ adresa | [Adresa](utility-resources.md#address) | Yes      | Registrovaná adresa společnosti nebo organizace zákazníka. Informace o omezeních délky najdete v tématu [adresa](utility-resources.md#address) prostředku.                                             |
+| jazyková verze          | řetězec                                   | Yes      | Jejich preferovaná kultura komunikace a měny, například en-US. Podporované [Partnerské centrum v tématu Podporované jazyky](partner-center-supported-languages-and-locales.md) a národní prostředí. |
+| language         | řetězec                                   | Yes      | Výchozí jazyk. Podporují se dva kódy znakových `en` jazyků (například `fr` nebo ).                                                                                                                                |
+| název \_ společnosti    | řetězec                                   | Yes      | Název registrované společnosti nebo organizace.                                                                                                                                                                       |
+| výchozí \_ adresa | [Adresa](utility-resources.md#address) | Yes      | Registrovaná adresa společnosti nebo organizace zákazníka. Informace o [omezeních](utility-resources.md#address) délky najdete v tématu Prostředek adresy.                                             |
 
 #### <a name="company-profile"></a>Profil společnosti
 
-Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) , který je potřeba k vytvoření nového zákazníka.
+Tato tabulka popisuje minimální povinná pole z prostředku [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) potřebná k vytvoření nového zákazníka.
 
 | Název   | Typ   | Vyžadováno | Popis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
 | doména | řetězec | Yes     | Název domény zákazníka, například contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | řetězec | Závisí na podmínce | Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). <br/><br/>Toto pole se vyžaduje jenom v případě, že se společnost nebo organizace zákazníka nacházejí v následujících zemích: <br/><br/>– Arménská (AM) <br/>-Ázerbájdžán (AZ)<br/>-Bělorusko (do)<br/>-Maďarsko (HU)<br/>-Kazachstán (KZ)<br/>-Kyrgyzstán (KG)<br/>-Moldávie (MD)<br/>– Rusko (RU)<br/>-Tádžikistán (TJ)<br/>-Uzbekistán (UZ)<br/>– Ukrajina (UA)<br/>– Indie <br/>– Brazílie <br/>– Jižní Afrika <br/>– Polsko <br/>– Spojené arabské emiráty <br/>– Saúdská Arábie <br/>– Turecko <br/>– Thajsko <br/>– Vietnam <br/>– Myanmar <br/>– Irák <br/>– Jižní Súdán <br/>– Venezuela<br/> <br/>Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.  |
+| organizationRegistrationNumber | řetězec | Závisí na podměně. | Registrační číslo organizace zákazníka (v určitých zemích se také označuje jako číslo INN). <br/><br/>Vyplnění tohoto pole se vyžaduje pouze v případě, že se společnost nebo organizace zákazníka nachází v následujících zemích: <br/><br/>– Arménská (AM) <br/>-Ázerbájdžán (AZ)<br/>-Bělorusko (do)<br/>-Maďarsko (HU)<br/>-Kazachstán (KZ)<br/>-Kyrgyzstán (KG)<br/>-Moldávie (MD)<br/>– Rusko (RU)<br/>-Tádžikistán (TJ)<br/>-Uzbekistán (UZ)<br/>– Ukrajina (UA)<br/>– Indie <br/>– Brazílie <br/>– Jižní Afrika <br/>– Polsko <br/>– Spojené arabské emiráty <br/>– Saúdská Arábie <br/>– Turecko <br/>– Thajsko <br/>– Vietnam <br/>– Myanmar <br/>– Irák <br/>– Jižní Súdán <br/>– Venezuela<br/> <br/>Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích se jedná o volitelné pole.  |
 
 ### <a name="request-example"></a>Příklad požadavku
 

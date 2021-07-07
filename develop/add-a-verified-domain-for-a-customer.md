@@ -4,21 +4,16 @@ description: Naučte se přidat ověřenou doménu do seznamu schválených dom�
 ms.date: 05/21/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d0ea9998324e99c7986645dc90fdfba0a2a71571
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: a8157bff5ac37100713a057ac68ac94c89ba28b8
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767073"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025679"
 ---
 # <a name="add-a-verified-domain-to-the-list-of-approved-domains-for-an-existing-customer"></a>Přidání ověřené domény do seznamu schválených domén pro existujícího zákazníka 
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Postup přidání ověřené domény do seznamu schválených domén pro existujícího zákazníka.
 
@@ -75,34 +70,34 @@ Tato tabulka popisuje vlastnosti povinné a volitelné **domény** v textu žád
 | Název               | Typ                                     | Vyžadováno | Popis                                                                                                                                                                                                     |
 |--------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | AuthenticationType                                    | řetězec           | Yes      | Definuje, jestli je doména doménou `Managed` nebo `Federated` doménou. Podporované hodnoty: `Managed` , `Federated` .|
-| Schopnost                                            | řetězec           | Yes      | Určuje schopnost domény. Například `Email`.                  |
+| Schopnost                                            | řetězec           | Yes      | Určuje schopnost domény. Například, `Email`.                  |
 | IsDefault                                             | logická hodnota s možnou hodnotou null | No       | Určuje, jestli je doména výchozí doménou pro tenanta. Podporované hodnoty: `True` , `False` , `Null` .        |
 | – Počáteční                                             | logická hodnota s možnou hodnotou null | No       | Uvádí, zda je doména počáteční doménou. Podporované hodnoty: `True` , `False` , `Null` .                       |
 | Name                                                  | řetězec           | Yes      | Název domény                                                          |
 | RootDomain                                            | řetězec           | No       | Název kořenové domény.                                              |
-| Status                                                | řetězec           | Yes      | Stav domény. Například `Verified`. Podporované hodnoty:  `Unverified` , `Verified` , `PendingDeletion` .                               |
-| VerificationMethod                                    | řetězec           | Yes      | Typ metody ověřování domény. Podporované hodnoty: `None` , `DnsRecord` , `Email` .                                    |
+| Status                                                | řetězec           | Yes      | Stav domény. Například, `Verified`. Podporované hodnoty:  `Unverified` `Verified` , , `PendingDeletion` .                               |
+| Metoda ověřování                                    | řetězec           | Yes      | Typ metody ověření domény. Podporované hodnoty: `None` `DnsRecord` , , `Email` .                                    |
 
 ### <a name="domain-federation-settings"></a>Nastavení federace domény
 
-Tato tabulka popisuje požadované a volitelné vlastnosti **DomainFederationSettings** v textu žádosti.
+Tato tabulka popisuje požadované a volitelné **vlastnosti DomainFederationSettings** v textu požadavku.
 
 | Název   | Typ   | Vyžadováno | Popis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
-| ActiveLogOnUri                         | řetězec           | No      | Přihlašovací identifikátor URI používaný u bohatých klientů. Tato vlastnost je adresa URL ověření partnerského serveru STS. |
-| DefaultInteractiveAuthenticationMethod | řetězec           | No      | Určuje výchozí metodu ověřování, která se má použít, když aplikace vyžaduje, aby uživatel měl interaktivní přihlášení. |
-| FederationBrandName                    | řetězec           | No      | Název značky federace        |
-| IssuerUri                              | řetězec           | Yes     | Název vystavitele certifikátů.                        |
-| LogOffUri                              | řetězec           | Yes     | Identifikátor URI pro odhlášení Tato vlastnost popisuje identifikátor URI pro odhlášení federované domény.        |
-| MetadataExchangeUri                    | řetězec           | No      | Adresa URL, která určuje koncový bod služby Metadata Exchange, který se používá pro ověřování z bohatých klientských aplikací. |
-| NextSigningCertificate                 | řetězec           | No      | Certifikát, který se používá pro budoucí účely prostřednictvím služby ADFS v2 STS k podepisování deklarací identity. Tato vlastnost je reprezentace certifikátu kódovaná v kódování Base64. |
-| OpenIdConnectDiscoveryEndpoint         | řetězec           | No      | Koncový bod zjišťování OpenID Connect pro federované IDP STS. |
-| PassiveLogOnUri                        | řetězec           | Yes     | Přihlašovací identifikátor URI používaný staršími pasivními klienty. Tato vlastnost je adresa k odeslání žádostí federovaného přihlášení. |
-| PreferredAuthenticationProtocol        | řetězec           | Yes     | Formát ověřovacího tokenu. Například `WsFed`. Podporované hodnoty: `WsFed` , `Samlp` |
-| PromptLoginBehavior                    | řetězec           | Yes     | Typ chování výzvy pro přihlášení  Například `TranslateToFreshPasswordAuth`. Podporované hodnoty: `TranslateToFreshPasswordAuth` , `NativeSupport` , `Disabled` |
-| SigningCertificate                     | řetězec           | Yes     | Certifikát, který je aktuálně používán službou ADFS v2 STS k podepisování deklarací. Tato vlastnost je reprezentace certifikátu kódovaná v kódování Base64. |
+| ActiveLogOnUri                         | řetězec           | No      | Přihlašovací identifikátor URI používaný bohatými klienty. Tato vlastnost je adresa URL ověřování STS partnera. |
+| Metoda DefaultInteractiveAuthenticationMethod | řetězec           | No      | Označuje výchozí metodu ověřování, která se má použít, když aplikace vyžaduje, aby uživatel měl interaktivní přihlášení. |
+| FederationBrandName                    | řetězec           | No      | Název značky federace.        |
+| Identifikátor IssuerUri                              | řetězec           | Yes     | Název vystavitele certifikátů.                        |
+| LogOffUri                              | řetězec           | Yes     | Identifikátor URI odhlášení. Tato vlastnost popisuje identifikátor URI pro odhlášení federované domény.        |
+| MetadataExchangeUri                    | řetězec           | No      | Adresa URL, která určuje koncový bod výměny metadat používaný k ověřování z bohatých klientských aplikací. |
+| NextSigningCertificate                 | řetězec           | No      | Certifikát, který služba AD FS V2 STS použije pro nadcházející budoucnost k podepisu deklarací identity. Tato vlastnost je reprezentace certifikátu v kódování Base64. |
+| OpenIdConnectDiscoveryEndpoint         | řetězec           | No      | OpenID Připojení koncového bodu zjišťování federovaných služby IDP STS. |
+| PassiveLogOnUri                        | řetězec           | Yes     | Přihlašovací identifikátor URI používaný staršími pasivními klienty. Tato vlastnost je adresa pro odesílání federovaných požadavků na přihlášení. |
+| PreferredAuthenticationProtocol        | řetězec           | Yes     | Formát ověřovacího tokenu. Například, `WsFed`. Podporované hodnoty: `WsFed` , `Samlp` |
+| PromptLoginBehavior                    | řetězec           | Yes     | Typ chování při přihlášení výzvy.  Například, `TranslateToFreshPasswordAuth`. Podporované hodnoty: `TranslateToFreshPasswordAuth` , `NativeSupport` , `Disabled` |
+| SigningCertificate                     | řetězec           | Yes     | Certifikát, který služba AD FS V2 STS aktuálně používá k podepisu deklarací identity. Tato vlastnost je reprezentace certifikátu v kódování Base64. |
 | SigningCertificateUpdateStatus         | řetězec           | No      | Určuje stav aktualizace podpisového certifikátu. |
-| SigningCertificateUpdateStatus         | logická hodnota s možnou hodnotou null | No      | Určuje, jestli služba IDP STS podporuje MFA. Podporované hodnoty: `True` , `False` , `Null` .|
+| SigningCertificateUpdateStatus         | Logická hodnota s možnou hodnotou null | No      | Určuje, jestli dp STS podporuje MFA. Podporované hodnoty: `True` `False` , , `Null` .|
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -148,11 +143,11 @@ X-Locale: "en-US"
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí toto rozhraní API prostředek [domény](#domain) pro novou ověřenou doménu.
+V případě úspěchu toto rozhraní API vrátí [prostředek](#domain) domény pro novou ověřenou doménu.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

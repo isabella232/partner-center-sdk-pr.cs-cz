@@ -4,18 +4,14 @@ description: Naučte se používat rozhraní API partnerského centra ke kontrol
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6921760abc0b95aff820467e84b3e8e9435731cd
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: b982dbd7e5e10d454ef87a1e750546ea50eb8438
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767113"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974076"
 ---
 # <a name="check-the-inventory-of-catalog-items-using-partner-center-apis"></a>Podívejte se na inventář položek katalogu pomocí rozhraní API partnerského centra.
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Jak kontrolovat inventář konkrétní sady položek katalogu
 

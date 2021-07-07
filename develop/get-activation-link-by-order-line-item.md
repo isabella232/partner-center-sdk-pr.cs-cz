@@ -1,40 +1,35 @@
 ---
 title: Získání aktivačního odkazu podle položky řádku objednávky
-description: Načte odkaz na aktivaci předplatného podle pořadí položek řádku.
+description: Získá odkaz na aktivaci předplatného podle řádkové položky objednávky.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c0e84888870571cf6bd21306f527863f2aa7ee85
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: aa02a5a5b4a281b96e32ee6d239cc440cf8af4ec
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766840"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760772"
 ---
 # <a name="get-activation-link-by-order-line-item"></a>Získání aktivačního odkazu podle položky řádku objednávky
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Získá odkaz na aktivaci předplatného komerčního marketplace podle čísla položky řádku objednávky.
 
-Získá odkaz na aktivaci předplatného komerčního webu Marketplace číslem položky řádku objednávky.
-
-Na řídicím panelu partnerského centra můžete tuto operaci provést výběrem **konkrétního předplatného** na **hlavní** stránce nebo výběrem odkazu **Přejít na web vydavatele** vedle předplatného, které chcete aktivovat na stránce **předplatná** .
+Na řídicím panelu Partnerské centrum můžete tuto operaci provést  výběrem  konkrétního předplatného v části Předplatné na hlavní stránce nebo výběrem odkazu Přejít na web **Publisher** vedle předplatného aktivovat na stránce Předplatná. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- Bylo dokončeno pořadí s produktem, který vyžaduje aktivaci.
+- Dokončená objednávka s produktem, který vyžaduje aktivaci.
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat aktivační odkaz na řádkovou položku, použijte svou kolekci [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a zavolejte metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s vybraným ID zákazníka. Pak zavolejte vlastnost [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) a metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) se zadaným pořadím  [**ČísloObjednávky**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Pak zavolejte [**položky řádku**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) s metodou **ById ()** s identifikátorem položky řádku.  Nakonec zavolejte metodu **ActivationLinks ()** .
+Pokud chcete získat aktivační odkaz na řádkové položky, použijte kolekci [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a zavolejte metodu [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s vybraným ID zákazníka. Potom zavolejte [**vlastnost Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) a [**metodu ById()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid) se zadaným  [**OrderId**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.id). Potom zavolejte [**metodu LineItems**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) s **byId()** s identifikátorem čísla položky řádku.  Nakonec zavolejte **metodu ActivationLinks().**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -46,17 +41,17 @@ Chcete-li získat aktivační odkaz na řádkovou položku, použijte svou kolek
 var partnerOperations.Customers.ById(customerId).Orders.ById(orderId).OrderLineItems.ById(lineItemNumber).ActivationLinks();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                               |
 |---------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{customerId}/Orders/{OrderID}/LineItems/{lineItemNumber}/activationlinks HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/orders/{orderId}/lineitems/{lineItemNumber}/activationlinks HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -74,11 +69,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci [zákaznických](customer-resources.md#customer) prostředků v těle odpovědi.
+V případě úspěchu vrátí tato [](customer-resources.md#customer) metoda v textu odpovědi kolekci prostředků zákazníka.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

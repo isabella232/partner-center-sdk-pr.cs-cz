@@ -4,19 +4,16 @@ description: Jak nahrát seznam informací o zařízeních a vytvořit novou dá
 ms.date: 08/08/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0b48971b862418136c42e78ae973a5aea27404a1
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 285af12034562262c99b2aa3b139e948b0fdd462
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766997"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529728"
 ---
 # <a name="upload-a-list-of-devices-to-create-a-new-batch-for-the-specified-customer"></a>Nahrání seznamu zařízení pro vytvoření nové dávky pro konkrétního zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Jak nahrát seznam informací o zařízeních a vytvořit novou dávku pro zadaného zákazníka. Tím se vytvoří dávka zařízení pro registraci v nasazení s nulovým dotykem a přidružíme zařízení a dávku zařízení k zadanému zákazníkovi.
 
@@ -72,7 +69,7 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.Create(newDeviceBatch);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateDeviceBatch.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CreateDeviceBatch. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

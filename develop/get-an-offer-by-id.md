@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: brentserbus
 ms.author: brserbus
-ms.openlocfilehash: 9448276e817affb823eddabbcab8757c79615fbd
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f759cbdeefb4f550c41b41de40e9979e72e4ddeb
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767054"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760636"
 ---
 # <a name="get-an-offer-by-id"></a>Získání nabídky podle ID
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá prostředek **nabídky** , který odpovídá ID nabídky.
 
@@ -43,7 +38,7 @@ Chcete-li najít konkrétní nabídku podle ID, použijte svou kolekci **IAggreg
 var offer = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: GetOffer.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: getoffer. cs
 
 ## <a name="java"></a>Java
 
@@ -86,7 +81,7 @@ Get-PartnerOffer -Country $countryCode -OfferId $offerId
 | Název           | Typ       | Vyžadováno | Popis                           |
 |----------------|------------|----------|---------------------------------------|
 | **ID nabídky**   | **guid**   | Y        | Identifikátor GUID, který odpovídá této nabídce |
-| **ID země** | **řetezce** | Y        | ID země nebo oblasti                |
+| **ID země** | **řetězec** | Y        | ID země nebo oblasti                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

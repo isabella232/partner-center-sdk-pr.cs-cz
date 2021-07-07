@@ -4,20 +4,16 @@ description: Aktualizuje rozpočet útraty přidělený pro využití zákazník
 ms.date: 02/05/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 839305fb8fad3ce2442ab93e1d8a4a170b4d41c2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 043bd442266d081105e5e8767b6d597e89fc9e8b
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767004"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529711"
 ---
 # <a name="update-a-customers-usage-spending-budget"></a>Aktualizace rozpočtu útraty využívání zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Aktualizuje [rozpočet útraty](customer-usage-resources.md#customerusagesummary) přidělený pro využití zákazníka.
 

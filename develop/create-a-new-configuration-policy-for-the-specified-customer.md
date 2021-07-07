@@ -4,19 +4,16 @@ description: Naučte se používat rozhraní API partnerského centra k vytvoře
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 21a0bfde7f931371ff09d6c27de0281a4ed3b3cb
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 530ff72862204bda093385252450f4eb81b63160
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97767137"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973668"
 ---
 # <a name="create-a-new-configuration-policy-for-the-specified-customer"></a>Vytvoření nových zásad konfigurace pro konkrétního zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Vytvoření nové zásady konfigurace pro zadaného zákazníka.
 
@@ -55,7 +52,7 @@ var createdConfigurationPolicy =
     partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.Create(configurationPolicyToCreate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateConfigurationPolicy.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CreateConfigurationPolicy. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

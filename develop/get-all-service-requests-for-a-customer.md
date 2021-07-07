@@ -6,34 +6,30 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6f473c7a7d43b1a3929d983fb23dae92fdafbc0f
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: ffcbbb9cf14b1b2a5b3becab541d3042c3cad508
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767050"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760670"
 ---
 # <a name="get-all-service-requests-for-a-customer"></a>Získání všech žádostí o službu pro zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá všechny žádosti o služby zákazníka.
 
-Na řídicím panelu partnerského centra se tato operace dá provést při prvním [výběru zákazníka](get-a-customer-by-name.md). Pak na levém bočním panelu vyberte **Správa služeb** . Žádosti o služby zákazníka se zobrazí v části **lístky podpory**.
+Na řídicím Partnerské centrum můžete tuto operaci provést tak, že nejprve [vyberete zákazníka](get-a-customer-by-name.md). Pak na levém **bočním** panelu vyberte Správa služeb. Žádosti o služby zákazníka se zobrazují v části **Lístky podpory**.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Pokud chcete zobrazit seznam všech žádostí o služby zákazníka, použijte svou kolekci **IAggregatePartner. Customers** a zavolejte metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) . Potom zavolejte vlastnost [**ServiceRequests**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicerequests) a za ní volejte metody [**Get ()**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.get) nebo [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.getasync) .
+Pokud chcete zobrazit seznam všech žádostí o služby zákazníka, použijte kolekci **IAggregatePartner.Customers** a zavolejte [**metodu ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Potom zavolejte [**vlastnost ServiceRequests**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.servicerequests) a pak metody [**Get()**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.get) nebo [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,27 +38,27 @@ Pokud chcete zobrazit seznam všech žádostí o služby zákazníka, použijte 
 ResourceCollection<ServiceRequest> serviceRequests = partnerOperations.Customers.ById(customerId).ServiceRequests.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerCenterSDK. FeaturesSamples **Třída**: CustomerManagedServices.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples **– třída:** CustomerManagedServices.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                            |
 |---------|--------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/servicerequests HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/servicerequests HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K získání všech žádostí o služby pro zákazníka použijte následující parametr dotazu.
+Pomocí následujícího parametru dotazu získejte všechny žádosti o služby pro zákazníka.
 
 | Název                   | Typ     | Vyžadováno | Popis                            |
 |------------------------|----------|----------|----------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi... |
+| **customer-tenant-id** | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -80,11 +76,11 @@ MS-CorrelationId: 998e31a1-3f17-4471-a9ee-7678dd72e033
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků **žádosti o službu** v těle odpovědi.
+V případě úspěchu vrátí tato  metoda v textu odpovědi kolekci prostředků žádosti o služby.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

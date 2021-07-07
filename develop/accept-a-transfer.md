@@ -1,50 +1,48 @@
 ---
-title: Akceptovat přenos předplatných
-description: Naučte se používat REST API partnerského centra k přijetí přenosu předplatných pro zákazníka. Zahrnuje syntaxi žádostí REST, hlavičky a odpovědi REST.
+title: Přijetí převodu předplatných
+description: Zjistěte, jak pomocí Partnerské centrum REST API přijmout převod předplatných pro zákazníka. Zahrnuje syntaxi požadavku REST, hlavičky a odpovědi REST.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fd9a6788b3dd022470e516ba928a6cd873970e53
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 762f2106d6173e352bec11936c96bc3a9c9f89cb
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767072"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025747"
 ---
-# <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Přijetí přenosu předplatných pro zákazníka pomocí rozhraní REST API partnerského centra
+# <a name="accept-a-transfer-of-subscriptions-for-a-customer-using-partner-center-rest-apis"></a>Přijetí převodu předplatných pro zákazníka pomocí Partnerské centrum rozhraní REST API
 
-**Platí pro:**
-
-- Partnerské centrum
+Tento článek popisuje, jak pomocí REST API v Partnerské centrum přijmout převod předplatných pro zákazníka. Příklad obsahuje syntaxi REST, hlavičky a odpovědi REST.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Identifikátor přenosu pro existující přenos.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Transfers/{Transfer-ID}/Accept HTTP/1.1                    |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/transfers/{ID_přenosu}/přijmout HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Použijte následující parametr cesty k identifikaci zákazníka a určení přenosu, který chcete přijmout.
+Pomocí následujícího parametru cesty identifikujte zákazníka a určete přenos, který se má přijmout.
 
 | Název            | Typ     | Vyžadováno | Popis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **ID zákazníka** | řetězec   | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka.             |
-| **ID přenosu** | řetězec   | Yes      | Identifikátor ID přenosu, ve formátu GUID, který identifikuje přenos.             |
+| **id zákazníka** | řetězec   | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka.             |
+| **id přenosu** | řetězec   | Yes      | Identifikátor GUID formátovaný jako transfer-id, který identifikuje přenos.             |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -63,11 +61,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí naplněný prostředek [TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) v těle odpovědi.
+V případě úspěchu tato metoda vrátí naplněný prostředek [TransferSubmitResult](transfer-entity-resources.md#transfersubmitresult) v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

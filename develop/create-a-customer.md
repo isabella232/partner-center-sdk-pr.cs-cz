@@ -1,57 +1,53 @@
 ---
 title: Vytvoření zákazníka
-description: Přečtěte si, jak může partner Cloud Solution Provider (CSP) použít rozhraní API partnerského centra k vytvoření nového zákazníka. Článek popisuje požadavky a další akce.
+description: Zjistěte, jak Cloud Solution Provider (CSP) může pomocí Partnerské centrum API vytvořit nového zákazníka. Článek popisuje požadavky a další kroky.
 ms.date: 03/30/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: bc8e9d38353511e747ba4da99b11be40d08781e3
-ms.sourcegitcommit: faea78fe3264cbafc2b02c04d98d5ce30e992124
+ms.openlocfilehash: 6232ca77d057f2f5168b73d81ec551669d540246
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106274593"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973719"
 ---
-# <a name="create-a-customer-using-partner-center-apis"></a>Vytvoření zákazníka pomocí rozhraní API partnerského centra
+# <a name="create-a-customer-using-partner-center-apis"></a>Vytvoření zákazníka pomocí Partnerské centrum API
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek vysvětluje, jak vytvořit nového zákazníka.
 
 > [!IMPORTANT]
-> Pokud jste nepřímý poskytovatel a chcete vytvořit zákazníka pro nepřímý prodejce, přečtěte si téma [Vytvoření zákazníka pro nepřímý prodejce](create-a-customer-for-an-indirect-reseller.md).
+> Pokud jste nepřímý poskytovatel a chcete vytvořit zákazníka pro nepřímého prodejce, přečtěte si prosím informace v tématu Vytvoření zákazníka [pro nepřímého prodejce.](create-a-customer-for-an-indirect-reseller.md)
 
-Jako partner poskytovatele Cloud Solution Provider (CSP) můžete při vytváření zákazníka umístit objednávky jménem zákazníka. Při vytváření zákazníka vytvoříte také:
+Jako partner CSP (Cloud Solution Provider) můžete při vytváření zákazníka za zákazníka zasaťovat objednávky. Při vytváření zákazníka také vytvoříte:
 
-- Objekt tenanta Azure Active Directory (AD) pro zákazníka.
+- Objekt tenanta Azure Active Directory (AD) zákazníka.
 
 - Vztah mezi prodejcem a zákazníkem, který se používá pro delegovaná oprávnění správce.
 
-- Uživatelské jméno a heslo pro přihlášení jako správce pro zákazníka.
+- Uživatelské jméno a heslo pro přihlášení jako správce zákazníka.
 
-Po vytvoření zákazníka nezapomeňte uložit ID zákazníka a podrobnosti služby Azure AD pro budoucí použití se sadou SDK partnerského centra (například Správa účtů).
+Po vytvoření zákazníka nezapomeňte uložit ID zákazníka a podrobnosti o Službě Azure AD pro budoucí použití s SDK pro Partnerské centrum (například správu účtů).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 > [!IMPORTANT]
-> Chcete-li vytvořit tenanta zákazníka, je nutné během procesu vytváření zadat platnou fyzickou adresu. Adresu lze ověřit podle kroků uvedených v rámci scénáře [ověření adresy](validate-an-address.md) . Pokud vytvoříte zákazníka pomocí neplatné adresy v prostředí izolovaného prostoru (sandbox), nebudete moci odstranit tohoto tenanta zákazníka.
+> Pokud chcete vytvořit tenanta zákazníka, musíte během procesu vytváření zadat platnou fyzickou adresu. Adresu je možné ověřit podle kroků uvedených ve [scénáři Ověření](validate-an-address.md) adresy. Pokud vytvoříte zákazníka pomocí neplatné adresy v prostředí sandboxu, nebudete moct tohoto tenanta zákazníka odstranit.
 
 ## <a name="c"></a>C\#
 
-Postup přidání zákazníka:
+Přidání zákazníka:
 
-1. Vytvoří instanci nového objektu [**zákazníka**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) . Nezapomeňte vyplnit [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) a [**CompanyProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile).
+1. Vytvořte instanci nového [**objektu Customer.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customer) Nezapomeňte vyplnit [**BillingProfile**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerbillingprofile) a [**CompanyProfile.**](/dotnet/api/microsoft.store.partnercenter.models.customers.customercompanyprofile)
 
-2. Přidejte nového zákazníka do kolekce [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , a to voláním [**Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync).
+2. Přidejte nového zákazníka do kolekce [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) voláním [**metody Create**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.create) nebo [**CreateAsync.**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientitycreateoperations-2.createasync)
 
-### <a name="c-example"></a>\#Příklad C
+### <a name="c-example"></a>Příklad \# jazyka C
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -92,7 +88,7 @@ var customerToCreate = new Customer()
 var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CreateCustomer. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class**: CreateCustomer.cs
 
 ## <a name="java"></a>Java
 
@@ -100,11 +96,11 @@ var newCustomer = partnerOperations.Customers.Create(customerToCreate);
 
 Vytvoření nového zákazníka:
 
-1. Vytvoří novou instanci třídy **CustomerBillingProfile** a objektů **CustomerCompanyProfile** . Nezapomeňte vyplnit požadovaná pole.
+1. Vytvořte novou instanci objektů **CustomerBillingProfile** a **CustomerCompanyProfile.** Nezapomeňte vyplnit požadovaná pole.
 
-2. Vytvořte zákazníka voláním funkce **IAggregatePartner. GetCustomers (). Create** .
+2. Vytvořte zákazníka zavolám funkci **IAggregatePartner.getCustomers().create.**
 
-### <a name="java-example"></a>Příklad Java
+### <a name="java-example"></a>Příklad v Javě
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -144,57 +140,57 @@ Customer newCustomer = partnerOperations.getCustomers().create( customerToCreate
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pokud chcete vytvořit zákazníka, spusťte příkaz [**New-PartnerCustomer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/New-PartnerCustomer.md) .
+Pokud chcete vytvořit zákazníka, spusťte [**příkaz New-PartnerCustomer.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/New-PartnerCustomer.md)
 
 ```powershell
 New-PartnerCustomer -BillingAddressLine1 '1 Microsoft Way' -BillingAddressCity 'Redmond' -BillingAddressCountry 'US' -BillingAddressPostalCode '98052' -BillingAddressState 'WA' -ContactEmail 'jdoe@customer.com' -ContactFirstName 'Jane' -ContactLastName 'Doe' -Culture 'en-US' -Domain 'newcustomer.onmicrosoft.com' -Language 'en' -Name 'New Customer'
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                       |
 |----------|-------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Toto rozhraní API se idempotentní (nepřinese se mu jiný výsledek, pokud ho zavoláte víckrát).
+- Toto rozhraní API je idempotentní (pokud ho zavoláte vícekrát, nepřidá jiný výsledek).
 
-- Vyžaduje se ID žádosti a ID korelace.
+- Vyžaduje se ID požadavku a ID korelace.
 
-- Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+- Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje požadované vlastnosti v textu žádosti.
+Tato tabulka popisuje požadované vlastnosti v textu požadavku.
 
 | Název                              | Typ   | Description                                 |
 |-----------------------------------|--------|---------------------------------------------|
-| [BillingProfile](#billing-profile) | object | Informace o fakturačním profilu zákazníka |
-| [CompanyProfile](#company-profile) | object | Informace o profilu společnosti zákazníka. |
+| [Profil fakturace](#billing-profile) | object | Informace o fakturačním profilu zákazníka. |
+| [Profil společnosti](#company-profile) | object | Informace o profilu společnosti zákazníka. |
 
 #### <a name="billing-profile"></a>Fakturační profil
 
-Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerBillingProfile](customer-resources.md#customerbillingprofile) , který je potřeba k vytvoření nového zákazníka.
+Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerBillingProfile](customer-resources.md#customerbillingprofile) potřebná k vytvoření nového zákazníka.
 
 | Název             | Typ                                     | Description                                                                                                                                                                                                     |
 |------------------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | e-mail            | řetězec                                   | E-mailová adresa zákazníka                                                                                                                                                                                   |
-| jazyková verze          | řetězec                                   | Upřednostňovaná jazyková verze pro komunikaci a měnu, jako je "en-US". Podporované jazykové verze najdete v tématu [podporované jazyky a národní prostředí partnerského centra](partner-center-supported-languages-and-locales.md) . |
-| language         | řetězec                                   | Výchozí jazyk. Jsou podporovány dva znakové kódy jazyka (například `en` nebo `fr` ).                                                                                                                                |
-| \_název společnosti    | řetězec                                   | Registrovaný název společnosti nebo organizace.                                                                                                                                                                       |
-| výchozí \_ adresa | [Adresa](utility-resources.md#address) | Registrovaná adresa společnosti nebo organizace zákazníka. Informace o omezeních délky najdete v tématu [adresa](utility-resources.md#address) prostředku.                                             |
+| jazyková verze          | řetězec                                   | Jejich preferovaná kultura komunikace a měny, například en-US. Podporované [Partnerské centrum v tématu Podporované jazyky](partner-center-supported-languages-and-locales.md) a národní prostředí. |
+| language         | řetězec                                   | Výchozí jazyk. Podporují se dva kódy znakových `en` jazyků (například `fr` nebo ).                                                                                                                                |
+| název \_ společnosti    | řetězec                                   | Název registrované společnosti nebo organizace.                                                                                                                                                                       |
+| výchozí \_ adresa | [Adresa](utility-resources.md#address) | Registrovaná adresa společnosti nebo organizace zákazníka. Informace o [omezeních](utility-resources.md#address) délky najdete v tématu Prostředek adresy.                                             |
 
 #### <a name="company-profile"></a>Profil společnosti
 
-Tato tabulka popisuje minimální požadovaná pole z prostředku [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) , který je potřeba k vytvoření nového zákazníka.
+Tato tabulka popisuje minimální povinná pole z prostředku [CustomerCompanyProfile](customer-resources.md#customercompanyprofile) potřebná k vytvoření nového zákazníka.
 
 | Název   | Typ   | Description                                                  |
 |--------|--------|--------------------------------------------------------------|
 | doména | řetězec | Název domény zákazníka, například contoso.onmicrosoft.com. |
-|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (také označované jako DIČ v určitých zemích). Požadováno jenom pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménská (AM), Ázerbájdžán (AZ), Bělorusko (BY), Maďarsko (HU), Kazachstán (KZ), Kyrgyzstán (KG), Moldavsko (MD), Rusko (RU), Tádžikistán (TJ), Uzbekistán (UZ), Ukrajina (UA), Brazílie (BR), Indie, Jižní Afrika, Polsko, Spojené arabské emiráty, Saúdská Arábie, Turecko, Thajsko, Vietnam, Myanmar, Irák, Jižní Súdán a Venezuela. Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích je to volitelné pole.|
+|organizationRegistrationNumber|Řetězec|Registrační číslo organizace zákazníka (v určitých zemích se také označuje jako číslo INN). Vyžaduje se pouze pro společnost nebo organizaci zákazníka, která se nachází v následujících zemích: Arménie (AM), Kaskádština (AM), Kaskádština (AZ), Kaskády (BY), Indu (HU), KZ (KZ), Korea, Jižní Afrika, Japonsko, Spojené arabské emiráty, Saúdská Arábie, Brazílie, Vietnam, Zamísťování, Jarda a Jarda. Pro společnost nebo organizaci zákazníka v jiných zemích se jedná o volitelné pole.|
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -235,11 +231,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu toto rozhraní API vrátí [zákaznický](customer-resources.md#customer) prostředek pro nového zákazníka. Uložte si podrobnosti o ID zákazníka a Azure AD pro budoucí použití se sadou partner Center SDK. Budete je potřebovat pro použití se správou účtů, například.
+V případě úspěchu vrátí toto rozhraní API [pro](customer-resources.md#customer) nového zákazníka prostředek zákazníka. Uložte si ID zákazníka a podrobnosti o Azure AD pro budoucí použití s SDK pro Partnerské centrum. Budete je například potřebovat ke správě účtů.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Odpovědi se dodávají se stavovým kódem HTTP, který označuje úspěch nebo neúspěch a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Odpovědi mají stavový kód HTTP, který označuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

@@ -1,26 +1,21 @@
 ---
 title: Analýzy
-description: K programovému načtení analytických informací můžete použít sadu SDK a rozhraní API partnerského centra. Další informace najdete v článcích, které jsou tady uvedené.
+description: Analytické informace můžete SDK pro Partnerské centrum a rozhraní API prostřednictvím kódu programu. Další informace najdete v článcích uvedených tady.
 ms.date: 07/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d779b749b318f1cfadbbcc46943c533c9635b994
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 503d00d9d4acf307cfa9fad86a322be2e8549b73
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766740"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530289"
 ---
 # <a name="analytics"></a>Analýzy
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-K programovému načtení analytických informací můžete použít sadu SDK a rozhraní API partnerského centra. Další informace najdete v článcích, které jsou tady uvedené:
+Analytické informace můžete SDK pro Partnerské centrum a rozhraní API prostřednictvím kódu programu. Další informace najdete v článcích uvedených tady:
 
 - [Analýzy Partnerského centra – prostředky](partner-center-analytics-resources.md)
 - [Získání všech analytických informací o využití Azure](get-all-azure-usage-analytics.md)

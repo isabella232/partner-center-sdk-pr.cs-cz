@@ -1,35 +1,31 @@
 ---
-title: Vytvořit přenos
-description: Jak vytvořit přenos předplatných pro zákazníka.
+title: Vytvoření přenosu
+description: Jak vytvořit převod předplatných pro zákazníka
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d5e70cc5b7ce4fcfa715f581a2151f0b8d1922b0
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d459a0a96912ab27f312bc73af16af2d4fdb518c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766694"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973702"
 ---
-# <a name="create-a-transfer"></a>Vytvořit přenos
-
-**Platí pro:**
-
-- Partnerské centrum
+# <a name="create-a-transfer"></a>Vytvoření přenosu
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Transfers HTTP/1.1                    |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/transfers HTTP/1.1                    |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -37,11 +33,11 @@ K identifikaci zákazníka použijte následující parametr cesty.
 
 | Název            | Typ     | Vyžadováno | Popis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **ID zákazníka** | řetězec   | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka.             |
+| **id zákazníka** | řetězec   | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka.             |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -49,34 +45,34 @@ Tato tabulka popisuje vlastnosti [TransferEntity](transfer-entity-resources.md) 
 
 | Vlastnost              | Typ          | Vyžadováno  | Popis                                                                                |
 |-----------------------|---------------|-----------|--------------------------------------------------------------------------------------------|
-| id                    | řetězec        | No    | TransferEntity identifikátor, který je poskytnut po úspěšném vytvoření transferEntity.                               |
-| createdTime           | DateTime      | No    | Datum, kdy byl transferEntity vytvořen, ve formátu data a času. Použito po úspěšném vytvoření transferEntity.      |
-| Časposledníúpravy      | DateTime      | No    | Datum poslední aktualizace transferEntity ve formátu data a času. Použito po úspěšném vytvoření transferEntity. |
-| lastModifiedUser      | řetězec        | No    | Uživatel, který transferEntity naposledy aktualizoval. Použito po úspěšném vytvoření transferEntity.                          |
-| customerName          | řetězec        | No    | Nepovinný parametr. Jméno zákazníka, jehož odběry se přenáší.                                              |
-| customerTenantId      | řetězec        | No    | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka. Použito po úspěšném vytvoření transferEntity.         |
-| partnertenantid       | řetězec        | No    | ID partnera naformátovaného identifikátorem GUID, který identifikuje partnera.                                                                   |
-| sourcePartnerName     | řetězec        | No    | Nepovinný parametr. Název organizace partnera, který iniciuje přenos.                                           |
-| sourcePartnerTenantId | řetězec        | Yes   | ID partnera naformátovaného identifikátorem GUID, který identifikuje partnera iniciující přenos.                                           |
-| targetPartnerName     | řetězec        | No    | Nepovinný parametr. Název organizace partnera, na kterou je přenos zaměřen.                                         |
-| targetPartnerTenantId | řetězec        | Yes   | ID partnera formátovaného identifikátorem GUID, který identifikuje partnera, kterému je směrován cíl přenosu.                                  |
-| Položky řádku             | Pole objektů | Yes| Pole prostředků [TransferLineItem](transfer-entity-resources.md#transferlineitem)                                   |
-| status                | řetězec        | No    | Stav transferEntity. Možné hodnoty jsou "aktivní" (lze je odstranit/odeslat) a "dokončeno" (již bylo dokončeno). Použito po úspěšném vytvoření transferEntity.|
+| id                    | řetězec        | No    | Identifikátor transferEntity zadaný po úspěšném vytvoření transferEntity.                               |
+| čas vytvoření           | DateTime      | No    | Datum vytvoření transferEntity ve formátu data a času. Použije se při úspěšném vytvoření transferEntity.      |
+| lastModifiedTime      | DateTime      | No    | Datum poslední aktualizace transferEntity ve formátu data a času. Použije se při úspěšném vytvoření transferEntity. |
+| lastModifiedUser      | řetězec        | No    | Uživatel, který naposledy aktualizoval transferEntity. Použije se při úspěšném vytvoření transferEntity.                          |
+| customerName          | řetězec        | No    | Nepovinný parametr. Jméno zákazníka, jehož předplatná se převádějí.                                              |
+| customerTenantId      | řetězec        | No    | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka. Použije se při úspěšném vytvoření transferEntity.         |
+| partnertenantid       | řetězec        | No    | Identifikátor GUID naformátovaný jako partner-ID, který identifikuje partnera.                                                                   |
+| sourcePartnerName     | řetězec        | No    | Nepovinný parametr. Název organizace partnera, která iniciuje převod.                                           |
+| sourcePartnerTenantId | řetězec        | Yes   | Identifikátor GUID naformátovaný jako partner-ID, který identifikuje partnera, který zahájí převod.                                           |
+| targetPartnerName     | řetězec        | No    | Nepovinný parametr. Název organizace partnera, na kterou se převod cílí.                                         |
+| targetPartnerTenantId | řetězec        | Yes   | Identifikátor GUID naformátovaný jako partner-ID, který identifikuje partnera, na kterého se přenos cílí.                                  |
+| položky řádku             | Pole objektů | Yes| Pole prostředků [TransferLineItem.](transfer-entity-resources.md#transferlineitem)                                   |
+| status                | řetězec        | No    | Stav transferEntity. Možné hodnoty jsou Aktivní (je možné je odstranit nebo odeslat) a Dokončeno (už je hotové). Použije se při úspěšném vytvoření transferEntity.|
 
 Tato tabulka popisuje vlastnosti [TransferLineItem](transfer-entity-resources.md#transferlineitem) v textu požadavku.
 
 |      Vlastnost       |            Typ             | Vyžadováno | Popis                                                                                     |
 |---------------------|-----------------------------|----------|-------------------------------------------------------------------------------------------------|
-| id                   | řetězec                     | No       | Jedinečný identifikátor pro položku na lince přenosu. Použito po úspěšném vytvoření transferEntity.|
+| id                   | řetězec                     | No       | Jedinečný identifikátor položky řádku přenosu. Použije se při úspěšném vytvoření transferEntity.|
 | subscriptionId       | řetězec                     | Yes      | Identifikátor předplatného.                                                                         |
-| quantity             | int                        | No       | Počet licencí nebo instancí.                                                                 |
-| billingCycle         | Objekt                     | No       | Typ fakturačního cyklu nastaveného pro aktuální období.                                                |
-| friendlyName         | řetězec                     | No       | Nepovinný parametr. Popisný název položky definované partnerem, který vám umožní určit nejednoznačnost.                |
-| partnerIdOnRecord    | řetězec                     | No       | PartnerId na záznamu (MPNID) při nákupu, který se stane při přijetí přenosu.              |
-| Hodnotami OfferId              | řetězec                     | No       | Identifikátor nabídky                                                                                |
-| addonItems           | Seznam objektů **TransferLineItem** | No | Kolekce položek řádku transferEntity pro doplňky, které se přenesou spolu se základním předplatným, které se přenáší. Použito po úspěšném vytvoření transferEntity.|
-| transferError        | řetězec                     | No       | Používá se po přijetí transferEntity v případě chyby.                                        |
-| status               | řetězec                     | No       | Stav LineItem v transferEntity.                                                    |
+| quantity             | int                        | No       | Počet licencí nebo instancí                                                                 |
+| billingCycle         | Objekt                     | No       | Typ fakturačního cyklu nastavený pro aktuální období                                                |
+| Friendlyname         | řetězec                     | No       | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.                |
+| id partneraZáznam    | řetězec                     | No       | ID partnera v záznamu (ID MPN) při nákupu, ke které dojde při přijetí převodu.              |
+| ID nabídky              | řetězec                     | No       | Identifikátor nabídky.                                                                                |
+| addonItems           | Seznam objektů **TransferLineItem** | No | Kolekce řádových položek transferEntity pro doplňky, které se přenesou spolu se základním předplatným, které se převádí. Použije se při úspěšném vytvoření transferEntity.|
+| chyba přenosu        | řetězec                     | No       | Použije se po přijetí transferEntity, pokud dojde k chybě.                                        |
+| status               | řetězec                     | No       | Stav položky řádku v transferEntity.                                                    |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -109,11 +105,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí naplněný prostředek [TransferEnity](transfer-entity-resources.md) v těle odpovědi.
+V případě úspěchu tato metoda vrátí vyplněný prostředek [TransferEnity](transfer-entity-resources.md) v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

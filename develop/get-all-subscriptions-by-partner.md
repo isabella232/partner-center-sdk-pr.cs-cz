@@ -6,23 +6,18 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c95488b62449e1ab6bd2eeefea58d6686c291f4c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 857caa667245503f111b27379a5c8f93aa1fb0b0
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766988"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760653"
 ---
 # <a name="get-a-customers-subscriptions-by-partner-mpn-id"></a>Získání předplatných zákazníka podle ID MPN partnera
 
-**Platí pro**
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak získat seznam předplatných poskytnutých daným partnerem konkrétnímu zákazníkovi.
+Jak získat seznam předplatných poskytovaných daným partnerem Microsoft Partner Network (MPN) pro zadaného zákazníka.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -30,7 +25,7 @@ Jak získat seznam předplatných poskytnutých daným partnerem konkrétnímu z
 
 - ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Identifikátor partnerského Microsoft Partner Network (MPN).
+- Identifikátor MPN partnera.
 
 ## <a name="c"></a>C\#
 
@@ -44,7 +39,7 @@ Chcete-li získat seznam předplatných poskytovaných daným partnerem pro urč
 var customerSubscriptionsByMpnId = partnerOperations.Customers.ById(customerId).Subscriptions.ByPartner(partnerMpnId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetSubscriptionsByMpnid.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetSubscriptionsByMpnid. cs
 
 ## <a name="java"></a>Java
 

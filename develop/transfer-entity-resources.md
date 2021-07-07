@@ -1,43 +1,39 @@
 ---
 title: Prostředky TransferEntity
-description: Partner vytvoří přenos, pokud chce zákazník předplatné s partnerem přenést na jiného partnera.
+description: Partner vytvoří převod, když zákazník chce, aby jeho předplatné s partnerem bylo převedeno na jiného partnera.
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 96c43d255fcd31e6dc4de50baa0e19f5d8855685
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 544b9682bb0e1428fad088c818a62492198897b2
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766824"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530136"
 ---
 # <a name="transferentity-resources"></a>Prostředky TransferEntity
 
-**Platí pro:**
+Partner vytvoří převod, když zákazník chce, aby jeho předplatné s partnerem bylo převedeno na jiného partnera.
 
-- Partnerské centrum
+## <a name="transferentity"></a>TransferEntity (Přenosováentita)
 
-Partner vytvoří přenos, pokud chce zákazník předplatné s partnerem přenést na jiného partnera.
-
-## <a name="transferentity"></a>TransferEntity
-
-Popisuje transferEntity.
+Popisuje hodnotu transferEntity.
 
 | Vlastnost              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| id                    | řetězec           | TransferEntity identifikátor, který je poskytnut po úspěšném vytvoření transferEntity.                               |
-| createdTime           | DateTime         | Datum, kdy byl transferEntity vytvořen, ve formátu data a času. Použito po úspěšném vytvoření transferEntity.      |
-| Časposledníúpravy      | DateTime         | Datum poslední aktualizace transferEntity ve formátu data a času. Použito po úspěšném vytvoření transferEntity. |
-| lastModifiedUser      | řetězec           | Uživatel, který transferEntity naposledy aktualizoval. Použito po úspěšném vytvoření transferEntity.                          |
-| customerName          | řetězec           | Nepovinný parametr. Jméno zákazníka, jehož odběry se přenáší.                                              |
-| customerTenantId      | řetězec           | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka. Použito po úspěšném vytvoření transferEntity.         |
-| partnertenantid       | řetězec           | ID partnera naformátovaného identifikátorem GUID, který identifikuje partnera.                                                                   |
-| sourcePartnerName     | řetězec           | Nepovinný parametr. Název organizace partnera, který iniciuje přenos.                                           |
-| sourcePartnerTenantId | řetězec           | ID partnera naformátovaného identifikátorem GUID, který identifikuje partnera iniciující přenos.                                           |
-| targetPartnerName     | řetězec           | Nepovinný parametr. Název organizace partnera, na kterou je přenos zaměřen.                                         |
-| targetPartnerTenantId | řetězec           | ID partnera formátovaného identifikátorem GUID, který identifikuje partnera, kterému je směrován cíl přenosu.                                  |
-| Položky řádku             | Pole objektů | Pole prostředků [TransferLineItem](#transferlineitem)                                                   |
-| status                | řetězec           | Stav transferEntity. Možné hodnoty jsou "aktivní" (lze je odstranit/odeslat) a "dokončeno" (již bylo dokončeno). Použito po úspěšném vytvoření transferEntity.|
+| id                    | řetězec           | Identifikátor transferEntity zadaný po úspěšném vytvoření transferEntity.                               |
+| čas vytvoření           | DateTime         | Datum vytvoření transferEntity ve formátu data a času. Použije se při úspěšném vytvoření transferEntity.      |
+| lastModifiedTime      | DateTime         | Datum poslední aktualizace transferEntity ve formátu data a času. Použije se při úspěšném vytvoření transferEntity. |
+| lastModifiedUser      | řetězec           | Uživatel, který naposledy aktualizoval transferEntity. Použije se při úspěšném vytvoření transferEntity.                          |
+| customerName          | řetězec           | Nepovinný parametr. Jméno zákazníka, jehož předplatná se převádějí.                                              |
+| customerTenantId      | řetězec           | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka. Použije se při úspěšném vytvoření transferEntity.         |
+| partnertenantid       | řetězec           | Identifikátor GUID naformátovaný jako partner-ID, který identifikuje partnera.                                                                   |
+| sourcePartnerName     | řetězec           | Nepovinný parametr. Název organizace partnera, která iniciuje převod.                                           |
+| sourcePartnerTenantId | řetězec           | Identifikátor GUID naformátovaný jako partner-ID, který identifikuje partnera, který zahájí převod.                                           |
+| targetPartnerName     | řetězec           | Nepovinný parametr. Název organizace partnera, na kterou se převod cílí.                                         |
+| targetPartnerTenantId | řetězec           | Identifikátor GUID naformátovaný jako partner-ID, který identifikuje partnera, na kterého se přenos cílí.                                  |
+| položky řádku             | Pole objektů | Pole prostředků [TransferLineItem.](#transferlineitem)                                                   |
+| status                | řetězec           | Stav transferEntity. Možné hodnoty jsou Aktivní (je možné je odstranit nebo odeslat) a Dokončeno (už je hotové). Použije se při úspěšném vytvoření transferEntity.|
 
 ## <a name="transferlineitem"></a>TransferLineItem
 
@@ -45,16 +41,16 @@ Představuje jednu položku obsaženou v transferEntity.
 
 | Vlastnost             | Typ                             | Description                                                                                             |
 |----------------------|----------------------------------|---------------------------------------------------------------------------------------------------------|
-| id                   | řetězec                           | Jedinečný identifikátor pro položku na lince přenosu. Použito po úspěšném vytvoření transferEntity.   |
+| id                   | řetězec                           | Jedinečný identifikátor položky řádku převodu. Použije se při úspěšném vytvoření transferEntity.   |
 | subscriptionId       | řetězec                           | Identifikátor předplatného.                                                                            |
-| quantity             | int                              | Počet licencí nebo instancí.                                                                    |
-| billingCycle         | Objekt                           | Typ fakturačního cyklu nastaveného pro aktuální období.                                                   |
-| friendlyName         | řetězec                           | Nepovinný parametr. Popisný název položky definované partnerem, který vám umožní určit nejednoznačnost.                   |
-| partnerIdOnRecord    | řetězec                           | PartnerId na záznamu (MPNID) při nákupu, který se stane při přijetí přenosu.                 |
-| Hodnotami OfferId              | řetězec                           | Identifikátor nabídky    |
-| addonItems           | Seznam objektů **TransferLineItem** | Kolekce položek řádku transferEntity pro doplňky, které se přenesou spolu se základním předplatným, které se přenáší. Použito po úspěšném vytvoření transferEntity.|
-| transferError        | řetězec                           | Používá se po přijetí transferEntity v případě chyby.                |
-| status               | řetězec           | Stav LineItem v transferEntity.|
+| quantity             | int                              | Počet licencí nebo instancí                                                                    |
+| billingCycle         | Objekt                           | Typ fakturačního cyklu nastavený pro aktuální období                                                   |
+| Friendlyname         | řetězec                           | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.                   |
+| id partneraZáznam    | řetězec                           | ID partnera v záznamu (MPNID) při nákupu, ke které dojde při přijetí převodu.                 |
+| ID nabídky              | řetězec                           | Identifikátor nabídky.    |
+| addonItems           | Seznam objektů **TransferLineItem** | Kolekce řádových položek transferEntity pro doplňky, které se přenesou spolu se základním předplatným, které se převádí. Použije se při úspěšném vytvoření transferEntity.|
+| chyba přenosu        | řetězec                           | Použije se po přijetí transferEntity v případě chyby.                |
+| status               | řetězec           | Stav položky řádku v transferEntity.|
 
 ## <a name="transfersubmitresult"></a>TransferSubmitResult
 

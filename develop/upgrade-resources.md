@@ -4,21 +4,16 @@ description: Popisuje prostředky, které se používají k upgradu uživatele z
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: bdbef383370761a01eb462f90284ad826a38ddaa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 4c57994d1b1e7659df5e6448578422f6d9c21fee
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766748"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529813"
 ---
 # <a name="upgrade-resources"></a>Upgradovat zdroje
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Popisuje prostředky, které se používají k upgradu uživatele ze zdrojového předplatného na cílové předplatné.
 
@@ -31,7 +26,7 @@ Popisuje chování samostatného prostředku upgradu.
 | TargetOffer   | Nabídka                  | Nabídka cílového předplatného.                                                        |
 | UpgradeType   | řetězec                 | Typ upgradu: "none", " \_ pouze upgrade" nebo "upgrade \_ s \_ \_ přenosem licencí".         |
 | Oprávněné    | boolean                | Určuje, zda může být upgrade proveden.                                                  |
-| Množství      | integer                | Kvantitativní vyčíslení nové nabídky, která má být koupena. Ve výchozím nastavení se jedná o množství zdrojového předplatného. |
+| Množství      | integer                | Množství nové nabídky, která se má koupit Ve výchozím nastavení se jedná o množství zdrojového předplatného. |
 | UpgradeErrors | pole UpgradeErrors | Důvodem je, že upgrade nelze provést, pokud je k dispozici.                                      |
 | Atributy    | ResourceAttributes     | Atributy metadat odpovídající upgradu.                                        |
 

@@ -1,35 +1,31 @@
 ---
 title: Získání licencí přiřazených uživateli
-description: Naučte se používat rozhraní API partnerského centra k získání seznamu licencí přiřazených uživateli v rámci účtu zákazníka.
+description: Zjistěte, jak pomocí Partnerské centrum API získat seznam licencí přiřazených uživateli v rámci zákaznického účtu.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b754ba4ecba7067f78c6868b387bac0190bfd230
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: a51fc4493e2476107206b03be66004d030e2aa47
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767116"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974059"
 ---
-# <a name="get-licenses-assigned-to-a-user-within-a-customer-account"></a>Získání licencí přiřazených uživateli v rámci účtu zákazníka
+# <a name="get-licenses-assigned-to-a-user-within-a-customer-account"></a>Získání licencí přiřazených uživateli v rámci zákaznického účtu
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Jak získat seznam licencí přiřazených uživateli v rámci účtu zákazníka. Uvedené příklady vrátí licence přiřazené z Group1, výchozí skupinu licencí, která představuje licence spravované serverem Azure Active Directory. Pokud chcete získat licence přiřazené ze zadaných skupin licencí, přečtěte si téma [získání licencí přiřazených uživateli podle skupiny licencí](get-licenses-assigned-to-a-user-by-license-group.md).
+Jak získat seznam licencí přiřazených uživateli v rámci zákaznického účtu Uvedené příklady vrátí licence přiřazené ze skupiny group1, výchozí skupiny licencí, která představuje licence spravované Azure Active Directory. Pokud chcete získat licence přiřazené ze zadaných skupin licencí, podívejte se na stránku [Získání licencí přiřazených uživateli podle skupiny licencí.](get-licenses-assigned-to-a-user-by-license-group.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Identifikátor uživatele
+- Identifikátor uživatele.
 
 ## <a name="c"></a>C\#
 
-Chcete-li zjistit, které licence jsou přiřazeny uživateli z výchozí skupiny licencí Group1, nejprve použijte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka k identifikaci zákazníka. Pak zavolejte metodu User [**. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) s ID uživatele k identifikaci uživatele. Pak z vlastnosti [**licence**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) Získejte rozhraní pro uživatelské operace s uživatelskými licencemi. Nakonec voláním metody [**Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) načtěte kolekci licencí přiřazených uživateli.
+Pokud chcete zjistit, které licence jsou přiřazeny uživateli z výchozí skupiny licencí group1, nejprve pomocí metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka identifikujte zákazníka. Potom zavolejte [**metodu Users.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) s ID uživatele a identifikujte uživatele. Dále z vlastnosti [**Licence**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruser.licenses) získejte rozhraní operací s uživatelskými licencemi zákazníka. Nakonec zavolejte [**metodu Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomeruserlicensecollection.getasync) a načtěte kolekci licencí přiřazených uživateli.
 
 ``` csharp
 // string selectedCustomerUserId;
@@ -39,15 +35,15 @@ Chcete-li zjistit, které licence jsou přiřazeny uživateli z výchozí skupin
 var customerUserAssignedLicenses = partnerOperations.Customers.ById(selectedCustomerId).Users.ById(selectedCustomerUserId).Licenses.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CustomerUserAssignedLicenses.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** CustomerUserAssignedLicenses.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                              |
 |---------|----------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Users/{User-ID}/licenses HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/users/{ID_uživatele}/licence HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -55,12 +51,12 @@ K identifikaci zákazníka a uživatele použijte následující parametry cesty
 
 | Název        | Typ   | Vyžadováno | Popis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| ID zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
-| user-id     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje uživatele.     |
+| id zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| user-id     | řetězec | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje uživatele.     |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -80,11 +76,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci [licenčních](license-resources.md#license) prostředků.
+V případě úspěchu bude text odpovědi obsahovat kolekci prostředků [licence.](license-resources.md#license)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

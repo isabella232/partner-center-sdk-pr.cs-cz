@@ -1,46 +1,42 @@
 ---
 title: Potvrzení přijetí Smlouvy se zákazníkem Microsoftu ze strany zákazníka
-description: Přečtěte si, jak potvrdit přijetí zákaznických smluv Microsoftu pomocí rozhraní API partnerského centra.
+description: Zjistěte, jak potvrdit přijetí služby zákazníkem Smlouva se zákazníkem Microsoftu pomocí Partnerské centrum API.
 ms.date: 02/08/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 62a6cebd5d6d093377dd5940dcff6204b7095c70
-ms.sourcegitcommit: ebb36208d6e2dea705f62b7d60d471f10c55132e
+ms.openlocfilehash: 002508109191ede53cd06f25efc38286647fd67c
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006062"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974008"
 ---
-# <a name="confirm-customer-acceptance-of-the-microsoft-customer-agreement-using-partner-center-apis"></a>Potvrzení souhlasu zákazníka se zákaznickou smlouvou Microsoftu pomocí rozhraní API partnerského centra
+# <a name="confirm-customer-acceptance-of-the-microsoft-customer-agreement-using-partner-center-apis"></a>Potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu pomocí Partnerské centrum API
 
-**Platí pro:**
+**Platí pro:** Partnerské centrum
 
-- Partnerské centrum
+**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partnerské centrum v současné době podporuje potvrzení souhlasu zákazníka s zákaznickou smlouvou Microsoftu pouze ve *veřejném cloudu Microsoftu*. Tato funkce se v současnosti nevztahuje na:
+Partnerské centrum v současné době podporuje potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu pouze ve veřejném cloudu Microsoftu.
 
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tento článek popisuje, jak ověřit nebo znovu potvrdit přijetí smlouvy o zákaznících Microsoftu v rámci zákazníka.
+Tento článek popisuje, jak potvrdit nebo znovu potvrdit souhlas zákazníka s Smlouva se zákazníkem Microsoftu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud používáte sadu SDK partnerského centra .NET, verze 1,14 nebo novější je povinná.
+- Pokud používáte sadu .NET SDK Partnerské centrum, vyžaduje se verze 1.14 nebo novější.
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). *Tento scénář podporuje jenom ověřování aplikací a uživatelů.*
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](./partner-center-authentication.md) *Tento scénář podporuje pouze ověřování aplikací a uživatelů.*
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Datum (**dateAgreed**), kdy zákazník přijal smlouvu o zákaznících Microsoftu.
+- Datum **(dateAgreed),** kdy zákazník přijal Smlouva se zákazníkem Microsoftu.
 
-- Informace o uživateli od organizace zákazníka, která přijala zákaznickou smlouvu od Microsoftu. Sem patří:
+- Informace o uživateli z organizace zákazníka, který přijal Smlouva se zákazníkem Microsoftu. Sem patří:
   - Jméno
   - Příjmení
   - E-mailová adresa
-  - Telefonní číslo (volitelné)
-- Pokud se u zákazníka změní následující hodnoty, Partnerské centrum umožní vytvoření jiné smlouvy pro daného zákazníka: křestní jméno příjmení jméno e-mailové adresy. v opačném případě získají partneři následující kód chyby, protože se vytvořil duplicitní zákazník.
+  - Telefon číslo (volitelné)
+- Pokud se pro zákazníka změní následující hodnoty, umožní Partnerské centrum vytvořit pro tohoto zákazníka jinou smlouvu: Jméno Příjmení E-mailová adresa Telefon číslo V opačném případě partneři obdrží následující kód chyby kvůli vytvoření duplicitního zákazníka.
 
 
 ```
@@ -57,9 +53,9 @@ Tento článek popisuje, jak ověřit nebo znovu potvrdit přijetí smlouvy o z�
 
 ## <a name="net"></a>.NET
 
-Potvrzení nebo opětovné potvrzení přijetí smlouvy o zákaznících Microsoftu pro zákazníky:
+Potvrzení nebo potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu:
 
-1. Načtěte metadata smlouvy pro zákaznickou smlouvu Microsoftu. Musíte získat **TemplateID** smlouvy o zákaznících Microsoftu. Další podrobnosti najdete v tématu [získání metadat smlouvy pro zákaznickou smlouvu Microsoftu](get-customer-agreement-metadata.md).
+1. Načtěte metadata smlouvy pro Smlouva se zákazníkem Microsoftu. Je nutné získat **templateId** Smlouva se zákazníkem Microsoftu. Další informace najdete v tématu [Získání metadat smlouvy pro Smlouva se zákazníkem Microsoftu](get-customer-agreement-metadata.md).
 
    ```csharp
    // IAggregatePartner partnerOperations;
@@ -69,11 +65,11 @@ Potvrzení nebo opětovné potvrzení přijetí smlouvy o zákaznících Microso
    var microsoftCustomerAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
    ```
 
-2. Vytvořte nový objekt **smlouvy** obsahující podrobnosti o potvrzení.
+2. Vytvořte nový objekt **Agreement** obsahující podrobnosti o potvrzení.
 
-3. Použijte kolekci **IAgreggatePartner. Customers** a zavolejte metodu **ById** se zadaným **identifikátorem Customer-tenant-ID**.
+3. Použijte kolekci **IAgreggatePartner.Customers** a zavolejte metodu **ById** se zadaným **ID tenanta zákazníka**.
 
-4. Použijte vlastnost **smlouvy** a potom zavoláním metody **Create** nebo **CreateAsync**.
+4. Použijte vlastnost **Agreements** a pak zavoláte **Create** nebo **CreateAsync.**
 
    ```csharp
    // string selectedCustomerId;
@@ -94,52 +90,52 @@ Potvrzení nebo opětovné potvrzení přijetí smlouvy o zákaznících Microso
    Agreement agreement = partnerOperations.Customers.ById(selectedCustomerId).Agreements.Create(agreementToCreate);
    ```
 
-Kompletní ukázku najdete ve třídě [CreateCustomerAgreement](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/CreateCustomerAgreement.cs) z projektu [testovací aplikace konzoly](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) .
+Úplnou ukázku najdete ve třídě [CreateCustomerAgreement](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/CreateCustomerAgreement.cs) z projektu [konzolové testovací](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) aplikace.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-Potvrzení nebo opětovné potvrzení přijetí smlouvy o zákaznících Microsoftu pro zákazníky:
+Potvrzení nebo potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu:
 
-1. Načtěte metadata smlouvy pro zákaznickou smlouvu Microsoftu. Musíte získat **TemplateID** smlouvy o zákaznících Microsoftu. Další podrobnosti najdete v tématu [získání metadat smlouvy pro zákaznickou smlouvu Microsoftu](get-customer-agreement-metadata.md).
+1. Načtěte metadata smlouvy pro Smlouva se zákazníkem Microsoftu. Je nutné získat **templateId** Smlouva se zákazníkem Microsoftu. Další informace najdete v tématu [Získání metadat smlouvy pro Smlouva se zákazníkem Microsoftu](get-customer-agreement-metadata.md).
 
-2. Vytvořte nový prostředek [ **smlouvy**](agreement-resources.md) , abyste si ověřili, že zákazník přijal zákaznickou smlouvu Microsoftu. Použijte následující [syntaxi žádosti REST](#request-syntax).
+2. Vytvořte nový prostředek [ **smlouvy,** abyste](agreement-resources.md) potvrdili, že zákazník přijal Smlouva se zákazníkem Microsoftu. Použijte následující [syntaxi požadavku REST.](#request-syntax)
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti                                                                                        |
 |--------|----------------------------------------------------------------------------------------------------|
-| POST   | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Agreements HTTP/1.1 |
+| POST   | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/smlouvy HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Použijte následující parametr dotazu k určení zákazníka, kterého si potvrzujete.
+Pomocí následujícího parametru dotazu zadejte zákazníka, který potvrzujete.
 
 | Název               | Typ | Vyžadováno | Popis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| Customer-tenant-ID | Identifikátor GUID | Ano | Hodnota je **číslo zákazníka**, který je ve formátu GUID, což je identifikátor, který umožňuje zadat zákazníka. |
+| customer-tenant-id | Identifikátor GUID | Yes | Hodnota je id tenanta zákazníka ve **formátu** GUID, což je identifikátor, který umožňuje zadat zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje požadované vlastnosti v těle žádosti REST.
+Tato tabulka popisuje požadované vlastnosti v textu požadavku REST.
 
 | Název      | Typ   | Description                                                                                  |
 |-----------|--------|----------------------------------------------------------------------------------------------|
-| Smlouva | object | Podrobnosti poskytované partnerem k potvrzení přijetí smlouvy o zákaznících Microsoftu pro zákazníky. |
+| Smlouva | object | Podrobnosti poskytnuté partnerem pro potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu. |
 
 #### <a name="agreement"></a>Smlouva
 
-Tato tabulka popisuje minimální požadovaná pole pro vytvoření [prostředku **smlouvy**](agreement-resources.md).
+Tato tabulka popisuje minimální požadovaná pole pro vytvoření [ **prostředku** smlouvy.](agreement-resources.md)
 
 | Vlastnost       | Typ   | Description                              |
 |----------------|--------|------------------------------------------|
-| primaryContact | [Kontakt](./utility-resources.md#contact) | Informace o uživateli od organizace zákazníka, která přijala smlouvu o zákaznících Microsoftu, včetně:  **FirstName**, **LastName**, **e-mail** a **phoneNumber** (volitelné) |
-| dateAgreed     | řetězec ve formátu data a času UTC |Datum, kdy zákazník smlouvu přijal. |
-| templateId     | řetězec | Jedinečný identifikátor typu smlouvy přijatého zákazníkem **TemplateID** pro smlouvu o zákaznících Microsoftu můžete získat tak, že načtěte metadata smlouvy pro zákaznickou smlouvu Microsoftu. Podrobnosti najdete v článku [získání metadat smlouvy pro zákaznickou smlouvu Microsoftu](./get-customer-agreement-metadata.md) . |
-| typ           | řetězec | Typ smlouvy, kterou zákazník přijal. Pokud zákazník přijal zákaznickou smlouvu Microsoftu, použijte "MicrosoftCustomerAgreement". |
+| primaryContact | [Kontakt](./utility-resources.md#contact) | Informace o uživateli z organizace zákazníka, který přijal Smlouva se zákazníkem Microsoftu, včetně:  **jméno,** **příjmení,** **e-mail** a **telefonní číslo** (volitelné) |
+| datum odgreed     | řetězec ve formátu data a času UTC |Datum, kdy zákazník smlouvu přijal. |
+| ID šablony     | řetězec | Jedinečný identifikátor typu smlouvy přijatého zákazníkem Můžete získat **templateId pro** Smlouva se zákazníkem Microsoftu načtením metadat smlouvy pro Smlouva se zákazníkem Microsoftu. Podrobnosti [najdete v tématu Smlouva se zákazníkem Microsoftu](./get-customer-agreement-metadata.md) smlouvy. |
+| typ           | řetězec | Typ smlouvy přijatý zákazníkem. Pokud zákazník přijal Smlouva se zákazníkem Microsoftu. |
 
 #### <a name="request-example"></a>Příklad požadavku
 
@@ -164,13 +160,13 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda prostředek [ **smlouvy**](./agreement-resources.md).
+V případě úspěchu vrátí tato metoda [ **prostředek smlouvy**](./agreement-resources.md).
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.
 
-Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 #### <a name="response-example"></a>Příklad odpovědi
 

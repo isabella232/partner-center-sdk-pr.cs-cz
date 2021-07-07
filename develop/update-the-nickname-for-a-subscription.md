@@ -4,37 +4,32 @@ description: Aktualizuje popisný název nebo přezdívku pro předplatné záka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 57a9fec4b69d4a64128425ea58b4bb84d0d7dd54
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 195a85fcf29b3e4c9fe0e578d4d8cb80ca068c40
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766966"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530000"
 ---
 # <a name="update-the-nickname-for-a-subscription"></a>Aktualizace přezdívky pro předplatné
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Aktualizuje popisný název nebo přezdívku pro předplatné [zákazníka.](subscription-resources.md) Tento název se Partnerské centrum, který vám pomůže rozlišit předplatná v účtu zákazníka.
 
-Aktualizuje popisný název nebo přezdívku pro [předplatné](subscription-resources.md)zákazníka. Tento název se zobrazí v partnerském centru, které vám pomůžou odlišit předplatná v účtu zákazníka.
-
-Na řídicím panelu partnerského centra se tato operace dá provést při prvním [výběru zákazníka](get-a-customer-by-name.md). Pak vyberte příslušné předplatné, které chcete přejmenovat. Chcete-li dokončit, změňte název v poli **Přezdívka předplatného** a pak vyberte **Odeslat.**
+Na řídicím Partnerské centrum můžete tuto operaci provést tak, že nejprve [vyberete zákazníka](get-a-customer-by-name.md). Pak vyberte předplatné, které chcete přejmenovat. Dokončete to tak, že v poli Název předplatného **změníte** název a pak vyberete **Odeslat.**
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete aktualizovat přezdívku předplatného zákazníka, nejdřív [získejte předplatné](get-a-subscription-by-id.md)a pak změňte vlastnost [**FriendlyName**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.friendlyname) předplatného. Po provedení změny použijte svou kolekci [**IPartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a zavolejte metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) . Poté zavolejte vlastnost [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a potom metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Potom dokončete voláním metody [**patch ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.patch) .
+Pokud chcete aktualizovat přezdívku předplatného zákazníka, nejprve [získejte](get-a-subscription-by-id.md)předplatné a pak změňte vlastnost [**FriendlyName**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.friendlyname) předplatného. Po změně použijte kolekci [**IPartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a zavolejte [**metodu ById().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) Potom zavolejte [**vlastnost Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a pak [**metodu ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Potom dokončete voláním [**metody Patch().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.patch)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -48,32 +43,32 @@ Subscription selectedSubscription = customerSubscriptions.Items.FirstOrDefault(s
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: UpdateSubscription.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSamples – **třída:** UpdateSubscription.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro aktualizaci přezdívky předplatného.
+Tato tabulka uvádí požadovaný parametr dotazu pro aktualizaci přezdívky předplatného.
 
 | Název                    | Typ     | Vyžadováno | Popis                          |
 |-------------------------|----------|----------|--------------------------------------|
-| **Customer-tenant-ID**  | **guid** | Y        | **Customer-tenant-ID** (identifikátor GUID). |
-| **ID pro předplatné** | **guid** | Y        | ID předplatného (identifikátor GUID).        |
+| **customer-tenant-id**  | **guid** | Y        | ID **tenanta zákazníka** (GUID). |
+| **id-for-subscription** | **guid** | Y        | ID předplatného (GUID).        |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V těle žádosti se vyžaduje prostředek s úplným **předplatným** . Zajistěte, aby byla vlastnost **FriendlyName** aktualizována.
+V textu **požadavku** se vyžaduje úplný prostředek předplatného. Ujistěte se, že byla aktualizována vlastnost **FriendlyName.**
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -112,11 +107,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí aktualizované vlastnosti prostředku [předplatného](subscription-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda [v](subscription-resources.md) textu odpovědi aktualizované vlastnosti prostředku předplatného.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

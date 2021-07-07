@@ -1,34 +1,29 @@
 ---
 title: Aktualizace profilu organizace
-description: Aktualizuje Fakturační profil organizace.
+description: Aktualizuje fakturační profil organizace.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ccf938fff285704f54d4717b2678e1419d857d8d
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 0ef736a722cde16f95ed6dfdbdab278c98fcf738
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766749"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530051"
 ---
 # <a name="update-an-organization-profile"></a>Aktualizace profilu organizace
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Aktualizuje Fakturační profil partnera.
+Aktualizuje fakturační profil partnera.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete aktualizovat profil vaší organizace, načtěte profil a proveďte potřebné změny. Pak použijte svou kolekci **IAggregatePartner. Profiles** a zavolejte vlastnost **OrganizationProfile** . Nakonec zavolejte metodu **Update ()** .
+Pokud chcete aktualizovat profil organizace, načtěte profil a proveďte potřebné změny. Pak použijte kolekci **IAggregatePartner.Profiles** a zavolejte **vlastnost OrganizationProfile.** Nakonec zavolejte **metodu Update().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -41,19 +36,19 @@ organizationProfile.DefaultAddress.PhoneNumber = ((long)(new Random().NextDouble
 OrganizationProfile updatedOrganizationProfile = partnerOperations.Profiles.OrganizationProfile.Update(organizationProfile);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerCenterSDK. FeaturesSamples **Třída**: UpdateOrganizationProfile.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples **– třída:** UpdateOrganizationProfile.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/Organization HTTP/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/organization HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -105,11 +100,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí objekt **OrganizationProfile** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi objekt **OrganizationProfile.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

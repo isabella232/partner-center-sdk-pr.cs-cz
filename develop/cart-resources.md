@@ -4,21 +4,16 @@ description: Když si zákazník chce koupit předplatné ze seznamu nabídek, z
 ms.date: 08/26/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3aea428064654077ae67974132ec05918edfee65
-ms.sourcegitcommit: a8fe6268fed2162843e7c92dca41c3919b25647d
+ms.openlocfilehash: 08085dde1b43f20b6f6bf707120dd87c48816aba
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "97766822"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974144"
 ---
 # <a name="cart-resources"></a>Prostředky košíku
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Partner umístí objednávku, když chce zákazník koupit předplatné ze seznamu nabídek.
 
@@ -49,7 +44,7 @@ Představuje jednu položku obsaženou v košíku.
 | currencyCode         | řetězec                           | Kód měny.                                                                                                                                    |
 | billingCycle         | Objekt                           | Typ fakturačního cyklu nastaveného pro aktuální období.                                                                                                 |
 | termDuration         | řetězec                           | ISO 8601 reprezentace doby trvání období. Aktuální podporované hodnoty jsou P1M (1 měsíc), P1Y (1 rok) a P3Y (3 roky).                                |
-| členům         | Seznam párů řetězců objektů      | Kolekce PartnerId na záznamu (MPNID) na nákupu.                                                                                          |
+| členům         | Seznam párů řetězců objektů      | Kolekce PartnerId na záznamu (MPN ID) na nákupu.                                                                                          |
 | provisioningContext  | Řetězec<slovníku, řetězec>       | Další kontext, který se používá při zřizování koupené položky Chcete-li zjistit, které hodnoty jsou nutné pro konkrétní položku, přečtěte si vlastnost provisioningVariables skladové položky. |
 | pořadí           | řetězec                           | Skupina, která označuje, které položky lze odeslat společně ve stejném pořadí.                                                                          |
 | addonItems           | Seznam objektů **CartLineItem** | Kolekce položek řádků košíku pro Doplňky Tyto položky se zakoupí do základního předplatného, které je výsledkem nákupu položky řádku kořenového košíku. |

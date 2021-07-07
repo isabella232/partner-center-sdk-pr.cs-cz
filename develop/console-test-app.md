@@ -4,21 +4,16 @@ description: Tato testovací aplikace konzoly poskytuje vzorový kód pro všech
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e82bac3ccc22d0e7cf898e5b2d2e002c622584ae
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b35167104deeede50107d59fca6112c10dc7b4bf
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766811"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974025"
 ---
 # <a name="console-test-app"></a>Aplikace pro testování konzoly
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Testovací aplikace konzoly je k dispozici v jazycích C# a Java a poskytuje ukázkové kódy pro všechny scénáře podporované rozhraními API partnerského centra. Můžete ho také použít k testování.
 
@@ -35,7 +30,7 @@ Stáhněte si vzorový kód pro testovací aplikaci konzoly.
 
 V části **ScenarioSettings** v souboru *App.config* můžete nastavit parametry, které budou automaticky předány do scénářů, které spustíte.
 
-Chcete-li upravit seznam scénářů, které jsou spuštěny, odkomentujte řádky v **IPartnerScenario \[ \] mainScenarios** nebo v jednotlivých metodách **Get scénářů** nalezených v souboru *program.cs* .
+Chcete-li upravit seznam scénářů, které jsou spuštěny, odkomentujte řádky v **IPartnerScenario \[ \] mainScenarios** nebo v jednotlivých metodách **Get scénářů** , které se nacházejí v souboru *program. cs* .
 
 ## <a name="java"></a>Java
 

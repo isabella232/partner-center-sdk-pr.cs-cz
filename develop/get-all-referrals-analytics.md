@@ -1,53 +1,49 @@
 ---
 title: Získání všech analytických informací o referencích
-description: Jak získat všechny analytické informace o odkazech.
+description: Jak získat analytické informace o všech referenčních odkazech
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: Kim-Davis
 ms.author: kimnich
-ms.openlocfilehash: b470c59cecf8b214e6d90a244e928e5d15ebd3e0
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 7deda4098ceb9eb4e1ee75056c53c754618bf3e2
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766778"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760602"
 ---
 # <a name="get-all-referrals-analytics-information"></a>Získání všech analytických informací o referencích
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak získat všechny informace o analýze odkazů pro vaše zákazníky.
+Jak získat analytické informace o všech referenčních odkazech pro vaše zákazníky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pouze s přihlašovacími údaji uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů uživatele.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti |
 |---------|-------------|
-| **Čtěte** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/Referrals HTTP/1.1 |
+| **Dostat** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/referrals HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | Parametr | Typ | Description |
 |-----------|------|-------------|
-| filter | řetězec | Vrátí data, která odpovídají podmínkám filtru.</br> **Příklad:**</br>  `.../referrals?filter=field eq 'value'` |
-| GroupBy | řetězec | Podporuje termíny i data. Logika krátkého okruhu pro omezení počtu kontejnerů.</br> **Příklad:**</br>  `.../referrals?groupby=termField1,dateField1,termField2` |
-| aggregationLevel | řetězec | Parametr *aggregationLevel* vyžaduje *GroupBy*. Parametr *aggregationLevel* se vztahuje na všechna pole kalendářních dat přítomná v *GroupBy*.</br> **Příklad:**</br> `.../referrals?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
-| top | řetězec | Limit stránky je 10000. Má libovolnou hodnotu menší než 10000.</br> **Příklad:**</br> `.../referrals?top=100`</br> |
-| Přeskočit | řetězec | Počet řádků, které se mají přeskočit</br> **Příklad:**</br>  `.../referrals?top=100&skip=100` |
+| filter | řetězec | Vrátí data odpovídající pod podmínkě filtru.</br> **Příklad:**</br>  `.../referrals?filter=field eq 'value'` |
+| Groupby | řetězec | Podporuje termíny i kalendářní data. Logika krátkého okruhu pro omezení počtu kbelíků</br> **Příklad:**</br>  `.../referrals?groupby=termField1,dateField1,termField2` |
+| aggregationLevel | řetězec | Parametr *aggregationLevel* vyžaduje *parametr groupby*. Parametr *aggregationLevel* se vztahuje na všechna pole data, která jsou v *groupby*.</br> **Příklad:**</br> `.../referrals?groupby=termField1,dateField1,termField2&aggregationLevel=day` |
+| top | řetězec | Limit stránky je 10 000. Přebírá libovolnou hodnotu menší než 1 0000.</br> **Příklad:**</br> `.../referrals?top=100`</br> |
+| Přeskočit | řetězec | Počet řádků k přeskočení</br> **Příklad:**</br>  `.../referrals?top=100&skip=100` |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -65,11 +61,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [odkazů](partner-center-analytics-resources.md#referrals-resource) .
+V případě úspěchu bude text odpovědi obsahovat kolekci prostředků [referenčních](partner-center-analytics-resources.md#referrals-resource) seznamů.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

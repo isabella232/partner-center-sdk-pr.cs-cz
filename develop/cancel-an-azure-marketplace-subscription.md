@@ -1,55 +1,51 @@
 ---
 title: Zrušení předplatného na komerčním marketplace
-description: Naučte se používat rozhraní API partnerského centra ke zrušení předplatného komerčního tržiště, který odpovídá ID zákazníka a předplatného.
+description: Zjistěte, jak pomocí Partnerské centrum API zrušit prostředek předplatného komerčního marketplace, který odpovídá ID zákazníka a předplatného.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 38708c17b31e39a5e7c436e0d76b4ebabbc3a801
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 95fa265a3c103d1ec55066f12a3ede7fdb2d0170
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767110"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974280"
 ---
-# <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Zrušení předplatného komerčního tržiště pomocí rozhraní API partnerského centra
+# <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Zrušení předplatného komerčního marketplace pomocí Partnerské centrum API
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Tento článek popisuje, jak můžete pomocí rozhraní API partnerského centra zrušit komerční prostředek [předplatného](subscription-resources.md) Marketplace, který odpovídá ID zákazníka a předplatného.
+Tento článek popisuje, jak můžete pomocí Partnerské centrum API zrušit prostředek předplatného komerčního [marketplace,](subscription-resources.md) který odpovídá ID zákazníka a předplatného.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
-## <a name="partner-center-dashboard-method"></a>Metoda řídicího panelu partnerského centra
+## <a name="partner-center-dashboard-method"></a>Partnerské centrum řídicího panelu
 
-Zrušení předplatného komerčního tržiště na řídicím panelu partnerského centra:
+Zrušení předplatného komerčního marketplace na řídicím panelu Partnerské centrum marketplace:
 
-1. [Vyberte zákazníka](get-a-customer-by-name.md).
+1. [Vyberte zákazníka.](get-a-customer-by-name.md)
 
 2. Vyberte předplatné, které chcete zrušit.
 
-3. Zvolte možnost **zrušit odběr** a pak vyberte **Odeslat**.
+3. Zvolte možnost **Zrušit předplatné** a pak vyberte **Odeslat.**
 
 ## <a name="c"></a>C\#
 
 Zrušení předplatného zákazníka:
 
-1. [Získá předplatné podle ID](get-a-subscription-by-id.md).
+1. [Získejte předplatné podle ID](get-a-subscription-by-id.md).
 
-2. Změňte vlastnost [**status**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) odběru. Informace o **stavových** kódech naleznete v tématu [SubscriptionStatus Enumeration](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus).
+2. Změňte vlastnost [**Status předplatného.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.status) Informace o **stavových kódech** najdete v tématu [Výčet SubscriptionStatus.](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscriptionstatus)
 
-3. Po provedení změny použijte **`IAggregatePartner.Customers`** kolekci a zavolejte metodu **ById ()** .
+3. Po provedení změny použijte kolekci **`IAggregatePartner.Customers`** a zavolejte **metodu ById().**
 
-4. Zavolejte vlastnost [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) , za kterou následuje metoda [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) .
+4. Zavolejte [**vlastnost Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a pak [**metodu ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid)
 
-5. Zavolejte metodu **patch ()** .
+5. Zavolejte **metodu Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -60,34 +56,34 @@ selectedSubscription.Status = SubscriptionStatus.Deleted;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-### <a name="sample-console-test-app"></a>Ukázková aplikace pro testování konzoly
+### <a name="sample-console-test-app"></a>Ukázková testovací aplikace konzoly
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: UpdateSubscription.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSample **– třída:** UpdateSubscription.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro pozastavení předplatného.
+Tato tabulka uvádí požadovaný parametr dotazu pro pozastavení odběru.
 
 | Název                    | Typ     | Vyžadováno | Popis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Customer-tenant-ID**  | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID pro předplatné** | **guid** | Y        | Identifikátor GUID, který odpovídá předplatnému. |
+| **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
+| **id-for-subscription** | **guid** | Y        | Identifikátor GUID odpovídající předplatnému. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V těle žádosti se vyžaduje prostředek s úplným **předplatným** . Ujistěte se, že se vlastnost **status** aktualizovala.
+V textu **požadavku** se vyžaduje úplný prostředek předplatného. Ujistěte **se, že byla** aktualizována vlastnost Status.
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -135,11 +131,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda v těle odpovědi vlastnosti prostředku odstraněné [odběry](subscription-resources.md) .
+V případě úspěchu tato [](subscription-resources.md) metoda vrátí v textu odpovědi odstraněné vlastnosti prostředku předplatného.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

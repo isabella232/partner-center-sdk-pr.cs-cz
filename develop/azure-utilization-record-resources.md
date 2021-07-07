@@ -6,24 +6,20 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 21d39c4497c00f5abeeeb771dfe20cd1e2b1c13a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 868381fcb29eb1391efcdf79154f7b998e3032e5
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766695"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974297"
 ---
 # <a name="azure-utilization-record-resources"></a>Zdroje záznamů využití Azure
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Záznam využití Azure obsahuje podrobnosti o využití prostředku předplatného Azure. Pokud jste partner poskytovatele cloudové služby, který je vlastníkem fakturačního vztahu pro předplatná Azure vašich zákazníků, můžete tento REST API využít k tomu, abyste zajistili škálovatelný způsob, jak sledovat využití vyplývající z předplatných za účelem odeslání faktury zákazníkům na konci každého fakturačního cyklu.
 
-Pokud chcete sledovat využití a předpovídat měsíční fakturaci a faktury pro jednotlivé zákazníky, můžete zkombinovat dotaz na kartu s sazbami a [získat tak ceny pro Microsoft Azure](get-prices-for-microsoft-azure.md) s žádostí o [získání záznamů o využití zákazníka pro Azure](get-a-customer-s-utilization-record-for-azure.md).
+pokud chcete sledovat využití a předpovídat měsíční fakturaci a faktury pro jednotlivé zákazníky, můžete zkombinovat dotaz na kartu s sazbami a [získat tak ceny pro Microsoft Azure](get-prices-for-microsoft-azure.md) s žádostí o [získání záznamů o využití zákazníka pro Azure](get-a-customer-s-utilization-record-for-azure.md).
 
 Ceny se liší podle trhu a měny a toto rozhraní API bere v úvahu umístění. Ve výchozím nastavení používá rozhraní API nastavení partnerského profilu v partnerském centru a v jazyce prohlížeče a tato nastavení jsou přizpůsobitelná. Povědomí o poloze je obzvláště důležité, pokud spravujete prodej na více trzích z jedné centrálně centralizované kanceláře.
 
@@ -33,8 +29,8 @@ Popisuje vlastnosti prostředku záznamu využití Azure.
 
 | Vlastnost       | Typ                                      | Vyžadováno | Popis                                                                                                                                                                             |
 |----------------|-------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| usageStartTime | řetězec                                    | Yes      | Začátek časového rozsahu agregace využití Odpověď je seskupená podle času spotřeby (kdy se prostředek skutečně použil vs. kdy byl nahlášen do fakturačního systému). |
-| usageEndTime   | řetězec                                    | Yes      | Konec agregace časového rozsahu použití Odpověď je seskupena podle času spotřeby. To znamená, že když se prostředek skutečně použil vs. kdy byl hlášený k fakturačnímu systému.   |
+| usageStartTime | řetězec                                    | Yes      | Začátek časového rozsahu agregace využití Odpověď je seskupená podle času spotřeby (kdy byl prostředek použit vs. kdy byl nahlášen do fakturačního systému). |
+| usageEndTime   | řetězec                                    | Yes      | Konec agregace časového rozsahu použití Odpověď je seskupena podle času spotřeby. To znamená, kdy byl prostředek použit vs. kdy byl hlášen do fakturačního systému.   |
 | prostředek       | object                                    | Yes      | Obsahuje objekt [AzureResource](#azureresource) .                                                                                                                                     |
 | quantity       | číslo                                    | Yes      | Množství spotřebované v [AzureResource.](#azureresource)                                                                                                                           |
 | unit           | řetězec                                    | No       | Typ množství (v hodinách, bajtech atd.) Tato vlastnost je nepovinná.                                                                                                                     |

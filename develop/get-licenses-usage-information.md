@@ -1,49 +1,45 @@
 ---
 title: Získání informací o využití licencí
-description: Jak získat informace o využití licencí na úrovni úloh pro Office a Dynamics
+description: Jak získat informace o využití licencí na úrovni úloh pro Office a Dynamics.
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a144fd078a36289e4a2c70880817b1f0ca627e8a
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: ea3658089ce7eb5c1ad7cc65c3db34f9b6353cdd
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766894"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111445969"
 ---
 # <a name="get-licenses-usage-information"></a>Získání informací o využití licencí
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak získat informace o využití licencí na úrovni úloh pro Office a Dynamics
+Jak získat informace o využití licencí na úrovni úloh pro Office a Dynamics.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                |
 |---------|--------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Analytics/Commercial/Usage/License/HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/analytics/commercial/usage/license/ HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | Parametr         | Typ     | Popis | Povinné |
 |-------------------|----------|-------------|----------|
-| top               | řetězec   | Počet řádků dat, který má být vrácen v požadavku. Maximální hodnota a výchozí hodnota, pokud není zadána, je 10000. Pokud je v dotazu více řádků, tělo odpovědi obsahuje další odkaz, který můžete použít k vyžádání další stránky dat. | No |
-| Přeskočit              | int      | Počet řádků, které mají být v dotazu přeskočeny. Tento parametr použijte pro stránku s velkými datovými sadami. Například Top = 10000 a Skip = 0 načte prvních 10000 řádků dat, Top = 10000 a Skip = 10000 načte další 10000 řádků dat a tak dále. | No |
-| filter            | řetězec   | Parametr *filtru* požadavku obsahuje jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou spojeny s **`eq`** **`ne`** operátory nebo, a příkazy lze kombinovat pomocí operátoru OR **`and`** **`or`** . Tady je několik příkladů parametrů *filtru* :<br/><br/>*Filter = workloadCode EQ ' SFB '*<br/><br/>*Filter = workloadCode EQ ' SFB '* or (*Channel EQ ' prodejce '*)<br/><br/>Můžete zadat následující pole:<br/><br/>**workloadCode**<br/>**úloha úlohy**<br/>**serviceCode**<br/>**serviceName**<br/>**kanál**<br/>**customerTenantId**<br/>**customerName**<br/>**productId**<br/>**NázevVýrobku** | No |
-| GroupBy           | řetězec   | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>**workloadCode**<br/>**úloha úlohy**<br/>**serviceCode**<br/>**serviceName**<br/>**channelcustomerTenantId**<br/>**customerName**<br/>**productId**<br/>**NázevVýrobku**<br/><br/>Vrácené řádky dat budou obsahovat pole zadaná v parametru *GroupBy* a také následující:<br/><br/>**licensesActive**<br/>**licensesQualified** | No |
-| processedDateTime | DateTime | Jedna z nich může určovat datum, ze kterého byla zpracována data o využití. Výchozí hodnota je poslední datum, kdy byla data zpracována. | No |
+| top               | řetězec   | Počet řádků dat, které se v požadavku vrátí. Maximální hodnota a výchozí hodnota, pokud není zadaná, je 10 000. Pokud dotaz obsahuje více řádků, obsahuje text odpovědi další odkaz, který můžete použít k vyžádání další stránky dat. | No |
+| Přeskočit              | int      | Počet řádků, které se v dotazu přeskočí Tento parametr použijte k stránkování velkých datových sad. Například top=10000 a skip=0 načte prvních 10 000 řádků dat, top=10000 a skip=10000 načte dalších 1 0000 řádků dat atd. | No |
+| filter            | řetězec   | Parametr *filter* požadavku obsahuje jeden nebo více příkazů, které filtruje řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou přidruženy k operátorům nebo , a příkazy **`eq`** **`ne`** lze kombinovat pomocí **`and`** nebo **`or`** . Tady je několik příkladů *parametrů* filtru:<br/><br/>*filter=workloadCode eq 'SFB'*<br/><br/>*filter=workloadCode eq 'SFB'* nebo (*channel eq 'Reseller'*)<br/><br/>Můžete zadat následující pole:<br/><br/>**workloadCode (kód úlohy)**<br/>**název úlohy**<br/>**serviceCode (kód služby)**<br/>**Název_služby**<br/>**Kanál**<br/>**customerTenantId**<br/>**customerName**<br/>**Productid**<br/>**Productname** | No |
+| Groupby           | řetězec   | Příkaz, který použije agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>**workloadCode (kód úlohy)**<br/>**název úlohy**<br/>**serviceCode (kód služby)**<br/>**Název_služby**<br/>**channelcustomerTenantId**<br/>**customerName**<br/>**Productid**<br/>**Productname**<br/><br/>Vrácené řádky dat budou obsahovat pole zadaná v *parametru groupby* a následující:<br/><br/>**licensesActive**<br/>**licensesQualified** | No |
+| processedDateTime | DateTime | Můžete zadat datum, od kterého se data o využití zpracují. Výchozí hodnota je nejnovější datum zpracování dat. | No |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -59,26 +55,26 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi následující pole obsahující data o využití licencí.
+V případě úspěchu bude text odpovědi obsahovat následující pole obsahující data o využití licencí.
 
 | Pole             | Typ     | Description                                   |
 |-------------------|----------|-----------------------------------------------|
-| workloadCode      | řetězec   | Kód úlohy                                 |
-| úloha úlohy      | řetězec   | Název úlohy                                 |
-| serviceCode       | řetězec   | Kód služby                                  |
-| serviceName       | řetězec   | Název služby                                  |
-| kanál           | řetězec   | Název kanálu, prodejce                        |
-| customerTenantId  | řetězec   | Jedinečný identifikátor pro zákazníka            |
+| workloadCode (kód úlohy)      | řetězec   | Kód úlohy                                 |
+| název úlohy      | řetězec   | Název úlohy                                 |
+| serviceCode (kód služby)       | řetězec   | Kód služby                                  |
+| Název_služby       | řetězec   | Název služby                                  |
+| Kanál           | řetězec   | Název kanálu, prodejce                        |
+| customerTenantId  | řetězec   | Jedinečný identifikátor zákazníka            |
 | customerName      | řetězec   | Jméno zákazníka                                 |
 | productId         | řetězec   | Jedinečný identifikátor produktu             |
-| NázevVýrobku       | řetězec   | Název produktu                                  |
+| Productname       | řetězec   | Název produktu                                  |
 | licensesActive    | long     | Počet aktivních licencí na úlohu        |
-| licensesQualified | long     | Počet kvalifikovaných licencí pro zatížení |
+| licensesQualified | long     | Počet kvalifikovaných licencí pro úlohu |
 | processedDateTime | DateTime | Datum posledního zpracování dat         |
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

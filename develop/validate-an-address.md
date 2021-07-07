@@ -4,21 +4,16 @@ description: Jak ověřit adresu pomocí rozhraní API pro ověření adresy.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 22d5faec2fdab4907067bb01cb74e110032dea9a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 14d45977f3af6e8bba1b7cb7f969aa7c5bb671da
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766728"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111529881"
 ---
 # <a name="validate-an-address"></a>Ověření adresy
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak ověřit adresu pomocí rozhraní API pro ověření adresy.
 

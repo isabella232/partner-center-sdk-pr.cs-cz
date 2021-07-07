@@ -1,70 +1,65 @@
 ---
 title: Získání všech analytických informací o nepřímých prodejcích
-description: Jak získat všechny informace o analýze nepřímých prodejců.
+description: Jak získat analytické informace o všech nepřímých prodejcích
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 9f9c030278ba8fef9090f7be89064ac6054129ef
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 4252f5fcbbcb038f382408074c8fd6ede3fd1f58
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766899"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760738"
 ---
 # <a name="get-all-indirect-resellers-analytics-information"></a>Získání všech analytických informací o nepřímých prodejcích
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak získat všechny nepřímé informace o proprodejci pro vaše zákazníky.
+Jak získat analytické informace o všech nepřímých prodejcích pro vaše zákazníky
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pouze s přihlašovacími údaji uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů uživatele.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti |
 |---------|-------------|
-| **Čtěte** | [*\{ BASEURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/indirectresellers HTTP/1.1 |
+| **Dostat** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/indirectresellers HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | Parametr                             | Typ     | Description                              |
 |:--------------------------------------|:---------|:-----------------------------------------|
-| partnerTenantId                       | řetězec   | ID tenanta partnera, pro který chcete načíst data nepřímých prodejců. |
+| partnerTenantId                       | řetězec   | ID tenanta partnera, pro kterého chcete načíst data nepřímých prodejců. |
 | id                                    | řetězec   | ID nepřímého prodejce                                                                 |
-| name                                  | řetězec   | Název partnera, pro který chcete načíst data nepřímých prodejců.      |
-| uvádět                                | řetězec   | Trh partnera, pro který chcete načíst data nepřímých prodejců.    |
+| name                                  | řetězec   | Název partnera, pro kterého chcete načíst data nepřímých prodejců.      |
+| Trhu                                | řetězec   | Trh partnera, pro kterého chcete načíst data nepřímých prodejců.    |
 | firstSubscriptionCreationDate         | řetězec ve formátu data a času UTC  | Datum vytvoření prvního předplatného, na základě kterého chcete načíst data nepřímých prodejců.  |
-| latestSubscriptionCreationDate        | řetězec ve formátu data a času UTC  | Datum vytvoření posledního předplatného.                 |
-| firstSubscriptionEndDate              | řetězec ve formátu data a času UTC  | První ukončení předplatného.                        |
-| latestSubscriptionEndDate             | řetězec ve formátu data a času UTC  | Poslední datum, kdy bylo ukončeno nějaké předplatné.                  |
-| firstSubscriptionSuspendedDate        | řetězec v hodnotě data a času UTC         | Při prvním pozastavení předplatného.                    |
-| latestSubscriptionSuspendedDate       | řetězec ve formátu data a času UTC  | Poslední datum, kdy se nějaké předplatné pozastavilo.              |
-| firstSubscriptionDeprovisionedDate    | řetězec ve formátu data a času UTC  | Při prvním zrušení zřízení předplatného.                |
-| latestSubscriptionDeprovisionedDate   | řetězec ve formátu data a času UTC  | Poslední datum, kdy bylo zrušeno zřízení nějakého předplatného.          |
-| subscriptionCount                     | double   | Počet předplatných pro všechny přidané hodnoty pro prodejce                                     |
-| licenseCount                          | double   | Počet licencí pro všechny přidané hodnoty pro prodejce.                                         |
+| latestSubscriptionCreationDate        | řetězec ve formátu data a času UTC  | Datum vytvoření nejnovějšího předplatného.                 |
+| firstSubscriptionEndDate              | řetězec ve formátu data a času UTC  | Při prvním ukončení předplatného.                        |
+| latestSubscriptionEndDate             | řetězec ve formátu data a času UTC  | Nejnovější datum ukončení libovolného předplatného                  |
+| firstSubscriptionSuspendedDate        | string in UTC date time         | Při prvním pozastavení libovolného předplatného.                    |
+| latestSubscriptionSuspendedDate       | řetězec ve formátu data a času UTC  | Nejnovější datum pozastavení libovolného předplatného              |
+| firstSubscriptionDeprovisionedDate    | řetězec ve formátu data a času UTC  | Při prvním rušení zřízení libovolného předplatného.                |
+| latestSubscriptionDeprovisionedDate   | řetězec ve formátu data a času UTC  | Nejnovější datum, kdy bylo zrušeno zřízení libovolného předplatného.          |
+| subscriptionCount                     | double   | Počet předplatných pro všechny prodejce s přidanou hodnotou                                     |
+| licenseCount                          | double   | Počet licencí pro všechny prodejce s přidanou hodnotou.                                         |
 | indirectResellerCount                 | double   | Počet nepřímých prodejců                                                             |
-|  top                                  | řetězec   | Počet řádků dat, který má být vrácen v požadavku. Maximální hodnota a výchozí hodnota, pokud není zadána, je 10000. Pokud je v dotazu více řádků, tělo odpovědi obsahuje další odkaz, který můžete použít k vyžádání další stránky dat.  |
-| Přeskočit                                  | int      | Počet řádků, které mají být v dotazu přeskočeny. Tento parametr použijte pro stránku s velkými datovými sadami. Například **`top=10000 and skip=0`** načte první 10000 řádků dat, **`top=10000 and skip=10000`** načte další 10000 řádků dat a tak dále.              |
-| filter                                | řetězec   | Parametr *filtru* požadavku obsahuje jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou spojeny s **`eq`** **`ne`** operátory nebo, a příkazy lze kombinovat pomocí operátoru OR **`and`** **`or`** . Můžete zadat následující pole:<br/><br/>     *partnerTenantId*<br/> *id*<br/> *Název*<br/>                *uvádět*<br/> *firstSubscriptionCreationDate*<br/> *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>         **Příklad:**<br/>              `.../indirectresellers?filter=market eq 'US'`<br/><br/>            **Příklad:**<br/>                `.../indirectresellers?filter=market eq 'US' or (firstSubscriptionCreationDate le cast('2018-01-01',Edm.DateTimeOffset) and firstSubscriptionCreationDate le cast('2018-04-01',Edm.DateTimeOffset))` |              
-| aggregationLevel                     | řetězec    | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: &quot; den &quot; , &quot; týden &quot; nebo &quot; měsíc &quot; . Je-li tento parametr zadán, výchozí hodnota je &quot; Day &quot; .<br/><br/>                                 `aggregationLevel` není podporován bez `aggregationLevel` . `aggregationLevel` platí pro všechny **datefields** přítomné v `aggregationLevel`                         |
-| OrderBy                              | řetězec    | Příkaz, který seřadí hodnoty výsledných dat pro každou instalaci. Syntaxe je `...&orderby=field[order],field [order],...`. Parametr Field může být jeden z následujících řetězců:<br/><br/>                &quot;partnerTenantId&quot;<br/>                &quot;id&quot;<br/>                &quot;Jméno&quot;<br/>                &quot;uvádět&quot;<br/>                &quot;firstSubscriptionCreationDate&quot;<br/>               &quot;latestSubscriptionCreationDate&quot;<br/>                &quot;firstSubscriptionEndDate&quot;<br/>               &quot;latestSubscriptionEndDate&quot;<br/>                &quot;firstSubscriptionSuspendedDate&quot;<br/>                &quot;latestSubscriptionSuspendedDate&quot;<br/>               &quot;firstSubscriptionDeprovisionedDate&quot;<br/>                &quot;latestSubscriptionDeprovisionedDate&quot;<br/>                &quot;subscriptionCount&quot;<br/>                &quot;licenseCount&quot;<br/><br/>   Parametr *Order* je volitelný a může být `asc` nebo `desc` ; k určení vzestupného nebo sestupného pořadí pro každé pole. Výchozí formát je `asc`.<br/><br/>    **Příklad:**<br/>                `...&orderby=market,subscriptionCount`                                       |                   
-| GroupBy                              | řetězec    | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>         *partnerTenantId*<br/>    *id*<br/>               *Název*<br/>                *uvádět*<br/>                *firstSubscriptionCreationDate*<br/>                *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>                 Vrácené řádky dat obsahují pole zadaná v `groupby` klauzuli a následující pole:<br/><br/>            *indirectResellerCount*<br/>                *licenseCount*<br/>                *subscriptionCount*<br/><br/>            `groupby`Parametr lze použít s `aggregationLevel` parametrem.<br/><br/>            **Příklad:**</br>               `...&groupby=ageGroup,market&aggregationLevel=week`                         |
+|  top                                  | řetězec   | Počet řádků dat, které se v požadavku vrátí. Maximální hodnota a výchozí hodnota, pokud není zadaná, je 10 000. Pokud dotaz obsahuje více řádků, obsahuje text odpovědi další odkaz, který můžete použít k vyžádání další stránky dat.  |
+| Přeskočit                                  | int      | Počet řádků, které se v dotazu přeskočí Tento parametr použijte k stránkování velkých datových sad. Například načte **`top=10000 and skip=0`** prvních 1 0000 řádků dat, načte dalších **`top=10000 and skip=10000`** 10 000 řádků dat atd.              |
+| filter                                | řetězec   | Parametr *filter* požadavku obsahuje jeden nebo více příkazů, které filtruje řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou přidruženy k operátorům nebo , a příkazy **`eq`** **`ne`** lze kombinovat pomocí **`and`** nebo **`or`** . Můžete zadat následující pole:<br/><br/>     *partnerTenantId*<br/> *id*<br/> *Název*<br/>                *Trhu*<br/> *firstSubscriptionCreationDate*<br/> *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>         **Příklad:**<br/>              `.../indirectresellers?filter=market eq 'US'`<br/><br/>            **Příklad:**<br/>                `.../indirectresellers?filter=market eq 'US' or (firstSubscriptionCreationDate le cast('2018-01-01',Edm.DateTimeOffset) and firstSubscriptionCreationDate le cast('2018-04-01',Edm.DateTimeOffset))` |              
+| aggregationLevel                     | řetězec    | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: &quot; &quot; den, &quot; týden nebo &quot; měsíc &quot; &quot; . Pokud není zadán, výchozí hodnota je &quot; den &quot; .<br/><br/>                                 `aggregationLevel` se nepodporuje bez `aggregationLevel` . `aggregationLevel` platí pro všechna **pole data, která** jsou v objektu `aggregationLevel`                         |
+| Orderby                              | řetězec    | Příkaz, který objednává hodnoty výsledných dat pro každou instalaci. Syntaxe je `...&orderby=field[order],field [order],...`. Parametr pole může být jeden z následujících řetězců:<br/><br/>                &quot;partnerTenantId&quot;<br/>                &quot;id&quot;<br/>                &quot;Jméno&quot;<br/>                &quot;Trhu&quot;<br/>                &quot;firstSubscriptionCreationDate&quot;<br/>               &quot;latestSubscriptionCreationDate&quot;<br/>                &quot;firstSubscriptionEndDate&quot;<br/>               &quot;latestSubscriptionEndDate&quot;<br/>                &quot;firstSubscriptionSuspendedDate&quot;<br/>                &quot;latestSubscriptionSuspendedDate&quot;<br/>               &quot;firstSubscriptionDeprovisionedDate&quot;<br/>                &quot;latestSubscriptionDeprovisionedDate&quot;<br/>                &quot;subscriptionCount&quot;<br/>                &quot;licenseCount&quot;<br/><br/>   Parametr *order* je volitelný a může být nebo , pokud chcete pro každé pole zadat vzestupné nebo `asc` sestupné `desc` pořadí. Výchozí formát je `asc`.<br/><br/>    **Příklad:**<br/>                `...&orderby=market,subscriptionCount`                                       |                   
+| Groupby                              | řetězec    | Příkaz, který použije agregaci dat pouze na zadaná pole. Můžete zadat následující pole:<br/><br/>         *partnerTenantId*<br/>    *id*<br/>               *Název*<br/>                *Trhu*<br/>                *firstSubscriptionCreationDate*<br/>                *latestSubscriptionCreationDate*<br/>                *firstSubscriptionEndDate*<br/>                *latestSubscriptionEndDate*<br/>                *firstSubscriptionSuspendedDate*<br/>                *latestSubscriptionSuspendedDate*<br/>                *firstSubscriptionDeprovisionedDate*<br/>                *latestSubscriptionDeprovisionedDate*<br/><br/>                 Vrácené řádky dat obsahují pole zadaná v `groupby` klauzuli a následující pole:<br/><br/>            *indirectResellerCount*<br/>                *licenseCount*<br/>                *subscriptionCount*<br/><br/>            Parametr `groupby` lze použít s `aggregationLevel` parametrem .<br/><br/>            **Příklad:**</br>               `...&groupby=ageGroup,market&aggregationLevel=week`                         |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -82,11 +77,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci [nepřímých prodejců](partner-center-analytics-resources.md#csp-program-indirect-resellers-analytics) prostředků.
+V případě úspěchu obsahuje text odpovědi kolekci prostředků [nepřímých prodejců.](partner-center-analytics-resources.md#csp-program-indirect-resellers-analytics)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

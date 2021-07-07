@@ -4,21 +4,16 @@ description: Jak získat kolekci předplatných zákazníka.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a037e4a81fccbff0a02b0bdf6d93478ee15fd50f
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 01ac9e5169258d0ac263d5bbe8cff567c76f98ed
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766990"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760619"
 ---
 # <a name="get-a-customers-subscriptions"></a>Získání předplatných zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak získat kolekci předplatných zákazníka.
 
@@ -39,7 +34,7 @@ Pokud chcete získat seznam všech předplatných zákazníka, nejprve použijte
 var customerSubscriptions = partnerOperations.Customers.ById(customerId).Subscriptions.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetSubscriptions.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: sada SDK pro partnerských Center: **třídy** ukázek: getsubscriptions. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 8a2879db061ced799e29d84e71be5b1259b07689
-ms.sourcegitcommit: a25d4951f25502cdf90cfb974022c5e452205f42
+ms.openlocfilehash: 435309229e2cb038c936028943f4c2cf27b032a7
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "97767114"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111974110"
 ---
 # <a name="change-a-customer-subscription-billing-cycle"></a>Změna fakturačního cyklu zákaznického předplatného
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Aktualizuje [objednávku](order-resources.md) z měsíčního na roční fakturace nebo z roční na měsíční fakturaci.
 
@@ -29,7 +24,7 @@ Na řídicím panelu partnerského centra můžete tuto operaci provést přecho
 **Mimo rozsah** tohoto článku:
 
 - Změna fakturačního cyklu pro zkušební verze
-- Změna fakturačních cyklů pro jakékoli neroční nabídky za období (měsíčně, 6 let) & předplatných Azure
+- Změna fakturačních cyklů pro jakékoli neroční nabídky (měsíčně, šest let) & předplatných Azure
 - Změna fakturačních cyklů pro neaktivní předplatná
 - Změna fakturačních cyklů pro odběry založené na licencích Microsoft online služby
 
@@ -115,8 +110,8 @@ V následujících tabulkách jsou popsány vlastnosti v textu požadavku.
 | SubscriptionId       | řetězec |    Y     | ID předplatného                                                         |
 | FriendlyName         | řetězec |    N     | Popisný název předplatného definovaného partnerem, který vám umožní určit nejednoznačnost |
 | Množství             | číslo |    Y     | Počet licencí nebo instancí                                                |
-| PartnerIdOnRecord    | řetězec |    N     | ID MPN partnera záznamu                                                |
-| Atributy           | Objekt |    N     | Obsahuje ObjectType: "OrderLineItem"                                             |
+| Id partneraZáznam    | řetězec |    N     | ID MPN záznamu partnera                                                |
+| Atributy           | Objekt |    N     | Obsahuje ObjectType: OrderLineItem.                                             |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -159,11 +154,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí aktualizované pořadí předplatného v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi aktualizované pořadí odběru.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

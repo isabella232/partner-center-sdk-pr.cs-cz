@@ -6,18 +6,14 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vijvala
 ms.author: vijvala
-ms.openlocfilehash: ab1138e19e06111299ab43ea13a6f033274aaa5d
-ms.sourcegitcommit: 3c3a21e73aaadf3023cf4c13b09809ceae5f027a
+ms.openlocfilehash: f18518e88b9bb08d4fd248922f4ce2fefdde004f
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107496140"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025645"
 ---
 # <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>Pokyny k omezování rozhraní API pro partnery, kteří volají rozhraní API partnerského centra 
-
-**Platí pro**
-
-- Partnerské centrum
 
 Microsoft implementuje omezování rozhraní API, které umožňuje zajistit jednotnější výkon v časovém intervalu pro partnery, kteří volají rozhraní API partnerského centra. Omezování omezuje počet požadavků na službu v časovém intervalu, aby nedocházelo k nadměrnému využití prostředků. I když je partnerské Centrum navrženo tak, aby zpracovával velký počet požadavků, pokud se k zahlcení počtu požadavků vychází z několika partnerů, omezování pomáhá udržet optimální výkon a spolehlivost pro všechny partnery.  
 
@@ -37,7 +33,7 @@ Mezi nejběžnější příčiny omezení klientů patří:
 
 ## <a name="best-practices-to-avoid-throttling"></a>Osvědčené postupy pro zamezení omezování 
  
-Postupy programování, jako je průběžné cyklické dotazování prostředku pro kontrolu aktualizací a pravidelné prohledávání kolekcí prostředků pro kontrolu nových nebo odstraněných prostředků, mají větší vliv na omezování a sníží celkový výkon. Souběžná volání rozhraní API mohou vést k vysokému počtu požadavků za jednotku času, což způsobí také omezení požadavků. Místo toho byste měli využít sledování změn a oznámení změn. Kromě toho byste měli být schopni využít protokoly aktivit k detekci změn. Další informace najdete v [protokolech aktivit partnerského centra](get-a-record-of-partner-center-activity-by-user.md) .  Důrazně doporučujeme, aby partneři zvážili použití rozhraní API protokolu aktivit pro zajištění vyšší efektivity a zabránili omezování. Viz také příklad použití protokolů aktivit níže.
+Postupy programování, jako je průběžné cyklické dotazování prostředku pro kontrolu aktualizací a pravidelné prohledávání kolekcí prostředků pro kontrolu nových nebo odstraněných prostředků, mají větší vliv na omezování a sníží celkový výkon. Souběžná volání rozhraní API mohou vést k vysokému počtu požadavků za jednotku času, což způsobí také omezení požadavků. Místo toho byste měli použít sledování změn a oznámení změn. Kromě toho byste měli být schopni používat protokoly aktivit k detekci změn. Další informace najdete v tématu [protokoly aktivit partnerského centra](get-a-record-of-partner-center-activity-by-user.md).  Důrazně doporučujeme, aby partneři zvážili použití rozhraní API protokolu aktivit pro zajištění vyšší efektivity a zabránili omezování. Viz také příklad použití protokolů aktivit níže.
 
 ## <a name="best-practices-to-handle-throttling"></a>Osvědčené postupy pro zpracování omezování
 
@@ -62,7 +58,7 @@ Pokud chcete použít prodlevu po opakování, udělejte toto:
 
 ## <a name="apis-currently-impacted-by-throttling"></a>Rozhraní API, která v současnosti ovlivňují omezování
 
-V dlouhodobém běhu budou všechna samostatná rozhraní API partnerského centra, která volají koncový bod "api.partnercenter.microsoft.com/", omezená. V současné době se omezení omezování uplatní jenom na rozhraních API uvedených níže. Partnerské centrum bude shromažďovat telemetrii na každé z rozhraní API a bude dynamicky upravovat limity omezování. V následující tabulce jsou uvedena rozhraní API, kde je omezování aktuálně vynutilo.  
+Na konci se omezí všechna rozhraní API pro jedno Partnerské centrum, které volá koncový bod "api.partnercenter.microsoft.com/". V současné době se omezení omezování uplatní jenom na rozhraních API uvedených níže. Partnerské centrum bude shromažďovat telemetrii na každé z rozhraní API a bude dynamicky upravovat limity omezování. V následující tabulce jsou uvedena rozhraní API, kde je omezování aktuálně vynutilo.  
 
 
 |**Operace**| **Dokumentace k Partnerskému centru**|
@@ -118,13 +114,13 @@ Seznam typem operace OperationType/prostředků najdete níže v dokumentaci k r
 
 - [Auditování prostředků](auditing-resources.md)  
 
-- [Získání záznamu aktivity partnerského centra podle uživatele](get-a-record-of-partner-center-activity-by-user.md)  
+- [Získání záznamu o aktivitě Partnerské centrum podle uživatele](get-a-record-of-partner-center-activity-by-user.md)  
 
 
 
 ### <a name="response-example"></a>Příklad odpovědi
 
-**Požadavek**:  
+**Požadavek:**  
 ```http
 Http Get call:  https://api.partnercenter.microsoft.com/v1/auditrecords?startDate=2020-09-02&endDate=2020-09-02&size=50 
 
@@ -143,7 +139,7 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive 
 ```
 
-**Odpověď**:    
+**Odpověď:**    
 ```http
 { 
 

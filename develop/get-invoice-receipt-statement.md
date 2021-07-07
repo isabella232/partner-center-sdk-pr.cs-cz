@@ -4,18 +4,14 @@ description: Načte výpis účtenky faktury pomocí ID faktury a ID účtenky.
 ms.date: 02/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 96cef11d6778de2d9bf28e466d88a39f9415727d
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: dcac4c8f0b881409dcad3560eefb82d4bb5e877a
+ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766655"
+ms.lasthandoff: 06/04/2021
+ms.locfileid: "111446125"
 ---
 # <a name="get-invoice-receipt-statement"></a>Získání příjmových výkazů faktur
-
-**Platí pro**
-
-- Partnerské centrum
 
 Načte výpis účtenky faktury pomocí ID faktury a ID účtenky.
 
@@ -39,7 +35,7 @@ Chcete-li získat příkaz pro příjem faktury podle ID počínaje partnerským
 var invoiceStatement = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Receipts.ById(selectedReceipt).Documents.Statement.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: GetInvoiceReceiptStatement.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: GetInvoiceReceiptStatement. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -64,7 +60,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

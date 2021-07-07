@@ -6,20 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: ff3116b8757e28e03615930ebd19bc75f34e2efe
-ms.sourcegitcommit: 01e75175077611da92175c777a440a594fb05797
+ms.openlocfilehash: b18fde8a11d3ed3dd31e50fdba746dd6b0bf3f97
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "97767156"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025725"
 ---
 # <a name="get-a-list-of-self-serve-policies"></a>Získat seznam zásad pro samoobslužné zpracování
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Tento článek popisuje, jak získat kolekci prostředků, které představují samoobslužné zásady pro entitu.
+Získá kolekci prostředků, které představují samoobslužné zásady pro entitu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -44,8 +40,8 @@ var SelfServePolicies = scopedPartnerOperations.SelfServePolicies.Get(customerId
 Příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
-- Třída: **GetSelfServePolicies.cs**
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **GetSelfServePolicies. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -61,7 +57,7 @@ Chcete-li získat seznam zákazníků, použijte následující parametr dotazu.
 
 | Název          | Typ       | Vyžadováno | Popis                                        |
 |---------------|------------|----------|----------------------------------------------------|
-| **entity_id** | **řetezce** | Y        | Identifikátor entity požadující přístup pro. Toto bude ID tenanta zákazníka. |
+| **entity_id** | **řetězec** | Y        | Identifikátor entity požadující přístup pro. Toto bude ID tenanta zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

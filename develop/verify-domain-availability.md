@@ -4,21 +4,16 @@ description: Jak zjistit, jestli je doména k dispozici pro použití.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 84edb5b7510642ec44dad3d4f92349e40eb10b24
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: e2b8f0438516cc0aff9c4d8159c22de43ec582e4
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766953"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530272"
 ---
 # <a name="verify-domain-availability"></a>Ověření dostupnosti domény
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak zjistit, jestli je doména k dispozici pro použití.
 
@@ -39,7 +34,7 @@ Chcete-li ověřit, zda je doména k dispozici, nejprve zavolejte [**IAggregateP
 bool result = partnerOperations.Domains.ByDomain(domain).Exists();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: CheckDomainAvailability.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CheckDomainAvailability. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -55,7 +50,7 @@ K ověření dostupnosti domény použijte následující parametr dotazu.
 
 | Název       | Typ       | Vyžadováno | Popis                                   |
 |------------|------------|----------|-----------------------------------------------|
-| **Domain** | **řetezce** | Y        | Řetězec identifikující doménu, kterou chcete ověřit. |
+| **Domain** | **řetězec** | Y        | Řetězec identifikující doménu, kterou chcete ověřit. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -63,7 +58,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

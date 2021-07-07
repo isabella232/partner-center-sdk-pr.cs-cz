@@ -1,36 +1,33 @@
 ---
 title: Aktualizace zásad konfigurace pro konkrétního zákazníka
-description: Jak aktualizovat zadané zásady konfigurace pro zadaného zákazníka.
+description: Postup aktualizace zadaných zásad konfigurace pro zadaného zákazníka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 42c57a92020723415b4621e9f9d7c5c3278bfb77
-ms.sourcegitcommit: 970031473b2e8cd3d08c6c097949c057a51df3ef
+ms.openlocfilehash: 5e008f41a44f2b7cf3ddfd705505175c69bbad38
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99505335"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530224"
 ---
 # <a name="update-a-configuration-policy-for-the-specified-customer"></a>Aktualizace zásad konfigurace pro konkrétního zákazníka
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud (Německo)
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-
-Jak aktualizovat zadané zásady konfigurace pro zadaného zákazníka.
+Postup aktualizace zadaných zásad konfigurace pro zadaného zákazníka
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Identifikátor zásady.
 
 ## <a name="c"></a>C\#
 
-Chcete-li aktualizovat existující zásady konfigurace pro zadaného zákazníka, vytvořte instanci nového objektu [**ConfigurationPolicy**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) , jak je znázorněno v následujícím fragmentu kódu. Hodnoty v tomto novém objektu nahradí odpovídající hodnoty v existujícím objektu. Pak zavolejte metodu [**IAggregatePartner. Customer. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, aby se načetlo rozhraní pro operace zadaného zákazníka. V dalším kroku zavolejte metodu [**ConfigurationPolicies. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) s ID zásady, aby se načetlo rozhraní pro operace zásad konfigurace pro zadané zásady. Nakonec zavolejte metodu [**patch**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patch) nebo [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patchasync) a aktualizujte zásady konfigurace.
+Pokud chcete aktualizovat existující zásady konfigurace pro zadaného zákazníka, vytvořte instanci nového objektu [**ConfigurationPolicy,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) jak je znázorněno v následujícím fragmentu kódu. Hodnoty v tomto novém objektu nahradí odpovídající hodnoty v existujícím objektu. Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a načtěte rozhraní pro operace v zadaném zákazníkovi. Dále zavolejte [**metodu ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) s ID zásady a načtěte rozhraní pro operace zásad konfigurace pro zadané zásady. Nakonec zavolejte [**metodu Patch**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patch) nebo [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patchasync) a aktualizujte zásady konfigurace.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -50,41 +47,41 @@ ConfigurationPolicy updatedConfigurationPolicy =
     partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedConfigurationPolicyId).Patch(configPolicyToBeUpdated);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: UpdateConfigurationPolicy.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project**: SDK pro Partnerské centrum Samples **– třída:** UpdateConfigurationPolicy.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------|
-| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/policies/{Policy-ID} HTTP/1.1 |
+| **PUT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/policies/{ID_zásad} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Při vytváření žádosti použít následující parametry cesty.
+Při vytváření požadavku použijte následující parametry cesty.
 
 | Název        | Typ   | Vyžadováno | Popis                                                   |
 |-------------|--------|----------|---------------------------------------------------------------|
-| ID zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
-| ID zásady   | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zásadu, která se má aktualizovat. |
+| id zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.         |
+| ID zásady   | řetězec | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje zásadu, která se má aktualizovat. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tělo žádosti musí obsahovat objekt, který poskytuje informace o zásadách.
+Text požadavku musí obsahovat objekt, který poskytuje informace o zásadách.
 
-| Název            | Typ             | Vyžadováno | Aktualizovat | Description                                                                                                                                              |
+| Název            | Typ             | Vyžadováno | Aktualizovatelné | Description                                                                                                                                              |
 |-----------------|------------------|----------|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | id              | řetězec           | Yes      | No        | Řetězec ve formátu GUID, který identifikuje zásadu.                                                                                                    |
 | name            | řetězec           | Yes      | Yes       | Popisný název zásady.                                                                                                                         |
-| category        | řetězec           | Yes      | No        | Kategorie zásad                                                                                                                                     |
+| category        | řetězec           | Yes      | No        | Kategorie zásad.                                                                                                                                     |
 | description     | řetězec           | No       | Yes       | Popis zásady.                                                                                                                                  |
-| devicesAssigned | číslo           | No       | No        | Počet zařízení.                                                                                                                                   |
-| policySettings  | pole řetězců | Yes      | Yes       | Nastavení zásad: "žádné", "odebrat \_ \_ předinstalované výrobci OEM", "OOBE \_ User \_ Not \_ Local \_ admin", "Přeskočit \_ expresní \_ nastavení", "Přeskočit \_ registraci OEM" \_ Přeskočit \_ smlouvu EULA ". |
+| devicesAssigned | číslo           | No       | No        | Počet zařízení                                                                                                                                   |
+| nastavení zásad  | pole řetězců | Yes      | Yes       | Nastavení zásad: none,"remove \_ oem \_ preinstalls", "oobe \_ user not local \_ \_ \_ admin", "skip \_ express \_ settings", "skip \_ oem \_ registration,"skip \_ eula". |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -111,11 +108,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi prostředek [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) pro novou zásadu.
+V případě úspěchu bude text odpovědi obsahovat prostředek [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) pro novou zásadu.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

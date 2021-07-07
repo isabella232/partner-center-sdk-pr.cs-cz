@@ -1,50 +1,46 @@
 ---
 title: Získání metadat smluv pro Smlouvu se zákazníkem Microsoftu
-description: Tento článek vysvětluje, jak získat metadata smlouvy pro zákaznickou smlouvu Microsoftu.
+description: Tento článek vysvětluje, jak získat metadata smlouvy pro Smlouva se zákazníkem Microsoftu.
 ms.date: 8/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: c3ebecc51859c9d2240d319d823f7e555eaecc27
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 5c20b317edf16b159050884070683880cf7e45bb
+ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766895"
+ms.lasthandoff: 06/11/2021
+ms.locfileid: "112025713"
 ---
 # <a name="get-agreement-metadata-for-the-microsoft-customer-agreement"></a>Získání metadat smluv pro Smlouvu se zákazníkem Microsoftu
 
-**Platí pro:**
+**Platí pro:** Partnerské centrum
 
-- Partnerské centrum
+**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Metadata smlouvy pro zákaznickou smlouvu Microsoft jsou aktuálně podporována partnerským centrem pouze ve *veřejném cloudu společnosti Microsoft*. Neplatí pro:
+Metadata smlouvy pro Smlouva se zákazníkem Microsoftu se v současné době Partnerské centrum jenom ve veřejném cloudu Microsoftu.
 
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Než budete moci Smlouva se zákazníkem Microsoftu:
 
-Metadata smlouvy pro zákaznickou smlouvu od Microsoftu musíte načíst, abyste mohli:
-
-- [Potvrzení souhlasu zákazníka s zákaznickou smlouvou Microsoftu](./confirm-customer-consent-customer-agreement.md)
-- [Načtení odkazu ke stažení pro šablonu zákaznické smlouvy Microsoft](./download-customer-agreement-template.md)
+- [Potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu](./confirm-customer-consent-customer-agreement.md)
+- [Načtení odkazu ke stažení Smlouva se zákazníkem Microsoftu šablony](./download-customer-agreement-template.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud používáte sadu SDK partnerského centra .NET, verze 1,14 nebo novější je povinná.
+- Pokud používáte sadu .NET SDK Partnerské centrum, vyžaduje se verze 1.14 nebo novější.
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). Tento scénář podporuje jenom ověřování uživatelů a aplikací.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](./partner-center-authentication.md) Tento scénář podporuje pouze ověřování aplikací a uživatelů.
 
-## <a name="net-version-114-or-newer"></a>.NET (verze 1,14 nebo novější)
+## <a name="net-version-114-or-newer"></a>.NET (verze 1.14 nebo novější)
 
-Načtení metadat smlouvy pro zákaznickou smlouvu Microsoftu:
+Načtení metadat smlouvy pro Smlouva se zákazníkem Microsoftu:
 
-1. Nejdřív načtěte kolekci **IAggregatePartner. AgreementDetails** .
+1. Nejprve načtěte **kolekci IAggregatePartner.AgreementDetails.**
 
-2. Zavolejte metodu **ByAgreementType** , která filtruje kolekci na zákaznickou smlouvu Microsoftu.
+2. Voláním **metody ByAgreementType** vyfiltrujte kolekci, Smlouva se zákazníkem Microsoftu.
 
-3. Nakonec volejte metodu **Get** nebo **GetAsync** .
+3. Nakonec zavolejte **metodu Get** **nebo GetAsync.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -54,31 +50,31 @@ string agreementType = "MicrosoftCustomerAgreement";
 var microsoftCustomerAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
 ```
 
-Kompletní ukázku najdete ve třídě [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) z projektu [testovací aplikace konzoly](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) .
+Úplnou ukázku najdete ve třídě [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) z projektu [konzolové testovací aplikace.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-Načtení metadat smlouvy pro zákaznickou smlouvu Microsoftu:
+Načtení metadat smlouvy pro Smlouva se zákazníkem Microsoftu:
 
-1. Vytvořte žádost REST pro načtení kolekce [AgreementMetaData](./agreement-metadata-resources.md) .
+1. Vytvořte požadavek REST pro načtení [kolekce AgreementMetaData.](./agreement-metadata-resources.md)
 
-2. Použijte parametr dotazu **agreemtntype** k určení oboru výsledků jenom pro zákaznickou smlouvu Microsoftu.
+2. Parametr dotazu **agreementType** použijte k nastavení rozsahu výsledku pouze na Smlouva se zákazníkem Microsoftu.
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti                                                         |
 |--------|---------------------------------------------------------------------|
-| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/Agreements? agreemtntype = {smlouva-Type} HTTP/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/agreements?agreementType={agreement-type} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | Název                   | Typ     | Vyžadováno | Popis                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
-| typ smlouvy | řetězec | No | Tento parametr slouží k určení rozsahu odpovědi dotazu na konkrétní typ smlouvy. Podporované hodnoty jsou: <br/><br/>**MicrosoftCloudAgreement** , která zahrnuje metadata smlouvy pouze typu *MicrosoftCloudAgreement*<br/><br/>**MicrosoftCustomerAgreement** , která zahrnuje metadata smlouvy pouze typu *MicrosoftCustomerAgreement*.<br/><br/>**\*** který vrátí všechna metadata smlouvy. (Nepoužívejte **\*** , pokud váš kód nemá nezbytnou běhovou logiku pro zpracování neznámých typů smluv, protože společnost Microsoft může zavést metadata smlouvy s novými typy smluv kdykoli.)<br/><br/> **Poznámka:** Pokud není zadán parametr URI, výchozí dotaz se **MicrosoftCloudAgreement** na zpětnou kompatibilitu.  |
+| agreement-type | řetězec | No | Tento parametr použijte k nastavení rozsahu odpovědi na dotaz na konkrétní typ smlouvy. Podporované hodnoty jsou: <br/><br/>**MicrosoftCloudAgreement,** který zahrnuje jenom metadata smlouvy typu *MicrosoftCloudAgreement*<br/><br/>**MicrosoftCustomerAgreement,** který obsahuje metadata smlouvy pouze typu *MicrosoftCustomerAgreement*.<br/><br/>**\**– vrátí všechna metadata smlouvy. (Nepoužívejte _* \* _ pokud váš kód nemá potřebnou logiku modulu runtime pro zpracování neznámých typů smlouvy, protože Microsoft může kdykoli zavést metadata smlouvy s novými *typy smlouvy.) <br/> <br/> _* Poznámka:** Pokud není zadaný parametr URI, výchozí hodnota dotazu je **MicrosoftCloudAgreement** pro zpětnou kompatibilitu.  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -96,13 +92,13 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci [prostředků **AgreementMetaData**](./agreement-metadata-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi kolekci prostředků [ **AgreementMetaData.**](./agreement-metadata-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.
 
-Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

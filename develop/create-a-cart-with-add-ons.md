@@ -1,47 +1,43 @@
 ---
 title: Vytvoření košíku s doplňky
-description: Naučte se používat rozhraní API partnerského centra k přidání objednávky zákazníka s doplňky prostřednictvím košíku. Článek sdílí požadavky a kroky k vytvoření košíku s doplňky.
+description: Naučte se používat Partnerské centrum API k přidání objednávky zákazníka s doplňky prostřednictvím košíku. Článek obsahuje požadavky a kroky pro vytvoření košíku s doplňky.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 81c41405a2f56eb4d1d3447d14b93e05d550cc70
-ms.sourcegitcommit: 4c253abb24140a6e00b0aea8e79a08823ea5a623
+ms.openlocfilehash: 513a9607b9194c36253630c91de9622325317c3a
+ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "97767128"
+ms.lasthandoff: 06/10/2021
+ms.locfileid: "111973753"
 ---
-# <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Vytvoření košíku s doplňky pro objednávku zákazníka
+# <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Vytvoření košíku s doplňky k objednávce zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Přidané doplňky můžete koupit prostřednictvím košíku. Další informace o tom, co je aktuálně k dispozici pro prodej, najdete [v tématu partnerské nabídky v programu Cloud Solution Provider](/partner-center/csp-offers).
+Doplňky si můžete koupit prostřednictvím košíku. Další informace o tom, co je aktuálně k dispozici k prodeji, najdete v tématu Nabídky partnerů [v Cloud Solution Provider programu](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Vozík umožňuje zakoupit základní nabídku a její odpovídající doplňky. Pomocí těchto kroků vytvořte košík:
+Košík umožňuje nákup základní nabídky a odpovídajících doplňků. Při vytváření košíku postupujte takto:
 
-1. Vytvoří instanci objektu [**košíku**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart) .
+1. Vytvoření instance objektu [**Cart**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart)
 
-2. Vytvořte seznam objektů [**CartLineItem**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) , které představují základní nabídky, a přiřaďte seznam k vlastnosti [**položky řádku**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems) košíku.
+2. Vytvořte seznam objektů [**CartLineItem,**](/dotnet/api/microsoft.store.partnercenter.models.carts.cartlineitem) které představují základní nabídky, a přiřaďte tento seznam k vlastnosti [**LineItems košíku.**](/dotnet/api/microsoft.store.partnercenter.models.carts.cart.lineitems)
 
-3. V rámci položky řádku košíku základní nabídky vyplňte seznam **AddOnItems** dalšími objekty **CartLineItem** , které každý z nich představují doplněk, který bude koupen na základě této základní nabídky.
+3. Pod řádkovou položkou košíku každé základní nabídky naplňte seznam **AddOnItems** jinými objekty **CartLineItem,** které představují doplněk, který bude zakoupen na základě této základní nabídky.
 
-4. Získejte rozhraní pro operace na vozíku pomocí [**IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) k volání metody [**ICustomerCollection. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka k identifikaci zákazníka a následnému načtení rozhraní z vlastnosti **košíku** .
+4. Získejte rozhraní pro operace košíku pomocí [**IAggregatePartner**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) k volání metody [**ICustomerCollection.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka k identifikaci zákazníka a načtením rozhraní z vlastnosti **Cart.**
 
-5. Nakonec voláním metody [**Create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) vytvořte košík.
+5. Nakonec zavolejte [**metodu Create**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.carts.icartcollection.createasync) a vytvořte košík.
 
-### <a name="c-example"></a>\#Příklad C
+### <a name="c-example"></a>Příklad \# jazyka C
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -82,11 +78,11 @@ var cart = new Cart()
 var createdCart = partnerOperations.Customers.ById(customerId).Carts.Create(cart);
 ```
 
-Pomocí těchto kroků můžete vytvořit košík, který umožní nákup doplňků u stávajících základních předplatných:
+Postupujte podle těchto kroků a vytvořte košík, který umožní nákup doplňků pro stávající základní předplatná:
 
-1. Vytvořte **košík** s novým **CartLineItem** , který obsahuje ID předplatného ve vlastnosti **ProvisioningContext** s klíčem "ParentSubscriptionId".
+1. Vytvořte košík **s** novým **CartLineItem** obsahujícím ID předplatného ve vlastnosti **ProvisioningContext** s klíčem ParentSubscriptionId.
 
-2. Zavolejte metodu **Create** nebo **CreateAsync** .
+2. Zavolejte **metodu Create** nebo **CreateAsync.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -115,13 +111,13 @@ var cart = new Cart()
 var createdCart = partnerOperations.Customers.ById(selectedCustomerId).Carts.Create(cart);
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/carts HTTP/1.1                        |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/carts HTTP/1.1                        |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -129,40 +125,40 @@ K identifikaci zákazníka použijte následující parametr cesty.
 
 | Název            | Typ     | Vyžadováno | Popis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **ID zákazníka** | řetězec   | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka.             |
+| **id zákazníka** | řetězec   | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka.             |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje vlastnosti [košíku](cart-resources.md) v textu žádosti.
+Tato tabulka popisuje vlastnosti [Cart](cart-resources.md) (Košík) v textu požadavku.
 
 | Vlastnost              | Typ             | Vyžadováno        | Popis |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
-| id                    | řetězec           | No              | Identifikátor košíku, který se zadal po úspěšném vytvoření košíku.                                  |
-| creationTimeStamp     | DateTime         | No              | Datum, kdy byl košík vytvořen, ve formátu data a času. Použito po úspěšném vytvoření košíku.         |
-| lastModifiedTimeStamp | DateTime         | No              | Datum poslední aktualizace košíku ve formátu data a času. Použito po úspěšném vytvoření košíku.    |
-| expirationTimeStamp   | DateTime         | No              | Datum, kdy vyprší platnost košíku, ve formátu data a času.  Použito po úspěšném vytvoření košíku.            |
-| lastModifiedUser      | řetězec           | No              | Uživatel, který kartu naposledy aktualizoval. Použito po úspěšném vytvoření košíku.                             |
-| Položky řádku             | Pole objektů | Yes             | Pole prostředků [CartLineItem](cart-resources.md#cartlineitem)                                             |
+| id                    | řetězec           | No              | Identifikátor košíku, který se dodá po úspěšném vytvoření košíku.                                  |
+| creationTimeStamp     | DateTime         | No              | Datum vytvoření košíku ve formátu data a času. Použije se při úspěšném vytvoření košíku.         |
+| lastModifiedTimeStamp | DateTime         | No              | Datum poslední aktualizace košíku ve formátu data a času Použije se při úspěšném vytvoření košíku.    |
+| expirationTimeStamp   | DateTime         | No              | Datum, kdy vyprší platnost košíku ve formátu data a času.  Použije se při úspěšném vytvoření košíku.            |
+| lastModifiedUser      | řetězec           | No              | Uživatel, který naposledy aktualizoval košík Použije se při úspěšném vytvoření košíku.                             |
+| položky řádku             | Pole objektů | Yes             | Pole prostředků [CartLineItem](cart-resources.md#cartlineitem)                                             |
 
 Tato tabulka popisuje vlastnosti [CartLineItem](cart-resources.md#cartlineitem) v textu požadavku.
 
 | Vlastnost             | Typ                             | Description                                                                                                                                           |
 |----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                   | řetězec                           | Jedinečný identifikátor položky řádku košíku Použito po úspěšném vytvoření košíku.                                                                   |
-| catalogId            | řetězec                           | Identifikátor položky katalogu                                                                                                                          |
-| friendlyName         | řetězec                           | Nepovinný parametr. Popisný název položky definované partnerem, který vám umožní určit nejednoznačnost.                                                                 |
-| quantity             | int                              | Počet licencí nebo instancí.                                                                                                                  |
-| currencyCode         | řetězec                           | Kód měny.                                                                                                                                    |
+| id                   | řetězec                           | Jedinečný identifikátor řádkové položky košíku. Použije se při úspěšném vytvoření košíku.                                                                   |
+| id katalogu            | řetězec                           | Identifikátor položky katalogu.                                                                                                                          |
+| Friendlyname         | řetězec                           | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.                                                                 |
+| quantity             | int                              | Počet licencí nebo instancí                                                                                                                  |
+| currencyCode         | řetězec                           | Kód měny                                                                                                                                    |
 | billingCycle         | Objekt                           | Typ fakturačního cyklu nastaveného pro aktuální období.                                                                                                 |
-| členům         | Seznam párů řetězců objektů      | Kolekce PartnerId na záznamu (MPNID) na nákupu.                                                                                          |
+| členům         | Seznam párů řetězců objektů      | Kolekce PartnerId na záznamu (MPN ID) na nákupu.                                                                                          |
 | provisioningContext  | Řetězec<slovníku, řetězec>       | Kontext použitý ke zřízení nabídky.                                                                                                             |
 | pořadí           | řetězec                           | Skupina, která označuje, které položky lze umístit dohromady.                                                                                               |
 | addonItems           | Seznam objektů **CartLineItem** | Kolekce položek řádků košíku pro doplňky, které budou koupeny k základnímu předplatnému, které je výsledkem nákupu položky řádku nadřazeného košíku. |
-| error                | Objekt                           | Používá se po vytvoření košíku v případě chyby.                                                                                                    |
+| error                | Objekt                           | Používá se po vytvoření košíku, pokud dojde k chybě.                                                                                                    |
 
 ### <a name="request-example-new-base-subscription"></a>Příklad požadavku (nové základní předplatné)
 

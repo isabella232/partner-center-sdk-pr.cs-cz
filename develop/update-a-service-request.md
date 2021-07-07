@@ -1,37 +1,33 @@
 ---
 title: Aktualizace žádosti o službu
-description: Jak aktualizovat existující žádost o služby zákazníkům, kterou poskytovatel cloudového řešení uzavřel s Microsoftem jménem zákazníka.
+description: Jak aktualizovat existující žádost o služby zákazníkům, Cloud Solution Provider zákazník jménem zákazníka podal u Microsoftu.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a1df0d1f5fa4630b346d1c8b9cffabb86ce34cfb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: efa7b2a98b6f95a763ca6e3811c43cc655c18e2b
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766998"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530085"
 ---
 # <a name="update-a-service-request"></a>Aktualizace žádosti o službu
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Jak aktualizovat existující žádost o služby zákazníkům, Cloud Solution Provider zákazník jménem zákazníka podal u Microsoftu.
 
-Jak aktualizovat existující žádost o služby zákazníkům, kterou poskytovatel cloudového řešení uzavřel s Microsoftem jménem zákazníka.
-
-Na řídicím panelu partnerského centra se tato operace dá provést při prvním [výběru zákazníka](get-a-customer-by-name.md). Pak na levém bočním panelu vyberte **Správa služeb** . V části **žádosti o podporu** vyberte příslušný požadavek služby. Chcete-li dokončit, proveďte požadované změny žádosti o služby a pak vyberte **Odeslat.**
+Na řídicím Partnerské centrum můžete tuto operaci provést tak, že nejprve [vyberete zákazníka](get-a-customer-by-name.md). Pak na levém **bočním** panelu vyberte Správa služeb. V **hlavičce Žádosti o** podporu vyberte požadovanou žádost o služby. Dokončete požadované změny žádosti o služby a pak vyberte **Odeslat.**
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID žádosti o službu.
+- ID žádosti o služby.
 
 ## <a name="c"></a>C\#
 
-Chcete-li aktualizovat žádost o služby zákazníka, zavolejte metodu [**IServiceRequestCollection. ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) s ID žádosti služby a identifikujte a vraťte rozhraní žádosti o služby. Pak zavolejte metodu [**IServiceRequest. patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) nebo [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) a aktualizujte žádost o službu. Chcete-li zadat aktualizované hodnoty, vytvořte nový prázdný objekt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) a nastavte pouze hodnoty vlastností, které chcete změnit. Pak předejte tento objekt ve volání metody patch nebo PatchAsync.
+Pokud chcete aktualizovat požadavek na služby zákazníka, zavolejte metodu [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) s ID žádosti o službu, abyste identifikovali a vrátili rozhraní žádosti o služby. Potom zavolejte [**metodu IServiceRequest.Patch**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patch) nebo [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequest.patchasync) a aktualizujte žádost o službu. Pokud chcete zadat aktualizované hodnoty, vytvořte nový prázdný objekt [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) a nastavte pouze hodnoty vlastností, které chcete změnit. Pak tento objekt předejte ve volání metody Patch nebo PatchAsync.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,31 +39,31 @@ ServiceRequest updatedServiceRequest = partnerOperations.ServiceRequests.ById(ex
 });
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: UpdatePartnerServiceRequest.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **– třída:** UpdatePartnerServiceRequest.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{ServiceRequest-ID} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{id_požadavku_služby} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K aktualizaci žádosti o službu použijte následující parametr identifikátoru URI.
+Pomocí následujícího parametru URI aktualizujte požadavek na službu.
 
 | Název                  | Typ     | Vyžadováno | Popis                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **ServiceRequest-ID** | **guid** | Y        | Identifikátor GUID, který identifikuje požadavek služby. |
+| **id_události_služby** | **guid** | Y        | Identifikátor GUID, který identifikuje požadavek na službu. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Text žádosti by měl obsahovat prostředek [ServiceRequest](service-request-resources.md) . Jediné požadované hodnoty jsou ty, které se mají aktualizovat.
+Text požadavku by měl obsahovat [prostředek ServiceRequest.](service-request-resources.md) Jediné požadované hodnoty jsou hodnoty, které se mají aktualizovat.
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -115,11 +111,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek **žádosti o službu** s aktualizovanými vlastnostmi v těle odpovědi.
+V případě úspěchu tato metoda vrátí **prostředek žádosti** o služby s aktualizovanými vlastnostmi v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 
