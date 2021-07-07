@@ -4,31 +4,26 @@ description: Aktualizuje profil podpory uživatele.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 605c509eeb18f301144fec6287c9611d5a5acfe2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 143328c5501f525d52911eead805d420f79b78ff
+ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766949"
+ms.lasthandoff: 06/05/2021
+ms.locfileid: "111530340"
 ---
-# <a name="update-support-profile"></a><span data-ttu-id="c421a-103">Aktualizace profilu podpory</span><span class="sxs-lookup"><span data-stu-id="c421a-103">Update support profile</span></span>
+# <a name="update-support-profile"></a><span data-ttu-id="ab997-103">Aktualizace profilu podpory</span><span class="sxs-lookup"><span data-stu-id="ab997-103">Update support profile</span></span>
 
-<span data-ttu-id="c421a-104">**Platí pro**</span><span class="sxs-lookup"><span data-stu-id="c421a-104">**Applies To**</span></span>
+<span data-ttu-id="ab997-104">**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="ab997-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="c421a-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="c421a-105">Partner Center</span></span>
-- <span data-ttu-id="c421a-106">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="c421a-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="c421a-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="c421a-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="c421a-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="c421a-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="ab997-105">Aktualizuje profil podpory uživatele.</span><span class="sxs-lookup"><span data-stu-id="ab997-105">Updates a user's support profile.</span></span>
 
-<span data-ttu-id="c421a-109">Aktualizuje profil podpory uživatele.</span><span class="sxs-lookup"><span data-stu-id="c421a-109">Updates a user's support profile.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="ab997-106">Požadavky</span><span class="sxs-lookup"><span data-stu-id="ab997-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="c421a-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="c421a-110">Prerequisites</span></span>
+- <span data-ttu-id="ab997-107">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="ab997-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="ab997-108">Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="ab997-108">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="c421a-111">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="c421a-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="c421a-112">Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="c421a-112">This scenario supports authentication with App+User credentials only.</span></span>
+## <a name="c"></a><span data-ttu-id="ab997-109">C\#</span><span class="sxs-lookup"><span data-stu-id="ab997-109">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="c421a-113">C\#</span><span class="sxs-lookup"><span data-stu-id="c421a-113">C\#</span></span>
-
-<span data-ttu-id="c421a-114">Pokud chcete aktualizovat svůj profil podpory, nejdřív [Získejte svůj profil podpory](get-support-profile.md) a proveďte jakékoli změny, které chcete.</span><span class="sxs-lookup"><span data-stu-id="c421a-114">To update your support profile, first [get your support profile](get-support-profile.md) and make any changes you wish.</span></span> <span data-ttu-id="c421a-115">Pak použijte svou kolekci [**IPartnerOperations. Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) .</span><span class="sxs-lookup"><span data-stu-id="c421a-115">Then, use your [**IPartnerOperations.Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) collection.</span></span> <span data-ttu-id="c421a-116">Zavolejte vlastnost [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) , následovanou metodou [**Update ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) nebo [**UpdateAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) .</span><span class="sxs-lookup"><span data-stu-id="c421a-116">Call the [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) property, followed by the [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) or [**UpdateAsync()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) method.</span></span>
+<span data-ttu-id="ab997-110">Pokud chcete aktualizovat profil podpory, [nejprve získejte profil podpory](get-support-profile.md) a proveďte požadované změny.</span><span class="sxs-lookup"><span data-stu-id="ab997-110">To update your support profile, first [get your support profile](get-support-profile.md) and make any changes you wish.</span></span> <span data-ttu-id="ab997-111">Pak použijte kolekci [**IPartnerOperations.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles)</span><span class="sxs-lookup"><span data-stu-id="ab997-111">Then, use your [**IPartnerOperations.Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) collection.</span></span> <span data-ttu-id="ab997-112">Zavolejte [**vlastnost SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) následovanou metodou [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) nebo [**UpdateAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync)</span><span class="sxs-lookup"><span data-stu-id="ab997-112">Call the [**SupportProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile) property, followed by the [**Update()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.update) or [**UpdateAsync()**](/dotnet/api/microsoft.store.partnercenter.profiles.isupportprofile.updateasync) method.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,25 +39,25 @@ SupportProfile newSupportProfile = new SupportProfile
 SupportProfile updatedSupportProfile = partnerOperations.Profiles.SupportProfile.Update(newSupportProfile);
 ```
 
-<span data-ttu-id="c421a-117">**Ukázka**: [aplikace testů konzoly](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="c421a-117">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="c421a-118">**Projekt**: PartnerCenterSDK. FeaturesSamples **Třída**: UpdateSupportProfile.cs</span><span class="sxs-lookup"><span data-stu-id="c421a-118">**Project**: PartnerCenterSDK.FeaturesSamples **Class**: UpdateSupportProfile.cs</span></span>
+<span data-ttu-id="ab997-113">**Ukázka:** [Konzolová testovací aplikace](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="ab997-113">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="ab997-114">**Project:** PartnerCenterSDK.FeaturesSamples **– třída:** UpdateSupportProfile.cs</span><span class="sxs-lookup"><span data-stu-id="ab997-114">**Project**: PartnerCenterSDK.FeaturesSamples **Class**: UpdateSupportProfile.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="c421a-119">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="c421a-119">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="ab997-115">Požadavek REST</span><span class="sxs-lookup"><span data-stu-id="ab997-115">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="c421a-120">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="c421a-120">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="ab997-116">Syntaxe požadavku</span><span class="sxs-lookup"><span data-stu-id="ab997-116">Request syntax</span></span>
 
-| <span data-ttu-id="c421a-121">Metoda</span><span class="sxs-lookup"><span data-stu-id="c421a-121">Method</span></span>  | <span data-ttu-id="c421a-122">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="c421a-122">Request URI</span></span>                                                                     |
+| <span data-ttu-id="ab997-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="ab997-117">Method</span></span>  | <span data-ttu-id="ab997-118">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="ab997-118">Request URI</span></span>                                                                     |
 |---------|---------------------------------------------------------------------------------|
-| <span data-ttu-id="c421a-123">**PUT**</span><span class="sxs-lookup"><span data-stu-id="c421a-123">**PUT**</span></span> | <span data-ttu-id="c421a-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/supportprofile HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="c421a-124">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1</span></span> |
+| <span data-ttu-id="ab997-119">**PUT**</span><span class="sxs-lookup"><span data-stu-id="ab997-119">**PUT**</span></span> | <span data-ttu-id="ab997-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="ab997-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/supportprofile HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="c421a-125">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="c421a-125">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="ab997-121">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="ab997-121">Request headers</span></span>
 
-<span data-ttu-id="c421a-126">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="c421a-126">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="ab997-122">Další informace najdete v Partnerské centrum [REST.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="ab997-122">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="c421a-127">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="c421a-127">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="ab997-123">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="ab997-123">Request body</span></span>
 
-<span data-ttu-id="c421a-128">Prostředek profilu plné podpory.</span><span class="sxs-lookup"><span data-stu-id="c421a-128">The full support profile resource.</span></span>
+<span data-ttu-id="ab997-124">Úplný prostředek profilu podpory.</span><span class="sxs-lookup"><span data-stu-id="ab997-124">The full support profile resource.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="c421a-129">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="c421a-129">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="ab997-125">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="ab997-125">Request example</span></span>
 
 ```http
 PUT https://api.partnercenter.microsoft.com/v1/profiles/supportprofile HTTP/1.1
@@ -85,15 +80,15 @@ Expect: 100-continue
 }
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="c421a-130">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="c421a-130">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="ab997-126">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="ab997-126">REST response</span></span>
 
-<span data-ttu-id="c421a-131">V případě úspěchu tato metoda vrátí aktualizované vlastnosti objektu **SupportProfile** v těle odpovědi.</span><span class="sxs-lookup"><span data-stu-id="c421a-131">If successful, this method returns updated **SupportProfile** object properties in the response body.</span></span>
+<span data-ttu-id="ab997-127">V případě úspěchu tato metoda vrátí aktualizované vlastnosti objektu **SupportProfile** v textu odpovědi.</span><span class="sxs-lookup"><span data-stu-id="ab997-127">If successful, this method returns updated **SupportProfile** object properties in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="c421a-132">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="c421a-132">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="ab997-128">Kódy chyb a úspěšné odpovědi</span><span class="sxs-lookup"><span data-stu-id="ab997-128">Response success and error codes</span></span>
 
-<span data-ttu-id="c421a-133">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="c421a-133">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="c421a-134">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="c421a-134">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="c421a-135">Úplný seznam najdete v tématu [kódy chyb](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="c421a-135">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="ab997-129">Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="ab997-129">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="ab997-130">K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě.</span><span class="sxs-lookup"><span data-stu-id="ab997-130">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="ab997-131">Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="ab997-131">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="c421a-136">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="c421a-136">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="ab997-132">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="ab997-132">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
