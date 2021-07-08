@@ -1,44 +1,39 @@
 ---
 title: Ověřování v Partnerském centru
-description: Partnerské centrum používá pro ověřování Azure AD a používá rozhraní API partnerského centra. musíte nakonfigurovat nastavení ověřování správně.
+description: Partnerské centrum ověřování používá Azure AD a k použití Partnerské centrum API musíte správně nakonfigurovat nastavení ověřování.
 ms.date: 11/13/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-csp
-ms.openlocfilehash: 46ef9c6bc151c368281e943b7d24ebc07e34b66d
-ms.sourcegitcommit: 64c498d3571f2287305968890578bc7396779621
+ms.openlocfilehash: e54feba7ea727bb7f7eff8de76dcdf28c8a453ee
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97767668"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548069"
 ---
 # <a name="partner-center-authentication"></a>Ověřování v Partnerském centru
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Partnerské centrum k ověřování využívá Azure Active Directory. Při práci s rozhraním API, sadou SDK nebo modulem PowerShellu Partnerského centra musíte správně nakonfigurovat aplikaci Azure AD a pak požádat o přístupový token. Přístupové tokeny získané pouze pomocí aplikace nebo ověřování aplikací a uživatelů je možné použít s Partnerské centrum. Je však potřeba zvážit dvě důležité položky.
 
-Partnerské centrum k ověřování využívá Azure Active Directory. Při práci s rozhraním API, sadou SDK nebo modulem PowerShellu Partnerského centra musíte správně nakonfigurovat aplikaci Azure AD a pak požádat o přístupový token. Přístupové tokeny získané jenom pro aplikace nebo ověřování pomocí aplikace a uživatele se dají použít s partnerským centrem. Existují však dvě důležité položky, které je třeba vzít v úvahu.
+- Vícefaktorové ověřování použijte při přístupu k rozhraní PARTNERSKÉ CENTRUM API pomocí ověřování aplikací a uživatelů. Další informace o této změně najdete v tématu [Povolení zabezpečeného aplikačního modelu](enable-secure-app-model.md).
 
-- Použijte vícefaktorové ověřování při přístupu k rozhraní API partnerského centra pomocí ověřování aplikace a uživatele. Další informace o této změně najdete v tématu [Povolení zabezpečení aplikačního modelu](enable-secure-app-model.md).
-
-- Ne všechny operace: rozhraní API partnerského centra podporuje pouze ověřování aplikace. Existují některé scénáře, kdy budete muset použít aplikaci a ověřování uživatelů. V nadpisu *požadavky* každého [článku](scenarios.md)najdete dokumentaci s informací, jestli jsou podporované jenom ověřování, aplikace + ověřování uživatelů nebo obojí.
+- Ne všechny operace, které rozhraní API Partnerské centrum podporuje pouze ověřování aplikací. Existují určité scénáře, ve kterých budete muset použít ověřování aplikací a uživatelů. Pod *nadpisem Požadavky* v každém článku [najdete](scenarios.md)dokumentaci, která uvádí, jestli se podporuje jenom ověřování aplikací, ověřování aplikací a uživatelů nebo obojí.
 
 ## <a name="initial-setup"></a>Počáteční nastavení
 
-1. Abyste mohli začít, musíte se ujistit, že máte primární účet partnerského centra a účet partnerského centra pro integraci izolovaného prostoru (sandbox). Další informace najdete v tématu [Nastavení účtů partnerského centra pro přístup přes rozhraní API](set-up-api-access-in-partner-center.md). Poznamenejte si ID registrace a tajný kód aplikace Azure AAD (pro identifikaci aplikace se vyžaduje tajný klíč klienta) pro váš primární účet i váš účet izolovaného prostoru (sandbox).
+1. Nejprve se musíte ujistit, že máte primární účet Partnerské centrum i účet sandboxu pro integraci Partnerské centrum účet. Další informace najdete v tématu [Nastavení účtů Partnerské centrum přístup přes rozhraní API.](set-up-api-access-in-partner-center.md) Poznamenejte si ID registrace aplikace Azure AAD a tajný klíč (tajný kód klienta se vyžaduje jenom pro identifikaci aplikace) pro primární účet i účet sandboxu pro integraci.
 
-2. Přihlaste se k Azure AD z Azure Portal. V **oprávněních k ostatním aplikacím** nastavte oprávnění pro **Windows Azure Active Directory** na **delegovaná oprávnění** a **jako přihlášeného uživatele vyberte přístup k adresáři** , **Přihlaste se a přečtěte si profil uživatele**.
+2. Přihlaste se k Azure AD z Azure Portal. V **části** Oprávnění k jiným aplikacím nastavte oprávnění pro **Windows Azure Active Directory** na Delegovaná oprávnění a vyberte Přístup k adresáři jako přihlášený **uživatel** a Přihlásit se a Číst **profil uživatele.** 
 
-3. V Azure Portal **přidejte aplikaci**. Vyhledejte "partnerské Centrum Microsoftu", což je aplikace partnerského centra Microsoftu. Nastavte **delegovaná oprávnění** pro **přístup k rozhraní API partnerského centra**. Pokud používáte partnerské Centrum pro Microsoft Cloud Německo nebo partnerské Centrum pro Microsoft Cloud pro státní správu USA, je tento krok povinný. Pokud používáte globální instanci partnerského centra, je tento krok nepovinný. Partneři CSP můžou pomocí funkce správy aplikací na portálu partnerského centra obejít tento krok pro globální instanci partnerského centra.
+3. V Azure Portal přidat **aplikaci**. Vyhledejte "Microsoft Partnerské centrum", což je aplikace Microsoft Partnerské centrum. **Delegovaná oprávnění nastavte** **na Access Partnerské centrum API.** Pokud používáte nástroj pro Partnerské centrum Microsoft Cloud Germany nebo Partnerské centrum pro Microsoft Cloud for US Government, je tento krok povinný. Pokud používáte globální instanci Partnerské centrum, je tento krok volitelný. Partneři CSP mohou pomocí funkce Správa aplikací na Partnerské centrum Portal obejít tento krok pro Partnerské centrum instanci.
 
-## <a name="app-only-authentication"></a>Ověřování pouze pro aplikace
+## <a name="app-only-authentication"></a>Ověřování pouze na základě aplikace
 
-Pokud chcete používat ověřování jenom pro aplikace pro přístup k REST API partnerských Center, rozhraní API .NET, Java API nebo modul PowerShellu, můžete to udělat pomocí následujících pokynů.
+Pokud chcete pro přístup k modulu Partnerské centrum REST API, .NET API, Java API nebo PowerShellu použít ověřování jenom pro aplikace, můžete to udělat podle následujících pokynů.
 
-## <a name="net-app-only-authentication"></a>.NET (ověřování pouze pro aplikace)
+## <a name="net-app-only-authentication"></a>.NET (ověřování pouze na základě aplikace)
 
 ```csharp
 public static IAggregatePartner GetPartnerCenterTokenUsingAppCredentials()
@@ -54,7 +49,7 @@ public static IAggregatePartner GetPartnerCenterTokenUsingAppCredentials()
 }
 ```
 
-## <a name="java-app-only-authentication"></a>Java (ověřování pouze aplikací)
+## <a name="java-app-only-authentication"></a>Java (ověřování pouze na základě aplikace)
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
@@ -71,9 +66,9 @@ public IAggregatePartner getAppPartnerOperations()
 }
 ```
 
-## <a name="rest-app-only-authentication"></a>REST (ověřování pouze pro aplikace)
+## <a name="rest-app-only-authentication"></a>REST (ověřování pouze na základě aplikace)
 
-### <a name="rest-request"></a>Žádost REST
+### <a name="rest-request"></a>Požadavek REST
 
 ```http
 POST https://login.microsoftonline.com/{tenantId}/oauth2/token HTTP/1.1
@@ -102,24 +97,24 @@ Content-Length: 1406
 
 ## <a name="app--user-authentication"></a>Ověřování aplikací a uživatelů
 
-Historické [přihlašovací údaje pro heslo vlastníka prostředku](https://tools.ietf.org/html/rfc6749#section-4.3) se použily k vyžádání přístupového tokenu pro použití s REST API partnerských Center, rozhraní API .NET, Java API nebo modul PowerShellu. Tato metoda se použila k vyžádání přístupového tokenu z Azure Active Directory pomocí identifikátoru klienta a přihlašovacích údajů uživatele. Tento přístup ale už nebude fungovat, protože partnerské Centrum vyžaduje vícefaktorové ověřování, když se používá ověřování aplikací a uživatelů. Pro splnění tohoto požadavku společnost Microsoft zavedla zabezpečenou, škálovatelnou architekturu pro ověřování partnerů CSP (Cloud Solution Provider) a dodavatelů ovládacích panelů (CPV) pomocí služby Multi-Factor Authentication. Tato architektura se označuje jako model zabezpečené aplikace a skládá se z procesu souhlasu a žádosti o přístupový token pomocí obnovovacího tokenu.
+V minulosti [](https://tools.ietf.org/html/rfc6749#section-4.3) se k vyžádání přístupového tokenu pro použití s modulem Partnerské centrum REST API, .NET API, Java API nebo PowerShell použilo udělení přihlašovacích údajů vlastníka prostředku. Tato metoda se použila k vyžádání přístupového tokenu od Azure Active Directory pomocí identifikátoru klienta a přihlašovacích údajů uživatele. Tento přístup ale už nebude fungovat, protože Partnerské centrum vyžaduje vícefaktorové ověřování při použití ověřování aplikací a uživatelů. Pro splnění tohoto požadavku společnost Microsoft zavedla zabezpečenou a škálovatelnou rozhraní pro ověřování partnerů Cloud Solution Provider (CSP) a dodavatelů ovládacích panelů (CPV) pomocí vícefaktorového ověřování. Tato rozhraní se označuje jako Model zapezpečených aplikací a skládá se z procesu souhlasu a žádosti o přístupový token pomocí obnovovacího tokenu.
 
 ### <a name="partner-consent"></a>Souhlas partnera
 
-Proces souhlasu s partnerem je interaktivní proces, ve kterém se partner ověřuje pomocí služby Multi-Factor Authentication, souhlasí s aplikací a je uložený v zabezpečeném úložišti, jako je Azure Key Vault. Pro účely tohoto procesu doporučujeme použít vyhrazený účet pro účely integrace.
+Proces souhlasu partnera je interaktivní proces, ve kterém se partner ověřuje pomocí vícefaktorového ověřování, souhlasí s aplikací a obnovovací token je uložený v zabezpečeném úložišti, jako je Azure Key Vault. Pro tento proces doporučujeme použít vyhrazený účet pro účely integrace.
 
 > [!IMPORTANT]
-> Pro účet služby, který se používá v procesu souhlasu s partnerem, by mělo být povoleno příslušné řešení Multi-Factor Authentication. Pokud není, výsledný obnovovací token nebude kompatibilní s požadavky na zabezpečení.
+> Pro účet služby použitý v procesu souhlasu partnera by mělo být povolené vhodné řešení vícefaktorového ověřování. Pokud tomu tak není, výsledný obnovovací token nebude splňovat požadavky na zabezpečení.
 
-### <a name="samples-for-app--user-authentication"></a>Ukázky pro ověřování aplikací a uživatelů
+### <a name="samples-for-app--user-authentication"></a>Ukázky ověřování aplikací a uživatelů
 
-Proces souhlasu s partnerem je možné provést několika způsoby. Abychom pomohli partnerům pochopit, jak provést jednotlivé požadované operace, vyvinuli jsme následující ukázky. Při implementaci vhodného řešení ve vašem prostředí je důležité vyvíjet řešení, které je stížností se standardy kódování a zásadami zabezpečení.
+Proces souhlasu partnera je možné provést několika způsoby. Aby partneři pochopili, jak provést jednotlivé požadované operace, vyvinuli jsme následující ukázky. Při implementaci vhodného řešení ve vašem prostředí je důležité vyvinout řešení, které je v souladu s vašimi standardy kódování a zásadami zabezpečení.
 
 ## <a name="net-appuser-authentication"></a>.NET (ověřování aplikací a uživatelů)
 
-Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model/keyvault) ukazuje, jak používat web vyvinutý pomocí ASP.NET k zachycení souhlasu, vyžádání obnovovacího tokenu a bezpečnému uložení v Azure Key Vault. Chcete-li vytvořit požadované požadavky pro tuto ukázku, proveďte následující kroky.
+Ukázkový [projekt souhlasu](https://github.com/Microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model/keyvault) partnera ukazuje, jak využít web vyvinutý pomocí ASP.NET k zachycení souhlasu, vyžádání obnovovacího tokenu a jeho bezpečnému uložení v Azure Key Vault. Provedením následujících kroků vytvořte požadované součásti pro tuto ukázku.
 
-1. Vytvořte instanci Azure Key Vault pomocí Azure Portal nebo následujících příkazů PowerShellu. Před provedením příkazu nezapomeňte odpovídajícím způsobem upravit hodnoty parametrů. Název trezoru musí být jedinečný.
+1. Vytvořte instanci služby Azure Key Vault pomocí Azure Portal nebo následujících příkazů PowerShellu. Před spuštěním příkazu nezapomeňte odpovídajícím způsobem upravit hodnoty parametrů. Název trezoru musí být jedinečný.
 
     ```azurepowershell-interactive
     Login-AzureRmAccount
@@ -130,7 +125,7 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     New-AzureRmKeyVault -Name 'Contoso-Vault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
     ```
 
-    Další informace o vytváření Azure Key Vault najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](/azure/key-vault/quick-create-portal) nebo [rychlý Start: nastavení a načtení tajného klíče ze Azure Key Vault pomocí prostředí PowerShell](/azure/key-vault/quick-create-powershell). Pak nastavte a načtěte tajný klíč.
+    Další informace o vytvoření Azure Key Vault najdete v tématu Rychlý [start:](/azure/key-vault/quick-create-portal) Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure Portal nebo Rychlý start: Nastavení a načtení tajného klíče z [Azure Key Vault pomocí PowerShellu.](/azure/key-vault/quick-create-powershell) Potom nastavte a načtěte tajný kód.
 
 2. Vytvořte aplikaci Azure AD a klíč pomocí Azure Portal nebo následujících příkazů.
 
@@ -146,9 +141,9 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     Write-Host "ApplicationSecret   = $($password.Value)"
     ```
 
-    Nezapomeňte si poznamenat identifikátor aplikace a tajné hodnoty, protože se použijí v následujících krocích.
+    Nezapomeňte si poznamenat hodnoty identifikátoru a tajného kódu aplikace, protože je použijete v následujících krocích.
 
-3. Udělte nově vytvořeným aplikacím Azure AD oprávnění číst tajné klíče pomocí Azure Portal nebo následujících příkazů.
+3. Udělte nově vytvořené aplikaci Azure AD oprávnění ke čtení tajných kódů pomocí Azure Portal nebo následujících příkazů.
 
     ```azurepowershell-interactive
     $app = Get-AzureADApplication -Filter {AppId -eq 'ENTER-APP-ID-HERE'}
@@ -156,22 +151,22 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $app.ObjectId -PermissionsToSecrets get
     ```
 
-4. Vytvořte aplikaci Azure AD, která je nakonfigurovaná pro partnerské Centrum. Provedením následujících akcí dokončete tento krok.
+4. Vytvořte aplikaci Azure AD, která je nakonfigurovaná pro Partnerské centrum. K dokončení tohoto kroku proveďte následující akce.
 
-    - Přejděte do funkce [Správa aplikací](https://partner.microsoft.com/pcv/apiintegration/appmanagement) na řídicím panelu partnerského centra.
-    - Klikněte na *Přidat novou webovou aplikaci* a vytvořte novou aplikaci Azure AD.
+    - Přejděte na [funkci Správa aplikací řídicího](https://partner.microsoft.com/pcv/apiintegration/appmanagement) panelu Partnerské centrum.
+    - Vyberte *Přidat novou webovou aplikaci* a vytvořte novou aplikaci Azure AD.
 
-    Nezapomeňte zdokumentovat *ID aplikace** ID účtu * * a hodnoty *klíče* , protože se použijí v následujících krocích.
+    Nezapomeňte zdokumentovat *hodnoty ID aplikace,**ID účtu** a *Klíč,* protože je použijete v následujících krocích.
 
-5. Pomocí sady Visual Studio naklonujte úložiště [partner-Center-dotnet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) nebo použijte následující příkaz.
+5. [Naklonovat úložiště Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) Visual Studio nebo následujícím příkazem.
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-6. Otevřete projekt *PartnerConsent* , který se nachází v `Partner-Center-DotNet-Samples\secure-app-model\keyvault` adresáři.
+6. Otevřete projekt *PartnerConsent* v `Partner-Center-DotNet-Samples\secure-app-model\keyvault` adresáři .
 
-7. Naplňte nastavení aplikace nalezené v [web.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/PartnerConsent/Web.config)
+7. Vyplňte nastavení aplikace nalezená v [web.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/PartnerConsent/Web.config)
 
     ```xml
     <!-- AppID that represents CSP application -->
@@ -200,15 +195,15 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     ```
 
     > [!IMPORTANT]
-    > Citlivé informace, jako jsou tajné klíče aplikace, by neměly být uloženy v konfiguračních souborech. To bylo provedeno, protože se jedná o ukázkovou aplikaci. V produkční aplikaci důrazně doporučujeme používat ověřování pomocí certifikátů. Další informace najdete v tématu [přihlašovací údaje certifikátu pro ověřování aplikací]( /azure/active-directory/develop/active-directory-certificate-credentials).
+    > Citlivé informace, jako jsou tajné kódy aplikací, by neměly být uložené v konfiguračních souborech. Bylo to tady, protože se jedná o ukázkovou aplikaci. U produkční aplikace důrazně doporučujeme používat ověřování pomocí certifikátů. Další informace najdete v tématu Přihlašovací [údaje certifikátu pro ověřování aplikací.]( /azure/active-directory/develop/active-directory-certificate-credentials)
 
-8. Když spustíte tento ukázkový projekt, zobrazí se výzva k ověření. Po úspěšném ověření se z Azure AD vyžádá přístupový token. Informace vrácené z Azure AD obsahují obnovovací token, který je uložený v nakonfigurované instanci Azure Key Vault.
+8. Při spuštění tohoto ukázkového projektu se zobrazí výzva k ověření. Po úspěšném ověření se z Azure AD vyžádá přístupový token. Informace vrácené z Azure AD zahrnují obnovovací token, který je uložený v nakonfigurované instanci Azure Key Vault.
 
 ## <a name="java-appuser-authentication"></a>Java (ověřování aplikací a uživatelů)
 
-Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model/keyvault) ukazuje, jak používat web vyvinutý pomocí JSP k zachycení souhlasu, vyžádání obnovovacího tokenu a zabezpečeného úložiště v Azure Key Vault. Pro vytvoření požadovaných požadavků pro tuto ukázku proveďte následující kroky.
+Ukázkový [projekt souhlasu](https://github.com/Microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model/keyvault) partnera ukazuje, jak využít web vyvinutý pomocí JSP k zachycení souhlasu, vyžádání obnovovacího tokenu a zabezpečeného úložiště v Azure Key Vault. Následujícím způsobem vytvořte požadované součásti pro tuto ukázku.
 
-1. Vytvořte instanci Azure Key Vault pomocí Azure Portal nebo následujících příkazů PowerShellu. Před provedením příkazu nezapomeňte odpovídajícím způsobem upravit hodnoty parametrů. Název trezoru musí být jedinečný.
+1. Vytvořte instanci služby Azure Key Vault pomocí Azure Portal nebo následujících příkazů PowerShellu. Před spuštěním příkazu nezapomeňte odpovídajícím způsobem upravit hodnoty parametrů. Název trezoru musí být jedinečný.
 
     ```azurepowershell-interactive
     Login-AzureRmAccount
@@ -219,7 +214,7 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     New-AzureRmKeyVault -Name 'Contoso-Vault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
     ```
 
-    Další informace o vytváření Azure Key Vault najdete v tématu [rychlý Start: nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure Portal](/azure/key-vault/quick-create-portal) nebo [rychlý Start: nastavení a načtení tajného klíče ze Azure Key Vault pomocí prostředí PowerShell](/azure/key-vault/quick-create-powershell).
+    Další informace o vytvoření Azure Key Vault najdete v tématu Rychlý [start:](/azure/key-vault/quick-create-portal) Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure Portal nebo Rychlý start: Nastavení a načtení tajného klíče z [Azure Key Vault pomocí PowerShellu.](/azure/key-vault/quick-create-powershell)
 
 2. Vytvořte aplikaci Azure AD a klíč pomocí Azure Portal nebo následujících příkazů.
 
@@ -235,9 +230,9 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     Write-Host "ApplicationSecret   = $($password.Value)"
     ```
 
-    Nezapomeňte zdokumentovat identifikátor aplikace a tajné hodnoty, protože budou použity v následujících krocích.
+    Nezapomeňte zdokumentovat hodnoty identifikátoru a tajného kódu aplikace, protože je použijete v následujících krocích.
 
-3. Udělte nově vytvořeným aplikacím Azure AD oprávnění číst tajné klíče pomocí Azure Portal nebo následujících příkazů.
+3. Udělte nově vytvořené aplikaci Azure AD oprávnění ke čtení tajných kódů pomocí Azure Portal nebo následujících příkazů.
 
     ```azurepowershell-interactive
     $app = Get-AzureADApplication -Filter {AppId -eq 'ENTER-APP-ID-HERE'}
@@ -245,22 +240,22 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -ObjectId $app.ObjectId -PermissionsToSecrets get
     ```
 
-4. Vytvořte aplikaci Azure AD, která je nakonfigurovaná pro partnerské Centrum. K dokončení tohoto kroku proveďte následující kroky.
+4. Vytvořte aplikaci Azure AD, která je nakonfigurovaná pro Partnerské centrum. K dokončení tohoto kroku proveďte následující kroky.
 
-    - Přejděte do funkce [Správa aplikací](https://partner.microsoft.com/pcv/apiintegration/appmanagement) na řídicím panelu partnerského centra.
-    - Klikněte na *Přidat novou webovou aplikaci* a vytvořte novou aplikaci Azure AD.
+    - Přejděte na [funkci Správa aplikací řídicího](https://partner.microsoft.com/pcv/apiintegration/appmanagement) panelu Partnerské centrum.
+    - Vyberte *Přidat novou webovou aplikaci* a vytvořte novou aplikaci Azure AD.
 
-    Nezapomeňte zdokumentovat *ID aplikace** ID účtu * * a hodnoty *klíče* , protože se použijí v následujících krocích.
+    Nezapomeňte zdokumentovat *hodnoty ID aplikace,**ID účtu** a *Klíč,* protože je použijete v následujících krocích.
 
-5. Naklonujte úložiště [partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) pomocí následujícího příkazu.
+5. [Naklonování úložiště Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) pomocí následujícího příkazu
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-6. Otevřete projekt *PartnerConsent* , který se nachází v `Partner-Center-Java-Samples\secure-app-model\keyvault` adresáři.
+6. Otevřete projekt *PartnerConsent* v `Partner-Center-Java-Samples\secure-app-model\keyvault` adresáři .
 
-7. Naplnit nastavení aplikace nalezené v souboru [web.xml](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/partnerconsent/src/main/webapp/WEB-INF/web.xml)
+7. Naplnění nastavení aplikace nalezených v [web.xml](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/partnerconsent/src/main/webapp/WEB-INF/web.xml) souboru
 
     ```xml
     <filter>
@@ -294,31 +289,31 @@ Ukázkový projekt [souhlasu s partnerem](https://github.com/Microsoft/Partner-C
     ```
 
     > [!IMPORTANT]
-    > Citlivé informace, jako jsou tajné klíče aplikace, by neměly být uloženy v konfiguračních souborech. To bylo provedeno, protože se jedná o ukázkovou aplikaci. V produkční aplikaci důrazně doporučujeme použít ověřování založené na certifikátech. Další informace najdete v tématu [Key Vault ověřování certifikátů](https://github.com/Azure-Samples/key-vault-java-certificate-authentication).
+    > Citlivé informace, jako jsou tajné kódy aplikací, by neměly být uložené v konfiguračních souborech. Bylo to tady, protože se jedná o ukázkovou aplikaci. U produkční aplikace důrazně doporučujeme používat ověřování na základě certifikátů. Další informace najdete v tématu [Key Vault certifikátu](https://github.com/Azure-Samples/key-vault-java-certificate-authentication).
 
-8. Když spustíte tento ukázkový projekt, zobrazí se výzva k ověření. Po úspěšném ověření se z Azure AD vyžádá přístupový token. Informace vrácené z Azure AD obsahují obnovovací token, který je uložený v nakonfigurované instanci Azure Key Vault.
+8. Při spuštění tohoto ukázkového projektu se zobrazí výzva k ověření. Po úspěšném ověření se z Azure AD vyžádá přístupový token. Informace vrácené z Azure AD zahrnují obnovovací token, který je uložený v nakonfigurované instanci Azure Key Vault.
 
-## <a name="cloud-solution-provider-authentication"></a>Ověřování poskytovatele Cloud Solution Provider
+## <a name="cloud-solution-provider-authentication"></a>Cloud Solution Provider ověřování
 
-Partneři poskytovatele Cloud Solution Provider můžou použít obnovovací token získaný prostřednictvím procesu [souhlasu s partnerem](#partner-consent) .
+Cloud Solution Provider partneři mohou použít obnovovací token získaný prostřednictvím procesu [souhlasu partnera.](#partner-consent)
 
-### <a name="samples-for-cloud-solution-provider-authentication"></a>Ukázky pro ověřování poskytovatele Cloud Solution Provider
+### <a name="samples-for-cloud-solution-provider-authentication"></a>Ukázky pro Cloud Solution Provider ověřování
 
-Abychom pomohli partnerům pochopit, jak provést jednotlivé požadované operace, vyvinuli jsme následující ukázky. Při implementaci vhodného řešení ve vašem prostředí je důležité vyvíjet řešení, které je stížností se standardy kódování a zásadami zabezpečení.
+Aby partneři pochopili, jak provést jednotlivé požadované operace, vyvinuli jsme následující ukázky. Při implementaci vhodného řešení ve vašem prostředí je důležité vyvinout řešení, které je v souladu s vašimi standardy kódování a zásadami zabezpečení.
 
 ## <a name="net-csp-authentication"></a>.NET (ověřování CSP)
 
-1. Pokud jste to ještě neudělali, proveďte [proces souhlasu s partnerem](#partner-consent).
+1. Pokud jste to ještě neudělali, proveďte proces [souhlasu partnera](#partner-consent).
 
-2. Naklonujte úložiště s možností [partner-Center-dotnet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) pomocí sady Visual Studio nebo následujícího příkazu.
+2. [Naklonování úložiště Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) pomocí Visual Studio nebo následujícího příkazu
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-3. Otevřete projekt, který se `CSPApplication` nachází v `Partner-Center-DotNet-Samples\secure-app-model\keyvault` adresáři.
+3. Otevřete projekt `CSPApplication` nalezený v `Partner-Center-DotNet-Samples\secure-app-model\keyvault` adresáři .
 
-4. Aktualizujte nastavení aplikace nalezené v souboru [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/App.config) .
+4. Aktualizujte nastavení aplikace, které najdete v [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/App.config) souboru.
 
     ```xml
     <!-- AppID that represents CSP application -->
@@ -342,7 +337,7 @@ Abychom pomohli partnerům pochopit, jak provést jednotlivé požadované opera
     <add key="ida:KeyVaultClientSecret" value="" />
     ```
 
-5. Nastavte příslušné hodnoty pro proměnné **PartnerId** a **KódZákazníka** , které se nacházejí v souboru [program.cs](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/Program.cs) .
+5. Nastavte odpovídající hodnoty pro proměnné **PartnerId** a **CustomerId** v souboru [Program.cs.](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CSPApplication/Program.cs)
 
     ```csharp
     // The following properties indicate which partner and customer context the calls are going to be made.
@@ -350,21 +345,21 @@ Abychom pomohli partnerům pochopit, jak provést jednotlivé požadované opera
     string CustomerId = "<Customer tenant id>";
     ```
 
-6. Když spustíte tento ukázkový projekt, získá obnovovací token získaný během procesu souhlasu s partnerem. Pak se požádá o přístupový token, který bude komunikovat s SDK partnerského centra za jménem partnera. Nakonec vyžaduje přístupový token, který bude komunikovat s Microsoft Graph jménem zadaného zákazníka.
+6. Když tento ukázkový projekt spustíte, získá obnovovací token získaný během procesu souhlasu partnera. Pak požádá o přístupový token k interakci s SDK pro Partnerské centrum jménem partnera. Nakonec požádá o přístupový token pro interakci s Microsoftem Graph jménem zadaného zákazníka.
 
 ## <a name="java-csp-authentication"></a>Java (ověřování CSP)
 
-1. Pokud jste to ještě neudělali, proveďte [proces souhlasu s partnerem](#partner-consent).
+1. Pokud jste to ještě neudělali, proveďte proces [souhlasu partnera](#partner-consent).
 
-2. Naklonujte úložiště [partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) pomocí sady Visual Studio nebo následujícího příkazu.
+2. [Naklonování úložiště Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) pomocí Visual Studio nebo následujícího příkazu
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-3. Otevřete projekt, který se `cspsample` nachází v `Partner-Center-Java-Samples\secure-app-model\keyvault` adresáři.
+3. Otevřete projekt `cspsample` nalezený v `Partner-Center-Java-Samples\secure-app-model\keyvault` adresáři .
 
-4. Aktualizujte nastavení aplikace nalezené v souboru [Application. Properties](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cspsample/src/main/resources/application.properties) .
+4. Aktualizujte nastavení aplikace v souboru [application.properties.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cspsample/src/main/resources/application.properties)
 
      ```java
     azuread.authority=https://login.microsoftonline.com
@@ -376,34 +371,34 @@ Abychom pomohli partnerům pochopit, jak provést jednotlivé požadované opera
     partnercenter.clientSecret=
     ```
 
-5. Když spustíte tento ukázkový projekt, získá obnovovací token získaný během procesu souhlasu s partnerem. Pak se požádá o přístupový token, který bude komunikovat s SDK partnerského centra za jménem partnera.
+5. Když tento ukázkový projekt spustíte, získá obnovovací token získaný během procesu souhlasu partnera. Pak požádá o přístupový token k interakci s SDK pro Partnerské centrum jménem partnera.
 
-6. Volitelné – Odkomentujte volání funkcí *RunAzureTask* a *RunGraphTask* , pokud chcete zjistit, jak pracovat s Azure Resource Manager a Microsoft Graph jménem zákazníka.
+6. Volitelné – odkomentování volání funkcí *RunAzureTask* a *RunGraphTask,* pokud chcete vidět, jak pracovat s Azure Resource Manager a Microsoft Graph jménem zákazníka.
 
-## <a name="control-panel-provider-authentication"></a>Ověřování poskytovatele ovládacích panelů
+## <a name="control-panel-provider-authentication"></a>Ovládací panely zprostředkovatele ověřování
 
-Dodavatelé ovládacích panelů potřebují, aby každý partner, který podporuje, prováděli proces [souhlasu s partnerem](#partner-consent) . Po dokončení tohoto procesu se k přístupu k REST API partnerského centra a rozhraní .NET API použije aktualizační token získaný prostřednictvím tohoto procesu.
+Dodavatelé ovládacích panelů musí mít každého partnera, který podporují, aby mohli provést [proces souhlasu partnera.](#partner-consent) Po dokončení se obnovovací token získaný prostřednictvím tohoto procesu použije pro přístup k Partnerské centrum REST API a rozhraní .NET API.
 
-### <a name="samples-for-cloud-panel-provider-authentication"></a>Ukázky pro ověřování poskytovatele na panelu cloudu
+### <a name="samples-for-cloud-panel-provider-authentication"></a>Ukázky pro ověřování poskytovatele cloudových panelů
 
-Aby mohli prodejci v Ovládacích panelech porozumět tomu, jak provést jednotlivé požadované operace, vyvinuli jsme následující ukázky. Při implementaci vhodného řešení ve vašem prostředí je důležité vyvíjet řešení, které je stížností se standardy kódování a zásadami zabezpečení.
+Aby dodavatelé ovládacích panelů pochopili, jak provést jednotlivé požadované operace, vyvinuli jsme následující ukázky. Při implementaci vhodného řešení ve vašem prostředí je důležité vyvinout řešení, které je v souladu s vašimi standardy kódování a zásadami zabezpečení.
 
 ## <a name="net-cpv-authentication"></a>.NET (ověřování CPV)
 
-1. Vytvořte a nasaďte proces pro partnery poskytovatele Cloud Solution Provider a poskytněte odpovídající souhlas. Další informace najdete v tématu o [souhlasu partnera](#partner-consent).
+1. Vytvořte a nasaďte proces, který Cloud Solution Provider partnerům s odpovídajícím souhlasem. Další informace najdete v příkladu se [souhlasem partnera.](#partner-consent)
 
     > [!IMPORTANT]
-    > Přihlašovací údaje uživatele z partnera poskytovatele Cloud Solution Provider by se neměly ukládat. Obnovovací token získaný prostřednictvím procesu souhlasu s partnerem by měl být uložen a použit k vyžádání přístupových tokenů pro interakci s jakýmkoli rozhraním API společnosti Microsoft.
+    > Přihlašovací údaje uživatele od Cloud Solution Provider by se neměly ukládat. Obnovovací token získaný prostřednictvím procesu souhlasu partnera by se měl uložit a použít k vyžádání přístupových tokenů pro interakci s libovolným rozhraním API Microsoftu.
 
-2. Naklonujte úložiště s možností [partner-Center-dotnet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) pomocí sady Visual Studio nebo následujícího příkazu.
+2. [Naklonování úložiště Partner-Center-DotNet-Samples](https://github.com/Microsoft/Partner-Center-DotNet-Samples) pomocí Visual Studio nebo následujícího příkazu
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-DotNet-Samples.git
     ```
 
-3. Otevřete projekt, který se `CPVApplication` nachází v `Partner-Center-DotNet-Samples\secure-app-model\keyvault` adresáři.
+3. Otevřete projekt `CPVApplication` nalezený v `Partner-Center-DotNet-Samples\secure-app-model\keyvault` adresáři .
 
-4. Aktualizujte nastavení aplikace nalezené v souboru [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/App.config) .
+4. Aktualizujte nastavení aplikace, které najdete v [App.config](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/App.config) souboru.
 
     ```xml
     <!-- AppID that represents Control panel vendor application -->
@@ -428,7 +423,7 @@ Aby mohli prodejci v Ovládacích panelech porozumět tomu, jak provést jednotl
     <add key="ida:KeyVaultClientSecret" value="" />
     ```
 
-5. Nastavte příslušné hodnoty pro proměnné **PartnerId** a **KódZákazníka** , které se nacházejí v souboru [program.cs](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/Program.cs) .
+5. Nastavte odpovídající hodnoty pro proměnné **PartnerId** a **CustomerId** v souboru [Program.cs.](https://github.com/Microsoft/Partner-Center-DotNet-Samples/blob/master/secure-app-model/keyvault/CPVApplication/Program.cs)
 
     ```csharp
     // The following properties indicate which partner and customer context the calls are going to be made.
@@ -436,7 +431,7 @@ Aby mohli prodejci v Ovládacích panelech porozumět tomu, jak provést jednotl
     string CustomerId = "<Customer tenant id>";
     ```
 
-6. Když spustíte tento ukázkový projekt, získá obnovovací token pro zadaného partnera. Pak požádá o přístupový token pro přístup k partnerskému centru a k Azure AD Graph jménem partnera. Další úloha, kterou provede, je odstranění a vytvoření oprávnění udělených pro tenanta zákazníka. Vzhledem k tomu, že mezi dodavatelem ovládacího panelu a zákazníkem neexistuje žádný vztah, musí být tato oprávnění přidána pomocí rozhraní API partnerského centra. Následující příklad ukazuje, jak to provést.
+6. Když tento ukázkový projekt spustíte, získá obnovovací token pro zadaného partnera. Potom požádá o přístupový token pro přístup Partnerské centrum a Azure AD Graph jménem partnera. Dalším úkolem, který provede, je odstranění a vytvoření udělených oprávnění do tenanta zákazníka. Vzhledem k tomu, že mezi dodavatelem ovládacích panelů a zákazníkem neexistuje žádný vztah, je potřeba tato oprávnění přidat pomocí Partnerské centrum API. Následující příklad ukazuje, jak toho dosáhnout.
 
     ```csharp
     JObject contents = new JObject
@@ -470,24 +465,24 @@ Aby mohli prodejci v Ovládacích panelech porozumět tomu, jak provést jednotl
         contents.ToString());
     ```
 
-Po navázání těchto oprávnění ukázka provede operace pomocí Azure AD Graph jménem zákazníka.
+Po navázání těchto oprávnění ukázka provede operace pomocí služby Azure AD Graph jménem zákazníka.
 
 ## <a name="java-cpv-authentication"></a>Java (ověřování CPV)
 
-1. Vytvořte a nasaďte proces pro partnery poskytovatele Cloud Solution Provider a poskytněte odpovídající souhlas. Další informace a příklad najdete v tématu o [souhlasu partnera](#partner-consent).
+1. Vytvořte a nasaďte proces, který Cloud Solution Provider partnerům s odpovídajícím souhlasem. Další informace a příklad najdete v tématu o [souhlasu partnera.](#partner-consent)
 
     > [!IMPORTANT]
-    > Přihlašovací údaje uživatele z partnera poskytovatele Cloud Solution Provider by se neměly ukládat. Obnovovací token získaný prostřednictvím procesu souhlasu s partnerem by měl být uložen a použit k vyžádání přístupových tokenů pro interakci s jakýmkoli rozhraním API společnosti Microsoft.
+    > Přihlašovací údaje uživatele od Cloud Solution Provider by se neměly ukládat. Obnovovací token získaný prostřednictvím procesu souhlasu partnera by se měl uložit a použít k vyžádání přístupových tokenů pro interakci s libovolným rozhraním API Microsoftu.
 
-2. Naklonujte úložiště [partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) pomocí následujícího příkazu.
+2. [Naklonování úložiště Partner-Center-Java-Samples](https://github.com/Microsoft/Partner-Center-Java-Samples) pomocí následujícího příkazu
 
     ```bash
     git clone https://github.com/Microsoft/Partner-Center-Java-Samples.git
     ```
 
-3. Otevřete projekt, který se `cpvsample` nachází v `Partner-Center-Java-Samples\secure-app-model\keyvault` adresáři.
+3. Otevřete projekt `cpvsample` nalezený v `Partner-Center-Java-Samples\secure-app-model\keyvault` adresáři .
 
-4. Aktualizujte nastavení aplikace nalezené v souboru [Application. Properties](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/resources/application.properties) .
+4. Aktualizujte nastavení aplikace v souboru [application.properties.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/resources/application.properties)
 
     ```java
     azuread.authority=https://login.microsoftonline.com
@@ -500,16 +495,16 @@ Po navázání těchto oprávnění ukázka provede operace pomocí Azure AD Gra
     partnercenter.displayName=
     ```
 
-    Hodnota `partnercenter.displayName` by měla být zobrazovaným názvem vaší aplikace Marketplace.
+    Hodnota by `partnercenter.displayName` měla být zobrazovaný název vaší aplikace marketplace.
 
-5. Nastavte příslušné hodnoty pro proměnné **partnerId** a **KódZákazníka** , které se nacházejí v souboru [program. Java](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/java/com/microsoft/store/samples/secureappmodel/cpvsample/Program.java) .
+5. Nastavte odpovídající hodnoty pro **proměnné partnerId** a **customerId** v souboru [Program.java.](https://github.com/Microsoft/Partner-Center-Java-Samples/blob/master/secure-app-model/keyvault/cpvsample/src/main/java/com/microsoft/store/samples/secureappmodel/cpvsample/Program.java)
 
     ```java
     partnerId = "SPECIFY-THE-PARTNER-TENANT-ID-HERE";
     customerId = "SPECIFY-THE-CUSTOMER-TENANT-ID-HERE";
     ```
 
-6. Když spustíte tento ukázkový projekt, získá obnovovací token pro zadaného partnera. Potom vyžaduje přístupový token pro přístup k partnerskému centru jménem partnera. Další úloha, kterou provede, je odstranění a vytvoření oprávnění udělených pro tenanta zákazníka. Vzhledem k tomu, že mezi dodavatelem ovládacího panelu a zákazníkem neexistuje žádný vztah, musí být tato oprávnění přidána pomocí rozhraní API partnerského centra. Následující příklad ukazuje, jak udělit oprávnění.
+6. Když tento ukázkový projekt spustíte, získá obnovovací token pro zadaného partnera. Potom požádá o přístupový token pro přístup Partnerské centrum jménem partnera. Dalším úkolem, který provede, je odstranění a vytvoření udělených oprávnění do tenanta zákazníka. Vzhledem k tomu, že mezi dodavatelem ovládacích panelů a zákazníkem neexistuje žádný vztah, je potřeba tato oprávnění přidat pomocí Partnerské centrum API. Následující příklad ukazuje, jak udělit oprávnění.
 
     ```java
     ApplicationGrant azureAppGrant = new ApplicationGrant();
@@ -547,4 +542,4 @@ Po navázání těchto oprávnění ukázka provede operace pomocí Azure AD Gra
         consent);
     ```
 
-Pokud chcete vidět, jak pracovat s Azure Resource Manager a Microsoft Graph jménem zákazníka, odkomentujte volání funkcí *RunAzureTask* a *RunGraphTask* .
+Odkomentování volání funkcí *RunAzureTask* a *RunGraphTask,* pokud chcete vidět, jak pracovat s Azure Resource Manager a Microsoft Graph jménem zákazníka.

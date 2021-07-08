@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 6c837c1c220e334df82e75eb680b6012862c9686
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: d22be53a5be4efcda76a568578468615495febb6
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766995"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760585"
 ---
 # <a name="get-a-customers-billing-profile"></a>Získání fakturačního profilu zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá Fakturační profil zákazníka.
 
@@ -43,7 +38,7 @@ Pokud chcete získat Fakturační profil zákazníka, použijte svou kolekci [**
 var billingProfile = partnerOperations.Customers.ById(selectedCustomerId).Profiles.Billing.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSamples **Třída**: GetCustomerBillingProfile.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **třída**: GetCustomerBillingProfile. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -67,7 +62,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

@@ -1,25 +1,21 @@
 ---
 title: Správa objednávek
-description: Tato část popisuje způsob, jakým partneři poskytovatele Cloud Solution Provider můžou prostřednictvím partnerského centra programově spravovat Zákaznické objednávky a odběry.
+description: tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra programově spravovat zákaznické objednávky a odběry.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b3df171ecf0e86cb07372deec420244af56f05d1
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 390baa87c96706e60582811774b74fcf11567058
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766912"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548154"
 ---
 # <a name="manage-orders"></a>Správa objednávek
 
-**Platí pro**
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tato část popisuje způsob, jakým partneři poskytovatele Cloud Solution Provider můžou pomocí partnerského centra programově spravovat Zákaznické objednávky a odběry.
+tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra programově spravovat zákaznické objednávky a odběry.
 
 ## <a name="purchase-azure-reserved-vm-instances"></a>Koupit Azure Reserved VM Instances
 

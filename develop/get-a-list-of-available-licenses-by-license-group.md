@@ -1,37 +1,33 @@
 ---
 title: Získání seznamu dostupných licencí podle skupiny licencí
-description: Jak získat seznam licencí pro zadané skupiny licencí, kteří jsou k dispozici pro uživatele zadaného zákazníka.
+description: Jak získat seznam licencí pro zadané skupiny licencí dostupné uživatelům zadaného zákazníka.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 5092bc73107231d602c1465c8d157cdf5499c913
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: de59dfccf723c8f2411d9dadc51beb88688d5b02
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766936"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874512"
 ---
 # <a name="get-a-list-of-available-licenses-by-license-group"></a>Získání seznamu dostupných licencí podle skupiny licencí
 
-**Platí pro**
-
-- Partnerské centrum
-
-Jak získat seznam licencí pro zadané skupiny licencí, kteří jsou k dispozici pro uživatele zadaného zákazníka.
+Jak získat seznam licencí pro zadané skupiny licencí dostupné uživatelům zadaného zákazníka.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Seznam jednoho nebo více identifikátorů skupin licencí.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat seznam dostupných licencí pro zadané skupiny licencí, začněte tím, že vytvoříte instanci [seznamu](/dotnet/api/system.collections.generic.list-1) typu [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)a pak do seznamu přidáte skupiny licencí. V dalším kroku použijte k identifikaci zákazníka metodu [**IAggregatePartner. Customer. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Potom Získejte hodnotu vlastnosti [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) , která načte rozhraní pro operace shromažďování skladových položek s předplacenou odběrateli. Nakonec předejte seznam skupin licencí do metody [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) a načtěte seznam předplacených skladových položek s podrobnostmi o dostupných licenčních jednotkách.
+Pokud chcete získat seznam dostupných licencí pro zadané skupiny licencí, začněte vytvořením instance [seznamu](/dotnet/api/system.collections.generic.list-1) typu [**LicenseGroupId**](/dotnet/api/microsoft.store.partnercenter.models.licenses.licensegroupid)a pak skupiny licencí přidejte do seznamu. Dále k identifikaci zákazníka použijte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Pak získejte hodnotu vlastnosti [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) a načtěte rozhraní pro operace kolekce SKU odebíraných zákazníkem. Nakonec předejte seznam skupin licencí metodě [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) nebo [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) která načte seznam předplacených skladových položek s podrobnostmi o dostupných licenčních jednotkách.
 
 ``` csharp
 // string selectedCustomerId;
@@ -50,28 +46,28 @@ List<LicenseGroupId> licenseGroupIds = new List<LicenseGroupId>() { LicenseGroup
 var customerUserBothAadAndSfbSubscribedSkus = partnerOperations.Customers.ById(selectedCustomerId).SubscribedSkus.Get(licenseGroupIds);
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                                  |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = Group1 HTTP/1.1                        |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = skupina2 HTTP/1.1                        |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus? LicenseGroupIds = Group1&LicenseGroupIds = skupina2 HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{id_zákazníka}/subscribedskus?licenseGroupIds=Group1 HTTP/1.1                        |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscribedskus?licenseGroupIds=Group2 HTTP/1.1                        |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscribedskus?licenseGroupIds=Group1&licenseGroupIds=Group2 HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K identifikaci zákazníka a skupin licencí použijte následující cestu a parametry dotazu.
+Pomocí následující cesty a parametrů dotazu identifikujte zákazníka a skupiny licencí.
 
 | Název            | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                                                           |
 |-----------------|--------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.                                                                                                                                                                                                                 |
-| licenseGroupIds | řetězec | No       | Hodnota výčtu, která označuje skupinu licencí přiřazených licencí. Platné hodnoty: group1, Skupina2 Group1 – Tato skupina obsahuje všechny produkty, jejichž licence se dají spravovat v Azure Active Directory (AAD). Skupina2 – Tato skupina má pouze licence na produkty Minecraftu. |
+| id zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.                                                                                                                                                                                                                 |
+| licenseGroupIds | řetězec | No       | Hodnota výčtu, která označuje skupinu licencí přiřazených licencí. Platné hodnoty: Group1, Group2 Group1 – tato skupina obsahuje všechny produkty, jejichž licenci je možné spravovat v Azure Active Directory (AAD). Skupina2 – Tato skupina má pouze Minecraft licence k produktu. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -91,11 +87,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [SubscribedSku](license-resources.md#subscribedsku) .
+V případě úspěchu bude tělo odpovědi obsahovat kolekci prostředků [SubscribedSku.](license-resources.md#subscribedsku)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 
@@ -231,9 +227,9 @@ Date: Sat, 10 Jun 2017 00:19:44 GMT
 }
 ```
 
-### <a name="response-example-no-matching-skus-found"></a>Příklad odpovědi (nenašly se žádné vyhovující SKU)
+### <a name="response-example-no-matching-skus-found"></a>Příklad odpovědi (nenašly se žádné odpovídající skladové položky)
 
-Pokud se pro zadané skupiny licencí nenašly žádné vyhovující odběry SKU, odpověď obsahuje prázdnou kolekci s elementem totalCount, jehož hodnota je 0.
+Pokud pro zadané skupiny licencí nelze najít žádné odpovídající předplacené skladové položky, odpověď obsahuje prázdnou kolekci s elementem totalCount, jehož hodnota je 0.
 
 ```http
 HTTP/1.1 200 OK

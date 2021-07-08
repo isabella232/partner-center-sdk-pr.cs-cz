@@ -7,21 +7,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6b9c9bcd52798006d7f686405f059192a722c7e8
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b76526d97ba9027897fc88954ba45186d58aefb8
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766783"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874155"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-customer"></a>Získat seznam SKU pro produkt (podle zákazníka)
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá kolekci SKU pro konkrétní produkt, který je k dispozici stávajícímu zákazníkovi.
 

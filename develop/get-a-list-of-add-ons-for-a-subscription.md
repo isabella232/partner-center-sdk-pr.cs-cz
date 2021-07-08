@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 4e62ad22cf30c34dedfeb628003c695e33b78758
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: c627f595333a295048b02ec4326dcdc279d07b51
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766863"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874631"
 ---
 # <a name="get-a-list-of-add-ons-for-a-subscription"></a>Získání seznamu doplňků pro předplatné
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek popisuje, jak získat kolekci doplňků, které si zákazník rozhodl přidat do svého prostředku **[předplatného](subscription-resources.md)** .
 
@@ -54,8 +49,8 @@ var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).S
 Příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
-- Třída: **SubscriptionAddons.cs**
+- Project: **PartnerSDK. FeatureSample**
+- Třída: **SubscriptionAddons. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 

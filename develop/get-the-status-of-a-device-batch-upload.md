@@ -4,19 +4,16 @@ description: Jak získat stav nahrávání dávky zařízení pro zadaného zák
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fb887ba257d6fbe68f95ae4b59d701ac4c934860
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: fd8726af41fe4399797f39a0790cf962fde64acc
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767016"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548477"
 ---
 # <a name="get-the-status-of-a-device-batch-upload"></a>Získání stavu nahrání dávek zařízení
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Jak získat stav nahrávání dávky zařízení pro zadaného zákazníka.
 
@@ -26,7 +23,7 @@ Jak získat stav nahrávání dávky zařízení pro zadaného zákazníka.
 
 - ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Identifikátor sledování dávky vrácený v hlavičce umístění při odeslání dávky zařízení. Další informace najdete v tématu [nahrání seznamu zařízení pro zadaného zákazníka](upload-a-list-of-devices-for-the-specified-customer.md).
+- Identifikátor sledování dávky vrácený v hlavičce umístění při odeslání dávky zařízení. další informace najdete v tématu [Upload seznamu zařízení pro zadaného zákazníka](upload-a-list-of-devices-for-the-specified-customer.md).
 
 ## <a name="c"></a>C\#
 
@@ -41,7 +38,7 @@ var status =
     partnerOperations.Customers.ById(selectedCustomerId).BatchUploadStatus.ById(selectedTrackingId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetBatchUploadStatus.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetBatchUploadStatus. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -66,7 +63,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

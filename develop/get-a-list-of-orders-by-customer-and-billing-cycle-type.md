@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 43fe08b0791851f915e2b39a25394db5ffd022ca
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: c52a556887dba065c4ccd1a82d6223624d0ad1f2
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766930"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874223"
 ---
 # <a name="get-a-list-of-orders-by-customer-and-billing-cycle-type"></a>Získání seznamu objednávek podle typu fakturačního cyklu a zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá kolekci prostředků objednávky, které odpovídají danému typu zákazníka a fakturačního cyklu. Mezi časem odeslání objednávky a jejím zobrazením v kolekci objednávek zákazníka dojde k prodlevě až 15 minut.
 

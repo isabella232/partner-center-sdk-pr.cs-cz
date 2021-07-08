@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 3a004f6f8f8de8cd398d82c300793e4f196efaaa
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 6f4fd821879545db4e781fe3202c8ee11f167615
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766787"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874240"
 ---
 # <a name="get-a-list-of-offers-for-a-market"></a>Získání seznamu nabídek pro trh
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá kolekci, která obsahuje všechny nabídky pro určitý trh.
 
@@ -38,7 +33,7 @@ Pokud chcete získat seznam nabídek na daném trhu, použijte svou kolekci **IA
 ResourceCollection<Offer> offers = partnerOperations.Offers.ByCountry("US").Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: offers.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** PartnerSDK. FeatureSample: nabídky. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -54,7 +49,7 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání nab
 
 | Název           | Typ       | Vyžadováno | Popis            |
 |----------------|------------|----------|------------------------|
-| **ID země** | **řetezce** | Y        | ID země nebo oblasti |
+| **ID země** | **řetězec** | Y        | ID země nebo oblasti |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

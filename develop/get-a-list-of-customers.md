@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 2dd8469458809ab38b6d6081adc91d6d1184d2d0
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 840c9d1a61451763d37a19639f99b12f1deb7521
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766961"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874342"
 ---
 # <a name="get-a-list-of-customers"></a>Získání seznamu zákazníků
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek popisuje, jak získat kolekci prostředků, které představují všechny zákazníky partnera.
 
@@ -53,8 +48,8 @@ var customersEnumerator = scopedPartnerOperations.Enumerators.Customers.Create(c
 Příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
-- Třída: **CustomerPaging.cs**
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **CustomerPaging. cs**
 
 ## <a name="java"></a>Java
 

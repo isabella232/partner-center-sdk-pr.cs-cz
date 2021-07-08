@@ -4,19 +4,16 @@ description: Použití rozhraní API partnerského centra pro jednorázovou koup
 ms.date: 10/09/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 17a5f5c1e845ba36a94d7ce909df30e0146ba448
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 1ca2d5b7ad6ba1196d74a8cdb748ab808192d569
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766718"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548375"
 ---
 # <a name="make-a-one-time-purchase"></a>Provedení jednorázového nákupu
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud for US Government
 
 Použití rozhraní API partnerského centra pro jednorázovou koupi softwaru a rezervací produktů, jako jsou odběry softwaru, trvalá verze softwaru a rezervované instance virtuálních počítačů Azure.
 
@@ -178,4 +175,4 @@ Chcete-li získat kolekci podrobností o položce řádku faktury (položky řá
 
 ### <a name="download-an-invoice-as-a-pdf"></a>Stažení faktury jako PDF
 
-Chcete-li načíst výpis faktury ve formátu PDF pomocí ID faktury, přečtěte si téma [získání výpisu faktury](get-invoice-statement.md).
+Pokud chcete načíst výpis faktury ve formuláři PDF pomocí ID faktury, podívejte se na [stránku Získání výpisu faktury.](get-invoice-statement.md)

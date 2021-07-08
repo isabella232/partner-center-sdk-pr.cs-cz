@@ -6,19 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 36fe3b97612adfd26c1b498f31b90f743bf774cb
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 28af1f568f755ba4c50cfac21529d6c677656c8e
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766934"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874257"
 ---
 # <a name="get-a-list-of-devices-for-the-specified-batch-and-customer"></a>Získání seznamu zařízení pro konkrétní dávku a zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
 Tento článek popisuje, jak načíst kolekci zařízení v zadané dávce zařízení pro zadaného zákazníka. Každý prostředek zařízení obsahuje podrobnosti o zařízení.
 
@@ -54,8 +51,8 @@ var devices =
 Příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **ukázky sady SDK pro partnerských Center**
-- Třída: **GetDevices.cs**
+- Project: **ukázky sady SDK pro partnerských Center**
+- Třída: **GetDevices. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -80,7 +77,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

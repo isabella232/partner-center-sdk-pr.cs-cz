@@ -4,20 +4,16 @@ description: Popisuje prostředky související s licencemi.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 681f53ec73122a4861e6f1a2f96560336481a068
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: 27d44f89ac89f365e77e073c425ca45ab3638c68
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766913"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548392"
 ---
 # <a name="license-resources"></a>Prostředky licencí
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Popisuje prostředky související s licencemi.
 
@@ -72,9 +68,9 @@ Popisuje podrobnosti o produktu.
 |----------------|------------------|-----------------------------------------------------|
 | id             | řetězec           | Identifikátor produktu.                             |
 | name           | řetězec           | Identifikátor zabezpečení uživatele                      |
-| skuPartNumber  | řetězec           | Název dílu SKU pro daný produkt. Například pro sadu Office 365 Plan E3 je tato hodnota `EnterprisePack` . Tuto vlastnost lze použít místo ID, pokud není k dispozici ID.                |
+| skuPartNumber  | řetězec           | Název dílu SKU pro daný produkt. například pro Office 365 Plan E3 je tato hodnota `EnterprisePack` . Tuto vlastnost lze použít místo ID, pokud není k dispozici ID.                |
 | targetType     | řetězec           | Cílový typ produktu. Tato vlastnost určuje, zda je produkt použitelný pro `User` nebo `Tenant` .                                                                    |
-| licenseGroupId | řetězec           | Identifikuje se prostřednictvím identifikátoru skupiny autority nebo služby, které spravují licenci productSku. Produkty jsou oddělené v rámci skupin licencí, aby bylo lépe spravovatelnější.<br/><br/>                                                                                     `group1` – Všechny produkty, jejichž licence je možné spravovat pomocí Azure Active Directory (AAD).<br/><br/>                                            `group2` -Minecraftu licence k produktu.                                         |
+| licenseGroupId | řetězec           | Identifikuje se prostřednictvím identifikátoru skupiny autority nebo služby, které spravují licenci productSku. Produkty jsou oddělené v rámci skupin licencí, aby bylo lépe spravovatelnější.<br/><br/>                                                                                     `group1`– Všechny produkty, jejichž licence je možné spravovat pomocí Azure Active Directory (AAD).<br/><br/>                                            `group2`-Minecraft licence k produktu.                                         |
 
 ## <a name="serviceplan"></a>ServicePlan
 
@@ -84,23 +80,23 @@ Identifikuje nasazovatelné služby v rámci SKU produktu. Produkt může mít s
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------|
 | id               | řetězec | Identifikátor plánu služby.                                                                                      |
 | displayName      | řetězec | Lokalizovaný zobrazovaný název plánu služby.                                                                  |
-| serviceName      | řetězec | Název služby                                                                                                 |
-| capabilityStatus | řetězec | Stav plánu služby plánu služby.                                                                      |
-| targetType       | řetězec | Cílový typ plánu služby. Tato vlastnost určuje, jestli se má produkt použít pro uživatele nebo tenanta. |
+| Název_služby      | řetězec | Název služby.                                                                                                 |
+| capabilityStatus | řetězec | Stav plánu služby pro plán služby.                                                                      |
+| Targettype       | řetězec | Cílový typ plánu služby. Tato vlastnost určuje, jestli se produkt vztahuje na uživatele nebo tenanta. |
 
 ## <a name="subscribedsku"></a>SubscribedSku
 
-Popisuje předplatné produktu vlastněné klientem.
+Popisuje předplacený produkt vlastněný tenantem.
 
 | Vlastnost         | Typ                                                           | Description                                                                                       |
 |------------------|----------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| availableUnits   | integer                                                        | Počet jednotek, které jsou k dispozici pro přiřazení. Tato hodnota se vypočte jako celkový počet jednotek spotřebovaných jednotek. |
-| activeUnits      | integer                                                        | Počet jednotek aktivních pro přiřazení.                                                        |
-| consumedUnits    | integer                                                        | Počet spotřebovaných jednotek.                                                                     |
-| suspendedUnits   | integer                                                        | Počet pozastavených jednotek                                                                    |
-| totalUnits       | integer                                                        | Celkový počet jednotek Tato hodnota se vypočítá jako součet aktivních a varovných jednotek.         |
-| warningUnits     | integer                                                        | Počet varovných jednotek.                                                                      |
-| productSku       | ProductSku                                                     | SKU produktu.                                                                                  |
-| servicePlans     | pole prostředků ServicePlan                                 | Kolekce plánů služeb produktu.                                                     |
-| capabilityStatus | řetězec                                                         | Stav skladové položky produktu.                                                                      |
-| atributy       | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající prostředku.                                            |
+| availableUnits   | integer                                                        | Počet jednotek dostupných pro přiřazení Tato hodnota se vypočítá jako celkový počet jednotek – spotřebované jednotky. |
+| activeUnits      | integer                                                        | Počet aktivních jednotek pro přiřazení                                                        |
+| consumedUnits    | integer                                                        | Počet spotřebovaných jednotek                                                                     |
+| suspendedUnits (pozastavené jednotky)   | integer                                                        | Počet pozastavených jednotek                                                                    |
+| totalUnits       | integer                                                        | Celkový počet jednotek Tato hodnota se vypočítá jako součet aktivních jednotek a jednotek upozornění.         |
+| warningUnits (jednotky upozornění)     | integer                                                        | Počet jednotek upozornění                                                                      |
+| productSku       | ProductSku                                                     | SKU produktu                                                                                  |
+| servicePlans     | pole prostředků serviceplan                                 | Kolekce plánů služeb produktu                                                     |
+| capabilityStatus | řetězec                                                         | Stav SKU produktu                                                                      |
+| atributy       | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající prostředku.                                            |

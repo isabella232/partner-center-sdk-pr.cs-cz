@@ -4,21 +4,16 @@ description: Načte aktuální zůstatek účtu partnera. Souhrn zůstatku a cel
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 110da433faa6ff4d3d068c6d68a6f497f4a2721a
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: a04ab63482ec9d06e2fe47d2b6ce1bc6a5fd5f27
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766766"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548494"
 ---
 # <a name="get-the-partners-current-account-balance"></a>Získání aktuálního zůstatku na účtu partnera
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Načte aktuální zůstatek účtu partnera. Souhrn zůstatku a celkové poplatky za fakturu pro periodické i jednorázové poplatky.
 
@@ -38,7 +33,7 @@ var invoiceSummary = scopedPartnerOperations.Invoices.Summary.Get();
 Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummary.BalanceAmount);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: GetInvoiceSummary.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: GetInvoiceSummary. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -54,7 +49,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

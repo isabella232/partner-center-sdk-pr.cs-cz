@@ -6,34 +6,32 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 3f83b2b73c3480f76646cae4fcbbcbacd31d4b3f
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 18621fdb94f91f066b69a11f7d557410d653787e
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767065"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548035"
 ---
 # <a name="partner-center-rest-api-reference-to-rest-urls-rest-headers-rest-resources-and-rest-events"></a>Partnerské centrum REST API odkaz na adresy URL REST, záhlaví REST, prostředky REST a události REST.
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 ## <a name="partner-center-rest-api"></a>REST API partnerského centra
 
-Partnerská centra REST API pomáhají partnerům poskytovatele Cloud Solution Provider integrovat svůj stávající Software CRM nebo fakturace se systémy Microsoftu, které spravují účty zákazníků, umísťují objednávky, spravují předplatná a zpracovávají žádosti o podporu.
+partnerská REST API pomáhá partnerům Cloud Solution Provider (CSP) integrovat svůj stávající software CRM nebo fakturační software se systémy microsoftu, které spravují účty zákazníků, umísťují objednávky, spravují předplatná a zpracovávají žádosti o podporu.
 
 Další informace o tom, co může rozhraní API provádět, včetně ukázkového kódu, najdete v tématu [scénáře](scenarios.md) , včetně přehledu na pozadí.
 
 Než začnete s kódováním, přečtěte [si téma Začínáme](get-started.md) . Tento článek obsahuje informace o nastavení testovacích a provozních účtů, získávání ověřování a hledání ukázkového kódu.
 
+Referenční příručka, která vysvětluje každé rozhraní API, najdete v tématu [partner Center REST API](/rest/api/partner-center-rest/).
+
 ## <a name="topics"></a>Témata
 
 | Téma | Description |
 | ----- | ----------- |
+| [REST API partnerského centra](/rest/api/partner-center-rest/) | Referenční informace o jednotlivých REST APIch dostupných pro partnerské Centrum. |
 | [Adresy URL rozhraní REST pro Partnerské centrum](partner-center-rest-urls.md) | Definuje koncové body REST API pro různé verze partnerského centra. |
 | [Hlavičky rozhraní REST pro Partnerské centrum](headers.md) | Definuje hlavičky žádosti a odpovědi, které používá REST API. |
 | [Prostředky rozhraní REST pro Partnerské centrum](partner-center-rest-resources.md) | Definuje konstrukce JSON, které reprezentují objekty potřebné k použití REST API. |

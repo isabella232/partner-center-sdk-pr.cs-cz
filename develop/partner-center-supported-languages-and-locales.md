@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: d486eed96586eb2577577eac44fa9e866479e825
-ms.sourcegitcommit: 9bc35836b389fdf083b278128a2e9ec994919f1c
+ms.openlocfilehash: b3a64cc6aa4b19199490dafcf15eedde12b1330a
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102532834"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547797"
 ---
 # <a name="partner-center-supported-languages-and-locales"></a>Podporované jazyka a lokality pro Partnerské centrum
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Některá rozhraní API partnerského centra vyžadují hodnotu, která indikuje národní prostředí, zemi nebo oblast. Například [záhlaví REST centra pro partnery](headers.md) X-locale vyžaduje hodnotu často ve formátu "Language-Country" ("en-US" označuje "English-USA").
 
@@ -52,31 +47,31 @@ V následující tabulce jsou uvedeny kódy zemí kultury a mezinárodní normy 
 | Barbados                                 | BB                       | BRB                      | en-GB/en-US                         |
 | Bělorusko                                  | BY                       | BLR                      | DO/en-US                         |
 | Belgie                                  | BE                       | POPISKU                      | FR-to/nl-je/en-US                 |
-| Belize                                   | BZ                       | BLZ                      | EN-BZ/en-US                         |
-| Benin                                    | BJ                       | BEN                      | fr-FR/en-US                         |
-| Bermudy                                  | BM                       | BMU                      | en-GB/en-US                         |
-| Bhútán                                   | BT                       | BTN                      | en-US                                 |
-| Bolívie                                  | BO                       | KNIHÁCH online                      | ES-BO/en-US                         |
-| Bonaire                                  | BQ –                       | BES                      | nl – NL/en-US                         |
-| Bosna a Hercegovina                   | BA                       | BOSNĚ                      | BS – Latn-BA/en-US                    |
-| Botswana                                 | BW                       | BWA                      | en-GB/en-US                         |
-| Bouvetův ostrov                            | BV                       | BVT                      | NB-NO/en-US                         |
-| Brazílie                                   | BR                       | BRA                      | pt-BR/en-US                         |
-| Britské indickooceánské území           | OPERACE                       | IOT                      | en-US                                 |
-| Britské Panenské ostrovy                   | VG                       | VGB                      | en-US                                 |
-| Brunej                                   | BN                       | BRN                      | MS-BN/en-US                         |
-| Bulharsko                                 | BG                       | BGR                      | BG-BG/en-US                         |
-| Burkina Faso                             | BF                       | BFA                      | fr-FR/en-US                         |
-| Burundi                                  | BI                       | BDI                      | fr-FR/en-US                         |
-| Cabo Verde                               | CV                       | CPV                      | PT – CV/en-US                         |
-| Kambodža                                 | KH                       | KHM                      | km – KH/en-US                         |
-| Kamerun                                 | CM                       | CMR                      | fr-FR/en-US                         |
-| Kanada                                   | CA                       | NEMŮŽE                      | fr – CA/en-US                         |
-| Kajmanské ostrovy                           | KY                       | CYM                      | en-GB/en-US                         |
-| Středoafrická republika                 | CF                       | CAF                      | fr-FR/en-US                         |
-| Čad                                     | TD                       | TCD                      | fr-FR/en-US                         |
-| Chile                                    | CL                       | CHL                      | ES-CL/en-US                         |
-| Čína                                    | CN                       | CHN                      | zh-CN/en-US                         |
+| Belize                                   | BZ                       | BLZ                      | en-BZ / en-US                         |
+| Benin                                    | BJ                       | Ben                      | fr-FR / en-US                         |
+| Bermudy                                  | Bm                       | BMU                      | en-GB / en-US                         |
+| Bhútán                                   | BT                       | Btn                      | en-US                                 |
+| Bolívie                                  | BO                       | Bol                      | es-BO / en-US                         |
+| Bonaire                                  | Bq                       | Bes                      | nl-NL / en-US                         |
+| Bosna a Hercegovina                   | BA                       | BIH                      | bs-Latn-BA / en-US                    |
+| Botswana                                 | BW                       | Bwa                      | en-GB / en-US                         |
+| Bouvetův ostrov                            | Bv                       | Bvt                      | nb-NO / en-US                         |
+| Brazílie                                   | BR                       | Podprsenka                      | pt-BR / en-US                         |
+| Britské indickooceánské území           | Io                       | IOT                      | en-US                                 |
+| Britské Panenské ostrovy                   | VG                       | Vgb                      | en-US                                 |
+| Brunej                                   | BN                       | Brn                      | ms-BN / en-US                         |
+| Bulharsko                                 | BG                       | Bgr                      | bg-BG / en-US                         |
+| Burkina Faso                             | BF                       | Bfa                      | fr-FR / en-US                         |
+| Burundi                                  | BI                       | Bdi                      | fr-FR / en-US                         |
+| Cabo Verde                               | CV                       | Cpv                      | pt-CV / en-US                         |
+| Kambodža                                 | KH                       | Khm                      | km-POE / en-US                         |
+| Kamerun                                 | CM                       | Cmr                      | fr-FR / en-US                         |
+| Kanada                                   | CA                       | Cna                      | fr-CA / en-US                         |
+| Kajmanské ostrovy                           | KY                       | Cym                      | en-GB / en-US                         |
+| Středoafrická republika                 | CF                       | Caf                      | fr-FR / en-US                         |
+| Čad                                     | TD                       | Tcd                      | fr-FR / en-US                         |
+| Chile                                    | CL                       | Chl                      | es-CL / en-US                         |
+| Čína                                    | CN                       | Chn                      | zh-CN / en-US                         |
 | Vánoční ostrov                         | CX                       | CXR                      | en-US                                 |
 | Kokosové ostrovy                  | CC                       | CCK                      | en-US                                 |
 | Kolumbie                                 | CO                       | VYLOUČIT                      | ES-CO/en-US                         |
@@ -99,7 +94,7 @@ V následující tabulce jsou uvedeny kódy zemí kultury a mezinárodní normy 
 | Salvador                              | SV                       | SLV                      | ES-SV/en-US                         |
 | Rovníková Guinea                        | GQ                       | GNQ                      | ES-ES/en-US                         |
 | Eritrea                                  | ER                       | ERI                      | ar-SA/en-US                         |
-| Estonsko                                  | EE                       | ODHAD                      | et-EE/en-US                         |
+| Estonsko                                  | EE                       | ODHAD                      | et – EE/en-US                         |
 | eSwatini                                 | SZ                       | SWZ                      | en-US                                 |
 | Etiopie                                 | ET                       | ETH                      | am-ET/en-US                         |
 | Falklandské ostrovy                         | FK                       | FLK                      | en-US                                 |
@@ -202,31 +197,31 @@ V následující tabulce jsou uvedeny kódy zemí kultury a mezinárodní normy 
 | Palau                                    | PW                       | PLW                      | en-US                                 |
 | Palestinská samospráva                    | PS                       | SBALIT                      | ar-SA/en-US                         |
 | Panama                                   | PA                       | PAN                      | ES-PA/en-US                         |
-| Papua-Nová Guinea                         | STRÁNKY                       | PNG                      | en-US                                 |
-| Paraguay                                 | PY                       | PRY                      | ES – PY/en-US                         |
-| Peru                                     | PE                       | PER                      | ES-PE/en-US                         |
-| Filipíny                              | PH                       | PHL                      | EN-PH/en-US                         |
-| Pitcairnovy ostrovy                         | PN                       | VÝROBKU                      | en-US                                 |
-| Polsko                                   | PL                       | NAČTEN                      | pl-PL/EN-US                         |
-| Portugalsko                                 | PT                       | PRT                      | pt-PT/en-US                         |
-| Portoriko                              | PR                       | PRI                      | ES-PR/en-US                         |
-| Katar                                    | QA                       | QAT                      | ar – QA/en-US                         |
-| Réunion                                  | RE                       | REU                      | fr-FR/en-US                         |
-| Rumunsko                                  | RO                       | ROU                      | RO-RO/en-US                         |
-| Rusko                                   | RU                       | RUS                      | ru-RU/en-US                         |
-| Rwanda                                   | RW                       | RWA                      | RW-RW/en-US                         |
-| Saba                                     | X                       | XSA                      | nl – NL/en-US                         |
-| Svatý Kryštof a Nevis                    | KN                       | KNA                      | en-GB/en-US                         |
-| Svatá Lucie                              | LC                       | LCA                      | en-US                                 |
-| Svatý Martin (Francie)                             | MF                       | MAF                      | fr-FR/en-US                         |
-| Saint Pierre a Miquelon                | PM                       | Správce SPM                      | fr-FR/en-US                         |
-| Svatý Vincenc a Grenadiny         | VC                       | VCT                      | en-US                                 |
-| Saint-Barthélemy                         | BL                       | BLM                      | fr-FR/en-US                         |
-| Samoa                                    | WS                       | WSM                      | en-US                                 |
-| San Marino                               | SM                       | SMR                      | IT – IT/en-US                         |
-| Svatý Tomáš a Princův ostrov                    | ST                       | STP                      | pt-PT/en-US                         |
-| Saúdská Arábie                             | SA                       | SAU                      | ar-SA/en-US                         |
-| Senegal                                  | SN                       | DOKÁŽOU                      | WO – SN/en-US                         |
+| Papua-Nová Guinea                         | Str                       | PNG                      | en-US                                 |
+| Paraguay                                 | PY                       | Slídit                      | es-PY / en-US                         |
+| Peru                                     | PE                       | PER                      | es-PE / en-US                         |
+| Filipíny                              | PH                       | Phl                      | en-PH / en-US                         |
+| Pitcairnovy ostrovy                         | Pn                       | Pcn                      | en-US                                 |
+| Polsko                                   | PL                       | Pol                      | pl-PL / en-US                         |
+| Portugalsko                                 | PT                       | Prt                      | pt-PT / en-US                         |
+| Portoriko                              | PR                       | Pri                      | es-PR / en-US                         |
+| Katar                                    | QA                       | QAT                      | ar-QA / en-US                         |
+| Réunion                                  | RE                       | Reu                      | fr-FR / en-US                         |
+| Rumunsko                                  | RO                       | Rou                      | ro-RO / en-US                         |
+| Rusko                                   | RU                       | RUS                      | ru-RU / en-US                         |
+| Rwanda                                   | RW                       | Rwa                      | rw-RW / en-US                         |
+| Saba                                     | Xs                       | XSA                      | nl-NL / en-US                         |
+| Svatý Kryštof a Nevis                    | KN                       | Kna                      | en-GB / en-US                         |
+| Svatá Lucie                              | Lc                       | Lca                      | en-US                                 |
+| Svatý Martin (Francie)                             | Mf                       | Maf                      | fr-FR / en-US                         |
+| Saint Pierre a Miquelon                | PM                       | Spm                      | fr-FR / en-US                         |
+| Svatý Vincenc a Grenadiny         | VC                       | Vct                      | en-US                                 |
+| Saint-Barthélemy                         | BL                       | Blm                      | fr-FR / en-US                         |
+| Samoa                                    | WS                       | Wsm                      | en-US                                 |
+| San Marino                               | Sm                       | Smr                      | it-IT / en-US                         |
+| Sâo Tomé a Můžetencipe                    | ST                       | Stp                      | pt-PT / en-US                         |
+| Saúdská Arábie                             | SA                       | Sau                      | ar-SA / en-US                         |
+| Senegal                                  | SN                       | Senátor                      | wo-SN / en-US                         |
 | Srbsko                                   | RS                       | SRB                      | SR-Latn-RS/sr-Cyrl-RS/en-US       |
 | Seychely                               | SC                       | SYC                      | en-US                                 |
 | Sierra Leone                             | SL                       | SLE                      | en-US                                 |
@@ -252,30 +247,30 @@ V následující tabulce jsou uvedeny kódy zemí kultury a mezinárodní normy 
 | Tanzanie                                 | TZ                       | TZA                      | en-GB/en-US                         |
 | Thajsko                                 | TH                       | THA                      | Th-tou/en-US                         |
 | Timor Leste                              | TL                       | TLS                      | pt-PT/en-US                         |
-| Togo                                     | TG                       | TGO                      | fr-FR/en-US                         |
-| Tokelau                                  | TK                       | TKL                      | en-US                                 |
-| Tonga                                    | TO                       | 0,75                      | en-US                                 |
-| Trinidad a Tobago                      | TT                       | TTO                      | EN-TT/en-US                         |
-| Tunisko                                  | TN                       | TUN                      | ar-TN/en-US                         |
-| Turecko                                   | TR                       | TUR                      | tr – TR/en-US                         |
-| Turkmenistán                             | TM                       | TKM                      | TK-TM/en-US                         |
-| Ostrovy Turks a Caicos                 | TC                       | TCA                      | en-US                                 |
+| Togo                                     | TG                       | Tgo                      | fr-FR / en-US                         |
+| Tokelau                                  | Tk                       | TKL                      | en-US                                 |
+| Tonga                                    | TO                       | Ton                      | en-US                                 |
+| Trinidad a Tobago                      | TT                       | Tto                      | en-TT / en-US                         |
+| Tunisko                                  | TN                       | TUN (Vyladit)                      | ar-TN / en-US                         |
+| Turecko                                   | TR                       | Tur                      | tr-TR / en-US                         |
+| Turkmenistán                             | TM                       | TKM                      | tk-TM / en-US                         |
+| Ostrovy Turks a Caicos                 | TC                       | Tca                      | en-US                                 |
 | Tuvalu                                   | TV                       | TUV                      | en-US                                 |
-| Uganda                                   | UG                       | UGA                      | en-GB/en-US                         |
-| Ukrajina                                  | UA                       | UKR                      | Spojené království – UA/en-US                         |
-| Spojené arabské emiráty                     | AE                       | JSOU                      | ar-AE/en-US                         |
-| Spojené království                           | GB                       | GBR                      | en-GB/en-US                         |
-| Odlehlé ostrovy USA                    | UM                       | UMI                      | en-US                                 |
-| Americké Panenské ostrovy                      | VI                       | VIR                      | en-US                                 |
-| USA                            | USA                       | USA                      | EN-US/ES-US                         |
-| Uruguay                                  | UY                       | URY                      | ES-UY/en-US                         |
-| Uzbekistán                               | UZ                       | UZB                      | uz-Latn-UZ/en-US                    |
-| Vanuatu                                  | VU                       | VUT                      | en-US                                 |
-| Vatikán                             | VA                       | SPECIFIKOVÁN                      | IT – IT/en-US                         |
-| Venezuela                                | VE                       | I                      | ES-VE/en-US                         |
-| Vietnam                                  | VN                       | VNM                      | VI – VN/en-US                         |
-| Wallis a Futuna                        | WF                       | WLF                      | fr-FR/en-US                         |
-| Jemen                                    | JE                       | YEM                      | ar-je/en-US                         |
-| Zambie                                   | ZM                       | ZMB                      | en-GB/en-US                         |
+| Uganda                                   | UG                       | Uga                      | en-GB / en-US                         |
+| Ukrajina                                  | UA                       | Ukr                      | uk-UA / en-US                         |
+| Spojené arabské emiráty                     | AE                       | Jsou                      | ar-AE / en-US                         |
+| Spojené království                           | GB                       | Gbr                      | en-GB / en-US                         |
+| Odlené ostrovy USA                    | UM                       | Umi                      | en-US                                 |
+| Americké Panenské ostrovy                      | VI                       | VIR (Vir)                      | en-US                                 |
+| USA                            | USA                       | USA                      | en-US / es-US                         |
+| Uruguay                                  | UY                       | Ury                      | es-UY / en-US                         |
+| Uzbekistán                               | UZ                       | UZB                      | uz-Latn-UZ / en-US                    |
+| Vanuatu                                  | Vu                       | Vut                      | en-US                                 |
+| Vatikán                             | VA                       | Dph                      | it-IT / en-US                         |
+| Venezuela                                | VE                       | VEN                      | es-VE / en-US                         |
+| Vietnam                                  | VN                       | Vnm                      | vi-VN / en-US                         |
+| Wallis a Futuna                        | WF                       | WLF                      | fr-FR / en-US                         |
+| Jemen                                    | YE (Ye)                       | YEM                      | ar-YE / en-US                         |
+| Zambie                                   | ZM                       | ZMB                      | en-GB / en-US                         |
 | Zimbabwe                                 | ZW                       | ZWE                      | EN-ZW/en-US                         |
 

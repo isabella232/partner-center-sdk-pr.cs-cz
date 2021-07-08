@@ -4,21 +4,16 @@ description: Jak získat stav zřizování předplatného pro předplatné záka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 38544aa380ba0a6a8804ae45f7d8ae7cb431d3ba
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: f8797fa494cd77f11a1179d6406ca021f0d7788c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767032"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548698"
 ---
 # <a name="get-subscription-provisioning-status"></a>Získání stavu zřizování předplatných
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak získat stav zřizování předplatného pro předplatné zákazníka.
 

@@ -7,21 +7,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 98a099c458535123f675c6452db950b087b9f387
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: a7cb2430aa93beb89e4d1f9b8c89a016d66624ca
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766901"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874189"
 ---
 # <a name="get-a-list-of-products-by-customer"></a>Získání seznamu produktů (podle zákazníka)
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Pomocí následujících metod můžete získat kolekci produktů pro existujícího zákazníka.
 
@@ -44,7 +39,7 @@ Pomocí následujících metod můžete získat kolekci produktů pro existujíc
 | Název               | Typ | Vyžadováno | Popis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
 | **Customer-tenant-ID** | Identifikátor GUID | Yes | Hodnota je **číslo zákazníka**, který je ve formátu GUID, což je identifikátor, který umožňuje zadat zákazníka. |
-| **targetView** | řetězec | Yes | Určuje cílové zobrazení katalogu. Podporované hodnoty jsou: <br/><br/>**Azure**, který zahrnuje všechny položky Azure<br/><br/>**AzureReservations**, která zahrnuje všechny položky rezervace Azure<br/><br/>**AzureReservationsVM**, která zahrnuje všechny položky rezervace virtuálních počítačů (VM)<br/><br/>**AzureReservationsSQL**, která zahrnuje všechny položky rezervace SQL<br/><br/>**AzureReservationsCosmosDb**, která zahrnuje všechny položky rezervace databáze Cosmos<br/><br/>**MicrosoftAzure**, která zahrnuje položky pro předplatná Microsoft Azure (**MS-AZR-0145P**) a plány Azure<br/><br/>**OnlineServices**, která zahrnuje všechny online položky služeb, včetně produktů z komerčního tržiště<br/><br/>**Software**, který zahrnuje všechny softwarové položky<br/><br/>**SoftwareSUSELinux**, která zahrnuje všechny položky softwaru SUSE Linux<br/><br/>**SoftwarePerpetual**, která zahrnuje všechny trvalé softwarové položky<br/><br/>**SoftwareSubscriptions**, která zahrnuje všechny položky předplatného softwaru  |
+| **targetView** | řetězec | Yes | Určuje cílové zobrazení katalogu. Podporované hodnoty jsou: <br/><br/>**Azure**, který zahrnuje všechny položky Azure<br/><br/>**AzureReservations**, která zahrnuje všechny položky rezervace Azure<br/><br/>**AzureReservationsVM**, která zahrnuje všechny položky rezervace virtuálních počítačů (VM)<br/><br/>**AzureReservationsSQL**, která zahrnuje všechny položky rezervace SQL<br/><br/>**AzureReservationsCosmosDb**, která zahrnuje všechny položky rezervace Cosmos databáze<br/><br/>**MicrosoftAzure**, která zahrnuje položky pro předplatná Microsoft Azure (**MS-AZR-0145P**) a plány Azure<br/><br/>**OnlineServices**, která zahrnuje všechny online položky služeb, včetně produktů z komerčního tržiště<br/><br/>**Software**, který zahrnuje všechny softwarové položky<br/><br/>**SoftwareSUSELinux**, která zahrnuje všechny položky softwaru SUSE Linux<br/><br/>**SoftwarePerpetual**, která zahrnuje všechny trvalé softwarové položky<br/><br/>**SoftwareSubscriptions**, která zahrnuje všechny položky předplatného softwaru  |
 
 ### <a name="request-header"></a>Hlavička požadavku
 
@@ -56,7 +51,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-example"></a>Příklad požadavku
 
-Vyžádá seznam produktů založených na využití Azure dostupných pro daného zákazníka. Pro zákazníky ve veřejném cloudu se vrátí produkty pro Microsoft Azure (MS-AZR-0145P) a plány Azure:
+Vyžádá seznam produktů založených na využití Azure dostupných pro daného zákazníka. pro zákazníky ve veřejném cloudu se vrátí produkty pro Microsoft Azure (MS-AZR-0145P) a plány Azure:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/65543400-f8b0-4783-8530-6d35ab8c6801/products?targetView=MicrosoftAzure HTTP/1.1

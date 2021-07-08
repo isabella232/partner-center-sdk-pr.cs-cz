@@ -6,24 +6,20 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: c6a404eb38c4c31d3e69bb598872b932d8985529
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 2588327e72a13de75eb9e02675edbd535491adc4
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766838"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760789"
 ---
 # <a name="get-agreement-metadata-for-microsoft-cloud-agreement"></a>Získání metadat smluv pro Smlouvu o službách Microsoft Cloud
 
-**Platí pro**
+**Platí pro**: partnerské Centrum
 
-- Partnerské centrum
+Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-> [!NOTE]
-> Prostředek **AgreementMetaData** je aktuálně podporovaný partnerským centrem jenom ve veřejném cloudu Microsoftu. Neplatí pro:
-> - Partnerské centrum provozovaný společností 21Vianet
-> - Partnerské centrum pro Microsoft Cloud pro Německo
-> - Partnerské centrum pro Microsoft Cloud for US Government
+Prostředek **AgreementMetaData** je aktuálně podporovaný partnerským centrem jenom ve veřejném cloudu Microsoftu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +27,7 @@ ms.locfileid: "97766838"
 
 - Pokud používáte sadu SDK pro partnerský Center Java, verze 1,8 nebo novější je povinná.
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). Tento scénář podporuje ověřování aplikací a uživatelů..
+- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). Tento scénář podporuje ověřování aplikací a uživatelů.
 
 ## <a name="net-version-114-or-newer"></a>.NET (verze 1,14 nebo novější)
 
@@ -172,4 +168,4 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 }
 ```
 
-K identifikaci prostředku v odpovědi, která odpovídá Microsoft Cloud smlouvě, vyhledejte prostředek, jehož vlastnost **agreemtntype** má hodnotu "MicrosoftCloudAgreement".
+Pro identifikaci prostředku v odpovědi, která odpovídá Microsoft Cloud smlouvě, vyhledejte prostředek, jehož vlastnost **agreemtntype** má hodnotu "MicrosoftCloudAgreement".

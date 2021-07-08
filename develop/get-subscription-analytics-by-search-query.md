@@ -4,21 +4,16 @@ description: Jak získat informace o analýze předplatného filtrované vyhled�
 ms.date: 05/10/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c1046ea3c7e813eedae4890eebf6356337c80ede
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 8df777b9a88206f8b22579f0f445c54d80f7cd64
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766769"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548732"
 ---
 # <a name="get-subscription-analytics-information-filtered-by-a-search-query"></a>Získání analytických informací o předplatných filtrovaných podle vyhledávacího dotazu
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak získat informace o analýze předplatných pro zákazníky filtrované pomocí vyhledávacího dotazu.
 
@@ -86,7 +81,7 @@ V následující tabulce je uveden seznam podporovaných polí a operátorů pod
 | NázevVýrobku | `contains`, `eq`, `ne` | Název produktu. |
 | providerName | řetězec | Pokud je transakce předplatného určena pro nepřímý prodejce, jméno poskytovatele je nepřímým poskytovatelem, který si zakoupil předplatné.|
 | status | `eq`, `ne` | Stav předplatného. Podporovány jsou následující hodnoty: "aktivní", "pozastaveno" nebo "zrušení zřízení". |
-| subscriptionType | `eq`, `ne` | Typ předplatného. **Poznámka**: Toto pole rozlišuje velká a malá písmena. Podporované hodnoty jsou: "Office", "Azure", "Microsoft365", "Dynamics", "EMS". |
+| subscriptionType | `eq`, `ne` | Typ předplatného. **Poznámka**: Toto pole rozlišuje velká a malá písmena. podporované hodnoty jsou: "Office", "Azure", "Microsoft365", "Dynamics", "EMS". |
 | trialStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum, kdy se začalo zkušební období předplatného. Výchozí hodnotou je hodnota null. |
 | trialToPaidConversionDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum, kdy se předplatné převede ze zkušební verze na placené. Výchozí hodnotou je hodnota null. |
 

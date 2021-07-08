@@ -6,36 +6,32 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6f2b1bcf9926e02232b6e2cc68b71e992b015324
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: f3d5fcc610eae8c1bff056c1e4a9e7a74093c87d
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766862"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874563"
 ---
 # <a name="get-a-list-of-all-user-accounts-for-a-customer"></a>Získání seznamu všech uživatelských účtů pro zákazníka
 
-**Platí pro:**
-
-- Partnerské centrum
-
 Tento článek popisuje, jak získat seznam všech uživatelských účtů, které patří jednomu z vašich zákazníků.
 
-Pokud chcete vyhledat jeden uživatelský účet podle ID, přečtěte si téma [Získání uživatelského účtu podle ID](get-a-user-account-by-id.md).
+Informace o vyhledávání jednoho uživatelského účtu podle ID najdete v tématu [Získání uživatelského účtu podle ID](get-a-user-account-by-id.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Načtení kolekce všech uživatelských účtů pro určitého zákazníka:
+Načtení kolekce všech uživatelských účtů pro zadaného zákazníka:
 
-1. Pro identifikaci zákazníka zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) se zadaným ID zákazníka.
+1. Pokud chcete zákazníka identifikovat, zavolejte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) se zadaným ID zákazníka.
 
-2. Pro načtení kolekce zavolejte metodu [**uživatel. Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync) .
+2. Pro načtení kolekce volejte metodu [**Users.Get**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.get) nebo [**GetAsync.**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,31 +41,31 @@ Načtení kolekce všech uživatelských účtů pro určitého zákazníka:
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Get();
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **ukázky sady SDK pro partnerských Center**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **SDK pro Partnerské centrum ukázky**
 - Třída: **GetCustomerUserCollection.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Users HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/uživatelé HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Pro identifikaci správného zákazníka použijte následující parametr identifikátoru URI.
+Pomocí následujícího parametru URI identifikujte správného zákazníka.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
+| **customer-tenant-id** | **guid** | Y        | Hodnota je IDENTIFIKÁTOR GUID naformátovaný jako **customer-tenant-id,** který umožňuje prodejci filtrovat výsledky pro daného zákazníka, který patří k prodejci. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -91,9 +87,9 @@ Host: api.partnercenter.microsoft.com
 
 V případě úspěchu vrátí tato metoda kolekci uživatelských účtů pro zákazníka.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

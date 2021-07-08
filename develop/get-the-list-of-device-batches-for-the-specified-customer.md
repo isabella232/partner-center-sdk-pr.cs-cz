@@ -1,36 +1,33 @@
 ---
 title: Získání seznamu dávek zařízení pro konkrétního zákazníka
-description: Jak načíst kolekci dávek zařízení pro zadaného zákazníka.
+description: Jak načíst kolekci dávek zařízení pro zadaného zákazníka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ea5797bbaff4d4eafd1e63428556ab784bcb0ee2
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 9d020bbfa1faef0be423d2fef2d8982465dfa21f
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767021"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548410"
 ---
 # <a name="get-a-list-of-device-batches-for-the-specified-customer"></a>Získání seznamu dávek zařízení pro konkrétního zákazníka
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud (Německo)
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
+Jak načíst kolekci dávek zařízení pro zadaného zákazníka
 
-Jak načíst kolekci dávek zařízení pro zadaného zákazníka.
-
-Každá dávka zařízení obsahuje souhrnné informace o stavu zařízení, která jsou zaregistrovaná v nasazení s nulovým dotykem.
+Každá dávka zařízení obsahuje souhrnné informace o stavu zařízení, která byla zaregistrovaná v bezobsahovém nasazení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat kolekci dávek zařízení pro zadaného zákazníka, nejprve zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, aby se načetlo rozhraní k operacím zadaného zákazníka. Pak načtěte hodnotu vlastnosti [**DeviceBatches**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicebatches) , abyste získali rozhraní pro operace shromažďování dávky zařízení. Nakonec voláním metody [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.getasync) načtěte kolekci.
+Pokud chcete získat kolekci dávek zařízení pro zadaného zákazníka, nejprve zavolejte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a načtěte rozhraní pro operace se zadaným zákazníkem. Potom načtěte hodnotu vlastnosti [**DeviceBatches,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.devicebatches) abyste získali rozhraní pro operace dávkového shromažďování zařízení. Nakonec zavolejte [**metodu Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.getasync) pro načtení kolekce.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -40,31 +37,31 @@ var devicesBatches =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetDevicesBatches.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** GetDevicesBatches.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/deviceBatches HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/deviceBatches HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Při vytváření žádosti použít následující parametry cesty.
+Při vytváření požadavku použijte následující parametry cesty.
 
 | Název        | Typ   | Vyžadováno | Popis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| ID zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| id zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -80,11 +77,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [DeviceBatch](device-deployment-resources.md#devicebatch) .
+V případě úspěchu bude tělo odpovědi obsahovat kolekci [prostředků DeviceBatch.](device-deployment-resources.md#devicebatch)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

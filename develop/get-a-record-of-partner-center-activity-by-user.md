@@ -1,41 +1,37 @@
 ---
 title: Získání záznamu o aktivitě Partnerského centra
-description: Jak načíst záznam o operacích, jak ho provede partnerský uživatel nebo aplikace, v časovém intervalu.
+description: Jak načíst záznam o operacích provedených uživatelem partnera nebo aplikací v časovém období
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2f37eae8bb96c1c1e7008e8c566b085e25d8807d
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: aec933d4b681d99080619505792bde56bdd25580
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766928"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111873967"
 ---
 # <a name="get-a-record-of-partner-center-activity"></a>Získání záznamu o aktivitě Partnerského centra
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Tento článek popisuje, jak načíst záznam operací provedených partnerským uživatelem nebo aplikací v průběhu časového období.
 
-Tento článek popisuje, jak načíst záznam o operacích, které provedl partnerský uživatel nebo aplikace v časovém intervalu.
-
-Pomocí tohoto rozhraní API můžete načíst záznamy auditu za posledních 30 dní od aktuálního data nebo pro rozsah dat zadaný zahrnutím počátečního data a/nebo koncového data. Upozorňujeme ale, že z důvodů výkonu je dostupnost dat protokolu aktivit omezená na předchozí 90 dní. Žádosti s počátečním datem větším než 90 dní před aktuálním datem obdrží výjimku špatné žádosti (kód chyby: 400) a příslušnou zprávu.
+Pomocí tohoto rozhraní API můžete načíst záznamy auditu za posledních 30 dnů od aktuálního data nebo pro rozsah dat určený zahrnutím počátečního a/nebo koncového data. Upozorňujeme ale, že z důvodů výkonu je dostupnost dat protokolu aktivit omezená na předchozích 90 dnů. Požadavky s počátečním datem delším než 90 dní před aktuálním datem obdrží výjimku chybný požadavek (kód chyby: 400) a příslušnou zprávu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete načíst záznam o operacích partnerského centra, nejdřív navažte rozsah kalendářních dat pro záznamy, které chcete načíst. Následující příklad kódu používá pouze počáteční datum, ale můžete také zahrnout koncové datum. Další informace najdete v tématu metoda [**dotazu**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) . Dále vytvořte potřebné proměnné pro typ filtru, který chcete použít, a přiřaďte příslušné hodnoty. Chcete-li například filtrovat podle podřetězce názvu společnosti, vytvořte proměnnou pro uložení podřetězce. Pokud chcete filtrovat podle ID zákazníka, vytvořte proměnnou pro uchování ID.
+Pokud chcete načíst záznam Partnerské centrum operací, nejprve vytvořte rozsah dat pro záznamy, které chcete načíst. Následující příklad kódu používá pouze počáteční datum, ale můžete také zahrnout koncové datum. Další informace najdete v tématu [**Metoda**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) dotazu. Dále vytvořte proměnné, které potřebujete pro typ filtru, který chcete použít, a přiřaďte příslušné hodnoty. Pokud chcete například filtrovat podle podřetězce názvu společnosti, vytvořte proměnnou pro podřetězec. Pokud chcete filtrovat podle ID zákazníka, vytvořte proměnnou pro jeho id.
 
-V následujícím příkladu je k dispozici vzorový kód, který bude filtrovat podle podřetězce názvu společnosti, ID zákazníka nebo typu prostředku. Vyberte jednu z nich a přidejte komentář k ostatním. V každém případě je nejprve vytvořena instance objektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) s použitím jeho výchozího [**konstruktoru**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) pro vytvoření filtru. Budete muset předat řetězec, který obsahuje pole, které chcete vyhledat, a příslušný operátor, jak je znázorněno. Je také nutné zadat řetězec, podle kterého se má filtrovat.
+V následujícím příkladu je k dispozici vzorový kód pro filtrování podle podřetězce názvu společnosti, ID zákazníka nebo typu prostředku. Vyberte jednu a okomentování ostatních. V každém případě nejprve vytvoříte instanci objektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) pomocí [**výchozího**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter.-ctor) konstruktoru pro vytvoření filtru. Budete muset předat řetězec, který obsahuje pole k hledání, a odpovídající operátor, který se má použít, jak je znázorněno níže. Musíte také zadat řetězec, podle který chcete filtrovat.
 
-Dále pomocí vlastnosti [**AuditRecords**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) Získejte rozhraní pro audit operací záznamů a zavolejte [**dotaz**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) nebo metodu [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) pro spuštění filtru a získejte kolekci [**AuditRecord**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) , která představuje první stránku výsledku. Předat metodu počáteční datum, volitelné koncové datum nepoužitelné v tomto příkladu a objekt [**IQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) , který představuje dotaz na entitu. Objekt IQuery se vytvoří předáním filtru vytvořeného výše do [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) metody [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) .
+Dále pomocí vlastnosti [**AuditRecords**](/dotnet/api/microsoft.store.partnercenter.ipartner.auditrecords) získejte rozhraní pro operace se záznamy auditu a voláním metody [**Query**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.query) nebo [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.auditrecords.iauditrecordscollection.queryasync) spusťte filtr a získejte kolekci [**záznamů AuditRecord,**](/dotnet/api/microsoft.store.partnercenter.models.auditing.auditrecord) které představují první stránku výsledku. Metodě předejte počáteční datum, volitelné koncové datum, které zde není použité, a objekt [**IQuery,**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) který představuje dotaz na entitu. Objekt IQuery se vytvoří předáním výše vytvořeného filtru do metody [**BuildSimpleQuery objektu**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) [**QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
-Jakmile máte počáteční stránku položek, použijte metodu [**Enumerator. AuditRecords. Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) k vytvoření enumerátoru, který můžete použít k iteraci na zbývajících stránkách.
+Jakmile máte počáteční stránku položek, pomocí metody [**Enumerators.AuditRecords.Create**](/dotnet/api/microsoft.store.partnercenter.factory.iresourcecollectionenumeratorfactory-1.create) vytvořte enumerátor, který můžete použít k iteraci zbývajícími stránkami.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -77,34 +73,34 @@ while (auditRecordEnumerator.HasValue)
 }
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: sada SDK pro partnerských Center – **Složka** s ukázkami: auditování
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum **ukázky:** Auditování
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                                                                                    |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {STARTDATE} HTTP/1.1                                                                                                     |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {startDate} &EndDate = {ENDDATE} HTTP/1.1                                                                                   |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {startDate} &EndDate = {endDate} &Filter = {"Field": "CompanyName"; "value": "{searchSubstring}"; "operator": "substring"} http/1.1 |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {startDate} &EndDate = {endDate} &Filter = {"Field": "CustomerID"; "value": "{CustomerID}"; "operator": "Equals"} http/1.1          |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/AuditRecords? StartDate = {startDate} &EndDate = {endDate} &Filter = {"Field": "ResourceType"; "value": "{ResourceType}", "operator": "Equals"} http/1.1      |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate} HTTP/1.1                                                                                                     |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate} HTTP/1.1                                                                                   |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"CompanyName","Value":"{searchSubstring}","Operator":"substring"} HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"CustomerId","Value":"{customerId}","Operator":"equals"} HTTP/1.1          |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/auditrecords?startDate={startDate}&endDate={endDate}&filter={"Field":"ResourceType","Value":"{resourceType}","Operator":"equals"} HTTP/1.1      |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Při vytváření žádosti použijte následující parametry dotazu.
+Při vytváření požadavku použijte následující parametry dotazu.
 
 | Název      | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                |
 |-----------|--------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| startDate | date   | No       | Počáteční datum ve formátu rrrr-mm-dd. Pokud není k dispozici žádný, bude sada výsledků Standard nastavena na 30 dní před datem požadavku. Tento parametr je nepovinný, pokud je zadán filtr.                                          |
-| endDate   | date   | No       | Koncové datum ve formátu rrrr-mm-dd. Tento parametr je nepovinný, pokud je zadán filtr. Když je koncové datum vynecháno nebo je nastaveno na hodnotu null, vrátí požadavek maximální okno nebo použije dnešní den jako koncové datum, podle toho, co je menší. |
-| filter    | řetězec | No       | Filtr, který se má použít Tento parametr musí být kódovaný řetězec. Tento parametr je nepovinný, pokud jsou dodány počáteční datum nebo koncové datum.                                                                                              |
+| Datum_spuštění | date   | No       | Počáteční datum ve formátu rrrr-mm-dd. Pokud se žádná možnost zadá, sada výsledků dotazu se nastaví na 30 dní před datem žádosti. Tento parametr je volitelný, pokud je zadán filtr.                                          |
+| Enddate   | date   | No       | Koncové datum ve formátu rrrr-mm-dd. Tento parametr je volitelný, pokud je zadán filtr. Pokud je koncové datum vynecháno nebo nastaveno na hodnotu null, požadavek vrátí maximální okno nebo jako koncové datum použije ještě dnes , podle toho, která hodnota je menší. |
+| filter    | řetězec | No       | Filtr, který se má použít. Tento parametr musí být zakódovaný řetězec. Tento parametr je volitelný, pokud je zadáno počáteční nebo koncové datum.                                                                                              |
 
 ### <a name="filter-syntax"></a>Syntaxe filtru
-Parametr Filter je nutné vytvořit jako řadu párů klíč-hodnota oddělené čárkami. Každý klíč a hodnota musí být jednotlivě kotované a oddělené dvojtečkou. Celý filtr musí být kódovaný.
+Parametr filtru musíte vytvořit jako řadu párů klíč-hodnota oddělených čárkami. Každý klíč a hodnota musí být jednotlivě uvozené a oddělené dvojtečkou. Celý filtr musí být kódovaný.
 
-Nekódovaný příklad vypadá takto:
+Nekódovaný příklad vypadá jako tento:
 
 ```
 ?filter{"Field":"CompanyName","Value":"bri","Operator":"substring"}
@@ -114,13 +110,13 @@ Následující tabulka popisuje požadované páry klíč-hodnota:
 
 | Klíč                 | Hodnota                             |
 |:--------------------|:----------------------------------|
-| Pole               | Pole, které se má filtrovat Podporované hodnoty najdete v [syntaxi žádosti](get-a-record-of-partner-center-activity-by-user.md#rest-request).                                         |
-| Hodnota               | Hodnota, podle které se má filtrovat Případ hodnoty je ignorován. Následující parametry hodnot jsou podporovány, jak je znázorněno v [syntaxi žádosti](get-a-record-of-partner-center-activity-by-user.md#rest-request):<br/><br/>                                                                *searchSubstring* – nahraďte názvem společnosti. Můžete zadat podřetězec, který bude odpovídat části názvu společnosti (například, `bri` bude odpovídat `Fabrikam, Inc` ).<br/>**Příklad:**`"Value":"bri"`<br/><br/>                                                                *customerId* -nahraďte řetězcem FORMÁTOVANÉho identifikátorem GUID, který představuje identifikátor zákazníka.<br/>**Příklad:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *ResourceType* – nahraďte typem prostředku, pro který chcete načíst záznamy auditu (například předplatné). Typy prostředků, které jsou k dispozici, jsou definovány v typu [ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Příklad:**`"Value":"Subscription"`                                 |
-| Operátor          | Operátor, který se má použít Podporované operátory lze nalézt v [syntaxi žádosti](get-a-record-of-partner-center-activity-by-user.md#rest-request).   |
+| Pole               | Pole, které chcete filtrovat. Podporované hodnoty najdete v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request).                                         |
+| Hodnota               | Hodnota, podle které se má filtrovat. Případ hodnoty se ignoruje. Podporují se následující parametry hodnot, jak je znázorněno v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request):<br/><br/>                                                                *searchSubstring* – nahraďte názvem společnosti. Můžete zadat podřetězec, který odpovídá části názvu společnosti (například bude `bri` odpovídat `Fabrikam, Inc` ).<br/>**Příklad:**`"Value":"bri"`<br/><br/>                                                                *customerId* – nahraďte řetězcem ve formátu GUID, který představuje identifikátor zákazníka.<br/>**Příklad:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* – nahraďte typem prostředku, pro který se mají načíst záznamy auditu (například Předplatné). Dostupné typy prostředků jsou definované v [ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Příklad:**`"Value":"Subscription"`                                 |
+| Operátor          | Operátor, který se má použít. Podporované operátory najdete v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request).   |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Další informace najdete v [části Center – záhlaví REST](headers.md) .
+- Další informace najdete v tématu [Hlavičky REST](headers.md)centra součástí.
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -141,7 +137,7 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí sadu aktivit, které odpovídají filtrům.
+V případě úspěchu tato metoda vrátí sadu aktivit, které splňují filtry.
 
 ### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 

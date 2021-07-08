@@ -4,27 +4,22 @@ description: Přes rozhraní API partnerského centra jsou k dispozici více pro
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8977b3b649cd930bb517965572d0efe51d6985a0
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: b07b7ad14c136eac988eeb12391c24a6cf996b39
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730208"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548417"
 ---
 # <a name="invoice-resources"></a>Fakturovat prostředky
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Prostřednictvím rozhraní API partnerského centra jsou k dispozici následující prostředky související s fakturací.
 
 ## <a name="invoice"></a>Faktura
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | id | řetězec | Identifikátor faktury |
 | invoiceDate | řetězec ve formátu data a času standardu UTC | Datum, kdy byla faktura vygenerována. |
@@ -47,7 +42,7 @@ Prostřednictvím rozhraní API partnerského centra jsou k dispozici následuj�
 
 Faktura obsahuje kolekci fakturovaných položek a každá položka je reprezentovaná InvoiceDetail prostředkem.
 
-| Vlastnost            | Typ                                                           | Popis                                                                       |
+| Vlastnost            | Typ                                                           | Description                                                                       |
 |---------------------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|
 | invoiceLineItemType | řetězec                                                         | Typ podrobností faktury: "none", " \_ položky řádků použití \_ ", "fakturace \_ \_ položek řádků". |
 | billingProvider     | řetězec                                                         | Zprostředkovatel fakturace: "none", "Office", "Azure" nebo "Azure \_ data \_ Market".         |
@@ -58,7 +53,7 @@ Faktura obsahuje kolekci fakturovaných položek a každá položka je reprezent
 
 Každý jednotlivý poplatek v rámci faktury je reprezentován jako InvoiceLineItem.
 
-| Vlastnost            | Typ                                                           | Popis                                                                          |
+| Vlastnost            | Typ                                                           | Description                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | invoiceLineItemType | řetězec                                                         | Typ položky řádku faktury: "none", " \_ položky řádků použití \_ ", "fakturace \_ \_ položek řádků". |
 | billingProvider     | řetězec                                                         | Zprostředkovatel fakturace: "none", "Office", "Azure" nebo "Azure \_ data \_ Market".            |
@@ -68,57 +63,57 @@ Každý jednotlivý poplatek v rámci faktury je reprezentován jako InvoiceLine
 
 Popisuje souhrn zůstatku a celkové náklady na fakturu.
 
-| Vlastnost                 | Typ                                                           | Popis                                                           |
+| Vlastnost                 | Typ                                                           | Description                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| balanceAmount            | číslo                                                         | Zůstatek faktury Toto je celková částka neplacených faktur. |
-| currencyCode             | řetězec                                                         | Kód, který označuje měnu použitou pro částku zůstatku.       |
-| currencySymbol           | řetězec                                                         | Použitý symbol měny                                             |
-| accountingDate           | řetězec ve formátu data a času standardu UTC                                 | Datum poslední aktualizace částky zůstatku.                         |
-| firstInvoiceCreationDate | řetězec ve formátu data a času standardu UTC                                 | Datum vytvoření první faktury pro zákazníka.              |
-| lastPaymentDate          | řetězec ve formátu data a času standardu UTC                                 | Datum poslední platby.                                         |
-| lastPaymentAmount        | číslo                                                         | Množství poslední platby.                                       |
-| latestInvoiceDate        | řetězec ve formátu data a času standardu UTC                                 | Datum vytvoření poslední faktury pro zákazníka.               |
-| zobrazí                  | pole objektů [InvoiceSummaryDetail](#invoicesummarydetail) | Podrobnosti o souhrnu faktury                                           |
-| odkazy                    | [ResourceLinks](utility-resources.md#resourcelinks)            | Odkazy na prostředky.                                                   |
-| atributy               | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
+| balanceAmount            | číslo                                                         | Zůstatek faktury Jedná se o celkovou částku nezaplacené faktury. |
+| currencyCode             | řetězec                                                         | Kód, který označuje měnu použitou pro zůstatek.       |
+| Currencysymbol           | řetězec                                                         | Použitý symbol měny.                                             |
+| accountingDate           | řetězec ve formátu data a času UTC                                 | Datum poslední aktualizace zůstatku                         |
+| firstInvoiceCreationDate | řetězec ve formátu data a času UTC                                 | Datum vytvoření první faktury pro zákazníka              |
+| lastPaymentDate          | řetězec ve formátu data a času UTC                                 | Datum poslední platby                                         |
+| lastPaymentAmount        | číslo                                                         | Částka poslední platby                                       |
+| latestInvoiceDate        | řetězec ve formátu data a času UTC                                 | Datum vytvoření poslední faktury pro zákazníka               |
+| Podrobnosti                  | pole objektů [InvoiceSummaryDetail](#invoicesummarydetail) | Podrobnosti o souhrnu faktury                                           |
+| Odkazy                    | [Odkazy na prostředky](utility-resources.md#resourcelinks)            | Odkazy na prostředky.                                                   |
+| atributy               | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat.                                              |
 
 ## <a name="invoicesummarydetail"></a>InvoiceSummaryDetail
 
-Představuje souhrn jednotlivých podrobností typu faktury (například opakovaný, jednorázový \_ ).
+Představuje souhrn jednotlivých podrobností pro typ faktury (například jednou \_ opakovaně).
 
-| Vlastnost            | Typ                                                           | Popis                                                                          |
+| Vlastnost            | Typ                                                           | Description                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| invoiceType         | řetězec                                                         | Typ faktury: "periodický", "jednorázový" \_ .                                       |
-| shrnutí             | Objekt [InvoiceSummary](#invoicesummary)                       | Souhrn faktury za typ faktury                                         |
+| invoiceType (typ faktury)         | řetězec                                                         | Typ faktury: "opakující se", \_ "jednou".                                       |
+| shrnutí             | [Objekt InvoiceSummary](#invoicesummary)                       | Souhrn faktury podle typu faktury                                         |
 
 ## <a name="invoicesummaries"></a>InvoiceSummaries
 
-Představuje kolekci typů [InvoiceSummary](#invoicesummary) , které obsahují jednotlivé podrobnosti typu faktury na měnu.
+Představuje kolekci typu [InvoiceSummary,](#invoicesummary) která obsahuje jednotlivé podrobnosti pro typ faktury podle měny.
 
-| Vlastnost            | Typ                                                           | Popis                                                                          |
+| Vlastnost            | Typ                                                           | Description                                                                          |
 |---------------------|----------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| collectionOfSummary | pole objektů [InvoiceSummary](#invoicesummary)             | Souhrn faktury za typ faktury na jednu měnu                            |
+| collectionOfSummary | pole objektů [InvoiceSummary](#invoicesummary)             | Souhrn faktury podle typu faktury podle měny                            |
 
 ## <a name="licensebasedlineitem"></a>LicenseBasedLineItem
 
-Představuje položku fakturačního řádku faktury pro předplatné založené na licencích.
+Představuje řádkovou položku fakturace faktury pro licencovaná předplatná.
 
-| Vlastnost                 | Typ                                                           | Popis                                                           |
+| Vlastnost                 | Typ                                                           | Description                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| úroveň                   | řetězec                                                         | Získá nebo nastaví celkovou částku. Celková částka = Jednotková cena * množství.  |
+| Částka                   | řetězec                                                         | Získá nebo nastaví celkovou částku. Celková částka = jednotková cena * množství.  |
 | atributy               | řetězec                                                         | Získá atributy.                                                  |
 | billingCycleType         | řetězec                                                         | Získá nebo nastaví typ fakturačního cyklu.                                  |
 | billingProvider          | řetězec                                                         | Získá poskytovatele fakturace.                                            |
-| chargeEndDate            | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví koncové datum pro poplatek.                             |
-| chargeStartDate          | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví počáteční datum pro poplatek.                           |
-| chargeType               | řetězec                                                         | Získá nebo nastaví typ poplatků.                                      |
+| chargeEndDate            | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví koncové datum poplatku.                             |
+| chargeStartDate          | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví počáteční datum poplatku.                           |
+| chargeType               | řetězec                                                         | Získá nebo nastaví typ poplatku.                                      |
 | currency                 | řetězec                                                         | Získá nebo nastaví měnu použitou pro tuto položku řádku.                    |
-| customerId               | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor zákazníka v rámci fakturační platformy Microsoftu.  |
-| customerName             | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví název zákazníka.                                       |
-| domainName               | řetězec                                                         | Získá nebo nastaví název domény.                                             |
+| customerId               | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor zákazníka na fakturační platformě Microsoftu.  |
+| customerName             | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví jméno zákazníka.                                       |
+| Název_domény               | řetězec                                                         | Získá nebo nastaví název domény.                                             |
 | durableOfferId           | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor trvalé nabídky.                     |
-| invoiceLineItemType      | řetězec                                                         | Získá typ položky řádku faktury.                                   |
-| mpnId                    | číslo                                                         | Získá nebo nastaví ID MPN přidružené k této položce řádku. U přímých prodejců se jedná o ID MPN prodejce. U nepřímých prodejců se jedná o ID MPN přidané hodnoty pro prodejce (VAR).                                   |
+| invoiceLineItemType      | řetězec                                                         | Získá typ řádkové položky faktury.                                   |
+| ID mpn                    | číslo                                                         | Získá nebo nastaví ID MPN přidružené k této položce řádku. U přímých prodejců se jedná o ID MPN prodejce. U nepřímých prodejců se jedná o ID MPN přidané hodnoty pro prodejce (VAR).                                   |
 | Hodnotami OfferId                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor nabídky.                             |
 | offerName                | řetězec                                                         | Získá nebo nastaví název nabídky.                                          |
 | Seskup                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor objednávky.                             |
@@ -141,7 +136,7 @@ Představuje položku fakturačního řádku faktury pro předplatné založené
 
 Představuje položku řádku fakturace faktury pro odběry založené na využití.
 
-| Vlastnost                 | Typ                                                           | Popis                                                           |
+| Vlastnost                 | Typ                                                           | Description                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | atributy               | řetězec                                                         | Získá atributy.                                                  |
 | billingCycleType         | řetězec                                                         | Získá nebo nastaví typ fakturačního cyklu.                                  |
@@ -175,7 +170,7 @@ Představuje položku řádku fakturace faktury pro odběry založené na využi
 | resourceGuid             | řetězec                                                         | Získá nebo nastaví identifikátor prostředku.                                 |
 | resourceName             | řetězec                                                         | Získá nebo nastaví název prostředku. Příklad: databáze (GB/měsíc).         |
 | serviceName              | řetězec                                                         | Získá nebo nastaví název služby. Příklad: Azure Data Service.           |
-| serviceType              | řetězec                                                         | Získá nebo nastaví typ služby. Příklad: Azure SQL Azure DB.           |
+| serviceType              | řetězec                                                         | Získá nebo nastaví typ služby. příklad: Azure SQL Azure DB.           |
 | skladové                      | řetězec                                                         | Získá nebo nastaví SKU služby.                                         |
 | subscriptionDescription  | řetězec                                                         | Získá nebo nastaví popis předplatného.                            |
 | subscriptionId           | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor předplatného.                      |
@@ -188,7 +183,7 @@ Představuje položku řádku fakturace faktury pro odběry založené na využi
 
 Představuje operace dostupné v příkazu faktury v Application/PDF.
 
-| Vlastnost                 | Typ                                                           | Popis                                                           |
+| Vlastnost                 | Typ                                                           | Description                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | httpResponseMessage      | object                                                         | ByteArrayContent s contentType = Application/PDF.                  |
 
@@ -196,80 +191,80 @@ Představuje operace dostupné v příkazu faktury v Application/PDF.
 
 Představuje položku fakturačního řádku faktury pro odběry na základě licencí.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | --- | --- | --- |
-| PartnerId | řetězec | Získá nebo nastaví ID partnerského tenanta. |
+| PartnerId | řetězec | Získá nebo nastaví ID tenanta partnera. |
 | CustomerId | řetězec | Získá nebo nastaví ID tenanta zákazníka. |
-| CustomerName | řetězec | Získá nebo nastaví název zákazníka. |
+| CustomerName | řetězec | Získá nebo nastaví jméno zákazníka. |
 | CustomerDomainName | řetězec | Získá nebo nastaví název domény zákazníka. |
 | CustomerCountry | řetězec | Získá nebo nastaví zemi zákazníka. |
 | InvoiceNumber | řetězec | Získá nebo nastaví číslo faktury. |
-| MpnId | řetězec | Získá nebo nastaví ID MPN přidružené k této položce řádku. |
+| ID mpn | řetězec | Získá nebo nastaví ID MPN přidružené k této položce řádku. |
 | ResellerMpnId | int | Získá nebo nastaví jedinečný identifikátor objednávky. |
-| OrderDate | DateTime | Získá nebo nastaví datum, kdy se pořadí vytvořilo. |
+| OrderDate | DateTime | Získá nebo nastaví datum vytvoření objednávky. |
 | ProductId | řetězec | Získá nebo nastaví jedinečný identifikátor produktu. |
-| SkuId | řetězec | Získá nebo nastaví jedinečný identifikátor SKU. |
-| AvailabilityId | řetězec | Získá nebo nastaví jedinečný identifikátor dostupnosti. |
+| ID SKU | řetězec | Získá nebo nastaví jedinečný identifikátor SKU. |
+| ID dostupnosti | řetězec | Získá nebo nastaví jedinečný identifikátor dostupnosti. |
 | ProductName | řetězec | Získá nebo nastaví název produktu. |
 | SkuName | řetězec | Získá nebo nastaví název SKU. |
-| ChargeType | řetězec | Získá nebo nastaví typ poplatků. |
+| ChargeType | řetězec | Získá nebo nastaví typ poplatku. |
 | UnitPrice | decimal | Získá nebo nastaví jednotkovou cenu. |
 | EffectiveUnitPrice | decimal | Získá nebo nastaví efektivní jednotkovou cenu. |
-| Jednotkách UnitType | řetězec | Získá nebo nastaví typ jednotky. |
+| Unittype | řetězec | Získá nebo nastaví typ jednotky. |
 | Množství | int | Získá nebo nastaví počet jednotek přidružených k této položce řádku. |
-| Mezisoučet | decimal | Získá nebo nastaví hodnotu po slevě. |
-| TaxTotal | decimal | Získá nebo nastaví poplatky za daň. |
+| Mezisoučet | decimal | Získá nebo nastaví částku po slevě. |
+| TaxTotal | decimal | Získá nebo nastaví účtované daně. |
 | TotalForCustomer | decimal | Získá nebo nastaví celkovou částku po slevě a dani. |
 | Měna | řetězec | Získá nebo nastaví měnu použitou pro tuto položku řádku. |
-| Název vydavatele | řetězec | Získá nebo nastaví název vydavatele přidruženého k tomuto nákupu. |
-| PublisherId | řetězec | Získá nebo nastaví ID vydavatele přidruženého k tomuto nákupu. |
-| SubscriptionDescription | řetězec | Získá nebo nastaví popis předplatného přidružený k tomuto nákupu. |
-| SubscriptionId | řetězec | Získá nebo nastaví ID předplatného přidruženého k tomuto nákupu. |
-| ChargeStartDate | DateTime | Získá nebo nastaví počáteční datum poplatku přidružené k tomuto nákupu. |
-| ChargeEndDate | DateTime | Získá nebo nastaví datum ukončení poplatku přidružené k tomuto nákupu. |
-| TermAndBillingCycle | řetězec | Získá nebo nastaví termín a fakturační cyklus spojený s tímto nákupem. |
-| AlternateId | řetězec | Získá nebo nastaví alternativní ID (ID nabídky). |
-| PriceAdjustmentDescription | řetězec | Získá nebo nastaví popis úpravy ceny. |
+| Název vydavatele | řetězec | Získá nebo nastaví název vydavatele přidružený k tomuto nákupu. |
+| PublisherId | řetězec | Získá nebo nastaví ID vydavatele přidružené k tomuto nákupu. |
+| Popis předplatného | řetězec | Získá nebo nastaví popis předplatného přidružený k tomuto nákupu. |
+| SubscriptionId | řetězec | Získá nebo nastaví ID předplatného přidružené k tomuto nákupu. |
+| ChargeStartDate | DateTime | Získá nebo nastaví počáteční datum poplatku spojené s tímto nákupem. |
+| ChargeEndDate | DateTime | Získá nebo nastaví koncové datum poplatku spojené s tímto nákupem. |
+| TermAndBillingCycle | řetězec | Získá nebo nastaví období a fakturační cyklus související s tímto nákupem. |
+| Alternativní ID | řetězec | Získá nebo nastaví alternativní ID (ID nabídky). |
+| Popis vlastnosti PriceAdjustment | řetězec | Získá nebo nastaví popis úpravy ceny. |
 | CreditReasonCode | řetězec | Získá nebo nastaví kód důvodu kreditu. |
-| DiscountDetails | řetězec |  **Zastaralé**. Získá nebo nastaví informace o slevě přidružené k tomuto nákupu. |
+| DiscountDetails | řetězec |  **Zastaralé .** Získá nebo nastaví podrobnosti slevy spojené s tímto nákupem. |
 | PricingCurrency | řetězec | Získá nebo nastaví kód cenové měny. |
-| PCToBCExchangeRate | decimal | Získá nebo nastaví cenovou měnu směnného kurzu pro fakturační měnu. |
-| PCToBCExchangeRateDate | DateTime | Získá nebo nastaví datum směnného kurzu, kdy se stanovila cenová měna pro směnný kurz fakturačních měn. |
-| BillableQuantity | decimal | Získá nebo nastaví koupené jednotky. Pro každý sloupec návrhu s názvem **BillableQuantity**. |
-| MeterDescription | řetězec | Získá nebo nastaví popis měřiče pro položku řádku spotřeby. |
-| ReservationOrderId | řetězec | Získá nebo nastaví identifikátor objednávky rezervace pro nákup ve službě Azure RI. |
-| BillingFrequency | řetězec | Získá nebo nastaví četnost fakturace. |
-| InvoiceLineItemType | InvoiceLineItemType | Vrátí typ položky řádku faktury. |
-| BillingProvider | BillingProvider | Vrátí zprostředkovatele fakturace. |
+| PCToBCExchangeRate | decimal | Získá nebo nastaví ceníkovou měnu na směnný kurz fakturační měny. |
+| PCToBCExchangeRateDate | DateTime | Získá nebo nastaví datum směnného kurzu, ve kterém byla určená měna ceníku pro směnný kurz fakturační měny. |
+| BillableQuantity | decimal | Získá nebo nastaví zakoupené jednotky. Pro každý sloupec návrhu s názvem **BillableQuantity**. |
+| Popis měřiče | řetězec | Získá nebo nastaví popis měřiče pro položku řádku Consumption. |
+| ReservationOrderId | řetězec | Získá nebo nastaví identifikátor objednávky rezervace pro nákup azure RI. |
+| FakturaceFrequency | řetězec | Získá nebo nastaví četnost fakturace. |
+| InvoiceLineItemType | InvoiceLineItemType | Vrátí typ řádkové položky faktury. |
+| BillingProvider | BillingProvider | Vrátí poskytovatele fakturace. |
 
 ## <a name="dailyratedusagelineitem"></a>DailyRatedUsageLineItem
 
-Představuje nefakturovatelné a účtované položky řádku odsouhlasení pro denní hodnocené využití.
+Představuje nefaktované fakturované řádkové položky odsouhlasení pro využití podle denního hodnocení.
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | --- | --- | --- |
-| PartnerId | řetězec | Získá nebo nastaví ID partnerského tenanta. |
+| ID partnera | řetězec | Získá nebo nastaví ID tenanta partnera. |
 | PartnerName | řetězec | Získá nebo nastaví název partnera. |
-| CustomerId | řetězec | Získá nebo nastaví ID tenanta zákazníka, kterému využití patří. |
-| CustomerName | řetězec | Získá nebo nastaví název společnosti zákazníka, ke které je využití patří. |
-| CustomerDomainName | řetězec | Získá nebo nastaví název domény zákazníka, ke kterému patří využití. |
-| InvoiceNumber | řetězec | Získá nebo nastaví ID faktury, ke které je využití patří. |
+| CustomerId | řetězec | Získá nebo nastaví ID tenanta zákazníka, ke které využití patří. |
+| CustomerName | řetězec | Získá nebo nastaví název zákaznické společnosti, do které patří využití. |
+| CustomerDomainName | řetězec | Získá nebo nastaví název domény zákazníka, ke které patří využití. |
+| InvoiceNumber | řetězec | Získá nebo nastaví ID faktury, ke které patří využití. |
 | ProductId | řetězec | Získá nebo nastaví jedinečný identifikátor produktu. |
-| SkuId | řetězec | Získá nebo nastaví jedinečný identifikátor SKU. |
-| AvailabilityId | řetězec | Získá nebo nastaví jedinečný identifikátor dostupnosti. |
+| ID SKU | řetězec | Získá nebo nastaví jedinečný identifikátor SKU. |
+| ID dostupnosti | řetězec | Získá nebo nastaví jedinečný identifikátor dostupnosti. |
 | SkuName | řetězec | Získá nebo nastaví název SKU pro službu. |
 | ProductName | řetězec | Získá nebo nastaví název produktu. |
 | Název vydavatele | řetězec | Získá nebo nastaví název vydavatele. |
 | PublisherId | řetězec | Získá nebo nastaví ID vydavatele. |
 | SubscriptionId | řetězec | Získá nebo nastaví ID předplatného. |
-| SubscriptionDescription | řetězec | Získá nebo nastaví popis předplatného. |
+| Popis předplatného | řetězec | Získá nebo nastaví popis předplatného. |
 | ChargeStartDate | DateTime | Získá nebo nastaví počáteční datum poplatku. |
-| ChargeEndDate | DateTime | Získá nebo nastaví datum ukončení pro poplatek. |
-| UsageDate | DateTime | Získá nebo nastaví datum využití. |
-| MeterType | řetězec | Získá nebo nastaví typ měřiče. |
+| ChargeEndDate | DateTime | Získá nebo nastaví koncové datum poplatku. |
+| UsageDate | DateTime | Získá nebo nastaví datum použití. |
+| MeterType (Typ měřiče) | řetězec | Získá nebo nastaví typ měřiče. |
 | MeterCategory | řetězec | Získá nebo nastaví kategorii měřiče. |
 | MeterId | řetězec | Získá nebo nastaví ID měřiče (GUID). |
-| MeterSubCategory | řetězec | Získá nebo nastaví podkategorii měřiče. |
+| MeterSubCategory | řetězec | Získá nebo nastaví dílčí kategorii měřiče. |
 | MeterName | řetězec | Získá nebo nastaví název měřiče. |
 | MeterRegion | řetězec | Získá nebo nastaví oblast měřiče. |
 | UnitOfMeasure | řetězec | Získá nebo nastaví měrnou jednotku. |

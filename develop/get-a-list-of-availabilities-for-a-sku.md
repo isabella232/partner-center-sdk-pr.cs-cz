@@ -6,24 +6,20 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b97a4ce85b5edd9de1301a577988f8c54096ebeb
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b29c005e74ad8a4da547a888b78e4599e74ebd02
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766792"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874529"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Získání seznamu dostupností pro skladovou položku (podle země)
 
-**Platí pro:**
-
-- Partnerské centrum
-
-Tento článek popisuje, jak získat kolekci dostupnosti dostupnosti v určité zemi pro určitý produkt a SKU.
+Tento článek popisuje, jak získat kolekci dostupnosti v konkrétní zemi pro zadaný produkt a SKU.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 - Identifikátor produktu.
 
@@ -33,15 +29,15 @@ Tento článek popisuje, jak získat kolekci dostupnosti dostupnosti v určité 
 
 ## <a name="c"></a>C\#
 
-Získání seznamu [dostupnosti](product-resources.md#availability) pro [SKU](product-resources.md#sku):
+Získání seznamu dostupnosti [pro](product-resources.md#availability) [SKU:](product-resources.md#sku)
 
-1. Postupujte podle kroků v části [získání SKU podle ID](get-a-sku-by-id.md) a získejte rozhraní pro konkrétní operace SKU.
+1. Postupujte podle kroků v [části Získání SKU podle ID](get-a-sku-by-id.md) a získejte rozhraní pro operace konkrétní SKU.
 
-2. V rozhraní SKU vyberte vlastnost **Nákup** a získejte rozhraní s operacemi pro nákup.
+2. V rozhraní SKU vyberte vlastnost **Availabilities** a získejte rozhraní s operacemi pro dostupnost.
 
-3. Volitelné K filtrování dostupnosti podle cílového segmentu použijte metodu **ByTargetSegment ()** .
+3. (Volitelné) K filtrování dostupnosti podle cílového segmentu použijte metodu **ByTargetSegment().**
 
-4. Volání metody **Get ()** nebo **GetAsync ()** pro načtení kolekce dostupnosti pro tuto sku.
+4. Voláním **metody Get()** nebo **GetAsync()** načtěte kolekci dostupnosti pro tuto skladové číslo.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -66,29 +62,29 @@ var availabilities = partnerOperations.Products.ByCountry(countryCode).ById(prod
 
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}/skus/{SKU-ID}/availabilities? Country = {Country-code} &targetSegment = {Target-segment} HTTP/1.1     |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{id_produktu}/skus/{id_SKU}/availabilities?country={kód_země}&targetSegment={target-segment} HTTP/1.1     |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-K získání seznamu dostupnosti pro SKU použijte následující cestu a parametry dotazu.
+Pomocí následující cesty a parametrů dotazu získejte seznam dostupnosti pro SKU.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| ID produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
-| SKU – ID                 | řetězec   | Yes      | Řetězec, který identifikuje SKU.                               |
+| id produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
+| sku-id                 | řetězec   | Yes      | Řetězec, který identifikuje SKU.                               |
 | kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
-| cíl – segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý pro filtrování. |
-| reservationScope | řetězec   | No | Při dotazování na seznam dostupnosti pro SKU Azure rezervované instance zadejte, `reservationScope=AzurePlan` že se má získat seznam dostupnosti, který platí pro AzurePlan. Vyloučením tohoto parametru získáte seznam dostupnosti, který se vztahuje na předplatná Microsoft Azure (MS-AZR-0145P).  |
+| target-segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý k filtrování. |
+| reservationScope | řetězec   | No | Při dotazování na seznam dostupnosti pro SKU rezervace Azure zadejte , abyste získali seznam dostupnosti, které se vztahují `reservationScope=AzurePlan` na AzurePlan. Tento parametr vyloučíte, pokud chcete získat seznam dostupnosti, které se vztahují Microsoft Azure předplatná MS-AZR-0145P.  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -96,9 +92,9 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-examples"></a>Příklady požadavků
 
-#### <a name="availabilities-for-sku-by-country"></a>Dostupnosti pro SKU podle země
+#### <a name="availabilities-for-sku-by-country"></a>Dostupnost SKU podle země
 
-Podle tohoto příkladu Získejte seznam dostupnosti pro danou skladovou jednotku podle země:
+Pokud chcete získat seznam dostupnosti pro danou SKU podle země, postupujte podle tohoto příkladu:
 
 ```http
 GET http:// api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US HTTP/1.1
@@ -108,9 +104,9 @@ MS-RequestId: 70324727-62d8-4195-8f99-70ea25058d02
 MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58
 ```
 
-#### <a name="availabilities-for-vm-reservations-azure-plan"></a>Dostupnosti pro rezervace virtuálních počítačů (plán Azure)
+#### <a name="availabilities-for-vm-reservations-azure-plan"></a>Dostupnost pro rezervace virtuálních počítače (plán Azure)
 
-Podle tohoto příkladu Získejte seznam dostupnosti podle země pro skladové položky rezervace virtuálních počítačů Azure. Tento příklad je pro SKU, které se vztahují na plány Azure:
+Postupujte podle tohoto příkladu a získejte seznam dostupnosti pro skladové položky rezervací virtuálních počítače Azure podle země. Tento příklad je pro SKU, které se vztahují na plány Azure:
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureReservationsVM&reservationScope=AzurePlan HTTP/1.1
@@ -120,9 +116,9 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
-#### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Dostupnosti pro rezervace virtuálních počítačů pro předplatná Microsoft Azure (MS-AZR-0145P)
+#### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Dostupnost rezervací virtuálních Microsoft Azure předplatných (MS-AZR-0145P)
 
-Podle tohoto příkladu Získejte seznam dostupnosti v rámci země pro rezervace virtuálních počítačů Azure, které platí pro předplatná Microsoft Azure (MS-AZR-0145P).
+Postupujte podle tohoto příkladu a získejte seznam dostupnosti pro rezervace virtuálních počítače Azure podle země, které se vztahují na předplatná Microsoft Azure (MS-AZR-0145P).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/productsDZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureAzureReservationsVM HTTP/1.1
@@ -134,17 +130,17 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [**dostupnosti**](product-resources.md#availability) .
+V případě úspěchu bude tělo odpovědi obsahovat kolekci [**prostředků**](product-resources.md#availability) dostupnosti.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
-Tato metoda vrací následující kódy chyb:
+Tato metoda vrátí následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 403                  | 400030       | Přístup k požadovanému **targetSegment** není povolený.                                                     |
+| 403                  | 400030       | Přístup k **požadovanému targetSegment** není povolený.                                                     |
 
 ### <a name="response-example"></a>Příklad odpovědi
 

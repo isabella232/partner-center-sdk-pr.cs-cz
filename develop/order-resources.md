@@ -4,21 +4,16 @@ description: Partner umístí objednávku, když chce zákazník koupit předpla
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9db07337a98214b4aaa93e2c8b43b84702249b77
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: c993317f288568dd687c3b52bf47e4520fcd18c6
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766828"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548052"
 ---
 # <a name="order-resources"></a>Objednat prostředky
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Partner umístí objednávku, když chce zákazník koupit předplatné ze seznamu nabídek.
 
@@ -77,8 +72,8 @@ Představuje odkazy na prostředky odpovídající objednávce.
 
 | Vlastnost           | Typ                                         | Description                                                                   |
 |--------------------|----------------------------------------------|-------------------------------------------------------------------------------|
-| provisioningStatus | [Odkaz](utility-resources.md#link)            | Po naplnění se zobrazí odkaz pro načtení stavu zřizování pro objednávku.       |
-| samorozbalující               | [Odkaz](utility-resources.md#link)            | Odkaz pro načtení prostředku objednávky.                                      |
+| provisioningStatus | [Propojit](utility-resources.md#link)            | Po naplnění se zobrazí odkaz pro načtení stavu zřizování pro objednávku.       |
+| samorozbalující               | [Propojit](utility-resources.md#link)            | Odkaz pro načtení prostředku objednávky.                                      |
 
 ## <a name="orderlineitemlinks"></a>OrderLineItemLinks
 
@@ -86,10 +81,10 @@ Představuje úplné předplatné přidružené k objednávce.
 
 | Vlastnost           | Typ                                         | Description                                                                          |
 |--------------------|----------------------------------------------|--------------------------------------------------------------------------------------|
-| provisioningStatus | [Odkaz](utility-resources.md#link)            | Po vyplnění odkaz pro načtení [stavu zřizování](#orderlineitemprovisioningstatus) položky řádku.       |
-| skladové                | [Odkaz](utility-resources.md#link)            | Odkaz pro načtení informací o SKU pro zakoupenou položku katalogu                    |
-| předplatné       | [Odkaz](utility-resources.md#link)            | Po vyplnění se zobrazí odkaz na úplné informace o odběru.                       |
-| activationLinks    | [Odkaz](utility-resources.md#link)            | Po naplnění na odkaz získat prostředek pro aktivaci předplatného.             |
+| provisioningStatus | [Propojit](utility-resources.md#link)            | Po vyplnění odkaz pro načtení [stavu zřizování](#orderlineitemprovisioningstatus) položky řádku.       |
+| skladové                | [Propojit](utility-resources.md#link)            | Odkaz pro načtení informací o SKU pro zakoupenou položku katalogu                    |
+| předplatné       | [Propojit](utility-resources.md#link)            | Po vyplnění se zobrazí odkaz na úplné informace o odběru.                       |
+| activationLinks    | [Propojit](utility-resources.md#link)            | Po naplnění na odkaz získat prostředek pro aktivaci předplatného.             |
 
 ## <a name="orderstatus"></a>OrderStatus
 
@@ -109,7 +104,7 @@ Představuje stav zřizování [OrderLineItem](#orderlineitem).
 | Vlastnost                        | Typ                                | Description                                                                                |
 |------------------------------------|-------------------------------------|--------------------------------------------------------------------------------------------|
 | lineItemNumber                  | int                                 | Jedinečné číslo řádku položky řádku objednávky Hodnoty jsou v rozsahu od 0 do Count-1.             |
-| status                          | řetězec                              | Stav zřizování položky řádku objednávky Mezi tyto hodnoty patří:</br>"Splněno": plnění objednávky je úspěšně dokončeno a uživatel bude moci použít rezervace</br>"Nesplněno": nedodrženo v důsledku zrušení</br>"PrefulfillmentPending": vaše žádost se pořád zpracovává, plnění ještě není dokončené. |
+| status                          | řetězec                              | Stav zřizování položky řádku objednávky Mezi tyto hodnoty patří:</br>**Splněno**: plnění objednávky je úspěšně dokončeno a uživatel bude moci použít rezervace.</br>**Nesplněno**: není splněné kvůli zrušení.</br>**PrefulfillmentPending**: vaše žádost se pořád zpracovává, plnění ještě není dokončené. |
 | quantityProvisioningInformation | Seznam<[QuantityProvisioningStatus](#quantityprovisioningstatus)> | Seznam informací o stavu zřizování pro položku řádku objednávky. |
 
 ## <a name="quantityprovisioningstatus"></a>QuantityProvisioningStatus

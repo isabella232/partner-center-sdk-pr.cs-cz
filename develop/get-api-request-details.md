@@ -6,18 +6,16 @@ ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 43b1e3d4a6220ac8adba8eed0389395113072288
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 9a367f912669114969f8792a5afcc7020af1112e
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766668"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760500"
 ---
 # <a name="get-app-and-user-api-requests"></a>Získání požadavků na rozhraní API pro aplikace a uživatele
 
-Platí pro:
-
-- Rozhraní API partnerského centra
+**Platí pro**: rozhraní API partnerského centra
 
 Tento článek vysvětluje, jak získat seznam všech požadavků partnerských uživatelů v rámci tenanta pomocí rozhraní REST API.
 
@@ -38,7 +36,7 @@ Tento článek vysvětluje, jak získat seznam všech požadavků partnerských 
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Další informace najdete v tématu [záhlaví REST v partnerském centru](headers.md) .
+- Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 

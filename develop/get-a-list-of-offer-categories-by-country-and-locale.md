@@ -1,38 +1,33 @@
 ---
 title: Získání seznamu kategorií nabídek podle trhu
-description: Naučte se, jak získat kolekci, která obsahuje všechny kategorie nabídek v dané zemi nebo oblasti a národním prostředí pro všechny cloudy Microsoftu.
+description: Zjistěte, jak získat kolekci, která obsahuje všechny kategorie nabídek v dané zemi/oblasti a národní prostředí pro všechny cloudy Microsoftu.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 05aad095c6cb8eaee4cbf7ce976ca1b4b7a408c4
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: e699355f07dda3941eafed32f5f635d94000abd1
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500052"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874274"
 ---
 # <a name="get-a-list-of-offer-categories-by-market"></a>Získání seznamu kategorií nabídek podle trhu
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tento článek popisuje, jak získat kolekci, která obsahuje všechny kategorie nabídek v dané zemi nebo oblasti a národním prostředí.
+Tento článek popisuje, jak získat kolekci, která obsahuje všechny kategorie nabídek v dané zemi/oblasti a národní prostředí.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Postup získání seznamu kategorií nabídek v dané zemi nebo oblasti a národním prostředí:
+Získání seznamu kategorií nabídek v dané zemi/oblasti a národního prostředí:
 
-1. K volání metody [**with ()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) v daném kontextu použijte kolekci [**IAggregatePartner. Operations.**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner)
+1. Pomocí kolekce [**IAggregatePartner.Operations**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner) zavolejte metodu [**With()**](/dotnet/api/microsoft.store.partnercenter.iaggregatepartner.with) pro daný kontext.
 
 2. Zkontrolujte vlastnost [**OfferCategories**](/dotnet/api/microsoft.store.partnercenter.ipartner.offercategories) výsledného objektu.
 
@@ -42,19 +37,19 @@ Postup získání seznamu kategorií nabídek v dané zemi nebo oblasti a národ
 ResourceCollection<OfferCategory> offerCategoryResults = partnerOperations.With(RequestContextFactory.Instance.Create()).OfferCategories.ByCountry("US").Get();
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
-- Třída: **PartnerSDK. FeatureSample**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSample**
+- Třída: **PartnerSDK.FeatureSample**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                  |
 |---------|----------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories? Country = {Country-ID} HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offercategories?country={country-id} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -62,13 +57,13 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání kat
 
 | Název           | Typ       | Vyžadováno | Popis            |
 |----------------|------------|----------|------------------------|
-| **ID země** | **řetězec** | Y        | ID země nebo oblasti |
+| **country-id** | **řetězec** | Y        | ID země nebo oblasti. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Je vyžadováno **ID národního prostředí** naformátovaného jako řetězec.
+Vyžaduje **se ID národního** prostředí formátované jako řetězec.
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -88,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků **OfferCategory** v těle odpovědi.
+V případě úspěchu tato metoda vrátí kolekci **prostředků OfferCategory** v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

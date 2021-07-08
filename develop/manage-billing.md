@@ -1,28 +1,23 @@
 ---
 title: Správa vyúčtování
-description: Tato část popisuje způsob, jakým partneři poskytovatele Cloud Solution Provider můžou prostřednictvím partnerského centra zobrazit a spravovat své faktury a zobrazit pokrok svého zákazníka vůči rozpočtu útraty Azure.
+description: v této části se dozvíte, jak mohou Cloud Solution Provider partneři používat partnerské centrum k programovému zobrazení a správě faktur a k zobrazení pokroku zákazníka na základě rozpočtu útraty Azure.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 4d5995ea2abb5968c5ca459b8412b12dfdbbc47b
-ms.sourcegitcommit: d53d300dc7fb01aeb4ef85bf2e3a6b80f868dc57
+ms.openlocfilehash: eaf6a426d0702130f31f08a4a30ccdfa00810270
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "97766915"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548358"
 ---
 # <a name="manage-billing"></a>Správa vyúčtování
 
-**Platí pro**
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-V této části se dozvíte, jak mohou partneři poskytovatele Cloud Solution Provider používat Partnerské centrum k programovému zobrazení a správě faktur a k zobrazení pokroku zákazníka na základě rozpočtu útraty Azure.
+tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra zobrazit a spravovat své faktury a zobrazit pokrok svého zákazníka vůči rozpočtu útraty Azure.
 
 **Fakturační cyklus:**
 - [Změna fakturačního cyklu](change-the-billing-cycle.md)

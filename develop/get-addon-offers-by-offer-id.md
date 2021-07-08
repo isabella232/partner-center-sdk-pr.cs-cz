@@ -1,38 +1,33 @@
 ---
 title: Získání doplňků pro ID nabídky
-description: Jak získat doplňky pro ID nabídky
+description: Jak získat doplňky pro ID nabídky.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 9ee22712b323c7439a192ed2e5af8d5e7eaf92a3
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: e3b0ab8007d3affa6912479b960f6dae3bc0bd28
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766839"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760330"
 ---
 # <a name="get-add-ons-for-an-offer-id"></a>Získání doplňků pro ID nabídky
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak získat doplňky pro ID nabídky
+Jak získat doplňky pro ID nabídky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID nabídky Pokud nemáte ID nabídky, přečtěte si téma [získání seznamu nabídek pro trh](get-a-list-of-offers-for-a-market.md).
+- ID nabídky. Pokud ID nabídky nemáte, podívejte se na seznam nabídek [pro trh.](get-a-list-of-offers-for-a-market.md)
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat doplňky pro nabídku podle ID, nejprve zavolejte metodu [**IAggregatePartner. reoffer. ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) s kódem země, abyste získali rozhraní pro nabídky operací na základě dané země. Pak zavolejte metodu [**ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) s ID nabídky k identifikaci nabídky, jejíž doplňky chcete načíst. Dále použijte vlastnost [**Doplňky**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) a získejte rozhraní k operacím doplňku pro aktuální nabídku. Nakonec zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) , abyste získali kolekci všech doplňků pro určenou nabídku.
+Pokud chcete získat doplňky pro nabídku podle ID, nejprve zavolejte metodu [**IAggregatePartner.Offers.ByCountry**](/dotnet/api/microsoft.store.partnercenter.genericoperations.icountryselector-1.bycountry) s kódem země, abyste získali rozhraní pro nabídku operací na základě dané země. Potom zavolejte [**metodu ByID**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) s ID nabídky a identifikujte nabídku, jejíž doplňky chcete načíst. Dále pomocí vlastnosti [**AddOns**](/dotnet/api/microsoft.store.partnercenter.offers.ioffer.addons) získejte rozhraní pro operace doplňků pro aktuální nabídku. Nakonec zavolejte [**metodu Get**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.offers.iofferaddons.getasync) a získejte kolekci všech doplňků pro zadanou nabídku.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,15 +37,15 @@ Chcete-li získat doplňky pro nabídku podle ID, nejprve zavolejte metodu [**IA
 var offerAddOns = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).AddOns.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetOffer.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **– třída:** GetOffer.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{Offer-ID}/addons? Country = {Country-Code} HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{id_nabídky}/addons?country={kód_země} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -58,12 +53,12 @@ Pomocí následujících parametrů zadejte ID nabídky a kód země.
 
 | Název         | Typ       | Vyžadováno | Popis                       |
 |--------------|------------|----------|-----------------------------------|
-| **ID nabídky** | **guid**   | Y        | Identifikátor GUID, který identifikuje nabídku |
-| **krajin**  | **řetezce** | Y        | Kód země (například `US` ).       |
+| **ID nabídky** | **guid**   | Y        | Identifikátor GUID, který identifikuje nabídku. |
+| **Země**  | **řetězec** | Y        | Kód země (například `US` ).       |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -83,11 +78,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci objektů [nabídek](offer-resources.md) v těle odpovědi.
+V případě úspěchu tato metoda vrátí kolekci objektů [Offer](offer-resources.md) v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

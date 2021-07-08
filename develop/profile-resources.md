@@ -1,73 +1,68 @@
 ---
-title: Prostředky profilu
-description: Popisuje chování profilů poskytovatele cloudových řešení.
+title: Profilové prostředky
+description: Popisuje chování Cloud Solution Provider profilu uživatele.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e0561278995f4f9747320866b51de57efea8f712
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 945cfa141d1e6bde1709da882a177daaa32fba1f
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97766972"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111547780"
 ---
-# <a name="profile-resources"></a>Prostředky profilu
+# <a name="profile-resources"></a>Profilové prostředky
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Popisuje chování Cloud Solution Provider profilu uživatele.
 
-Popisuje chování profilů poskytovatele cloudových řešení.
+## <a name="billingprofile"></a>Profil fakturace
 
-## <a name="billingprofile"></a>BillingProfile
-
-Popisuje Fakturační profil partnera.
+Popisuje fakturační profil partnera.
 
 | Vlastnost            | Typ                                                           | Description                                                 |
 |---------------------|----------------------------------------------------------------|-------------------------------------------------------------|
-| Společnosti         | řetězec                                                         | Název fakturační společnosti                                   |
+| Companyname         | řetězec                                                         | Název fakturační společnosti.                                   |
 | adresa             | [Adresa](utility-resources.md#address)                       | Fakturační adresa společnosti nebo organizace. |
-| primaryContact      | [Kontakt](utility-resources.md#contact)                       | Primární kontakt společnosti nebo organizace.        |
+| primaryContact      | [Kontakt](utility-resources.md#contact)                       | Primární kontakt pro společnost nebo organizaci.        |
 | purchaseOrderNumber | řetězec                                                         | Číslo nákupní objednávky společnosti nebo organizace.        |
-| taxId               | řetězec                                                         | Daňové ID společnosti nebo organizace.                       |
-| billingCurrency     | řetězec                                                         | Měna, kterou používá společnost nebo organizace.           |
-| Typ souboru         | řetězec                                                         | Typ partnerského profilu.                                   |
-| odkazy               | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky odpovídající profilu.            |
-| atributy          | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu.       |
+| taxId (ID daně)               | řetězec                                                         | TID společnosti nebo organizace                       |
+| billingCurrency     | řetězec                                                         | Měna používaná společností nebo organizací.           |
+| typ profilu         | řetězec                                                         | Typ profilu partnera.                                   |
+| Odkazy               | [Odkazy na prostředky](utility-resources.md#resourcelinks)           | Propojení prostředků odpovídající profilu.            |
+| atributy          | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu.       |
 
 ## <a name="legalbusinessprofile"></a>LegalBusinessProfile
 
-Popisuje oficiální obchodní profil partnera.
+Popisuje právní obchodní profil partnera.
 
 | Vlastnost               | Typ                                                           | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Společnosti            | řetězec                                                         | Platný název společnosti.                                                                                                                                              |
+| Companyname            | řetězec                                                         | Oficiální název společnosti.                                                                                                                                              |
 | adresa                | [Adresa](utility-resources.md#address)                       | Adresa společnosti nebo organizace.                                                                                                                          |
-| primaryContact         | [Kontakt](utility-resources.md#contact)                       | Primární kontakt společnosti nebo organizace.                                                                                                                 |
-| companyApproverAddress | [Adresa](utility-resources.md#address)                       | Adresa schvalovatele společnosti                                                                                                                                        |
-| companyApproverEmail   | řetězec                                                         | E-mail schvalovatele společnosti                                                                                                                                          |
-| vettingStatus          | řetězec                                                         | Stav dozvíte ČSFD Tato hodnota představuje řetězcovou reprezentaci jednoho z názvů členů nalezených v [**VettingStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingstatus).           |
-| vettingSubStatus       | řetězec                                                         | Dílčí stav dozvíte ČSFD Tato hodnota představuje řetězcovou reprezentaci jednoho z názvů členů nalezených v [**VettingSubStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingsubstatus). |
-| Typ souboru            | řetězec                                                         | Typ partnerského profilu.                                                                                                                                            |
-| odkazy                  | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky odpovídající profilu.                                                                                                                     |
-| atributy             | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu.                                                                                                                |
+| primaryContact         | [Kontakt](utility-resources.md#contact)                       | Primární kontakt pro společnost nebo organizaci.                                                                                                                 |
+| companyApproverAddress | [Adresa](utility-resources.md#address)                       | Adresa schvalovatel společnosti.                                                                                                                                        |
+| companyApproverEmail   | řetězec                                                         | E-mail schvalovatel společnosti.                                                                                                                                          |
+| stav prověřování          | řetězec                                                         | Stav prověřování. Tato hodnota je řetězcová reprezentace jednoho z názvů členů nalezených ve [**VettingStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingstatus).           |
+| vettingSubStatus       | řetězec                                                         | Dílčí stav prověřování. Tato hodnota je řetězcová reprezentace jednoho z názvů členů nalezených ve [**VettingSubStatus**](/dotnet/api/microsoft.store.partnercenter.models.partners.vettingsubstatus). |
+| typ profilu            | řetězec                                                         | Typ profilu partnera.                                                                                                                                            |
+| Odkazy                  | [Odkazy na prostředky](utility-resources.md#resourcelinks)           | Propojení prostředků odpovídající profilu.                                                                                                                     |
+| atributy             | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu.                                                                                                                |
 
-## <a name="mpnprofile"></a>MpnProfile
+## <a name="mpnprofile"></a>Profil Mpn
 
 Popisuje profil Microsoft Partner Network partnera.
 
 | Vlastnost    | Typ                                                           | Description                                           |
 |-------------|----------------------------------------------------------------|-------------------------------------------------------|
-| partnerName | řetězec                                                         | Název společnosti nebo organizace.                     |
-| mpnId       | řetězec                                                         | ID Microsoft Partner Network.                     |
-| Typ souboru | řetězec                                                         | Typ partnerského profilu.                             |
-| odkazy       | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky odpovídající profilu.      |
-| atributy  | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu. |
+| název partnera | řetězec                                                         | Název společnosti nebo organizace.                     |
+| ID mpn       | řetězec                                                         | ID Microsoft Partner Network (MPN).                     |
+| typ profilu | řetězec                                                         | Typ profilu partnera.                             |
+| Odkazy       | [Odkazy na prostředky](utility-resources.md#resourcelinks)           | Propojení prostředků odpovídající profilu.      |
+| atributy  | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající profilu. |
 
-## <a name="organizationprofile"></a>OrganizationProfile
+## <a name="organizationprofile"></a>Profil organizace
 
 Popisuje profil organizace partnera.
 

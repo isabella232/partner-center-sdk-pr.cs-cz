@@ -1,59 +1,54 @@
 ---
 title: Získání seznamu dostupností pro skladovou položku (podle zákazníka)
-description: Můžete získat kolekci dostupnosti pro určitý produkt a SKU podle zákazníka pomocí identifikátorů zákazníka, produktu a SKU.
+description: Pomocí identifikátorů zákazníka, produktu a SKU můžete získat kolekci dostupnosti pro zadaný produkt a SKU zákazníka.
 ms.assetid: ''
 ms.date: 10/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 5f4067916fea911963182954eed77f4e230e79d6
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: b237bbd17a6108bbcb4e23529cf476a6b8306f68
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766793"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874546"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-customer"></a>Získání seznamu dostupností pro skladovou položku (podle zákazníka)
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Následující metody můžete použít k získání kolekce dostupnosti pro určitý produkt a SKU k dispozici konkrétnímu zákazníkovi.
+Následující metody můžete použít k získání kolekce dostupnosti pro zadaný produkt a SKU, které jsou k dispozici pro konkrétního zákazníka.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Identifikátor produktu (**ID produktu**).
+- Identifikátor produktu (**product-id**).
 
-- Identifikátor SKU (**SKU-ID**).
+- Identifikátor skladové položky **(sku-id).**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti                                                                                                                 |
 |--------|-----------------------------------------------------------------------------------------------------------------------------|
-| POST   | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Products/{Product-ID}/skus/{SKU-ID} HTTP/1.1 |
+| POST   | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/products/{ID_produktu}/skus/{ID_SKU} HTTP/1.1 |
 
-### <a name="request-uri-parameters"></a>Parametry identifikátoru URI žádosti
+### <a name="request-uri-parameters"></a>Parametry identifikátoru URI požadavku
 
 | Název               | Typ | Vyžadováno | Popis                                                                                 |
 |--------------------|------|----------|---------------------------------------------------------------------------------------------|
-| Customer-tenant-ID | Identifikátor GUID | Yes | Hodnota je **číslo zákazníka**, který je ve formátu GUID, což je identifikátor, který umožňuje zadat zákazníka. |
-| ID produktu | řetězec | Yes | Řetězec, který identifikuje produkt. |
-| SKU – ID | řetězec | Yes | Řetězec, který identifikuje SKU. |
+| customer-tenant-id | Identifikátor GUID | Yes | Hodnota je id tenanta zákazníka ve **formátu** GUID, což je identifikátor, který umožňuje zadat zákazníka. |
+| id produktu | řetězec | Yes | Řetězec, který identifikuje produkt. |
+| sku-id | řetězec | Yes | Řetězec, který identifikuje SKU. |
 
 ### <a name="request-header"></a>Hlavička požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -71,15 +66,15 @@ MS-CorrelationId: b1939cb2-e83d-4fb0-989f-514fb741b734
 
 ## <a name="rest-response"></a>Odpověď REST
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
-Tato metoda vrací následující kódy chyb:
+Tato metoda vrátí následující kódy chyb:
 
 | Stavový kód HTTP | Kód chyby | Description |
 |------------------|------------|-------------|
-| 404 | 400013 | Nadřazený produkt nebyl nalezen. |
+| 404 | 400013 | Nadřazený produkt se nenašel. |
 
 ### <a name="response-example"></a>Příklad odpovědi
 

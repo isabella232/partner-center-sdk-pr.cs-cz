@@ -1,26 +1,21 @@
 ---
 title: Správa zákazníků
-description: V této části se dozvíte, jak mohou partneři poskytovatele Cloud Solution Provider používat Partnerské centrum k programové správě účtů zákazníků.
+description: tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra programově spravovat účty zákazníků.
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: fa1a032735037b1b3a543d21bf4c868b52c13017
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: 00c0e51dfd6970bd28db2ce88e6b9be15175a76c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711946"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548205"
 ---
 # <a name="manage-customers"></a>Správa zákazníků
 
-**Platí pro**
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Tato část popisuje způsob, jakým partneři poskytovatele Cloud Solution Provider můžou pomocí partnerského centra programově spravovat účty zákazníků.
+tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra programově spravovat účty zákazníků.
 
 ## <a name="create-a-customer"></a>Vytvoření zákazníka
 

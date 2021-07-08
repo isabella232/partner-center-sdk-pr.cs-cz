@@ -1,36 +1,31 @@
 ---
 title: Získání profilu organizace
-description: Získá objekt reprezentující Profil organizace partnera.
+description: Získá objekt představující profil organizace partnera.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 132a1e0efa3efea69d4bf649e55b412e300b0685
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 1c7272761612e573388d4facea1a78808a5bad52
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767040"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760551"
 ---
 # <a name="get-an-organization-profile"></a>Získání profilu organizace
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Získá objekt reprezentující Profil organizace partnera.
+Získá objekt představující profil organizace partnera.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat profil vaší organizace, použijte svou kolekci **IAggregatePartner. Profiles** a zavolejte vlastnost **OrganizationProfile** . Nakonec zavolejte metody [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.get) nebo [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.getasync) .
+Pokud chcete získat profil organizace, použijte kolekci **IAggregatePartner.Profiles** a zavolejte **vlastnost OrganizationProfile.** Nakonec zavolejte [**metody Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.get) nebo [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.iorganizationprofile.getasync)
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -38,13 +33,13 @@ Pokud chcete získat profil vaší organizace, použijte svou kolekci **IAggrega
 OrganizationProfile organizationProfile = partnerOperations.Profiles.OrganizationProfile.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerCenterSDK. FeaturesSamples **Třída**: GetOrganizationProfile.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerCenterSDK.FeaturesSamples – **třída:** GetOrganizationProfile.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Chcete-li získat profil vaší organizace, použijte funkci **IAggregatePartner. Getprofiles** a zavolejte funkci **getOrganizationProfile** . Nakonec zavolejte funkci **Get ()** .
+Pokud chcete získat profil organizace, použijte **funkci IAggregatePartner.getProfiles** a zavolejte **funkci getOrganizationProfile.** Nakonec zavolejte **funkci get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -56,23 +51,23 @@ OrganizationProfile organizationProfile = partnerOperations.getProfiles().getOrg
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pokud chcete získat profil vaší organizace, spusťte příkaz [**Get-PartnerOrganizationProfile**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOrganizationProfile.md) .
+Pokud chcete získat profil organizace, spusťte příkaz [**Get-PartnerOrganizationProfile.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOrganizationProfile.md)
 
 ```powershell
 Get-PartnerOrganizationProfile
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/Organization HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/organization HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -90,11 +85,11 @@ MS-CorrelationId: 1bb03149-88d2-4bc2-9cc1-d6e83890fa9e
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí objekt **OrganizationProfile** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi objekt **OrganizationProfile.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

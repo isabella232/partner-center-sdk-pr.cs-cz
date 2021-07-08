@@ -4,21 +4,16 @@ description: Přečtěte si o hlavičkách žádostí REST HTTP a hlavičkách o
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9f506c8c610c2584912c24453288d0f3578b84e3
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 3f09ab5808a9751f02e451da2027f6b35877390b
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767069"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548460"
 ---
 # <a name="partner-center-rest-and-response-headers-supported-by-the-partner-center-rest-api"></a>Hlavičky a odpovědi partnerského centra podporované partnerským centrem REST API 
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Následující hlavičky požadavku HTTP a odpovědi jsou podporovány REST API partnerským centrem. Ne všechna volání rozhraní API přijímají všechny hlavičky.
 
