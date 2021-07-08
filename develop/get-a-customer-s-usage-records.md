@@ -4,22 +4,18 @@ description: Pomocí kolekce prostředků CustomerMonthlyUsageRecord můžete z�
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: da829a6de3690a9b1117ce9dfa58fbe381cafd81
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 6b3fb0e1989336810f2afcc2a5bfc3a1d2849b7f
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766804"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874886"
 ---
 # <a name="get-usage-records-for-all-customers"></a>Získat záznamy o využití pro všechny zákazníky
 
-**Platí pro:**
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Partneři můžou pomocí kolekce prostředků **CustomerMonthlyUsageRecord** získat záznamy o využití pro všechny své zákazníky. Tento prostředek představuje záznamy o využití pro všechny zákazníky. Který zahrnuje zákazníky s předplatným Microsoft Azure (MS-AZR-0145P) nebo plánem Azure.
+Partneři můžou pomocí kolekce prostředků **CustomerMonthlyUsageRecord** získat záznamy o využití pro všechny své zákazníky. Tento prostředek představuje záznamy o využití pro všechny zákazníky. který zahrnuje zákazníky s předplatným Microsoft Azure (MS-AZR-0145P) nebo plánem Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,8 +39,8 @@ Chcete-li získat všechny záznamy o využití pro všechny zákazníky, kteř�
 Příklad naleznete v následující ukázce:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
-- Třída: **GetCustomerUsageRecords.cs**
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **GetCustomerUsageRecords. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 

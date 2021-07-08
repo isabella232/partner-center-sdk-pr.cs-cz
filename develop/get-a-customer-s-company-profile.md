@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: c26a86ecb96e5e7942ba179f8a3cc704abab7df5
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: a1c0c8401207f4b0bb33755a8eabc66de0ad9ff9
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766875"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874971"
 ---
 # <a name="get-a-customers-company-profile"></a>Získání firemního profilu zákazníka
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá profil společnosti zákazníka.
 
@@ -41,7 +36,7 @@ Chcete-li získat profil společnosti pro zákazníka, zavolejte metodu [**IAggr
 var companyProfile = partnerOperations.Customers.ById(customerId).Profiles.Company.Get();
 ```
 
-**Ukázka**: [Stáhněte si sadu SDK partnerského centra](https://go.microsoft.com/fwlink/p/?LinkId=746681). **Projekt**: PartnerSdk. FeatureSamples **Třída**: GetCustomerCompanyProfile.cs
+**Ukázka**: [Stáhněte si sadu SDK partnerského centra](https://go.microsoft.com/fwlink/p/?LinkId=746681). **Project**: PartnerSdk. FeatureSamples **třída**: GetCustomerCompanyProfile. cs
 
 ## <a name="java"></a>Java
 
@@ -78,7 +73,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

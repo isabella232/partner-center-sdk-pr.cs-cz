@@ -7,21 +7,16 @@ ms.subservice: partnercenter-sdk
 ms.assetid: ''
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 10801cdb1f9d4f50a1f8fc86c2d0eaf8610ed68c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 719becd3fac5605c4ad48ab86d483ba7903d65d8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766757"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549140"
 ---
 # <a name="get-invoice-estimate-links"></a>Získání odkazů na odhad faktury
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Můžete získat odkazy na odhady, které vám pomůžou s podrobnostmi dotazu na nefakturovatelné položky řádku odsouhlasení.
 
@@ -49,8 +44,8 @@ var estimateLinks = scopedPartnerOperations.Invoices.Estimates.Links.ByCurrency(
 Podobný příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **ukázky sady SDK pro partnerských Center**
-- Třída: **GetEstimatesLinks.cs**
+- Project: **ukázky sady SDK pro partnerských Center**
+- Třída: **GetEstimatesLinks. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -79,7 +74,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 ### <a name="request-example"></a>Příklad požadavku
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 1234ecb8-37af-45f4-a1a1-358de3ca2b9e

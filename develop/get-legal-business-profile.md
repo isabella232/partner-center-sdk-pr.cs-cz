@@ -4,21 +4,16 @@ description: Naučte se používat rozhraní API k získání vašeho platného 
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1d488c8deb9f01110e92327035ce0c3c023fcb46
-ms.sourcegitcommit: f72173df911aee3ab29b008637190b4d85ffebfe
+ms.openlocfilehash: ba0654e364674bc2db129a0904d411c6fb67cbb9
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106500018"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549055"
 ---
 # <a name="get-the-partner-legal-business-profile"></a>Získání oficiálního obchodního profilu partnera
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Jak získat oficiální obchodní profil partnera.
 
@@ -36,7 +31,7 @@ Chcete-li získat obchodní profil partnera, nejprve získejte rozhraní pro kol
 var billingProfile = partnerOperations.Profiles.LegalBusinessProfile.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetLegalBusinessProfile. cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetLegalBusinessProfile. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

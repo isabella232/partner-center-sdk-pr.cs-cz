@@ -4,21 +4,16 @@ description: Získá objekt reprezentující Fakturační profil partnera.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 94c5ff8fc351282ca3b4721511f02ba6a0cc403c
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 225d8ea2d92933838ae47eaf3308276aa1f1684c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767031"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548970"
 ---
 # <a name="get-partner-billing-profile"></a>Získání fakturačního profilu partnera
 
-**Platí pro**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Získá objekt reprezentující Fakturační profil partnera.
 
@@ -36,7 +31,7 @@ Pokud chcete získat Fakturační profil partnera, použijte svou kolekci **IAgg
 BillingProfile billingProfile = partnerOperations.Profiles.BillingProfile.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerCenterSDK. FeaturesSamples **Třída**: GetBillingProfile.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerCenterSDK. FeaturesSamples **třída**: GetBillingProfile. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

@@ -4,24 +4,20 @@ description: Pomocí prostředku ResourceUsageRecord můžete získat záznamy o
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e815430730dd7182380e9efd1fea80f9e84d2ce7
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 50edb9de1d09363b242c080a76c683732f05a5de
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766798"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874835"
 ---
 # <a name="get-usage-data-for-subscription-by-resource"></a>Získat data o využití pro předplatné podle prostředku
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek popisuje, jak získat prostředek **ResourceUsageRecord** . Tento prostředek představuje agregovaný součet za měsíc pro jednotlivé prostředky zřízené v plánu Azure. Tento prostředek můžete použít k získání záznamů o využití prostředků zákazníka pro konkrétní služby nebo prostředky Azure během aktuálního fakturačního období. Toto rozhraní API vrací data, která nebyla dříve k dispozici prostřednictvím rozhraní API útraty Azure.
 
-*Tato trasa nepodporuje odběry Microsoft Azure (MS-AZR-0145P).*
+*tato trasa nepodporuje odběry Microsoft Azure (MS-AZR-0145P).*
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,7 +33,7 @@ Postup získání záznamů o využití prostředků zákazníka pro konkrétní
 
 1. Použijte svou kolekci **IAggregatePartner. Customers** pro volání metody **ById ()** .
 
-2. Zavolejte vlastnost Subscriptions a také **UsageRecords** a pak vlastnost **Resources (prostředky** ). Dokončete voláním metod Get () nebo GetAsync ().
+2. Zavolejte vlastnost Subscriptions a **UsageRecords** a potom vlastnost **Resources** . Dokončete voláním metod Get () nebo GetAsync ().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -50,8 +46,8 @@ Postup získání záznamů o využití prostředků zákazníka pro konkrétní
 Příklad naleznete v následujících tématech:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
-- Třída: **GetSubscriptionUsageRecordsByResource.cs**
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **GetSubscriptionUsageRecordsByResource. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -68,7 +64,7 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání inf
 | Název                   | Typ     | Vyžadováno | Popis                               |
 |------------------------|----------|----------|-------------------------------------------|
 | **Customer-tenant-ID** | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID předplatného**    | **guid** | Y        | Identifikátor GUID odpovídající identifikátoru [prostředku předplatného](subscription-resources.md#subscription)partnerského centra, který představuje předplatné Microsoft Azure (MS-AZR-0145P) nebo plán Azure. *V části plánování prostředků předplatného Azure zadejte **ID plánu** jako **ID předplatného** v této trase.* |
+| **ID předplatného**    | **guid** | Y        | identifikátor GUID odpovídající identifikátoru [prostředku předplatného](subscription-resources.md#subscription)partnerského centra, který představuje předplatné Microsoft Azure (MS-AZR-0145P) nebo plán Azure. *V části plánování prostředků předplatného Azure zadejte **ID plánu** jako **ID předplatného** v této trase.* |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 

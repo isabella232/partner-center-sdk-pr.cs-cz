@@ -6,26 +6,20 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 267e3aa63a94c5045977ad566eb5061df3b59882
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: a17775614b4eb328514b2b32b4cac1e513019cff
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030551"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549174"
 ---
 # <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Získání stavu přímého podepisování zákazníka (přímé přijetí) smlouvy o zákaznících Microsoftu
 
-**Platí pro:**
+**Platí pro**: partnerské Centrum
 
-- Partnerské centrum
+Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Partner Center v současné době podporuje prostředek **DirectSignedCustomerAgreementStatus** jenom ve veřejném cloudu Microsoftu.
-
-Tento prostředek *nelze použít* pro:
-
-- Partnerské centrum provozované společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
 
 Tento článek vysvětluje, jak můžete načíst stav přímého přijetí smlouvy o zákaznících Microsoftu v rámci zákazníka.
 
@@ -45,7 +39,7 @@ Pokud chcete načíst stav přímého souhlasu zákazníka s zákaznickou smlouv
 var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: **Třída** SdkSamples: GetDirectSignedCustomerAgreementStatus. cs
+**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project**: **třída** SdkSamples: GetDirectSignedCustomerAgreementStatus. cs
 
 ## <a name="rest-request"></a>Žádost REST
 

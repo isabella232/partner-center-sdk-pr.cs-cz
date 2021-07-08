@@ -6,18 +6,18 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-csp
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 5d35c0512ba8edcf3742ee69d38c699a9a8c16d2
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 19a1c39576a4f897df2d1205e3501839f6580831
+ms.sourcegitcommit: e0077b2724d128ab20cb05696e5e5b1cde8e5214
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906410"
+ms.lasthandoff: 07/07/2021
+ms.locfileid: "113481663"
 ---
 # <a name="enabling-the-secure-application-model-framework"></a>Povolení architektury zabezpečeného aplikačního modelu
 
-Microsoft představuje zabezpečenou a škálovatelnou architekturu pro ověřování partnerů CSP (Cloud Solution Provider) a dodavatelů ovládacích panelů (CPV) prostřednictvím architektury Microsoft Azure Active Directory Multi-Factor Authentication (MFA).
+Microsoft zavádí zabezpečenou, škálovatelnou architekturu pro ověřování partnerů CSP (cloud solution provider) a dodavatelů ovládacích panelů (CPV) prostřednictvím architektury Microsoft Azure Active Directory Multi-Factor Authentication (MFA).
 
-Nový model můžete použít ke zvýšení zabezpečení pro Partnerské centrum integrace rozhraní API. To pomůže všem stranám (včetně Microsoftu, partnerů CSP a CPV) chránit infrastrukturu a zákaznická data před riziky zabezpečení.
+Pomocí nového modelu můžete zvýšit zabezpečení pro volání Integration Center API pro partnery. Pomůže všem stranám (včetně Microsoftu, partnerům CSP a CPVs) chránit svá data infrastruktury a zákaznická data před bezpečnostními riziky.
 
 ## <a name="scope"></a>Obor
 
@@ -27,88 +27,88 @@ Tento článek se týká následujících aktérů:
   - Dodavatel ovládacích panelů (CPV) je nezávislý výrobce softwaru, který vyvíjí aplikace, které můžou partneři CSP integrovat s rozhraními API Partnerského centra.
   - Dodavatel ovládacích panelů (CPV) není partnerem CSP s přímým přístupem k řídicímu panelu pro Partnerské centrum ani rozhraním API Partnerského centra.
 
-- Nepřímí poskytovatelé CSP a přímou partneři CSP, kteří používají ID aplikace a ověřování uživatelů a přímo se integrují Partnerské centrum rozhraníMI API.
+- Nepřímá poskytovatelé CSP a partneři CSP Direct, kteří používají ID aplikace + ověřování uživatelů a přímo integrují s rozhraními API partnerského centra.
 
 ## <a name="security-requirements"></a>Požadavky na zabezpečení
 
-Podrobnosti o požadavcích na zabezpečení najdete v tématu [Požadavky na zabezpečení partnerů.](/partner-center/partner-security-requirements)
+Podrobnosti o požadavcích na zabezpečení najdete v tématu [požadavky na zabezpečení partnerů](/partner-center/partner-security-requirements).
 
-## <a name="secure-application-model"></a>Model zapezpečených aplikací
+## <a name="secure-application-model"></a>Model zabezpečené aplikace
 
-Aplikace z Marketplace musí k volání rozhraní API Microsoftu zosobnit oprávnění partnera CSP. Útoky na zabezpečení těchto citlivých aplikací mohou vést k ohrožení zákaznických dat.
+Aplikace z Marketplace potřebují zosobnit oprávnění partnera CSP pro volání rozhraní API Microsoftu. Bezpečnostní útoky na těchto citlivých aplikacích můžou vést k ohrožení zákaznických dat.
 
-Přehled a podrobnosti o nové ověřovací rozhraní najdete v dokumentu Model zapezpečených aplikací [framework.](https://assetsprod.microsoft.com/secure-application-model-guide.pdf) Tento dokument se věnuje principům a osvědčeným postupům, aby aplikace z marketplace byly udržitelné a odolné před ohrožením zabezpečení.
+Přehled a podrobnosti nové architektury ověřování si můžete stáhnout v dokumentu Framework pro [model zabezpečených aplikací](https://assetsprod.microsoft.com/secure-application-model-guide.pdf) . Tento dokument popisuje principy a osvědčené postupy pro zajištění trvalého a robustního zabezpečení aplikací pro Marketplace před ohroženími zabezpečení.
 
 ## <a name="samples"></a>ukázky
 
-Následující přehledové dokumenty a vzorový kód popisují, jak mohou partneři implementovat Model zapezpečených aplikací rozhraní:
+Následující dokumenty přehledu a ukázkový kód popisují, jak můžou partneři implementovat rozhraní zabezpečeného modelu aplikace:
 
 - [Dokument s přehledem CPV](https://assetsprod.microsoft.com/cpv-partner-application-overview.pdf)
 - [Dokument s přehledem CSP](https://assetsprod.microsoft.com/csp-partner-application-overview.pdf)
 - [Ukázky .NET](https://github.com/microsoft/Partner-Center-DotNet-Samples/tree/master/secure-app-model)
-- [Ukázky v Javě](https://github.com/microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model)
+- [Ukázky Java](https://github.com/microsoft/Partner-Center-Java-Samples/tree/master/secure-app-model)
 
     [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-- [Pokyny a ukázky REST](#rest)
-- [Pokyny a ukázky PowerShellu](#powershell)
+- [Pokyny a ukázky pro REST](#rest)
+- [Pokyny a ukázky prostředí PowerShell](#powershell)
 
 ## <a name="rest"></a>REST
 
-Pokud chcete provádět volání REST s Model zapezpečených aplikací architekturou s ukázkovým kódem, postupujte takto:
+Chcete-li provést volání REST pomocí rozhraní zabezpečeného modelu aplikace s ukázkovým kódem, postupujte následovně:
 
 1. [Vytvoření webové aplikace](#create-a-web-app)
 
 2. [Získání autorizačního kódu](#get-authorization-code)
 
-3. [Získání obnovovacího tokenu](#get-refresh-token)
+3. [Získat obnovovací token](#get-refresh-token)
 
 4. [Získání přístupového tokenu](#get-access-token)
 
 5. [Zavolání rozhraní API Partnerského centra](#make-partner-center-api-calls)
 
 > [!TIP]
-> Pomocí modulu Partnerské centrum PowerShell můžete získat autorizační kód a obnovovací token. Tuto možnost můžete zvolit místo kroků 2 a 3. Další informace najdete v části [PowerShellu a v příkladech](#powershell).
+> K získání autorizačního kódu a obnovovacího tokenu můžete použít modul PowerShell pro partnerských Center. Tuto možnost můžete vybrat místo kroků 2 a 3. Další informace najdete v [části a příklady prostředí PowerShell](#powershell).
 
 ### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-Před voláním REST musíte vytvořit a zaregistrovat webovou Partnerské centrum ve službě .
+Před tím, než zahájíte volání REST, je nutné vytvořit a zaregistrovat webovou aplikaci v partnerském centru.
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-2. Vytvořte aplikaci Azure Active Directory (Azure AD).
+2. vytvořte aplikaci Azure Active Directory (Azure AD).
 
-3. V závislosti na požadavcích vaší aplikace udejte delegovaná oprávnění aplikací následujícím *prostředkům.* V případě potřeby můžete přidat další delegovaná oprávnění pro prostředky aplikace.
+3. Udělte delegovaným aplikacím oprávnění k následujícím prostředkům *v závislosti na požadavcích vaší aplikace*. V případě potřeby můžete přidat další delegovaná oprávnění pro prostředky aplikace.
 
-   1. **Microsoft Partnerské centrum** (někteří tenanti to ukazují jako **SampleBECApp)**
+   1. **Partnerské centrum Microsoftu** (někteří klienti to ukazují jako **SampleBECApp**)
 
-   2. **Rozhraní API pro správu Azure** (pokud plánujete volat rozhraní API Azure)
+   2. **Rozhraní API pro správu Azure** (Pokud plánujete volat rozhraní API Azure)
 
    3. **Windows Azure Active Directory**
 
-4. Ujistěte se, že je domovská adresa URL vaší aplikace nastavená na koncový bod, ve kterém běží živá webová aplikace. Tato aplikace bude muset přijmout [autorizační kód z](#get-authorization-code) volání přihlášení azure AD. Například v příkladu kódu v [následující části](#get-authorization-code)běží webová aplikace v `https://localhost:44395/` .
+4. Ujistěte se, že adresa URL domů vaší aplikace je nastavená na koncový bod, ve kterém běží živá webová aplikace. Tato aplikace bude muset přijmout [autorizační kód](#get-authorization-code) z přihlašovacího volání služby Azure AD. Například v příkladu kódu v [následující části](#get-authorization-code)je webová aplikace spuštěna v `https://localhost:44395/` .
 
-5. Všimněte si následujících informací z nastavení vaší webové aplikace v Azure AD:
+5. Všimněte si následujících informací z nastavení vaší webové aplikace ve službě Azure AD:
 
    - ID aplikace
    - Tajný kód aplikace
 
 > [!NOTE]
-> Jako tajný klíč [aplikace se doporučuje použít certifikát.](/azure/active-directory/develop/active-directory-certificate-credentials) Klíč aplikace ale můžete vytvořit také v Azure Portal. Vzorový kód [v následující části](#get-authorization-code) používá klíč aplikace.
+> Doporučuje se [použít certifikát jako tajný kód aplikace](/azure/active-directory/develop/active-directory-certificate-credentials). Můžete ale také vytvořit klíč aplikace v Azure Portal. Vzorový kód v [následující části](#get-authorization-code) používá klíč aplikace.
 
 ### <a name="get-authorization-code"></a>Získání autorizačního kódu
 
-K přijetí z přihlašovacího volání Azure AD musíte získat autorizační kód pro vaši webovou aplikaci:
+Abyste mohli přijmout přihlašovací údaje služby Azure AD, musíte získat autorizační kód pro vaši webovou aplikaci:
 
-1. Přihlaste se k Azure AD na následující adrese URL: [https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1](https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1) . Nezapomeňte se přihlásit pomocí uživatelského účtu, ze kterého budete volat Partnerské centrum API (například pomocí agenta pro správu nebo účtu agenta prodeje).
+1. Přihlaste se k Azure AD na následující adrese URL: [https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1](https://login.microsoftonline.com/common/oauth2/authorize?client_id=Application-Id&response_mode=form_post&response_type=code%20id_token&scope=openid%20profile&nonce=1) . Přihlaste se pomocí uživatelského účtu, ze kterého budete provádět volání rozhraní API partnerského centra (například Agent správce nebo účet agenta pro prodej).
 
-2. Nahraďte **Application-Id id** vaší aplikace Azure AD (GUID).
+2. Nahraďte **Application-ID** ID aplikace Azure AD (GUID).
 
-3. Po zobrazení výzvy se přihlaste pomocí svého uživatelského účtu s nakonfigurovanou MFA.
+3. Po zobrazení výzvy se přihlaste pomocí uživatelského účtu s nakonfigurovaným MFA.
 
-4. Po zobrazení výzvy zadejte další informace o MFA (telefonní číslo nebo e-mailovou adresu) a ověřte své přihlášení.
+4. Po zobrazení výzvy zadejte další informace MFA (telefonní číslo nebo e-mailovou adresu), abyste ověřili své přihlašovací údaje.
 
-5. Po přihlášení prohlížeč přesměruje volání do koncového bodu webové aplikace s vaším autorizačním kódem. Například následující ukázkový kód přesměruje na `https://localhost:44395/` .
+5. Po přihlášení bude prohlížeč přesměrovat volání do koncového bodu webové aplikace pomocí vašeho autorizačního kódu. Například následující vzorový kód přesměruje na `https://localhost:44395/` .
 
 #### <a name="authorization-code-call-trace"></a>Trasování volání autorizačního kódu
 
@@ -126,22 +126,22 @@ Cookie: OpenIdConnect.nonce.hOMjjrivcxzuI4YqAw4uYC%2F%2BILFk4%2FCx3kHTHP3lBvA%3D
 code=AuthorizationCodeValue&id_token=IdTokenValue&<rest of properties for state>
 ```
 
-### <a name="get-refresh-token"></a>Získání obnovovacího tokenu
+### <a name="get-refresh-token"></a>Získat obnovovací token
 
-Pak musíte pomocí autorizačního kódu získat obnovovací token:
+K získání obnovovacího tokenu musíte použít svůj autorizační kód:
 
-1. Proveďte volání POST do koncového bodu přihlášení Azure AD `https://login.microsoftonline.com/CSPTenantID/oauth2/token` s autorizačním kódem. Příklad najdete v následujícím [ukázkovém volání](#sample-refresh-call).
+1. Proveďte následné volání koncového bodu přihlášení služby Azure AD `https://login.microsoftonline.com/CSPTenantID/oauth2/token` pomocí autorizačního kódu. Příklad naleznete v následujícím [ukázkovém volání](#sample-refresh-call).
 
-2. Všimněte si obnovovacího tokenu, který se vrátí.
+2. Poznamenejte si obnovovací token, který se vrátí.
 
-3. Uložte obnovovací token do Azure Key Vault. Další informace najdete v dokumentaci [Key Vault API.](/rest/api/keyvault/)
+3. Uložte obnovovací token do Azure Key Vault. Další informace najdete v dokumentaci k [rozhraní API Key Vault](/rest/api/keyvault/).
 
 > [!IMPORTANT]
 > Token obnovení musí být [uložený jako tajný klíč](/rest/api/keyvault/setsecret/setsecret) ve službě Key Vault.
 
-#### <a name="sample-refresh-call"></a>Ukázkové volání aktualizace
+#### <a name="sample-refresh-call"></a>Ukázka aktualizačního hovoru
 
-Zástupný text požadavku:
+Požadavek na zástupný symbol:
 
 ```http
 POST https://login.microsoftonline.com/CSPTenantID/oauth2/token HTTP/1.1
@@ -157,7 +157,7 @@ Text požadavku:
 resource=https%3a%2f%2fapi.partnercenter.microsoft.com&client_id=Application-Id&client_secret=Application-Secret&grant_type=authorization_code&code=AuthorizationCodeValue
 ```
 
-Odpověď zástupného symbolu:
+Zástupná odpověď:
 
 ```http
 HTTP/1.1 200 OK
@@ -165,17 +165,17 @@ Cache-Control: no-cache, no-store
 Content-Type: application/json; charset=utf-8
 ```
 
-Text odpovědi:
+Tělo odpovědi:
 
 ```http
 {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","ext_expires_in":"3599","expires_on":"1547579127","not_before":"1547575227","resource":"https://api.partnercenter.microsoft.com","access_token":"Access
 ```
 
-### <a name="get-access-token"></a>Získání přístupového tokenu
+### <a name="get-access-token"></a>Získat přístupový token
 
-Přístupový token je nutné získat před voláním rozhraní API Partnerské centrum rozhraní API. K získání přístupového tokenu musíte použít obnovovací token, protože přístupové tokeny mají obecně velmi omezenou životnost (například méně než hodinu).
+Aby bylo možné volat rozhraní API partnerského centra, musíte získat přístupový token. K získání přístupového tokenu je nutné použít obnovovací token, protože přístup k tokenům obecně má velmi omezené trvání (například méně než hodinu).
 
-Zástupný text požadavku:
+Požadavek na zástupný symbol:
 
 ```http
 POST https://login.microsoftonline.com/CSPTenantID/oauth2/token HTTP/1.1
@@ -191,7 +191,7 @@ Text požadavku:
 resource=https%3a%2f%2fapi.partnercenter.microsoft.com&client_id=Application-Id &client_secret= Application-Secret&grant_type=refresh_token&refresh_token=RefreshTokenVlaue&scope=openid
 ```
 
-Odpověď zástupného symbolu:
+Zástupná odpověď:
 
 ```http
 HTTP/1.1 200 OK
@@ -199,17 +199,17 @@ Cache-Control: no-cache, no-store
 Content-Type: application/json; charset=utf-8
 ```
 
-Text odpovědi:
+Tělo odpovědi:
 
 ```http
 {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3600","ext_expires_in":"3600","expires_on":"1547581389","not_before":"1547577489","resource":"https://api.partnercenter.microsoft.com","access_token":"AccessTokenValue","id_token":"IDTokenValue"}
 ```
 
-### <a name="make-partner-center-api-calls"></a>Volání Partnerské centrum API
+### <a name="make-partner-center-api-calls"></a>Zajištění volání rozhraní API partnerského centra
 
-Přístupový token musíte použít k volání rozhraní API Partnerské centrum api. Podívejte se na následující příklad volání.
+K volání rozhraní API partnerského centra musíte použít váš přístupový token. Podívejte se na následující příklad volání.
 
-#### <a name="example-partner-center-api-call"></a>Příklad Partnerské centrum rozhraní API
+#### <a name="example-partner-center-api-call"></a>Příklad volání rozhraní API partnerského centra
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/customers/CustomerTenantId/users HTTP/1.1
@@ -223,11 +223,11 @@ Host: api.partnercenter.microsoft.com
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pomocí modulu [Partnerské centrum PowerShell můžete](https://www.powershellgallery.com/packages/PartnerCenter) snížit požadovanou infrastrukturu pro výměnu autorizačního kódu pro přístupový token. Tato metoda je volitelná pro [Partnerské centrum volání REST.](#rest)
+K omezení požadované infrastruktury pro výměnu autorizačního kódu pro přístupový token můžete použít [modul PowerShellu pro partnerských Center](https://www.powershellgallery.com/packages/PartnerCenter) . Tato metoda je volitelná pro zajištění [volání REST v partnerském centru](#rest).
 
-Další informace o tomto procesu najdete v dokumentaci [k Secure Model aplikací](/powershell/partnercenter/secure-app-model) PowerShellu.
+Další informace o tomto procesu najdete v dokumentaci k nástroji PowerShell pro [model zabezpečení aplikace](/powershell/partnercenter/secure-app-model) .
 
-1. Nainstalujte azure AD a Partnerské centrum moduly PowerShellu.
+1. Nainstalujte moduly PowerShellu pro Azure AD a partnerská centra.
 
     ```powershell
     Install-Module AzureAD
@@ -242,11 +242,11 @@ Další informace o tomto procesu najdete v dokumentaci [k Secure Model aplikac�
     ```powershell
     $credential = Get-Credential
 
-    New-PartnerAccessToken -ApplicationId 'xxxx-xxxx-xxxx-xxxx' -Scopes 'https://api.partnercenter.microsoft.com/user_impersonation' -ServicePrincipal -Credential $credential -Tenant 'yyyy-yyyy-yyyy-yyyy' -UseAuthorizationCode
+    $token = New-PartnerAccessToken -ApplicationId 'xxxx-xxxx-xxxx-xxxx' -Scopes 'https://api.partnercenter.microsoft.com/user_impersonation' -ServicePrincipal -Credential $credential -Tenant 'yyyy-yyyy-yyyy-yyyy' -UseAuthorizationCode
     ```
 
     > [!NOTE]
-    > Parametr **ServicePrincipal** se používá s příkazem **New-PartnerAccessToken,** protože se používá aplikace Azure AD s typem webu nebo rozhraní **API.** Tento typ aplikace vyžaduje, aby byl do žádosti o přístupový token zahrnutý identifikátor klienta a tajný kód. Po **vyvolání příkazu Get-Credential** se zobrazí výzva k zadání uživatelského jména a hesla. Jako uživatelské jméno zadejte identifikátor aplikace. Jako heslo zadejte tajný klíč aplikace. Po vyvolání příkazu **New-PartnerAccessToken** se zobrazí výzva k zadání přihlašovacích údajů znovu. Zadejte pověření pro účet služby, který používáte. Tento účet služby by měl být partnerským účtem s příslušnými oprávněními.
+    > Parametr **ServicePrincipal** se používá v příkazu **New-PartnerAccessToken** , protože se používá aplikace Azure AD s typem **webu nebo rozhraní API** . Tento typ aplikace vyžaduje, aby byl v žádosti o přístupový token zahrnutý identifikátor klienta a tajný klíč. Po vyvolání příkazu **Get-Credential** se zobrazí výzva k zadání uživatelského jména a hesla. Jako uživatelské jméno zadejte identifikátor aplikace. Jako heslo zadejte tajný klíč aplikace. Po vyvolání **příkazu New-PartnerAccessToken** se zobrazí výzva k zadání přihlašovacích údajů. Zadejte přihlašovací údaje pro účet služby, který používáte. Tento účet služby by měl být partnerský účet s příslušnými oprávněními.
 
 3. Zkopírujte hodnotu obnovovacího tokenu.
 
@@ -254,4 +254,4 @@ Další informace o tomto procesu najdete v dokumentaci [k Secure Model aplikac�
     $token.RefreshToken | clip
     ```
 
-Hodnotu obnovovacího tokenu byste měli uložit do zabezpečeného úložiště, například Azure Key Vault. Další informace o tom, jak použít modul zabezpečení aplikace pomocí prostředí PowerShell, najdete v článku [Multi-Factor Authentication](/powershell/partnercenter/multi-factor-auth) .
+Hodnotu obnovovacího tokenu byste měli uložit v zabezpečeném úložišti, například Azure Key Vault. Další informace o tom, jak využít modul zabezpečených aplikací pomocí PowerShellu, najdete v článku o [vícefaktorové ověřování.](/powershell/partnercenter/multi-factor-auth)

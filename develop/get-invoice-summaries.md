@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 82cd669117db72e1819d941f48f8ea69b2eddaec
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: fb6ff839c56c7b0b77a9904abf05d95ca0500b00
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766656"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549106"
 ---
 # <a name="get-invoice-summaries"></a>Získání přehledu faktur
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Můžete použít **InvoiceSummaries** k načtení souhrnu faktury, který ukazuje zůstatek a celkové poplatky za periodické i jednorázové poplatky. Prostředek **InvoiceSummaries** obsahuje souhrn faktury pro každý typ měny.
 
@@ -52,8 +47,8 @@ Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummaries[0].Bal
 Další informace naleznete v následujícím ukázkovém kódu:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSample**
-- Třída: **GetInvoiceSummaries.cs**
+- Project: **PartnerSDK. FeatureSample**
+- Třída: **GetInvoiceSummaries. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 

@@ -1,34 +1,29 @@
 ---
 title: Získání profilu programu Microsoft Partner Network
-description: Získá objekt reprezentující profil MPN partnera.
+description: Získá objekt představující profil MPN partnera.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f8f3e74462da05de0be47964beb34228650b1f53
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 38c12a9a9755b9838b7742d9f38c5cbd52b81210
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767055"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548851"
 ---
 # <a name="get-microsoft-partner-network-profile"></a>Získání profilu programu Microsoft Partner Network
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Získá objekt reprezentující profil MPN partnera.
+Získá objekt představující profil MPN partnera.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat profil partnerské sítě, použijte svou kolekci **IAggregatePartner. Profiles** a zavolejte vlastnost **MpnProfile** . Nakonec zavolejte metody [**Get ()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) nebo [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) .
+Pokud chcete získat profil partnerské sítě, použijte kolekci **IAggregatePartner.Profiles** a zavolejte **vlastnost MpnProfile.** Nakonec zavolejte [**metody Get()**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) nebo [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -36,13 +31,13 @@ Pokud chcete získat profil partnerské sítě, použijte svou kolekci **IAggreg
 var mpnProfile = partnerOperations.Profiles.MpnProfile.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**:P Artnercentersdk. FeaturesSamples **Třída**: GetMPNProfile.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project**:P artnerCenterSDK.FeaturesSamples – **třída:** GetMPNProfile.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Pokud chcete získat profil partnerské sítě, použijte funkci **IAggregatePartner. Getprofiles** a zavolejte funkci **getMpnProfile** . Nakonec zavolejte funkci **Get ()** .
+Pokud chcete získat profil partnerské sítě, použijte funkci **IAggregatePartner.getProfiles** a zavolejte **funkci getMpnProfile.** Nakonec zavolejte **funkci get().**
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -54,23 +49,23 @@ MpnProfile mpnProfile = partnerOperations.getProfiles().getMpnProfile().get();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pokud chcete získat profil partnerské sítě, spusťte příkaz [**Get-PartnerMpnProfile**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerMpnProfile.md) .
+Pokud chcete získat profil partnerské sítě, spusťte [**příkaz Get-PartnerMpnProfile.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerMpnProfile.md)
 
 ```powershell
 Get-PartnerMpnProfile
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                          |
 |---------|----------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/MPN HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/mpn HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -89,11 +84,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí objekt **MPNProfile** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi objekt **MPNProfile.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

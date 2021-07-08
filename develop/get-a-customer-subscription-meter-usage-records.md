@@ -4,20 +4,16 @@ description: Pomocí kolekce prostředků MeterUsageRecord můžete získat záz
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: df981eae8d2caee2dcb7f36696725ec011ead75b
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 0bd6143c80059bd140a4c4332ab4ec19c54d99f1
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766800"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874852"
 ---
 # <a name="get-usage-data-for-subscription-by-meter"></a>Získání dat o využití pro předplatné podle měřiče
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Pomocí kolekce prostředků **MeterUsageRecord** můžete získat záznamy o využití měřičů zákazníka pro konkrétní služby nebo prostředky Azure během aktuálního fakturačního období. Tato kolekce prostředků představuje agregovaný součet pro každý měřič pro aktuální fakturační cyklus v rámci celého plánu Azure.
 
@@ -29,7 +25,7 @@ Pomocí kolekce prostředků **MeterUsageRecord** můžete získat záznamy o vy
 
 - ID předplatného
 
-*Tato nová trasa je ekvivalentní k `subscriptions/{subscription-id}/usagerecords/resources` , což bude i nadále fungovat jenom pro předplatná Microsoft Azure (MS-AZR-0145P).* Tato nová trasa bude podporovat předplatná Microsoft Azure (MS-AZR-0145P) i plány Azure. Chcete-li získat tyto informace pro plán Azure, musíte přepnout do této nové trasy. Kromě vlastností uvedených v následujících částech je odpověď stejná jako u staré trasy.
+*tato nová trasa je ekvivalentní k `subscriptions/{subscription-id}/usagerecords/resources` , což bude i nadále fungovat jenom pro předplatná Microsoft Azure (MS-AZR-0145P).* tato nová trasa bude podporovat předplatná Microsoft Azure (MS-AZR-0145P) i plány Azure. Chcete-li získat tyto informace pro plán Azure, musíte přepnout do této nové trasy. Kromě vlastností uvedených v následujících částech je odpověď stejná jako u staré trasy.
 
 ## <a name="c"></a>C\#
 
@@ -50,8 +46,8 @@ Postup získání záznamů využití měřiče zákazníka pro konkrétní slu�
 Příklad naleznete v následující ukázce:
 
 - Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
-- Třída: **GetSubscriptionUsageRecordsByMeter.cs**
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **GetSubscriptionUsageRecordsByMeter. cs**
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -68,7 +64,7 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání inf
 | Název                   | Typ     | Vyžadováno | Popis                               |
 |------------------------|----------|----------|-------------------------------------------|
 | **Customer-tenant-ID** | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID předplatného**    | **guid** | Y        | Identifikátor GUID odpovídající identifikátoru [prostředku předplatného](subscription-resources.md#subscription)partnerského centra, který představuje předplatné Microsoft Azure (MS-AZR-0145P) nebo plán Azure. *V části plánování prostředků předplatného Azure zadejte **ID plánu** jako **ID předplatného** v této trase.* |
+| **ID předplatného**    | **guid** | Y        | identifikátor GUID odpovídající identifikátoru [prostředku předplatného](subscription-resources.md#subscription)partnerského centra, který představuje předplatné Microsoft Azure (MS-AZR-0145P) nebo plán Azure. *V části plánování prostředků předplatného Azure zadejte **ID plánu** jako **ID předplatného** v této trase.* |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -96,11 +92,11 @@ V případě úspěchu tato metoda vrátí prostředek **PagedResourceCollection
 
 Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Příklad odpovědi pro předplatná Microsoft Azure (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>příklad odpovědi pro předplatná Microsoft Azure (MS-AZR-0145P)
 
 V tomto příkladu si zákazník koupil **145P Azure PayG**.
 
-*Pro zákazníky s předplatným Microsoft Azure (MS-AZR-0145P) nedojde k žádné změně v odpovědi rozhraní API.*
+*pro zákazníky s předplatným Microsoft Azure (MS-AZR-0145P) nedojde k žádné změně v odpovědi rozhraní API.*
 
 ```http
 HTTP/1.1 200 OK

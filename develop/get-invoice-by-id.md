@@ -6,21 +6,16 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 17880265d06e8e5eaacc5470d83c49defd10ad51
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: c888786a6b6ca941629bb7aac95227021c37a7fc
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766657"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549157"
 ---
 # <a name="get-invoice-by-id"></a>Získat fakturu podle ID
 
-**Platí pro:**
-
-- Partnerské centrum
-- Partnerské centrum provozovaný společností 21Vianet
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
 Načte danou fakturu pomocí ID faktury.
 
@@ -45,7 +40,7 @@ Získání faktury podle ID:
 var invoice = scopedPartnerOperations.Invoices.ById(selectedInvoiceId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: PartnerSDK. FeatureSample **Třída**: GetInvoice.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: getinvoice. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -61,7 +56,7 @@ K získání faktury použijte následující parametr dotazu.
 
 | Název           | Typ       | Vyžadováno | Popis                                                                                        |
 |----------------|------------|----------|----------------------------------------------------------------------------------------------------|
-| **ID faktury** | **řetezce** | Yes      | Hodnota je **ID faktury** , které prodejci umožňuje filtrovat výsledky dané faktury. |
+| **ID faktury** | **řetězec** | Yes      | Hodnota je **ID faktury** , které prodejci umožňuje filtrovat výsledky dané faktury. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -69,7 +64,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-body"></a>Text požadavku
 
-Žádné
+Žádná
 
 ### <a name="request-example"></a>Příklad požadavku
 

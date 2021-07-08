@@ -1,33 +1,29 @@
 ---
 title: Získání cen pro Microsoft Azure
-description: Jak získat kartu Azure Rate s cenami v reálném čase pro nabídku Azure. Ceny Azure jsou poměrně dynamické a často se mění.
+description: Jak získat ceníkovou kartu Azure s cenami v reálném čase pro nabídku Azure Ceny Azure jsou poměrně dynamické a často se mění.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0716f0428b13604105b435a2ce8287a8b4609fea
-ms.sourcegitcommit: 64c498d3571f2287305968890578bc7396779621
+ms.openlocfilehash: 4f66ab19ef3723fbaa27acff941cf48683a7c25c
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97767669"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548783"
 ---
 # <a name="get-prices-for-microsoft-azure"></a>Získání cen pro Microsoft Azure
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
+Jak získat [ceníkovou kartu Azure](azure-rate-card-resources.md) s cenami v reálném čase pro nabídku Azure Ceny Azure jsou poměrně dynamické a často se mění.
 
-Jak získat [kartu Azure Rate](azure-rate-card-resources.md) s cenami v reálném čase pro nabídku Azure. Ceny Azure jsou poměrně dynamické a často se mění.
+Pokud chcete sledovat využití a pomoct s předpovídáním měsíčních faktur a faktur pro jednotlivé zákazníky, můžete zkombinovat tento dotaz na kartu sazeb Azure a získat ceny za Microsoft Azure s žádostí o získání záznamů o využití azure [zákazníkem.](get-a-customer-s-utilization-record-for-azure.md)
 
-Pokud chcete sledovat využití a předpovídat měsíční fakturaci a faktury pro jednotlivé zákazníky, můžete tento dotaz na kartu Azure Rate kombinovat a získat tak ceny Microsoft Azure s žádostí o [získání záznamů o využití zákazníka pro Azure](get-a-customer-s-utilization-record-for-azure.md).
-
-Ceny se liší podle trhu a měny a toto rozhraní API bere v úvahu umístění. Ve výchozím nastavení používá rozhraní API nastavení partnerského profilu v partnerském centru a v jazyce prohlížeče a tato nastavení jsou přizpůsobitelná. Povědomí o poloze je obzvláště důležité, pokud spravujete prodej na více trzích z jedné centrálně centralizované kanceláře. Další informace najdete v tématu [parametry identifikátoru URI](#uri-parameters).
+Ceny se liší podle trhu a měny a toto rozhraní API bere v úvahu umístění. Ve výchozím nastavení rozhraní API používá nastavení profilu partnera v Partnerské centrum a v jazyce prohlížeče a tato nastavení jsou přizpůsobitelná. Povědomí o umístění je zvlášť důležité, pokud spravujete prodeje na několika trzích z jedné centralizované kanceláře. Další informace najdete v tématu Parametry [identifikátoru URI.](#uri-parameters)
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat kartu Azure Rate, zavolejte metodu [**IAzureRateCard. Get**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) , která vrátí prostředek [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) , který obsahuje ceny Azure.
+Pokud chcete získat kartu sazeb Azure, zavolejte metodu [**IAzureRateCard.Get,**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.get) která vrátí prostředek [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) obsahující ceny Azure.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -35,13 +31,13 @@ Pokud chcete získat kartu Azure Rate, zavolejte metodu [**IAzureRateCard. Get**
 var azureRateCard = partner.RateCards.Azure.Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Projekt**: ukázkové **třídy** SDK pro partnerských Center: GetAzureRateCard.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class**: GetAzureRateCard.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Pokud chcete získat kartu Azure Rate, zavolejte funkci **IAzureRateCard. Get** , která vrátí podrobnosti o sazbách, které obsahují ceny Azure.
+Pokud chcete získat kartu sazeb Azure, zavolejte **funkci IAzureRateCard.get,** která vrátí podrobnosti o kartě sazeb, která obsahuje ceny Azure.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -53,36 +49,36 @@ AzureRateCard azureRateCard = partner.getRateCards().getAzure().get();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pokud chcete získat kartu Azure, spusťte příkaz [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) , který vrátí podrobnosti o ceníku, který obsahuje ceny Azure.
+Pokud chcete získat kartu Azure, spusťte příkaz [**Get-PartnerAzureRateCard,**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) který vrátí podrobnosti o kartě sazeb, která obsahuje ceny Azure.
 
 ```powershell
 Get-PartnerAzureRateCard
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                        |
 |---------|--------------------------------------------------------------------|
-| **Čtěte** | *{baseURL}*/v1/ratecards/Azure? Currency = {currency} &oblast = {region} |
+| **Dostat** | *{baseURL}*/v1/ratecards/azure?currency={currency}&region={region} |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | Název     | Typ   | Vyžadováno | Popis                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | řetězec | No       | Volitelná tři písmena ISO kódu pro měnu, ve které se budou poskytovat sazby za prostředky (například `EUR` ). Výchozí formát je `USD`. |
-| oblast   | řetězec | No       | Volitelné dvoumístné číslo země/oblasti ISO, které označuje uvedení na trh, na který byla nabídka koupena (například `FR` ). Výchozí formát je `US`.        |
+| currency | řetězec | No       | Volitelný třípísmenný kód ISO pro měnu, ve které budou uvedeny sazby prostředků (například `EUR` ). Výchozí formát je `USD`. |
+| oblast   | řetězec | No       | Volitelný dvoupísmenný kód ISO země/oblasti, který označuje trh, na kterém je nabídka zakoupená (například `FR` ). Výchozí formát je `US`.        |
 
-Do žádosti můžete zahrnout volitelné [záhlaví](headers.md#rest-request-headers) X-locale. Pokud nezadáte hlavičku X-locale, použije se výchozí hodnota ("en-US").
+Do požadavku můžete zahrnout volitelnou [hlavičku](headers.md#rest-request-headers) X-Locale. Pokud hlavičku X-Locale nezadáte, použije se výchozí hodnota (en-US).
 
-- Pokud v žádosti zadáte parametry měny a oblasti, použije se k určení jazyka odpovědi hodnota X-locale.
+- Pokud v požadavku zadáte parametry měny a oblasti, hodnota X-národního prostředí se použije k určení jazyka odpovědi.
 
-- Pokud v požadavku neposkytnete parametry region a Currency, použije se k určení oblasti, měny a jazyka odpovědi hodnota X-locale.
+- Pokud v požadavku nezadáte parametry oblasti a měny, hodnota X-národního prostředí se použije k určení oblasti, měny a jazyka odpovědi.
 
 ### <a name="request-header"></a>Hlavička požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -103,11 +99,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-Pokud je požadavek úspěšný, vrátí prostředek [Azure Rate karta](azure-rate-card-resources.md) .
+Pokud je požadavek úspěšný, vrátí prostředek [Azure Rate Card.](azure-rate-card-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

@@ -1,39 +1,35 @@
 ---
 title: Získání všech záznamů o využití předplatných pro zákazníka
-description: Pomocí kolekce prostředků SubscriptionMonthlyUsageRecord můžete získat záznamy o využití předplatných pro zákazníka konkrétní služby nebo prostředku Azure během aktuálního fakturačního období.
+description: Kolekci prostředků SubscriptionMonthlyUsageRecord můžete použít k získání záznamů o využití předplatného pro zákazníka konkrétní služby nebo prostředku Azure během aktuálního fakturačního období.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 765ea16ff58b462d83ae3b8764b8b34c3ef804dc
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 976abd86f34c1c27184f277ffc89fbc65f16bb37
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766799"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874682"
 ---
-# <a name="get-subscription-usage-records-for-a-customer"></a>Získání záznamů o využití předplatných pro zákazníka
+# <a name="get-subscription-usage-records-for-a-customer"></a>Získání záznamů o využití předplatného pro zákazníka
 
-**Platí pro:**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Pomocí kolekce prostředků **SubscriptionMonthlyUsageRecord** můžete získat záznamy o využití předplatných pro zákazníka konkrétní služby nebo prostředku Azure během aktuálního fakturačního období. Tento prostředek představuje všechna předplatná pro zákazníka. U zákazníka s plánem Azure tento prostředek vrátí seznam těchto plánů (ne individuálních předplatných Azure).
+Kolekci prostředků **SubscriptionMonthlyUsageRecord** můžete použít k získání záznamů o využití předplatného pro zákazníka konkrétní služby nebo prostředku Azure během aktuálního fakturačního období. Tento prostředek představuje všechna předplatná zákazníka. Pro zákazníka s plánem Azure tento prostředek vrátí seznam těchto plánů (ne jednotlivá předplatná Azure).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Získání záznamů o využití předplatných pro zákazníka konkrétní služby nebo prostředku Azure během aktuálního fakturačního období:
+Pokud chcete získat záznamy o využití předplatného pro zákazníka konkrétní služby nebo prostředku Azure během aktuálního fakturačního období, proveďte následující kroky:
 
-1. Použijte svou kolekci **IAggregatePartner. Customers** pro volání metody **ById ()** .
+1. K volání metody **ById()** použijte kolekci **IAggregatePartner.Customers.**
 
-2. Pak zavolejte vlastnost **Subscriptions** a také vlastnost **UsageRecords** . Dokončete voláním metod Get () nebo GetAsync ().
+2. Potom zavolejte **vlastnost Subscriptions** a **vlastnost UsageRecords.** Dokončete voláním metod Get() nebo GetAsync().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -42,31 +38,31 @@ Získání záznamů o využití předplatných pro zákazníka konkrétní slu�
     var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.UsageRecords.Get();
     ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Projekt: **PartnerSDK. FeatureSamples**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSamples**
 - Třída: **GetSubscriptionUsageRecords.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                      |
 |---------|------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/usagerecords HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/usagerecords HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání informací o využití ohodnocených zákazníkem.
+Tato tabulka uvádí požadovaný parametr dotazu k získání informací o hodnocených využitích zákazníka.
 
 | Název                   | Typ     | Vyžadováno | Popis                           |
 |------------------------|----------|----------|---------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi. |
+| **customer-tenant-id** | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -84,17 +80,17 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek **SubscriptionMonthlyUsageRecord** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi prostředek **SubscriptionMonthlyUsageRecord.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. Ke čtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Příklad odpovědi pro předplatná Microsoft Azure (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Příklad odpovědi Microsoft Azure předplatných (MS-AZR-0145P)
 
-V tomto příkladu si zákazník koupil nabídku **145P Azure PayG** .
+V tomto příkladu zákazník zakoupil nabídku **azure payg 145P.**
 
-*Pro zákazníky s předplatnými Microsoft Azure (MS-AZR-0145P) nedojde k žádné změně v odpovědi rozhraní API.*
+*U zákazníků Microsoft Azure předplatných (MS-AZR-0145P) se v odpovědi rozhraní API nezmění.*
 
 ```http
 HTTP/1.1 200 OK
@@ -138,12 +134,12 @@ Date: Tue, 17 Sep 2019 20:31:45 GMT
 
 ## <a name="rest-response-example-for-azure-plan"></a>Příklad odpovědi REST pro plán Azure
 
-V tomto příkladu si zákazník koupil plán Azure.
+V tomto příkladu zákazník zakoupil plán Azure.
 
-*Pro zákazníky s plány Azure jsou v odpovědi rozhraní API tyto změny:*
+*U zákazníků s plány Azure došlo v odpovědi rozhraní API k následujícím změnám:*
 
-- **currencyLocale** se nahrazuje **currencyCode**
-- **usdTotalCost** je nové pole.
+- **currencyLocale** se nahradí **kódem měny**
+- **usdTotalCost** je nové pole
 
 ```http
 HTTP/1.1 200 OK

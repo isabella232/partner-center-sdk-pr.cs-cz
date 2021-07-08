@@ -4,18 +4,14 @@ description: Získá položky řádku s náklady na službu zákazníka za zadan
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c2034eaf11342493797688b44b634b8e9598e2e4
-ms.sourcegitcommit: 58801b7a09c19ce57617ec4181a008a673b725f0
+ms.openlocfilehash: 1bc2914d7c8d41c6d806131444fdc241aa1feb90
+ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "97766873"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111874937"
 ---
 # <a name="get-a-customers-service-costs-line-items"></a>Získání řádkových položek nákladů na služby zákazníka
-
-**Platí pro:**
-
-- Partnerské centrum
 
 Získá položky řádku s náklady na službu zákazníka za zadané fakturační období.
 
@@ -88,7 +84,7 @@ Host: api.partnercenter.microsoft.com
 V případě úspěchu obsahuje tělo odpovědi prostředek [ServiceCostLineItem](service-costs-resources.md) , který poskytuje informace o nákladech služby.
 
 > [!IMPORTANT]
-> Následující vlastnosti *platí jenom pro položky s náklady na* službu, u kterých je produkt *jednorázové nákupy*: **ProductID**, **ProductName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **Publisher**, **termAndBillingCycle**, **discountDetails**. Tyto vlastnosti se *nevztahují na* položky řádku služby, ve kterých je produkt *opakovaný nákup*. Tyto vlastnosti se například *nevztahují* na sady Office 365 a Azure založené na předplatném.
+> Následující vlastnosti *platí jenom pro položky s náklady na* službu, u kterých je produkt *jednorázové nákupy*: **ProductID**, **ProductName**, **skuId**, **skuName**, **availabilityId**, **publisherId**, **Publisher**, **termAndBillingCycle**, **discountDetails**. Tyto vlastnosti se *nevztahují na* položky řádku služby, ve kterých je produkt *opakovaný nákup*. tyto vlastnosti se například *nevztahují* na Office 365 a Azure na základě předplatného.
 
 ### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 

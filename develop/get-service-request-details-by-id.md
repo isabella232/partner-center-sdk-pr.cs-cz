@@ -1,35 +1,31 @@
 ---
-title: Získejte podrobnosti žádosti o službu podle ID.
-description: Jak načíst podrobnosti o existující žádosti o služby zákazníkům podle ID
+title: Získejte podrobnosti o žádosti o služby podle ID.
+description: Jak načíst podrobnosti o existující žádosti o služby zákazníkům podle ID.
 ms.date: 02/06/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c79fd3f5e5609a1893891e9b2a8078f8678497b3
-ms.sourcegitcommit: 30d1b9d48453c7697a2f42ee09138e507dcf9f2d
+ms.openlocfilehash: 66488cf9592d630cb1f0237d379e8df5ead6a3a8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "97767051"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548766"
 ---
 # <a name="get-service-request-details-by-id"></a>Získání podrobností žádostí o službu podle ID
 
-**Platí pro**
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-- Partnerské centrum
-- Partnerské centrum pro Microsoft Cloud pro Německo
-- Partnerské centrum pro Microsoft Cloud for US Government
-
-Jak načíst podrobnosti o existující žádosti o služby zákazníkům pomocí identifikátoru žádosti o službu.
+Jak načíst podrobnosti o existující žádosti o služby zákazníkům pomocí identifikátoru žádosti o služby.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID žádosti o službu.
+- ID žádosti o služby.
 
 ## <a name="c"></a>C\#
 
-Chcete-li načíst podrobnosti o existující žádosti o služby zákazníkům, zavolejte metodu [**IServiceRequestCollection. ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) a předejte [**ServiceRequest.ID**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest.id#Microsoft_Store_PartnerCenter_Models_ServiceRequests_ServiceRequest_Id) k identifikaci a vrácení rozhraní konkrétnímu objektu [**ServiceRequest**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest) .
+Pokud chcete načíst podrobnosti o existující žádosti o služby zákazníkům, zavolejte metodu [**IServiceRequestCollection.ById**](/dotnet/api/microsoft.store.partnercenter.servicerequests.iservicerequestcollection.byid) a předejte [**ServiceRequest.Id,**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest.id#Microsoft_Store_PartnerCenter_Models_ServiceRequests_ServiceRequest_Id) abyste identifikovali a vrátili rozhraní pro konkrétní objekt [**ServiceRequest.**](/dotnet/api/microsoft.store.partnercenter.models.servicerequests.servicerequest)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -44,25 +40,25 @@ Console.WriteLine(string.Format("The primary contact for the service request {0}
 ));
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                 |
 |-----------|---------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{ServiceRequest-ID} HTTP/1.1  |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/servicerequests/{id_požadavku_služby} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K získání zadané žádosti o služby použijte následující parametr identifikátoru URI.
+Pomocí následujícího parametru URI získejte zadaný požadavek na službu.
 
 | Název                  | Typ     | Vyžadováno | Popis                                 |
 |-----------------------|----------|----------|---------------------------------------------|
-| **ServiceRequest-ID** | **guid** | Y        | Identifikátor GUID, který identifikuje požadavek služby. |
+| **id_události_služby** | **guid** | Y        | Identifikátor GUID, který identifikuje požadavek na službu. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -84,11 +80,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek **žádosti o službu** v těle odpovědi.
+V případě úspěchu vrátí tato metoda **v** textu odpovědi prostředek žádosti o služby.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 
