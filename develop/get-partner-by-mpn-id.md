@@ -1,38 +1,33 @@
 ---
 title: Ověření ID MPN partnera
-description: Přečtěte si, jak ověřit identifikátor ID Microsoft Partner Network partnera (MPN ID) vyžádáním profilu MPN partnera prostřednictvím jazyka C \# nebo partnerského centra REST API.
+description: Zjistěte, jak ověřit identifikátor Microsoft Partner Network MPN (MPN ID) partnera tím, že prostřednictvím C nebo Partnerské centrum REST API požádáte o profil MPN \# partnera.
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6ef7bcb35274a6bcbaddbe0553ca0cb4dc1b2f9c
-ms.sourcegitcommit: 8a5c37376a29e29fe0002a980082d4acc6b91131
+ms.openlocfilehash: 6bd51850c7bc5a099a34f9c028a58e247c2600a3
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "97767064"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111548817"
 ---
-# <a name="verify-a-partner-mpn-id-via-c-or-the-partner-center-rest-api"></a><span data-ttu-id="79f18-103">Ověření ID MPN partnera prostřednictvím jazyka C \# nebo partnerského centra REST API</span><span class="sxs-lookup"><span data-stu-id="79f18-103">Verify a partner MPN ID via C\# or the Partner Center REST API</span></span>
+# <a name="verify-a-partner-mpn-id-via-c-or-the-partner-center-rest-api"></a><span data-ttu-id="d728a-103">Ověření ID MPN partnera prostřednictvím jazyka C \# nebo Partnerské centrum REST API</span><span class="sxs-lookup"><span data-stu-id="d728a-103">Verify a partner MPN ID via C\# or the Partner Center REST API</span></span>
 
-<span data-ttu-id="79f18-104">**Platí pro**</span><span class="sxs-lookup"><span data-stu-id="79f18-104">**Applies To**</span></span>
+<span data-ttu-id="d728a-104">**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="d728a-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="79f18-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="79f18-105">Partner Center</span></span>
-- <span data-ttu-id="79f18-106">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="79f18-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="79f18-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="79f18-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="79f18-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="79f18-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="d728a-105">Ověření identifikátoru MPN (MICROSOFT PARTNER NETWORK partnera)</span><span class="sxs-lookup"><span data-stu-id="d728a-105">How to verify a partner's Microsoft Partner Network identifier (MPN ID).</span></span>
 
-<span data-ttu-id="79f18-109">Jak ověřit identifikátor Microsoft Partner Network partnera (ID MPN)</span><span class="sxs-lookup"><span data-stu-id="79f18-109">How to verify a partner's Microsoft Partner Network identifier (MPN ID).</span></span>
+<span data-ttu-id="d728a-106">Zde zobrazená technika ověří identifikátor Microsoft Partner Network tím, že si z Partnerského centra vyžádá profil MPN partnera.</span><span class="sxs-lookup"><span data-stu-id="d728a-106">The technique shown here verifies the partner's Microsoft Partner Network identifier by requesting the partner's MPN profile from partner center.</span></span> <span data-ttu-id="d728a-107">Identifikátor se považuje za platný, pokud je požadavek úspěšný.</span><span class="sxs-lookup"><span data-stu-id="d728a-107">The identifier is considered valid if the request succeeds.</span></span>
 
-<span data-ttu-id="79f18-110">Zde uvedená technika ověří identifikátor Microsoft Partner Network partnera tím, že požádá o profil MPN partnera z partnerského centra.</span><span class="sxs-lookup"><span data-stu-id="79f18-110">The technique shown here verifies the partner's Microsoft Partner Network identifier by requesting the partner's MPN profile from partner center.</span></span> <span data-ttu-id="79f18-111">Identifikátor se považuje za platný, pokud je požadavek úspěšný.</span><span class="sxs-lookup"><span data-stu-id="79f18-111">The identifier is considered valid if the request succeeds.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="d728a-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="d728a-108">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="79f18-112">Požadavky</span><span class="sxs-lookup"><span data-stu-id="79f18-112">Prerequisites</span></span>
+- <span data-ttu-id="d728a-109">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="d728a-109">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="d728a-110">Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="d728a-110">This scenario supports authentication with App+User credentials only.</span></span>
 
-- <span data-ttu-id="79f18-113">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="79f18-113">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="79f18-114">Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="79f18-114">This scenario supports authentication with App+User credentials only.</span></span>
+- <span data-ttu-id="d728a-111">ID MPN partnera, které chcete ověřit.</span><span class="sxs-lookup"><span data-stu-id="d728a-111">The partner MPN ID to verify.</span></span> <span data-ttu-id="d728a-112">Pokud tuto hodnotu vynecháte, požadavek načte profil MPN přihlášených partnerů.</span><span class="sxs-lookup"><span data-stu-id="d728a-112">If you omit this value, the request retrieves the MPN profile of the signed-in partner.</span></span>
 
-- <span data-ttu-id="79f18-115">ID MPN partnera, který se má ověřit</span><span class="sxs-lookup"><span data-stu-id="79f18-115">The partner MPN ID to verify.</span></span> <span data-ttu-id="79f18-116">Pokud tuto hodnotu vynecháte, požadavek načte profil MPN pro přihlášeného partnera.</span><span class="sxs-lookup"><span data-stu-id="79f18-116">If you omit this value, the request retrieves the MPN profile of the signed-in partner.</span></span>
+## <a name="c"></a><span data-ttu-id="d728a-113">C\#</span><span class="sxs-lookup"><span data-stu-id="d728a-113">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="79f18-117">C\#</span><span class="sxs-lookup"><span data-stu-id="79f18-117">C\#</span></span>
-
-<span data-ttu-id="79f18-118">Pokud chcete ověřit ID MPN partnera, nejdřív načtěte rozhraní pro operace shromažďování profilů partnerů z vlastnosti [**IAggregatePartner. Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) .</span><span class="sxs-lookup"><span data-stu-id="79f18-118">To verify a partner's MPN ID, first retrieve an interface to partner profile collection operations from the [**IAggregatePartner.Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) property.</span></span> <span data-ttu-id="79f18-119">Pak z vlastnosti [**MpnProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) Získejte rozhraní pro operace s profilem MPN.</span><span class="sxs-lookup"><span data-stu-id="79f18-119">Then get an interface to MPN profile operations from the [**MpnProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) property.</span></span> <span data-ttu-id="79f18-120">Nakonec voláním metod [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) nebo [**GETASYNC**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) s ID MPN načtěte profil MPN.</span><span class="sxs-lookup"><span data-stu-id="79f18-120">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) methods with the MPN ID to retrieve the MPN profile.</span></span> <span data-ttu-id="79f18-121">Pokud z volání Get nebo GetAsync vynecháte ID MPN, požadavek se pokusí načíst profil MPN přihlášeného partnera.</span><span class="sxs-lookup"><span data-stu-id="79f18-121">If you omit the MPN ID from the Get or GetAsync call, the request attempts to retrieve the MPN profile of the signed-in partner.</span></span>
+<span data-ttu-id="d728a-114">Pokud chcete ověřit ID MPN partnera, nejprve načtěte rozhraní pro operace shromažďování profilů partnerů z [**vlastnosti IAggregatePartner.Profiles.**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles)</span><span class="sxs-lookup"><span data-stu-id="d728a-114">To verify a partner's MPN ID, first retrieve an interface to partner profile collection operations from the [**IAggregatePartner.Profiles**](/dotnet/api/microsoft.store.partnercenter.ipartner.profiles) property.</span></span> <span data-ttu-id="d728a-115">Pak z vlastnosti [**MpnProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) získejte rozhraní operací profilu MPN.</span><span class="sxs-lookup"><span data-stu-id="d728a-115">Then get an interface to MPN profile operations from the [**MpnProfile**](/dotnet/api/microsoft.store.partnercenter.profiles.ipartnerprofilecollection.mpnprofile) property.</span></span> <span data-ttu-id="d728a-116">Nakonec zavolejte metody [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) s ID MPN a načtěte profil MPN.</span><span class="sxs-lookup"><span data-stu-id="d728a-116">Finally, call the [**Get**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.profiles.impnprofile.getasync) methods with the MPN ID to retrieve the MPN profile.</span></span> <span data-ttu-id="d728a-117">Pokud vynecháte ID MPN z volání Get nebo GetAsync, požadavek se pokusí načíst profil MPN přihlášený partner.</span><span class="sxs-lookup"><span data-stu-id="d728a-117">If you omit the MPN ID from the Get or GetAsync call, the request attempts to retrieve the MPN profile of the signed-in partner.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -41,33 +36,33 @@ ms.locfileid: "97767064"
 var partnerProfile = partnerOperations.Profiles.MpnProfile.Get(partnerMpnId);
 ```
 
-<span data-ttu-id="79f18-122">**Ukázka**: [aplikace testů konzoly](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="79f18-122">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="79f18-123">**Projekt**: ukázkové **třídy** SDK pro partnerských Center: VerifyPartnerMpnId.cs</span><span class="sxs-lookup"><span data-stu-id="79f18-123">**Project**: Partner Center SDK Samples **Class**: VerifyPartnerMpnId.cs</span></span>
+<span data-ttu-id="d728a-118">**Ukázka:** [Konzolová testovací aplikace](console-test-app.md).</span><span class="sxs-lookup"><span data-stu-id="d728a-118">**Sample**: [Console test app](console-test-app.md).</span></span> <span data-ttu-id="d728a-119">**Project:** SDK pro Partnerské centrum Samples **:** VerifyPartnerMpnId.cs</span><span class="sxs-lookup"><span data-stu-id="d728a-119">**Project**: Partner Center SDK Samples **Class**: VerifyPartnerMpnId.cs</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="79f18-124">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="79f18-124">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="d728a-120">Požadavek REST</span><span class="sxs-lookup"><span data-stu-id="d728a-120">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="79f18-125">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="79f18-125">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="d728a-121">Syntaxe požadavku</span><span class="sxs-lookup"><span data-stu-id="d728a-121">Request syntax</span></span>
 
-| <span data-ttu-id="79f18-126">Metoda</span><span class="sxs-lookup"><span data-stu-id="79f18-126">Method</span></span>  | <span data-ttu-id="79f18-127">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="79f18-127">Request URI</span></span>                                                                         |
+| <span data-ttu-id="d728a-122">Metoda</span><span class="sxs-lookup"><span data-stu-id="d728a-122">Method</span></span>  | <span data-ttu-id="d728a-123">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="d728a-123">Request URI</span></span>                                                                         |
 |---------|-------------------------------------------------------------------------------------|
-| <span data-ttu-id="79f18-128">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="79f18-128">**GET**</span></span> | <span data-ttu-id="79f18-129">[*{baseURL}*](partner-center-rest-urls.md)/v1/Profiles/MPN? mpnId = {MPN-ID} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="79f18-129">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/mpn?mpnId={mpn-id} HTTP/1.1</span></span> |
+| <span data-ttu-id="d728a-124">**Dostat**</span><span class="sxs-lookup"><span data-stu-id="d728a-124">**GET**</span></span> | <span data-ttu-id="d728a-125">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/mpn?mpnId={mpn-id} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="d728a-125">[*{baseURL}*](partner-center-rest-urls.md)/v1/profiles/mpn?mpnId={mpn-id} HTTP/1.1</span></span> |
 
-### <a name="uri-parameter"></a><span data-ttu-id="79f18-130">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="79f18-130">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="d728a-126">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="d728a-126">URI parameter</span></span>
 
-<span data-ttu-id="79f18-131">Zadejte následující parametr dotazu pro identifikaci partnera.</span><span class="sxs-lookup"><span data-stu-id="79f18-131">Provide the following query parameter to identify the partner.</span></span> <span data-ttu-id="79f18-132">Pokud tento parametr dotazu vynecháte, požadavek vrátí profil MPN pro přihlášeného partnera.</span><span class="sxs-lookup"><span data-stu-id="79f18-132">If you omit this query parameter, the request returns the MPN profile of the signed-in partner.</span></span>
+<span data-ttu-id="d728a-127">Zadejte následující parametr dotazu pro identifikaci partnera.</span><span class="sxs-lookup"><span data-stu-id="d728a-127">Provide the following query parameter to identify the partner.</span></span> <span data-ttu-id="d728a-128">Pokud tento parametr dotazu vynecháte, požadavek vrátí profil MPN přihlášených partnerů.</span><span class="sxs-lookup"><span data-stu-id="d728a-128">If you omit this query parameter, the request returns the MPN profile of the signed-in partner.</span></span>
 
-| <span data-ttu-id="79f18-133">Název</span><span class="sxs-lookup"><span data-stu-id="79f18-133">Name</span></span>   | <span data-ttu-id="79f18-134">Typ</span><span class="sxs-lookup"><span data-stu-id="79f18-134">Type</span></span> | <span data-ttu-id="79f18-135">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="79f18-135">Required</span></span> | <span data-ttu-id="79f18-136">Popis</span><span class="sxs-lookup"><span data-stu-id="79f18-136">Description</span></span>                                                 |
+| <span data-ttu-id="d728a-129">Název</span><span class="sxs-lookup"><span data-stu-id="d728a-129">Name</span></span>   | <span data-ttu-id="d728a-130">Typ</span><span class="sxs-lookup"><span data-stu-id="d728a-130">Type</span></span> | <span data-ttu-id="d728a-131">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="d728a-131">Required</span></span> | <span data-ttu-id="d728a-132">Popis</span><span class="sxs-lookup"><span data-stu-id="d728a-132">Description</span></span>                                                 |
 |--------|------|----------|-------------------------------------------------------------|
-| <span data-ttu-id="79f18-137">MPN – ID</span><span class="sxs-lookup"><span data-stu-id="79f18-137">mpn-id</span></span> | <span data-ttu-id="79f18-138">int</span><span class="sxs-lookup"><span data-stu-id="79f18-138">int</span></span>  | <span data-ttu-id="79f18-139">No</span><span class="sxs-lookup"><span data-stu-id="79f18-139">No</span></span>       | <span data-ttu-id="79f18-140">ID Microsoft Partner Network, které identifikuje partnera.</span><span class="sxs-lookup"><span data-stu-id="79f18-140">A Microsoft Partner Network ID that identifies the partner.</span></span> |
+| <span data-ttu-id="d728a-133">id mpn</span><span class="sxs-lookup"><span data-stu-id="d728a-133">mpn-id</span></span> | <span data-ttu-id="d728a-134">int</span><span class="sxs-lookup"><span data-stu-id="d728a-134">int</span></span>  | <span data-ttu-id="d728a-135">No</span><span class="sxs-lookup"><span data-stu-id="d728a-135">No</span></span>       | <span data-ttu-id="d728a-136">Id Microsoft Partner Network, které identifikuje partnera.</span><span class="sxs-lookup"><span data-stu-id="d728a-136">A Microsoft Partner Network ID that identifies the partner.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="79f18-141">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="79f18-141">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="d728a-137">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="d728a-137">Request headers</span></span>
 
-<span data-ttu-id="79f18-142">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="79f18-142">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="d728a-138">Další informace najdete v Partnerské centrum [REST.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="d728a-138">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="79f18-143">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="79f18-143">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="d728a-139">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="d728a-139">Request body</span></span>
 
-<span data-ttu-id="79f18-144">Žádné</span><span class="sxs-lookup"><span data-stu-id="79f18-144">None.</span></span>
+<span data-ttu-id="d728a-140">Žádné</span><span class="sxs-lookup"><span data-stu-id="d728a-140">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="79f18-145">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="79f18-145">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="d728a-141">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="d728a-141">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/profiles/mpn?mpnId=9999999 HTTP/1.1
@@ -81,15 +76,15 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="79f18-146">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="79f18-146">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="d728a-142">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="d728a-142">REST response</span></span>
 
-<span data-ttu-id="79f18-147">V případě úspěchu obsahuje tělo odpovědi prostředek [MpnProfile](profile-resources.md#mpnprofile) pro partnera.</span><span class="sxs-lookup"><span data-stu-id="79f18-147">If successful, the response body contains the [MpnProfile](profile-resources.md#mpnprofile) resource for the partner.</span></span>
+<span data-ttu-id="d728a-143">V případě úspěchu bude tělo odpovědi obsahovat prostředek [MpnProfile](profile-resources.md#mpnprofile) pro partnera.</span><span class="sxs-lookup"><span data-stu-id="d728a-143">If successful, the response body contains the [MpnProfile](profile-resources.md#mpnprofile) resource for the partner.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="79f18-148">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="79f18-148">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="d728a-144">Kódy chyb a úspěšné odpovědi</span><span class="sxs-lookup"><span data-stu-id="d728a-144">Response success and error codes</span></span>
 
-<span data-ttu-id="79f18-149">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="79f18-149">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="79f18-150">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="79f18-150">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="79f18-151">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="79f18-151">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="d728a-145">Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="d728a-145">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="d728a-146">K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě.</span><span class="sxs-lookup"><span data-stu-id="d728a-146">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="d728a-147">Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="d728a-147">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example-success"></a><span data-ttu-id="79f18-152">Příklad odpovědi (úspěch)</span><span class="sxs-lookup"><span data-stu-id="79f18-152">Response example (success)</span></span>
+### <a name="response-example-success"></a><span data-ttu-id="d728a-148">Příklad odpovědi (úspěch)</span><span class="sxs-lookup"><span data-stu-id="d728a-148">Response example (success)</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -117,7 +112,7 @@ Date: Thu, 13 Apr 2017 18:13:40 GMT
 }
 ```
 
-### <a name="response-example-failure"></a><span data-ttu-id="79f18-153">Příklad odpovědi (neúspěch)</span><span class="sxs-lookup"><span data-stu-id="79f18-153">Response example (failure)</span></span>
+### <a name="response-example-failure"></a><span data-ttu-id="d728a-149">Příklad odpovědi (selhání)</span><span class="sxs-lookup"><span data-stu-id="d728a-149">Response example (failure)</span></span>
 
 ```http
 HTTP/1.1 404 Not Found

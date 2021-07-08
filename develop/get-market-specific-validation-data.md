@@ -1,54 +1,50 @@
 ---
 title: Získání pravidel formátování adres podle trhu
-description: Získejte očekávaný formát adresy založený na kódu ISO pro daný trh.
+description: Získejte očekávaný formát adresy na základě kódu ISO pro trh.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c755a38c11ed9803edb7777a0f661c1fbc5a6107
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: d5233d059ea6e71c28df36b2242659c28c5dd857
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766753"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549038"
 ---
-# <a name="get-address-formatting-rules-by-market"></a><span data-ttu-id="9726a-103">Získání pravidel formátování adres podle trhu</span><span class="sxs-lookup"><span data-stu-id="9726a-103">Get address formatting rules by market</span></span>
+# <a name="get-address-formatting-rules-by-market"></a><span data-ttu-id="27c0b-103">Získání pravidel formátování adres podle trhu</span><span class="sxs-lookup"><span data-stu-id="27c0b-103">Get address formatting rules by market</span></span>
 
-<span data-ttu-id="9726a-104">**Platí pro**</span><span class="sxs-lookup"><span data-stu-id="9726a-104">**Applies To**</span></span>
+<span data-ttu-id="27c0b-104">**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="27c0b-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="9726a-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="9726a-105">Partner Center</span></span>
-- <span data-ttu-id="9726a-106">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="9726a-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="9726a-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="9726a-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="9726a-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="9726a-108">Partner Center for Microsoft Cloud for US Government</span></span>
 
-<span data-ttu-id="9726a-109">Získejte očekávaný formát adresy založený na kódu ISO pro daný trh.</span><span class="sxs-lookup"><span data-stu-id="9726a-109">Get the expected address format based on the iso code for the market.</span></span>
+<span data-ttu-id="27c0b-105">Získejte očekávaný formát adresy na základě kódu ISO pro trh.</span><span class="sxs-lookup"><span data-stu-id="27c0b-105">Get the expected address format based on the iso code for the market.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9726a-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="9726a-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="27c0b-106">Požadavky</span><span class="sxs-lookup"><span data-stu-id="27c0b-106">Prerequisites</span></span>
 
-- <span data-ttu-id="9726a-111">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="9726a-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="9726a-112">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="9726a-112">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="27c0b-107">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="27c0b-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="27c0b-108">Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="27c0b-108">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="9726a-113">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="9726a-113">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="27c0b-109">Požadavek REST</span><span class="sxs-lookup"><span data-stu-id="27c0b-109">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="9726a-114">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="9726a-114">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="27c0b-110">Syntaxe požadavku</span><span class="sxs-lookup"><span data-stu-id="27c0b-110">Request syntax</span></span>
 
-| <span data-ttu-id="9726a-115">Metoda</span><span class="sxs-lookup"><span data-stu-id="9726a-115">Method</span></span>  | <span data-ttu-id="9726a-116">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="9726a-116">Request URI</span></span>                                                                                 |
+| <span data-ttu-id="27c0b-111">Metoda</span><span class="sxs-lookup"><span data-stu-id="27c0b-111">Method</span></span>  | <span data-ttu-id="27c0b-112">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="27c0b-112">Request URI</span></span>                                                                                 |
 |---------|---------------------------------------------------------------------------------------------|
-| <span data-ttu-id="9726a-117">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="9726a-117">**GET**</span></span> | <span data-ttu-id="9726a-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/countryvalidationrules/{isoCode-ID} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="9726a-118">[*{baseURL}*](partner-center-rest-urls.md)/v1/countryvalidationrules/{isocode-id} HTTP/1.1</span></span> |
+| <span data-ttu-id="27c0b-113">**Dostat**</span><span class="sxs-lookup"><span data-stu-id="27c0b-113">**GET**</span></span> | <span data-ttu-id="27c0b-114">[*{baseURL}*](partner-center-rest-urls.md)/v1/countryvalidationrules/{isocode-id} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="27c0b-114">[*{baseURL}*](partner-center-rest-urls.md)/v1/countryvalidationrules/{isocode-id} HTTP/1.1</span></span> |
 
-### <a name="uri-parameter"></a><span data-ttu-id="9726a-119">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="9726a-119">URI parameter</span></span>
+### <a name="uri-parameter"></a><span data-ttu-id="27c0b-115">Parametr URI</span><span class="sxs-lookup"><span data-stu-id="27c0b-115">URI parameter</span></span>
 
-| <span data-ttu-id="9726a-120">Název</span><span class="sxs-lookup"><span data-stu-id="9726a-120">Name</span></span>           | <span data-ttu-id="9726a-121">Typ</span><span class="sxs-lookup"><span data-stu-id="9726a-121">Type</span></span>       | <span data-ttu-id="9726a-122">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="9726a-122">Required</span></span> | <span data-ttu-id="9726a-123">Popis</span><span class="sxs-lookup"><span data-stu-id="9726a-123">Description</span></span>                         |
+| <span data-ttu-id="27c0b-116">Název</span><span class="sxs-lookup"><span data-stu-id="27c0b-116">Name</span></span>           | <span data-ttu-id="27c0b-117">Typ</span><span class="sxs-lookup"><span data-stu-id="27c0b-117">Type</span></span>       | <span data-ttu-id="27c0b-118">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="27c0b-118">Required</span></span> | <span data-ttu-id="27c0b-119">Popis</span><span class="sxs-lookup"><span data-stu-id="27c0b-119">Description</span></span>                         |
 |----------------|------------|----------|-------------------------------------|
-| <span data-ttu-id="9726a-124">**isoCode-ID**</span><span class="sxs-lookup"><span data-stu-id="9726a-124">**isocode-id**</span></span> | <span data-ttu-id="9726a-125">**řetezce**</span><span class="sxs-lookup"><span data-stu-id="9726a-125">**string**</span></span> | <span data-ttu-id="9726a-126">Y</span><span class="sxs-lookup"><span data-stu-id="9726a-126">Y</span></span>        | <span data-ttu-id="9726a-127">Kód země ISO o dvou znacích.</span><span class="sxs-lookup"><span data-stu-id="9726a-127">The two-character ISO country code.</span></span> |
+| <span data-ttu-id="27c0b-120">**isocode-id**</span><span class="sxs-lookup"><span data-stu-id="27c0b-120">**isocode-id**</span></span> | <span data-ttu-id="27c0b-121">**řetězec**</span><span class="sxs-lookup"><span data-stu-id="27c0b-121">**string**</span></span> | <span data-ttu-id="27c0b-122">Y</span><span class="sxs-lookup"><span data-stu-id="27c0b-122">Y</span></span>        | <span data-ttu-id="27c0b-123">Dvoupísový kód ZEMĚ ISO.</span><span class="sxs-lookup"><span data-stu-id="27c0b-123">The two-character ISO country code.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="9726a-128">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="9726a-128">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="27c0b-124">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="27c0b-124">Request headers</span></span>
 
-<span data-ttu-id="9726a-129">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="9726a-129">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="27c0b-125">Další informace najdete v Partnerské centrum [REST.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="27c0b-125">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="9726a-130">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="9726a-130">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="27c0b-126">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="27c0b-126">Request body</span></span>
 
-<span data-ttu-id="9726a-131">Žádné</span><span class="sxs-lookup"><span data-stu-id="9726a-131">None.</span></span>
+<span data-ttu-id="27c0b-127">Žádné</span><span class="sxs-lookup"><span data-stu-id="27c0b-127">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="9726a-132">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="9726a-132">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="27c0b-128">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="27c0b-128">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/countryvalidationrules/{isocode-id} HTTP/1.1
@@ -58,15 +54,15 @@ MS-RequestId: 124b0e41-a093-4fec-b871-3eeb45fd734b
 MS-CorrelationId: 5cfd634d-b936-47af-87f0-0f0217425dcc
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="9726a-133">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="9726a-133">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="27c0b-129">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="27c0b-129">REST response</span></span>
 
-<span data-ttu-id="9726a-134">V případě úspěchu tato metoda vrátí objekt **CountryInformation** v těle odpovědi.</span><span class="sxs-lookup"><span data-stu-id="9726a-134">If successful, this method returns a **CountryInformation** object in the response body.</span></span>
+<span data-ttu-id="27c0b-130">V případě úspěchu vrátí tato metoda v textu odpovědi objekt **CountryInformation.**</span><span class="sxs-lookup"><span data-stu-id="27c0b-130">If successful, this method returns a **CountryInformation** object in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="9726a-135">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="9726a-135">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="27c0b-131">Kódy chyb a úspěšné odpovědi</span><span class="sxs-lookup"><span data-stu-id="27c0b-131">Response success and error codes</span></span>
 
-<span data-ttu-id="9726a-136">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="9726a-136">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="9726a-137">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="9726a-137">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="9726a-138">Úplný seznam najdete v tématu [kódy chyb](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="9726a-138">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="27c0b-132">Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="27c0b-132">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="27c0b-133">K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě.</span><span class="sxs-lookup"><span data-stu-id="27c0b-133">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="27c0b-134">Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="27c0b-134">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="9726a-139">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="9726a-139">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="27c0b-135">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="27c0b-135">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK

@@ -4,53 +4,48 @@ description: Pomocí rozhraní API partnerského centra můžete získat podrobn
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ddc49e4d83518b809402a65f990f3e9c2658e64b
-ms.sourcegitcommit: 4ec053c56fd210b174fe657aa7b86faf4e2b5a7c
+ms.openlocfilehash: 944dddef64ec980d92c292a7f5b9f5eb4e7cecb6
+ms.sourcegitcommit: 15c6cfe72284cf5d4ea3535120e83e473c33f5ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "105730224"
+ms.lasthandoff: 06/22/2021
+ms.locfileid: "112443168"
 ---
-# <a name="get-invoice-line-items"></a><span data-ttu-id="5123a-103">Získání řádkových položek faktury</span><span class="sxs-lookup"><span data-stu-id="5123a-103">Get invoice line items</span></span>
+# <a name="get-invoice-line-items"></a><span data-ttu-id="2a66c-103">Získání řádkových položek faktury</span><span class="sxs-lookup"><span data-stu-id="2a66c-103">Get invoice line items</span></span>
 
-<span data-ttu-id="5123a-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="5123a-104">**Applies to:**</span></span>
+<span data-ttu-id="2a66c-104">**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="2a66c-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="5123a-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="5123a-105">Partner Center</span></span>
-- <span data-ttu-id="5123a-106">Partnerské centrum provozované společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="5123a-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="5123a-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="5123a-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="5123a-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="5123a-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="2a66c-105">Následující metody můžete použít k získání podrobností o kolekci pro položky řádku faktury (označované také jako uzavřené položky fakturačního řádku) pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-105">You can use the following methods to get collection details for of invoice line items (also known as closed billing line items) for a specified invoice.</span></span>
 
-<span data-ttu-id="5123a-109">Následující metody můžete použít k získání podrobností kolekce pro položky řádku faktury (známé také jako řádky s uzavřenými fakturačními položkami) pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="5123a-109">You can use the following methods to get a collection details for of invoice line items (also known as closed billing line items) for a specified invoice.</span></span>
+<span data-ttu-id="2a66c-106">*S výjimkou oprav chyb už toto rozhraní API není aktualizované.*</span><span class="sxs-lookup"><span data-stu-id="2a66c-106">*Except for bug fixes, this API is no longer being updated.*</span></span> <span data-ttu-id="2a66c-107">Své aplikace byste měli aktualizovat tak, aby místo **webu Marketplace** volala rozhraní **jednorázová** API.</span><span class="sxs-lookup"><span data-stu-id="2a66c-107">You should update your applications to call the **onetime** API instead of **marketplace**.</span></span> <span data-ttu-id="2a66c-108">Rozhraní **jednorázová** API poskytuje další funkce a bude se dál aktualizovat.</span><span class="sxs-lookup"><span data-stu-id="2a66c-108">The **onetime** API provides additional functionality, and will continue to be updated.</span></span>
 
-<span data-ttu-id="5123a-110">*S výjimkou oprav chyb už toto rozhraní API není aktualizované.*</span><span class="sxs-lookup"><span data-stu-id="5123a-110">*Except for bug fixes, this API is no longer being updated.*</span></span> <span data-ttu-id="5123a-111">Své aplikace byste měli aktualizovat tak, aby místo **webu Marketplace** volala rozhraní **jednorázová** API.</span><span class="sxs-lookup"><span data-stu-id="5123a-111">You should update your applications to call the **onetime** API instead of **marketplace**.</span></span> <span data-ttu-id="5123a-112">Rozhraní **jednorázová** API poskytuje další funkce a bude se dál aktualizovat.</span><span class="sxs-lookup"><span data-stu-id="5123a-112">The **onetime** API provides additional functionality, and will continue to be updated.</span></span>
+<span data-ttu-id="2a66c-109">**Jednorázová** byste měli použít k dotazování na všechny položky řádkové spotřeby místo na **webu Marketplace**.</span><span class="sxs-lookup"><span data-stu-id="2a66c-109">You should use **onetime** to query all commercial consumption line items instead of **marketplace**.</span></span> <span data-ttu-id="2a66c-110">Případně můžete postupovat podle odkazů ve voláních odkazů na odhad.</span><span class="sxs-lookup"><span data-stu-id="2a66c-110">Or, you can follow the links in the estimate links call.</span></span>
 
-<span data-ttu-id="5123a-113">**Jednorázová** byste měli použít k dotazování na všechny položky řádkové spotřeby místo na **webu Marketplace**.</span><span class="sxs-lookup"><span data-stu-id="5123a-113">You should use **onetime** to query all commercial consumption line items instead of **marketplace**.</span></span> <span data-ttu-id="5123a-114">Případně můžete postupovat podle odkazů ve voláních odkazů na odhad.</span><span class="sxs-lookup"><span data-stu-id="5123a-114">Or, you can follow the links in the estimate links call.</span></span>
+<span data-ttu-id="2a66c-111">toto rozhraní api také podporuje **typy** předplatných **azure** a **office** for Microsoft Azure (MS-AZR-0145P) a Office nabídky, díky čemuž je funkce rozhraní API zpětně kompatibilní.</span><span class="sxs-lookup"><span data-stu-id="2a66c-111">This API also supports the **provider** types of **azure** and **office** for Microsoft Azure (MS-AZR-0145P) subscriptions and Office offers, which makes the API feature backward compatible.</span></span>
 
-<span data-ttu-id="5123a-115">Toto rozhraní API podporuje také **poskytovatele služeb** **Azure** a **Office** for Microsoft Azure (MS-AZR-0145P) a nabídky pro Office, které zpřístupňuje funkci rozhraní API zpětně kompatibilní.</span><span class="sxs-lookup"><span data-stu-id="5123a-115">This API also supports the **provider** types of **azure** and **office** for Microsoft Azure (MS-AZR-0145P) subscriptions and Office offers, which makes the API feature backward compatible.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="2a66c-112">Požadavky</span><span class="sxs-lookup"><span data-stu-id="2a66c-112">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="5123a-116">Požadavky</span><span class="sxs-lookup"><span data-stu-id="5123a-116">Prerequisites</span></span>
+- <span data-ttu-id="2a66c-113">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="2a66c-113">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="2a66c-114">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="2a66c-114">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="5123a-117">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="5123a-117">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="5123a-118">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="5123a-118">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="2a66c-115">Identifikátor faktury</span><span class="sxs-lookup"><span data-stu-id="2a66c-115">An invoice identifier.</span></span> <span data-ttu-id="2a66c-116">Určuje fakturu, pro kterou se mají načíst položky řádku.</span><span class="sxs-lookup"><span data-stu-id="2a66c-116">This identifies the invoice for which to retrieve the line items.</span></span>
 
-- <span data-ttu-id="5123a-119">Identifikátor faktury</span><span class="sxs-lookup"><span data-stu-id="5123a-119">An invoice identifier.</span></span> <span data-ttu-id="5123a-120">Určuje fakturu, pro kterou se mají načíst položky řádku.</span><span class="sxs-lookup"><span data-stu-id="5123a-120">This identifies the invoice for which to retrieve the line items.</span></span>
+## <a name="c"></a><span data-ttu-id="2a66c-117">C\#</span><span class="sxs-lookup"><span data-stu-id="2a66c-117">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="5123a-121">C\#</span><span class="sxs-lookup"><span data-stu-id="5123a-121">C\#</span></span>
+<span data-ttu-id="2a66c-118">Získání položek řádků pro určenou fakturu:</span><span class="sxs-lookup"><span data-stu-id="2a66c-118">To get the line items for the specified invoice:</span></span>
 
-<span data-ttu-id="5123a-122">Získání položek řádků pro určenou fakturu:</span><span class="sxs-lookup"><span data-stu-id="5123a-122">To get the line items for the specified invoice:</span></span>
+1. <span data-ttu-id="2a66c-119">Zavolejte metodu [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , která získá rozhraní k fakturaci operace pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-119">Call the [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) method to get an interface to invoice operations for the specified invoice.</span></span>
 
-1. <span data-ttu-id="5123a-123">Zavolejte metodu [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) , která získá rozhraní k fakturaci operace pro zadanou fakturu.</span><span class="sxs-lookup"><span data-stu-id="5123a-123">Call the [**ById**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicecollection.byid) method to get an interface to invoice operations for the specified invoice.</span></span>
+2. <span data-ttu-id="2a66c-120">Pro načtení objektu faktury zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) .</span><span class="sxs-lookup"><span data-stu-id="2a66c-120">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the invoice object.</span></span> <span data-ttu-id="2a66c-121">Objekt faktury obsahuje všechny informace o zadané faktuře.</span><span class="sxs-lookup"><span data-stu-id="2a66c-121">The invoice object contains all of the information for the specified invoice.</span></span>
+3. <span data-ttu-id="2a66c-122">Pomocí vlastnosti [**uzlu InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) objektu faktury získáte přístup ke kolekci objektů [**InvoiceDetail**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) , z nichž každá obsahuje [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) a [**InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype).</span><span class="sxs-lookup"><span data-stu-id="2a66c-122">Use the invoice object's [**InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) property to get access to a collection of [**InvoiceDetail**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) objects, each of which contains a [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) and an [**InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype).</span></span> <span data-ttu-id="2a66c-123">**BillingProvider** identifikuje zdroj informací o podrobnostech faktury (například **Office**, **Azure**, **jednorázová**) a **InvoiceLineItemType** určuje typ (například **BillingLineItem**).</span><span class="sxs-lookup"><span data-stu-id="2a66c-123">The **BillingProvider** identifies the source of the invoice detail information (such as **Office**, **Azure**, **OneTime**), and the **InvoiceLineItemType** specifies the type (for example, **BillingLineItem**).</span></span>
 
-2. <span data-ttu-id="5123a-124">Pro načtení objektu faktury zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) .</span><span class="sxs-lookup"><span data-stu-id="5123a-124">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.getasync) method to retrieve the invoice object.</span></span> <span data-ttu-id="5123a-125">Objekt faktury obsahuje všechny informace o zadané faktuře.</span><span class="sxs-lookup"><span data-stu-id="5123a-125">The invoice object contains all of the information for the specified invoice.</span></span>
-3. <span data-ttu-id="5123a-126">Pomocí vlastnosti [**uzlu InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) objektu faktury získáte přístup ke kolekci objektů [**InvoiceDetail**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) , z nichž každá obsahuje [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) a [**InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype).</span><span class="sxs-lookup"><span data-stu-id="5123a-126">Use the invoice object's [**InvoiceDetails**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoice.invoicedetails) property to get access to a collection of [**InvoiceDetail**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail) objects, each of which contains a [**BillingProvider**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.billingprovider) and an [**InvoiceLineItemType**](/dotnet/api/microsoft.store.partnercenter.models.invoices.invoicedetail.invoicelineitemtype).</span></span> <span data-ttu-id="5123a-127">**BillingProvider** identifikuje zdroj informací o podrobnostech faktury (například **Office**, **Azure**, **jednorázová**) a **InvoiceLineItemType** určuje typ (například **BillingLineItem**).</span><span class="sxs-lookup"><span data-stu-id="5123a-127">The **BillingProvider** identifies the source of the invoice detail information (such as **Office**, **Azure**, **OneTime**), and the **InvoiceLineItemType** specifies the type (for example, **BillingLineItem**).</span></span>
+<span data-ttu-id="2a66c-124">Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce **uzlu InvoiceDetails** .</span><span class="sxs-lookup"><span data-stu-id="2a66c-124">The following example code uses a **foreach** loop to process the **InvoiceDetails** collection.</span></span> <span data-ttu-id="2a66c-125">Pro každou instanci **InvoiceDetail** se načtou samostatné kolekce položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2a66c-125">A separate collection of line items is retrieved for each **InvoiceDetail** instance.</span></span>
 
-<span data-ttu-id="5123a-128">Následující příklad kódu používá smyčku **foreach** ke zpracování kolekce **uzlu InvoiceDetails** .</span><span class="sxs-lookup"><span data-stu-id="5123a-128">The following example code uses a **foreach** loop to process the **InvoiceDetails** collection.</span></span> <span data-ttu-id="5123a-129">Pro každou instanci **InvoiceDetail** se načtou samostatné kolekce položek řádků.</span><span class="sxs-lookup"><span data-stu-id="5123a-129">A separate collection of line items is retrieved for each **InvoiceDetail** instance.</span></span>
+<span data-ttu-id="2a66c-126">Získání kolekce položek řádků, které odpovídají instanci **InvoiceDetail** :</span><span class="sxs-lookup"><span data-stu-id="2a66c-126">To get a collection of line items that correspond to an **InvoiceDetail** instance:</span></span>
 
-<span data-ttu-id="5123a-130">Získání kolekce položek řádků, které odpovídají instanci **InvoiceDetail** :</span><span class="sxs-lookup"><span data-stu-id="5123a-130">To get a collection of line items that correspond to an **InvoiceDetail** instance:</span></span>
+1. <span data-ttu-id="2a66c-127">Předejte **BillingProvider** a **InvoiceLineItemType** instance do metody [**podle**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .</span><span class="sxs-lookup"><span data-stu-id="2a66c-127">Pass the instance's **BillingProvider** and **InvoiceLineItemType** to the [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) method.</span></span>
 
-1. <span data-ttu-id="5123a-131">Předejte **BillingProvider** a **InvoiceLineItemType** instance do metody [**podle**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) .</span><span class="sxs-lookup"><span data-stu-id="5123a-131">Pass the instance's **BillingProvider** and **InvoiceLineItemType** to the [**By**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoice.by) method.</span></span>
-
-2. <span data-ttu-id="5123a-132">Zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.getasync) pro načtení přidružených položek řádků.</span><span class="sxs-lookup"><span data-stu-id="5123a-132">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.getasync) method to retrieve the associated line items.</span></span>
-3. <span data-ttu-id="5123a-133">Vytvořte enumerátor pro procházení kolekce, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="5123a-133">Create an enumerator to traverse the collection as shown in the following example.</span></span>
+2. <span data-ttu-id="2a66c-128">Zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.getasync) pro načtení přidružených položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2a66c-128">Call the [**Get**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.get) or [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.invoices.iinvoicelineitemcollection.getasync) method to retrieve the associated line items.</span></span>
+3. <span data-ttu-id="2a66c-129">Vytvořte enumerátor pro procházení kolekce, jak je znázorněno v následujícím příkladu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-129">Create an enumerator to traverse the collection as shown in the following example.</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -99,100 +94,100 @@ foreach (var invoiceDetail in invoice.InvoiceDetails)
 }
 ```
 
-<span data-ttu-id="5123a-134">Podobný příklad naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="5123a-134">For a similar example, see the following:</span></span>
+<span data-ttu-id="2a66c-130">Podobný příklad naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="2a66c-130">For a similar example, see the following:</span></span>
 
-- <span data-ttu-id="5123a-135">Ukázka: [aplikace testů konzoly](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="5123a-135">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="5123a-136">Projekt: **ukázky sady SDK pro partnerských Center**</span><span class="sxs-lookup"><span data-stu-id="5123a-136">Project: **Partner Center SDK Samples**</span></span>
-- <span data-ttu-id="5123a-137">Třída: **GetInvoiceLineItems. cs**</span><span class="sxs-lookup"><span data-stu-id="5123a-137">Class: **GetInvoiceLineItems.cs**</span></span>
+- <span data-ttu-id="2a66c-131">Ukázka: [aplikace testů konzoly](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="2a66c-131">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="2a66c-132">Project: **ukázky sady SDK pro partnerských Center**</span><span class="sxs-lookup"><span data-stu-id="2a66c-132">Project: **Partner Center SDK Samples**</span></span>
+- <span data-ttu-id="2a66c-133">Třída: **GetInvoiceLineItems. cs**</span><span class="sxs-lookup"><span data-stu-id="2a66c-133">Class: **GetInvoiceLineItems.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="5123a-138">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="5123a-138">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="2a66c-134">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="2a66c-134">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="5123a-139">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="5123a-139">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="2a66c-135">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="2a66c-135">Request syntax</span></span>
 
-<span data-ttu-id="5123a-140">Ve svém scénáři proveďte požadavek pomocí vhodné syntaxe pro poskytovatele fakturace.</span><span class="sxs-lookup"><span data-stu-id="5123a-140">Make your request using the appropriate syntax for the billing provider in your scenario.</span></span>
+<span data-ttu-id="2a66c-136">Ve svém scénáři proveďte požadavek pomocí vhodné syntaxe pro poskytovatele fakturace.</span><span class="sxs-lookup"><span data-stu-id="2a66c-136">Make your request using the appropriate syntax for the billing provider in your scenario.</span></span>
 
-#### <a name="office"></a><span data-ttu-id="5123a-141">Office</span><span class="sxs-lookup"><span data-stu-id="5123a-141">Office</span></span>
+#### <a name="office"></a><span data-ttu-id="2a66c-137">Office</span><span class="sxs-lookup"><span data-stu-id="2a66c-137">Office</span></span>
 
-<span data-ttu-id="5123a-142">Následující syntaxe platí v případě, že je poskytovatel fakturace **Office**.</span><span class="sxs-lookup"><span data-stu-id="5123a-142">The following syntax applies when the billing provider is **Office**.</span></span>
+<span data-ttu-id="2a66c-138">Následující syntaxe platí při **Office** poskytovatele fakturace.</span><span class="sxs-lookup"><span data-stu-id="2a66c-138">The following syntax applies when the billing provider is **Office**.</span></span>
 
-| <span data-ttu-id="5123a-143">Metoda</span><span class="sxs-lookup"><span data-stu-id="5123a-143">Method</span></span>  | <span data-ttu-id="5123a-144">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="5123a-144">Request URI</span></span>                                                                                                                                                     |
+| <span data-ttu-id="2a66c-139">Metoda</span><span class="sxs-lookup"><span data-stu-id="2a66c-139">Method</span></span>  | <span data-ttu-id="2a66c-140">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="2a66c-140">Request URI</span></span>                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="5123a-145">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="5123a-145">**GET**</span></span> | <span data-ttu-id="5123a-146">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = Office&invoicelineitemtype = billinglineitems&size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="5123a-146">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=office&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1</span></span>                               |
+| <span data-ttu-id="2a66c-141">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2a66c-141">**GET**</span></span> | <span data-ttu-id="2a66c-142">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = Office&invoicelineitemtype = billinglineitems&size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2a66c-142">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=office&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1</span></span>                               |
 
-#### <a name="microsoft-azure-ms-azr-0145p-subscription"></a><span data-ttu-id="5123a-147">Předplatné Microsoft Azure (MS-AZR-0145P)</span><span class="sxs-lookup"><span data-stu-id="5123a-147">Microsoft Azure (MS-AZR-0145P) subscription</span></span>
+#### <a name="microsoft-azure-ms-azr-0145p-subscription"></a><span data-ttu-id="2a66c-143">předplatné Microsoft Azure (MS-AZR-0145P)</span><span class="sxs-lookup"><span data-stu-id="2a66c-143">Microsoft Azure (MS-AZR-0145P) subscription</span></span>
 
-<span data-ttu-id="5123a-148">Následující syntaxe Microsoft Azure se použijí, pokud má poskytovatel fakturace předplatné AZR (MS--0145P).</span><span class="sxs-lookup"><span data-stu-id="5123a-148">The following syntaxes apply when the billing provider has a Microsoft Azure (MS-AZR-0145P) subscription.</span></span>
+<span data-ttu-id="2a66c-144">následující syntaxe Microsoft Azure se použijí, pokud má poskytovatel fakturace předplatné AZR (MS--0145P).</span><span class="sxs-lookup"><span data-stu-id="2a66c-144">The following syntaxes apply when the billing provider has a Microsoft Azure (MS-AZR-0145P) subscription.</span></span>
 
-| <span data-ttu-id="5123a-149">Metoda</span><span class="sxs-lookup"><span data-stu-id="5123a-149">Method</span></span>  | <span data-ttu-id="5123a-150">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="5123a-150">Request URI</span></span>                                                                                                                                                     |
+| <span data-ttu-id="2a66c-145">Metoda</span><span class="sxs-lookup"><span data-stu-id="2a66c-145">Method</span></span>  | <span data-ttu-id="2a66c-146">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="2a66c-146">Request URI</span></span>                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="5123a-151">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="5123a-151">**GET**</span></span> | <span data-ttu-id="5123a-152">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = Azure&invoicelineitemtype = billinglineitems&size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="5123a-152">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1</span></span>  |
-| <span data-ttu-id="5123a-153">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="5123a-153">**GET**</span></span> | <span data-ttu-id="5123a-154">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = Azure&invoicelineitemtype = usagelineitems&size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="5123a-154">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=usagelineitems&size={size}&offset={offset} HTTP/1.1</span></span>  |
+| <span data-ttu-id="2a66c-147">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2a66c-147">**GET**</span></span> | <span data-ttu-id="2a66c-148">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = Azure&invoicelineitemtype = billinglineitems&size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2a66c-148">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=billinglineitems&size={size}&offset={offset} HTTP/1.1</span></span>  |
+| <span data-ttu-id="2a66c-149">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2a66c-149">**GET**</span></span> | <span data-ttu-id="2a66c-150">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = Azure&invoicelineitemtype = usagelineitems&size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2a66c-150">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=azure&invoicelineitemtype=usagelineitems&size={size}&offset={offset} HTTP/1.1</span></span>  |
 
-##### <a name="onetime"></a><span data-ttu-id="5123a-155">Jednorázová</span><span class="sxs-lookup"><span data-stu-id="5123a-155">OneTime</span></span>
+##### <a name="onetime"></a><span data-ttu-id="2a66c-151">Jednorázová</span><span class="sxs-lookup"><span data-stu-id="2a66c-151">OneTime</span></span>
 
-<span data-ttu-id="5123a-156">Následující syntaxe se použijí, když je poskytovatel fakturace **jednorázová**.</span><span class="sxs-lookup"><span data-stu-id="5123a-156">The following syntaxes apply when the billing provider is **OneTime**.</span></span> <span data-ttu-id="5123a-157">Zahrnuje to i poplatky za rezervace Azure, software, plány Azure a produkty z komerčního tržiště.</span><span class="sxs-lookup"><span data-stu-id="5123a-157">This includes charges for Azure reservations, software, Azure plans, and commercial marketplace products.</span></span>
+<span data-ttu-id="2a66c-152">Následující syntaxe se použijí, když je poskytovatel fakturace **jednorázová**.</span><span class="sxs-lookup"><span data-stu-id="2a66c-152">The following syntaxes apply when the billing provider is **OneTime**.</span></span> <span data-ttu-id="2a66c-153">Zahrnuje to i poplatky za rezervace Azure, software, plány Azure a produkty z komerčního tržiště.</span><span class="sxs-lookup"><span data-stu-id="2a66c-153">This includes charges for Azure reservations, software, Azure plans, and commercial marketplace products.</span></span>
 
-| <span data-ttu-id="5123a-158">Metoda</span><span class="sxs-lookup"><span data-stu-id="5123a-158">Method</span></span>  | <span data-ttu-id="5123a-159">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="5123a-159">Request URI</span></span>                                                                                                                                                     |
+| <span data-ttu-id="2a66c-154">Metoda</span><span class="sxs-lookup"><span data-stu-id="2a66c-154">Method</span></span>  | <span data-ttu-id="2a66c-155">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="2a66c-155">Request URI</span></span>                                                                                                                                                     |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="5123a-160">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="5123a-160">**GET**</span></span> | <span data-ttu-id="5123a-161">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&velikost = {Size} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="5123a-161">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&size={size} HTTP/1.1</span></span>  |
-| <span data-ttu-id="5123a-162">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="5123a-162">**GET**</span></span> | <span data-ttu-id="5123a-163">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/Onetime/billinglineitems&velikost = {Size}? SeekOperation = Next</span><span class="sxs-lookup"><span data-stu-id="5123a-163">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/onetime/billinglineitems&size={size}?seekOperation=Next</span></span>                           |
+| <span data-ttu-id="2a66c-156">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2a66c-156">**GET**</span></span> | <span data-ttu-id="2a66c-157">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&velikost = {Size} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2a66c-157">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&size={size} HTTP/1.1</span></span>  |
+| <span data-ttu-id="2a66c-158">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="2a66c-158">**GET**</span></span> | <span data-ttu-id="2a66c-159">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/Onetime/billinglineitems&velikost = {Size}? SeekOperation = Next</span><span class="sxs-lookup"><span data-stu-id="2a66c-159">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/onetime/billinglineitems&size={size}?seekOperation=Next</span></span>                           |
 
-#### <a name="previous-syntaxes"></a><span data-ttu-id="5123a-164">Předchozí syntaxe</span><span class="sxs-lookup"><span data-stu-id="5123a-164">Previous syntaxes</span></span>
+#### <a name="previous-syntaxes"></a><span data-ttu-id="2a66c-160">Předchozí syntaxe</span><span class="sxs-lookup"><span data-stu-id="2a66c-160">Previous syntaxes</span></span>
 
-<span data-ttu-id="5123a-165">Pokud používáte následující syntaxe, nezapomeňte použít příslušnou syntaxi pro váš případ použití.</span><span class="sxs-lookup"><span data-stu-id="5123a-165">If you are using the following syntaxes, be sure to use the appropriate syntax for your use case.</span></span>
+<span data-ttu-id="2a66c-161">Pokud používáte následující syntaxe, nezapomeňte použít příslušnou syntaxi pro váš případ použití.</span><span class="sxs-lookup"><span data-stu-id="2a66c-161">If you are using the following syntaxes, be sure to use the appropriate syntax for your use case.</span></span>
 
-<span data-ttu-id="5123a-166">*S výjimkou oprav chyb už toto rozhraní API není aktualizované.*</span><span class="sxs-lookup"><span data-stu-id="5123a-166">*Except for bug fixes, this API is no longer being updated.*</span></span> <span data-ttu-id="5123a-167">Své aplikace byste měli aktualizovat tak, aby místo **webu Marketplace** volala rozhraní **jednorázová** API.</span><span class="sxs-lookup"><span data-stu-id="5123a-167">You should update your applications to call the **onetime** API instead of **marketplace**.</span></span> <span data-ttu-id="5123a-168">Rozhraní **jednorázová** API poskytuje další funkce a bude se dál aktualizovat.</span><span class="sxs-lookup"><span data-stu-id="5123a-168">The **onetime** API provides additional functionality, and will continue to be updated.</span></span>
+<span data-ttu-id="2a66c-162">*S výjimkou oprav chyb už toto rozhraní API není aktualizované.*</span><span class="sxs-lookup"><span data-stu-id="2a66c-162">*Except for bug fixes, this API is no longer being updated.*</span></span> <span data-ttu-id="2a66c-163">Své aplikace byste měli aktualizovat tak, aby místo **webu Marketplace** volala rozhraní **jednorázová** API.</span><span class="sxs-lookup"><span data-stu-id="2a66c-163">You should update your applications to call the **onetime** API instead of **marketplace**.</span></span> <span data-ttu-id="2a66c-164">Rozhraní **jednorázová** API poskytuje další funkce a bude se dál aktualizovat.</span><span class="sxs-lookup"><span data-stu-id="2a66c-164">The **onetime** API provides additional functionality, and will continue to be updated.</span></span>
 
-<span data-ttu-id="5123a-169">**Jednorázová** byste měli použít k dotazování na všechny položky řádkové spotřeby místo na **webu Marketplace**.</span><span class="sxs-lookup"><span data-stu-id="5123a-169">You should use **onetime** to query all commercial consumption line items instead of **marketplace**.</span></span> <span data-ttu-id="5123a-170">Případně můžete postupovat podle odkazů ve voláních odkazů na odhad.</span><span class="sxs-lookup"><span data-stu-id="5123a-170">Or, you can follow the links in the estimate links call.</span></span>
+<span data-ttu-id="2a66c-165">**Jednorázová** byste měli použít k dotazování na všechny položky řádkové spotřeby místo na **webu Marketplace**.</span><span class="sxs-lookup"><span data-stu-id="2a66c-165">You should use **onetime** to query all commercial consumption line items instead of **marketplace**.</span></span> <span data-ttu-id="2a66c-166">Případně můžete postupovat podle odkazů ve voláních odkazů na odhad.</span><span class="sxs-lookup"><span data-stu-id="2a66c-166">Or, you can follow the links in the estimate links call.</span></span>
 
-| <span data-ttu-id="5123a-171">Metoda</span><span class="sxs-lookup"><span data-stu-id="5123a-171">Method</span></span> | <span data-ttu-id="5123a-172">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="5123a-172">Request URI</span></span> | <span data-ttu-id="5123a-173">Popis případu použití syntaxe</span><span class="sxs-lookup"><span data-stu-id="5123a-173">Description of syntax use case</span></span> |
+| <span data-ttu-id="2a66c-167">Metoda</span><span class="sxs-lookup"><span data-stu-id="2a66c-167">Method</span></span> | <span data-ttu-id="2a66c-168">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="2a66c-168">Request URI</span></span> | <span data-ttu-id="2a66c-169">Popis případu použití syntaxe</span><span class="sxs-lookup"><span data-stu-id="2a66c-169">Description of syntax use case</span></span> |
 | ------ | ----------- | -------------------------------- |
-| <span data-ttu-id="5123a-174">GET</span><span class="sxs-lookup"><span data-stu-id="5123a-174">GET</span></span> | <span data-ttu-id="5123a-175">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/{Billing-Provider}/{Invoice-line-Item-Type} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="5123a-175">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/{billing-provider}/{invoice-line-item-type} HTTP/1.1</span></span>                              | <span data-ttu-id="5123a-176">Tuto syntaxi můžete použít k vrácení úplného seznamu každé položky řádku pro danou fakturu.</span><span class="sxs-lookup"><span data-stu-id="5123a-176">You can use this syntax to return a full list of every line item for the given invoice.</span></span> |
-| <span data-ttu-id="5123a-177">GET</span><span class="sxs-lookup"><span data-stu-id="5123a-177">GET</span></span> | <span data-ttu-id="5123a-178">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/{Billing-Provider}/{Invoice-line-Item-Type}? size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="5123a-178">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/{billing-provider}/{invoice-line-item-type}?size={size}&offset={offset} HTTP/1.1</span></span>  | <span data-ttu-id="5123a-179">Pro velké faktury můžete použít tuto syntaxi se zadanou velikostí a 0 posunutím k vrácení stránkovaného seznamu položek řádků.</span><span class="sxs-lookup"><span data-stu-id="5123a-179">For large invoices, you can use this syntax with a specified size and 0-based offset to return a paged list of line items.</span></span> |
-| <span data-ttu-id="5123a-180">GET</span><span class="sxs-lookup"><span data-stu-id="5123a-180">GET</span></span> | <span data-ttu-id="5123a-181">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/OneTime/{Invoice-line-Item-Type}? SeekOperation = další</span><span class="sxs-lookup"><span data-stu-id="5123a-181">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next</span></span>                               | <span data-ttu-id="5123a-182">Tuto syntaxi můžete použít pro fakturu s hodnotou poskytovatele fakturace **jednorázová** a nastavením **seekOperation** na **Další** pro získání další stránky položek řádků faktury.</span><span class="sxs-lookup"><span data-stu-id="5123a-182">You can use this syntax for an invoice with a billing-provider value of **OneTime** and set **seekOperation** to **Next** to get the next page of invoice line items.</span></span> |
+| <span data-ttu-id="2a66c-170">GET</span><span class="sxs-lookup"><span data-stu-id="2a66c-170">GET</span></span> | <span data-ttu-id="2a66c-171">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/{Billing-Provider}/{Invoice-line-Item-Type} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2a66c-171">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/{billing-provider}/{invoice-line-item-type} HTTP/1.1</span></span>                              | <span data-ttu-id="2a66c-172">Tuto syntaxi můžete použít k vrácení úplného seznamu každé položky řádku pro danou fakturu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-172">You can use this syntax to return a full list of every line item for the given invoice.</span></span> |
+| <span data-ttu-id="2a66c-173">GET</span><span class="sxs-lookup"><span data-stu-id="2a66c-173">GET</span></span> | <span data-ttu-id="2a66c-174">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/{Billing-Provider}/{Invoice-line-Item-Type}? size = {size} &posun = {offset} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="2a66c-174">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/{billing-provider}/{invoice-line-item-type}?size={size}&offset={offset} HTTP/1.1</span></span>  | <span data-ttu-id="2a66c-175">Pro velké faktury můžete použít tuto syntaxi se zadanou velikostí a 0 posunutím k vrácení stránkovaného seznamu položek řádků.</span><span class="sxs-lookup"><span data-stu-id="2a66c-175">For large invoices, you can use this syntax with a specified size and 0-based offset to return a paged list of line items.</span></span> |
+| <span data-ttu-id="2a66c-176">GET</span><span class="sxs-lookup"><span data-stu-id="2a66c-176">GET</span></span> | <span data-ttu-id="2a66c-177">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems/OneTime/{Invoice-line-Item-Type}? SeekOperation = další</span><span class="sxs-lookup"><span data-stu-id="2a66c-177">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{invoice-id}/lineitems/OneTime/{invoice-line-item-type}?seekOperation=Next</span></span>                               | <span data-ttu-id="2a66c-178">Tuto syntaxi můžete použít pro fakturu s hodnotou poskytovatele fakturace **jednorázová** a nastavením **seekOperation** na **Další** pro získání další stránky položek řádků faktury.</span><span class="sxs-lookup"><span data-stu-id="2a66c-178">You can use this syntax for an invoice with a billing-provider value of **OneTime** and set **seekOperation** to **Next** to get the next page of invoice line items.</span></span> |
 
-##### <a name="uri-parameters"></a><span data-ttu-id="5123a-183">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="5123a-183">URI parameters</span></span>
+##### <a name="uri-parameters"></a><span data-ttu-id="2a66c-179">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="2a66c-179">URI parameters</span></span>
 
-<span data-ttu-id="5123a-184">Při vytváření žádosti použijte následující identifikátor URI a parametry dotazu.</span><span class="sxs-lookup"><span data-stu-id="5123a-184">Use the following URI and query parameters when creating the request.</span></span>
+<span data-ttu-id="2a66c-180">Při vytváření žádosti použijte následující identifikátor URI a parametry dotazu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-180">Use the following URI and query parameters when creating the request.</span></span>
 
-| <span data-ttu-id="5123a-185">Název</span><span class="sxs-lookup"><span data-stu-id="5123a-185">Name</span></span>                   | <span data-ttu-id="5123a-186">Typ</span><span class="sxs-lookup"><span data-stu-id="5123a-186">Type</span></span>   | <span data-ttu-id="5123a-187">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="5123a-187">Required</span></span> | <span data-ttu-id="5123a-188">Popis</span><span class="sxs-lookup"><span data-stu-id="5123a-188">Description</span></span>                                                       |
+| <span data-ttu-id="2a66c-181">Název</span><span class="sxs-lookup"><span data-stu-id="2a66c-181">Name</span></span>                   | <span data-ttu-id="2a66c-182">Typ</span><span class="sxs-lookup"><span data-stu-id="2a66c-182">Type</span></span>   | <span data-ttu-id="2a66c-183">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="2a66c-183">Required</span></span> | <span data-ttu-id="2a66c-184">Popis</span><span class="sxs-lookup"><span data-stu-id="2a66c-184">Description</span></span>                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| <span data-ttu-id="5123a-189">ID faktury</span><span class="sxs-lookup"><span data-stu-id="5123a-189">invoice-id</span></span>             | <span data-ttu-id="5123a-190">řetězec</span><span class="sxs-lookup"><span data-stu-id="5123a-190">string</span></span> | <span data-ttu-id="5123a-191">Ano</span><span class="sxs-lookup"><span data-stu-id="5123a-191">Yes</span></span>      | <span data-ttu-id="5123a-192">Řetězec, který identifikuje fakturu.</span><span class="sxs-lookup"><span data-stu-id="5123a-192">A string that identifies the invoice.</span></span>                             |
-| <span data-ttu-id="5123a-193">fakturace – poskytovatel</span><span class="sxs-lookup"><span data-stu-id="5123a-193">billing-provider</span></span>       | <span data-ttu-id="5123a-194">řetězec</span><span class="sxs-lookup"><span data-stu-id="5123a-194">string</span></span> | <span data-ttu-id="5123a-195">Ano</span><span class="sxs-lookup"><span data-stu-id="5123a-195">Yes</span></span>      | <span data-ttu-id="5123a-196">Zprostředkovatel fakturace: "Office", "Azure", "jednorázová".</span><span class="sxs-lookup"><span data-stu-id="5123a-196">The billing provider: "Office", "Azure", "OneTime".</span></span> <span data-ttu-id="5123a-197">Ve starší verzi máme pro Office & transakcí Azure samostatné datové modely.</span><span class="sxs-lookup"><span data-stu-id="5123a-197">In the legacy, we have separate data models for Office & Azure transactions.</span></span> <span data-ttu-id="5123a-198">Moderní ale má jeden jeden datový model ve všech transakcích filtrovaných pomocí hodnoty "jednorázová".</span><span class="sxs-lookup"><span data-stu-id="5123a-198">However, the modern has one single data model across all transactions filtered through the "OneTime" value.</span></span>            |
-| <span data-ttu-id="5123a-199">faktura-line-Item-Type</span><span class="sxs-lookup"><span data-stu-id="5123a-199">invoice-line-item-type</span></span> | <span data-ttu-id="5123a-200">řetězec</span><span class="sxs-lookup"><span data-stu-id="5123a-200">string</span></span> | <span data-ttu-id="5123a-201">Ano</span><span class="sxs-lookup"><span data-stu-id="5123a-201">Yes</span></span>      | <span data-ttu-id="5123a-202">Typ podrobností o faktuře: "BillingLineItems", "UsageLineItems".</span><span class="sxs-lookup"><span data-stu-id="5123a-202">The type of invoice detail: "BillingLineItems", "UsageLineItems".</span></span> |
-| <span data-ttu-id="5123a-203">size</span><span class="sxs-lookup"><span data-stu-id="5123a-203">size</span></span>                   | <span data-ttu-id="5123a-204">číslo</span><span class="sxs-lookup"><span data-stu-id="5123a-204">number</span></span> | <span data-ttu-id="5123a-205">Ne</span><span class="sxs-lookup"><span data-stu-id="5123a-205">No</span></span>       | <span data-ttu-id="5123a-206">Maximální počet položek, které se mají vrátit.</span><span class="sxs-lookup"><span data-stu-id="5123a-206">The maximum number of items to return.</span></span> <span data-ttu-id="5123a-207">Výchozí maximální velikost = 2000</span><span class="sxs-lookup"><span data-stu-id="5123a-207">Default max size = 2000</span></span>    |
-| <span data-ttu-id="5123a-208">posun</span><span class="sxs-lookup"><span data-stu-id="5123a-208">offset</span></span>                 | <span data-ttu-id="5123a-209">číslo</span><span class="sxs-lookup"><span data-stu-id="5123a-209">number</span></span> | <span data-ttu-id="5123a-210">Ne</span><span class="sxs-lookup"><span data-stu-id="5123a-210">No</span></span>       | <span data-ttu-id="5123a-211">Index založený na nule první položky řádku, který se má vrátit.</span><span class="sxs-lookup"><span data-stu-id="5123a-211">The zero-based index of the first line item to return.</span></span>            |
-| <span data-ttu-id="5123a-212">seekOperation</span><span class="sxs-lookup"><span data-stu-id="5123a-212">seekOperation</span></span>          | <span data-ttu-id="5123a-213">řetězec</span><span class="sxs-lookup"><span data-stu-id="5123a-213">string</span></span> | <span data-ttu-id="5123a-214">No</span><span class="sxs-lookup"><span data-stu-id="5123a-214">No</span></span>       | <span data-ttu-id="5123a-215">Pokud se pro **fakturaci** rovná **jednorázová**, nastavte **seekOperation** na hodnotu **Další** a získejte další stránku položek řádků faktury.</span><span class="sxs-lookup"><span data-stu-id="5123a-215">If **billing-provider** equals **OneTime**, set **seekOperation** equal to **Next** to get the next page of invoice line items.</span></span> |
-| <span data-ttu-id="5123a-216">hasPartnerEarnedCredit</span><span class="sxs-lookup"><span data-stu-id="5123a-216">hasPartnerEarnedCredit</span></span> | <span data-ttu-id="5123a-217">bool</span><span class="sxs-lookup"><span data-stu-id="5123a-217">bool</span></span> | <span data-ttu-id="5123a-218">Ne</span><span class="sxs-lookup"><span data-stu-id="5123a-218">No</span></span> | <span data-ttu-id="5123a-219">Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu.</span><span class="sxs-lookup"><span data-stu-id="5123a-219">The value indicating if to return the line items with partner earned credit applied.</span></span> <span data-ttu-id="5123a-220">Poznámka: Tento parametr bude použit, pouze pokud je typ poskytovatele fakturace jednorázová a InvoiceLineItemType je UsageLineItems.</span><span class="sxs-lookup"><span data-stu-id="5123a-220">Note: this parameter will be only applied when billing provider type is OneTime and InvoiceLineItemType is UsageLineItems.</span></span> |
+| <span data-ttu-id="2a66c-185">ID faktury</span><span class="sxs-lookup"><span data-stu-id="2a66c-185">invoice-id</span></span>             | <span data-ttu-id="2a66c-186">řetězec</span><span class="sxs-lookup"><span data-stu-id="2a66c-186">string</span></span> | <span data-ttu-id="2a66c-187">Yes</span><span class="sxs-lookup"><span data-stu-id="2a66c-187">Yes</span></span>      | <span data-ttu-id="2a66c-188">Řetězec, který identifikuje fakturu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-188">A string that identifies the invoice.</span></span>                             |
+| <span data-ttu-id="2a66c-189">fakturace – poskytovatel</span><span class="sxs-lookup"><span data-stu-id="2a66c-189">billing-provider</span></span>       | <span data-ttu-id="2a66c-190">řetězec</span><span class="sxs-lookup"><span data-stu-id="2a66c-190">string</span></span> | <span data-ttu-id="2a66c-191">Yes</span><span class="sxs-lookup"><span data-stu-id="2a66c-191">Yes</span></span>      | <span data-ttu-id="2a66c-192">zprostředkovatel fakturace: "Office", "Azure", "jednorázová".</span><span class="sxs-lookup"><span data-stu-id="2a66c-192">The billing provider: "Office", "Azure", "OneTime".</span></span> <span data-ttu-id="2a66c-193">ve starší verzi máme k dispozici samostatné datové modely pro Office & transakcích Azure.</span><span class="sxs-lookup"><span data-stu-id="2a66c-193">In the legacy, we have separate data models for Office & Azure transactions.</span></span> <span data-ttu-id="2a66c-194">Moderní ale má jeden jeden datový model ve všech transakcích filtrovaných pomocí hodnoty "jednorázová".</span><span class="sxs-lookup"><span data-stu-id="2a66c-194">However, the modern has one single data model across all transactions filtered through the "OneTime" value.</span></span>            |
+| <span data-ttu-id="2a66c-195">faktura-line-Item-Type</span><span class="sxs-lookup"><span data-stu-id="2a66c-195">invoice-line-item-type</span></span> | <span data-ttu-id="2a66c-196">řetězec</span><span class="sxs-lookup"><span data-stu-id="2a66c-196">string</span></span> | <span data-ttu-id="2a66c-197">Yes</span><span class="sxs-lookup"><span data-stu-id="2a66c-197">Yes</span></span>      | <span data-ttu-id="2a66c-198">Typ podrobností o faktuře: "BillingLineItems", "UsageLineItems".</span><span class="sxs-lookup"><span data-stu-id="2a66c-198">The type of invoice detail: "BillingLineItems", "UsageLineItems".</span></span> |
+| <span data-ttu-id="2a66c-199">size</span><span class="sxs-lookup"><span data-stu-id="2a66c-199">size</span></span>                   | <span data-ttu-id="2a66c-200">číslo</span><span class="sxs-lookup"><span data-stu-id="2a66c-200">number</span></span> | <span data-ttu-id="2a66c-201">No</span><span class="sxs-lookup"><span data-stu-id="2a66c-201">No</span></span>       | <span data-ttu-id="2a66c-202">Maximální počet položek, které se mají vrátit.</span><span class="sxs-lookup"><span data-stu-id="2a66c-202">The maximum number of items to return.</span></span> <span data-ttu-id="2a66c-203">Výchozí maximální velikost = 2000</span><span class="sxs-lookup"><span data-stu-id="2a66c-203">Default max size = 2000</span></span>    |
+| <span data-ttu-id="2a66c-204">posun</span><span class="sxs-lookup"><span data-stu-id="2a66c-204">offset</span></span>                 | <span data-ttu-id="2a66c-205">číslo</span><span class="sxs-lookup"><span data-stu-id="2a66c-205">number</span></span> | <span data-ttu-id="2a66c-206">No</span><span class="sxs-lookup"><span data-stu-id="2a66c-206">No</span></span>       | <span data-ttu-id="2a66c-207">Index založený na nule první položky řádku, který se má vrátit.</span><span class="sxs-lookup"><span data-stu-id="2a66c-207">The zero-based index of the first line item to return.</span></span>            |
+| <span data-ttu-id="2a66c-208">seekOperation</span><span class="sxs-lookup"><span data-stu-id="2a66c-208">seekOperation</span></span>          | <span data-ttu-id="2a66c-209">řetězec</span><span class="sxs-lookup"><span data-stu-id="2a66c-209">string</span></span> | <span data-ttu-id="2a66c-210">No</span><span class="sxs-lookup"><span data-stu-id="2a66c-210">No</span></span>       | <span data-ttu-id="2a66c-211">Pokud se pro **fakturaci** rovná **jednorázová**, nastavte **seekOperation** na hodnotu **Další** a získejte další stránku položek řádků faktury.</span><span class="sxs-lookup"><span data-stu-id="2a66c-211">If **billing-provider** equals **OneTime**, set **seekOperation** equal to **Next** to get the next page of invoice line items.</span></span> |
+| <span data-ttu-id="2a66c-212">hasPartnerEarnedCredit</span><span class="sxs-lookup"><span data-stu-id="2a66c-212">hasPartnerEarnedCredit</span></span> | <span data-ttu-id="2a66c-213">bool</span><span class="sxs-lookup"><span data-stu-id="2a66c-213">bool</span></span> | <span data-ttu-id="2a66c-214">No</span><span class="sxs-lookup"><span data-stu-id="2a66c-214">No</span></span> | <span data-ttu-id="2a66c-215">Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu.</span><span class="sxs-lookup"><span data-stu-id="2a66c-215">The value indicating if to return the line items with partner earned credit applied.</span></span> <span data-ttu-id="2a66c-216">Poznámka: Tento parametr bude použit, pouze pokud je typ poskytovatele fakturace jednorázová a InvoiceLineItemType je UsageLineItems.</span><span class="sxs-lookup"><span data-stu-id="2a66c-216">Note: this parameter will be only applied when billing provider type is OneTime and InvoiceLineItemType is UsageLineItems.</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="5123a-221">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="5123a-221">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="2a66c-217">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="2a66c-217">Request headers</span></span>
 
-<span data-ttu-id="5123a-222">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="5123a-222">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="2a66c-218">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="2a66c-218">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="5123a-223">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="5123a-223">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="2a66c-219">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="2a66c-219">Request body</span></span>
 
-<span data-ttu-id="5123a-224">Žádné</span><span class="sxs-lookup"><span data-stu-id="5123a-224">None.</span></span>
+<span data-ttu-id="2a66c-220">Žádné</span><span class="sxs-lookup"><span data-stu-id="2a66c-220">None.</span></span>
 
-## <a name="rest-response"></a><span data-ttu-id="5123a-225">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="5123a-225">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="2a66c-221">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="2a66c-221">REST response</span></span>
 
-<span data-ttu-id="5123a-226">V případě úspěchu obsahuje odpověď kolekci podrobností položky řádku.</span><span class="sxs-lookup"><span data-stu-id="5123a-226">If successful, the response contains the collection of line item details.</span></span>
+<span data-ttu-id="2a66c-222">V případě úspěchu obsahuje odpověď kolekci podrobností položky řádku.</span><span class="sxs-lookup"><span data-stu-id="2a66c-222">If successful, the response contains the collection of line item details.</span></span>
 
-<span data-ttu-id="5123a-227">*Pro položku řádku **ChargeType** je hodnota **Nákup** namapována na **New (nový**). **Náhrada** hodnoty je namapována na **Zrušit**.*</span><span class="sxs-lookup"><span data-stu-id="5123a-227">*For the line item **ChargeType**, the value **Purchase** is mapped to **New**. The value **Refund** is mapped to **Cancel**.*</span></span>
+<span data-ttu-id="2a66c-223">*Pro položku řádku **ChargeType** je hodnota **Nákup** namapována na **New (nový**). **Náhrada** hodnoty je namapována na **Zrušit**.*</span><span class="sxs-lookup"><span data-stu-id="2a66c-223">*For the line item **ChargeType**, the value **Purchase** is mapped to **New**. The value **Refund** is mapped to **Cancel**.*</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="5123a-228">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="5123a-228">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="2a66c-224">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="2a66c-224">Response success and error codes</span></span>
 
-<span data-ttu-id="5123a-229">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="5123a-229">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="5123a-230">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="5123a-230">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="5123a-231">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="5123a-231">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="2a66c-225">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="2a66c-225">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="2a66c-226">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="2a66c-226">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="2a66c-227">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="2a66c-227">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="rest-request-response-examples"></a><span data-ttu-id="5123a-232">Příklady požadavků REST – odpověď</span><span class="sxs-lookup"><span data-stu-id="5123a-232">REST request-response examples</span></span>
+### <a name="rest-request-response-examples"></a><span data-ttu-id="2a66c-228">Příklady požadavků REST – odpověď</span><span class="sxs-lookup"><span data-stu-id="2a66c-228">REST request-response examples</span></span>
 
-### <a name="request-response-example-1"></a><span data-ttu-id="5123a-233">Požadavek-odpověď – příklad 1</span><span class="sxs-lookup"><span data-stu-id="5123a-233">Request-response example 1</span></span>
+### <a name="request-response-example-1"></a><span data-ttu-id="2a66c-229">Požadavek-odpověď – příklad 1</span><span class="sxs-lookup"><span data-stu-id="2a66c-229">Request-response example 1</span></span>
 
-<span data-ttu-id="5123a-234">V tomto příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="5123a-234">In this example, the details are as follows:</span></span>
+<span data-ttu-id="2a66c-230">V tomto příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="2a66c-230">In this example, the details are as follows:</span></span>
 
-- <span data-ttu-id="5123a-235">**BillingProvider**: **Office**</span><span class="sxs-lookup"><span data-stu-id="5123a-235">**BillingProvider**: **Office**</span></span>
-- <span data-ttu-id="5123a-236">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="5123a-236">**InvoiceLineItemType**: **BillingLineItems**</span></span>
+- <span data-ttu-id="2a66c-231">**BillingProvider**: **Office**</span><span class="sxs-lookup"><span data-stu-id="2a66c-231">**BillingProvider**: **Office**</span></span>
+- <span data-ttu-id="2a66c-232">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="2a66c-232">**InvoiceLineItemType**: **BillingLineItems**</span></span>
 
-#### <a name="request-example-1"></a><span data-ttu-id="5123a-237">Příklad žádosti 1</span><span class="sxs-lookup"><span data-stu-id="5123a-237">Request example 1</span></span>
+#### <a name="request-example-1"></a><span data-ttu-id="2a66c-233">Příklad žádosti 1</span><span class="sxs-lookup"><span data-stu-id="2a66c-233">Request example 1</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/1234000000/lineitems?provider=Office&nvoicelineitemtype=BillingLineItems&size=2&offset=0 HTTP/1.1
@@ -205,7 +200,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-1"></a><span data-ttu-id="5123a-238">Příklad odpovědi 1</span><span class="sxs-lookup"><span data-stu-id="5123a-238">Response example 1</span></span>
+#### <a name="response-example-1"></a><span data-ttu-id="2a66c-234">Příklad odpovědi 1</span><span class="sxs-lookup"><span data-stu-id="2a66c-234">Response example 1</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -307,14 +302,14 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-2"></a><span data-ttu-id="5123a-239">Požadavek-odpověď – příklad 2</span><span class="sxs-lookup"><span data-stu-id="5123a-239">Request-response example 2</span></span>
+### <a name="request-response-example-2"></a><span data-ttu-id="2a66c-235">Požadavek-odpověď – příklad 2</span><span class="sxs-lookup"><span data-stu-id="2a66c-235">Request-response example 2</span></span>
 
-<span data-ttu-id="5123a-240">V následujícím příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="5123a-240">In the following example, the details are as follows:</span></span>
+<span data-ttu-id="2a66c-236">V následujícím příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="2a66c-236">In the following example, the details are as follows:</span></span>
 
-- <span data-ttu-id="5123a-241">**BillingProvider**: **Azure**</span><span class="sxs-lookup"><span data-stu-id="5123a-241">**BillingProvider**: **Azure**</span></span>
-- <span data-ttu-id="5123a-242">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="5123a-242">**InvoiceLineItemType**: **BillingLineItems**</span></span>
+- <span data-ttu-id="2a66c-237">**BillingProvider**: **Azure**</span><span class="sxs-lookup"><span data-stu-id="2a66c-237">**BillingProvider**: **Azure**</span></span>
+- <span data-ttu-id="2a66c-238">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="2a66c-238">**InvoiceLineItemType**: **BillingLineItems**</span></span>
 
-#### <a name="request-example-2"></a><span data-ttu-id="5123a-243">Příklad žádosti 2</span><span class="sxs-lookup"><span data-stu-id="5123a-243">Request example 2</span></span>
+#### <a name="request-example-2"></a><span data-ttu-id="2a66c-239">Příklad žádosti 2</span><span class="sxs-lookup"><span data-stu-id="2a66c-239">Request example 2</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/1234000000/lineitems?provider=Azure&invoicelineitemtype=BillingLineItems&size=2&offset=0 HTTP/1.1
@@ -327,7 +322,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-2"></a><span data-ttu-id="5123a-244">Příklad odpovědi 2</span><span class="sxs-lookup"><span data-stu-id="5123a-244">Response example 2</span></span>
+#### <a name="response-example-2"></a><span data-ttu-id="2a66c-240">Příklad odpovědi 2</span><span class="sxs-lookup"><span data-stu-id="2a66c-240">Response example 2</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -445,14 +440,14 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-3"></a><span data-ttu-id="5123a-245">Příklad odpovědi na požadavek 3</span><span class="sxs-lookup"><span data-stu-id="5123a-245">Request-response example 3</span></span>
+### <a name="request-response-example-3"></a><span data-ttu-id="2a66c-241">Příklad odpovědi na požadavek 3</span><span class="sxs-lookup"><span data-stu-id="2a66c-241">Request-response example 3</span></span>
 
-<span data-ttu-id="5123a-246">V následujícím příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="5123a-246">In the following example, the details are as follows:</span></span>
+<span data-ttu-id="2a66c-242">V následujícím příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="2a66c-242">In the following example, the details are as follows:</span></span>
 
-- <span data-ttu-id="5123a-247">**BillingProvider**: **Azure**</span><span class="sxs-lookup"><span data-stu-id="5123a-247">**BillingProvider**: **Azure**</span></span>
-- <span data-ttu-id="5123a-248">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="5123a-248">**InvoiceLineItemType**: **UsageLineItems**</span></span>
+- <span data-ttu-id="2a66c-243">**BillingProvider**: **Azure**</span><span class="sxs-lookup"><span data-stu-id="2a66c-243">**BillingProvider**: **Azure**</span></span>
+- <span data-ttu-id="2a66c-244">**InvoiceLineItemType**: **UsageLineItems**</span><span class="sxs-lookup"><span data-stu-id="2a66c-244">**InvoiceLineItemType**: **UsageLineItems**</span></span>
 
-#### <a name="request-example-3"></a><span data-ttu-id="5123a-249">Příklad žádosti 3</span><span class="sxs-lookup"><span data-stu-id="5123a-249">Request example 3</span></span>
+#### <a name="request-example-3"></a><span data-ttu-id="2a66c-245">Příklad žádosti 3</span><span class="sxs-lookup"><span data-stu-id="2a66c-245">Request example 3</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/1234000000/lineitems?provider=Azure&invoicelineitemtype=UsageLineItems&size=2&offset=0 HTTP/1.1
@@ -465,7 +460,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-3"></a><span data-ttu-id="5123a-250">Příklad odpovědi 3</span><span class="sxs-lookup"><span data-stu-id="5123a-250">Response example 3</span></span>
+#### <a name="response-example-3"></a><span data-ttu-id="2a66c-246">Příklad odpovědi 3</span><span class="sxs-lookup"><span data-stu-id="2a66c-246">Response example 3</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -563,14 +558,14 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-4"></a><span data-ttu-id="5123a-251">Požadavek-odpověď – příklad 4</span><span class="sxs-lookup"><span data-stu-id="5123a-251">Request-response example 4</span></span>
+### <a name="request-response-example-4"></a><span data-ttu-id="2a66c-247">Požadavek-odpověď – příklad 4</span><span class="sxs-lookup"><span data-stu-id="2a66c-247">Request-response example 4</span></span>
 
-<span data-ttu-id="5123a-252">V následujícím příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="5123a-252">In the following example, the details are as follows:</span></span>
+<span data-ttu-id="2a66c-248">V následujícím příkladu jsou podrobnosti následující:</span><span class="sxs-lookup"><span data-stu-id="2a66c-248">In the following example, the details are as follows:</span></span>
 
-- <span data-ttu-id="5123a-253">**BillingProvider**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="5123a-253">**BillingProvider**: **OneTime**</span></span>
-- <span data-ttu-id="5123a-254">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="5123a-254">**InvoiceLineItemType**: **BillingLineItems**</span></span>
+- <span data-ttu-id="2a66c-249">**BillingProvider**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="2a66c-249">**BillingProvider**: **OneTime**</span></span>
+- <span data-ttu-id="2a66c-250">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="2a66c-250">**InvoiceLineItemType**: **BillingLineItems**</span></span>
 
-#### <a name="request-example-4"></a><span data-ttu-id="5123a-255">Příklad žádosti 4</span><span class="sxs-lookup"><span data-stu-id="5123a-255">Request example 4</span></span>
+#### <a name="request-example-4"></a><span data-ttu-id="2a66c-251">Příklad žádosti 4</span><span class="sxs-lookup"><span data-stu-id="2a66c-251">Request example 4</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/G000024135/lineitems/OneTime/BillingLineItems?size=2&offset=0 HTTP/1.1
@@ -583,7 +578,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-4"></a><span data-ttu-id="5123a-256">Příklad odpovědi 4</span><span class="sxs-lookup"><span data-stu-id="5123a-256">Response example 4</span></span>
+#### <a name="response-example-4"></a><span data-ttu-id="2a66c-252">Příklad odpovědi 4</span><span class="sxs-lookup"><span data-stu-id="2a66c-252">Response example 4</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -597,111 +592,179 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 
  {
     "continuationToken": "d19617b8-fbe5-4684-a5d8-0230972fb0cf,0705c4a9-39f7-4261-ba6d-53e24a9ce47d_a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=,0d81c700-98b4-4b13-9129-ffd5620f72e7",
-    "totalCount": 2,
+    {
+    {
+    "totalCount": 3,
     "items": [
         {
-            "partnerId": "6480d686-cfb4-424d-a945-6b9b9f000000",
-            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38000000",
-            "customerName": "recipientCustomerName",
-            "customerDomainName": "recipientCustomerDomain",
-            "invoiceNumber": "1234000000",
-            "quoteId": "abcd12345678",
-            "mpnId": "4870137",
-            "resellerMpnId": 0,
-            "orderId": "QDOx5ZN3YR9uYhm4M1MGQJ_0nievUOrx1",
-            "orderDate": "2018-02-08T22:31:42.9397946Z",
-            "productId": "productid",
-            "skuId": "skuid",
-            "availabilityId": "availabilityid",
-            "productName": "TEST PRODUCT",
-            "skuName": "TEST SKU TITLE",
-            "chargeType": "New",
-            "unitPrice": 431.8,
-            "effectiveUnitPrice": 496.07,
-            "unitType": "Seats",
-            "quantity": 1,
-            "subtotal": 431.8,
-            "taxTotal": 38.87,
-            "totalForCustomer": 470.67,
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "4649221",
+            "orderId": "94e858b6d855",
+            "orderDate": "2021-05-20T18:30:06.6045692Z",
+            "productId": "CFQ7TTC0LH0R",
+            "skuId": "0002",
+            "availabilityId": "CFQ7TTC0K5RQ",
+            "productName": "Microsoft 365 Phone System - Virtual User",
+            "skuName": "Microsoft 365 Phone System - Virtual User",
+            "productQualifiers": [
+                "AddOn",
+                "Trial"
+            ],
+            "chargeType": "new",
+            "unitPrice": "0",
+            "effectiveUnitPrice": "0",
+            "unitType": "",
+            "quantity": "25",
+            "subtotal": "0",
+            "taxTotal": "0",
+            "totalForCustomer": "0",
             "currency": "USD",
-            "providerName": "Test Networks Inc",
-            "providerId": "12343810",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
             "subscriptionDescription": "",
-            "subscriptionId": "281e26fe-9ce7-415b-911c-f39232000000",
-            "subscriptionStartDate": "2019-01-03T19:53:55.1292512+00:00",
-            "subscriptionEndDate": "2019-02-02T19:53:55.1292512+00:00",
-            "termAndBillingCycle": "1 Month Subscription",
-            "alternateId": "1234278124b8",
-            "priceAdjustmentDescription": "[\"100.0% Tier 1 Discount\"]",
-            "creditReasonCode": "Azure Consumption Credit",
+            "subscriptionId": "86646af9-e80a-4aa0-da80-3fd2b792c2cc",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2021-06-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Month commitment for trial",
+            "alternateId": "94e858b6d855",
+            "referenceId": "0cf1202a-5b7d-4219-966e-93c637113708",
+            "priceAdjustmentDescription": "",
+            "discountDetails": "",
             "pricingCurrency": "USD",
-            "pcToBCExchangeRate": 1,
-            "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
-            "billableQuantity": 0.0159369774,
-            "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
-            "billingFrequency": "Monthly",
-            "reservationOrderId": "883d475b-0000-2222-0000-8818752f1234",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "25",
+            "meterDescription": "",
+            "billingFrequency": "",
+            "reservationOrderId": "99f246cf-ed96-41b4-b0cd-0aa43eb1fe91",
             "invoiceLineItemType": "billing_line_items",
             "billingProvider": "one_time",
+            "promotionId": "",
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+            
+        },
+        {
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "835a59a7-3172-47b5-bdef-d9cc65f4d0e4",
+            "customerName": "TEST_TEST Test Promotions 01",
+            "customerDomainName": "kyletestpromos01.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "0",
+            "orderId": "5f9d52bb1408",
+            "orderDate": "2021-05-20T18:48:30.6168285Z",
+            "productId": "CFQ7TTC0HL8W",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0K59S",
+            "productName": "Power BI Premium Per User",
+            "skuName": "Power BI Premium Per User",
+            "productQualifiers": [],
+            "chargeType": "new",
+            "unitPrice": "16",
+            "effectiveUnitPrice": "14.4",
+            "unitType": "",
+            "quantity": "50",
+            "subtotal": "720",
+            "taxTotal": "73",
+            "totalForCustomer": "793",
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "9d7d1f3d-c8de-461c-db6d-91debd5129f0",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2022-05-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "alternateId": "5f9d52bb1408",
+            "referenceId": "28b535e0-68f4-40b5-84f7-8ed9241eb149",
+            "priceAdjustmentDescription": "[\"Price for given billing period\",\"You are getting a discount due to a pre-determined override.\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Price for given term\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "50",
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "8fdebb4a-7110-496e-9570-623e4c992797",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time",
+            "promotionId": "78bcf906-b945-4210-8818-cfb93caf12a1",
+            "attributes/objectType": "OneTimeInvoiceLineItem",
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
         },
         {
-            "partnerId": "6480d686-cfb4-424d-a945-6b9b9f4badc2",
-            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38cbb28e",
-            "customerName": "recipientCustomerName",
-            "customerDomainName": "recipientCustomerDomain",
-            "invoiceNumber": "1234000000",
-            "quoteId": "abcd12345678",
-            "mpnId": "4870137",
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "T000773581",
+            "mpnId": "1234567",
             "resellerMpnId": 0,
-            "orderId": "QDOx5ZN3YR9uYhm4M1MGQJ_0nievUOrx1",
-            "orderDate": "2018-02-08T22:31:42.9397946Z",
-            "productId": "productid",
-            "skuId": "skuid",
-            "availabilityId": "availabilityid",
-            "productName": "TEST PRODUCT",
-            "skuName": "TEST SKU TITLE",
+            "orderId": "HJVtMZMkgQ2miuCiNv0RSr51zQDans0m1",
+            "orderDate": "2019-02-04T17:59:52.9460102Z",
+            "productId": "DZH318Z0BXWC",
+            "skuId": "0002",
+            "availabilityId": "DZH318Z0BP8B",
+            "productName": "Test WAF-as-a-Service",
+            "skuName": "Test WaaS - Medium Plan",
             "chargeType": "New",
-            "unitPrice": 26.35,
-            "effectiveUnitPrice": 496.07,
-            "unitType": "1 Hour",
+            "unitPrice": 820,
+            "effectiveUnitPrice": 820,
+            "unitType": "",
             "quantity": 1,
-            "subtotal": 26.35,
-            "taxTotal": 2.37,
-            "totalForCustomer": 28.72,
+            "subtotal": 820,
+            "taxTotal": 0,
+            "totalForCustomer": 0,
             "currency": "USD",
-            "providerName": "Test Networks Inc",
-            "providerId": "12343810",
+            "publisherName": "Test Networks, Inc.",
+            "publisherId": "21223810",
             "subscriptionDescription": "",
-            "subscriptionId": "281e26fe-9ce7-415b-911c-f39232ea904a",
-            "subscriptionStartDate": "2019-01-03T19:53:55.1292512+00:00",
-            "subscriptionEndDate": "2019-02-02T19:53:55.1292512+00:00",
-            "termAndBillingCycle": "1 Month Subscription",
-            "alternateId": "1234578124b8",
-            "priceAdjustmentDescription": "[\"100.0% Tier 1 Discount\"]",
+            "subscriptionId": "12345678-9cf0-4a1f-9514-7fcc7fe9d1fe",
+            "subscriptionStartDate": "2019-02-01T00:00:00Z",
+            "subscriptionEndDate": "2020-01-31T00:00:00Z",
+            "chargeStartDate": "2019-02-04T09:22:40.1767993-08:00",
+            "chargeEndDate": "2019-03-03T09:22:40.1767993-08:00",
+            "termAndBillingCycle": "1 Year Subscription",
+            "alternateId": "123456ad566",
+            "priceAdjustmentDescription": "[\"15.0% Partner earned credit for services managed\"]",
+            "discountDetails": "",
             "pricingCurrency": "USD",
             "pcToBCExchangeRate": 1,
-            "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
-            "billableQuantity": 0.0130687981,
+            "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
+            "billableQuantity": 3.1618,
             "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
-            "reservationOrderId": "",
-            "invoiceLineItemType": "billing_line_items",
-            "billingProvider": "one_time",
+            "reservationOrderId": "883d475b-0000-1234-0000-8818752f1234",
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
         }
+    ]
+}
     ],
     "links": {
         "self": {
-            "uri": "/invoices/G000024135/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
+            "uri": "/invoices/G000773581/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
             "method": "GET",
             "headers": []
         },
         "next": {
-            "uri": "/invoices/G000024135/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2?seekOperation=Next",
+            "uri": "/invoices/G000773581/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2?seekOperation=Next",
             "method": "GET",
             "headers": [
                 {
@@ -717,15 +780,15 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
 }
 ```
 
-### <a name="request-response-example-5"></a><span data-ttu-id="5123a-257">Příklad odpovědi Request-response 5</span><span class="sxs-lookup"><span data-stu-id="5123a-257">Request-response example 5</span></span>
+### <a name="request-response-example-5"></a><span data-ttu-id="2a66c-253">Příklad odpovědi Request-response 5</span><span class="sxs-lookup"><span data-stu-id="2a66c-253">Request-response example 5</span></span>
 
-<span data-ttu-id="5123a-258">V následujícím příkladu je stránkování pomocí tokenu pro pokračování.</span><span class="sxs-lookup"><span data-stu-id="5123a-258">In the following example, there is paging using a continuation token.</span></span> <span data-ttu-id="5123a-259">Podrobnosti jsou následující:</span><span class="sxs-lookup"><span data-stu-id="5123a-259">The details are as follows:</span></span>
+<span data-ttu-id="2a66c-254">V následujícím příkladu je stránkování pomocí tokenu pro pokračování.</span><span class="sxs-lookup"><span data-stu-id="2a66c-254">In the following example, there is paging using a continuation token.</span></span> <span data-ttu-id="2a66c-255">Podrobnosti jsou následující:</span><span class="sxs-lookup"><span data-stu-id="2a66c-255">The details are as follows:</span></span>
 
-- <span data-ttu-id="5123a-260">**BillingProvider**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="5123a-260">**BillingProvider**: **OneTime**</span></span>
-- <span data-ttu-id="5123a-261">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="5123a-261">**InvoiceLineItemType**: **BillingLineItems**</span></span>
-- <span data-ttu-id="5123a-262">**SeekOperation**: **Další**</span><span class="sxs-lookup"><span data-stu-id="5123a-262">**SeekOperation**: **Next**</span></span>
+- <span data-ttu-id="2a66c-256">**BillingProvider**: **jednorázová**</span><span class="sxs-lookup"><span data-stu-id="2a66c-256">**BillingProvider**: **OneTime**</span></span>
+- <span data-ttu-id="2a66c-257">**InvoiceLineItemType**: **BillingLineItems**</span><span class="sxs-lookup"><span data-stu-id="2a66c-257">**InvoiceLineItemType**: **BillingLineItems**</span></span>
+- <span data-ttu-id="2a66c-258">**SeekOperation**: **Další**</span><span class="sxs-lookup"><span data-stu-id="2a66c-258">**SeekOperation**: **Next**</span></span>
 
-#### <a name="request-example-5"></a><span data-ttu-id="5123a-263">Příklad žádosti 5</span><span class="sxs-lookup"><span data-stu-id="5123a-263">Request example 5</span></span>
+#### <a name="request-example-5"></a><span data-ttu-id="2a66c-259">Příklad žádosti 5</span><span class="sxs-lookup"><span data-stu-id="2a66c-259">Request example 5</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/G000024135/lineitems/OneTime/BillingLineItems?seekOperation=Next HTTP/1.1
@@ -739,7 +802,7 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-#### <a name="response-example-5"></a><span data-ttu-id="5123a-264">Příklad odpovědi 5</span><span class="sxs-lookup"><span data-stu-id="5123a-264">Response example 5</span></span>
+#### <a name="response-example-5"></a><span data-ttu-id="2a66c-260">Příklad odpovědi 5</span><span class="sxs-lookup"><span data-stu-id="2a66c-260">Response example 5</span></span>
 
 ```http
 HTTP/1.1 200 OK
@@ -752,59 +815,174 @@ MS-ServerId: 202010406
 Date: Thu, 07 Sep 2017 23:31:09 GMT
 
 {
-    "totalCount": 1,
+    {
+    {
+    "totalCount": 3,
     "items": [
         {
-            "partnerId": "6480d686-cfb4-424d-a945-6b9b9f000000",
-            "customerId": "org:9060d13d-c5ed-482e-b059-a15a38000000",
-            "customerName": "recipientCustomerName",
-            "customerDomainName": "recipientCustomerDomain",
-            "invoiceNumber": "1234000000",
-            "quoteId": "abcd12345678",
-            "mpnId": "4870137",
-            "resellerMpnId": 0,
-            "orderId": "NeqT31Kziwf8gkCXM9YQToWTqU-9Jbm81",
-            "orderDate": "2018-02-08T22:31:47.1751688Z",
-            "productId": "DZH318Z0BQ3P",
-            "skuId": "001F",
-            "availabilityId": "DZH318Z0DR0H",
-            "productName": "Reserved VM Instance, Standard_D1, AP East, 3 years",
-            "skuName": "D Series",
-            "chargeType": "New",
-            "unitPrice": 1447,
-            "effectiveUnitPrice": 496.07,
-            "unitType": "Seats",
-            "quantity": 1,
-            "subtotal": 1447,
-            "taxTotal": 130.24,
-            "totalForCustomer": 1577.24,
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "4649221",
+            "orderId": "94e858b6d855",
+            "orderDate": "2021-05-20T18:30:06.6045692Z",
+            "productId": "CFQ7TTC0LH0R",
+            "skuId": "0002",
+            "availabilityId": "CFQ7TTC0K5RQ",
+            "productName": "Microsoft 365 Phone System - Virtual User",
+            "skuName": "Microsoft 365 Phone System - Virtual User",
+            "productQualifiers": [
+                "AddOn",
+                "Trial"
+            ],
+            "chargeType": "new",
+            "unitPrice": "0",
+            "effectiveUnitPrice": "0",
+            "unitType": "",
+            "quantity": "25",
+            "subtotal": "0",
+            "taxTotal": "0",
+            "totalForCustomer": "0",
             "currency": "USD",
-            "providerName": "Test Networks Inc",
-            "providerId": "12343810",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
             "subscriptionDescription": "",
-            "subscriptionId": "281e26fe-9ce7-415b-911c-f39232000000",
-            "subscriptionStartDate": "2019-01-03T19:53:55.1292512+00:00",
-            "subscriptionEndDate": "2019-02-02T19:53:55.1292512+00:00",
-            "termAndBillingCycle": "1 Month Subscription",
-            "alternateId": "1234568124b8",
+            "subscriptionId": "86646af9-e80a-4aa0-da80-3fd2b792c2cc",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2021-06-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Month commitment for trial",
+            "alternateId": "94e858b6d855",
+            "referenceId": "0cf1202a-5b7d-4219-966e-93c637113708",
             "priceAdjustmentDescription": "",
+            "discountDetails": "",
             "pricingCurrency": "USD",
-            "pcToBCExchangeRate": 1,
-            "pcToBCExchangeRateDate": "2019-09-30T23:59:59Z",
-            "billableQuantity": 0.0130687981,
-            "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
-            "reservationOrderId": "",
-            "billingFrequency": "Monthly",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "25",
+            "meterDescription": "",
+            "billingFrequency": "",
+            "reservationOrderId": "99f246cf-ed96-41b4-b0cd-0aa43eb1fe91",
             "invoiceLineItemType": "billing_line_items",
             "billingProvider": "one_time",
+            "promotionId": "",
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+            
+        },
+        {
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "835a59a7-3172-47b5-bdef-d9cc65f4d0e4",
+            "customerName": "TEST_TEST Test Promotions 01",
+            "customerDomainName": "kyletestpromos01.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "G000773581",
+            "mpnId": "5357564",
+            "resellerMpnId": "0",
+            "orderId": "5f9d52bb1408",
+            "orderDate": "2021-05-20T18:48:30.6168285Z",
+            "productId": "CFQ7TTC0HL8W",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0K59S",
+            "productName": "Power BI Premium Per User",
+            "skuName": "Power BI Premium Per User",
+            "productQualifiers": [],
+            "chargeType": "new",
+            "unitPrice": "16",
+            "effectiveUnitPrice": "14.4",
+            "unitType": "",
+            "quantity": "50",
+            "subtotal": "720",
+            "taxTotal": "73",
+            "totalForCustomer": "793",
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "9d7d1f3d-c8de-461c-db6d-91debd5129f0",
+            "subscriptionStartDate": "2021-05-20T00:00:00Z",
+            "subscriptionEndDate": "2022-05-19T00:00:00Z",
+            "chargeStartDate": "2021-05-20T00:00:00Z",
+            "chargeEndDate": "2021-06-19T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "alternateId": "5f9d52bb1408",
+            "referenceId": "28b535e0-68f4-40b5-84f7-8ed9241eb149",
+            "priceAdjustmentDescription": "[\"Price for given billing period\",\"You are getting a discount due to a pre-determined override.\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Price for given term\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": "1",
+            "pcToBCExchangeRateDate": "2021-05-01T00:00:00",
+            "billableQuantity": "50",
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "8fdebb4a-7110-496e-9570-623e4c992797",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time",
+            "promotionId": "78bcf906-b945-4210-8818-cfb93caf12a1",
+            "attributes/objectType": "OneTimeInvoiceLineItem",
+            "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+        },
+        {
+            "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
+            "customerId": "c139c4bf-2e8b-4ab5-8bed-d9f50dcca7a2",
+            "customerName": "Test_Test_Office R2 Reduce Seats Validation",
+            "customerDomainName": "testcustomerr2t2reduce.onmicrosoft.com",
+            "customerCountry": "US",
+            "invoiceNumber": "T000773581",
+            "mpnId": "1234567",
+            "resellerMpnId": 0,
+            "orderId": "HJVtMZMkgQ2miuCiNv0RSr51zQDans0m1",
+            "orderDate": "2019-02-04T17:59:52.9460102Z",
+            "productId": "DZH318Z0BXWC",
+            "skuId": "0002",
+            "availabilityId": "DZH318Z0BP8B",
+            "productName": "Test WAF-as-a-Service",
+            "skuName": "Test WaaS - Medium Plan",
+            "chargeType": "New",
+            "unitPrice": 820,
+            "effectiveUnitPrice": 820,
+            "unitType": "",
+            "quantity": 1,
+            "subtotal": 820,
+            "taxTotal": 0,
+            "totalForCustomer": 0,
+            "currency": "USD",
+            "publisherName": "Test Networks, Inc.",
+            "publisherId": "21223810",
+            "subscriptionDescription": "",
+            "subscriptionId": "12345678-9cf0-4a1f-9514-7fcc7fe9d1fe",
+            "subscriptionStartDate": "2019-02-01T00:00:00Z",
+            "subscriptionEndDate": "2020-01-31T00:00:00Z",
+            "chargeStartDate": "2019-02-04T09:22:40.1767993-08:00",
+            "chargeEndDate": "2019-03-03T09:22:40.1767993-08:00",
+            "termAndBillingCycle": "1 Year Subscription",
+            "alternateId": "123456ad566",
+            "priceAdjustmentDescription": "[\"15.0% Partner earned credit for services managed\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": 1,
+            "pcToBCExchangeRateDate": "2019-08-01T00:00:00Z",
+            "billableQuantity": 3.1618,
+            "meterDescription": "Bandwidth - Data Transfer In (GB) - Zone 2",
+            "reservationOrderId": "883d475b-0000-1234-0000-8818752f1234",
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
         }
+    ]
+}
     ],
     "links": {
         "self": {
-            "uri": "/invoices/G000024135/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
+            "uri": "/invoices/G000773581/lineitems?provider=OneTime&nvoicelineitemtype=BillingLineItems&size=2",
             "method": "GET",
             "headers": []
         }
@@ -813,4 +991,5 @@ Date: Thu, 07 Sep 2017 23:31:09 GMT
         "objectType": "Collection"
     }
 }
+
 ```

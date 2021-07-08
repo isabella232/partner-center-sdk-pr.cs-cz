@@ -7,33 +7,28 @@ ms.subservice: partnercenter-sdk
 ms.assetid: ''
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 10801cdb1f9d4f50a1f8fc86c2d0eaf8610ed68c
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 719becd3fac5605c4ad48ab86d483ba7903d65d8
+ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766757"
+ms.lasthandoff: 06/06/2021
+ms.locfileid: "111549140"
 ---
-# <a name="get-invoice-estimate-links"></a><span data-ttu-id="fce1c-103">Získání odkazů na odhad faktury</span><span class="sxs-lookup"><span data-stu-id="fce1c-103">Get invoice estimate links</span></span>
+# <a name="get-invoice-estimate-links"></a><span data-ttu-id="08fb3-103">Získání odkazů na odhad faktury</span><span class="sxs-lookup"><span data-stu-id="08fb3-103">Get invoice estimate links</span></span>
 
-<span data-ttu-id="fce1c-104">**Platí pro:**</span><span class="sxs-lookup"><span data-stu-id="fce1c-104">**Applies to:**</span></span>
+<span data-ttu-id="08fb3-104">**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="08fb3-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-- <span data-ttu-id="fce1c-105">Partnerské centrum</span><span class="sxs-lookup"><span data-stu-id="fce1c-105">Partner Center</span></span>
-- <span data-ttu-id="fce1c-106">Partnerské centrum provozovaný společností 21Vianet</span><span class="sxs-lookup"><span data-stu-id="fce1c-106">Partner Center operated by 21Vianet</span></span>
-- <span data-ttu-id="fce1c-107">Partnerské centrum pro Microsoft Cloud pro Německo</span><span class="sxs-lookup"><span data-stu-id="fce1c-107">Partner Center for Microsoft Cloud Germany</span></span>
-- <span data-ttu-id="fce1c-108">Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="fce1c-108">Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="08fb3-105">Můžete získat odkazy na odhady, které vám pomůžou s podrobnostmi dotazu na nefakturovatelné položky řádku odsouhlasení.</span><span class="sxs-lookup"><span data-stu-id="08fb3-105">You can get estimate links to help query details for unbilled reconciliation line items.</span></span>
 
-<span data-ttu-id="fce1c-109">Můžete získat odkazy na odhady, které vám pomůžou s podrobnostmi dotazu na nefakturovatelné položky řádku odsouhlasení.</span><span class="sxs-lookup"><span data-stu-id="fce1c-109">You can get estimate links to help query details for unbilled reconciliation line items.</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="08fb3-106">Požadavky</span><span class="sxs-lookup"><span data-stu-id="08fb3-106">Prerequisites</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="fce1c-110">Požadavky</span><span class="sxs-lookup"><span data-stu-id="fce1c-110">Prerequisites</span></span>
+- <span data-ttu-id="08fb3-107">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="08fb3-107">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="08fb3-108">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="08fb3-108">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-- <span data-ttu-id="fce1c-111">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="fce1c-111">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="fce1c-112">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="fce1c-112">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+- <span data-ttu-id="08fb3-109">Identifikátor faktury</span><span class="sxs-lookup"><span data-stu-id="08fb3-109">An invoice identifier.</span></span> <span data-ttu-id="08fb3-110">Určuje fakturu, pro kterou se mají načíst položky řádku.</span><span class="sxs-lookup"><span data-stu-id="08fb3-110">This identifies the invoice for which to retrieve the line items.</span></span>
 
-- <span data-ttu-id="fce1c-113">Identifikátor faktury</span><span class="sxs-lookup"><span data-stu-id="fce1c-113">An invoice identifier.</span></span> <span data-ttu-id="fce1c-114">Určuje fakturu, pro kterou se mají načíst položky řádku.</span><span class="sxs-lookup"><span data-stu-id="fce1c-114">This identifies the invoice for which to retrieve the line items.</span></span>
+## <a name="c"></a><span data-ttu-id="08fb3-111">C\#</span><span class="sxs-lookup"><span data-stu-id="08fb3-111">C\#</span></span>
 
-## <a name="c"></a><span data-ttu-id="fce1c-115">C\#</span><span class="sxs-lookup"><span data-stu-id="fce1c-115">C\#</span></span>
-
-<span data-ttu-id="fce1c-116">Následující příklad kódu ukazuje, jak můžete získat odkazy odhadu na dotazování nefakturovaných položek na řádku pro danou měnu.</span><span class="sxs-lookup"><span data-stu-id="fce1c-116">The following example code shows how you can get the estimate links to query unbilled line items for a given currency.</span></span> <span data-ttu-id="fce1c-117">Odpověď obsahuje odkazy odhadu pro jednotlivé období (například aktuální a předchozí měsíc).</span><span class="sxs-lookup"><span data-stu-id="fce1c-117">The response contains the estimate links for each period (for example, the current and previous month).</span></span>
+<span data-ttu-id="08fb3-112">Následující příklad kódu ukazuje, jak můžete získat odkazy odhadu na dotazování nefakturovaných položek na řádku pro danou měnu.</span><span class="sxs-lookup"><span data-stu-id="08fb3-112">The following example code shows how you can get the estimate links to query unbilled line items for a given currency.</span></span> <span data-ttu-id="08fb3-113">Odpověď obsahuje odkazy odhadu pro jednotlivé období (například aktuální a předchozí měsíc).</span><span class="sxs-lookup"><span data-stu-id="08fb3-113">The response contains the estimate links for each period (for example, the current and previous month).</span></span>
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -46,40 +41,40 @@ ms.locfileid: "97766757"
 var estimateLinks = scopedPartnerOperations.Invoices.Estimates.Links.ByCurrency(curencyCode).Get();
 ```
 
-<span data-ttu-id="fce1c-118">Podobný příklad naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="fce1c-118">For a similar example, see the following:</span></span>
+<span data-ttu-id="08fb3-114">Podobný příklad naleznete v následujících tématech:</span><span class="sxs-lookup"><span data-stu-id="08fb3-114">For a similar example, see the following:</span></span>
 
-- <span data-ttu-id="fce1c-119">Ukázka: [aplikace testů konzoly](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="fce1c-119">Sample: [Console test app](console-test-app.md)</span></span>
-- <span data-ttu-id="fce1c-120">Projekt: **ukázky sady SDK pro partnerských Center**</span><span class="sxs-lookup"><span data-stu-id="fce1c-120">Project: **Partner Center SDK Samples**</span></span>
-- <span data-ttu-id="fce1c-121">Třída: **GetEstimatesLinks.cs**</span><span class="sxs-lookup"><span data-stu-id="fce1c-121">Class: **GetEstimatesLinks.cs**</span></span>
+- <span data-ttu-id="08fb3-115">Ukázka: [aplikace testů konzoly](console-test-app.md)</span><span class="sxs-lookup"><span data-stu-id="08fb3-115">Sample: [Console test app](console-test-app.md)</span></span>
+- <span data-ttu-id="08fb3-116">Project: **ukázky sady SDK pro partnerských Center**</span><span class="sxs-lookup"><span data-stu-id="08fb3-116">Project: **Partner Center SDK Samples**</span></span>
+- <span data-ttu-id="08fb3-117">Třída: **GetEstimatesLinks. cs**</span><span class="sxs-lookup"><span data-stu-id="08fb3-117">Class: **GetEstimatesLinks.cs**</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="fce1c-122">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="fce1c-122">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="08fb3-118">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="08fb3-118">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="fce1c-123">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="fce1c-123">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="08fb3-119">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="08fb3-119">Request syntax</span></span>
 
-| <span data-ttu-id="fce1c-124">Metoda</span><span class="sxs-lookup"><span data-stu-id="fce1c-124">Method</span></span>  | <span data-ttu-id="fce1c-125">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="fce1c-125">Request URI</span></span>                                                                                                 |
+| <span data-ttu-id="08fb3-120">Metoda</span><span class="sxs-lookup"><span data-stu-id="08fb3-120">Method</span></span>  | <span data-ttu-id="08fb3-121">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="08fb3-121">Request URI</span></span>                                                                                                 |
 |---------|-------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="fce1c-126">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="fce1c-126">**GET**</span></span> | <span data-ttu-id="fce1c-127">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/Estimates/Links? CurrencyCode = {CURRENCYCODE} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="fce1c-127">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/estimates/links?currencycode={currencycode} HTTP/1.1</span></span> |
+| <span data-ttu-id="08fb3-122">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="08fb3-122">**GET**</span></span> | <span data-ttu-id="08fb3-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/Estimates/Links? CurrencyCode = {CURRENCYCODE} HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="08fb3-123">[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/estimates/links?currencycode={currencycode} HTTP/1.1</span></span> |
 
-#### <a name="uri-parameters"></a><span data-ttu-id="fce1c-128">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="fce1c-128">URI parameters</span></span>
+#### <a name="uri-parameters"></a><span data-ttu-id="08fb3-124">Parametry identifikátoru URI</span><span class="sxs-lookup"><span data-stu-id="08fb3-124">URI parameters</span></span>
 
-<span data-ttu-id="fce1c-129">Při vytváření žádosti použijte následující identifikátor URI a parametr dotazu.</span><span class="sxs-lookup"><span data-stu-id="fce1c-129">Use the following URI and query parameter when creating the request.</span></span>
+<span data-ttu-id="08fb3-125">Při vytváření žádosti použijte následující identifikátor URI a parametr dotazu.</span><span class="sxs-lookup"><span data-stu-id="08fb3-125">Use the following URI and query parameter when creating the request.</span></span>
 
-| <span data-ttu-id="fce1c-130">Název</span><span class="sxs-lookup"><span data-stu-id="fce1c-130">Name</span></span>                   | <span data-ttu-id="fce1c-131">Typ</span><span class="sxs-lookup"><span data-stu-id="fce1c-131">Type</span></span>   | <span data-ttu-id="fce1c-132">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="fce1c-132">Required</span></span> | <span data-ttu-id="fce1c-133">Popis</span><span class="sxs-lookup"><span data-stu-id="fce1c-133">Description</span></span>                                                       |
+| <span data-ttu-id="08fb3-126">Název</span><span class="sxs-lookup"><span data-stu-id="08fb3-126">Name</span></span>                   | <span data-ttu-id="08fb3-127">Typ</span><span class="sxs-lookup"><span data-stu-id="08fb3-127">Type</span></span>   | <span data-ttu-id="08fb3-128">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="08fb3-128">Required</span></span> | <span data-ttu-id="08fb3-129">Popis</span><span class="sxs-lookup"><span data-stu-id="08fb3-129">Description</span></span>                                                       |
 |------------------------|--------|----------|-------------------------------------------------------------------|
-| <span data-ttu-id="fce1c-134">currencyCode</span><span class="sxs-lookup"><span data-stu-id="fce1c-134">currencyCode</span></span>           | <span data-ttu-id="fce1c-135">řetězec</span><span class="sxs-lookup"><span data-stu-id="fce1c-135">string</span></span> | <span data-ttu-id="fce1c-136">Yes</span><span class="sxs-lookup"><span data-stu-id="fce1c-136">Yes</span></span>      | <span data-ttu-id="fce1c-137">Kód měny pro nefakturovatelné položky řádku</span><span class="sxs-lookup"><span data-stu-id="fce1c-137">The currency code for the unbilled line items.</span></span>                    |
+| <span data-ttu-id="08fb3-130">currencyCode</span><span class="sxs-lookup"><span data-stu-id="08fb3-130">currencyCode</span></span>           | <span data-ttu-id="08fb3-131">řetězec</span><span class="sxs-lookup"><span data-stu-id="08fb3-131">string</span></span> | <span data-ttu-id="08fb3-132">Yes</span><span class="sxs-lookup"><span data-stu-id="08fb3-132">Yes</span></span>      | <span data-ttu-id="08fb3-133">Kód měny pro nefakturovatelné položky řádku</span><span class="sxs-lookup"><span data-stu-id="08fb3-133">The currency code for the unbilled line items.</span></span>                    |
 
-### <a name="request-headers"></a><span data-ttu-id="fce1c-138">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="fce1c-138">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="08fb3-134">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="08fb3-134">Request headers</span></span>
 
-<span data-ttu-id="fce1c-139">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="fce1c-139">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="08fb3-135">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="08fb3-135">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="fce1c-140">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="fce1c-140">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="08fb3-136">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="08fb3-136">Request body</span></span>
 
-<span data-ttu-id="fce1c-141">Žádné</span><span class="sxs-lookup"><span data-stu-id="fce1c-141">None.</span></span>
+<span data-ttu-id="08fb3-137">Žádné</span><span class="sxs-lookup"><span data-stu-id="08fb3-137">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="fce1c-142">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="fce1c-142">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="08fb3-138">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="08fb3-138">Request example</span></span>
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/invoices/estimates/links?currencycode=usd HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 1234ecb8-37af-45f4-a1a1-358de3ca2b9e
@@ -89,15 +84,15 @@ MS-PartnerCenter-Application: Partner Center .NET SDK Samples
 Host: api.partnercenter.microsoft.com
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="fce1c-143">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="fce1c-143">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="08fb3-139">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="08fb3-139">REST response</span></span>
 
-<span data-ttu-id="fce1c-144">V případě úspěchu obsahuje odpověď odkazy na načtení nefakturovaných odhadů.</span><span class="sxs-lookup"><span data-stu-id="fce1c-144">If successful, the response contains the links to retrieve unbilled estimates.</span></span>
+<span data-ttu-id="08fb3-140">V případě úspěchu obsahuje odpověď odkazy na načtení nefakturovaných odhadů.</span><span class="sxs-lookup"><span data-stu-id="08fb3-140">If successful, the response contains the links to retrieve unbilled estimates.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="fce1c-145">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="fce1c-145">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="08fb3-141">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="08fb3-141">Response success and error codes</span></span>
 
-<span data-ttu-id="fce1c-146">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="fce1c-146">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="fce1c-147">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="fce1c-147">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="fce1c-148">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="fce1c-148">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
+<span data-ttu-id="08fb3-142">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="08fb3-142">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="08fb3-143">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="08fb3-143">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="08fb3-144">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="08fb3-144">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="fce1c-149">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="fce1c-149">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="08fb3-145">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="08fb3-145">Response example</span></span>
 
 ```http
 HTTP/1.1 200 OK
