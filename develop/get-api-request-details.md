@@ -6,45 +6,43 @@ ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 43b1e3d4a6220ac8adba8eed0389395113072288
-ms.sourcegitcommit: cfedd76e573c5616cf006f826f4e27f08281f7b4
+ms.openlocfilehash: 9a367f912669114969f8792a5afcc7020af1112e
+ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "97766668"
+ms.lasthandoff: 06/09/2021
+ms.locfileid: "111760500"
 ---
-# <a name="get-app-and-user-api-requests"></a><span data-ttu-id="94dee-103">Získání požadavků na rozhraní API pro aplikace a uživatele</span><span class="sxs-lookup"><span data-stu-id="94dee-103">Get App and User API requests</span></span>
+# <a name="get-app-and-user-api-requests"></a><span data-ttu-id="8648f-103">Získání požadavků na rozhraní API pro aplikace a uživatele</span><span class="sxs-lookup"><span data-stu-id="8648f-103">Get App and User API requests</span></span>
 
-<span data-ttu-id="94dee-104">Platí pro:</span><span class="sxs-lookup"><span data-stu-id="94dee-104">Applies to:</span></span>
+<span data-ttu-id="8648f-104">**Platí pro**: rozhraní API partnerského centra</span><span class="sxs-lookup"><span data-stu-id="8648f-104">**Applies to**: Partner Center API</span></span>
 
-- <span data-ttu-id="94dee-105">Rozhraní API partnerského centra</span><span class="sxs-lookup"><span data-stu-id="94dee-105">Partner Center API</span></span>
-
-<span data-ttu-id="94dee-106">Tento článek vysvětluje, jak získat seznam všech požadavků partnerských uživatelů v rámci tenanta pomocí rozhraní REST API.</span><span class="sxs-lookup"><span data-stu-id="94dee-106">This article explains how to obtain a list of all partner user requests within a tenant using REST APIs.</span></span>
+<span data-ttu-id="8648f-105">Tento článek vysvětluje, jak získat seznam všech požadavků partnerských uživatelů v rámci tenanta pomocí rozhraní REST API.</span><span class="sxs-lookup"><span data-stu-id="8648f-105">This article explains how to obtain a list of all partner user requests within a tenant using REST APIs.</span></span>
 
  > [!NOTE]
- > <span data-ttu-id="94dee-107">Toto rozhraní API vrací jenom nejnovější požadavky rozhraní API, které udělala aplikace a přihlašovací údaje uživatele s maximálním limitem 10 000.</span><span class="sxs-lookup"><span data-stu-id="94dee-107">This API only returns the most recent API requests made by APP + User credential with maximum 10K limit.</span></span>
+ > <span data-ttu-id="8648f-106">Toto rozhraní API vrací jenom nejnovější požadavky rozhraní API, které udělala aplikace a přihlašovací údaje uživatele s maximálním limitem 10 000.</span><span class="sxs-lookup"><span data-stu-id="8648f-106">This API only returns the most recent API requests made by APP + User credential with maximum 10K limit.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="94dee-108">Požadavky</span><span class="sxs-lookup"><span data-stu-id="94dee-108">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="8648f-107">Požadavky</span><span class="sxs-lookup"><span data-stu-id="8648f-107">Prerequisites</span></span>
 
-- <span data-ttu-id="94dee-109">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="94dee-109">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="94dee-110">Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="94dee-110">This scenario supports authentication with App+User credentials.</span></span>
+- <span data-ttu-id="8648f-108">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="8648f-108">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="8648f-109">Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="8648f-109">This scenario supports authentication with App+User credentials.</span></span>
 
-## <a name="rest-request"></a><span data-ttu-id="94dee-111">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="94dee-111">REST request</span></span>
+## <a name="rest-request"></a><span data-ttu-id="8648f-110">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="8648f-110">REST request</span></span>
 
-### <a name="request-syntax"></a><span data-ttu-id="94dee-112">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="94dee-112">Request syntax</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="8648f-111">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="8648f-111">Request syntax</span></span>
 
-| <span data-ttu-id="94dee-113">Metoda</span><span class="sxs-lookup"><span data-stu-id="94dee-113">Method</span></span>  | <span data-ttu-id="94dee-114">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="94dee-114">Request URI</span></span>                                                        |
+| <span data-ttu-id="8648f-112">Metoda</span><span class="sxs-lookup"><span data-stu-id="8648f-112">Method</span></span>  | <span data-ttu-id="8648f-113">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="8648f-113">Request URI</span></span>                                                        |
 |---------|--------------------------------------------------------------------|
-| <span data-ttu-id="94dee-115">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="94dee-115">**GET**</span></span> | <span data-ttu-id="94dee-116">[*{baseURL}*](partner-center-rest-urls.md)/v1/partnerRequests</span><span class="sxs-lookup"><span data-stu-id="94dee-116">[*{baseURL}*](partner-center-rest-urls.md)/v1/partnerRequests</span></span> |
+| <span data-ttu-id="8648f-114">**Čtěte**</span><span class="sxs-lookup"><span data-stu-id="8648f-114">**GET**</span></span> | <span data-ttu-id="8648f-115">[*{baseURL}*](partner-center-rest-urls.md)/v1/partnerRequests</span><span class="sxs-lookup"><span data-stu-id="8648f-115">[*{baseURL}*](partner-center-rest-urls.md)/v1/partnerRequests</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="94dee-117">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="94dee-117">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="8648f-116">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="8648f-116">Request headers</span></span>
 
-- <span data-ttu-id="94dee-118">Další informace najdete v tématu [záhlaví REST v partnerském centru](headers.md) .</span><span class="sxs-lookup"><span data-stu-id="94dee-118">See [Partner Center REST headers](headers.md) for more information.</span></span>
+- <span data-ttu-id="8648f-117">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="8648f-117">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="94dee-119">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="94dee-119">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="8648f-118">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="8648f-118">Request body</span></span>
 
-<span data-ttu-id="94dee-120">Žádné</span><span class="sxs-lookup"><span data-stu-id="94dee-120">None.</span></span>
+<span data-ttu-id="8648f-119">Žádné</span><span class="sxs-lookup"><span data-stu-id="8648f-119">None.</span></span>
 
-### <a name="request-example"></a><span data-ttu-id="94dee-121">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="94dee-121">Request example</span></span>
+### <a name="request-example"></a><span data-ttu-id="8648f-120">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="8648f-120">Request example</span></span>
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/partnerRequests HTTP/1.1
@@ -53,15 +51,15 @@ Host: api.partnercenter.microsoft.com
 Content-Type: application/json
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="94dee-122">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="94dee-122">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="8648f-121">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="8648f-121">REST response</span></span>
 
-<span data-ttu-id="94dee-123">V případě úspěchu tato metoda vrátí kolekci prostředků [podrobností požadavku rozhraní API](mfa-resources.md#api-request-details) v těle odpovědi.</span><span class="sxs-lookup"><span data-stu-id="94dee-123">If successful, this method returns a collection of [API request details](mfa-resources.md#api-request-details) resources in the response body.</span></span>
+<span data-ttu-id="8648f-122">V případě úspěchu tato metoda vrátí kolekci prostředků [podrobností požadavku rozhraní API](mfa-resources.md#api-request-details) v těle odpovědi.</span><span class="sxs-lookup"><span data-stu-id="8648f-122">If successful, this method returns a collection of [API request details](mfa-resources.md#api-request-details) resources in the response body.</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="94dee-124">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="94dee-124">Response success and error codes</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="8648f-123">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="8648f-123">Response success and error codes</span></span>
 
-<span data-ttu-id="94dee-125">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="94dee-125">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="94dee-126">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="94dee-126">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="94dee-127">Úplný seznam najdete v tématu [kódy chyb](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="94dee-127">For the full list, see [Error Codes](error-codes.md).</span></span>
+<span data-ttu-id="8648f-124">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="8648f-124">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="8648f-125">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="8648f-125">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="8648f-126">Úplný seznam najdete v tématu [kódy chyb](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="8648f-126">For the full list, see [Error Codes](error-codes.md).</span></span>
 
-### <a name="response-example"></a><span data-ttu-id="94dee-128">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="94dee-128">Response example</span></span>
+### <a name="response-example"></a><span data-ttu-id="8648f-127">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="8648f-127">Response example</span></span>
 
 ``` http
 HTTP/1.1 200 OK
