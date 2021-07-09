@@ -1,71 +1,135 @@
 ---
-title: Zpráva k vydání verze pro partnerský Center .NET SDK
-description: Poznámky k verzi pro nejnovější verzi sady SDK partnerského centra .NET.
-ms.date: 09/18/2020
+title: Partnerské centrum poznámky k verzi sady .NET SDK
+description: Poznámky k nejnovější verzi sady .NET SDK Partnerské centrum.
+ms.date: 07/07/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2fe309500cc80e962c101ad97f0712bef7e11eb3
-ms.sourcegitcommit: f7fce0b35ab1579e59136abc357b71cf768b81b4
+ms.openlocfilehash: c1532d48c00550f5eb437ed0164d6a1f7bb340dd
+ms.sourcegitcommit: 53c94db33b09c30e762b842c4275b2b531dba932
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104895529"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113522630"
 ---
 # <a name="net-sdk-release-notes"></a>Poznámky k verzi sady .NET SDK
 
-Následující poznámky k verzi jsou k dispozici pro nové verze [sady Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter). [Ukázky sady .NET SDK](https://github.com/Microsoft/Partner-Center-DotNet-Samples) najdete na GitHubu. Reference k rozhraní [.NET API partnerského centra](/dotnet/api/?view=partnercenter-dotnet-latest&preserve-view=true) najdete v prohlížeči rozhraní .NET API.
+Následující poznámky k verzi jsou k dispozici pro nové verze [sady Microsoft Partnerské centrum .NET SDK.](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter) Ukázky [.NET SDK najdete na](https://github.com/Microsoft/Partner-Center-DotNet-Samples) GitHub. Referenční informace k [Partnerské centrum .NET API](/dotnet/api/?view=partnercenter-dotnet-latest&preserve-view=true) najdete v prohlížeči rozhraní .NET API.
 
-## <a name="version-1170"></a>1.17.0 verze
+## <a name="version-201"></a>Verze 2.0.1
 
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.17.0) v 1.17.0 je teď obecně dostupný. K dispozici jsou také aktualizované [ukázky GitHubu](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+[Sada Microsoft Partnerské centrum .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/2.0.1) v2.0.1 je teď obecně dostupné. K [dispozici GitHub aktualizované](https://github.com/Microsoft/Partner-Center-DotNet-Samples) ukázky. V této verzi jsou zahrnuté následující změny:
 
-* Aktualizované audit – byly přidány nové typy operací pro znalost, kdy zákazník schválil a ukončil příznak DAP.
+> [!NOTE]
+> Některé změny zavedené v rámci nových obchodních prostředí (NCE), které jsou aktuálně k dispozici pouze na základě pozvánek partnerům, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview. Partneři, kteří nejsou součástí privátní verze New Commerce Preview, by si neměli všimnout dopadu a měli by být zpětně kompatibilní.
+
+### <a name="common"></a>Společné
+* Změna odkazu na knihovnu ověřování – Odkaz se změnil z knihovny Azure Active Directory Authentication Library[(ADAL)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet)na knihovnu Microsoft Authentication Library[(MSAL).](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)
+
+  Je třeba provést následující změny, aby se zajistilo správné spuštění MSAL ve vaší aplikaci nebo ukázce .NET:
+
+  * Přidání `https://login.microsoftonline.com/common/oauth2/nativeclient` jako RedirectUrl pro mobilní a desktopové aplikace
+  * Do **části** UserAuthentication v konfiguračním souboru aplikace přidejte Domain. 
+
+    Doména je id Azure Active Directory domény nebo tenanta, ve které se vytvořila aplikace Azure AD.
+
+* [Kódy chyb](error-codes.md) – Přidání nového kódu chyby 
+  * 408: Časový limit požadavku
+  * 504: Časový limit brány 
+
+### <a name="manage-billing"></a>Správa vyúčtování
+
+* [Řádkové položky faktury](get-invoiceline-items.md) – nové atributy přidané do následujících rozhraní API:
+  * `GET /invoices/{invoice-id}/lineitems?provider={provider}&invoicelineitemtype=billinglineitems`
+  * `GET /invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=billinglineitems`
+
+  Nové atributy: 
+  * ProductQualifiers
+  * subscriptionStartDate
+  * subscriptionEndDate
+  * ID odkazu
+  * creditReasonCode (vztahuje se pouze na NCE)
+  * ID povýšení 
+
+
+* [Daily rated usage Line-items](get-invoice-billed-consumption-lineitems.md) – nové atributy přidané do následujícího rozhraní API: 
+  * `GET /invoices/{invoice-id}/lineitems?provider=onetime&invoicelineitemtype=usagelineitems`
+  
+  Nové atributy: 
+  * hasPartnerEarnedCredit (platí pouze pro NCE)
+  * creditType (vztahuje se pouze na NCE)
+  * rateOfCredit (vztahuje se pouze na NCE)
+
+
+### <a name="manage-orders"></a>Správa objednávek
+
+* [Prostředky předplatného](subscription-resources.md) – Přidaná nová vlastnost. 
+  * CancellationAllowedUntilDate – (vztahuje se pouze na NCE)
+
+* Transition Resources (platí jenom pro NCE) – Přidaná nová vlastnost 
+  * FromSubscriptionId
+
+### <a name="manage-customer-accounts"></a>Správa zákaznických účtů
+
+* [Ověření adresy –](validate-an-address.md) Odpověď se změnila z logické hodnoty na nový model pro rozhraní API:
+  * `POST /validations/address`
+  
+  Nový model odpovědí: 
+  * AddressValidationResponse
+
+* Synchronní rozhraní API kvalifikace zákazníka je zastaralé.  
+
+
+## <a name="version-1170"></a>Verze 1.17.0
+
+[Sada Microsoft Partnerské centrum .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.17.0) verze 1.17.0 je teď obecně dostupné. K [dispozici GitHub aktualizované](https://github.com/Microsoft/Partner-Center-DotNet-Samples) ukázky. V této verzi jsou zahrnuté následující změny:
+
+* Audit byl aktualizován – Přidání nových typů operací pro znalost, kdy zákazník schválil a ukončil DAP
   * [DapAdminRelationshipApproved](auditing-resources.md)
   * [DapAdminRelationshipTerminated](auditing-resources.md)
 
-* Audit byl aktualizován – byly přidány nové typy prostředků a operací pro podporu scénáře pro roli adresáře zákazníka.
-  * Typ prostředku "[CustomerDirectoryRole](auditing-resources.md)"
-  * Typy operací "[AddUserMember](auditing-resources.md)" a "[RemoveUserMember](auditing-resources.md)"
+* Audit byl aktualizován – Přidání nových typů prostředků a operací pro podporu scénáře role adresáře zákazníka
+  * Typ prostředku[CustomerDirectoryRole](auditing-resources.md)
+  * Typy operací[AddUserMember](auditing-resources.md)a[RemoveUserMember](auditing-resources.md)
 
-* Aktualizace sady SDK na účet Customers – podpora pro následující rozhraní API
-  * ZÍSKAT/customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus
-  * ZÍSKAT/Customers/{Customer-tenant-ID}/Qualifications 
-  * POST/Customers/{customer_id}/Qualifications? Code = {validationCode}
+* Aktualizace sady SDK pro účet zákazníků – Podpora následujících rozhraní API
+  * GET /customers/{customer-tenant-id}/directSignedMicrosoftCustomerAgreementStatus
+  * GET /customers/{id-tenanta zákazníka}/kvalifikace 
+  * POST /customers/{customer_id}/qualifications?code={validationCode}
 
-* **Po změnách zavedených v rámci nového obchodování, které jsou aktuálně k dispozici na základě pozvánky jenom pro partnery, kteří jsou součástí M365/D365 New Commerce Experience Technical Preview.** Partneři, kteří nejsou součástí nového obchodní privátní verze Preview, by neměli poznamenat dopady a měly by být zpětně kompatibilní.
-  * Změny katalogu:
-    * ZÍSKAT/Products/{Product-ID}/skus/{SKU-ID}
+* **Následující změny zavedené v rámci nového obchodování jsou v současné době k dispozici pouze na základě pozvánek pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview.** Partneři, kteří nejsou součástí privátní verze New Commerce Preview, by si neměli všimnout dopadu a měli by být zpětně kompatibilní.
+  * Catalog Changes (Změny katalogu):
+    * GET /products/{id-produktu}/skus/{sku-id}
   * Nákup a správa:
-    * ZÍSKAT/customers/{customerId}/subscriptions
-    * ZÍSKAT/customers/{customerId}/subscriptions/{subscriptionId}
-    * /Customers/{customerId}/subscriptions/{subscriptionId} opravy
-    * ZÍSKAT/customers/{customerId}/subscriptions/{subscriptionId}/transitioneligibilities
-    * ZÍSKAT/customers/{customerId}/subscriptions/{subscriptionId}/transitions
-    * PŘÍSPĚVEK/customers/{customerId}/subscriptions/{subscriptionId}/transitions
+    * GET /customers/{customerId}/subscriptions
+    * GET /customers/{customerId}/subscriptions/{subscriptionId}
+    * PATCH /customers/{customerId}/subscriptions/{subscriptionId}
+    * GET /customers/{customerId}/subscriptions/{subscriptionId}/transitionelibilities
+    * GET /customers/{customerId}/subscriptions/{subscriptionId}/transitions
+    * POST /customers/{customerId}/subscriptions/{subscriptionId}/transitions
 
 
-## <a name="version-1163"></a>1.16.3 verze
+## <a name="version-1163"></a>Verze 1.16.3
 
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.3) v 1.16.3 je teď obecně dostupný. K dispozici jsou také aktualizované [ukázky GitHubu](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+[Sada Microsoft Partnerské centrum .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.3) verze 1.16.3 je teď obecně dostupné. K [dispozici GitHub aktualizované](https://github.com/Microsoft/Partner-Center-DotNet-Samples) ukázky. V této verzi jsou zahrnuté následující změny:
 
-* SelfServePolicies – přidala se nová funkce.
+* SelfServePolicies – přidání nových funkcí
   * [GetSelfServePolicies](get-a-self-serve-policy-by-id.md)
   * [GetListOfSelfServicePolicies](get-a-list-of-self-serve-policies.md)
   * [CreateSelfServePolicies](create-a-self-serve-policy.md)
   * [UpdateSelfServePolicies](update-a-self-serve-policy.md)
   * [DeleteSelfServePolicies](delete-a-self-serve-policy.md)
 
-* Profil společnosti pro zákazníky
+* Profil společnosti zákazníků
   * Přidání [OrganizationRegistrationNumber](create-a-customer.md)
 
 * CustomerBillingProfile.DefaultAddress
-  * Přidání MiddleName
+  * Přidání middleName
 
-## <a name="version-1162"></a>1.16.2 verze
+## <a name="version-1162"></a>Verze 1.16.2
 
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.2) v 1.16.2 je teď obecně dostupný. K dispozici jsou také aktualizované [ukázky GitHubu](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+[Sada Microsoft Partnerské centrum .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.2) verze 1.16.2 je teď obecně dostupné. K [dispozici GitHub aktualizované](https://github.com/Microsoft/Partner-Center-DotNet-Samples) ukázky. V této verzi jsou zahrnuté následující změny:
 
-* Aktualizuje podporované typy operací pro záznam auditu. Nově přidaná jsou:
+* Aktualizujte podporované typy operací pro záznam auditu. Nově přidané jsou tyto:
   * CreateSelfServePolicy
   * UpdateSelfServePolicy
   * DeleteSelfServePolicy
@@ -74,19 +138,19 @@ Následující poznámky k verzi jsou k dispozici pro nové verze [sady Microsof
   * CreateRelatedReferral
   * UpdateRelatedReferral
 
-* Vytváření žádosti o služby je teď zastaralé.
-* Témata podpory jsou nyní zastaralá.
+* Vytváření žádostí o služby je teď zastaralé
+* Témata podpory jsou teď zastaralá.
 
 
-## <a name="version-1161"></a>1.16.1 verze
+## <a name="version-1161"></a>Verze 1.16.1
 
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.1) v 1.16.1 je teď obecně dostupný. K dispozici jsou také aktualizované [ukázky GitHubu](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.1) v 1.16.1 je teď obecně dostupný. k dispozici jsou také aktualizované [ukázky GitHub](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
 
-Migrovali jsme stávající sadu SDK partnerského centra Microsoft z .NET Framework na platformu .NET Standard 2,0. Sada SDK bude kompatibilní se stávajícími aplikacemi, a to pomocí .NET Framework 4.6.1 a vyšších. Sada SDK bude podporovat .NET Core 2,0 a vyšší. Před převedením na existující aplikace ověřte [podporu implementace rozhraní .NET](/dotnet/standard/net-standard) .   
+migrovali jsme stávající sadu SDK partnerského centra Microsoft z .NET Framework na platformu .NET Standard 2,0. sada SDK bude kompatibilní se stávajícími aplikacemi, a to pomocí .NET Framework 4.6.1 a vyšších. Sada SDK bude podporovat .NET Core 2,0 a vyšší. Před převedením na existující aplikace ověřte [podporu implementace rozhraní .NET](/dotnet/standard/net-standard) .   
 
 
 ## <a name="version-1153"></a>1.15.3 verze
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.15.3) v 1.15.3 je teď obecně dostupný. K dispozici jsou také aktualizované rozhraní REST API a [ukázky GitHubu](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.15.3) v 1.15.3 je teď obecně dostupný. k dispozici jsou také aktualizovaná rozhraní REST api a [ukázky GitHub](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
 
 * Partnerská smlouva
   * Přidali jsme možnost nepřímých zprostředkovatelů [ověřit stav smluv o nepřímých prodejích u partnerů Microsoftu](verify-indirect-reseller-mpa-status.md).
