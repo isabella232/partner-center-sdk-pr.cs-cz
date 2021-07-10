@@ -1,34 +1,34 @@
 ---
 title: Ověření adresy
-description: Jak ověřit adresu pomocí rozhraní API pro ověření adresy.
+description: Jak ověřit adresu pomocí rozhraní API pro ověřování adres
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 14d45977f3af6e8bba1b7cb7f969aa7c5bb671da
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 2eeca91b0e5a507dac6df4ecf61a56aed2d2d921
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529881"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113572076"
 ---
-# <a name="validate-an-address"></a><span data-ttu-id="9d7d3-103">Ověření adresy</span><span class="sxs-lookup"><span data-stu-id="9d7d3-103">Validate an address</span></span>
+# <a name="validate-an-address"></a><span data-ttu-id="a1687-103">Ověření adresy</span><span class="sxs-lookup"><span data-stu-id="a1687-103">Validate an address</span></span>
 
-<span data-ttu-id="9d7d3-104">**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="9d7d3-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
+<span data-ttu-id="a1687-104">**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government</span><span class="sxs-lookup"><span data-stu-id="a1687-104">**Applies to**: Partner Center | Partner Center operated by 21Vianet | Partner Center for Microsoft Cloud Germany | Partner Center for Microsoft Cloud for US Government</span></span>
 
-<span data-ttu-id="9d7d3-105">Jak ověřit adresu pomocí rozhraní API pro ověření adresy.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-105">How to validate an address using the address validation API.</span></span>
+<span data-ttu-id="a1687-105">Jak ověřit adresu pomocí rozhraní API pro ověřování adres</span><span class="sxs-lookup"><span data-stu-id="a1687-105">How to validate an address using the address validation API.</span></span>
 
-<span data-ttu-id="9d7d3-106">Rozhraní API pro ověření adresy by se mělo používat jenom pro předběžné ověření aktualizací profilu zákazníka.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-106">The address validation API should only be used for pre-validation of customer profile updates.</span></span> <span data-ttu-id="9d7d3-107">Použijte ho s porozuměním, že pokud je země USA, Kanada, Čína nebo Mexiko, pole State se ověří podle seznamu platných stavů pro příslušnou zemi.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-107">Use it with the understanding that if the country is the United States, Canada, China, or Mexico, the state field is validated against a list of valid states for the respective country.</span></span> <span data-ttu-id="9d7d3-108">Ve všech ostatních zemích tento test neproběhne a rozhraní API kontroluje, zda je stav platný řetězec.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-108">In all other countries, this test does not occur, and the API only checks that the state is a valid string.</span></span>
+<span data-ttu-id="a1687-106">Rozhraní API pro ověřování adres by se mělo používat jenom pro předběžné ověření aktualizací profilů zákazníků.</span><span class="sxs-lookup"><span data-stu-id="a1687-106">The address validation API should only be used for pre-validation of customer profile updates.</span></span> <span data-ttu-id="a1687-107">Použijte ho s pochopením, že pokud je země USA, Kanada, Čína nebo Mexiko, pole státu se ověří na seznamu platných států pro příslušnou zemi.</span><span class="sxs-lookup"><span data-stu-id="a1687-107">Use it with the understanding that if the country is the United States, Canada, China, or Mexico, the state field is validated against a list of valid states for the respective country.</span></span> <span data-ttu-id="a1687-108">Ve všech ostatních zemích k tomuto testu nedochází a rozhraní API kontroluje pouze to, že stav je platný řetězec.</span><span class="sxs-lookup"><span data-stu-id="a1687-108">In all other countries, this test does not occur, and the API only checks that the state is a valid string.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="9d7d3-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="9d7d3-109">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="a1687-109">Požadavky</span><span class="sxs-lookup"><span data-stu-id="a1687-109">Prerequisites</span></span>
 
-<span data-ttu-id="9d7d3-110">Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md).</span><span class="sxs-lookup"><span data-stu-id="9d7d3-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="9d7d3-111">Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-111">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
+<span data-ttu-id="a1687-110">Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md)</span><span class="sxs-lookup"><span data-stu-id="a1687-110">Credentials as described in [Partner Center authentication](partner-center-authentication.md).</span></span> <span data-ttu-id="a1687-111">Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.</span><span class="sxs-lookup"><span data-stu-id="a1687-111">This scenario supports authentication with both standalone App and App+User credentials.</span></span>
 
-## <a name="c"></a><span data-ttu-id="9d7d3-112">C\#</span><span class="sxs-lookup"><span data-stu-id="9d7d3-112">C\#</span></span>
+## <a name="c"></a><span data-ttu-id="a1687-112">C\#</span><span class="sxs-lookup"><span data-stu-id="a1687-112">C\#</span></span>
 
-<span data-ttu-id="9d7d3-113">Chcete-li ověřit adresu, nejprve vytvořte instanci nového objektu **adresy** a naplňte ji na adresu, kterou chcete ověřit.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-113">To validate an address, first instantiate a new **Address** object and populate it with the address to validate.</span></span> <span data-ttu-id="9d7d3-114">Pak načtěte rozhraní k operacím **ověřování** z vlastnosti **IAggregatePartner. valids** a zavolejte metodu **IsAddressValid** s objektem adresy.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-114">Then, retrieve an interface to **Validations** operations from the **IAggregatePartner.Validations** property, and call the **IsAddressValid** method with the address object.</span></span>
+<span data-ttu-id="a1687-113">Pokud chcete ověřit adresu, nejprve vytvořte instanci nového objektu **Address** a naplňte ji adresou, která se má ověřit.</span><span class="sxs-lookup"><span data-stu-id="a1687-113">To validate an address, first instantiate a new **Address** object and populate it with the address to validate.</span></span> <span data-ttu-id="a1687-114">Pak z vlastnosti  **IAggregatePartner.Validations** načtěte rozhraní pro operace Ověření a zavolejte metodu **IsAddressValid** s objektem address.</span><span class="sxs-lookup"><span data-stu-id="a1687-114">Then, retrieve an interface to **Validations** operations from the **IAggregatePartner.Validations** property, and call the **IsAddressValid** method with the address object.</span></span>
 
 ```csharp
-// IAggregatePartner partnerOperations;
+IAggregatePartner partnerOperations;
 
 // Create an address to validate.
 Address address = new Address()
@@ -41,123 +41,118 @@ Address address = new Address()
 };
 
 // Validate the address.
-bool result = partnerOperations.Validations.IsAddressValid(address);
+AddressValidationResponse result = partnerOperations.Validations.IsAddressValid(address);
 
-// If the address is valid, the result should equal true.
-Console.WriteLine("Result: " + result.ToString());
+// If the request completes successfully, you can inspect the response object.
 
-// The following is an example that causes address validation to fail.
-try
+// See the status of the validation.
+Console.WriteLine($"Status: {addressValidationResult.Status}");
+
+// See the validation message returned.
+Console.WriteLine($"Validation Message Returned: {addressValidationResult.ValidationMessage ?? "No message returned."}");
+
+// See the original address submitted for validation.
+Console.WriteLine($"Original Address:\n{this.DisplayAddress(addressValidationResult.OriginalAddress)}");
+
+// See the suggested addresses returned by the API, if any exist.
+Console.WriteLine($"Suggested Addresses Returned: {addressValidationResult.SuggestedAddresses?.Count ?? "None."}");
+
+if (addressValidationResult.SuggestedAddresses != null && addressValidationResult.SuggestedAddresses.Any())
 {
-    // Change to an invalid postal code for this address.
-    address.PostalCode = "98007";
-
-    // Validate the address.
-    result = partnerOperations.Validations.IsAddressValid(address);
-
-    Console.WriteLine("ERROR: The code should have thrown an exception - BadRequest(400).");
+    addressValidationResult.SuggestedAddresses.ForEach(a => Console.WriteLine(this.DisplayAddress(a)));
 }
-catch (PartnerException exception)
+
+// Helper method to pretty-print an Address object.
+private string DisplayAddress(Address address)
 {
-    if (exception.ErrorCategory == PartnerErrorCategory.BadInput)
+    StringBuilder sb = new StringBuilder();
+
+    foreach (var property in address.GetType().GetProperties())
     {
-        Console.WriteLine(exception.ErrorCategory.ToString());
-        Console.WriteLine("Exception:");
-        Console.WriteLine("Message: {0}", exception.Message);
+        sb.AppendLine($"{property.Name}: {property.GetValue(address) ?? "None to Display."}");
     }
-    else
-    {
-        throw;
-    }
+
+    return sb.ToString();
 }
 ```
 
-## <a name="java"></a><span data-ttu-id="9d7d3-115">Java</span><span class="sxs-lookup"><span data-stu-id="9d7d3-115">Java</span></span>
+## <a name="rest-request"></a><span data-ttu-id="a1687-115">Požadavek REST</span><span class="sxs-lookup"><span data-stu-id="a1687-115">REST request</span></span>
 
-<span data-ttu-id="9d7d3-116">Chcete-li ověřit adresu, nejprve vytvořte instanci nového objektu **adresy** a naplňte ji na adresu, kterou chcete ověřit.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-116">To validate an address, first instantiate a new **Address** object and populate it with the address to validate.</span></span> <span data-ttu-id="9d7d3-117">Pak načtěte rozhraní k operacím **ověřování** z funkce **IAggregatePartner. getvalids** a zavolejte metodu **isAddressValid** s objektem adresy.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-117">Then, retrieve an interface to **Validations** operations from the **IAggregatePartner.getValidations** function, and call the **isAddressValid** method with the address object.</span></span>
+### <a name="request-syntax"></a><span data-ttu-id="a1687-116">Syntaxe požadavku</span><span class="sxs-lookup"><span data-stu-id="a1687-116">Request syntax</span></span>
 
-[!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
-
-```java
-// IAggregatePartner partnerOperations;
-
-// Create an address to validate.
-Address address = new Address();
-
-address.setAddressLine1("One Microsoft Way");
-address.setCity("Redmond");
-address.setState("WA");
-address.setCountry("US");
-address.setPostalCode("98052");
-
-try
-{
-    // Validate the address
-    Boolean validationResult = partnerOperations.getValidations().isAddressValid(address);
-
-    System.out.println(validationResult ? "The address is valid." : "Invalid address");
-}
-catch (Exception exception)
-{
-    System.out.println("Address is invalid");
-
-    if (! StringHelper.isNullOrWhiteSpace(exception.getMessage()))
-    {
-        System.out.println(exception.getMessage());
-    }
-}
-```
-
-## <a name="powershell"></a><span data-ttu-id="9d7d3-118">PowerShell</span><span class="sxs-lookup"><span data-stu-id="9d7d3-118">PowerShell</span></span>
-
-[!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
-
-<span data-ttu-id="9d7d3-119">Chcete-li ověřit adresu, spusťte [**test-PartnerAddress**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Test-PartnerAddress.md) s naplněnými parametry adresy.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-119">To validate an address, execute the [**Test-PartnerAddress**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Test-PartnerAddress.md) with the address parameters populated.</span></span>
-
-```powershell
-Test-PartnerAddress -AddressLine1 '700 Bellevue Way NE' -City 'Bellevue' -Country 'US' -PostalCode '98004' -State 'WA'
-```
-
-## <a name="rest-request"></a><span data-ttu-id="9d7d3-120">Žádost REST</span><span class="sxs-lookup"><span data-stu-id="9d7d3-120">REST request</span></span>
-
-### <a name="request-syntax"></a><span data-ttu-id="9d7d3-121">Syntaxe žádosti</span><span class="sxs-lookup"><span data-stu-id="9d7d3-121">Request syntax</span></span>
-
-| <span data-ttu-id="9d7d3-122">Metoda</span><span class="sxs-lookup"><span data-stu-id="9d7d3-122">Method</span></span>   | <span data-ttu-id="9d7d3-123">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="9d7d3-123">Request URI</span></span>                                                                 |
+| <span data-ttu-id="a1687-117">Metoda</span><span class="sxs-lookup"><span data-stu-id="a1687-117">Method</span></span>   | <span data-ttu-id="a1687-118">Identifikátor URI žádosti</span><span class="sxs-lookup"><span data-stu-id="a1687-118">Request URI</span></span>                                                                 |
 |----------|-----------------------------------------------------------------------------|
-| <span data-ttu-id="9d7d3-124">**SPUŠTĚNÍ**</span><span class="sxs-lookup"><span data-stu-id="9d7d3-124">**POST**</span></span> | <span data-ttu-id="9d7d3-125">[*{baseURL}*](partner-center-rest-urls.md)/v1/validations/Address HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="9d7d3-125">[*{baseURL}*](partner-center-rest-urls.md)/v1/validations/address HTTP/1.1</span></span> |
+| <span data-ttu-id="a1687-119">**Příspěvek**</span><span class="sxs-lookup"><span data-stu-id="a1687-119">**POST**</span></span> | <span data-ttu-id="a1687-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/validations/address HTTP/1.1</span><span class="sxs-lookup"><span data-stu-id="a1687-120">[*{baseURL}*](partner-center-rest-urls.md)/v1/validations/address HTTP/1.1</span></span> |
 
-### <a name="request-headers"></a><span data-ttu-id="9d7d3-126">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="9d7d3-126">Request headers</span></span>
+### <a name="request-headers"></a><span data-ttu-id="a1687-121">Hlavičky požadavku</span><span class="sxs-lookup"><span data-stu-id="a1687-121">Request headers</span></span>
 
-<span data-ttu-id="9d7d3-127">Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).</span><span class="sxs-lookup"><span data-stu-id="9d7d3-127">For more information, see [Partner Center REST headers](headers.md).</span></span>
+<span data-ttu-id="a1687-122">Další informace najdete v Partnerské centrum [REST.](headers.md)</span><span class="sxs-lookup"><span data-stu-id="a1687-122">For more information, see [Partner Center REST headers](headers.md).</span></span>
 
-### <a name="request-body"></a><span data-ttu-id="9d7d3-128">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="9d7d3-128">Request body</span></span>
+### <a name="request-body"></a><span data-ttu-id="a1687-123">Text požadavku</span><span class="sxs-lookup"><span data-stu-id="a1687-123">Request body</span></span>
 
-<span data-ttu-id="9d7d3-129">Tato tabulka popisuje požadované vlastnosti v textu žádosti.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-129">This table describes the required properties in the request body.</span></span>
+<span data-ttu-id="a1687-124">Tato tabulka popisuje požadované vlastnosti v textu požadavku.</span><span class="sxs-lookup"><span data-stu-id="a1687-124">This table describes the required properties in the request body.</span></span>
 
-| <span data-ttu-id="9d7d3-130">Název</span><span class="sxs-lookup"><span data-stu-id="9d7d3-130">Name</span></span>         | <span data-ttu-id="9d7d3-131">Typ</span><span class="sxs-lookup"><span data-stu-id="9d7d3-131">Type</span></span>   | <span data-ttu-id="9d7d3-132">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="9d7d3-132">Required</span></span> | <span data-ttu-id="9d7d3-133">Popis</span><span class="sxs-lookup"><span data-stu-id="9d7d3-133">Description</span></span>                                                |
+| <span data-ttu-id="a1687-125">Název</span><span class="sxs-lookup"><span data-stu-id="a1687-125">Name</span></span>         | <span data-ttu-id="a1687-126">Typ</span><span class="sxs-lookup"><span data-stu-id="a1687-126">Type</span></span>   | <span data-ttu-id="a1687-127">Vyžadováno</span><span class="sxs-lookup"><span data-stu-id="a1687-127">Required</span></span> | <span data-ttu-id="a1687-128">Popis</span><span class="sxs-lookup"><span data-stu-id="a1687-128">Description</span></span>                                                |
 |--------------|--------|----------|------------------------------------------------------------|
-| <span data-ttu-id="9d7d3-134">addressline1</span><span class="sxs-lookup"><span data-stu-id="9d7d3-134">addressline1</span></span> | <span data-ttu-id="9d7d3-135">řetězec</span><span class="sxs-lookup"><span data-stu-id="9d7d3-135">string</span></span> | <span data-ttu-id="9d7d3-136">Y</span><span class="sxs-lookup"><span data-stu-id="9d7d3-136">Y</span></span>        | <span data-ttu-id="9d7d3-137">První řádek adresy</span><span class="sxs-lookup"><span data-stu-id="9d7d3-137">The first line of the address.</span></span>                             |
-| <span data-ttu-id="9d7d3-138">addressline2</span><span class="sxs-lookup"><span data-stu-id="9d7d3-138">addressline2</span></span> | <span data-ttu-id="9d7d3-139">řetězec</span><span class="sxs-lookup"><span data-stu-id="9d7d3-139">string</span></span> | <span data-ttu-id="9d7d3-140">N</span><span class="sxs-lookup"><span data-stu-id="9d7d3-140">N</span></span>        | <span data-ttu-id="9d7d3-141">Druhý řádek adresy.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-141">The second line of the address.</span></span> <span data-ttu-id="9d7d3-142">Tato vlastnost je nepovinná.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-142">This property is optional.</span></span> |
-| <span data-ttu-id="9d7d3-143">city</span><span class="sxs-lookup"><span data-stu-id="9d7d3-143">city</span></span>         | <span data-ttu-id="9d7d3-144">řetězec</span><span class="sxs-lookup"><span data-stu-id="9d7d3-144">string</span></span> | <span data-ttu-id="9d7d3-145">Y</span><span class="sxs-lookup"><span data-stu-id="9d7d3-145">Y</span></span>        | <span data-ttu-id="9d7d3-146">Město.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-146">The city.</span></span>                                                  |
-| <span data-ttu-id="9d7d3-147">state</span><span class="sxs-lookup"><span data-stu-id="9d7d3-147">state</span></span>        | <span data-ttu-id="9d7d3-148">řetězec</span><span class="sxs-lookup"><span data-stu-id="9d7d3-148">string</span></span> | <span data-ttu-id="9d7d3-149">Y</span><span class="sxs-lookup"><span data-stu-id="9d7d3-149">Y</span></span>        | <span data-ttu-id="9d7d3-150">Stav</span><span class="sxs-lookup"><span data-stu-id="9d7d3-150">The state.</span></span>                                                 |
-| <span data-ttu-id="9d7d3-151">ovládacím</span><span class="sxs-lookup"><span data-stu-id="9d7d3-151">postalcode</span></span>   | <span data-ttu-id="9d7d3-152">řetězec</span><span class="sxs-lookup"><span data-stu-id="9d7d3-152">string</span></span> | <span data-ttu-id="9d7d3-153">Y</span><span class="sxs-lookup"><span data-stu-id="9d7d3-153">Y</span></span>        | <span data-ttu-id="9d7d3-154">Poštovní směrovací číslo.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-154">The postal code.</span></span>                                           |
-| <span data-ttu-id="9d7d3-155">country</span><span class="sxs-lookup"><span data-stu-id="9d7d3-155">country</span></span>      | <span data-ttu-id="9d7d3-156">řetězec</span><span class="sxs-lookup"><span data-stu-id="9d7d3-156">string</span></span> | <span data-ttu-id="9d7d3-157">Y</span><span class="sxs-lookup"><span data-stu-id="9d7d3-157">Y</span></span>        | <span data-ttu-id="9d7d3-158">Kód země ISO alfa-2 se dvěma znaky.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-158">The two-character ISO alpha-2 country code.</span></span>                |
+| <span data-ttu-id="a1687-129">addressline1</span><span class="sxs-lookup"><span data-stu-id="a1687-129">addressline1</span></span> | <span data-ttu-id="a1687-130">řetězec</span><span class="sxs-lookup"><span data-stu-id="a1687-130">string</span></span> | <span data-ttu-id="a1687-131">Y</span><span class="sxs-lookup"><span data-stu-id="a1687-131">Y</span></span>        | <span data-ttu-id="a1687-132">První řádek adresy.</span><span class="sxs-lookup"><span data-stu-id="a1687-132">The first line of the address.</span></span>                             |
+| <span data-ttu-id="a1687-133">addressline2</span><span class="sxs-lookup"><span data-stu-id="a1687-133">addressline2</span></span> | <span data-ttu-id="a1687-134">řetězec</span><span class="sxs-lookup"><span data-stu-id="a1687-134">string</span></span> | <span data-ttu-id="a1687-135">N</span><span class="sxs-lookup"><span data-stu-id="a1687-135">N</span></span>        | <span data-ttu-id="a1687-136">Druhý řádek adresy.</span><span class="sxs-lookup"><span data-stu-id="a1687-136">The second line of the address.</span></span> <span data-ttu-id="a1687-137">Tato vlastnost je nepovinná.</span><span class="sxs-lookup"><span data-stu-id="a1687-137">This property is optional.</span></span> |
+| <span data-ttu-id="a1687-138">city</span><span class="sxs-lookup"><span data-stu-id="a1687-138">city</span></span>         | <span data-ttu-id="a1687-139">řetězec</span><span class="sxs-lookup"><span data-stu-id="a1687-139">string</span></span> | <span data-ttu-id="a1687-140">Y</span><span class="sxs-lookup"><span data-stu-id="a1687-140">Y</span></span>        | <span data-ttu-id="a1687-141">Město.</span><span class="sxs-lookup"><span data-stu-id="a1687-141">The city.</span></span>                                                  |
+| <span data-ttu-id="a1687-142">state</span><span class="sxs-lookup"><span data-stu-id="a1687-142">state</span></span>        | <span data-ttu-id="a1687-143">řetězec</span><span class="sxs-lookup"><span data-stu-id="a1687-143">string</span></span> | <span data-ttu-id="a1687-144">Y</span><span class="sxs-lookup"><span data-stu-id="a1687-144">Y</span></span>        | <span data-ttu-id="a1687-145">Stav</span><span class="sxs-lookup"><span data-stu-id="a1687-145">The state.</span></span>                                                 |
+| <span data-ttu-id="a1687-146">Postalcode</span><span class="sxs-lookup"><span data-stu-id="a1687-146">postalcode</span></span>   | <span data-ttu-id="a1687-147">řetězec</span><span class="sxs-lookup"><span data-stu-id="a1687-147">string</span></span> | <span data-ttu-id="a1687-148">Y</span><span class="sxs-lookup"><span data-stu-id="a1687-148">Y</span></span>        | <span data-ttu-id="a1687-149">PSČ</span><span class="sxs-lookup"><span data-stu-id="a1687-149">The postal code.</span></span>                                           |
+| <span data-ttu-id="a1687-150">country</span><span class="sxs-lookup"><span data-stu-id="a1687-150">country</span></span>      | <span data-ttu-id="a1687-151">řetězec</span><span class="sxs-lookup"><span data-stu-id="a1687-151">string</span></span> | <span data-ttu-id="a1687-152">Y</span><span class="sxs-lookup"><span data-stu-id="a1687-152">Y</span></span>        | <span data-ttu-id="a1687-153">Dvoupísový kód země iso alpha-2.</span><span class="sxs-lookup"><span data-stu-id="a1687-153">The two-character ISO alpha-2 country code.</span></span>                |
 
-### <a name="request-example"></a><span data-ttu-id="9d7d3-159">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="9d7d3-159">Request example</span></span>
+### <a name="response-details"></a><span data-ttu-id="a1687-154">Podrobnosti odpovědi</span><span class="sxs-lookup"><span data-stu-id="a1687-154">Response details</span></span>
+
+<span data-ttu-id="a1687-155">Odpověď vrátí jednu z následujících stavových zpráv:</span><span class="sxs-lookup"><span data-stu-id="a1687-155">The response will return one of the following status messages:</span></span>
+
+| <span data-ttu-id="a1687-156">Status</span><span class="sxs-lookup"><span data-stu-id="a1687-156">Status</span></span>     | <span data-ttu-id="a1687-157">Popis</span><span class="sxs-lookup"><span data-stu-id="a1687-157">Description</span></span> |    <span data-ttu-id="a1687-158">Počet vrácených navrhovaných adres</span><span class="sxs-lookup"><span data-stu-id="a1687-158">Number of suggested addresses returned</span></span> |
+|-------|---------------|-------------------|
+|<span data-ttu-id="a1687-159">Ověřená expedice</span><span class="sxs-lookup"><span data-stu-id="a1687-159">Verified shippable</span></span> | <span data-ttu-id="a1687-160">Adresa je ověřená a je možné ji poslat na adresu .</span><span class="sxs-lookup"><span data-stu-id="a1687-160">Address is verified and can be shipped to.</span></span> | <span data-ttu-id="a1687-161">Jednoduché</span><span class="sxs-lookup"><span data-stu-id="a1687-161">Single</span></span> |
+|<span data-ttu-id="a1687-162">Ověřené</span><span class="sxs-lookup"><span data-stu-id="a1687-162">Verified</span></span> | <span data-ttu-id="a1687-163">Adresa je ověřená.</span><span class="sxs-lookup"><span data-stu-id="a1687-163">Address is verified.</span></span> | <span data-ttu-id="a1687-164">Jednoduché</span><span class="sxs-lookup"><span data-stu-id="a1687-164">Single</span></span> |
+|<span data-ttu-id="a1687-165">Vyžaduje se interakce</span><span class="sxs-lookup"><span data-stu-id="a1687-165">Interaction required</span></span> | <span data-ttu-id="a1687-166">Navrhovaná adresa se výrazně změnila a vyžaduje potvrzení uživatele.</span><span class="sxs-lookup"><span data-stu-id="a1687-166">Suggested address has been changed significantly and needs user confirmation.</span></span> | <span data-ttu-id="a1687-167">Jednoduché</span><span class="sxs-lookup"><span data-stu-id="a1687-167">Single</span></span> |
+|<span data-ttu-id="a1687-168">Částečná ulice</span><span class="sxs-lookup"><span data-stu-id="a1687-168">Street partial</span></span> | <span data-ttu-id="a1687-169">Ulice v adrese je částečná a potřebuje další informace.</span><span class="sxs-lookup"><span data-stu-id="a1687-169">The given street in the address is partial and needs more info.</span></span> | <span data-ttu-id="a1687-170">Více – maximálně tři</span><span class="sxs-lookup"><span data-stu-id="a1687-170">Multiple—maximum of three</span></span> |
+|<span data-ttu-id="a1687-171">Částečně místní</span><span class="sxs-lookup"><span data-stu-id="a1687-171">Premises partial</span></span> | <span data-ttu-id="a1687-172">Dané prostory (číslo budovy, číslo sady a další) jsou částečné a potřebují další informace.</span><span class="sxs-lookup"><span data-stu-id="a1687-172">The given premises (building number, suite number, and others) are partial and need more info.</span></span> | <span data-ttu-id="a1687-173">Více – maximálně tři</span><span class="sxs-lookup"><span data-stu-id="a1687-173">Multiple—maximum of three</span></span> |
+|<span data-ttu-id="a1687-174">Několik</span><span class="sxs-lookup"><span data-stu-id="a1687-174">Multiple</span></span> | <span data-ttu-id="a1687-175">V adrese je několik polí, která jsou částečná (potenciálně také částečná ulice a částečná část místně).</span><span class="sxs-lookup"><span data-stu-id="a1687-175">There are multiple fields that are partial in the address (potentially also including street partial and premises partial).</span></span> | <span data-ttu-id="a1687-176">Více – maximálně tři</span><span class="sxs-lookup"><span data-stu-id="a1687-176">Multiple—maximum of three</span></span> |
+|<span data-ttu-id="a1687-177">Žádná</span><span class="sxs-lookup"><span data-stu-id="a1687-177">None</span></span> | <span data-ttu-id="a1687-178">Adresa je nesprávná.</span><span class="sxs-lookup"><span data-stu-id="a1687-178">Address is incorrect.</span></span> | <span data-ttu-id="a1687-179">Žádná</span><span class="sxs-lookup"><span data-stu-id="a1687-179">None</span></span> |
+|<span data-ttu-id="a1687-180">Není ověřeno.</span><span class="sxs-lookup"><span data-stu-id="a1687-180">Not validated</span></span> | <span data-ttu-id="a1687-181">Adresu nebylo možné odeslat prostřednictvím procesu ověřování.</span><span class="sxs-lookup"><span data-stu-id="a1687-181">Address was not able to be sent through the validation process.</span></span> | <span data-ttu-id="a1687-182">Žádná</span><span class="sxs-lookup"><span data-stu-id="a1687-182">None</span></span> |
+
+### <a name="request-example"></a><span data-ttu-id="a1687-183">Příklad požadavku</span><span class="sxs-lookup"><span data-stu-id="a1687-183">Request example</span></span>
 
 ```http
+# "VerifiedShippable" Request Example
+
 POST https://api.partnercenter.microsoft.com/v1/validations/address HTTP/1.1
+Accept: application/json
 Content-Type: application/json
 Authorization: Bearer <token>
-Accept: application/json
-MS-RequestId: 0b30452a-8be2-4b8b-b25b-2d4850f4345f
-MS-CorrelationId: 8a853a1a-b0e6-4cb0-ae87-d6dd32ac3a0c
-X-Locale: en-US
+MS-CorrelationId: 29624f3c-90cb-4d34-a7e9-bd2de6d35218
+MS-RequestId: eb55c2b8-6f4b-4b44-9557-f76df624b8c0
 Host: api.partnercenter.microsoft.com
-Content-Length: 129
+Content-Length: 137
+X-Locale: en-US
 
 {
-    "AddressLine1": "One Microsoft Way",
+    "AddressLine1": "1 Microsoft Way",
+    "City": "Redmond",
+    "State": "WA",
+    "PostalCode": "98052",
+    "Country": "US"
+}
+
+# "StreetPartial" Request Example
+
+POST https://api.partnercenter.microsoft.com/v1/validations/address HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer <token>
+MS-CorrelationId: 2c95c9bc-fdfb-4c6a-84f4-57c9b0826b43
+MS-RequestId: ee6cf74c-3ab5-48d6-9269-4a4b75bd59dc
+Host: api.partnercenter.microsoft.com
+Content-Length: 135
+X-Locale: en-US
+
+{
+    "AddressLine1": "Microsoft Way",
     "City": "Redmond",
     "State": "WA",
     "PostalCode": "98052",
@@ -165,44 +160,73 @@ Content-Length: 129
 }
 ```
 
-## <a name="rest-response"></a><span data-ttu-id="9d7d3-160">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="9d7d3-160">REST response</span></span>
+## <a name="rest-response"></a><span data-ttu-id="a1687-184">Odpověď REST</span><span class="sxs-lookup"><span data-stu-id="a1687-184">REST response</span></span>
 
-<span data-ttu-id="9d7d3-161">V případě úspěchu vrátí metoda stavový kód 200, jak je znázorněno v příkladu úspěšného ověření odpovědi níže.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-161">If successful, the method returns a status code 200 as demonstrated in the Response - validation succeeded example shown below.</span></span>
+<span data-ttu-id="a1687-185">V případě úspěchu vrátí metoda v textu odpovědi objekt **AddressValidationResponse** se stavový **kódem HTTP 200.**</span><span class="sxs-lookup"><span data-stu-id="a1687-185">If successful, the method returns an **AddressValidationResponse** object in the response body, with a **HTTP 200** status code.</span></span> <span data-ttu-id="a1687-186">Příklad najdete níže.</span><span class="sxs-lookup"><span data-stu-id="a1687-186">An example is shown below.</span></span>
 
-<span data-ttu-id="9d7d3-162">Pokud požadavek neproběhne úspěšně, vrátí metoda stavový kód 400, jak je znázorněno v následujícím příkladu, který se nezdařil při ověřování odpovědi.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-162">If the request fails, the method returns a status code 400 as demonstrated in the Response - validation failed example shown below.</span></span> <span data-ttu-id="9d7d3-163">Tělo odpovědi obsahuje datovou část JSON s dalšími informacemi o chybě.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-163">The response body contains a JSON payload with additional information about the error.</span></span>
+### <a name="response-success-and-error-codes"></a><span data-ttu-id="a1687-187">Kódy chyb a úspěšné odpovědi</span><span class="sxs-lookup"><span data-stu-id="a1687-187">Response success and error codes</span></span>
 
-### <a name="response-success-and-error-codes"></a><span data-ttu-id="9d7d3-164">Úspěšné odpovědi a chybové kódy</span><span class="sxs-lookup"><span data-stu-id="9d7d3-164">Response success and error codes</span></span>
+<span data-ttu-id="a1687-188">Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="a1687-188">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="a1687-189">K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě.</span><span class="sxs-lookup"><span data-stu-id="a1687-189">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="a1687-190">Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)</span><span class="sxs-lookup"><span data-stu-id="a1687-190">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
 
-<span data-ttu-id="9d7d3-165">Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-165">Each response comes with an HTTP status code that indicates success or failure and additional debugging information.</span></span> <span data-ttu-id="9d7d3-166">Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů.</span><span class="sxs-lookup"><span data-stu-id="9d7d3-166">Use a network trace tool to read this code, error type, and additional parameters.</span></span> <span data-ttu-id="9d7d3-167">Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).</span><span class="sxs-lookup"><span data-stu-id="9d7d3-167">For the full list, see [Partner Center REST error codes](error-codes.md).</span></span>
-
-### <a name="response---validation-succeeded-example"></a><span data-ttu-id="9d7d3-168">Odpověď – Příklad úspěšného ověření</span><span class="sxs-lookup"><span data-stu-id="9d7d3-168">Response - validation succeeded example</span></span>
+### <a name="response-example"></a><span data-ttu-id="a1687-191">Příklad odpovědi</span><span class="sxs-lookup"><span data-stu-id="a1687-191">Response example</span></span>
 
 ```http
+# "VerifiedShippable" Response Example
+
 HTTP/1.1 200 OK
-Content-Length: 0
-MS-CorrelationId: 8a853a1a-b0e6-4cb0-ae87-d6dd32ac3a0c
-MS-RequestId: 0b30452a-8be2-4b8b-b25b-2d4850f4345f
-MS-CV: IqhjoWVyq0Kl81dO.0
-MS-ServerId: 030011719
-Date: Mon, 13 Mar 2017 23:56:12 GMT
-```
-
-### <a name="response---validation-failed-example"></a><span data-ttu-id="9d7d3-169">Odpověď – příklad neúspěšného ověření</span><span class="sxs-lookup"><span data-stu-id="9d7d3-169">Response - validation failed example</span></span>
-
-```http
-HTTP/1.1 400 Bad Request
-Content-Length: 418
+Date: Mon, 17 May 2021 23:19:19 GMT
 Content-Type: application/json; charset=utf-8
-MS-CorrelationId: 8a853a1a-b0e6-4cb0-ae87-d6dd32ac3a0c
-MS-RequestId: 0b30452a-8be2-4b8b-b25b-2d4850f4345f
-MS-CV: pdlItMyvtkmGHDWt.0
-MS-ServerId: 101112012
-Date: Tue, 14 Mar 2017 01:57:55 GMT
-
+MS-CorrelationId: 29624f3c-90cb-4d34-a7e9-bd2de6d35218
+MS-RequestId: eb55c2b8-6f4b-4b44-9557-f76df624b8c0
+X-Locale: en-US
+ 
 {
-    "code": 2007,
-    "description": "{\"code\":\"60071\",\"reason\":\"ZipCityInvalid - Details: Field - &#39;City&#39; is corrected from OldValue: &#39;Redmond&#39; to NewValue: &#39;BELLEVUE&#39;.\",\"corrected_address\":{\"country\":\"US\",\"region\":\"WA\",\"city\":\"BELLEVUE\",\"address_line1\":\"One Microsoft Way\",\"postal_code\":\"98007\"},\"object_type\":\"AddressValidation\",\"resource_status\":\"Active\"}",
-    "data": [],
-    "source": "PartnerFD"
+    "originalAddress": {
+        "country": "US",
+        "city": "Redmond",
+        "state": "WA",
+        "addressLine1": "1 Microsoft Way",
+        "postalCode": "98052"
+    },
+    "suggestedAddresses": [
+        {
+            "country": "US",
+            "city": "Redmond",
+            "state": "WA",
+            "addressLine1": "1 Microsoft Way",
+            "postalCode": "98052-8300"
+        }
+    ],
+    "status": "VerifiedShippable"
+}
+
+# "StreetPartial" Response Example
+
+HTTP/1.1 200 OK
+Date: Mon, 17 May 2021 23:34:08 GMT
+Content-Type: application/json; charset=utf-8
+MS-CorrelationId: 2c95c9bc-fdfb-4c6a-84f4-57c9b0826b43
+MS-RequestId: ee6cf74c-3ab5-48d6-9269-4a4b75bd59dc
+X-Locale: en-US
+ 
+{
+    "originalAddress": {
+        "country": "US",
+        "city": "Redmond",
+        "state": "WA",
+        "addressLine1": "Microsoft Way",
+        "postalCode": "98052"
+    },
+    "suggestedAddresses": [
+        {
+            "country": "US",
+            "city": "Redmond",
+            "state": "WA",
+            "addressLine1": "1 Microsoft Way",
+            "postalCode": "98052-6399"
+        }
+    ],
+    "status": "StreetPartial",
+    "validationMessage": "Address field invalid for property: 'Region', 'PostalCode', 'City'"
 }
 ```

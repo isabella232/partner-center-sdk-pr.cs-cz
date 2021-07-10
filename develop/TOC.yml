@@ -247,8 +247,6 @@
           items:
             - name: Použití asynchronních rozhraní API
               href: get-customer-qualification-asynchronous.md
-            - name: Použití synchronních rozhraní API
-              href: get-customer-qualification-synchronous.md
         - name: Získání všech objednávek zákazníka
           href: get-all-of-a-customer-s-orders.md
         - name: Získání předplatných zákazníka
@@ -295,8 +293,6 @@
           items:
             - name: Použití asynchronních rozhraní API
               href: update-customer-qualification-asynchronous.md
-            - name: Použití synchronních rozhraní API
-              href: update-customer-qualification-synchronous.md
         - name: Aktualizace přezdívky pro předplatné
           href: update-the-nickname-for-a-subscription.md
         - name: Odvolání převodu pro zákazníka
@@ -427,19 +423,19 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox pro integraci
   items:
-    - name: Možnosti sandboxu pro vztah prodejce
+    - name: Možnosti izolovaného prostoru pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
-    - name: Možnosti nepřímého poskytovatele CSP v sandboxu
+    - name: Možnosti nepřímých poskytovatelů CSP v izolovaném prostoru
       href: indirect-provider-sandbox-capabilities.md
     - name: Zrušení objednávky ze sandboxu pro integraci
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivovace předplatného sandboxu
       href: activate-sandbox-subscription-azure-marketplace-products.md
-    - name: Vytvoření nepřímého prodejce v Sandboxu
+    - name: Vytvoření nepřímého prodejce v izolovaném prostoru
       href: create-indirect-reseller-in-sandbox.md
-    - name: Odstranění nepřímého prodejce v Sandboxu
+    - name: Odstranit nepřímý prodejce v izolovaném prostoru
       href: delete-indirect-reseller-in-sandbox.md
 - name: Reference
   href: /partner/develop/referrals
@@ -472,7 +468,7 @@
       href: get-api-request-details.md
 - name: Referenční informace k rozhraní REST API pro Partnerské centrum
   items:
-    - name: Partnerské centrum REST API úvod
+    - name: Úvodní REST API partnerského centra
       href: partner-center-rest-api-reference.md
     - name: Protokol změn rozhraní REST API pro Partnerské centrum
       href: api-change-log.md
