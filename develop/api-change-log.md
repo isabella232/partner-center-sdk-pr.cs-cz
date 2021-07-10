@@ -1,43 +1,43 @@
 ---
 title: Protokol změn rozhraní REST API pro Partnerské centrum
-description: Tato stránka obsahuje seznam změn v rozhraních REST API partnerského centra.
+description: Tato stránka obsahuje seznam změn v rozhraních PARTNERSKÉ CENTRUM REST API.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.topic: reference
 ms.date: 12/15/2020
-ms.openlocfilehash: b2c2cac36a8bd1bec7aa5bf6e5d1aa73b4779535
-ms.sourcegitcommit: 717e483a6eec23607b4e31ddfaa3e2691f3043e6
+ms.openlocfilehash: d4f7f034a36a26b6219086ca952b189f7a313ef7
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104711844"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113571991"
 ---
-# <a name="december-2020-changes-to-partner-center-rest-apis"></a>Z prosince 2020 změny rozhraní REST API pro partnerský Center
+# <a name="december-2020-changes-to-partner-center-rest-apis"></a>Změny rozhraní REST API z prosince 2020 Partnerské centrum 2020
 
-Tady najdete změny rozhraní REST API pro partnerské Centrum.
+Změny v rozhraních REST API Partnerské centrum tady.
 
-## <a name="enhancements-to-education-pricing-eligibility-apis"></a>Vylepšení rozhraní API pro nárok na ceny pro vzdělávání
+## <a name="enhancements-to-education-pricing-eligibility-apis"></a>Vylepšení cen pro nárok na rozhraní API pro vzdělávací instituce
 
 
 
 ### <a name="what-has-changed"></a>Co se změnilo?
 
-V současné době má rozhraní API partnerského centra získat a dát kvalifikaci k ověření nároku na vzdělávání zákazníků. Rozhraní API pro získání kvalifikace nebude nijak nijak měnit. Přidali jsme ale návratový případ do rozhraní API kvalifikace PUT.
+V současné době Partnerské centrum API získalo kvalifikaci GET a PUT pro ověření způsobilosti zákazníků v oblasti vzdělávání. Rozhraní GET Qualification API se nezmění. Do rozhraní PUT Qualification API jsme ale přidali případ vrácení.
 
-- ZÍSKAT změny. [Aktuální článek o rozhraní API](./get-customer-qualification-synchronous.md)
-- Přidá se případ vrácení vložení. [Aktuální článek o rozhraní API](./update-customer-qualification-synchronous.md)
+- GET – nezmění se.
+- PUT – přidá se případ vrácení.
 
-Tato rozhraní API budou vyřazena na konci února 2021, která budou nahrazena novými rozhraními API, jak je popsáno níže.
+Tato rozhraní API se na konci února 2021 vyřazena, aby byla nahrazena novými rozhraními API, jak je popsáno níže.
 
 ### <a name="scenarios-impacted"></a>Ovlivněné scénáře:
 
-Nárok zákazníků na ceny pro vzdělávání na vybraných SKU
+Nárok zákazníka na ceny za vzdělávání pro vybrané skladové položky
 
-### <a name="detail-descriptions"></a>Popisy podrobností
+### <a name="detail-descriptions"></a>Podrobné popisy
 
-Budou zavedena dvě nová rozhraní API GET a POST. Nová rozhraní API budou používat **kvalifikaci**, nikoli **kvalifikaci**. Rozhraní API budou k dispozici pro testování v FY21 Q2.
+Budou zavedena dvě nová rozhraní API pro kvalifikace GET a POST. Nová rozhraní API budou používat **kvalifikace,** nikoli **kvalifikace**. Rozhraní API budou k dispozici pro testování ve FY21 Q2.
 
-#### <a name="get-qualifications"></a>ZÍSKAT kvalifikaci
+#### <a name="get-qualifications"></a>GET – kvalifikace
 
 ```http
 GET {customer_id}/qualifications
@@ -56,18 +56,18 @@ GET {customer_id}/qualifications
 
 #### <a name="response-fields"></a>Pole odpovědi: 
 
-- Hodnoty VettingStatus: schváleno, zamítnuto, inrevize atd.
+- Hodnoty VettingStatus: Approved, Denied, InReview atd.
 
-- VettingReason hodnoty:
-   - Nejedná se o zákazníka vzdělávání.
-   - Už není zákazník pro vzdělávání.
-   - Nejedná se o zákazníka vzdělávání – po kontrole
-   - Omezené na zákazníka vzdělávání
-   - Nejedná se o akademickou doménu.
-   - Neoprávněná knihovna
-   - Nejedná se o opravňující Museum
+- Hodnoty VettingReason:
+   - Není zákazníkem v oblasti vzdělávání
+   - Už není zákazníkem v oblasti vzdělávání
+   - Není zákazníkem v oblasti vzdělávání – po dokončení revize
+   - Omezená možnost být zákazníkem v oblasti vzdělávání
+   - Není to academic domain
+   - Není oprávněná knihovna
+   - Není oprávněným kachlem
  
-#### <a name="post-qualifications"></a>Vystavení kvalifikace
+#### <a name="post-qualifications"></a>Kvalifikace POST
 
 ```http
 POST {customer_id}/qualifications

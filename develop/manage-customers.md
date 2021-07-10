@@ -4,12 +4,12 @@ description: tato část popisuje způsoby, kterými Cloud Solution Provider par
 ms.date: 02/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 00c0e51dfd6970bd28db2ce88e6b9be15175a76c
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9f9b8629406a8d66c8ea820205abf73a2fb0cc02
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548205"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113571974"
 ---
 # <a name="manage-customers"></a>Správa zákazníků
 
@@ -48,8 +48,8 @@ tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžo
 - [Získání stavu přímého podepsání (přímého přijetí) pro Smlouvu se zákazníkem Microsoftu](get-direct-sign-status-of-customer-agreement.md)
 - [Potvrzení přijetí Smlouvy se zákazníkem Microsoftu ze strany zákazníka](confirm-customer-consent-customer-agreement.md)
 - [Získání ověřovacích kódů partnera](get-a-partner-s-validation-codes.md)
-- [Získání kvalifikace zákazníka](./get-customer-qualification-synchronous.md)
-- [Aktualizace kvalifikace zákazníka](./update-customer-qualification-synchronous.md)
+- [Získání kvalifikace zákazníka](./get-customer-qualification-asynchronous.md)
+- [Aktualizace kvalifikace zákazníka](./update-customer-qualification-asynchronous.md)
 
 ## <a name="manage-user-accounts-and-assign-licenses"></a>Správa uživatelských účtů a přiřazování licencí
 

@@ -5,12 +5,12 @@ ms.date: 03/23/2021
 ms.service: partner-dashboard
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: 7606eeaac4df158ec0fad6ffd4e565bb250f448e
-ms.sourcegitcommit: bbdb5f7c9ddd42c2fc4eaadbb67d61aeeae805ca
+ms.openlocfilehash: d7dd3593894ce91ddc7b96d604b80153d41d3a67
+ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105030602"
+ms.lasthandoff: 07/09/2021
+ms.locfileid: "113572093"
 ---
 # <a name="update-a-customers-qualifications-asynchronously"></a>Asynchronní aktualizace kvalifikací zákazníka
 
@@ -29,11 +29,12 @@ Partner může provést asynchronní aktualizaci kvalifikací zákazníka, pokud
 Chcete-li vytvořit kvalifikaci zákazníka pro "vzdělávání", nejprve vytvořte objekt reprezentující typ kvalifikace. Pak zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak pomocí vlastnosti [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Nakonec zavolejte `CreateQualifications()` nebo `CreateQualificationsAsync()` s typem kvalifikace Object jako vstupní parametr.
 
 ``` csharp
-var qualificationType = { Qualification = "education" };
+var qualificationToCreate = "education";    // can also be "StateOwnedEntity" or "GovernmentCommunityCloud". See GCC example below.
+var qualificationType = { Qualification = qualificationToCreate };
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType);
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: **Třída** SdkSamples: CreateCustomerQualification. cs
+**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project**: **třída** SdkSamples: CreateCustomerQualification. cs
 
 Pokud chcete aktualizovat kvalifikaci zákazníka tak, aby se **GovernmentCommunityCloud** na stávajícího zákazníkovi bez kvalifikace, partner taky musí zahrnovat [**ValidationCode**](utility-resources.md#validationcode)zákazníka. Nejprve vytvořte objekt reprezentující typ kvalifikace. Pak zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak pomocí vlastnosti [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Nakonec volejte `CreateQualifications()` nebo `CreateQualificationsAsync()` s objektem typu kvalifikace a ověřovacím kódem jako vstupní parametry.
 
@@ -43,7 +44,7 @@ var qualificationType = { Qualification = "GovernmentCommunityCloud" };
 var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType, gccValidation);
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Projekt**: **Třída** SdkSamples: CreateCustomerQualificationWithGCC. cs
+**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project**: **třída** SdkSamples: CreateCustomerQualificationWithGCC. cs
 
 ## <a name="rest-request"></a>Žádost REST
 
@@ -60,7 +61,7 @@ K aktualizaci kvalifikace použijte následující parametr dotazu.
 | Název                   | Typ | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Customer-tenant-ID** | Identifikátor GUID | Yes      | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
-| **validationCode**     | int  | No       | Je potřeba jenom pro cloudovou komunitu státní správy.                                                                                                            |
+| **validationCode**     | int  | No       | Je potřeba jenom pro Government Community Cloud.                                                                                                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
