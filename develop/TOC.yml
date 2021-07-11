@@ -406,6 +406,8 @@
           href: update-a-cart.md
         - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
           href: update-autorenew-for-an-azure-marketplace-subscription.md
+    - name: Správa výplat
+      href: manage-payouts.md
     - name: Poskytování podpory
       href: provide-support.md
       items:
