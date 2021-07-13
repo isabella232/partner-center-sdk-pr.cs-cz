@@ -1,31 +1,31 @@
 ---
 title: Ověření adresy
-description: Jak ověřit adresu pomocí rozhraní API pro ověřování adres
-ms.date: 09/17/2019
+description: Jak ověřit adresu pomocí rozhraní API pro ověření adresy.
+ms.date: 05/17/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2eeca91b0e5a507dac6df4ecf61a56aed2d2d921
-ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
+ms.openlocfilehash: 30f5cd526ab038dce400e79822d89b8086ba3799
+ms.sourcegitcommit: 41bf9dca55f4c96d382b327a75b2d2418edfc9bc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113572076"
+ms.lasthandoff: 07/13/2021
+ms.locfileid: "113655621"
 ---
 # <a name="validate-an-address"></a>Ověření adresy
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Jak ověřit adresu pomocí rozhraní API pro ověřování adres
+Jak ověřit adresu pomocí rozhraní API pro ověření adresy.
 
-Rozhraní API pro ověřování adres by se mělo používat jenom pro předběžné ověření aktualizací profilů zákazníků. Použijte ho s pochopením, že pokud je země USA, Kanada, Čína nebo Mexiko, pole státu se ověří na seznamu platných států pro příslušnou zemi. Ve všech ostatních zemích k tomuto testu nedochází a rozhraní API kontroluje pouze to, že stav je platný řetězec.
+Rozhraní API pro ověření adresy by se mělo používat jenom pro předběžné ověření aktualizací profilu zákazníka. Použijte ho s porozuměním, že pokud je země USA, Kanada, Čína nebo Mexiko, pole State se ověří podle seznamu platných stavů pro příslušnou zemi. Ve všech ostatních zemích tento test neproběhne a rozhraní API kontroluje, zda je stav platný řetězec.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete ověřit adresu, nejprve vytvořte instanci nového objektu **Address** a naplňte ji adresou, která se má ověřit. Pak z vlastnosti  **IAggregatePartner.Validations** načtěte rozhraní pro operace Ověření a zavolejte metodu **IsAddressValid** s objektem address.
+Chcete-li ověřit adresu, nejprve vytvořte instanci nového objektu **adresy** a naplňte ji na adresu, kterou chcete ověřit. Pak načtěte rozhraní k operacím **ověřování** z vlastnosti **IAggregatePartner. valids** a zavolejte metodu **IsAddressValid** s objektem adresy.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -76,30 +76,30 @@ private string DisplayAddress(Address address)
 }
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda   | Identifikátor URI žádosti                                                                 |
 |----------|-----------------------------------------------------------------------------|
-| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/validations/address HTTP/1.1 |
+| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/validations/Address HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje požadované vlastnosti v textu požadavku.
+Tato tabulka popisuje požadované vlastnosti v textu žádosti.
 
 | Název         | Typ   | Vyžadováno | Popis                                                |
 |--------------|--------|----------|------------------------------------------------------------|
-| addressline1 | řetězec | Y        | První řádek adresy.                             |
+| addressline1 | řetězec | Y        | První řádek adresy                             |
 | addressline2 | řetězec | N        | Druhý řádek adresy. Tato vlastnost je nepovinná. |
 | city         | řetězec | Y        | Město.                                                  |
 | state        | řetězec | Y        | Stav                                                 |
-| Postalcode   | řetězec | Y        | PSČ                                           |
-| country      | řetězec | Y        | Dvoupísový kód země iso alpha-2.                |
+| ovládacím   | řetězec | Y        | Poštovní směrovací číslo.                                           |
+| country      | řetězec | Y        | Kód země ISO alfa-2 se dvěma znaky.                |
 
 ### <a name="response-details"></a>Podrobnosti odpovědi
 
@@ -107,14 +107,14 @@ Odpověď vrátí jednu z následujících stavových zpráv:
 
 | Status     | Popis |    Počet vrácených navrhovaných adres |
 |-------|---------------|-------------------|
-|Ověřená expedice | Adresa je ověřená a je možné ji poslat na adresu . | Jednoduché |
-|Ověřené | Adresa je ověřená. | Jednoduché |
-|Vyžaduje se interakce | Navrhovaná adresa se výrazně změnila a vyžaduje potvrzení uživatele. | Jednoduché |
-|Částečná ulice | Ulice v adrese je částečná a potřebuje další informace. | Více – maximálně tři |
-|Částečně místní | Dané prostory (číslo budovy, číslo sady a další) jsou částečné a potřebují další informace. | Více – maximálně tři |
-|Několik | V adrese je několik polí, která jsou částečná (potenciálně také částečná ulice a částečná část místně). | Více – maximálně tři |
+|Ověřené pro přepravce | Adresa je ověřena a může být expedována. | Jednoduché |
+|Ověřují | Adresa je ověřena. | Jednoduché |
+|Je vyžadována interakce | Navrhovaná adresa se významně změnila a potřebuje potvrzení uživatele. | Jednoduché |
+|Částečně ulice | Daná ulice v adrese je částečně a potřebuje další informace. | Více – maximálně tři |
+|Částečně místní | Dané prostory (stavební číslo, číslo sady a další) jsou částečné a vyžadují další informace. | Více – maximálně tři |
+|Několik | Adresa obsahuje několik polí, která jsou v této adrese částečně (případně i částečně a částečně v ulici). | Více – maximálně tři |
 |Žádná | Adresa je nesprávná. | Žádná |
-|Není ověřeno. | Adresu nebylo možné odeslat prostřednictvím procesu ověřování. | Žádná |
+|Není ověřeno. | Adresu nelze odeslat prostřednictvím procesu ověřování. | Žádná |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -162,11 +162,11 @@ X-Locale: en-US
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí metoda v textu odpovědi objekt **AddressValidationResponse** se stavový **kódem HTTP 200.** Příklad najdete níže.
+V případě úspěchu metoda vrátí objekt **AddressValidationResponse** v těle odpovědi se stavovým kódem **http 200** . Příklad najdete níže.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 
