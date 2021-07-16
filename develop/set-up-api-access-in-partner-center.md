@@ -4,12 +4,12 @@ description: Nastavte účty pro vývoj proti SDK pro Partnerské centrum a test
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2c564baa9b626ff6ce21f9bcc517902d7cf99244
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: db7d9bba34abadc907910c68c4a5583ed1f530f4
+ms.sourcegitcommit: de1e68545d37d7fa1862788f7fa8c84a9c4f2795
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547423"
+ms.lasthandoff: 07/16/2021
+ms.locfileid: "114282102"
 ---
 # <a name="set-up-api-access-in-partner-center"></a>Nastavení přístupu k rozhraní API v Partnerském centru
 
@@ -48,7 +48,7 @@ Tato část popisuje, jak nastavit primární partnerský účet a účet sandbo
 
 1. Přihlaste se k řídicímu panelu pro partnery pomocí účtu globálního správce (primárního partnerského účtu).
 
-2. V nabídce **Nastavení** (ikona ozubeného kola) zvolte **Nastavení partnera**.
+2. V nabídce **Nastavení** (ikona ozubeného kola) zvolte **Nastavení účtu.**
 
 3. Zvolte **kartu Sandbox integrace.**
 
@@ -69,7 +69,7 @@ Po nastavení účtu musíte povolit přístup k rozhraní API, a teprve pak bud
 
 1. Přihlaste se k řídicímu panelu pro partnery pomocí účtu globálního správce.
 
-2. V nabídce **Nastavení** (ikona ozubeného kola) vyberte **Nastavení partnera**.
+2. V nabídce **Nastavení** (ikona ozubeného kola) vyberte **Nastavení účtu.**
 
 3. Na stránce **Nastavení účtu** zvolte **Správa aplikací.**
 
@@ -87,7 +87,7 @@ V sandboxu pro integraci můžete psát kód a testovat kód. K nastavení ově�
 
 | Název položky | Umístění položky |
 | --------- | ------------- |
-| ID aplikace / ID klienta | V nabídce **Nastavení** (ikona ozubeného kola) vyberte **Nastavení partnera**. Na stránce **Nastavení účtu** vyberte **Správa aplikací.** ID aplikace nebo ID klienta je uvedené jako **ID registrované aplikace.** |
+| ID aplikace / ID klienta | V nabídce **Nastavení** (ikona ozubeného kola) vyberte **Nastavení účtu.** Na stránce **Nastavení účtu** vyberte **Správa aplikací.** ID aplikace nebo ID klienta je uvedené jako **ID registrované aplikace.** |
 | Klíč | Pokud jste vytvořili webovou aplikaci v části [Povolení přístupu k rozhraní API,](#enable-api-access)jedná se o klíč, který jste si uložili v kroku 5. |
 | Doména | Doména pro sandbox integrace. |
 

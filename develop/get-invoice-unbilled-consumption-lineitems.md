@@ -4,12 +4,12 @@ description: Pomocí rozhraní API pro fakturaci můžete získat kolekci nefakt
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1b7dba3333aaec8df73f0e8147b0bbbc78b9b184
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: f7c74bedfd6412fc5954ed2ddc1388936e418fa3
+ms.sourcegitcommit: 722992eea6f8ea366dc088e5dd1ee63c17d56f61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446142"
+ms.lasthandoff: 07/15/2021
+ms.locfileid: "114224764"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Získání nefakturovaných řádkových položek komerční spotřeby na faktuře
 
@@ -23,8 +23,6 @@ Následující metody můžete použít k programovému získání kolekce nefak
 ## <a name="prerequisites"></a>Požadavky
 
 - Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
-
-- Identifikátor faktury. Tím se identifikuje faktura, pro kterou se mají načíst řádkové položky.
 
 ## <a name="c"></a>C\#
 
@@ -336,10 +334,10 @@ Následující podrobnosti se vztahují k tomuto příkladu:
 
 - **Poskytovatel:** **OneTime**
 - **InvoiceLineItemType:** **UsageLineItems**
-- **Období**: **předchozí**
-- **SeekOperation**: **Další**
+- **Period**: **Previous**
+- **SeekOperation:** **Next**
 
-#### <a name="request-example-2"></a>Příklad žádosti 2
+#### <a name="request-example-2"></a>Příklad požadavku 2
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/unbilled/lineitems?provider=onetime&invoiceLineItemType=usagelineitems&currencyCode=usd&period=previous&size=2000&seekoperation=next HTTP/1.1
