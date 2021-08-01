@@ -4,12 +4,12 @@ description: Když si zákazník chce koupit předplatné ze seznamu nabídek, z
 ms.date: 08/26/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 08085dde1b43f20b6f6bf707120dd87c48816aba
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ebe6e628d5bb3b66186d5c4f428f69e46415892b
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974144"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009135"
 ---
 # <a name="cart-resources"></a>Prostředky košíku
 
@@ -50,6 +50,7 @@ Představuje jednu položku obsaženou v košíku.
 | addonItems           | Seznam objektů **CartLineItem** | Kolekce položek řádků košíku pro Doplňky Tyto položky se zakoupí do základního předplatného, které je výsledkem nákupu položky řádku kořenového košíku. |
 | error                | Objekt                           | Používá se po vytvoření košíku, pokud došlo k chybě.                                                                                                    |
 | renewsTo             | Pole objektů                 | Pole prostředků [RenewsTo](#renewsto)                                                                            |
+| AttestationAccepted             | bool                 | Označuje smlouvu o nabídkách nebo podmínkách SKU. Vyžaduje se jenom pro nabídky nebo skladové položky, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu true.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 
@@ -69,8 +70,29 @@ Představuje chybu, která nastane po vytvoření košíku.
 
 | Vlastnost         | Typ                                   | Description                                                                                   |
 |------------------|----------------------------------------|-----------------------------------------------------------------------------------------------|
-| errorCode        | [Kódy chyb partnerského centra](error-codes.md) | Typ chyby košíku                                                                       |
+| errorCode        | [CareErrorCode](#carterrorcode) | Typ chyby košíku                                                                       |
 | errorDescription | řetězec                                 | Popis chyby včetně všech poznámek o podporovaných hodnotách, výchozích hodnotách nebo omezeních. |
+
+
+## <a name="carterrorcode"></a>CartErrorCode
+
+Typy chyb košíku.
+
+| Name                             | ErrorCode   | Description
+|----------------------------------|-------------|-----------------------------------------------------------------------------------------------|
+| CurrencyIsNotSupported           | 10000   | Měna není pro daný trh podporovaná.  |
+| CatalogItemIdIsNotValid          | 10001   | ID položky katalogu je neplatné.  |
+| QuotaNotAvailable                | 10002   | Není k dispozici dostatečná kvóta.  |
+| InventoryNotAvailable            | 10003   | Inventář není pro vybranou nabídku k dispozici.  |
+| ParticipantsIsNotSupportedForPartner  | 10004   | Nastavení účastníků není pro partnera podporováno.  |
+| UnableToProcessCartLineItem      | 10006   | Nelze zpracovat položku řádku košíku.  |
+| SubscriptionIsNotValid           | 10007   | Předplatné je neplatné.  |
+| SubscriptionIsNotEnabledForRI    | 10008   | U předplatného není povolený nákup na rezervované instance.  |
+| SandboxLimitExceeded             | 10009   | Překročil se limit izolovaného prostoru (sandbox).  |
+| InvalidInput                     | 10010   | Obecný vstup není platný.  |
+| SubscriptionNotRegistered        | 10011   | Předplatné je neplatné.  |
+| AttestationNotAccepted           | 10012   | Ověření identity nebylo přijato.  |
+| Neznámý                          | 0   | Výchozí hodnota   |
 
 ## <a name="cartcheckoutresult"></a>CartCheckoutResult
 

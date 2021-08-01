@@ -1,45 +1,45 @@
 ---
 title: Vytvoření objednávky zákazníka
-description: Naučte se používat Partnerské centrum API k vytvoření objednávky pro zákazníka. Článek obsahuje požadavky, kroky a příklady.
+description: Naučte se používat rozhraní API partnerského centra k vytvoření objednávky pro zákazníka. Článek obsahuje požadavky, kroky a příklady.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c3a86a99f43bdeec5e4c560ab59e1924b76c0636
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: a2a980634e3887780c9d6dbd4fa3271956978884
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973536"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009136"
 ---
-# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Vytvoření objednávky pro zákazníka pomocí Partnerské centrum API
+# <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Vytvoření objednávky pro zákazníka pomocí rozhraní API partnerského centra
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
 
-Vytvoření objednávky **produktů rezervovaných instancí virtuálních** počítače Azure se *vztahuje pouze* na:
+Vytvoření **objednávky pro rezervované instance virtuálních počítačů Azure** se týká *jenom* těchto produktů:
 
 - Partnerské centrum
 
-Informace o tom, co je aktuálně k dispozici k prodeji, najdete v tématu Nabídky partnerů [v Cloud Solution Provider programu](/partner-center/csp-offers).
+informace o tom, co je aktuálně k dispozici pro prodej, najdete v tématu [partnerské nabídky v programu Cloud Solution Provider](/partner-center/csp-offers).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Identifikátor nabídky.
+- Identifikátor nabídky
 
 ## <a name="c"></a>C\#
 
 Vytvoření objednávky pro zákazníka:
 
-1. Vytvořte instanci objektu [**Order**](order-resources.md) a nastavte vlastnost **ReferenceCustomerID** na ID zákazníka pro zaznamenání zákazníka.
+1. Vytvořte instanci objektu [**Order**](order-resources.md) a nastavte vlastnost **ReferenceCustomerID** na ID zákazníka pro záznam zákazníka.
 
-2. Vytvořte seznam objektů [**OrderLineItem**](order-resources.md#orderlineitem) a přiřaďte ho k vlastnosti **LineItems** objednávky. Každá položka řádku objednávky obsahuje informace o nákupu pro jednu nabídku. Musíte mít alespoň jednu řádkovou položku objednávky.
+2. Vytvořte seznam objektů [**OrderLineItem**](order-resources.md#orderlineitem) a přiřaďte seznam k vlastnosti **položky řádku** objednávky. Každá položka řádku objednávky obsahuje informace o nákupu pro jednu nabídku. Musíte mít aspoň jednu položku řádku objednávky.
 
-3. Získání rozhraní pro řazení operací. Nejprve zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a identifikujte zákazníka. Dále načtěte rozhraní z [**vlastnosti Orders.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders)
+3. Získejte rozhraní k seřazení operací. Nejdřív zavolejte metodu [**IAggregatePartner. Customer. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, abyste zákazníka identifikovali. Dále načtěte rozhraní z vlastnosti [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) .
 
-4. Zavolejte [**metodu Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) a předejte [**objekt Order.**](order-resources.md)
+4. Zavolejte metodu [**Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) a předejte objekt [**Order**](order-resources.md) .
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -69,15 +69,15 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.Create(order);
 ```
 
-**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** CreateOrder.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CreateOrder. cs
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda   | Identifikátor URI žádosti                                                                            |
 |----------|----------------------------------------------------------------------------------------|
-| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/orders HTTP/1.1 |
+| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Orders HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -85,29 +85,29 @@ K identifikaci zákazníka použijte následující parametr cesty.
 
 | Název        | Typ   | Vyžadováno | Popis                                                |
 |-------------|--------|----------|------------------------------------------------------------|
-| id zákazníka | řetězec | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka. |
+| ID zákazníka | řetězec | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
 #### <a name="order"></a>Objednávka
 
-Tato tabulka popisuje [vlastnosti Order](order-resources.md) v textu požadavku.
+Tato tabulka popisuje vlastnosti [objednávky](order-resources.md) v textu žádosti.
 
 | Vlastnost             | Typ                        | Vyžadováno                        | Popis                                                                   |
 |----------------------|-----------------------------|---------------------------------|-------------------------------------------------------------------------------|
-| id                   | řetězec                      | No                              | Identifikátor objednávky zadaný po úspěšném vytvoření objednávky.   |
-| referenčníCustomerId  | řetězec                      | No                              | Identifikátor zákazníka. |
-| billingCycle         | řetězec                      | No                              | Určuje frekvenci, s jakou se partner účtuje za tuto objednávku. Podporované hodnoty jsou názvy členů, které najdete v [části BillingCycleType](product-resources.md#billingcycletype). Výchozí hodnota je "Měsíčně" nebo "OneTime" při vytváření objednávky. Toto pole se použije při úspěšném vytvoření objednávky. |
-| položky řádku            | pole prostředků [OrderLineItem](order-resources.md#orderlineitem) | Yes      | Itemized list of the offers the customer is purchasing including the quantity.        |
-| currencyCode         | řetězec                      | No                              | Jen pro čtení. Měna použitá při zadávání objednávky. Použije se při úspěšném vytvoření objednávky.           |
-| datum vytvoření         | datetime                    | No                              | Jen pro čtení. Datum vytvoření objednávky ve formátu data a času. Použije se při úspěšném vytvoření objednávky.                                   |
-| status               | řetězec                      | No                              | Jen pro čtení. Stav objednávky  Podporované hodnoty jsou názvy členů, které najdete v [OrderStatus](order-resources.md#orderstatus).        |
-| Odkazy                | [OrderLinks](utility-resources.md#resourcelinks)              | No                              | Propojení prostředků odpovídající objednávce |
-| atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | No                              | Atributy metadat odpovídající order. |
+| id                   | řetězec                      | No                              | Identifikátor objednávky, který je zadán po úspěšném vytvoření objednávky.   |
+| referenceCustomerId  | řetězec                      | No                              | Identifikátor zákazníka. |
+| billingCycle         | řetězec                      | No                              | Určuje četnost, s jakou se má partner fakturovat v této objednávce. Podporované hodnoty jsou názvy členů nalezené v [BillingCycleType](product-resources.md#billingcycletype). Výchozí hodnota je "Month" nebo "jednorázová" při vytváření objednávky. Toto pole se použije po úspěšném vytvoření objednávky. |
+| Položky řádku            | pole prostředků [OrderLineItem](order-resources.md#orderlineitem) | Yes      | Seznam položek nabídek, které zákazník kupuje, včetně množství.        |
+| currencyCode         | řetězec                      | No                              | Jen pro čtení. Měna použitá při umístění objednávky Použito po úspěšném vytvoření objednávky.           |
+| creationDate         | datetime                    | No                              | Jen pro čtení. Datum vytvoření objednávky ve formátu data a času. Použito po úspěšném vytvoření objednávky.                                   |
+| status               | řetězec                      | No                              | Jen pro čtení. Stav objednávky.  Podporované hodnoty jsou názvy členů nalezené v [OrderStatus](order-resources.md#orderstatus).        |
+| odkazy                | [OrderLinks](utility-resources.md#resourcelinks)              | No                              | Odkazy na prostředky odpovídající objednávce. |
+| atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | No                              | Atributy metadat odpovídající pořadí. |
 
 #### <a name="orderlineitem"></a>OrderLineItem (PoložkaŘádku Objednávky)
 
@@ -129,6 +129,7 @@ Tato tabulka popisuje vlastnosti [OrderLineItem](order-resources.md#orderlineite
 | Odkazy                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | No       |  Jen pro čtení. Propojení prostředků odpovídající položce řádku Order (Objednávka).  |
 | atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | No       | Atributy metadat odpovídající OrderLineItem. |
 | renewsTo             | Pole objektů                          | No    |Pole prostředků [RenewsTo.](order-resources.md#renewsto)                                                                            |
+| AttestationAccepted             | bool                 | No   |  Označuje smlouvu pro podmínky nabídky nebo SKU. Vyžaduje se jenom pro nabídky nebo SKU, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu True.          |
 
 ##### <a name="renewsto"></a>RenewsTo
 

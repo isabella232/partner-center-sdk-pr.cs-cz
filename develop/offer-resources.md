@@ -4,12 +4,12 @@ description: Popisuje produkt uvedený v katalogu prodejců, který mohou nabíd
 ms.date: 03/15/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 704e5580f2cdf84fc82b627e3b2ca165b81a3af5
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9a7a0dd2dccc59536797c3ce533d9d8829a04f96
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548103"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009218"
 ---
 # <a name="offer-resources"></a>Prostředky nabídky
 
@@ -48,40 +48,51 @@ Popisuje produkt uvedený v katalogu prodejců, který mohou nabídnout svým z�
 | Zkušební verze                     | boolean                   | Hodnota, která označuje, zda se jedná o zkušební nabídku                                                               |
 | product                     | [OfferProduct](#offerproduct)           | Získá produkt nabídky.                                                                           |
 | Jednotkách UnitType                    | řetězec                    | Typ jednotky                                                                                      |
-| Odkazy                       | [Odkazy na nabídku](#offerlinks)               | Odkaz na další informace pro nabídku.                                                                    |
-| atributy                  | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající nabídce.                         |
+| odkazy                       | [OfferLinks](#offerlinks)               | Odkaz "Další informace" této nabídky                                                                    |
+| atributy                  | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající nabídce                         |
+| AttestationProperties       | [AttestationProperties](#attestationproperties) | Vlastnosti ověření identity pro SKU                   |
 
 ## <a name="offercategory"></a>OfferCategory
 
-Popisuje kategorizaci nabídky. To zahrnuje pořadí nebo prioritu této kategorie nabídky v porovnání s ostatními ve stejné produktové řadě.
+Popisuje kategorizaci nabídky. To zahrnuje pořadí nebo prioritu této kategorie nabídky ve srovnání s ostatními ve stejné produktové lince.
 
 | Vlastnost   | Typ                                                           | Description                                                                                                                                                                |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id         | řetězec                                                         | Identifikátor kategorie.                                                                                                                                                   |
-| name       | řetězec                                                         | Název kategorie.                                                                                                                                                         |
-| Rank       | int                                                            | Pořadí nebo priorita kategorie v porovnání s jinými kategoriemi ve stejné nabídce. Tato vlastnost by se měla nastavit jenom v případě, že existuje více než jedna kategorie nabídky pro danou nabídku. |
+| id         | řetězec                                                         | Identifikátor kategorie                                                                                                                                                   |
+| name       | řetězec                                                         | Název kategorie                                                                                                                                                         |
+| Rank       | int                                                            | Pořadí kategorií nebo Priorita v porovnání s jinými kategoriemi v rámci jedné nabídky. Tato vlastnost by měla být nastavena pouze v případě, že je pro danou nabídku k dispozici více než jedna kategorie nabídky. |
 | locale     | řetězec                                                         | Národní prostředí, ve kterém se nabídka vztahuje.                                                                                                                        |
-| country    | řetězec                                                         | Země nebo oblast, na které se nabídka vztahuje.                                                                                                                   |
-| Odkazy      | [Odkazy na prostředky](utility-resources.md#resourcelinks)           | Propojení prostředků odpovídající OfferCategory.                                                                                                                     |
-| atributy | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající OfferCategory.                                                                                                                |
+| country    | řetězec                                                         | Země nebo oblast, kde se nabídka vztahuje.                                                                                                                   |
+| odkazy      | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky odpovídající OfferCategory.                                                                                                                     |
+| atributy | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající OfferCategory.                                                                                                                |
 
-## <a name="offerlinks"></a>Odkazy na nabídku
+## <a name="offerlinks"></a>OfferLinks
 
-Obsahuje odkazy na další informace o nabídce.
+Obsahuje odkazy na Další informace o této nabídce.
 
 | Vlastnost  | Typ | Description                 |
 |-----------|------|-----------------------------|
-| learnMore | Odkaz | Odkaz "Další informace".      |
-| Vlastní      | Odkaz | Identifikátor SELF-URI                |
-| Další      | Odkaz | Další stránka položek     |
-| Předchozí  | Odkaz | Předchozí stránka položek |
+| learnMore | Odkaz | Odkaz Další informace      |
+| samorozbalující      | Odkaz | Identifikátor URI pro sebe                |
+| generace      | Odkaz | Další stránka položek     |
+| předchozí  | Odkaz | Předchozí stránka položek |
 
 ## <a name="offerproduct"></a>OfferProduct
 
-Produkt nebo služba, ke které může být přidruženo více než jedna nabídka, z nichž každá má různé sady funkcí a cílí na různé potřeby zákazníků.
+Produkt nebo služba, ke kterým může být přidružena více než jedna nabídka, každá s různými sadami funkcí a zaměřená na různé potřeby zákazníků.
 
 | Vlastnost | Typ   | Description              |
 |----------|--------|--------------------------|
-| Id       | řetězec | Identifikátor kategorie. |
-| Name     | řetězec | Název kategorie.       |
+| Id       | řetězec | Identifikátor kategorie |
+| Name     | řetězec | Název kategorie       |
 | Jednotka     | řetězec | Jednotka produktu.        |
+
+## <a name="attestationproperties"></a>AttestationProperties
+
+Představuje typ ověření identity a v případě potřeby k nákupu.
+
+| Vlastnost              | Typ                                        | Description                                                                         |
+|-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| attestationType              | řetězec                                      | Určuje typ ověření identity. pro Windows 365 je hodnota Windows365. text ověření Windows 365 je "rozumím, že každá osoba, která používá Windows 365 Business s Windowsm hybridním zvýhodněním, musí mít na primárním pracovním zařízení nainstalovanou platnou kopii Windows 10/11 Pro." |
+| enforceAttestation           | boolean                                      | Určuje, zda je pro nákup vyžadováno ověření identity.           |
+

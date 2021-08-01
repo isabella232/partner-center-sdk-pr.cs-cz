@@ -1,24 +1,24 @@
 ---
-title: Objednat prostředky
-description: Partner umístí objednávku, když chce zákazník koupit předplatné ze seznamu nabídek.
+title: Objednání prostředků
+description: Partner objednává, když zákazník chce koupit předplatné ze seznamu nabídek.
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c993317f288568dd687c3b52bf47e4520fcd18c6
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 128c9e041cacc1c15f6187c4d99690d5c5fa4183
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548052"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009165"
 ---
-# <a name="order-resources"></a>Objednat prostředky
+# <a name="order-resources"></a>Objednání prostředků
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partner umístí objednávku, když chce zákazník koupit předplatné ze seznamu nabídek.
+Partner objednává, když zákazník chce koupit předplatné ze seznamu nabídek.
 
 >[!NOTE]
->Zdroj objednávky má omezení frekvence 500 požadavků za minutu na identifikátor tenanta.
+>Prostředek Order (Objednávka) má omezení rychlosti 500 požadavků za minutu na identifikátor tenanta.
 
 ## <a name="order"></a>Objednávka
 
@@ -26,37 +26,38 @@ Popisuje objednávku partnera.
 
 | Vlastnost           | Typ                                               | Description                                                 |
 |--------------------|----------------------------------------------------|-------------------------------------------------------------|
-| id                 | řetězec                                             | Identifikátor objednávky, který je zadán po úspěšném vytvoření objednávky.                                   |
-| alternateId        | řetězec                                             | Popisný identifikátor pro objednávku.                                                                          |
-|referenceCustomerId | řetězec                                             | Identifikátor zákazníka. |
-| billingCycle       | řetězec                                             | Určuje četnost, s jakou se má partner fakturovat v této objednávce. Podporované hodnoty jsou názvy členů nalezené v [BillingCycleType](product-resources.md#billingcycletype). Výchozí hodnota je "Month" nebo "jednorázová" při vytváření objednávky. Toto pole se použije po úspěšném vytvoření objednávky. |
-| transactionType    | řetězec                                             | Jen pro čtení. Typ transakce objednávky. Podporované hodnoty jsou "UserPurchase", "SystemPurchase" nebo "SystemBilling" |
-| Položky řádku          | pole prostředků [OrderLineItem](#orderlineitem) | Seznam položek nabídek, které zákazník kupuje, včetně množství.        |
-| currencyCode       | řetězec                                             | Jen pro čtení. Měna použitá při umístění objednávky Použito po úspěšném vytvoření objednávky.           |
-| currencySymbol     | řetězec                                             | Jen pro čtení. Symbol měny přidružený k kódu měny. |
-| creationDate       | datetime                                           | Jen pro čtení. Datum vytvoření objednávky ve formátu data a času. Použito po úspěšném vytvoření objednávky.                                   |
-| status             | řetězec                                             | Jen pro čtení. Stav objednávky.  Podporované hodnoty jsou názvy členů nalezené v [**OrderStatus**](#orderstatus).        |
-| odkazy              | [OrderLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky odpovídající objednávce.            |
-| atributy         | [ResourceAttributes](utility-resources.md#resourceattributes) | Atributy metadat odpovídající pořadí.       |
+| id                 | řetězec                                             | Identifikátor objednávky zadaný po úspěšném vytvoření objednávky.                                   |
+| alternativní ID        | řetězec                                             | Popisný identifikátor objednávky.                                                                          |
+|referenčníCustomerId | řetězec                                             | Identifikátor zákazníka. |
+| billingCycle       | řetězec                                             | Určuje frekvenci, s jakou se partner účtuje za tuto objednávku. Podporované hodnoty jsou názvy členů, které najdete v [části BillingCycleType](product-resources.md#billingcycletype). Výchozí hodnota je "Měsíčně" nebo "OneTime" při vytváření objednávky. Toto pole se použije při úspěšném vytvoření objednávky. |
+| Transactiontype    | řetězec                                             | Jen pro čtení. Typ transakce objednávky. Podporované hodnoty jsou UserPurchase, SystemPurchase nebo SystemBilling. |
+| položky řádku          | pole prostředků [OrderLineItem](#orderlineitem) | Itemized list of the offers the customer is purchasing including the quantity.        |
+| currencyCode       | řetězec                                             | Jen pro čtení. Měna použitá při zadávání objednávky. Použije se při úspěšném vytvoření objednávky.           |
+| Currencysymbol     | řetězec                                             | Jen pro čtení. Symbol měny přidružený k kódu měny. |
+| datum vytvoření       | datetime                                           | Jen pro čtení. Datum vytvoření objednávky ve formátu data a času. Použije se při úspěšném vytvoření objednávky.                                   |
+| status             | řetězec                                             | Jen pro čtení. Stav objednávky  Podporované hodnoty jsou názvy členů, které najdete v [**OrderStatus**](#orderstatus).        |
+| Odkazy              | [OrderLinks](utility-resources.md#resourcelinks)           | Propojení prostředků odpovídající objednávce            |
+| atributy         | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající order.       |
 
-## <a name="orderlineitem"></a>OrderLineItem
+## <a name="orderlineitem"></a>OrderLineItem (PoložkaŘádku Objednávky)
 
-Objednávka obsahuje seřazený seznam nabídek a každá položka je reprezentována jako OrderLineItem.
+Objednávka obsahuje seznam nabídek s položkami a každá položka je reprezentovaná jako OrderLineItem.
 
 | Vlastnost             | Typ                                      | Description                                                                                                                                                                                                                                |
 |----------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int                                       | Každá položka řádku v kolekci získá jedinečné číslo řádku, počítáno od 0 do Count-1.                                                                                                                                                 |
-| Hodnotami OfferId              | řetězec                                    | ID nabídky                                                                                                                                                                                                                       |
-| subscriptionId       | řetězec                                    | ID předplatného                                                                                                                                                                                                                |
-| parentSubscriptionId | řetězec                                    | Nepovinný parametr. ID nadřazeného odběru v nabídce doplňku Platí pouze pro opravu.                                                                                                                                                     |
-| friendlyName         | řetězec                                    | Nepovinný parametr. Popisný název předplatného definovaného partnerem, který vám umožní určit nejednoznačnost.                                                                                                                                              |
-| quantity             | int                                       | Počet licencí nebo instancí.                                                                                                                                                                                |
-| termDuration         | řetězec                                    | ISO 8601 reprezentace doby trvání období. Aktuální podporované hodnoty jsou **P1M** (1 měsíc), **P1Y** (1 rok) a **P3Y** (3 roky).                               |
-| transactionType      | řetězec                                    | Jen pro čtení. Typ transakce položky řádku Podporovány jsou hodnoty "New", "Renew", "addQuantity", "removeQuantity", "Cancel", "Convert" nebo "customerCredit". |
-| partnerIdOnRecord    | řetězec                                    | Když nepřímý poskytovatel umístí objednávku jménem nepřímého prodejce, naplňte toto pole do ID MPN **nepřímého prodejce** (nikdy ID nepřímého poskytovatele). To zajišťuje správné účetnictví pro motivaci. |
-| provisioningContext  | Řetězec<slovníku, řetězec>            | Informace požadované pro zřizování některých položek v katalogu. Vlastnost provisioningVariables v SKU indikuje, které vlastnosti jsou požadovány pro konkrétní položky v katalogu.                                                                                                                                               |
+| lineItemNumber       | int                                       | Každá položka řádku v kolekci získá jedinečné číslo řádku, počítá se od 0 do count-1.                                                                                                                                                 |
+| ID nabídky              | řetězec                                    | ID nabídky.                                                                                                                                                                                                                       |
+| subscriptionId       | řetězec                                    | ID předplatného.                                                                                                                                                                                                                |
+| PARENTSubscriptionId | řetězec                                    | Nepovinný parametr. ID nadřazeného předplatného v nabídce doplňku. Platí jenom pro PATCH.                                                                                                                                                     |
+| Friendlyname         | řetězec                                    | Nepovinný parametr. Popisný název předplatného definovaného partnerem, který pomáhá jednoznačně rozpoznat.                                                                                                                                              |
+| quantity             | int                                       | Počet licencí nebo instancí                                                                                                                                                                                |
+| termDuration         | řetězec                                    | Reprezentace doby trvání období podle STANDARDu ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc), **P1Y** (1 rok) a **P3Y** (3 roky).                               |
+| Transactiontype      | řetězec                                    | Jen pro čtení. Typ transakce řádkové položky. Podporované hodnoty jsou "new", "renew", "addQuantity", "removeQuantity", "cancel", "convert" nebo "customerCredit". |
+| id partneraZáznam    | řetězec                                    | Když nepřímý poskytovatel zadá objednávku jménem nepřímého prodejce, zadejte do tohoto pole pouze ID MPN nepřímého prodejce **(nikdy** ID nepřímého poskytovatele). Tím se zajistí správné účtování pobídek. |
+| provisioningContext  | Slovníkový<řetězec, řetězec>            | Informace požadované pro zřizování některých položek v katalogu. Vlastnost provisioningVariables v SKU indikuje, které vlastnosti jsou požadovány pro konkrétní položky v katalogu.                                                                                                                                               |
 | odkazy                | [OrderLineItemLinks](#orderlineitemlinks) | Jen pro čtení. Odkazy na prostředky odpovídající položce řádku objednávky.                                                                                                                                                                                |
 | renewsTo             | [RenewsTo](#renewsto)                         |Údaje o době platnosti obnovení.                                                                           |
+| AttestationAccepted             | bool                 | Označuje smlouvu o nabídkách nebo podmínkách SKU. Vyžaduje se jenom pro nabídky nebo skladové položky, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu true.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 

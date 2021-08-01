@@ -4,12 +4,12 @@ description: Prostředky představující kupní zboží nebo služby. Zahrnuje 
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1d536cb78c070bd06f4ab9434e066e51fb4c008c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 2e68df1f6955fb7feb9770377621c2d649b74e4a
+ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445880"
+ms.lasthandoff: 07/31/2021
+ms.locfileid: "115009116"
 ---
 # <a name="products-resources"></a>Prostředky produktů
 
@@ -67,6 +67,7 @@ Představuje kupní jednotku (SKU), která je v produktu k disměrné jednotce. 
 | provisioningVariables  | pole řetězců | Seznam proměnných, které musí být poskytnuty do kontextu zřizování [položky řádku košíku](cart-resources.md#cartlineitem) při nákupu této položky. Podporované hodnoty jsou:<br/> Rozsah – rozsah nákupu rezervace Azure: "Single", "Shared".<br/> SubscriptionId – ID předplatného Azure, které se použije pro nákup rezervace Azure.<br/> "Doba trvání" – doba trvání rezervace Azure: "1Year", "3Year".  |
 | dynamicAttributes      | páry klíč/hodnota  | Slovník dynamických vlastností, které se vztahují na tuto položku. Vlastnosti v tomto slovníku jsou dynamické a můžou se měnit bez předchozího upozornění. Neměli byste vytvářet silné závislosti na konkrétních klíčích existujících v hodnotě této vlastnosti.    |
 | odkazy                  | [ResourceLinks](utility-resources.md#resourcelinks) | Odkazy na prostředky obsažené v této SKU.                   |
+| AttestationProperties                  | [AttestationProperties](#attestationproperties) | Vlastnosti ověření identity pro SKU                   |
 
 ## <a name="availability"></a>Dostupnost
 
@@ -139,3 +140,12 @@ Představuje podrobnosti omezení inventáře. To platí jenom pro výsledky vý
 | ročně             | 2            | Indikuje, že se partner bude účtovat ročně.                                       |
 | Žádná               | 3            | Indikuje, že se partner nebude účtovat. Tato hodnota se dá použít pro položky zkušební verze.    |
 | Jednorázová            | 4            | Indikuje, že se partner účtuje jednou za jeden čas.                                       |
+
+## <a name="attestationproperties"></a>AttestationProperties
+
+Představuje typ ověření identity a v případě potřeby k nákupu.
+
+| Vlastnost              | Typ                                        | Description                                                                         |
+|-----------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| attestationType              | řetězec                                      | Určuje typ ověření identity. pro Windows 365 je hodnota Windows365. text ověření Windows 365 je "rozumím, že každá osoba, která používá Windows 365 Business s Windowsm hybridním zvýhodněním, musí mít na primárním pracovním zařízení nainstalovanou platnou kopii Windows 10/11 Pro." |
+| enforceAttestation           | boolean                                      | Určuje, zda je pro nákup vyžadováno ověření identity.           |
