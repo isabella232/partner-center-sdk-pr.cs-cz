@@ -3,13 +3,13 @@ title: Ověřování v Partnerském centru
 description: Partnerské centrum ověřování používá Azure AD a k použití Partnerské centrum API musíte správně nakonfigurovat nastavení ověřování.
 ms.date: 11/13/2019
 ms.service: partner-dashboard
-ms.subservice: partnercenter-csp
-ms.openlocfilehash: e54feba7ea727bb7f7eff8de76dcdf28c8a453ee
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.subservice: partnercenter-sdk
+ms.openlocfilehash: 75d60ca983cd5b8fe53134ec7481319b153e128a
+ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548069"
+ms.lasthandoff: 08/04/2021
+ms.locfileid: "115104189"
 ---
 # <a name="partner-center-authentication"></a>Ověřování v Partnerském centru
 
