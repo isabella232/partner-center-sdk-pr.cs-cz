@@ -5,12 +5,12 @@ ms.date: 5/24/2021
 ms.author: vijvala
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 93e26792b66e447a0047bd550f4302c7fca4e87b
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 970b7ba49f6bb4b842f0f7d96e689856b0362c03949e14c9cf5a0e205573277b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973430"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991442"
 ---
 # <a name="create-indirect-reseller-in-sandbox"></a>Vytvoření nepřímého prodejce v izolovaném prostoru
 
@@ -92,13 +92,13 @@ Tato tabulka popisuje požadované vlastnosti v atributu **tenanta** .
 | country            | řetězec         | Země účtu              |
 | jazyková verze            | řetězec         | Jazykové předvolby pro účet     |
 
-Tato tabulka popisuje požadované vlastnosti v atributu **legalBusinessProfile** .
+Tato tabulka popisuje požadované vlastnosti v **atributu legalBusinessProfile.**
 
 | Vlastnost       | Typ                             | Description                          |
 |----------------|----------------------------------|--------------------------------------|
-| Společnosti    | řetězec                           | Název společnosti pro právnickou entitu        |
-| adresa        | &lt;Řetězec slovníku, řetězec&gt; | Adresa umístění právnické osoby |
-| primaryContact | &lt;Řetězec slovníku, řetězec&gt; | Kontaktní údaje společnosti       |
+| Companyname    | řetězec                           | Název společnosti pro právnickou osobu        |
+| adresa        | Řetězec &lt; slovníku, řetězec&gt; | Adresa umístění právní osoby |
+| primaryContact | Řetězec &lt; slovníku, řetězec&gt; | Kontaktní údaje společnosti       |
 | jazyková verze        | řetězec                           | Jazyk upřednostňovaný společností    |
 
 ### <a name="request-example"></a>Příklad požadavku
@@ -141,7 +141,7 @@ Tato tabulka popisuje požadované vlastnosti v atributu **legalBusinessProfile*
 
 ### <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí naplněný zdroj izolovaného prostoru (sandbox) v těle odpovědi.
+V případě úspěchu tato metoda vrátí vyplněný prostředek sandboxového prostředí IR v textu odpovědi.
 
 ```http
 {

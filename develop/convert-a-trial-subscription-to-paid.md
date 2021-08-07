@@ -4,12 +4,12 @@ description: Naučte se používat Partnerské centrum API k převodu zkušební
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c1876cfc796b683bfff00b7d137bcfe0b7162c78
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: a805264315e35c7576248630396da1e34a66cc55ac87dd07452f1615edbc0af4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973855"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991850"
 ---
 # <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Převod zkušebního předplatného na placené pomocí Partnerské centrum API
 

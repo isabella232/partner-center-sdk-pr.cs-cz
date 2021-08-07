@@ -1,38 +1,38 @@
 ---
 title: Získání seznamu zákazníků
-description: Jak získat kolekci prostředků, které představují všechny zákazníky partnera.
+description: Jak získat kolekci prostředků představujících všechny zákazníky partnera.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 840c9d1a61451763d37a19639f99b12f1deb7521
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 7a834521405110ea50e9eed6590ed514fb90927b9c5a27251c7cf992e0c2a9d4
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874342"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990337"
 ---
 # <a name="get-a-list-of-customers"></a>Získání seznamu zákazníků
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Tento článek popisuje, jak získat kolekci prostředků, které představují všechny zákazníky partnera.
+Tento článek popisuje, jak získat kolekci prostředků, která představuje všechny zákazníky partnera.
 
 > [!TIP]
-> Tuto operaci můžete provést i na řídicím panelu partnerského centra. Na hlavní stránce v části **Správa zákazníků** vyberte možnost **Zobrazit zákazníky**. Nebo na bočním panelu vyberte **zákazníci**.
+> Tuto operaci můžete provést také na řídicím Partnerské centrum řídicím panelu. Na hlavní stránce v části **Správa zákazníků** vyberte **Zobrazit zákazníky.** Nebo na bočním panelu vyberte **Customers (Zákazníci).**
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat seznam všech zákazníků:
+Získání seznamu všech zákazníků:
 
-1. Pomocí kolekce [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) vytvořte objekt **IPartner** .
+1. Pomocí kolekce [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) vytvořte **objekt IPartner.**
 
-2. Seznam zákazníků načtěte pomocí metod [**Query ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) nebo [**QueryAsync ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) . (Pokyny k vytvoření dotazu naleznete v tématu Třída [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) .)
+2. Seznam zákazníků můžete načíst pomocí metod [**Query()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) nebo [**QueryAsync().**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) (Pokyny k vytvoření dotazu najdete ve třídě [**QueryFactory.)**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -45,21 +45,21 @@ var customersBatch = scopedPartnerOperations.Customers.Query(QueryFactory.Instan
 var customersEnumerator = scopedPartnerOperations.Enumerators.Customers.Create(customersBatch);
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Project: **PartnerSDK. FeatureSamples**
-- Třída: **CustomerPaging. cs**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSamples**
+- Třída: **CustomerPaging.cs**
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Pokud chcete získat seznam všech zákazníků:
+Získání seznamu všech zákazníků:
 
-1. Pomocí funkce [**IAggregatePartner. GetCustomers**] získáte odkaz na operace zákazníka.
+1. Pomocí funkce [**IAggregatePartner.getCustomers**] získáte odkaz na operace zákazníka.
 
-2. Pomocí funkce **Query ()** načtěte seznam zákazníků.
+2. Načtěte seznam zákazníků pomocí **funkce query().**
 
 ```java
 // Query the customers, get the first page if a page size was set, otherwise get all customers
@@ -93,25 +93,25 @@ Pokud chcete získat úplný seznam zákazníků, spusťte příkaz [**Get-Partn
 Get-PartnerCustomer
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers? size = {size} HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size} HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Chcete-li získat seznam zákazníků, použijte následující parametr dotazu.
+Seznam zákazníků získáte pomocí následujícího parametru dotazu.
 
 | Název     | Typ    | Vyžadováno | Popis                                        |
 |----------|---------|----------|----------------------------------------------------|
-| **hodnota** | **int** | Y        | Počet výsledků, které se mají zobrazit v jednom okamžiku. |
+| **Velikost** | **int** | Y        | Počet výsledků, které se zobrazí najednou |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -129,11 +129,11 @@ MS-CorrelationId: b12260fb-82de-4701-a25f-dcd367690645
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci [zákaznických](customer-resources.md#customer) prostředků v těle odpovědi.
+V případě úspěchu vrátí tato [](customer-resources.md#customer) metoda v textu odpovědi kolekci prostředků zákazníka.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

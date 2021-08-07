@@ -4,12 +4,12 @@ description: Popisuje prostředky, které se používají k upgradu uživatele z
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4c57994d1b1e7659df5e6448578422f6d9c21fee
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 1ea7499a21312378f4fad3d47eaa9e10993ee3ce7ddb1498f161fac16e09b8a5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111529813"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992465"
 ---
 # <a name="upgrade-resources"></a>Upgradovat zdroje
 

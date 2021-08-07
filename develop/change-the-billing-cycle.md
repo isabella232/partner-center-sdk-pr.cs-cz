@@ -1,44 +1,44 @@
 ---
 title: Změna fakturačního cyklu
-description: Naučte se aktualizovat předplatné zákazníka na měsíční nebo roční fakturaci pomocí rozhraní API partnerského centra. Můžete to provést taky z řídicího panelu partnerského centra.
+description: Zjistěte, jak aktualizovat předplatné zákazníka na měsíční nebo roční fakturaci pomocí Partnerské centrum API. Můžete to provést také z řídicího Partnerské centrum řídicího panelu.
 ms.date: 05/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 435309229e2cb038c936028943f4c2cf27b032a7
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: c45d599ace7895c03bc163cddde7cbb057ff60a06c58af39a2baacb3d557e72e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974110"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992156"
 ---
-# <a name="change-a-customer-subscription-billing-cycle"></a>Změna fakturačního cyklu zákaznického předplatného
+# <a name="change-a-customer-subscription-billing-cycle"></a>Změna fakturačního období zákaznického předplatného
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Aktualizuje [objednávku](order-resources.md) z měsíčního na roční fakturace nebo z roční na měsíční fakturaci.
+Aktualizuje objednávku [z](order-resources.md) měsíční na roční fakturaci nebo z roční na měsíční fakturaci.
 
-Na řídicím panelu partnerského centra můžete tuto operaci provést přechodem na stránku s podrobnostmi o předplatném zákazníka. Po tomto případě se zobrazí možnost definující aktuální fakturační cyklus pro předplatné s možností změny a odeslání.
+Na Partnerské centrum můžete tuto operaci provést tak, že přejdete na stránku s podrobnostmi o předplatném zákazníka. Tam se zobrazí možnost, která definuje aktuální fakturační cyklus předplatného a umožňuje ho změnit a odeslat.
 
-**Mimo rozsah** tohoto článku:
+**Tento článek** je mimo rozsah:
 
-- Změna fakturačního cyklu pro zkušební verze
-- Změna fakturačních cyklů pro jakékoli neroční nabídky (měsíčně, šest let) & předplatných Azure
+- Změna fakturačního cyklu zkušebních období
+- Změna fakturačních cyklů u všech neročního období nabídek (měsíčních, šestiletých) & předplatných Azure
 - Změna fakturačních cyklů pro neaktivní předplatná
-- Změna fakturačních cyklů pro odběry založené na licencích Microsoft online služby
+- Změna fakturačních cyklů pro předplatná Microsoft online služby založená na licencích
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID objednávky.
 
 ## <a name="c"></a>C\#
 
-Chcete-li změnit četnost fakturačního cyklu, aktualizujte vlastnost [**Order. BillingCycle**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.billingcycle#Microsoft_Store_PartnerCenter_Models_Orders_Order_BillingCycle) .
+Pokud chcete změnit četnost fakturačního cyklu, aktualizujte [**vlastnost Order.BillingCycle.**](/dotnet/api/microsoft.store.partnercenter.models.orders.order.billingcycle#Microsoft_Store_PartnerCenter_Models_Orders_Order_BillingCycle)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -65,13 +65,13 @@ var order = new Order()
 var createdOrder = partnerOperations.Customers.ById(customerId).Orders.ById(orderId).Patch(order);
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                             |
 |-----------|---------------------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Orders/{Order-ID} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/orders/{ID_objednávky} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -79,36 +79,36 @@ Tato tabulka uvádí požadovaný parametr dotazu pro změnu množství předpla
 
 | Název                   | Typ | Vyžadováno | Popis                                                          |
 |------------------------|------|----------|----------------------------------------------------------------------|
-| **Customer-tenant-ID** | Identifikátor GUID |    Y     | IDENTIFIKÁTOR zákazníka s formátováním **ID tenanta** , který identifikuje zákazníka |
+| **customer-tenant-id** | Identifikátor GUID |    Y     | Identifikátor GUID **naformátovaný jako customer-tenant-id,** který identifikuje zákazníka |
 | **ID objednávky**           | Identifikátor GUID |    Y     | Identifikátor objednávky                                                 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V následujících tabulkách jsou popsány vlastnosti v textu požadavku.
+Následující tabulky popisují vlastnosti v textu požadavku.
 
 ### <a name="order"></a>Objednávka
 
 | Vlastnost           | Typ             | Vyžadováno | Popis                                                                |
 |--------------------|------------------|----------|----------------------------------------------------------------------------|
-| Id                 | řetězec           |    N     | Identifikátor objednávky, který je zadán po úspěšném vytvoření objednávky |
-|ReferenceCustomerId | řetězec           |    Y     | Identifikátor zákazníka                                                    |
-| BillingCycle       | řetězec           |    Y     | Určuje četnost, s jakou se má partner fakturovat v této objednávce. Podporované hodnoty jsou názvy členů nalezené v [BillingCycleType](product-resources.md#billingcycletype). |
+| Id                 | řetězec           |    N     | Identifikátor objednávky zadaný po úspěšném vytvoření objednávky |
+|ReferenčníCustomerId | řetězec           |    Y     | Identifikátor zákazníka                                                    |
+| BillingCycle       | řetězec           |    Y     | Určuje frekvenci, s jakou se partner účtuje za tuto objednávku. Podporované hodnoty jsou názvy členů, které najdete v [části BillingCycleType](product-resources.md#billingcycletype). |
 | Položky řádku          | pole objektů |    Y     | Pole prostředků [OrderLineItem](#orderlineitem)                      |
-| CreationDate       | datetime         |    N     | Datum vytvoření objednávky ve formátu data a času                        |
-| Atributy         | Objekt           |    N     | Obsahuje ObjectType: "OrderLineItem"                                     |
+| Datum vytvoření       | datetime         |    N     | Datum vytvoření objednávky ve formátu data a času                        |
+| Atributy         | Objekt           |    N     | Obsahuje ObjectType: OrderLineItem.                                     |
 
-### <a name="orderlineitem"></a>OrderLineItem
+### <a name="orderlineitem"></a>OrderLineItem (PoložkaŘádku Objednávky)
 
 | Vlastnost             | Typ   | Vyžadováno | Popis                                                                        |
 |----------------------|--------|----------|------------------------------------------------------------------------------------|
-| LineItemNumber       | číslo |    Y     | Číslo položky řádku začínající na 0                                              |
-| Hodnotami OfferId              | řetězec |    Y     | ID nabídky                                                                |
+| LineItemNumber       | číslo |    Y     | Číslo položky řádku začínající 0                                              |
+| ID nabídky              | řetězec |    Y     | ID nabídky                                                                |
 | SubscriptionId       | řetězec |    Y     | ID předplatného                                                         |
-| FriendlyName         | řetězec |    N     | Popisný název předplatného definovaného partnerem, který vám umožní určit nejednoznačnost |
+| Friendlyname         | řetězec |    N     | Popisný název předplatného definovaného partnerem, který pomáhá jednoznačně definovat |
 | Množství             | číslo |    Y     | Počet licencí nebo instancí                                                |
 | Id partneraZáznam    | řetězec |    N     | ID MPN záznamu partnera                                                |
 | Atributy           | Objekt |    N     | Obsahuje ObjectType: OrderLineItem.                                             |

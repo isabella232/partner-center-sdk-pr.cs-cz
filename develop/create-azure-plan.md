@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: mowrim
 ms.author: mowrim
-ms.openlocfilehash: b77b067c7eb150ab1ad9904915e87c3fc55c104a
-ms.sourcegitcommit: 1fce45e6cafbc4c228042523ae28aac651a73757
+ms.openlocfilehash: 5083f7aa8ea274b5210d88085d26376dadbc0c4d1a0dd6e1babe59c94d7a6f9c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114483054"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991476"
 ---
 # <a name="create-an-azure-plan"></a>Vytvoření plánu Azure
 
@@ -20,7 +20,7 @@ Plán Azure můžete zakoupit, vytvořit a spravovat pomocí rozhraní PARTNERSK
 ## <a name="prerequisites"></a>Požadavky
 
 * [Partnerské centrum přihlašovací údaje](partner-center-authentication.md) pro ověřování. Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
-* Identifikátor zákazníka. Pokud identifikátor zákazníka nemáte, postupujte podle kroků v části [Získání seznamu zákazníků.](get-a-list-of-customers.md) Případně se přihlaste k Partnerské centrum, vyberte zákazníka ze seznamu zákazníků, vyberte Účet a pak uložte **jeho Microsoft ID**. 
+* Identifikátor zákazníka. Pokud identifikátor zákazníka nemáte, postupujte podle kroků v části [Získání seznamu zákazníků.](get-a-list-of-customers.md) Případně se přihlaste k Partnerské centrum, v seznamu zákazníků vyberte zákazníka, vyberte Účet a pak uložte **jeho Microsoft ID**. 
 * [Potvrzení souhlasu zákazníka s Smlouva se zákazníkem Microsoftu](/partner-center/confirm-customer-agreement).
 
 ## <a name="get-the-catalog-item-for-azure-plan"></a>Získání položky katalogu pro plán Azure
@@ -35,7 +35,7 @@ Pokud chcete získat položku katalogu pro plán Azure, proveďte následující
 
 1. Identifikujte a *načtěte* identifikátor produktu pro plán Azure. Postupujte podle kroků v [části Získání seznamu produktů a](get-a-list-of-products.md) jako **targetView** zadejte **MicrosoftAzure.** (Pokud už identifikátor *produktu* pro plán Azure znáte, můžete místo toho postupovat podle kroků v části Získání produktu [pomocí ID](get-a-product-by-id.md) produktu.)
 
-2. **Načtěte SKU** z produktu pro plán Azure. Postupujte podle kroků [v části Získání seznamu skladových položek pro produkt](get-a-list-of-skus-for-a-product.md). Pokud už znáte identifikátor SKU pro plán Azure, můžete místo toho postupovat podle kroků v části Získání SKU pomocí [ID SKU.](get-a-sku-by-id.md)
+2. Načtěte **SKU** z produktu pro plán Azure. Postupujte podle kroků [v části Získání seznamu skladových položek pro produkt](get-a-list-of-skus-for-a-product.md). Pokud už znáte identifikátor SKU pro plán Azure, můžete místo toho postupovat podle kroků v části Získání SKU pomocí [ID SKU.](get-a-sku-by-id.md)
 
 3. **Načtěte dostupnost** ze SKU pro plán Azure. Postupujte podle kroků [v části Získání seznamu dostupnosti pro SKU](get-a-list-of-availabilities-for-a-sku.md). Pokud už znáte identifikátor pro dostupnost, kterou potřebujete, můžete místo toho použít postup v části Získání dostupnosti [pomocí ID](get-an-availability-by-id.md) dostupnosti. *Nezapomeňte si poznamenat hodnotu vlastnosti **CatalogItemId** dostupnosti plánu Azure. Tuto hodnotu budete potřebovat k vytvoření objednávky.*
 
@@ -43,7 +43,7 @@ Pokud chcete získat položku katalogu pro plán Azure, proveďte následující
 
 Pokud chcete odeslat objednávku plánu Azure, postupujte takto:
 
-1. [Vytvořte košík pro](create-a-cart.md) kolekci položek katalogu, které chcete koupit. Když vytvoříte [košík,](cart-resources.md#cart) [](cart-resources.md#cartlineitem) řádkové položky košíku se automaticky seskupí podle toho, co je možné zakoupit společně ve stejné [objednávce](order-resources.md#order). (Můžete také [aktualizovat košík.)](update-a-cart.md)
+1. [Vytvořte košík pro](create-a-cart.md) kolekci položek katalogu, které chcete koupit. Když vytvoříte [košík,](cart-resources.md#cart) [](cart-resources.md#cartlineitem) řádkové položky košíku se automaticky seskupí podle toho, co je možné zakoupit společně ve stejné [objednávce.](order-resources.md#order) (Můžete také [aktualizovat košík.)](update-a-cart.md)
 
 2. [Podívejte se na košík](checkout-a-cart.md), jehož výsledkem je vytvoření [objednávky](order-resources.md#order).
 
@@ -61,7 +61,7 @@ Po úspěšném zpracování objednávky se pro  Partnerské centrum Azure vytvo
 * [Získání předplatných zákazníka](get-all-of-a-customer-s-subscriptions.md)
 * [Získání seznamu předplatných podle objednávky](get-a-list-of-subscriptions-by-order.md)
 
-Když se v Azure vytvoří plán Azure Partnerské centrum, vytvoří se v Azure také odpovídající předplatné využití Azure. Můžete také vytvořit další předplatná využití Azure v rámci stejného plánu Azure pomocí Azure Portal a rozhraní API Azure. Identifikátory všech předplatných využití Azure přidružených k plánu Azure můžete získat pomocí postupu v části Získání seznamu oprávnění Azure pro Partnerské centrum [předplatného.](get-a-list-of-azure-entitlements-for-subscription.md)
+Když se v Azure vytvoří plán Azure Partnerské centrum, vytvoří se v Azure také odpovídající předplatné využití Azure. Můžete také vytvořit další předplatná využití Azure v rámci stejného plánu Azure pomocí Azure Portal a rozhraní API Azure. Identifikátory všech předplatných využití Azure přidružených k plánu Azure můžete získat pomocí postupu v části Získání seznamu nároků Azure pro Partnerské centrum [předplatného.](get-a-list-of-azure-entitlements-for-subscription.md)
 
 ## <a name="lifecycle-management"></a>Správa životního cyklu
 

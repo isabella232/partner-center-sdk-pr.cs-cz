@@ -406,7 +406,7 @@
           href: update-a-cart.md
         - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
           href: update-autorenew-for-an-azure-marketplace-subscription.md
-    - name: Správa výplat
+    - name: Spravovat výběry
       href: manage-payouts.md
     - name: Poskytování podpory
       href: provide-support.md
@@ -425,19 +425,19 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox pro integraci
   items:
-    - name: Možnosti izolovaného prostoru pro vztah prodejce
+    - name: Možnosti sandboxu pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
-    - name: Možnosti nepřímých poskytovatelů CSP v izolovaném prostoru
+    - name: Možnosti nepřímého poskytovatele CSP v sandboxu
       href: indirect-provider-sandbox-capabilities.md
     - name: Zrušení objednávky ze sandboxu pro integraci
       href: cancel-an-order-from-the-integration-sandbox.md
     - name: Aktivovace předplatného sandboxu
       href: activate-sandbox-subscription-azure-marketplace-products.md
-    - name: Vytvoření nepřímého prodejce v izolovaném prostoru
+    - name: Vytvoření nepřímého prodejce v Sandboxu
       href: create-indirect-reseller-in-sandbox.md
-    - name: Odstranit nepřímý prodejce v izolovaném prostoru
+    - name: Odstranění nepřímého prodejce v Sandboxu
       href: delete-indirect-reseller-in-sandbox.md
 - name: Reference
   href: /partner/develop/referrals
@@ -470,7 +470,7 @@
       href: get-api-request-details.md
 - name: Referenční informace k rozhraní REST API pro Partnerské centrum
   items:
-    - name: Úvodní REST API partnerského centra
+    - name: Partnerské centrum REST API úvod
       href: partner-center-rest-api-reference.md
     - name: Protokol změn rozhraní REST API pro Partnerské centrum
       href: api-change-log.md

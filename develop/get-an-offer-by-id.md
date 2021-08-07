@@ -6,28 +6,28 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: brentserbus
 ms.author: brserbus
-ms.openlocfilehash: f759cbdeefb4f550c41b41de40e9979e72e4ddeb
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: a57f3715a7c2738e74fc406ed834981b208fb0ab14a228db8756f5c4b1e32281
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760636"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990847"
 ---
 # <a name="get-an-offer-by-id"></a>Získání nabídky podle ID
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Získá prostředek **nabídky** , který odpovídá ID nabídky.
+Získá prostředek **nabídky,** který odpovídá ID nabídky.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID nabídky
+- ID nabídky.
 
 ## <a name="c"></a>C\#
 
-Chcete-li najít konkrétní nabídku podle ID, použijte svou kolekci **IAggregatePartner.** offers, vytvořte zemi se voláním **ByCountry ()** a poté zavolejte metodu [**ByID ()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) . Pak zavolejte metodu [**Get ()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.get) nebo [**Get Async ()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.getasync) .
+Pokud chcete najít konkrétní nabídku podle ID, použijte kolekci **IAggregatePartner.Offers,** vytvořte zemi voláním **metody ByCountry()** a pak zavolejte [**metodu ByID().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.byid) Potom zavolejte [**metodu Get()**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.get) nebo [**Get Async().**](/dotnet/api/microsoft.store.partnercenter.offers.ioffercollection.getasync)
 
 ```csharp
 // IAggretagePartner partnerOperations;
@@ -38,13 +38,13 @@ Chcete-li najít konkrétní nabídku podle ID, použijte svou kolekci **IAggreg
 var offer = partnerOperations.Offers.ByCountry(countryCode).ById(offerId).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: getoffer. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSample **– třída:** Getoffer.cs
 
 ## <a name="java"></a>Java
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Chcete-li najít konkrétní nabídku podle ID, použijte funkci **IAggregatePartner. res** , stanovte zemi voláním funkce **byCountry ()** a potom zavolejte funkci **byID ()** . Pak zavolejte funkci **Get ()** .
+Pokud chcete najít konkrétní nabídku podle ID, použijte funkci **IAggregatePartner.getOffers,** navázání země pomocí volání funkce **byCountry()** a volání funkce **byID().** Potom zavolejte **funkci get().**
 
 ```java
 // IAggretagePartner partnerOperations;
@@ -59,7 +59,7 @@ Offer offer = partnerOperations.getOffers().byCountry(countryCode).byId(offerId)
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Chcete-li najít konkrétní nabídku podle ID, spusťte příkaz [**Get-PartnerOffer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOffer.md) a zadejte parametry **CountryCode** a **hodnotami OfferId** .
+Pokud chcete najít konkrétní nabídku podle ID, spusťte příkaz [**Get-PartnerOffer**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerOffer.md) a zadejte parametry **CountryCode** a **OfferId.**
 
 ```powershell
 # $countryCode
@@ -68,25 +68,25 @@ Chcete-li najít konkrétní nabídku podle ID, spusťte příkaz [**Get-Partner
 Get-PartnerOffer -Country $countryCode -OfferId $offerId
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                    |
 |---------|------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{Offer-ID}? Country = {Country-ID} HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/offers/{ID_nabídky}?country={ID_země} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
 | Název           | Typ       | Vyžadováno | Popis                           |
 |----------------|------------|----------|---------------------------------------|
-| **ID nabídky**   | **guid**   | Y        | Identifikátor GUID, který odpovídá této nabídce |
-| **ID země** | **řetězec** | Y        | ID země nebo oblasti                |
+| **ID nabídky**   | **guid**   | Y        | Identifikátor GUID, který odpovídá nabídce. |
+| **country-id** | **řetězec** | Y        | ID země nebo oblasti.                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Je vyžadováno **ID národního prostředí** naformátovaného jako řetězec.
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+- Vyžaduje **se ID národního** prostředí formátované jako řetězec.
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -106,11 +106,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda v těle odpovědi prostředek **nabídky** .
+V případě úspěchu vrátí tato metoda **v** textu odpovědi prostředek nabídky.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

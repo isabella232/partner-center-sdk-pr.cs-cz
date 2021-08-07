@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 9a6218aeb61f3775c89d34b4d57a17741e3a1e93
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: e54e083dda758cc712c889916676007a389ba69c8009bb3d4907df343a436004
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973736"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991731"
 ---
 # <a name="create-a-customer-for-an-indirect-reseller-using-partner-center-apis"></a>Vytvoření zákazníka pro nepřímého prodejce pomocí Partnerské centrum API
 
@@ -120,7 +120,7 @@ Tato tabulka popisuje minimální povinná pole z prostředku [CustomerCompanyPr
 | Název   | Typ   | Vyžadováno | Popis                                                  |
 |--------|--------|----------|--------------------------------------------------------------|
 | doména | řetězec | Yes     | Název domény zákazníka, například contoso.onmicrosoft.com. |
-| organizationRegistrationNumber | řetězec | Závisí na podměně. | Registrační číslo organizace zákazníka (v určitých zemích se také označuje jako číslo INN). <br/><br/>Vyplnění tohoto pole se vyžaduje pouze v případě, že se společnost nebo organizace zákazníka nachází v následujících zemích: <br/><br/>– Arménská (AM) <br/>-Ázerbájdžán (AZ)<br/>-Bělorusko (do)<br/>-Maďarsko (HU)<br/>-Kazachstán (KZ)<br/>-Kyrgyzstán (KG)<br/>-Moldávie (MD)<br/>– Rusko (RU)<br/>-Tádžikistán (TJ)<br/>-Uzbekistán (UZ)<br/>– Ukrajina (UA)<br/>– Indie <br/>– Brazílie <br/>– Jižní Afrika <br/>– Polsko <br/>– Spojené arabské emiráty <br/>– Saúdská Arábie <br/>– Turecko <br/>– Thajsko <br/>– Vietnam <br/>– Myanmar <br/>– Irák <br/>– Jižní Súdán <br/>– Venezuela<br/> <br/>Pro společnost nebo organizaci zákazníka nacházející se v jiných zemích se jedná o volitelné pole.  |
+| organizationRegistrationNumber | řetězec | Závisí na podměně. | Registrační číslo organizace zákazníka (v určitých zemích se také označuje jako číslo INN). <br/><br/>Vyplnění tohoto pole se vyžaduje pouze v případě, že se společnost nebo organizace zákazníka nachází v následujících zemích: <br/><br/>- Arménie (AM) <br/>– Az (Az)<br/>- Neschůdné (BY)<br/>– Šmídy (HU)<br/>– Šmídy (KZ)<br/>- Pohotový (KG)<br/>– Kaša (MD)<br/>– Rusko (RU)<br/>- Tádžovéstan (TJ)<br/>– Šmídy (UZ)<br/>– UA (Ka)<br/>– Indie <br/>– Brazílie <br/>– Jižní Afrika <br/>– Šátsko <br/>– United Kaskády <br/>– Saúdská Arábie <br/>– Kaša <br/>– Kaša <br/>– Vietnam <br/>- Selhot <br/>– Zamíscené <br/>– South Ára <br/>– Kaskády<br/> <br/>Pro společnost nebo organizaci zákazníka v jiných zemích se jedná o volitelné pole.  |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -185,11 +185,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude odpověď obsahovat [zákaznický](customer-resources.md#customer) prostředek pro nového zákazníka.
+V případě úspěchu odpověď obsahuje [prostředek zákazníka](customer-resources.md#customer) pro nového zákazníka.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Odpovědi se dodávají se stavovým kódem HTTP, který označuje úspěch nebo neúspěch a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Odpovědi mají stavový kód HTTP, který označuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

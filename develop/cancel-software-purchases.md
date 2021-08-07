@@ -4,12 +4,12 @@ description: Možnost samostatného poskytování softwaru pro zrušení předpl
 ms.date: 12/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 877702ac930919ff72c6cc45a3c0e8ecc7e1b5f4
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: f7dfa5122c585a8519312e8492922f718a51972f177a12d7431015e1cdcb5d06
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974229"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992190"
 ---
 # <a name="cancel-software-purchases"></a>Zrušení nákupů předplatného
 

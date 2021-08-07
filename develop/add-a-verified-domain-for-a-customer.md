@@ -1,79 +1,79 @@
 ---
 title: Přidání ověřené domény pro zákazníka
-description: Naučte se přidat ověřenou doménu do seznamu schválených domén pro zákazníka v partnerském centru. Použijte rozhraní API partnerského centra a rozhraní REST API.
+description: Zjistěte, jak přidat ověřenou doménu do seznamu schválených domén pro zákazníka v Partnerské centrum. Proveďte to pomocí Partnerské centrum rozhraní API a rozhraní REST API.
 ms.date: 05/21/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a8157bff5ac37100713a057ac68ac94c89ba28b8
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: fc24335aff6fe83b58ad2cb178d03db00614dd8ae24ee83d20b607b56a4bc51d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025679"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989130"
 ---
 # <a name="add-a-verified-domain-to-the-list-of-approved-domains-for-an-existing-customer"></a>Přidání ověřené domény do seznamu schválených domén pro existujícího zákazníka 
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Postup přidání ověřené domény do seznamu schválených domén pro existujícího zákazníka.
+Postup přidání ověřené domény do seznamu schválených domén pro existujícího zákazníka
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte být partnerem, který je doménovým registrátorem.
+- Musíte být partner, který je doménový registrátor.
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="adding-a-verified-domain"></a>Přidání ověřené domény
 
-Pokud jste partnerem, který je členem domény, můžete použít `verifieddomain` rozhraní API k odeslání nového prostředku [domény](#domain) do seznamu domén pro existujícího zákazníka. Pokud to chcete provést, identifikujte zákazníka pomocí CustomerTenantId. Zadejte hodnotu pro vlastnost VerifiedDomainName. Do žádosti předejte prostředek [domény](#domain) s požadovanými vlastnostmi název, funkce, AuthenticationType, stav a VerificationMethod. Chcete-li určit, že nová [doména](#domain) je federované domény, nastavte vlastnost AuthenticationType v prostředku [domény](#domain) na a do `Federated` žádosti Přidejte prostředek [DomainFederationSettings](#domain-federation-settings) . Pokud je metoda úspěšná, bude odpověď zahrnovat prostředek [domény](#domain) pro novou ověřenou doménu.
+Pokud jste partner, který je doménový registrátor, můžete pomocí tohoto rozhraní API odeslat nový prostředek domény do seznamu domén `verifieddomain` stávajícího zákazníka. [](#domain) Pokud to chcete provést, identifikujte zákazníka pomocí jeho CustomerTenantId. Zadejte hodnotu vlastnosti VerifiedDomainName. Předejte [prostředek domény](#domain) v požadavku s požadovanými vlastnostmi Name, Capability, AuthenticationType, Status a VerificationMethod. Pokud chcete určit, že nová doména je federovaná doména, nastavte vlastnost AuthenticationType v prostředku [Doména](#domain) na a do požadavku zahržte prostředek [](#domain) `Federated` [DomainFederationSettings.](#domain-federation-settings) Pokud je metoda úspěšná, odpověď bude obsahovat [prostředek domény](#domain) pro novou ověřenou doménu.
 
 ### <a name="custom-verified-domains"></a>Vlastní ověřené domény
 
-Když přidáváte vlastní ověřenou doménu, doménu, která není registrovaná v **onmicrosoft.com**, musíte nastavit vlastnost [CustomerUser. immutableId](user-resources.md#customeruser) na jedinečnou hodnotu ID zákazníka, pro který přidáváte doménu. Tento jedinečný identifikátor je vyžadován během procesu ověřování při ověřování domény. Další informace o uživatelských účtech zákazníka najdete v tématu [Vytvoření uživatelských účtů pro zákazníka](create-user-accounts-for-a-customer.md).
+Když přidáváte vlastní ověřenou doménu, která není zaregistrovaná v **doméně onmicrosoft.com**, musíte vlastnost [CustomerUser.immutableId](user-resources.md#customeruser) nastavit na jedinečnou hodnotu ID zákazníka, pro který doménu přidáváte. Tento jedinečný identifikátor je vyžadován během procesu ověřování při ověřování domény. Další informace o uživatelských účtech zákazníků najdete v tématu [Vytvoření uživatelských účtů pro zákazníka.](create-user-accounts-for-a-customer.md)
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti                                                                                        |
 |--------|----------------------------------------------------------------------------------------------------|
-| POST   | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{CustomerTenantId}/verifieddomain HTTP/1.1 |
+| POST   | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{CustomerTenantId}/verifieddomain HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Použijte následující parametr dotazu k zadání zákazníka, pro který přidáváte ověřenou doménu.
+Pomocí následujícího parametru dotazu zadejte zákazníka, pro který přidáváte ověřenou doménu.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CustomerTenantId | guid | Y        | Hodnota je **CustomerTenantId** ve formátu GUID, který umožňuje zadat zákazníka. |
+| CustomerTenantId | guid | Y        | Hodnota je identifikátor GUID naformátovaný **jako CustomerTenantId,** který umožňuje zadat zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje požadované vlastnosti v textu žádosti.
+Tato tabulka popisuje požadované vlastnosti v textu požadavku.
 
 | Název                                                  | Typ   | Vyžadováno                                      | Popis                                                |
 |-------------------------------------------------------|--------|-----------------------------------------------|--------------------------------------------------------|
-| VerifiedDomainName                                    | řetězec | Yes                                           | Ověřený název domény |
+| VerifiedDomainName                                    | řetězec | Yes                                           | Ověřený název domény. |
 | [Doména](#domain)                                     | object | Yes                                           | Obsahuje informace o doméně. |
-| [DomainFederationSettings](#domain-federation-settings) | object | Ano (Pokud AuthenticationType = `Federated` )     | Nastavení federační domény, které se má použít, pokud je doména doménou `Federated` , a ne `Managed` doménou. |
+| [Nastavení domainFederationSettings](#domain-federation-settings) | object | Ano (pokud AuthenticationType = `Federated` )     | Nastavení federace domény, které se má použít, pokud je doména `Federated` doména, a ne `Managed` doména. |
 
 ### <a name="domain"></a>Doména
 
-Tato tabulka popisuje vlastnosti povinné a volitelné **domény** v textu žádosti.
+Tato tabulka popisuje požadované a volitelné **vlastnosti domény** v textu požadavku.
 
 | Název               | Typ                                     | Vyžadováno | Popis                                                                                                                                                                                                     |
 |--------------------|------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| AuthenticationType                                    | řetězec           | Yes      | Definuje, jestli je doména doménou `Managed` nebo `Federated` doménou. Podporované hodnoty: `Managed` , `Federated` .|
+| Authenticationtype                                    | řetězec           | Yes      | Definuje, jestli je doména `Managed` doména, nebo `Federated` doména. Podporované hodnoty: `Managed` , `Federated` .|
 | Schopnost                                            | řetězec           | Yes      | Určuje schopnost domény. Například, `Email`.                  |
-| IsDefault                                             | logická hodnota s možnou hodnotou null | No       | Určuje, jestli je doména výchozí doménou pro tenanta. Podporované hodnoty: `True` , `False` , `Null` .        |
-| – Počáteční                                             | logická hodnota s možnou hodnotou null | No       | Uvádí, zda je doména počáteční doménou. Podporované hodnoty: `True` , `False` , `Null` .                       |
-| Name                                                  | řetězec           | Yes      | Název domény                                                          |
+| IsDefault (Výchozí)                                             | Logická hodnota s možnou hodnotou null | No       | Určuje, jestli je doména výchozí doménou pro tenanta. Podporované hodnoty: `True` `False` , , `Null` .        |
+| IsInitial                                             | Logická hodnota s možnou hodnotou null | No       | Určuje, jestli je doména počáteční doménou. Podporované hodnoty: `True` `False` , , `Null` .                       |
+| Name                                                  | řetězec           | Yes      | Název domény.                                                          |
 | RootDomain                                            | řetězec           | No       | Název kořenové domény.                                              |
 | Status                                                | řetězec           | Yes      | Stav domény. Například, `Verified`. Podporované hodnoty:  `Unverified` `Verified` , , `PendingDeletion` .                               |
 | Metoda ověřování                                    | řetězec           | Yes      | Typ metody ověření domény. Podporované hodnoty: `None` `DnsRecord` , , `Email` .                                    |

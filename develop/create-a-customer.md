@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 6232ca77d057f2f5168b73d81ec551669d540246
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 49df47441276c7e79074e1bf7f8d50cd72054b42acd93938de088046b68b6d98
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973719"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991765"
 ---
 # <a name="create-a-customer-using-partner-center-apis"></a>Vytvoření zákazníka pomocí Partnerské centrum API
 
@@ -235,7 +235,7 @@ V případě úspěchu vrátí toto rozhraní API [pro](customer-resources.md#cu
 
 ### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Odpovědi mají stavový kód HTTP, který označuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Odpovědi mají stavový kód HTTP, který označuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

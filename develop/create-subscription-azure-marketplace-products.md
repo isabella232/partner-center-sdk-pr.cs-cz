@@ -1,102 +1,102 @@
 ---
-title: Vytvoření předplatného pro produkty z komerčního tržiště
-description: Vývojáři můžou vytvořit a spravovat předplatné pro produkty z komerčního tržiště pomocí rozhraní API partnerského centra.
+title: Vytvoření předplatného pro produkty komerčního marketplace
+description: Vývojáři mohou vytvořit a spravovat předplatné pro produkty komerčního marketplace pomocí Partnerské centrum API.
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ae2e4b0a1ffa2e63e68864887093673e32079d9f
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 7e7a4b96f509ae99cd4933963c04b0f660d7d76410ee86c31256c62b290f122f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973362"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991374"
 ---
-# <a name="create-a-subscription-for-commercial-marketplace-products"></a>Vytvoření předplatného pro produkty z komerčního tržiště
+# <a name="create-a-subscription-for-commercial-marketplace-products"></a>Vytvoření předplatného pro produkty komerčního marketplace
 
-Předplatné pro produkty komerčního tržiště můžete vytvořit pomocí rozhraní API partnerského centra. Musíte [získat seznam nabídek pro trh](#get-a-list-of-offers-for-a-market), [vytvořit a odeslat objednávku](#create-and-submit-an-order) pro předplatné komerčního tržiště a pak [načíst aktivační odkaz](#get-activation-link).
+Předplatné pro produkty komerčního marketplace můžete vytvořit pomocí Partnerské centrum API. Musíte získat [seznam nabídek](#get-a-list-of-offers-for-a-market)pro [](#create-and-submit-an-order) trh, vytvořit a odeslat objednávku pro předplatné komerčního marketplace a pak [načíst aktivační odkaz](#get-activation-link).
 
-Můžete také [provádět správu životního cyklu](#lifecycle-management) a [spravovat faktury](#invoice-and-reconciliation) pro tyto odběry.
+Můžete také provádět [správu životního cyklu a](#lifecycle-management) spravovat [faktury](#invoice-and-reconciliation) za tato předplatná.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Přihlašovací údaje pro [ověření partnerského centra](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
-* Identifikátor zákazníka. Pokud nemáte identifikátor zákazníka, postupujte podle kroků v části [získání seznamu zákazníků](get-a-list-of-customers.md). Případně se přihlaste do partnerského centra, vyberte zákazníka ze seznamu zákazníků, vyberte možnost **účet** a uložte své **ID společnosti Microsoft**.
+* [Partnerské centrum přihlašovací údaje](partner-center-authentication.md) pro ověřování. Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+* Identifikátor zákazníka. Pokud identifikátor zákazníka nemáte, postupujte podle kroků v části [Získání seznamu zákazníků.](get-a-list-of-customers.md) Případně se přihlaste k Partnerské centrum, v seznamu zákazníků vyberte zákazníka, vyberte Účet a pak uložte **jeho Microsoft ID**. 
 
 ## <a name="get-a-list-of-offers-for-a-market"></a>Získání seznamu nabídek pro trh
 
-Dostupné nabídky pro trh můžete vyhledat pomocí následujících modelů rozhraní API partnerského centra:
+Dostupné nabídky pro trh můžete zkontrolovat pomocí následujících Partnerské centrum API:
 
-* **[Produkt](product-resources.md#product)**: seskupovací konstrukce pro kupní zboží nebo služby. Produkt sám o sobě není položka, která je k nákupu.
-* **[SKU](product-resources.md#sku)**: kupní jednotka (SKU) na skladě v rámci produktu. Tyto prvky jsou znázorněny v různých tvarech produktu.
-* **[Dostupnost](product-resources.md#availability)**: konfigurace, ve které je k DISpozici SKU k nákupu (například země, Měna nebo odvětví odvětví).
+* **[Produkt:](product-resources.md#product)** Seskupovací konstrukce pro nákup zboží nebo služeb. Samotný produkt není položka, kterou si můžete koupit.
+* **[SKU:](product-resources.md#sku)** SKU (Purchasable Stock Keeping Unit) v rámci produktu. Ty představují různé tvary produktu.
+* **[Dostupnost:](product-resources.md#availability)** Konfigurace, ve které je skladová položku k dispozici pro nákup (například země, měna nebo segment odvětví).
 
-Než zakoupíte rezervaci Azure, proveďte následující kroky:
+Než si zakoupíte rezervaci Azure, proveďte následující kroky:
 
-1. Identifikujte a načtěte produkt a SKU, které chcete koupit. Pokud už znáte ID produktu a ID skladové položky, vyberte je.
+1. Identifikujte a načtěte produkt a SKU, které chcete koupit. Pokud již znáte ID produktu a ID SKU, vyberte je.
 
-    * [Získat seznam produktů](get-a-list-of-products.md)
-    * [Získat produkt s použitím ID produktu](get-a-product-by-id.md)
-    * [Získat seznam SKU pro produkt](get-a-list-of-skus-for-a-product.md)
+    * [Získání seznamu produktů](get-a-list-of-products.md)
+    * [Získání produktu s použitím ID produktu](get-a-product-by-id.md)
+    * [Získání seznamu skladových položek pro produkt](get-a-list-of-skus-for-a-product.md)
     * [Získání SKU pomocí ID SKU](get-a-sku-by-id.md)
 
     > [!NOTE]
-    > Produkty z komerčního tržiště můžete identifikovat jejich **ProductType** vlastností **"Azure"** a jejich vlastností **podtypu** **"SaaS"**.
+    > Produkty na komerčním marketplace můžete identifikovat podle jejich vlastnosti **ProductType** **hodnoty "Azure"** a jejich vlastnosti **SubType** **typu "SaaS".**
 
-2. Pokud jsou skladové jednotky označené **InventoryCheck** podmínkou, podívejte se na [inventář skladové](check-inventory.md)položky.
+2. Pokud jsou skladové položky označené požadavkem **InventoryCheck,** zkontrolujte skladové položky [v inventáři.](check-inventory.md)
 
     > [!NOTE]
-    > V tuto chvíli nejsou k dispozici žádné produkty z komerčního tržiště, které podporují kontrolu inventáře nebo jsou označené **InventoryCheck** požadavky.
+    > V tuto chvíli nejsou k dispozici žádné produkty komerčního marketplace, které podporují kontrolu inventáře nebo jsou označené požadavkem **InventoryCheck.**
 
-3. Načtěte dostupnost pro SKLADOVOU položku. Při umísťování objednávky budete potřebovat **CatalogItemId** dostupnost, kterou můžete načíst prostřednictvím následujících rozhraní API:
+3. Načtěte dostupnost pro SKU. Při zadávání objednávky budete potřebovat **CatalogItemId** dostupnosti, kterou můžete načíst prostřednictvím následujících rozhraní API:
 
-    * [Získat seznam dostupnosti pro SKU](get-a-list-of-availabilities-for-a-sku.md)
+    * [Získání seznamu dostupnosti pro SKU](get-a-list-of-availabilities-for-a-sku.md)
     * [Získání dostupnosti pomocí ID dostupnosti](get-an-availability-by-id.md)
 
 ## <a name="create-and-submit-an-order"></a>Vytvoření a odeslání objednávky
 
-K odeslání vaší objednávky rezervace Azure použijte tento postup:
+Pokud chcete odeslat objednávku rezervace Azure, postupujte takto:
 
-1. [Vytvořte košík](create-a-cart.md) pro uložení kolekce položek katalogu, které máte v úmyslu koupit. Při vytváření [košíku](cart-resources.md#cart)se [položky řádku vozíku](cart-resources.md#cartlineitem) automaticky seskupují podle toho, co se dá koupit společně ve stejném [pořadí](order-resources.md#order). (Můžete také [Aktualizovat košík](update-a-cart.md).)
-2. [Podívejte se na košík](checkout-a-cart.md), který má za následek vytvoření [objednávky](order-resources.md#order).
+1. [Vytvořte košík pro](create-a-cart.md) kolekci položek katalogu, které chcete koupit. Když vytvoříte [košík,](cart-resources.md#cart) [](cart-resources.md#cartlineitem) řádkové položky košíku se automaticky seskupí podle toho, co je možné zakoupit společně ve stejné [objednávce.](order-resources.md#order) (Můžete také [aktualizovat košík.)](update-a-cart.md)
+2. [Podívejte se na košík](checkout-a-cart.md), jehož výsledkem je vytvoření [objednávky](order-resources.md#order).
 
-### <a name="get-order-details"></a>Získat podrobnosti objednávky
+### <a name="get-order-details"></a>Získání podrobností objednávky
 
-[Pomocí ID objednávky můžete načíst podrobnosti o jednotlivých objednávkách](get-an-order-by-id.md). Můžete také [načíst seznam všech objednávek pro konkrétního zákazníka](get-all-of-a-customer-s-orders.md).
+Podrobnosti o [jednotlivé objednávce můžete načíst pomocí ID objednávky](get-an-order-by-id.md). Můžete také [načíst seznam všech objednávek pro konkrétního zákazníka](get-all-of-a-customer-s-orders.md).
 
 > [!NOTE]
-> Po odeslání objednávky dojde k prodlevě až 15 minut, než se objednávka objeví v seznamu objednávek zákazníka.
+> Po odeslané objednávce existuje zpoždění až 15 minut, než se objednávka objeví v seznamu objednávek tohoto zákazníka.
 
-## <a name="get-activation-link"></a>Získat aktivační odkaz
+## <a name="get-activation-link"></a>Získání odkazu na aktivaci
 
-Partner nebo zákazník musí aktivovat odběry Azure Marketplace produktů. Můžete [získat aktivační odkaz podle položky řádku objednávky](get-activation-link-by-order-line-item.md). Můžete taky [získat předplatné podle ID](get-a-subscription-by-id.md)a potom **vytvořit jeho vlastnost Links** a vytvořit tak aktivační odkaz.
+Partner nebo zákazník musí aktivovat předplatná pro Azure Marketplace produkty. Aktivační odkaz [můžete získat podle řádkové položky objednávky](get-activation-link-by-order-line-item.md). Můžete také získat [předplatné podle ID](get-a-subscription-by-id.md)  a pak vytvořit aktivační odkaz vytvořením výčtu jeho vlastnosti Links.
 
 ## <a name="lifecycle-management"></a>Správa životního cyklu
 
-Životní cyklus předplatných můžete spravovat na komerční produkty z webu Marketplace pomocí následujících metod:
+Životní cyklus předplatných produktů na komerčním marketplace můžete spravovat následujícími způsoby:
 
 * [Zrušení předplatného na komerčním marketplace](cancel-an-azure-marketplace-subscription.md)
-* [Povolení nebo zakázání autorenew pro předplatné komerčního tržiště](update-autorenew-for-an-azure-marketplace-subscription.md)
+* [Povolení nebo zakázání funkce autoenew pro předplatné komerčního marketplace](update-autorenew-for-an-azure-marketplace-subscription.md)
 
 ## <a name="quantity-management"></a>Správa množství
 
-Množství předplatného komerčního tržiště musí být v mezích definovaných přiřazenými [SKU](product-resources.md#sku) (viz atributy **minimumQuantity** a **maximumQuantity** ). Pokud chcete aktualizovat množství předplatného komerčního tržiště, použijte tuto metodu:
+Množství předplatného komerčního marketplace musí být v mezích definovaných přidruženými [skladové](product-resources.md#sku) položky (viz atributy **minimumQuantity** a **maximumQuantity).** Pokud chcete aktualizovat množství předplatného komerčního marketplace, použijte následující metodu:
 
 * [Změna objemu předplatného](change-the-quantity-of-a-subscription.md)
 
 ## <a name="invoice-and-reconciliation"></a>Faktura a odsouhlasení
 
-Pomocí následujících metod můžete spravovat [faktury](invoice-resources.md) zákazníků (včetně poplatků za předplatné z komerčních produktů na webu Marketplace):
+Faktury zákazníků (včetně [poplatků za](invoice-resources.md) předplatná produktů na komerčním marketplace) můžete spravovat následujícími způsoby:
 
-* [Získat položky řádkové spotřeby pro komerční web na faktuře](get-invoice-billed-consumption-lineitems.md)
+* [Získání fakturovaných řádkových položek spotřeby na komerčním marketplace](get-invoice-billed-consumption-lineitems.md)
 * [Získání odkazů na odhad faktury](get-invoice-estimate-links.md)
-* [Získat faktury za položky na řádcích spotřeby na komerční web Marketplace](get-invoice-unbilled-consumption-lineitems.md)
-* [Získat nefakturovatelné položky řádku odsouhlasení faktury](get-invoice-unbilled-recon-lineitems.md)
+* [Získání nefakturovaných řádkových položek spotřeby na komerčním marketplace](get-invoice-unbilled-consumption-lineitems.md)
+* [Získání nevyfakturovaných řádových položek s vyrovnáním na faktuře](get-invoice-unbilled-recon-lineitems.md)
 
-## <a name="test-using-integration-sandbox-account"></a>Test pomocí účtu izolovaného prostoru pro integraci
+## <a name="test-using-integration-sandbox-account"></a>Testování s využitím účtu sandboxu pro integraci
 
-V produkčním prostředí, po vytvoření odběru pro komerční produkty SaaS na webu Marketplace, je potřeba načíst přizpůsobený aktivační odkaz z partnerského centra a přejít na web vydavatele, aby se proces instalace dokončil. Fakturace předplatného se zahájí až po dokončení instalace.
+Po vytvoření předplatného produktů SaaS na komerčním marketplace musíte v produkčním prostředí načíst individuální aktivační odkaz ze služby Partnerské centrum a navštívit web vydavatele a dokončit proces nastavení. Fakturace předplatného začne až po dokončení nastavení.
 
-V prostředí izolovaného prostoru (sandbox) CSP není k dispozici žádná integrace s nezávislými prodejci softwaru. Pokud se pokusíte načíst aktivační odkaz z partnerského centra, vrátí se fiktivní odkaz. Tento fiktivní odkaz nelze použít k dokončení procesu instalace na webu vydavatele. Pokud chcete pomocí účtu izolovaného prostoru (sandbox) testovat účtování předplatných do komerčních produktů SaaS na webu Marketplace, použijte k aktivaci předplatného následující metodu. Fakturace předplatného se zahájí po úspěšné aktivaci:
+V prostředí sandboxu CSP neexistuje žádná integrace s isvédy. Pokud se pokusíte načíst aktivační odkaz z Partnerské centrum, vrátí se fiktivní odkaz. Tento fiktivní odkaz nelze použít k dokončení procesu instalace na webu vydavatele. Pokud chcete účet sandboxu pro integraci použít k otestování fakturace předplatných na komerční marketplace produktů SaaS, použijte k aktivaci předplatného následující metodu. Fakturace předplatného začne po úspěšné aktivaci:
 
-* [Aktivace předplatného izolovaného prostoru pro produkty z komerčního tržiště](activate-sandbox-subscription-azure-marketplace-products.md)
+* [Aktivace předplatného sandboxu pro produkty komerčního marketplace](activate-sandbox-subscription-azure-marketplace-products.md)
 

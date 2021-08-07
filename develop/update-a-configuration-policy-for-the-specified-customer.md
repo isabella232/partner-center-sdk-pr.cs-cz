@@ -4,12 +4,12 @@ description: Postup aktualizace zadaných zásad konfigurace pro zadaného záka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 5e008f41a44f2b7cf3ddfd705505175c69bbad38
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 957f2835d08e049e8b77271de5383f5ffc45d4ade6d903b2f42757dd4e707a05
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530224"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990133"
 ---
 # <a name="update-a-configuration-policy-for-the-specified-customer"></a>Aktualizace zásad konfigurace pro konkrétního zákazníka
 
@@ -27,7 +27,7 @@ Postup aktualizace zadaných zásad konfigurace pro zadaného zákazníka
 
 ## <a name="c"></a>C\#
 
-Pokud chcete aktualizovat existující zásady konfigurace pro zadaného zákazníka, vytvořte instanci nového objektu [**ConfigurationPolicy,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) jak je znázorněno v následujícím fragmentu kódu. Hodnoty v tomto novém objektu nahradí odpovídající hodnoty v existujícím objektu. Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a načtěte rozhraní pro operace v zadaném zákazníkovi. Dále zavolejte [**metodu ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) s ID zásady a načtěte rozhraní pro operace zásad konfigurace pro zadané zásady. Nakonec zavolejte [**metodu Patch**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patch) nebo [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patchasync) a aktualizujte zásady konfigurace.
+Pokud chcete aktualizovat existující zásady konfigurace pro zadaného zákazníka, vytvořte instanci nového objektu [**ConfigurationPolicy,**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.configurationpolicy) jak je znázorněno v následujícím fragmentu kódu. Hodnoty v tomto novém objektu nahrazují odpovídající hodnoty v existujícím objektu. Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a načtěte rozhraní pro operace v zadaném zákazníkovi. Dále zavolejte [**metodu ConfigurationPolicies.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.byid) s ID zásady a načtěte rozhraní pro operace zásad konfigurace pro zadané zásady. Nakonec zavolejte [**metodu Patch**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patch) nebo [**PatchAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicy.patchasync) a aktualizujte zásady konfigurace.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -47,7 +47,7 @@ ConfigurationPolicy updatedConfigurationPolicy =
     partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.ById(selectedConfigurationPolicyId).Patch(configPolicyToBeUpdated);
 ```
 
-**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project**: SDK pro Partnerské centrum Samples **– třída:** UpdateConfigurationPolicy.cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **– třída:** UpdateConfigurationPolicy.cs
 
 ## <a name="rest-request"></a>Požadavek REST
 

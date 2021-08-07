@@ -4,12 +4,12 @@ description: Jak načíst kolekci dávek zařízení pro zadaného zákazníka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9d020bbfa1faef0be423d2fef2d8982465dfa21f
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f02d1e2ec24c71ae3db992e998d2d8a5995f3fc55b0714f0778ccbeaa6fec214
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548410"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989640"
 ---
 # <a name="get-a-list-of-device-batches-for-the-specified-customer"></a>Získání seznamu dávek zařízení pro konkrétního zákazníka
 

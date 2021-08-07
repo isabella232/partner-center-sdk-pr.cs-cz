@@ -1,37 +1,37 @@
 ---
 title: Správa účtů a profilů
-description: Tato část popisuje způsoby, Cloud Solution Provider mohou partneři používat Partnerské centrum ke správě uživatelských účtů a profilů prostřednictvím kódu programu.
+description: tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra programově spravovat své uživatelské účty a profily.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: parthpandyaMSFT
 ms.author: parthp
-ms.openlocfilehash: ce0770568d9532e6bfa8f3092d479e5d0a2597ea
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 3768319a05a474d7602639195b8946bf1050a7258906d15bc610771253539864
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548137"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989572"
 ---
 # <a name="manage-accounts-and-profiles"></a>Správa účtů a profilů
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Tato část popisuje způsoby, jak Cloud Solution Provider partneři mohou pomocí Partnerské centrum programově spravovat své uživatelské účty a profily.
+tato část popisuje způsoby, kterými Cloud Solution Provider partneři můžou pomocí partnerského centra programově spravovat své uživatelské účty a profily.
 
-- [Získání právní obchodního profilu](get-legal-business-profile.md)
+- [Získat oficiální obchodní profil](get-legal-business-profile.md)
 - [Získání profilu organizace](get-an-organization-profile.md)
 - [Získání fakturačního profilu partnera](get-partner-billing-profile.md)
 - [Získání profilu programu Microsoft Partner Network](get-partner-network-profile.md)
 - [Získání profilu podpory](get-support-profile.md)
-- [Aktualizace právních obchodních profilů](update-legal-business-profile.md)
+- [Aktualizovat platný obchodní profil](update-legal-business-profile.md)
 - [Aktualizace fakturačního profilu partnera](update-partner-billing-profile.md)
 - [Aktualizace profilu podpory](update-support-profile.md)
 - [Aktualizace profilu organizace](update-an-organization-profile.md)
 
 Práce s dalšími partnery
 
-- [Získání partnera podle ID MPN](get-partner-by-mpn-id.md)
-- [Získání všech předplatných podle partnera](get-all-subscriptions-by-partner.md)
+- [Získat partnera podle ID MPN](get-partner-by-mpn-id.md)
+- [Získat všechna předplatná podle partnera](get-all-subscriptions-by-partner.md)
 
-Další informace najdete v tématu [Scénáře.](scenarios.md)
+Další informace najdete v tématu [scénáře](scenarios.md).

@@ -4,12 +4,12 @@ description: Součástí SDK pro Partnerské centrum spravované rozhraní API a
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b5d05f26d63574ef876519091dc1c33c05f36e25
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 340b46978d71bdf5fa6f6795d69fe0721d808c4eb2650744e82510c208dd5b8f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548749"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989691"
 ---
 # <a name="get-started"></a>Začínáme
 

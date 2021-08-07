@@ -4,12 +4,12 @@ description: Načte výpis účtenky faktury pomocí ID faktury a ID účtenky.
 ms.date: 02/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: dcac4c8f0b881409dcad3560eefb82d4bb5e877a
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: ed47eadb377a94363b46cbc5508e5377cee005007698df9077d085705c7b9d08
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446125"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990728"
 ---
 # <a name="get-invoice-receipt-statement"></a>Získání příjmových výkazů faktur
 

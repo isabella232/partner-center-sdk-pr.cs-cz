@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí Partnerské centrum API zrušit prostředek 
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 95fa265a3c103d1ec55066f12a3ede7fdb2d0170
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: e73810bb62ecc8487ff0d57c051a1201fc558d13b01529bb8ff5a3f2ac223f2b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974280"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992258"
 ---
 # <a name="cancel-a-commercial-marketplace-subscription-using-partner-center-apis"></a>Zrušení předplatného komerčního marketplace pomocí Partnerské centrum API
 

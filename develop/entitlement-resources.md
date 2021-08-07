@@ -4,12 +4,12 @@ description: Popisuje prostředky související s nárokem.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 929004fff804675218e267bb928b432f7b1209bf
-ms.sourcegitcommit: 84a6f701190f46d2adcf6edcaeaafa32d58fbaba
+ms.openlocfilehash: 9582bb0d886078062ae14d0461accb8e0179bed2e33e9a264cc1da8b06383706
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113510104"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989147"
 ---
 # <a name="entitlement-resources"></a>Prostředky nároků
 
@@ -88,17 +88,17 @@ Artefakt přidružený k nároku na rezervovanou instanci Azure. Dědí z [tří
 
 | Vlastnost   | Typ                           | Description                                        |
 |------------|--------------------------------|----------------------------------------------------|
-| odkaz       | [Odkaz](./utility-resources.md#link) | Odkaz pro získání podrobností o všech přidružených artefaktech.   |
-| Resourceid | řetězec                         | ID objednávky rezervace Azure nebo prostředku. |
+| odkaz       | [Odkaz](./utility-resources.md#link) | Odkaz pro získání všech přidružených podrobností artefaktu.   |
+| Prostředku | řetězec                         | ID objednávky nebo prostředku rezervace Azure |
 
 ## <a name="reservedinstanceartifactdetails"></a>ReservedInstanceArtifactDetails
 
-Představuje entitu vrácenou při vyvolání propojení artefaktu rezervované instance Azure.
+Představuje entitu, která se vrátila při vyvolání odkazu na artefakt rezervované instance Azure.
 
 |   Vlastnost   |           Typ           |                          Description                          |
 |--------------|--------------------------|---------------------------------------------------------------|
-|     typ     |          řetězec          |                     Typ artefaktu.                     |
-| Rezervace | `IEnumerable<Reservation>` | Označuje identifikátor objednávky prostředku Azure nebo rezervace. |
+|     typ     |          řetězec          |                     Typ artefaktu                     |
+| rezervace | `IEnumerable<Reservation>` | Indikuje identifikátor objednávky prostředku Azure nebo rezervace. |
 
 ## <a name="reservation"></a>Rezervace
 
@@ -106,53 +106,53 @@ Představuje jednotlivou rezervaci.
 
 | Vlastnost          | Typ                           | Description                                                        |
 |-------------------|--------------------------------|--------------------------------------------------------------------|
-| reservationId     | řetězec                         | ID rezervace.                                         |
-| scopeType (typ oboru)         | řetězec                         | Typ oboru přidruženého k rezervaci virtuálního počítače. |
-| displayName       | řetězec                         | Zobrazovaný název rezervace                               |
-| appliedScopes     | Ienumerable                    | Seznam použitých rozsahů přidružených k rezervaci. (K dispozici pouze v případě, že scopeType není sdílené.) |
-| quantity          | int                            | Počet virtuálních počítačů v rezervaci                 |
-| datum_vypršení_platnostiAčas    | řetězec ve formátu data a času UTC | Datum vypršení platnosti rezervace.                                |
-| effectiveDateTime | řetězec ve formátu data a času UTC | Datum platnosti rezervace.                             |
-| provisioningState (Stav zřizování) | řetězec                         | Stav zřizování rezervace.                         |
+| reservationId     | řetězec                         | ID rezervace                                         |
+| scopeType         | řetězec                         | Typ oboru přidružený k rezervovanému virtuálnímu počítači. |
+| displayName       | řetězec                         | Zobrazovaný název rezervace.                               |
+| appliedScopes     | Rozhraní                    | Seznam použitých oborů přidružených k rezervaci. (K dispozici, jenom když není sdílená scopeType.) |
+| quantity          | int                            | Počet virtuálních počítačů v rezervaci.                 |
+| expiryDateTime    | řetězec ve formátu data a času standardu UTC | Datum vypršení platnosti rezervace.                                |
+| effectiveDateTime | řetězec ve formátu data a času standardu UTC | Datum platnosti rezervace                             |
+| provisioningState | řetězec                         | Stav zřizování rezervace.                         |
 
 ## <a name="virtualmachinereservedinstanceartifact"></a>VirtualMachineReservedInstanceArtifact
 
 > [!IMPORTANT]
-> Zastaralé v sadě SDK verze 1.9
+> Zastaralé v sadě SDK v 1.9
 
-Artefakt přidružený k nároku na rezervovanou instanci virtuálního počítače Azure Dědí z [třídy Artifact.](#artifact)
+Artefakt přidružený k rezervované instanci virtuálního počítače Azure s rezervovaným oprávněním Dědí z třídy [artefaktů](#artifact) .
 
 | Vlastnost   | Typ                              | Description                                        |
 |------------|-----------------------------------|----------------------------------------------------|
-| odkaz       | [Odkaz](utility-resources.md#link) | Odkaz pro získání podrobností o všech přidružených artefaktech.   |
-| Resourceid | řetězec                            | ID objednávky rezervace Azure nebo prostředku. |
+| odkaz       | [Propojit](utility-resources.md#link) | Odkaz pro získání všech přidružených podrobností artefaktu.   |
+| Prostředku | řetězec                            | ID objednávky nebo prostředku rezervace Azure |
 
 ## <a name="virtualmachinereservedinstanceartifactdetails"></a>VirtualMachineReservedInstanceArtifactDetails
 
 > [!IMPORTANT]
-> Zastaralé v sadě SDK verze 1.9
+> Zastaralé v sadě SDK v 1.9
 
-Představuje entitu vrácenou při vyvolání propojení artefaktu rezervované instance virtuálního počítače Azure.
+Představuje entitu, která se vrátila při volání rezervovaného odkazu artefaktu instance virtuálního počítače Azure.
 
 | Vlastnost                    | Typ                                                                 | Description           |
 |-----------------------------|----------------------------------------------------------------------|-----------------------|
-| typ                        | [ArtifactType (Typ artefaktu)](#artifacttype)                                        | Typ artefaktu. |
-| virtualMachineReservations  | IEnumerable<[VirtualMachineReservation](#virtualmachinereservation)> | Označuje identifikátor objednávky prostředku Azure nebo rezervace. |
+| typ                        | [ArtifactType](#artifacttype)                                        | Typ artefaktu |
+| virtualMachineReservations  | IEnumerable<[VirtualMachineReservation](#virtualmachinereservation)> | Indikuje identifikátor objednávky prostředku Azure nebo rezervace. |
 
 ## <a name="virtualmachinereservation"></a>VirtualMachineReservation
 
 > [!IMPORTANT]
-> Zastaralé v sadě SDK verze 1.9
+> Zastaralé v sadě SDK v 1.9
 
-Představuje individuální rezervaci virtuálního počítače.
+Představuje jednotlivé rezervace virtuálních počítačů.
 
 |     Vlastnost      |              Typ              |                                                Description                                                 |
 |-------------------|--------------------------------|------------------------------------------------------------------------------------------------------------|
-|   reservationId   |             řetězec             |                                         ID rezervace.                                         |
-|     scopeType (typ oboru)     |             řetězec             |                     Typ oboru přidruženého k rezervaci virtuálního počítače.                     |
-|    displayName    |             řetězec             |                                    Zobrazovaný název rezervace                                    |
-|   appliedScopes   |      `IEnumerable<string>`       | Seznam použitých rozsahů přidružených k rezervaci. (K dispozici pouze v případě, že scopeType není sdílené.) |
-|     quantity      |              int               |                             Počet virtuálních počítačů v rezervaci                             |
-|  datum_vypršení_platnostiAčas   | řetězec ve formátu data a času UTC |                                    Datum vypršení platnosti rezervace.                                     |
-| effectiveDateTime | řetězec ve formátu data a času UTC |                                   Datum platnosti rezervace.                                   |
-| provisioningState (Stav zřizování) |             řetězec             |                                 Stav zřizování rezervace.                                 |
+|   reservationId   |             řetězec             |                                         ID rezervace                                         |
+|     scopeType     |             řetězec             |                     Typ oboru přidružený k rezervovanému virtuálnímu počítači.                     |
+|    displayName    |             řetězec             |                                    Zobrazovaný název rezervace.                                    |
+|   appliedScopes   |      `IEnumerable<string>`       | Seznam použitých oborů přidružených k rezervaci. (K dispozici, jenom když není sdílená scopeType.) |
+|     quantity      |              int               |                             Počet virtuálních počítačů v rezervaci.                             |
+|  expiryDateTime   | řetězec ve formátu data a času standardu UTC |                                    Datum vypršení platnosti rezervace.                                     |
+| effectiveDateTime | řetězec ve formátu data a času standardu UTC |                                   Datum platnosti rezervace                                   |
+| provisioningState |             řetězec             |                                 Stav zřizování rezervace.                                 |

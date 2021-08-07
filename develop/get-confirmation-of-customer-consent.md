@@ -1,45 +1,45 @@
 ---
 title: Získání potvrzení přijetí Smlouvy o službách Microsoft Cloud ze strany zákazníka
-description: Tento článek vysvětluje, jak získat potvrzení souhlasu zákazníka s Smlouva o službách Microsoft Cloud.
+description: Tento článek vysvětluje, jak získat potvrzení přijetí smlouvy Microsoft Cloud zákazníkům.
 ms.date: 02/12/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 aauthor: khakiali
 ms.author: alikhaki
-ms.openlocfilehash: 1b1a8cbacb667e579bcd218a29c3f553afce26c2
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: eb1f9ec5a7e96984f9c458419268fb305cf13ffd44d92fd01823ad94c2fb1798
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549259"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990796"
 ---
 # <a name="get-confirmation-of-customer-acceptance-of-microsoft-cloud-agreement"></a>Získání potvrzení přijetí Smlouvy o službách Microsoft Cloud ze strany zákazníka
 
-**Platí pro:** Partnerské centrum
+**Platí pro**: partnerské Centrum
 
-**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Prostředek **smlouvy** je aktuálně podporován Partnerské centrum ve veřejném cloudu Microsoftu.
+V současné době je prostředek **smlouvy** podporován partnerským centrem pouze ve veřejném cloudu Microsoftu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud používáte sadu .NET SDK Partnerské centrum, vyžaduje se verze 1.9 nebo novější.
+- Pokud používáte sadu SDK partnerského centra .NET, verze 1,9 nebo novější je povinná.
 
-- Pokud používáte sadu Java SDK Partnerské centrum, vyžaduje se verze 1.8 nebo novější.
+- Pokud používáte sadu SDK pro partnerský Center Java, verze 1,8 nebo novější je povinná.
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](./partner-center-authentication.md) Tento scénář podporuje pouze ověřování aplikací a uživatelů.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). Tento scénář podporuje jenom ověřování aplikací a uživatelů.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-## <a name="net-version-14-or-newer"></a>.NET (verze 1.4 nebo novější)
+## <a name="net-version-14-or-newer"></a>.NET (verze 1,4 nebo novější)
 
-Získání potvrzení přijetí zákazníkem, která byla dříve poskytnuta:
+Chcete-li získat potvrzení o přijetí od zákazníka, které bylo dříve poskytnuto:
 
-- Použijte kolekci **IAggregatePartner.Customers** a zavolejte **metodu ById** se zadaným identifikátorem zákazníka.
+- Použijte kolekci **IAggregatePartner. Customers** a zavolejte metodu **ById** se zadaným identifikátorem zákazníka.
 
-- **Načítá** vlastnost Agreements a filtruje výsledky, Smlouva o službách Microsoft Cloud voláním **metody ByAgreementType.**
+- Načtěte vlastnost **smluvs** a vyfiltrujte výsledky na Microsoft Cloud smlouvu voláním metody **ByAgreementType** .
 
-- Volejte **metodu Get** **nebo GetAsync.**
+- Volejte metodu **Get** nebo **GetAsync** .
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -50,13 +50,13 @@ string agreementType = "MicrosoftCloudAgreement";
 var cloudAgreements = partnerOperations.Customers.ById(selectedCustomerId).Agreements.ByAgreementType(agreementType).Get();
 ```
 
-Úplnou ukázku najdete ve třídě [GetCustomerAgreements](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetCustomerAgreements.cs) z projektu [konzolové testovací](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) aplikace.
+Kompletní ukázku najdete ve třídě [GetCustomerAgreements](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetCustomerAgreements.cs) z projektu [testovací aplikace konzoly](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) .
 
-## <a name="net-version-19---113"></a>.NET (verze 1.9 – 1.13)
+## <a name="net-version-19---113"></a>.NET (verze 1,9 – 1,13)
 
-Pokud chcete načíst potvrzení o přijetí zákazníkem, které jste uvedli dříve:
+Postup načtení potvrzení o přijetí od zákazníka, které jste zadali dříve:
 
-Použijte kolekci **IAggregatePartner.Customers** a zavolejte metodu **ById** s identifikátorem zadaného zákazníka. Pak získejte vlastnost **Agreements** a potom voláním **metod Get** nebo **GetAsync.**
+Použijte kolekci **IAggregatePartner. Customers** a zavolejte metodu **ById** se zadaným identifikátorem zákazníka. Poté Získejte vlastnost **smluv** následovaným voláním metod **Get** nebo **GetAsync** .
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -69,9 +69,9 @@ var agreements = partnerOperations.Customers.ById(selectedCustomerId).Agreements
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Pokud chcete načíst potvrzení o přijetí zákazníkem, které jste uvedli dříve:
+Postup načtení potvrzení o přijetí od zákazníka, které jste zadali dříve:
 
-Použijte funkci **IAggregatePartner.getCustomers** a zavolejte funkci **byId** s identifikátorem zadaného zákazníka. Pak získejte **funkci getAgreements** a potom zavoláte **funkci get.**
+Použijte funkci **IAggregatePartner. GetCustomers** a zavolejte funkci **byId** se zadaným identifikátorem zákazníka. Potom Získejte funkci **Getagreements** následovanou voláním funkce **Get** .
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -80,43 +80,43 @@ Použijte funkci **IAggregatePartner.getCustomers** a zavolejte funkci **byId** 
 ResourceCollection<Agreement> agreements = partnerOperations.getCustomers().byId(selectedCustomerId).getAgreements().get();
 ```
 
-Úplnou ukázku najdete ve třídě [GetCustomerAgreements](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetCustomerAgreements.java) z projektu [konzolové testovací](https://github.com/Microsoft/Partner-Center-Java-Samples) aplikace.
+Kompletní ukázku najdete ve třídě [GetCustomerAgreements](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetCustomerAgreements.java) z projektu [testovací aplikace konzoly](https://github.com/Microsoft/Partner-Center-Java-Samples) .
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pokud chcete načíst potvrzení o přijetí zákazníkem, které jste uvedli dříve:
+Postup načtení potvrzení o přijetí od zákazníka, které jste zadali dříve:
 
-Použijte příkaz [**Get-PartnerCustomerAgreement.**](/powershell/module/partnercenter/get-partnercustomeragreement)
+Použijte příkaz [**Get-PartnerCustomerAgreement**](/powershell/module/partnercenter/get-partnercustomeragreement) .
 
 ```powershell
 Get-PartnerCustomerAgreement -CustomerId '14876998-c0dc-46e6-9d0c-65a57a6c32ec'
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-Pokud chcete získat potvrzení o přijetí zákazníkem, které jste uvedli dříve, přečtěte si následující pokyny.
+Pokud chcete načíst potvrzení o přijetí od zákazníka, které jste zadali dřív, přečtěte si následující pokyny.
 
-Vytvořte nový prostředek **smlouvy** s příslušnými certifikačními informacemi.
+Vytvořte nový prostředek **smlouvy** s příslušnými informacemi o certifikaci.
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda | Identifikátor URI žádosti                                                                                      |
 |--------|--------------------------------------------------------------------------------------------------|
-| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/smlouvy HTTP/1.1 |
+| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Agreements HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Pomocí následujícího parametru dotazu zadejte zákazníka, který potvrzujete.
+K určení zákazníka, kterého potvrzujete, použijte následující parametr dotazu.
 
 | Název             | Typ | Vyžadováno | Popis                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| CustomerTenantId | Identifikátor GUID | Y        | Hodnota je identifikátor GUID naformátovaný **jako CustomerTenantId,** který umožňuje zadat zákazníka. |
+| CustomerTenantId | Identifikátor GUID | Y        | Hodnota je **CustomerTenantId** ve formátu GUID, který umožňuje zadat zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -134,11 +134,11 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato  metoda v textu odpovědi kolekci prostředků smlouvy.
+V případě úspěchu tato metoda vrátí kolekci prostředků **smlouvy** v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

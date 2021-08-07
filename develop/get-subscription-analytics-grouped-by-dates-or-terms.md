@@ -4,12 +4,12 @@ description: Jak získat analytické informace předplatného seskupené podle k
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8192a9863d53ec8697a7341cd38c69200614bd4a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 66336d3e5573598eb4810853ad2704bc8d2c76680292a4f5b4a3da9bb50936b8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548715"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989674"
 ---
 # <a name="get-subscription-analytics-grouped-by-dates-or-terms"></a>Získání analýz předplatného seskupených podle kalendářních dat nebo termínů
 
@@ -71,23 +71,23 @@ Následující tabulka obsahuje seznam podporovaných polí pro seskupení podle
 | trialStartDate | řetězec ve formátu data a času UTC | Datum zahájení zkušebního období předplatného Výchozí hodnotou je hodnota null. |
 | lastUsageDate | řetězec ve formátu data a času UTC | Datum posledního použití předplatného Výchozí hodnotou je hodnota null. |
 | deprovisionedDate | řetězec ve formátu data a času UTC | Datum, kdy bylo zrušeno zřízení předplatného. Výchozí hodnotou je hodnota null. |
-| lastRenewalDate | řetězec ve formátu data a času UTC | Datum posledního prodloužení platnosti předplatného Výchozí hodnotou je hodnota null. |
+| lastRenewalDate | řetězec ve formátu data a času UTC | Datum poslední obnovy odběru Výchozí hodnotou je hodnota null. |
 
-### <a name="filter-fields"></a>Filtrování polí
+### <a name="filter-fields"></a>Filtrovat pole
 
-Následující tabulka obsahuje volitelná pole filtru a jejich popisy:
+V následující tabulce jsou uvedena volitelná pole filtru a jejich popisy:
 
 | Pole | Typ |  Description |
 |-------|------|--------------|
-| top | int | Počet řádků dat, které se v požadavku vrátí. Pokud hodnota není zadaná, maximální hodnota a výchozí hodnota jsou 10000. Pokud dotaz obsahuje více řádků, obsahuje text odpovědi další odkaz, který můžete použít k vyžádání další stránky dat. |
-| Přeskočit | int | Počet řádků, které se v dotazu přeskočí Tento parametr použijte k stránkování velkých datových sad. Například top=10000 a skip=0 načte prvních 1 0000 řádků dat, top=10000 a skip=10000 načte dalších 1 0000 řádků dat. |
-| filter | řetězec | Jeden nebo více příkazů, které filtruje řádky v odpovědi. Každý příkaz filtru obsahuje název pole z textu odpovědi a hodnotu přidruženou k operátoru , nebo pro **`eq`** **`ne`** určitá **`contains`** pole. Příkazy lze kombinovat pomocí **`and`** nebo **`or`** . Řetězcové hodnoty musí být v parametru filtru v jednoduchých uvozovkách. V následující části najdete seznam polí, která lze filtrovat, a operátory, které jsou u těchto polí podporovány. |
-| aggregationLevel | řetězec | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: **den,** **týden** nebo **měsíc**. Pokud hodnota není zadaná, výchozí hodnota je **dateRange**. **Poznámka:** Tento parametr se použije pouze v případě, že je pole data předáno jako součást parametru groupBy. |
-| Groupby | řetězec | Příkaz, který použije agregaci dat pouze na zadaná pole. |
+| top | int | Počet řádků dat, který má být vrácen v požadavku. Pokud hodnota není zadaná, maximální hodnota a výchozí hodnota jsou 10000. Pokud je v dotazu více řádků, tělo odpovědi obsahuje další odkaz, který můžete použít k vyžádání další stránky dat. |
+| Přeskočit | int | Počet řádků, které mají být v dotazu přeskočeny. Tento parametr použijte pro stránku s velkými datovými sadami. Například Top = 10000 a Skip = 0 načte prvních 10000 řádků dat, Top = 10000 a Skip = 10000 načte další 10000 řádků dat. |
+| filter | řetězec | Jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz filtru obsahuje název pole z textu odpovědi a hodnotu, která je přidružena k **`eq`** , **`ne`** nebo pro určitá pole **`contains`** operátor. Příkazy lze kombinovat pomocí operátoru **`and`** OR **`or`** . Řetězcové hodnoty musí být obklopeny jednoduchými uvozovkami v parametru Filter. Seznam polí, která lze filtrovat, a operátory, které jsou s těmito poli podporovány, naleznete v následující části. |
+| aggregationLevel | řetězec | Určuje časový rozsah, pro který se mají načíst agregovaná data. Může to být jeden z následujících řetězců: **den**, **týden** nebo **měsíc**. Pokud hodnota není zadaná, výchozí hodnota je **DateRange**. **Poznámka**: Tento parametr platí pouze v případě, že je pole data předáno jako součást parametru GroupBy. |
+| groupBy | řetězec | Příkaz, který aplikuje agregaci dat pouze na zadaná pole. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -107,11 +107,11 @@ Content-Length: 0
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude text odpovědi obsahovat kolekci prostředků [předplatného](partner-center-analytics-resources.md#subscription-resource) seskupených podle zadaných termínů a kalendářních dat.
+V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [předplatného](partner-center-analytics-resources.md#subscription-resource) seskupených podle zadaných podmínek a dat.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

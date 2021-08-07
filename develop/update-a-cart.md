@@ -4,12 +4,12 @@ description: Jak aktualizovat objednávku zákazníka v košíku
 ms.date: 10/11/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8954d4dad39f9b1a1b9a2f213e0231f01856fcd2
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 79dcd58e5a967aad9160777805102683087becc74c655b2de990cd1bfd4ef3c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446679"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990150"
 ---
 # <a name="update-a-cart"></a>Aktualizace košíku
 
@@ -83,12 +83,12 @@ Tato tabulka popisuje vlastnosti [CartLineItem](cart-resources.md#cartlineitem) 
 | id katalogu            | řetězec                      | Yes          | Identifikátor položky katalogu.                                                                       |
 | Friendlyname         | řetězec                      | No           | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.              |
 | quantity             | int                         | Yes          | Počet licencí nebo instancí     |
-| currencyCode         | řetězec                      | No           | Kód měny                                                                                 |
-| billingCycle         | Objekt                      | Yes          | Typ fakturačního cyklu nastavený pro aktuální období                                              |
-| Účastníci         | Seznam párů řetězců objektů | No           | Kolekce účastníků nákupu.                                                      |
-| provisioningContext  | Slovníkový<řetězec, řetězec>  | No           | Kontext používaný ke zřízení nabídky.                                                          |
-| orderGroup           | řetězec                      | No           | Skupina, která označuje, které položky lze umístit dohromady.                                            |
-| error                | Objekt                      | No           | Použije se po vytvoření košíku v případě chyby.                                                 |
+| currencyCode         | řetězec                      | No           | Kód měny.                                                                                 |
+| billingCycle         | Objekt                      | Yes          | Typ fakturačního cyklu nastaveného pro aktuální období.                                              |
+| členům         | Seznam párů řetězců objektů | No           | Kolekce účastníků na nákupu                                                      |
+| provisioningContext  | Řetězec<slovníku, řetězec>  | No           | Kontext použitý ke zřízení nabídky.                                                          |
+| pořadí           | řetězec                      | No           | Skupina, která označuje, které položky lze umístit dohromady.                                            |
+| error                | Objekt                      | No           | Používá se po vytvoření košíku v případě chyby.                                                 |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -132,11 +132,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda v textu odpovědi naplněný prostředek [Cart.](cart-resources.md)
+V případě úspěchu tato metoda vrátí prostředek vyplněné [vozíku](cart-resources.md) v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

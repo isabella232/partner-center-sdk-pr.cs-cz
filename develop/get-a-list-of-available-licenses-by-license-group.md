@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: de59dfccf723c8f2411d9dadc51beb88688d5b02
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: fb2beecef8ad4821ad251ee6d532b6b280bd49e110f7e6dde3f39dfe2693d8f5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874512"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991170"
 ---
 # <a name="get-a-list-of-available-licenses-by-license-group"></a>Získání seznamu dostupných licencí podle skupiny licencí
 

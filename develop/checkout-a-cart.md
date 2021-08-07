@@ -1,33 +1,33 @@
 ---
 title: Odbavení košíku
-description: Zjistěte, jak pomocí rozhraní API pro Partnerské centrum objednávce zákazníka v košíku. Můžete to provést k dokončení objednávky zákazníka.
+description: Naučte se rezervovat objednávku pro zákazníka na vozíku pomocí rozhraní API partnerského centra. Můžete to udělat tak, abyste objednávku zákazníka mohli dokončit.
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9ee06797602b22a1f8257c94880a2d81e2280f2e
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 3b36a6930b6a643c23d60150a1f772534b17ce758425a1d3129ca2f9d829b4ba
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111974042"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991969"
 ---
-# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Kontrola objednávky zákazníka v košíku
+# <a name="checkout-an-order-for-a-customer-in-a-cart"></a>Rezervace objednávky zákazníka na vozíku
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Postup při objednávce zákazníka v košíku
+Jak rezervovat objednávku pro zákazníka na vozíku.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- ID košíku pro existující košík
+- ID košíku pro existující košík.
 
 ## <a name="c"></a>C\#
 
-Pokud si chcete objednat objednávku zákazníka, získejte odkaz na košík pomocí košíku a identifikátoru zákazníka. Nakonec dokončete **pořadí voláním** funkcí Create nebo **CreateAsync.**
+Pokud chcete rezervovat objednávku pro zákazníka, získejte odkaz na košík pomocí košíku a identifikátoru zákazníka. Nakonec zavolejte funkci **Create** nebo **CreateAsync** k dokončení objednávky.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -41,7 +41,7 @@ var cart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Checko
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Pokud si chcete objednat objednávku zákazníka, získejte odkaz na košík pomocí košíku a identifikátoru zákazníka. Nakonec zavolejte **funkci create,** která objednávku dokončí.
+Pokud chcete rezervovat objednávku pro zákazníka, získejte odkaz na košík pomocí košíku a identifikátoru zákazníka. Nakonec voláním funkce **Create** Dokončete objednávku.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -55,7 +55,7 @@ Cart cart = partnerOperations.getCustomers().byId(customerId).getCart().byId(car
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Pokud chcete objednávku zákazníka rezervujete, spusťte [**příkaz Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) a objednávku dokončete.
+Chcete-li rezervovat objednávku pro zákazníka, spusťte příkaz [**Submit-PartnerCustomerCart**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Submit-PartnerCustomerCart.md) , který objednávku dokončí.
 
 ```powershell
 # $customerId
@@ -64,26 +64,26 @@ Pokud chcete objednávku zákazníka rezervujete, spusťte [**příkaz Submit-Pa
 Submit-PartnerCustomerCart -CartId $cartId -CustomerId $customerId
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda   | Identifikátor URI žádosti                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/carts/{ID_košíku}/checkout HTTP/1.1     |
+| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/carts/{Cart-ID}/checkout http/1.1     |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Pomocí následujících parametrů cesty identifikujte zákazníka a zadejte košík, který se má rezervován.
+Použijte následující parametry cesty k identifikaci zákazníka a určení košíku, který má být rezervován.
 
 | Název            | Typ     | Vyžadováno | Popis                                                            |
 |-----------------|----------|----------|------------------------------------------------------------------------|
-| **id zákazníka** | řetězec   | Yes      | Identifikátor GUID naformátovaný jako customer-id, který identifikuje zákazníka.             |
-| **cart-id**     | řetězec   | Yes      | Identifikátor CART-ID formátovaný identifikátorem GUID, který identifikuje košík.                     |
+| **ID zákazníka** | řetězec   | Yes      | Identifikátor zákazníka, který je ve formátu identifikátoru GUID, který identifikuje zákazníka.             |
+| **košík – ID**     | řetězec   | Yes      | Identifikátor košíku formátovaného identifikátorem GUID, který identifikuje vozík.                     |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -109,11 +109,11 @@ No-Content-Body
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude tělo odpovědi obsahovat naplněný prostředek [CartCheckoutResult.](cart-resources.md#cartcheckoutresult)
+V případě úspěchu obsahuje tělo odpovědi naplněný prostředek [CartCheckoutResult](cart-resources.md#cartcheckoutresult) .
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

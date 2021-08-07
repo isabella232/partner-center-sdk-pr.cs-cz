@@ -4,12 +4,12 @@ description: Jak vytvořit převod předplatných pro zákazníka
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d459a0a96912ab27f312bc73af16af2d4fdb518c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 8414bbcfa0940742339eeba24b3b6a16ddfb6e3424670a4c064cbd995ba50851
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973702"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991578"
 ---
 # <a name="create-a-transfer"></a>Vytvoření přenosu
 
@@ -63,16 +63,16 @@ Tato tabulka popisuje vlastnosti [TransferLineItem](transfer-entity-resources.md
 
 |      Vlastnost       |            Typ             | Vyžadováno | Popis                                                                                     |
 |---------------------|-----------------------------|----------|-------------------------------------------------------------------------------------------------|
-| id                   | řetězec                     | No       | Jedinečný identifikátor položky řádku přenosu. Použije se při úspěšném vytvoření transferEntity.|
+| id                   | řetězec                     | No       | Jedinečný identifikátor pro položku na lince přenosu. Použito po úspěšném vytvoření transferEntity.|
 | subscriptionId       | řetězec                     | Yes      | Identifikátor předplatného.                                                                         |
-| quantity             | int                        | No       | Počet licencí nebo instancí                                                                 |
-| billingCycle         | Objekt                     | No       | Typ fakturačního cyklu nastavený pro aktuální období                                                |
-| Friendlyname         | řetězec                     | No       | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.                |
-| id partneraZáznam    | řetězec                     | No       | ID partnera v záznamu (ID MPN) při nákupu, ke které dojde při přijetí převodu.              |
-| ID nabídky              | řetězec                     | No       | Identifikátor nabídky.                                                                                |
-| addonItems           | Seznam objektů **TransferLineItem** | No | Kolekce řádových položek transferEntity pro doplňky, které se přenesou spolu se základním předplatným, které se převádí. Použije se při úspěšném vytvoření transferEntity.|
-| chyba přenosu        | řetězec                     | No       | Použije se po přijetí transferEntity, pokud dojde k chybě.                                        |
-| status               | řetězec                     | No       | Stav položky řádku v transferEntity.                                                    |
+| quantity             | int                        | No       | Počet licencí nebo instancí.                                                                 |
+| billingCycle         | Objekt                     | No       | Typ fakturačního cyklu nastaveného pro aktuální období.                                                |
+| friendlyName         | řetězec                     | No       | Nepovinný parametr. Popisný název položky definované partnerem, který vám umožní určit nejednoznačnost.                |
+| partnerIdOnRecord    | řetězec                     | No       | PartnerId na záznam (MPN ID) při nákupu, ke kterému dojde při přijetí přenosu.              |
+| Hodnotami OfferId              | řetězec                     | No       | Identifikátor nabídky                                                                                |
+| addonItems           | Seznam objektů **TransferLineItem** | No | Kolekce položek řádku transferEntity pro doplňky, které se přenesou spolu se základním předplatným, které se přenáší. Použito po úspěšném vytvoření transferEntity.|
+| transferError        | řetězec                     | No       | Používá se po přijetí transferEntity, pokud dojde k chybě.                                        |
+| status               | řetězec                     | No       | Stav LineItem v transferEntity.                                                    |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -105,11 +105,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí vyplněný prostředek [TransferEnity](transfer-entity-resources.md) v textu odpovědi.
+V případě úspěchu tato metoda vrátí naplněný prostředek [TransferEnity](transfer-entity-resources.md) v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

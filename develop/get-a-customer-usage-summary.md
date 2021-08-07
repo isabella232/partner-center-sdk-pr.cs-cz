@@ -1,35 +1,35 @@
 ---
-title: Získání souhrnu využití pro všechna předplatná zákazníka
-description: Prostředek CustomerUsageSummary můžete použít k získání využití konkrétní služby nebo prostředku Azure zákazníkem během aktuálního fakturačního období.
+title: Získat Souhrn využití všech předplatných zákazníka
+description: Pomocí prostředku CustomerUsageSummary můžete získat od zákazníka používání konkrétní služby nebo prostředku Azure během aktuálního fakturačního období.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 88c69637c94b9263ede6924cf2dd09513aa00f70
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 668176c772ac89cf87189aa00514119340b28963e3abb6ada1717e52536f436b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874614"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992615"
 ---
-# <a name="get-a-usage-summary-for-all-of-a-customers-subscriptions"></a>Získání souhrnu využití pro všechna předplatná zákazníka
+# <a name="get-a-usage-summary-for-all-of-a-customers-subscriptions"></a>Získat Souhrn využití všech předplatných zákazníka
 
-**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Prostředek **CustomerUsageSummary** můžete použít k získání využití konkrétní služby nebo prostředku Azure zákazníkem během aktuálního fakturačního období.
+Pomocí prostředku **CustomerUsageSummary** můžete získat od zákazníka používání konkrétní služby nebo prostředku Azure během aktuálního fakturačního období.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Získání souhrnu využití pro všechna předplatná zákazníka:
+Získání souhrnu využití pro všechny předplatná zákazníka:
 
-1. K volání metody **ById()** použijte kolekci **IAggregatePartner.Customers.**
+1. Použijte svou kolekci **IAggregatePartner. Customers** pro volání metody **ById ()** .
 
-2. Zavolejte **vlastnost UsageSummary** následovanou metodami **Get()** nebo **GetAsync():**
+2. Zavolejte vlastnost **UsageSummary** , za kterou následují metody **Get ()** nebo **GetAsync ()** :
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -38,31 +38,31 @@ Získání souhrnu využití pro všechna předplatná zákazníka:
     var usageSummary = partnerOperations.Customers.ById(selectedCustomerId).UsageSummary.Get();
     ```
 
-Příklad najdete v následujícím příkladu:
+Příklad naleznete v následujících tématech:
 
-- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
-- Project: **PartnerSDK.FeatureSamples**
-- Třída: **GetCustomerUsageSummary.cs**
+- Ukázka: [aplikace testů konzoly](console-test-app.md)
+- Project: **PartnerSDK. FeatureSamples**
+- Třída: **GetCustomerUsageSummary. cs**
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                                                         |
 |---------|-----------------------------------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/usagesummary HTTP/1.1 |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/usagesummary HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Tato tabulka uvádí požadovaný parametr dotazu k získání informací o hodnocených využitích zákazníka.
+Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání informací o využití ohodnocených zákazníkem.
 
 | Název                   | Typ     | Vyžadováno | Popis                           |
 |------------------------|----------|----------|---------------------------------------|
-| **customer-tenant-id** | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi. |
+| **Customer-tenant-ID** | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -80,17 +80,17 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda v textu odpovědi prostředek **CustomerUsageSummary.**
+V případě úspěchu tato metoda vrátí prostředek **CustomerUsageSummary** v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. Ke čtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscription"></a>Příklad odpovědi Microsoft Azure předplatného (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscription"></a>příklad odpovědi pro předplatné služby Microsoft Azure (MS-AZR-0145P)
 
-V tomto příkladu zákazník zakoupil nabídku **azure payg 145P.**
+V tomto příkladu si zákazník koupil nabídku **145P Azure PayG** .
 
-*U zákazníků Microsoft Azure předplatných (MS-AZR-0145P) se v odpovědi rozhraní API nezmění.*
+*pro zákazníky s předplatnými Microsoft Azure (MS-AZR-0145P) nedojde k žádné změně v odpovědi rozhraní API.*
 
 ```http
 HTTP/1.1 200 OK
@@ -129,12 +129,12 @@ Date: Tue, 17 Sep 2019 20:31:45 GMT
 
 ### <a name="response-example-for-azure-plan"></a>Příklad odpovědi pro plán Azure
 
-V tomto příkladu zákazník zakoupil plán Azure.
+V tomto příkladu si zákazník koupil plán Azure.
 
-*U zákazníků s plány Azure došlo v odpovědi rozhraní API k následujícím změnám:*
+*Pro zákazníky s plány Azure jsou v odpovědi rozhraní API tyto změny:*
 
-- **currencyLocale** se nahradí **kódem měny**
-- **usdTotalCost** je nové pole
+- **currencyLocale** se nahrazuje **currencyCode**
+- **usdTotalCost** je nové pole.
 
 ```http
 HTTP/1.1 200 OK

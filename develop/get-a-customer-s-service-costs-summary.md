@@ -4,12 +4,12 @@ description: Získá náklady na službu zákazníka za zadané fakturační obd
 ms.date: 06/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1cab23238b5f62a02a5f7368f626648d5b1b5b7e
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 7f8af66601ea576552e9302ac327fea5a598d54460567bce4db099d669afba4f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874903"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992938"
 ---
 # <a name="get-a-customers-service-costs-summary"></a>Získání souhrnu nákladů na služby zákazníka
 

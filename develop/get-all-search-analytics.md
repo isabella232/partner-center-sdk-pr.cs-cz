@@ -4,12 +4,12 @@ description: Jak získat všechny informace o analýze vyhledávání.
 ms.date: 06/27/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e789a013b01fb63a38c72f4fe94864ecf21f7e4b
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: a420752264f4d3074ba8a569c931654fda3ad6363d8d5d8b6a7a3e32af126bd1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760160"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990898"
 ---
 # <a name="get-all-search-analytics-information"></a>Získání všech analytických informací o hledání
 

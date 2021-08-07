@@ -1,39 +1,39 @@
 ---
 title: Získání dat o využití pro předplatné podle měřiče
-description: Pomocí kolekce prostředků MeterUsageRecord můžete získat záznamy o využití měřičů zákazníka pro konkrétní služby nebo prostředky Azure během aktuálního fakturačního období.
+description: Kolekci prostředků MeterUsageRecord můžete použít k získání záznamů o využití měřiče zákazníka pro konkrétní služby nebo prostředky Azure během aktuálního fakturačního období.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0bd6143c80059bd140a4c4332ab4ec19c54d99f1
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 2d2f13c9f944a0a5297c61c70606517c4426957f86066fe4469a7543b14d3bf9
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874852"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992819"
 ---
 # <a name="get-usage-data-for-subscription-by-meter"></a>Získání dat o využití pro předplatné podle měřiče
 
-**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Pomocí kolekce prostředků **MeterUsageRecord** můžete získat záznamy o využití měřičů zákazníka pro konkrétní služby nebo prostředky Azure během aktuálního fakturačního období. Tato kolekce prostředků představuje agregovaný součet pro každý měřič pro aktuální fakturační cyklus v rámci celého plánu Azure.
+Kolekci prostředků **MeterUsageRecord** můžete použít k získání záznamů o využití měřiče zákazníka pro konkrétní služby nebo prostředky Azure během aktuálního fakturačního období. Tato kolekce prostředků představuje agregovanou celkovou částku pro každý měřič pro aktuální fakturační období v rámci celého plánu Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného
 
-*tato nová trasa je ekvivalentní k `subscriptions/{subscription-id}/usagerecords/resources` , což bude i nadále fungovat jenom pro předplatná Microsoft Azure (MS-AZR-0145P).* tato nová trasa bude podporovat předplatná Microsoft Azure (MS-AZR-0145P) i plány Azure. Chcete-li získat tyto informace pro plán Azure, musíte přepnout do této nové trasy. Kromě vlastností uvedených v následujících částech je odpověď stejná jako u staré trasy.
+*Tato nová trasa je ekvivalentní s , která bude dál fungovat pouze pro `subscriptions/{subscription-id}/usagerecords/resources` předplatná Microsoft Azure (MS-AZR-0145P).* Tato nová trasa bude podporovat jak předplatná Microsoft Azure (MS-AZR-0145P), tak plány Azure. Abyste tyto informace mohli získat pro svůj plán Azure, musíte přepnout na tuto novou trasu. Kromě vlastností uvedených v následujících částech je odpověď stejná jako u staré trasy.
 
 ## <a name="c"></a>C\#
 
-Postup získání záznamů využití měřiče zákazníka pro konkrétní službu nebo prostředek Azure během aktuálního fakturačního období:
+Získání záznamů o využití měřiče zákazníka pro konkrétní službu nebo prostředek Azure během aktuálního fakturačního období:
 
-1. Použijte svou kolekci **IAggregatePartner. Customers** pro volání metody **ById ()** .
+1. K volání metody **ById()** použijte kolekci **IAggregatePartner.Customers.**
 
-2. Zavolejte vlastnost Subscriptions a pak vlastnost **měřiče** ( **UsageRecords**). Dokončete voláním metod Get () nebo GetAsync ().
+2. Zavolejte vlastnost Subscriptions a **UsageRecords** a pak **vlastnost Meters.** Dokončete voláním metod Get() nebo GetAsync().
 
     ``` csharp
     // IAggregatePartner partnerOperations;
@@ -43,32 +43,32 @@ Postup získání záznamů využití měřiče zákazníka pro konkrétní slu�
     var usageRecords = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscriptionId).UsageRecords.Meters.Get();
     ```
 
-Příklad naleznete v následující ukázce:
+Příklad najdete v následující ukázce:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Project: **PartnerSDK. FeatureSamples**
-- Třída: **GetSubscriptionUsageRecordsByMeter. cs**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSamples**
+- Třída: **GetSubscriptionUsageRecordsByMeter.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                             |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{Subscription-ID}/meterusagerecords HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{ID_předplatného}/meterusagerecords HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání informací o využití ohodnocených zákazníkem.
+Tato tabulka obsahuje seznam požadovaných parametrů dotazu k získání informací o hodnocených využitích zákazníka.
 
 | Název                   | Typ     | Vyžadováno | Popis                               |
 |------------------------|----------|----------|-------------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID předplatného**    | **guid** | Y        | identifikátor GUID odpovídající identifikátoru [prostředku předplatného](subscription-resources.md#subscription)partnerského centra, který představuje předplatné Microsoft Azure (MS-AZR-0145P) nebo plán Azure. *V části plánování prostředků předplatného Azure zadejte **ID plánu** jako **ID předplatného** v této trase.* |
+| **customer-tenant-id** | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
+| **id předplatného**    | **guid** | Y        | Identifikátor GUID odpovídající identifikátoru prostředku předplatného [Partnerské centrum,](subscription-resources.md#subscription)který představuje předplatné Microsoft Azure (MS-AZR-0145P) nebo plán Azure. *V případě prostředků předplatného plánu Azure zadejte **id plánu** jako **ID předplatného** v této trase.* |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -86,17 +86,17 @@ MS-CorrelationId: 47c36033-af5d-4457-80a4-512c1626fac4
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek **PagedResourceCollection \<MeterUsageRecord>** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi prostředek **PagedResourceCollection. \<MeterUsageRecord>**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. Ke čtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
-### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>příklad odpovědi pro předplatná Microsoft Azure (MS-AZR-0145P)
+### <a name="response-example-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Příklad odpovědi Microsoft Azure předplatných (MS-AZR-0145P)
 
-V tomto příkladu si zákazník koupil **145P Azure PayG**.
+V tomto příkladu zákazník zakoupil **145P Azure PayG**.
 
-*pro zákazníky s předplatným Microsoft Azure (MS-AZR-0145P) nedojde k žádné změně v odpovědi rozhraní API.*
+*U zákazníků s předplatným Microsoft Azure (MS-AZR-0145P) se v odpovědi rozhraní API nezmění.*
 
 ```http
 HTTP/1.1 200 OK
@@ -140,12 +140,12 @@ Date: Tue, 17 Sep 2019 20:31:45 GMT
 
 ## <a name="rest-response-example-for-azure-plan"></a>Příklad odpovědi REST pro plán Azure
 
-V tomto příkladu si zákazník koupil plán Azure.
+V tomto příkladu zákazník zakoupil plán Azure.
 
-*Pro zákazníky s plány Azure jsou v odpovědi rozhraní API tyto změny:*
+*U zákazníků s plány Azure došlo v odpovědi rozhraní API k následujícím změnám:*
 
-- **currencyLocale** se nahrazuje **currencyCode**
-- **usdTotalCost** je nové pole.
+- **currencyLocale** se nahradí **kódem měny**
+- **usdTotalCost** je nové pole
 
 ```http
 HTTP/1.1 200 OK

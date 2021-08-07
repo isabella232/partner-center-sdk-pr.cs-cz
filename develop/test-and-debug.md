@@ -1,113 +1,113 @@
 ---
-title: Testování a ladění s integračním sandboxem
-description: Zjistěte, jak pomocí účtu sandboxu Partnerské centrum integrace (a souvisejících tokenů) otestovat a ladit kód, aby se vám nechtěně nenabídly nové poplatky.
+title: Testování a ladění s izolovaným prostorem integrace
+description: Naučte se používat účet izolovaného prostoru (a související tokeny) partnerského centra k testování a ladění kódu, abyste se nechtěně neúčtují nové poplatky.
 ms.date: 09/11/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7a9d7755cd9f493f44f9a7bbf613e0f80cf7b4ac
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 1a446f1d9a9d7370be2715305ccbaa71b09cfd45957cf8663afb42a23706a7be
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530102"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989266"
 ---
-# <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Testování a ladění s Partnerské centrum integration sandboxu, abyste se vyhnuli neočekávaným poplatkům
+# <a name="test-and-debug-with-your-partner-center-integration-sandbox-to-avoid-paying-unexpected-charges"></a>Testování a ladění pomocí izolovaného prostoru integrace partnerského centra, aby nedošlo k neočekávaným poplatkům
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-K otestování kódu byste měli použít svůj účet sandboxu pro integraci v Partnerské centrum (a odpovídající tokeny), aby se vám nechtěně neplatily nové poplatky, za které zodpovídá vaše společnost. Další informace o tomto prostředí TiP (test-in-production) najdete v tématu Nastavení přístupu k rozhraní [API v Partnerské centrum](set-up-api-access-in-partner-center.md).
+Pokud chcete otestovat svůj kód, měli byste použít svůj účet integrace izolovaného prostoru (sandbox) v partnerském centru (a odpovídajících tokenech), abyste omylem neúčtovali nové poplatky, za které vaše společnost zodpovídá za placení. Další informace o tomto prostředí s testováním v produkčním prostředí (TiP) najdete v tématu [nastavení přístupu k rozhraní API v partnerském centru](set-up-api-access-in-partner-center.md).
 
-## <a name="integration-sandbox-constraints"></a>Omezení sandboxu integrace
+## <a name="integration-sandbox-constraints"></a>Omezení karantény integrace
 
-Pokud spustíte automatizované ověřovací testy sestavení, provedete testování v produkčním prostředí nebo provedete ruční testování v sandboxu integrace, můžete dosáhnout maximálních limitů pro sandbox integrace. Tato omezení jsou 75 zákazníků, 5 předplatných na zákazníka a 25 licencí na předplatné.
+Pokud spustíte testy automatizovaného ověřování sestavení, provádíte testování v produkčním prostředí nebo provádíte Manuální testování v izolovaném prostoru (sandboxu) integrace, můžete dosáhnout maximálního limitu pro integraci izolovaného prostoru. Tato omezení jsou 75 zákazníci, 5 předplatných na zákazníka a 25 licencí na předplatné.
 
-Limit 25 licencí znamená, že v sandboxu nemůžete získat nabídku, která má minimální požadavek na licenci, který překračuje 25 licencí. Toto omezení zahrnuje zkušební verze.
+Limit 25 licencí znamená, že nemůžete získat nabídku v izolovaném prostoru (sandbox), která má minimální licenční požadavek, který překračuje 25 licencí. Toto omezení zahrnuje zkušební verze.
 
-V prostředích sandboxu jsou k dispozici různé soubory faktur a odsouhlasení, ale ne všechny jsou k dispozici na starších nebo moderních platformách. Další informace najdete v následující tabulce.
+V prostředích izolovaného prostoru (sandboxu) jsou k dispozici různé soubory faktury a odsouhlasení, ale ne všechny jsou k dispozici na starších nebo moderních platformách. Ověřte následující tabulku, abyste se dozvěděli víc.
 
-| **Soubory**                    | **K dispozici ve starší verzi** | **K dispozici v moderním** |
+| **Soubory**                    | **K dispozici ve starší verzi** | **K dispozici v moderních** |
 | ---------------------------- | ------------------------ | ------------------------ |
 | Faktura v PDF                  | No                       | Yes                      |
-| Soubor s vyrovnáním faktur | No                       | Yes                      |
-| Soubor s odhadem faktury       | No                       | Yes                      |
-| Soubor s denním fakturovaným využitím     | No                       | Yes                      |
-| Soubor s denním nefakfaktem využití   | No                       | Yes                      |
+| Soubor odsouhlasení faktury | No                       | Yes                      |
+| Soubor odhadu faktury       | No                       | Yes                      |
+| Denní fakturované soubor využití     | No                       | Yes                      |
+| Denní nefakturovaný soubor využití   | No                       | Yes                      |
 
 
 ### <a name="azure-plan"></a>Plán Azure
 
-Ve výchozím nastavení nemůžou partneři zřizovat plány Azure s využitím svých účtů sandboxu. Partneři, kteří to potřebují udělat s využitím svého účtu sandboxu, musí požádat o přístup. Pokud chcete požádat o přístup, obraťte se na účet Microsoft nebo obchodní kontakt. Partneři, kteří dříve požádali o přístup ke zřízení předplatných Microsoft Azure (MS-AZR-0145P) ve svých účtech sandboxu, nemusí znovu zažádat o přístup. Bude jim udělen přístup k automatickému zřizování plánů Azure.
+Ve výchozím nastavení nemůžou partneři zřizovat plány Azure s využitím svých účtů sandboxu. Partneři, kteří to potřebují udělat s využitím svého účtu sandboxu, musí požádat o přístup. Pokud chcete požádat o přístup, obraťte se na svého správce účet Microsoft nebo obchodní kontakt. partneři, kteří dřív použili pro přístup ke zřízení předplatných služby Microsoft Azure (MS-AZR-0145P) ve svých účtech izolovaného prostoru (sandbox), nemusejí pro přístup znovu platit. Budou jim udělena oprávnění k automatickému zřizování plánů Azure.
 
-Pro partnery, jejichž účty sandboxu byly schváleny ke zřizování plánů Azure, platí následující omezení:
+Pro partnery, jejichž účty izolovaného prostoru byly schváleny pro zřizování plánů Azure, platí následující omezení:
 
-- Každý partnerský účet sandboxu může mít až 10 plánů Azure napříč všemi tenanty zákazníků (bez ohledu na to, jak se plány distribuují mezi zákazníky).
+- Každý partnerský účet izolovaného prostoru (sandbox) může mít až 10 plánů Azure napříč všemi zákazníky (bez ohledu na to, jak se plány rozdělují mezi zákazníky).
 
-- Partner s přímým vyúčtováním může vytvořit až jeden plán Azure na tenanta zákazníka.
+- Přímý účet pro zákazníky může vytvořit až jeden tenant Azure na každého zákazníka.
 
-- Nepřímý poskytovatel může vytvořit až tři plány Azure na tenanta zákazníka (pro různé nepřímé prodejce zadané jako Partner-of-Record).
+- Nepřímý poskytovatel může vytvořit až tři plány Azure na každého zákazníka (pro různé nepřímý prodejce, které jste zadali jako partnerský záznam).
 
-- Každý plán Azure může mít až tři předplatná Azure.
+- Každý plán Azure může mít až tři předplatné Azure.
 
-- Každé předplatné Azure CSP v rámci vašeho účtu sandboxu je omezené na čtyři jádra virtuálních počítačů na jedno datové centrum. Proto nemůžete zřídit skladové hodnoty virtuálních počítače, které vyžadují více než čtyři jádra virtuálního počítače. Vyloučené jsou také některé specializované skladové hodnoty virtuálních počítače, jako jsou jádra GPU.
+- Každé předplatné Azure CSP v rámci vašeho účtu v izolovaném prostoru (sandbox) je omezeno na čtyři jádra virtuálních počítačů na datové centrum. Proto nemůžete zřídit SKU virtuálních počítačů, které vyžadují více než čtyři jádra virtuálních počítačů. Jsou vyloučeny také určité specializované SKU virtuálních počítačů, jako jsou například procesory GPU.
 
-- Každý partnerský účet sandboxu má limit útraty 2 000 USD na fakturační cyklus ve všech plánech Azure. Jakmile partner dosáhne limitu výdaje, všechny plány Azure budou dočasně zakázané až do dalšího fakturačního období.
+- Každý partnerský účet izolovaného prostoru (sandbox) má limit útraty $2000 (USD) na fakturační cyklus napříč všemi plány Azure. Jakmile partner dosáhne limitu útraty, všechny plány Azure se dočasně zablokují až do dalšího fakturačního cyklu.
 
-### <a name="cloud-solution-provider-csp-azure-subscription-offers"></a>Cloud Solution Provider předplatného Azure (CSP)
+### <a name="cloud-solution-provider-csp-azure-subscription-offers"></a>nabídky předplatného Azure Cloud Solution Provider (CSP)
 
-Nabídky předplatného Azure CSP už nejsou pro účty sandboxu ve výchozím nastavení dostupné. Patří mezi ně MS-AZR-0146P, MS-AZR-DE-0146P a MS-AZR-USGOV-0146P pro předplatná Azure CSP ve veřejném cloudu Microsoftu, německém cloudu a cloudu pro státní správu. Partneři, kteří potřebují přístup k těmto nabídekm pomocí svého účtu sandboxu, musí požádat o přístup. Pokud chcete požádat o přístup, proberte to se svým účet Microsoft nebo obchodním kontaktem.
+V účtech izolovaného prostoru (sandboxu) už nejsou dostupné nabídky předplatného Azure CSP. Patří mezi ně MS-AZR-0146P, MS-AZR-DE-0146P a MS-AZR-USGOV-0146P pro CSP Azure Subscriptions ve veřejném cloudu Microsoftu, v německém cloudu a v cloudu pro státní správu. Partneři, kteří potřebují přístup k těmto nabídkám se svým účtem izolovaného prostoru (sandbox), musí požádat o přístup. Pokud chcete požádat o přístup, prodiskutujte s vaším účet Microsoftm nebo obchodním kontaktem.
 
-Pro partnery, jejichž účty sandboxu byly schváleny pro nabídky předplatného Azure CSP, platí následující omezení:
+Pro partnery, jejichž účty izolovaného prostoru byly schválené pro nabídky CSP Azure pro předplatné, platí následující omezení:
 
-- Můžete mít maximálně 375 aktivních předplatných (75 zákazníků × 5 předplatných na zákazníka). Pouze 10 z těchto předplatných však může být předplatná Azure CSP.
+- Můžete mít až 375 aktivních předplatných (75 zákazníci x 5 předplatných na každého zákazníka). Ale jenom 10 z nich může být předplatné Azure CSP.
 
-- Když předplatné Azure CSP dosáhne 200 USD využití Azure, jeho prostředky se dočasně deaktivují až do dalšího fakturačního období. Stále se považuje za aktivní předplatné a počítá se do limitu 10 aktivních předplatných Azure.
+- Když předplatné Azure CSP dosáhne $200 využití Azure, prostředky se dočasně zablokují až do dalšího fakturačního cyklu. Pořád se považuje za aktivní předplatné a počítá se do 10 aktivních limitů předplatných Azure.
 
-- Každé předplatné Azure CSP v rámci vašeho účtu sandboxu je omezené na čtyři jádra virtuálních počítačů na jedno datové centrum. Proto nemůžete zřídit skladové hodnoty virtuálních počítače, které vyžadují více než čtyři jádra virtuálního počítače. Vyloučené jsou také některé specializované skladové hodnoty virtuálních počítače, jako jsou jádra GPU.
+- Každé předplatné Azure CSP v rámci vašeho účtu v izolovaném prostoru (sandbox) je omezeno na čtyři jádra virtuálních počítačů na datové centrum. Proto nemůžete zřídit SKU virtuálních počítačů, které vyžadují více než čtyři jádra virtuálních počítačů. Jsou vyloučeny také určité specializované SKU virtuálních počítačů, jako jsou například procesory GPU.
 
 > [!Important]
-> Všechna stávající předplatná Azure CSP zřízená s účty sandboxu před 1. srpnem 2018 už nejsou podporovaná a Microsoft ji od 16. října 2018 z zřízení zrušte. Po rušení zřízení předplatných už není možné je znovu povolit a přidružená data už nejsou dostupná. Partneři, kteří mají v těchto předplatných uložená cenná data, musí data před 16. říjnem 2018 zálohovat.
+> Všechna stávající předplatná Azure, která byla zřízena s účty izolovaného prostoru před 1. srpna 2018, již nejsou podporována a společnost Microsoft je od 16. října 2018 od 31. října. Po zrušení zřízení předplatných nebude možné je znovu povolit a přidružená data již nebudou k dispozici. Partneři, kteří mají cenná data uložená v rámci těchto předplatných, musí data zálohovat před 16. října 2018.
 
 ### <a name="azure-reserved-vm-instance"></a>Rezervovaná instance virtuálního počítače Azure
 
-Pokud kupujete [rezervovanou instanci virtuálního](purchase-azure-reservations.md) počítače Azure s vaším účtem sandboxu, jste omezeni na dvě instance virtuálních počítače na zákazníka. Také jste omezeni na výběr pouze z následujících SKU produktů rezervovaných instancí virtuálních počítače Azure:
+Pokud si [koupíte rezervovanou instanci virtuálního počítače Azure](purchase-azure-reservations.md) s vaším účtem izolovaného prostoru (sandbox), budete omezeni na dvě instance virtuálních počítačů na každého zákazníka. Jenom si vyberete jenom z následujících SKU produktu Azure rezervované instance virtuálního počítače:
 
-| Název produktu  | Datum platnosti  | Název SKU                                               | Oblast [ArmRegionName] | Klíč instance [ArmSkuName] | Doba trvání | ID měřiče Consumption       |
+| Název produktu  | Datum platnosti  | Název SKU                                               | Oblast [ArmRegionName] | Klíč instance [ArmSkuName] | Doba trvání | ID měřiče spotřeby       |
 |----------------|-----------------|---------------------------------------------------------|------------------------|--------------|----------|----------------------------|
-| Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, Korea – jih, 1 rok    | KoreaSouth             | `Standard_B1s` | `1Year`    | 3f913071-0dd7-4258-8ec4-6fad05bd976d |
+| Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, KR – jih, 1 rok    | KoreaSouth             | `Standard_B1s` | `1Year`    | 3f913071-0dd7-4258-8ec4-6fad05bd976d |
 | Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, USA – východ, 1 rok     | eastus                 | `Standard_B1s` | `1Year`    | f4d7a5a5-1b67-45ea-b1a0-282fbdd34b05 |
 | Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, USA – západ 2, 1 rok   | westus2                | `Standard_B1s` | `1Year`    | 222e39f5-e99f-4fa3-a323-f46402977888 |
 | Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, USA (střed) – sever, 1 rok    | northcentralus | `Standard_B1s` | `1Year`    | 4e1716fc-4842-43f1-aa96-7c1b1b1395a7 |
-| Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, CA – východ, 1 rok     | Kanada – východ             | `Standard_B1s` | `1Year`    | ab8a5993-5db7-47c8-b3b1-2e1365b353fb |
+| Řada B       | 12/1/2017 0:00  | Rezervovaná instance virtuálního počítače, Standard_B1s, CA – východ, 1 rok     | CanadaEast             | `Standard_B1s` | `1Year`    | ab8a5993-5db7-47c8-b3b1-2e1365b353fb |
 
-### <a name="subscriptions-for-commercial-marketplace-products"></a>Předplatná pro produkty komerčního marketplace
+### <a name="subscriptions-for-commercial-marketplace-products"></a>Předplatná pro komerční produkty z webu Marketplace
 
-Po vytvoření předplatného produktů [SaaS](create-subscription-azure-marketplace-products.md)na komerčním marketplace musíte v produkčním prostředí načíst individuální aktivační odkaz ze služby Partnerské centrum a navštívit web vydavatele a dokončit proces nastavení. Fakturace předplatného začne až po dokončení nastavení.
+V produkčním prostředí, po [Vytvoření odběru pro komerční produkty SaaS na webu Marketplace](create-subscription-azure-marketplace-products.md), je potřeba načíst přizpůsobený aktivační odkaz z partnerského centra a přejít na web vydavatele, aby se proces instalace dokončil. Fakturace předplatného se zahájí až po dokončení instalace.
 
-V prostředí sandboxu CSP neexistuje žádná integrace s isvédy. Pokud se pokusíte načíst aktivační odkaz z Partnerské centrum, vrátí se fiktivní odkaz. Tento fiktivní odkaz nelze použít k dokončení procesu instalace na webu vydavatele. Pokud chcete účet sandboxu pro integraci použít k otestování fakturace předplatných na komerčním marketplace produktů SaaS, podívejte se místo toho na aktivaci [předplatného sandboxu pro produkty komerčního marketplace.](activate-sandbox-subscription-azure-marketplace-products.md) Fakturace předplatného začne po úspěšné aktivaci.
+V prostředí izolovaného prostoru (sandbox) CSP není k dispozici žádná integrace s nezávislými prodejci softwaru. Pokud se pokusíte načíst aktivační odkaz z partnerského centra, vrátí se fiktivní odkaz. Tento fiktivní odkaz nelze použít k dokončení procesu instalace na webu vydavatele. Pokud chcete k testování fakturace předplatných do komerčních produktů Marketplace SaaS použít účet izolovaného prostoru (sandbox), přečtěte si téma [Aktivace odběru izolovaného prostoru (sandbox) pro komerční produkty](activate-sandbox-subscription-azure-marketplace-products.md) Fakturace předplatného se začne po úspěšné aktivaci.
 
-Pokud chcete na konci testovacího běhu vyčistit prostor pro další kolo testování, podívejte se na následující články:
+Pro vyčištění na konci vašeho testovacího běhu, aby bylo k dispozici místo pro další kruhové testování, přečtěte si následující články:
 
 - [Odstranění zákaznického účet ze sandboxu pro integraci](delete-a-customer-account-from-the-integration-sandbox.md)
 
 - [Snížení množství předplatného](change-the-quantity-of-a-subscription.md)
 
-- [Pozastavit předplatné,](suspend-a-subscription.md) abyste ho mohli odebrat.
+- [Pozastaví předplatné](suspend-a-subscription.md) , abyste ho mohli odebrat.
 
-## <a name="best-practices-for-rest-development"></a>Osvědčené postupy pro vývoj REST
+## <a name="best-practices-for-rest-development"></a>Osvědčené postupy pro vývoj v REST
 
-- Použijte nástroj pro trasování sítě, abyste viděli svůj požadavek, odpověď a případné chyby ve stavovém kódu HTTP v odpovědi. Další informace o zpracování chyb najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+- Použijte nástroj pro trasování sítě, abyste viděli svou žádost, odpověď a v případě, že v odpovědi došlo k chybám v kódu stavu HTTP. Další informace o zpracování chyb najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
-- Pro každé volání metody použijte nové ID korelace Partnerské centrum REST API. Tento postup zajišťuje lepší protokolování a pomůže vám při ladění. Další informace najdete v Partnerské centrum [REST.](headers.md)
+- Pro každé volání v partnerském centru REST API použít nové ID korelace. Tento postup zajišťuje lepší protokolování a při ladění pomůže. Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ## <a name="troubleshooting-tips-for-common-rest-problems"></a>Tipy k řešení běžných potíží s rozhraním REST
 
-- Zkontrolujte všechny vlastnosti hlavičky, včetně adresy URL a verze rozhraní API.
+- Zkontrolujte všechny vlastnosti hlaviček, včetně adresy URL a verze rozhraní API.
 
-- V případě potřeby se ujistěte, že jsou zahrnuté vlastnosti a že jsou správně naformátované.
+- Ujistěte se, že vlastnosti jsou v případě potřeby zahrnuté a správně naformátované.
 
-- Nesprávné formátování pole je běžnou chybou.
+- Nesprávné formátování pole je běžná chyba.
 
-- **ETagy** jsou dočasné a proto by se neměly ukládat. Pokud volání funkce vyžaduje **ETagy,** použijte nejnovější hodnotu **ETags** tím, že prostředek znovu získáte. **Hodnoty Značek ETag** by měly být zahrnuty do dvojitých uvozovek, jako je řetězec:
+- **Značky ETag** jsou dočasné a v důsledku toho by neměly být uloženy. Když volání funkce vyžaduje **ETag**, použijte nejnovější hodnotu **ETag** tím, že znovu navrátíte prostředek. Hodnoty **ETag** by měly být zahrnuté do dvojitých uvozovek, jako je například řetězec:
 
    ```rest
    If-Match : "eyJpZCI6IjUwMWE4NjBjLTE2OTgtNDQyYi04MDhjLTRiNjEyY2NmMzVmMiIsInZlcnNpb24iOjF9"

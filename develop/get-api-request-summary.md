@@ -1,39 +1,39 @@
 ---
-title: Získání stavu přechodu na více ověřování
-description: Získejte seznam stavu přijetí vícefaktorového ověřování pro jednotlivé partnery pomocí partnerského REST API.
+title: Získat stav přijetí MFA
+description: Získejte seznam stavu přijetí služby Multi-Factor Authentication pro každého partnera pomocí REST API partnera.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.date: 05/29/2020
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 9b8848c2a4531dd6609f86aae6876cec436eeea9
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: e4b55122a6f723d8a877c2688c425fda52cb1c56110c47ee81ddce24e4923e99
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760517"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992530"
 ---
-# <a name="get-mfa-adoption-status"></a>Získání stavu přijetí MFA
+# <a name="get-mfa-adoption-status"></a>Získat stav přijetí MFA
 
-**Platí pro:** Partnerské centrum API
+**Platí pro**: rozhraní API partnerského centra
 
-Tento článek vysvětluje, jak získat stav přijetí vícefaktorového ověřování (MFA) pro každého partnera v rámci tenanta.
+Tento článek vysvětluje, jak získat stav přijetí služby Multi-Factor Authentication (MFA) pro každého partnera v rámci tenanta.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                               |
 |---------|---------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/applicationmfaadoptionstatus> |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/applicationmfaadoptionstatus> |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-- Další informace najdete v Partnerské centrum [REST.](headers.md)
+- Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -50,11 +50,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato metoda v textu odpovědi kolekci požadavku [rozhraní API](mfa-resources.md#api-request-summarized-by-application) shrnutou prostředky aplikace.
+V případě úspěchu tato metoda vrátí kolekci [požadavků rozhraní API shrnutých prostředky aplikace](mfa-resources.md#api-request-summarized-by-application) v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

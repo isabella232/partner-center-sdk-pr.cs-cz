@@ -4,30 +4,30 @@ description: Upgraduje předplatné zákazníka na zadané cílové předplatné
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 01455315825cad026830268b6bbd55509e964bb5
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 2989f1db4259ce43583baf8acf20b2b5204ab72e3725cdd7fa9f75db1db12510
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530225"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990167"
 ---
 # <a name="transition-a-subscription"></a>Převod předplatného
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
 Upgraduje předplatné zákazníka na zadané cílové předplatné.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Dvě ID předplatného, jeden pro počáteční předplatné a jeden pro cílové předplatné.
+- Dvě ID předplatného, jedno pro počáteční předplatné a jedno pro cílové předplatné.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete upgradovat předplatné zákazníka, nejdřív [získejte předplatné customer's](get-a-subscription-by-id.md). Pak Získejte seznam upgradů pro toto předplatné voláním vlastnosti **upgrade** následovaný metodami **Get ()** nebo **GetAsync ()** . Zvolte cíl upgradu z tohoto seznamu upgradů a potom zavolejte vlastnost **upgrady** počátečního předplatného, za kterou následuje metoda **Create ()** .
+Pokud chcete upgradovat předplatné zákazníka, [nejprve získejte jeho předplatné zákazníka.](get-a-subscription-by-id.md) Pak získejte seznam upgradů pro toto předplatné voláním vlastnosti **Upgrades** následované metodami **Get()** nebo **GetAsync().** V tomto seznamu upgradů zvolte cílový upgrade a potom zavolejte vlastnost **Upgrady** počátečního předplatného a pak metodu **Create().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -38,16 +38,16 @@ Pokud chcete upgradovat předplatné zákazníka, nejdřív [získejte předplat
 UpgradeResult upgradeResult = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionIdForUpgrade).Upgrades.Create(targetOffer);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **třída**: UpgradeSubscription. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSamples – **třída:** UpgradeSubscription.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                                                         |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription}/Upgrades HTTP/1.1 |
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Target}/Upgrades HTTP/1.1       |
+| **Dostat**  | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné}/upgrady HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-for-target}/upgrades HTTP/1.1       |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -55,13 +55,13 @@ K převodu předplatného použijte následující parametr dotazu.
 
 | Název                    | Typ     | Vyžadováno | Popis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
-| **Customer-tenant-ID**  | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.             |
-| **ID pro předplatné** | **guid** | Y        | Identifikátor GUID, který odpovídá počátečnímu předplatnému. |
-| **ID pro cíl**       | **guid** | Y        | Identifikátor GUID, který odpovídá cílovému předplatnému.  |
+| **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.             |
+| **id-for-subscription** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
+| **id-for-target**       | **guid** | Y        | Identifikátor GUID odpovídající cílovému předplatnému.  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -142,11 +142,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek výsledků **upgradu** v těle odpovědi.
+V případě úspěchu vrátí tato metoda **v** textu odpovědi prostředek výsledku upgradu.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

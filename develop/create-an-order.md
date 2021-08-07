@@ -4,12 +4,12 @@ description: Naučte se používat rozhraní API partnerského centra k vytvoře
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a2a980634e3887780c9d6dbd4fa3271956978884
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: 9330639de3ff88fd2e659e92729de0c1625b6157e2608204577287d30d330d00
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009136"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991493"
 ---
 # <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Vytvoření objednávky pro zákazníka pomocí rozhraní API partnerského centra
 
@@ -109,27 +109,27 @@ Tato tabulka popisuje vlastnosti [objednávky](order-resources.md) v textu žád
 | odkazy                | [OrderLinks](utility-resources.md#resourcelinks)              | No                              | Odkazy na prostředky odpovídající objednávce. |
 | atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | No                              | Atributy metadat odpovídající pořadí. |
 
-#### <a name="orderlineitem"></a>OrderLineItem (PoložkaŘádku Objednávky)
+#### <a name="orderlineitem"></a>OrderLineItem
 
 Tato tabulka popisuje vlastnosti [OrderLineItem](order-resources.md#orderlineitem) v textu požadavku.
 
 >[!NOTE]
->Záznam partnerIdOnRecord by měl být poskytnut pouze v případě, že nepřímý poskytovatel zadá objednávku jménem nepřímého prodejce. Slouží k uložení ID Microsoft Partner Network nepřímého prodejce (nikdy ID nepřímého poskytovatele).
+>PartnerIdOnRecord by měla být poskytnuta pouze v případě, že nepřímý poskytovatel umístí objednávku jménem nepřímého prodejce. Slouží k ukládání Microsoft Partner Network ID nepřímých prodejců (nikdy ID nepřímého poskytovatele).
 
 | Název                 | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                                |
 |----------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int    | Yes      | Každá položka řádku v kolekci získá jedinečné číslo řádku, počítá se od 0 do count-1.                                                                                                                                                 |
-| ID nabídky              | řetězec | Yes      | Identifikátor nabídky.                                                                                                                                                                                                                      |
+| lineItemNumber       | int    | Yes      | Každá položka řádku v kolekci získá jedinečné číslo řádku, počítáno od 0 do Count-1.                                                                                                                                                 |
+| Hodnotami OfferId              | řetězec | Yes      | Identifikátor nabídky                                                                                                                                                                                                                      |
 | subscriptionId       | řetězec | No       | Identifikátor předplatného.                                                                                                                                                                                                               |
-| PARENTSubscriptionId | řetězec | No       | Nepovinný parametr. ID nadřazeného předplatného v nabídce doplňku. Platí jenom pro PATCH.                                                                                                                                                     |
-| Friendlyname         | řetězec | No       | Nepovinný parametr. Popisný název předplatného definovaného partnerem, který pomáhá jednoznačně rozpoznat.                                                                                                                                              |
+| parentSubscriptionId | řetězec | No       | Nepovinný parametr. ID nadřazeného odběru v nabídce doplňku Platí pouze pro opravu.                                                                                                                                                     |
+| friendlyName         | řetězec | No       | Nepovinný parametr. Popisný název předplatného definovaného partnerem, který vám umožní určit nejednoznačnost.                                                                                                                                              |
 | quantity             | int    | Yes      | Počet licencí pro předplatné založené na licencích.                                                                                                                                                                                   |
-| id partneraZáznam    | řetězec | No       | Když nepřímý poskytovatel zadá objednávku jménem nepřímého prodejce, zadejte do tohoto pole pouze ID MPN nepřímého prodejce **(nikdy** ID nepřímého poskytovatele). Tím se zajistí správné účtování pobídek. |
-| provisioningContext  | Slovníkový<řetězec, řetězec>                | No       |  Informace vyžadované pro zřizování některých položek v katalogu. Vlastnost provisioningVariables ve SKU určuje, které vlastnosti jsou vyžadovány pro konkrétní položky v katalogu.                  |
-| Odkazy                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | No       |  Jen pro čtení. Propojení prostředků odpovídající položce řádku Order (Objednávka).  |
-| atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | No       | Atributy metadat odpovídající OrderLineItem. |
-| renewsTo             | Pole objektů                          | No    |Pole prostředků [RenewsTo.](order-resources.md#renewsto)                                                                            |
-| AttestationAccepted             | bool                 | No   |  Označuje smlouvu pro podmínky nabídky nebo SKU. Vyžaduje se jenom pro nabídky nebo SKU, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu True.          |
+| partnerIdOnRecord    | řetězec | No       | Když nepřímý poskytovatel umístí objednávku jménem nepřímého prodejce, naplňte toto pole do ID MPN **nepřímého prodejce** (nikdy ID nepřímého poskytovatele). To zajišťuje správné účetnictví pro motivaci. |
+| provisioningContext  | Řetězec<slovníku, řetězec>                | No       |  Informace požadované pro zřizování některých položek v katalogu. Vlastnost provisioningVariables v SKU indikuje, které vlastnosti jsou požadovány pro konkrétní položky v katalogu.                  |
+| odkazy                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | No       |  Jen pro čtení. Odkazy na prostředky odpovídající položce řádku objednávky.  |
+| atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | No       | Atributy metadat odpovídající OrderLineItem. |
+| renewsTo             | Pole objektů                          | No    |Pole prostředků [RenewsTo](order-resources.md#renewsto)                                                                            |
+| AttestationAccepted             | bool                 | No   |  Označuje smlouvu o nabídkách nebo podmínkách SKU. Vyžaduje se jenom pro nabídky nebo skladové položky, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu true.          |
 
 ##### <a name="renewsto"></a>RenewsTo
 
@@ -137,7 +137,7 @@ Tato tabulka popisuje vlastnosti [RenewsTo](order-resources.md#renewsto) v textu
 
 | Vlastnost              | Typ             | Vyžadováno        | Popis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | řetězec           | No              | Reprezentace doby trvání období prodloužení podle ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc) a **P1Y** (1 rok). |
+| termDuration          | řetězec           | No              | ISO 8601 představuje dobu trvání období obnovy. Aktuální podporované hodnoty jsou **P1M** (1 měsíc) a **P1Y** (1 rok). |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -169,11 +169,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí metoda [v textu](order-resources.md) odpovědi prostředek Order.
+V případě úspěchu metoda vrátí zdroj [objednávky](order-resources.md) v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

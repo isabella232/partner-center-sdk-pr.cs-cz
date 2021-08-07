@@ -1,39 +1,39 @@
 ---
 title: Získání seznamu dostupných licencí
-description: Jak získat seznam licencí dostupných pro uživatele zadaného zákazníka.
+description: Jak získat seznam licencí dostupných pro uživatele zadaného zákazníka
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 02a6fccc2cf7f3f4dc929b96ec0f17e0f4a31b06
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: bce47adb87111edb998b8dff029f39547f21d8e0a0464a96de7f0c9aa5d4a69d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874495"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991153"
 ---
 # <a name="get-a-list-of-available-licenses"></a>Získání seznamu dostupných licencí
 
-Tento článek popisuje, jak získat seznam licencí dostupných pro uživatele zadaného zákazníka.
+Tento článek popisuje, jak získat seznam licencí dostupných uživatelům zadaného zákazníka.
 
-Následující příklady vrátí licence dostupné z **Group1**, výchozí skupinu licencí, která představuje licence spravované službou Azure Active Directory (Azure AD). Pokud chcete získat dostupné licence pro zadanou skupinu licencí, přečtěte si téma [získání seznamu dostupných licencí podle skupiny licencí](get-a-list-of-available-licenses-by-license-group.md).
+Následující příklady vrátí licence dostupné ze **skupiny group1**, výchozí skupiny licencí, která představuje licence spravované Azure Active Directory (Azure AD). Informace o získání dostupných licencí pro zadanou skupinu licencí najdete v tématu Získání seznamu dostupných [licencí podle skupiny licencí.](get-a-list-of-available-licenses-by-license-group.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Načtení seznamu licencí dostupných z výchozí skupiny licencí uživatelům zákazníka:
+Načtení seznamu licencí dostupných z výchozí skupiny licencí pro uživatele zákazníka:
 
-1. K identifikaci zákazníka použijte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka.
+1. K identifikaci zákazníka použijte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka.
 
-2. Získat hodnotu vlastnosti [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) , která načte rozhraní pro operace shromažďování skladových položek s předplacenou odběrateli.
+2. Získejte hodnotu vlastnosti [**SubscribedSkus**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscribedskus) a načtěte rozhraní pro operace kolekce SKU odebíraných zákazníkem.
 
-3. Pro načtení seznamu licencí zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync) .
+3. Pokud chcete [**načíst**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.get) seznam licencí, zavolejte metodu Get nebo [**GetAsync.**](/dotnet/api/microsoft.store.partnercenter.subscribedskus.icustomersubscribedskucollection.getasync)
 
 ``` csharp
 // string selectedCustomerId;
@@ -42,19 +42,19 @@ Načtení seznamu licencí dostupných z výchozí skupiny licencí uživatelům
 var customerUserSubscribedSkus = partnerOperations.Customers.ById(selectedCustomerId).SubscribedSkus.Get();
 ```
 
-Příklad naleznete v následujících tématech:
+Příklad najdete v následujícím příkladu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Project: **ukázky sady SDK pro partnerských Center**
-- Třída: **GetCustomerSubscribedSkus. cs**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **SDK pro Partnerské centrum ukázky**
+- Třída: **GetCustomerSubscribedSkus.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                    |
 |---------|------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/subscribedskus HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscribedskus HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -62,11 +62,11 @@ K identifikaci zákazníka použijte následující parametr cesty.
 
 | Název        | Typ   | Vyžadováno | Popis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| ID zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| id zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -86,11 +86,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [SubscribedSku](license-resources.md#subscribedsku) .
+V případě úspěchu bude tělo odpovědi obsahovat kolekci prostředků [SubscribedSku.](license-resources.md#subscribedsku)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu Partnerské centrum [kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

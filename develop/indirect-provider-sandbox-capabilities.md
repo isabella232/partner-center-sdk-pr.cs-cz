@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vinayks-ms
 ms.author: vinayks
-ms.openlocfilehash: da35dadd4e13247e923259a1cf3a67852f4b9e00
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 07608fb5f2d2a3ffc418188e0ac1ff367e3c5691aa241554a4a954de8c4f2005
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445897"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990670"
 ---
 # <a name="csp-indirect-provider-sandbox-capabilities-for-creating-indirect-reseller-accounts"></a>Možnosti sandboxu nepřímého poskytovatele CSP pro vytváření účtů nepřímých prodejců 
 
@@ -27,11 +27,11 @@ Partnerské centrum sandboxu nepřímého poskytovatele (vrstva 2). Scénář sa
 
 ## <a name="sandbox-indirect-provider--create-sandbox-indirect-reseller-using-the-partner-center-user-interface"></a>Nepřímý poskytovatel sandboxu – Vytvoření nepřímého prodejce sandboxu pomocí Partnerské centrum rozhraní 
 
- Jedná se o funkci pouze pro sandbox, která nepřímým poskytovatelům sandboxu umožňuje vytvořit účet nepřímého prodejce sandboxu prostřednictvím Partnerské centrum Portal.
+ Jedná se o funkci sandboxu, která umožňuje nepřímým poskytovatelům sandboxu vytvořit účet nepřímého prodejce sandboxu prostřednictvím Partnerské centrum Portal.
 
-Nepřímí poskytovatelé mohou pro nepřímé prodejce v Sandboxu dělat následující scénáře prostřednictvím Partnerské centrum rozhraní: 
+Nepřímí poskytovatelé kapacity nepřímých prodejců v Sandboxu prostřednictvím uživatelského rozhraní služby Partnerské centrum scénáře: 
 
-1. Nepřímí poskytovatelé CSP si CSP Indirect Reseller sandboxu prostřednictvím vlastního účtu sandboxu vrstvy 2 na Partnerské centrum Portal.
+1. Nepřímí poskytovatelé CSP si mohou vytvořit CSP Indirect Reseller Sandbox prostřednictvím vlastního účtu sandboxu vrstvy 2 na Partnerské centrum Portal.
 2. Nepřímí prodejci CSP mohou zobrazit zákazníka podle nepřímých poskytovatelů. 
 
 1. Nepřímí prodejci CSP mohou spravovat zákaznický účet pomocí delegovaných oprávnění správce.
@@ -66,9 +66,9 @@ Nepřímí poskytovatelé mohou pro nepřímé prodejce v Sandboxu dělat násle
 
 ## <a name="create-csp-indirect-reseller-sandbox-account"></a>Vytvoření CSP Indirect Reseller sandboxu
 
-1. Přihlaste se Partnerské centrum účtu sandboxu úrovně 2. 
+1. Přihlaste se Partnerské centrum účtu sandboxu vrstvy 2. 
 
-2. V levé nabídce přejděte na Indirect Resellers (Nepřímí prodejci). 
+2. V nabídce vlevo přejděte na Indirect Resellers (Nepřímí prodejci). 
 
 3. Vyberte tlačítko **Add Reseller Sandbox (Přidat sandbox prodejce).** 
 
@@ -102,7 +102,7 @@ Existující účet CSP Indirect Reseller Sandbox přidružený k vašemu vlastn
 
 1. Přihlaste se Partnerské centrum účtu sandboxu úrovně 2. 
 
-2. V levé nabídce přejděte na Indirect Resellers (Nepřímí prodejci). 
+2. V nabídce vlevo přejděte na Indirect Resellers (Nepřímí prodejci). 
 
 3. Vyberte odkaz **Delete Reseller Sandbox (Odstranit sandbox prodejce)** vedle účtu sandboxu nepřímého prodejce, který chcete odstranit. Účet sandboxu nepřímého prodejce se trvale odstraní a není možné ho obnovit. 
 

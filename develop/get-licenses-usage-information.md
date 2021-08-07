@@ -4,12 +4,12 @@ description: Jak získat informace o využití licencí na úrovni úloh pro Off
 ms.date: 10/25/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ea3658089ce7eb5c1ad7cc65c3db34f9b6353cdd
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: a93c59c8c2a4c82ad7f3e81e814386e1ac0c046c3b0bada80eaaac40d9179d93
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445969"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990422"
 ---
 # <a name="get-licenses-usage-information"></a>Získání informací o využití licencí
 

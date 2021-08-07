@@ -1,39 +1,39 @@
 ---
 title: Vytvoření entity upgradu produktu pro zákazníka
-description: Pomocí prostředku ProductUpgradeRequest můžete vytvořit entitu upgradu produktu a upgradovat zákazníka na danou produktové rodinu.
+description: Pomocí prostředku ProductUpgradeRequest můžete vytvořit entitu upgrade produktu pro upgrade zákazníka na danou produktovou řadu.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 4e346b7f5294a8847047c85115d8c80f34eaca84
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 7515bbce2914142e052349a1bbb4de20416d0931ac886fe9264cc4d3b8c1f734
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973397"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991459"
 ---
 # <a name="create-a-product-upgrade-entity-for-a-customer"></a>Vytvoření entity upgradu produktu pro zákazníka
 
-Pokud chcete upgradovat zákazníka na danou produktové rodinu (například plán Azure), můžete vytvořit entitu upgradu produktu pomocí prostředku **ProductUpgradeRequest.**
+Můžete vytvořit entitu upgrade produktu pro upgrade zákazníka na určitou produktovou řadu (například plán Azure) pomocí prostředku **ProductUpgradeRequest** .
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele. Při použití [ověřování aplikací a uživatelů](enable-secure-app-model.md) s využitím rozhraní API pro Partnerské centrum aplikací postupujte podle modelu zabezpečené aplikace.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele. Použijte [zabezpečený model aplikace](enable-secure-app-model.md) při použití ověřování aplikací a uživatelů s rozhraními API partnerského centra.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Produktová skupina, na kterou chcete upgradovat zákazníka.
+- Produktová řada, na kterou chcete provést upgrade zákazníka.
 
 ## <a name="c"></a>C\#
 
 Upgrade zákazníka na plán Azure:
 
-1. Vytvořte objekt **ProductUpgradesRequest** a jako produktové skupiny zadejte identifikátor zákazníka a "Azure".
+1. Vytvořte objekt **ProductUpgradesRequest** a zadejte identifikátor zákazníka a "Azure" jako produktovou řadu.
 
-2. Použijte **kolekci IAggregatePartner.ProductUpgrades.**
+2. Použijte kolekci **IAggregatePartner. ProductUpgrades** .
 
-3. Zavolejte **metodu Create** a předejte objekt **ProductUpgradesRequest,** který vrátí **řetězec hlavičky** umístění.
+3. Zavolejte metodu **Create** a předejte objekt **ProductUpgradesRequest** , který vrátí řetězec **hlavičky umístění** .
 
-4. **Extrahujte id upgradu** z řetězce hlavičky umístění, který můžete použít k [dotazování na stav upgradu.](get-product-upgrade-status.md)
+4. Extrahujte **ID upgradu** z řetězce hlavičky umístění, který lze použít k [dotazování na stav upgradu](get-product-upgrade-status.md).
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -54,21 +54,21 @@ var upgradeId = Regex.Split(productUpgradeLocationHeader, "/")[1];
 
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda   | Identifikátor URI žádosti                                                                                   |
 |----------|-----------------------------------------------------------------------------------------------|
-| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productupgrades HTTP/1.1 |
+| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/productupgrades HTTP/1.1 |
 
 #### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 #### <a name="request-body"></a>Text požadavku
 
-Text požadavku musí obsahovat prostředek [ProductUpgradeRequest.](product-upgrade-resources.md#productupgraderequest)
+Tělo žádosti musí obsahovat prostředek [ProductUpgradeRequest](product-upgrade-resources.md#productupgraderequest) .
 
 #### <a name="request-example"></a>Příklad požadavku
 
@@ -93,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu odpověď obsahuje **hlavičku Location** s identifikátorem URI, který lze použít k načtení stavu upgradu produktu. Uložte si tento identifikátor URI pro použití s dalšími souvisejícími rozhraními REST API.
+V případě úspěchu odpověď obsahuje hlavičku **umístění** s identifikátorem URI, který lze použít k načtení stavu upgradu produktu. Uložte tento identifikátor URI pro použití s dalšími souvisejícími rozhraními REST API.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

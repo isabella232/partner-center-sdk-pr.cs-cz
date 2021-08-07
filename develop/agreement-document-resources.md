@@ -1,35 +1,35 @@
 ---
-title: Zdroje informací k dokumentu smlouvy
-description: Prostředek AgreementDocument je dokument smlouvy Microsoftu pro verzi Preview a ke stažení. Podporuje ji Partnerské centrum ve veřejném cloudu Microsoftu.
+title: Prostředky dokumentu smlouvy
+description: Prostředek AgreementDocument je dokument s smlouvou Microsoftu pro náhled a stažení. Podporuje ho Partnerská centra ve veřejném cloudu Microsoftu.
 ms.date: 08/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 1a81da4f75594f241669db831125bd437872561c
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: eddde1e8072c6aeeee814b52f46c7648d870b6ba63c09b20e4270b17f8386383
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025662"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991102"
 ---
-# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a>Prostředky dokumentů smlouvy podporované Partnerské centrum ve veřejném cloudu Microsoftu
+# <a name="agreement-document-resources-supported-by-partner-center-in-the-microsoft-public-cloud"></a>Prostředky dokumentů smlouvy podporované partnerským centrem ve veřejném cloudu Microsoftu
 
-**Platí pro:** Partnerské centrum
+**Platí pro**: partnerské Centrum
 
-**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Prostředek **AgreementDocument** v současné době podporuje Partnerské centrum ve veřejném cloudu Microsoftu.
+Partner Center v současné době podporuje prostředek **AgreementDocument** jenom ve veřejném cloudu Microsoftu.
 
-Prostředek **AgreementDocument** představuje dokument smlouvy Microsoftu, který je k dispozici ve verzi Preview a ke stažení.
+Prostředek **AgreementDocument** představuje dokument smlouvy Microsoft, který je k dispozici pro náhled a stažení.
 
-## <a name="agreementdocument"></a>Dokument smlouvy
+## <a name="agreementdocument"></a>AgreementDocument
 
 Prostředek **AgreementDocument** obsahuje následující vlastnosti:
 
 | Vlastnost       | Typ   | Description                                                                                               |
 |----------------|--------|-----------------------------------------------------------------------------------------------------------|
-| country | řetězec | Země nebo trh, na který se tento dokument vztahuje. |
+| country | řetězec | Země nebo trh, na který se vztahuje tento dokument. |
 | language | řetězec | Jazyk, ve kterém je tento dokument lokalizován. |
-| DisplayUri | řetězec | Odkaz na náhled dokumentu smlouvy v prohlížeči  |
-| DownloadUri |řetězec | Odkaz na stažení dokumentu smlouvy (ve Microsoft Word formátu). |
+| displayUri | řetězec | Odkaz na náhled dokumentu smlouvy v prohlížeči  |
+| downloadUri |řetězec | odkaz ke stažení dokumentu smlouvy (ve formátu Microsoft Word). |

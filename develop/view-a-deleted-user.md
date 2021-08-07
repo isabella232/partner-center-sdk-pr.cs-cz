@@ -1,33 +1,33 @@
 ---
 title: Zobrazení odstraněných uživatelů pro zákazníka
-description: Načte seznam odstraněných prostředků CustomerUser pro zákazníka podle ID zákazníka. Volitelně můžete nastavit velikost stránky. Je nutné, abyste zadali filtr.
+description: Získá seznam odstraněných prostředků CustomerUser pro zákazníka podle ID zákazníka. Volitelně můžete nastavit velikost stránky. Musíte zadat filtr.
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f4fec958a9a6bb580d35de1cf3007e1db3b2b650
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 2f7e94d5e360075378e1895e586690597baaf66237f0b93bb526baee0c5d84ae
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445302"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989810"
 ---
 # <a name="view-deleted-users-for-a-customer"></a>Zobrazení odstraněných uživatelů pro zákazníka
 
-Načte seznam odstraněných prostředků CustomerUser pro zákazníka podle ID zákazníka. Volitelně můžete nastavit velikost stránky. Je nutné, abyste zadali filtr.
+Získá seznam odstraněných prostředků CustomerUser pro zákazníka podle ID zákazníka. Volitelně můžete nastavit velikost stránky. Musíte zadat filtr.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="what-happens-when-you-delete-a-user-account"></a>Co se stane, když odstraníte uživatelský účet?
 
-Stav uživatele je nastaven na "neaktivní" při odstranění uživatelského účtu. Trvá to po dobu 30 dnů, po jejímž uplynutí se uživatelský účet a jeho přidružená data vyprázdní a provedou jako neobnovitelné. Pokud chcete obnovit odstraněný uživatelský účet v rámci 30denního okna, přečtěte si téma [Obnovení odstraněného uživatele pro zákazníka](restore-a-user-for-a-customer.md). Po odstranění a označení "neaktivní" již uživatelský účet nebude vrácen jako člen kolekce uživatelů (například pomocí příkazu [získat seznam všech uživatelských účtů pro zákazníka](get-a-list-of-all-user-accounts-for-a-customer.md)). Chcete-li získat seznam odstraněných uživatelů, které ještě nebyly smazány, je nutné zadat dotaz na uživatelské účty, které byly nastaveny na neaktivní.
+Stav uživatele je při odstranění uživatelského účtu nastavený na "neaktivní". Zůstane tak po dobu 30 dnů, po jejímž uplynutí se uživatelský účet a jeho přidružená data vyprázdní a nenapraví. Pokud chcete odstraněný uživatelský účet obnovit v rámci 30denního okna, podívejte se na stránku Obnovení odstraněných uživatelů [pro zákazníka.](restore-a-user-for-a-customer.md) Po odstranění a označení "neaktivní" už se uživatelský účet nebude vrátil jako člen kolekce uživatelů (například pomocí příkazu Získat seznam všech uživatelských účtů pro [zákazníka).](get-a-list-of-all-user-accounts-for-a-customer.md) Pokud chcete získat seznam odstraněných uživatelů, kteří ještě nejsou vyprázdnění, musíte zadat dotaz na uživatelské účty, které byly nastaveny na neaktivní.
 
 ## <a name="c"></a>C\#
 
-Chcete-li načíst seznam odstraněných uživatelů, vytvořte dotaz, který filtruje uživatele zákazníka, jejichž stav je nastaven na neaktivní. Nejprve vytvořte filtr vytvořením instance objektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) s parametry, jak je znázorněno v následujícím fragmentu kódu. Pak vytvořte dotaz pomocí metody [**BuildIndexedQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) . Pokud nechcete stránkované výsledky, můžete místo toho použít metodu [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) . V dalším kroku použijte k identifikaci zákazníka metodu [**IAggregatePartner. Customer. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Nakonec zavolejte metodu [**dotazu**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.query) pro odeslání žádosti.
+Pokud chcete načíst seznam odstraněných uživatelů, vytvořte dotaz, který vyfiltruje uživatele zákazníka, jejichž stav je neaktivní. Nejprve vytvořte filtr vytvořením instance objektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) s parametry, jak je znázorněno v následujícím fragmentu kódu. Pak vytvořte dotaz pomocí metody [**BuildIndexedQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildindexedquery) Pokud nechcete stránkované výsledky, můžete místo toho použít metodu [**BuildSimpleQuery.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) Dále k identifikaci zákazníka použijte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka. Nakonec zavolejte [**metodu Query,**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.query) která odešle požadavek.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -43,29 +43,29 @@ var simpleQueryWithFilter = QueryFactory.Instance.BuildIndexedQuery(customerUser
 var customerUsers = partnerOperations.Customers.ById(selectedCustomerId).Users.Query(simpleQueryWithFilter);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: GetCustomerInactiveUsers. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** GetCustomerInactiveUsers.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                       |
 |---------|-------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Users? size = {size} &Filter = {Filter} HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{id_zákazníka}/users?size={velikost}&filter={filter} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Při vytváření žádosti použijte následující cestu a parametry dotazu.
+Při vytváření požadavku použijte následující cestu a parametry dotazu.
 
 | Název        | Typ   | Vyžadováno | Popis                                                                                                                                                                        |
 |-------------|--------|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ID zákazníka | guid   | Yes      | Hodnota je identifikátor zákazníka, který je ve formátu GUID, který identifikuje zákazníka.                                                                                                            |
-| size        | int    | No       | Počet výsledků, které se mají zobrazit v jednom okamžiku. Tento parametr je volitelný.                                                                                                     |
-| filter      | filter | Yes      | Dotaz, který filtruje hledání uživatelů Chcete-li načíst odstraněné uživatele, je nutné zahrnout a zakódovat následující řetězec: {"Field": "UserState", "value": "neaktivní", "operator": "Equals"}. |
+| id zákazníka | guid   | Yes      | Hodnota je ID zákazníka ve formátu GUID, které identifikuje zákazníka.                                                                                                            |
+| size        | int    | No       | Počet výsledků, které se zobrazí najednou Tento parametr je volitelný.                                                                                                     |
+| filter      | filter | Yes      | Dotaz, který filtruje vyhledávání uživatelů. Pokud chcete načíst odstraněné uživatele, musíte zahrnout a zakódovat následující řetězec: {"Field":"UserState","Value":"Inactive","Operator":"equals"}. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -85,11 +85,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků [CustomerUser](user-resources.md#customeruser) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi kolekci prostředků [CustomerUser.](user-resources.md#customeruser)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

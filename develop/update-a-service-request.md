@@ -4,12 +4,12 @@ description: Jak aktualizovat existující žádost o služby zákazníkům, Clo
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: efa7b2a98b6f95a763ca6e3811c43cc655c18e2b
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 2fdfda256e873d772f300dfa29b17779c192f158c82d3e42467021b8f9f3fcdb
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530085"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990031"
 ---
 # <a name="update-a-service-request"></a>Aktualizace žádosti o službu
 

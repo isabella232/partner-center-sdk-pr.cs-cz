@@ -4,12 +4,12 @@ description: Poznámky k nejnovější verzi sady .NET SDK Partnerské centrum.
 ms.date: 07/07/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c1532d48c00550f5eb437ed0164d6a1f7bb340dd
-ms.sourcegitcommit: 53c94db33b09c30e762b842c4275b2b531dba932
+ms.openlocfilehash: 6fc6182638cb2cc5457bdfada37b928c88e1ca786e401f7eb8d5309a0abd9310
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113522630"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991214"
 ---
 # <a name="net-sdk-release-notes"></a>Poznámky k verzi sady .NET SDK
 
@@ -144,17 +144,17 @@ Následující poznámky k verzi jsou k dispozici pro nové verze [sady Microsof
 
 ## <a name="version-1161"></a>Verze 1.16.1
 
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.1) v 1.16.1 je teď obecně dostupný. k dispozici jsou také aktualizované [ukázky GitHub](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+[Sada Microsoft Partnerské centrum .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.16.1) verze 1.16.1 je teď obecně dostupné. K [dispozici GitHub aktualizované](https://github.com/Microsoft/Partner-Center-DotNet-Samples) ukázky. V této verzi jsou zahrnuté následující změny:
 
-migrovali jsme stávající sadu SDK partnerského centra Microsoft z .NET Framework na platformu .NET Standard 2,0. sada SDK bude kompatibilní se stávajícími aplikacemi, a to pomocí .NET Framework 4.6.1 a vyšších. Sada SDK bude podporovat .NET Core 2,0 a vyšší. Před převedením na existující aplikace ověřte [podporu implementace rozhraní .NET](/dotnet/standard/net-standard) .   
+Migrovali jsme stávající microsoftovou SDK pro Partnerské centrum z .NET Framework na .NET Standard 2.0. Díky tomu bude sada SDK kompatibilní s existujícími aplikacemi pomocí .NET Framework verze 4.6.1 a vyšší. Sada SDK bude podporovat .NET Core 2.0 a vyšší. Před [přenosem do existujících](/dotnet/standard/net-standard) aplikací zkontrolujte podporu implementace .NET.   
 
 
-## <a name="version-1153"></a>1.15.3 verze
-[Microsoft Partner Center .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.15.3) v 1.15.3 je teď obecně dostupný. k dispozici jsou také aktualizovaná rozhraní REST api a [ukázky GitHub](https://github.com/Microsoft/Partner-Center-DotNet-Samples) . V této verzi jsou zahrnuté tyto změny:
+## <a name="version-1153"></a>Verze 1.15.3
+[Sada Microsoft Partnerské centrum .NET SDK](https://www.nuget.org/packages/Microsoft.Store.PartnerCenter/1.15.3) verze 1.15.3 je teď obecně dostupné. K dispozici jsou také [aktualizovaná GitHub rozhraní](https://github.com/Microsoft/Partner-Center-DotNet-Samples) REST API a další ukázky. V této verzi jsou zahrnuté následující změny:
 
 * Partnerská smlouva
-  * Přidali jsme možnost nepřímých zprostředkovatelů [ověřit stav smluv o nepřímých prodejích u partnerů Microsoftu](verify-indirect-reseller-mpa-status.md).
+  * Přidání možnosti nepřímých poskytovatelů ověřit [Smlouva s partnerem Microsoftu nepřímých prodejců](verify-indirect-reseller-mpa-status.md)
 * Produkty
-  * Následující dvě rozhraní byly nesprávně umístěny do oboru názvů Microsoft. Store. PartnerCenter. Products. Teď se nacházejí v oboru názvů Microsoft. Store. PartnerCenter. Customers. Products.
+  * Následující dvě rozhraní byla nesprávně umístěna v oboru názvů Microsoft.Store.PartnerCenter.Products. Teď se nacházejí v oboru názvů Microsoft.Store.PartnerCenter.Customers.Products.
     * ICustomerProductByReservationScope
     * ICustomerSkuByReservationScope

@@ -1,27 +1,27 @@
 ---
 title: Získání seznamu produktů (podle země)
-description: Pomocí prostředku Product můžete získat kolekci produktů podle země zákazníka.
+description: Pomocí prostředku produktu můžete získat kolekci produktů podle země zákazníka.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 1258727ecbe7c5cc332624577fa8a355e28e3717
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 6ec3a642006a100ef85c0af9eeddd9daf00cc1cd981eabd5dddb77e60e15111f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874206"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115989436"
 ---
 # <a name="get-a-list-of-products-by-country"></a>Získání seznamu produktů (podle země)
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Následující metody můžete použít k získání kolekce produktů dostupných v konkrétní zemi.
+Pomocí následujících metod můžete získat kolekci produktů dostupných v určité zemi.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
 - Země.
 
@@ -29,15 +29,15 @@ Následující metody můžete použít k získání kolekce produktů dostupný
 
 Získání seznamu produktů:
 
-1. Pomocí kolekce **IAggregatePartner.Products** vyberte zemi pomocí metody **ByCountry().**
+1. Pomocí kolekce **IAggregatePartner. Products** vyberte zemi pomocí metody **ByCountry ()** .
 
-2. Vyberte zobrazení katalogu pomocí **metody ByTargetView().**
+2. Vyberte zobrazení katalogu pomocí metody **ByTargetView ()** .
 
-3. (Volitelné) Vyberte rozsah rezervace pomocí metody **ByReservationScope().**
+3. Volitelné Vyberte rozsah rezervace pomocí metody **ByReservationScope ()** .
 
-4. (Volitelné) Vyberte cílový segment pomocí metody **ByTargetSegment().**
+4. Volitelné Vyberte cílový segment pomocí metody **ByTargetSegment ()** .
 
-5. Voláním **metody Get()** nebo **GetAsync()** vrátíte kolekci.
+5. Volání metody **Get ()** nebo **GetAsync ()** pro vrácení kolekce.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -62,12 +62,12 @@ ResourceCollection<Product> products = partnerOperations.Products.ByCountry("US"
 
 Získání seznamu produktů:
 
-1. Pomocí funkce **IAggregatePartner.getProducts** vyberte zemi pomocí funkce **byCountry().**
+1. Použijte funkci **IAggregatePartner. GetProducts** k výběru země pomocí funkce **byCountry ()** .
 
-2. Vyberte zobrazení katalogu pomocí **funkce byTargetView().**
-3. (Volitelné) Vyberte cílový segment pomocí funkce **byTargetSegment().**
+2. Vyberte zobrazení katalogu pomocí funkce **byTargetView ()** .
+3. Volitelné Vyberte cílový segment pomocí funkce **byTargetSegment ()** .
 
-4. Voláním **funkce get()** vrátíte kolekci.
+4. Zavolejte funkci **Get ()** , která vrátí kolekci.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -85,22 +85,22 @@ ResourceCollection<Products> products = partnerOperations.getProducts().byCountr
 
 Získání seznamu produktů:
 
-1. Spusťte příkaz [**Get-PartnerProduct.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md)
+1. Spusťte příkaz [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) .
 
-2. Katalog vyberte zadáním **parametru Catalog.**
-3. (Volitelné) Vyberte cílový segment zadáním **parametru Segment.**
+2. Vyberte katalog zadáním parametru **Catalog** .
+3. Volitelné Vyberte cílový segment zadáním parametru **segmentu** .
 
 ```powershell
 Get-PartnerProduct -Catalog 'Azure' -Segment 'commercial'
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                                    |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products?country={country}&targetView={targetView}&targetSegment={targetSegment} HTTP/1.1 |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products? Country = {country} &targetView = {targetView} &targetSegment = {TARGETSEGMENT} HTTP/1.1 |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -108,14 +108,14 @@ K získání seznamu produktů použijte následující cestu a parametry dotazu
 
 | Název                   | Typ     | Vyžadováno | Popis                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
-| country                | řetězec   | Yes      | ID země nebo oblasti.                                                  |
-| targetView             | řetězec   | Yes      | Identifikuje cílové zobrazení katalogu. Podporované hodnoty jsou: <br/><br/>**Azure**, který zahrnuje všechny položky Azure<br/><br/>**AzureReservations**, která zahrnuje všechny položky rezervací Azure<br/><br/>**AzureReservationsVM**, který zahrnuje všechny položky rezervace virtuálních počítačů<br/><br/>**AzureReservationsSQL**, který zahrnuje všechny SQL položek rezervace<br/><br/>**AzureReservationsCosmosDb**, který zahrnuje všechny Cosmos položek rezervace databáze<br/><br/>**MicrosoftAzure**, který obsahuje položky pro Microsoft Azure předplatná (**MS-AZR-0145P)** a plány Azure<br/><br/>**Onlineslužby**, které zahrnují všechny položky online služeb (včetně produktů komerčního marketplace)<br/><br/>**Software**, který zahrnuje všechny softwarové položky<br/><br/>**SoftwareSUSELinux**, který zahrnuje všechny položky softwaru SUSE Linux<br/><br/>**SoftwarePerpetual**, který zahrnuje všechny časově neomezené softwarové položky<br/><br/>**Předplatná softwaru**, která zahrnují všechny položky předplatného softwaru    |
-| TargetSegment          | řetězec   | No       | Identifikuje cílový segment. Zobrazení pro různé cílové skupiny Podporované hodnoty jsou: <br/><br/>**Obchodní**<br/>**Vzdělávání**<br/>**Vláda**<br/>**Neziskové**  |
-| reservationScope | řetězec   | No | Při dotazování na seznam produktů pro rezervace Azure zadejte a získejte seznam produktů, které se `reservationScope=AzurePlan` vztahují k plánům Azure. Tento parametr vyloučíte, pokud chcete získat seznam produktů pro rezervace Azure, které se vztahují na předplatná Microsoft Azure (**MS-AZR-0145P).**  |
+| country                | řetězec   | Yes      | ID země nebo oblasti                                                  |
+| targetView             | řetězec   | Yes      | Určuje cílové zobrazení katalogu. Podporované hodnoty jsou: <br/><br/>**Azure**, který zahrnuje všechny položky Azure<br/><br/>**AzureReservations**, která zahrnuje všechny položky rezervace Azure<br/><br/>**AzureReservationsVM**, která zahrnuje všechny položky rezervace virtuálních počítačů (VM)<br/><br/>**AzureReservationsSQL**, která zahrnuje všechny položky rezervace SQL<br/><br/>**AzureReservationsCosmosDb**, která zahrnuje všechny položky rezervace Cosmos databáze<br/><br/>**MicrosoftAzure**, která zahrnuje položky pro předplatná Microsoft Azure (**MS-AZR-0145P**) a plány Azure<br/><br/>**OnlineServices**, která zahrnuje všechny online položky služeb (včetně produktů z komerčního tržiště)<br/><br/>**Software**, který zahrnuje všechny softwarové položky<br/><br/>**SoftwareSUSELinux**, která zahrnuje všechny položky softwaru SUSE Linux<br/><br/>**SoftwarePerpetual**, která zahrnuje všechny trvalé softwarové položky<br/><br/>**SoftwareSubscriptions**, která zahrnuje všechny položky předplatného softwaru    |
+| targetSegment          | řetězec   | No       | Identifikuje cílový segment. Zobrazení pro různé cílové skupiny. Podporované hodnoty jsou: <br/><br/>**prodejn**<br/>**školení**<br/>**schod**<br/>**neziskové**  |
+| reservationScope | řetězec   | No | Při dotazování na seznam produktů pro Azure Reservations určete, že se `reservationScope=AzurePlan` má získat seznam produktů, které se vztahují k plánům Azure. vyloučením tohoto parametru získáte seznam produktů pro rezervace Azure, které se vztahují na předplatná Microsoft Azure (**MS-AZR-0145P**).  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -123,9 +123,9 @@ Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-examples"></a>Příklady požadavků
 
-#### <a name="products-by-country"></a>Products by country
+#### <a name="products-by-country"></a>Produkty podle země
 
-V tomto příkladu získáte seznam produktů podle země pro předplatná Microsoft Azure (MS-AZR-0145P) a plány Azure.
+podle tohoto příkladu získejte seznam produktů podle země pro předplatná Microsoft Azure (MS-AZR-0145P) a plány Azure.
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=MicrosoftAzure HTTP/1.1
@@ -135,9 +135,9 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
-#### <a name="azure-vm-reservations-azure-plan"></a>Rezervace virtuálních počítače Azure (plán Azure)
+#### <a name="azure-vm-reservations-azure-plan"></a>Rezervace virtuálních počítačů Azure (plán Azure)
 
-V tomto příkladu získáte seznam produktů podle země pro rezervace virtuálních počítače Azure, které se vztahují na plány Azure.
+Podle tohoto příkladu Získejte seznam produktů podle zemí pro rezervace virtuálních počítačů Azure, které platí pro plány Azure.
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=AzureAzureReservationsVM&reservationScope=AzurePlan HTTP/1.1
@@ -147,9 +147,9 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
-#### <a name="azure-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Rezervace virtuálních Microsoft Azure Azure (MS-AZR-0145P) předplatná
+#### <a name="azure-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>rezervace virtuálních počítačů Azure pro předplatná Microsoft Azure (MS-AZR-0145P)
 
-Postupujte podle tohoto příkladu a získejte seznam produktů pro rezervace virtuálních počítače Azure podle země, které se vztahují k předplatným Microsoft Azure (MS-AZR-0145P).
+podle tohoto příkladu získejte seznam produktů podle zemí pro rezervace virtuálních počítačů Azure, které platí pro odběry služby Microsoft Azure AZR (MS--0145P).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=AzureReservationsVM HTTP/1.1
@@ -161,13 +161,13 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude tělo odpovědi obsahovat kolekci prostředků [**Product.**](product-resources.md#product)
+V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [**produktu**](product-resources.md#product) .
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
 
-Tato metoda vrátí následující kódy chyb:
+Tato metoda vrací následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|

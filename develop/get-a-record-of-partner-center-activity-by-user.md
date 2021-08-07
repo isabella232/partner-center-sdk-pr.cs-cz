@@ -4,12 +4,12 @@ description: Jak načíst záznam o operacích provedených uživatelem partnera
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: aec933d4b681d99080619505792bde56bdd25580
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 5d965fc226d326998212ef0f027160d50f69d5e84360c8a9d09c27a76c63310d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873967"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991068"
 ---
 # <a name="get-a-record-of-partner-center-activity"></a>Získání záznamu o aktivitě Partnerského centra
 
@@ -111,7 +111,7 @@ Následující tabulka popisuje požadované páry klíč-hodnota:
 | Klíč                 | Hodnota                             |
 |:--------------------|:----------------------------------|
 | Pole               | Pole, které chcete filtrovat. Podporované hodnoty najdete v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request).                                         |
-| Hodnota               | Hodnota, podle které se má filtrovat. Případ hodnoty se ignoruje. Podporují se následující parametry hodnot, jak je znázorněno v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request):<br/><br/>                                                                *searchSubstring* – nahraďte názvem společnosti. Můžete zadat podřetězec, který odpovídá části názvu společnosti (například bude `bri` odpovídat `Fabrikam, Inc` ).<br/>**Příklad:**`"Value":"bri"`<br/><br/>                                                                *customerId* – nahraďte řetězcem ve formátu GUID, který představuje identifikátor zákazníka.<br/>**Příklad:**`"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* – nahraďte typem prostředku, pro který se mají načíst záznamy auditu (například Předplatné). Dostupné typy prostředků jsou definované v [ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Příklad:**`"Value":"Subscription"`                                 |
+| Hodnota               | Hodnota, podle které se má filtrovat. Případ hodnoty se ignoruje. Podporují se následující parametry hodnot, jak je znázorněno v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request):<br/><br/>                                                                *searchSubstring* – nahraďte názvem společnosti. Můžete zadat podřetězec, který odpovídá části názvu společnosti (například bude `bri` odpovídat `Fabrikam, Inc` ).<br/>**Příklad:** `"Value":"bri"`<br/><br/>                                                                *customerId* – nahraďte řetězcem ve formátu GUID, který představuje identifikátor zákazníka.<br/>**Příklad:** `"Value":"0c39d6d5-c70d-4c55-bc02-f620844f3fd1"`<br/><br/>                                                                                        *resourceType* – nahraďte typem prostředku, pro který se mají načíst záznamy auditu (například Předplatné). Dostupné typy prostředků jsou definované v [ResourceType](/dotnet/api/microsoft.store.partnercenter.models.auditing.resourcetype).<br/>**Příklad:** `"Value":"Subscription"`                                 |
 | Operátor          | Operátor, který se má použít. Podporované operátory najdete v [syntaxi požadavku](get-a-record-of-partner-center-activity-by-user.md#rest-request).   |
 
 ### <a name="request-headers"></a>Hlavičky požadavku

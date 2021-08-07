@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 513a9607b9194c36253630c91de9622325317c3a
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: ed4b8be5171493f83aefef08253c748a7bfd90dc5f2b1e325e5ceba78e36bdc2
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973753"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115991799"
 ---
 # <a name="create-a-cart-with-add-ons-to-a-customer-order"></a>Vytvoření košíku s doplňky k objednávce zákazníka
 

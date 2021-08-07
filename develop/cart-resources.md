@@ -1,21 +1,21 @@
 ---
-title: Prostředky košíku
-description: Když si zákazník chce koupit předplatné ze seznamu nabídek, zařadí objednávku do košíku.
+title: Materiály k košíku
+description: Partner umístí objednávku do košíku, když zákazník chce koupit předplatné ze seznamu nabídek.
 ms.date: 08/26/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ebe6e628d5bb3b66186d5c4f428f69e46415892b
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: c9372bb982528127f8870094e26465d004b1f05c75140f0ac729375f5d5f3302
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009135"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992173"
 ---
-# <a name="cart-resources"></a>Prostředky košíku
+# <a name="cart-resources"></a>Materiály k košíku
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partner umístí objednávku, když chce zákazník koupit předplatné ze seznamu nabídek.
+Partner objednává, když zákazník chce koupit předplatné ze seznamu nabídek.
 
 ## <a name="cart"></a>Košík
 
@@ -23,13 +23,13 @@ Popisuje košík.
 
 | Vlastnost              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| id                    | řetězec           | Identifikátor košíku, který se zadal po úspěšném vytvoření košíku.                               |
-| creationTimeStamp     | DateTime         | Datum, kdy byl košík vytvořen, ve formátu data a času. Použito po úspěšném vytvoření košíku.      |
-| lastModifiedTimeStamp | DateTime         | Datum poslední aktualizace košíku ve formátu data a času. Použito po úspěšném vytvoření košíku. |
-| expirationTimeStamp   | DateTime         | Datum, kdy vyprší platnost košíku, ve formátu data a času. Použito po úspěšném vytvoření košíku.          |
-| lastModifiedUser      | řetězec           | Uživatel, který kartu naposledy aktualizoval. Použito po úspěšném vytvoření košíku.                          |
-| Položky řádku             | Pole objektů | Pole prostředků [CartLineItem](#cartlineitem)                                                   |
-| status                | řetězec           | Stav košíku. Možné hodnoty jsou "aktivní" (může být aktualizováno/odesláno) a "seřazené" (již bylo odesláno). |
+| id                    | řetězec           | Identifikátor košíku, který se dodá po úspěšném vytvoření košíku.                               |
+| creationTimeStamp     | DateTime         | Datum vytvoření košíku ve formátu data a času. Použije se při úspěšném vytvoření košíku.      |
+| lastModifiedTimeStamp | DateTime         | Datum poslední aktualizace košíku ve formátu data a času Použije se při úspěšném vytvoření košíku. |
+| expirationTimeStamp   | DateTime         | Datum, kdy vyprší platnost košíku ve formátu data a času. Použije se při úspěšném vytvoření košíku.          |
+| lastModifiedUser      | řetězec           | Uživatel, který naposledy aktualizoval košík Použije se při úspěšném vytvoření košíku.                          |
+| položky řádku             | Pole objektů | Pole prostředků [CartLineItem](#cartlineitem)                                                   |
+| status                | řetězec           | Stav košíku Možné hodnoty jsou Aktivní (je možné je aktualizovat nebo odeslat) a "Seřazeno" (již bylo odesláno). |
 
 ## <a name="cartlineitem"></a>CartLineItem
 
@@ -37,78 +37,78 @@ Představuje jednu položku obsaženou v košíku.
 
 | Vlastnost             | Typ                             | Description                                                                                                                                           |
 |----------------------|----------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id                   | řetězec                           | Jedinečný identifikátor položky řádku košíku Použito po úspěšném vytvoření košíku.                                                                   |
-| catalogItemId        | řetězec                           | Identifikátor položky katalogu                                                                                                                          |
-| friendlyName         | řetězec                           | Nepovinný parametr. Popisný název položky definované partnerem, který vám umožní určit nejednoznačnost.                                                                 |
-| quantity             | int                              | Počet licencí nebo instancí.                                                                                                                  |
-| currencyCode         | řetězec                           | Kód měny.                                                                                                                                    |
-| billingCycle         | Objekt                           | Typ fakturačního cyklu nastaveného pro aktuální období.                                                                                                 |
-| termDuration         | řetězec                           | ISO 8601 reprezentace doby trvání období. Aktuální podporované hodnoty jsou P1M (1 měsíc), P1Y (1 rok) a P3Y (3 roky).                                |
-| členům         | Seznam párů řetězců objektů      | Kolekce PartnerId na záznamu (MPN ID) na nákupu.                                                                                          |
-| provisioningContext  | Řetězec<slovníku, řetězec>       | Další kontext, který se používá při zřizování koupené položky Chcete-li zjistit, které hodnoty jsou nutné pro konkrétní položku, přečtěte si vlastnost provisioningVariables skladové položky. |
-| pořadí           | řetězec                           | Skupina, která označuje, které položky lze odeslat společně ve stejném pořadí.                                                                          |
-| addonItems           | Seznam objektů **CartLineItem** | Kolekce položek řádků košíku pro Doplňky Tyto položky se zakoupí do základního předplatného, které je výsledkem nákupu položky řádku kořenového košíku. |
-| error                | Objekt                           | Používá se po vytvoření košíku, pokud došlo k chybě.                                                                                                    |
-| renewsTo             | Pole objektů                 | Pole prostředků [RenewsTo](#renewsto)                                                                            |
-| AttestationAccepted             | bool                 | Označuje smlouvu o nabídkách nebo podmínkách SKU. Vyžaduje se jenom pro nabídky nebo skladové položky, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu true.                                                                            |
+| id                   | řetězec                           | Jedinečný identifikátor řádkové položky košíku. Použije se při úspěšném vytvoření košíku.                                                                   |
+| catalogItemId        | řetězec                           | Identifikátor položky katalogu.                                                                                                                          |
+| Friendlyname         | řetězec                           | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.                                                                 |
+| quantity             | int                              | Počet licencí nebo instancí                                                                                                                  |
+| currencyCode         | řetězec                           | Kód měny                                                                                                                                    |
+| billingCycle         | Objekt                           | Typ fakturačního cyklu nastavený pro aktuální období                                                                                                 |
+| termDuration         | řetězec                           | Reprezentace doby trvání období podle STANDARDu ISO 8601. Aktuální podporované hodnoty jsou P1M (1 měsíc), P1Y (1 rok) a P3Y (3 roky).                                |
+| Účastníci         | Seznam párů řetězců objektů      | Kolekce PartnerId on Record (MPN ID) při nákupu.                                                                                          |
+| provisioningContext  | Slovníkový<řetězec, řetězec>       | Další kontext použitý při zřizování zakoupené položky Pokud chcete zjistit, které hodnoty jsou pro konkrétní položku potřeba, podívejte se na vlastnost provisioningVariables dané SKU. |
+| orderGroup           | řetězec                           | Skupina, která označuje, které položky lze odeslat společně ve stejném pořadí.                                                                          |
+| addonItems           | Seznam objektů **CartLineItem** | Kolekce řádkové položky košíku pro doplňky. Tyto položky se zakoupí do základního předplatného, které je výsledkem nákupu řádkové položky kořenového košíku. |
+| error                | Objekt                           | Použije se po vytvoření košíku, pokud dojde k chybě.                                                                                                    |
+| renewsTo             | Pole objektů                 | Pole prostředků [RenewsTo.](#renewsto)                                                                            |
+| AttestationAccepted             | bool                 | Označuje smlouvu pro podmínky nabídky nebo SKU. Vyžaduje se jenom pro nabídky nebo SKU, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu True.                                                                            |
 
 ## <a name="renewsto"></a>RenewsTo
 
-Představuje jednu položku obsaženou v položce řádku košíku.
+Představuje jednu položku obsaženou v řádkové položce košíku.
 
 | Vlastnost              | Typ             | Vyžadováno        | Popis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | řetězec           | No              | ISO 8601 představuje dobu trvání období obnovy. Aktuální podporované hodnoty jsou **P1M** (1 měsíc) a **P1Y** (1 rok). |
+| termDuration          | řetězec           | No              | Reprezentace doby trvání období prodloužení podle ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc) a **P1Y** (1 rok). |
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
 ## <a name="carterror"></a>CartError
 
-Představuje chybu, která nastane po vytvoření košíku.
+Představuje chybu, ke které dochází po vytvoření košíku.
 
 | Vlastnost         | Typ                                   | Description                                                                                   |
 |------------------|----------------------------------------|-----------------------------------------------------------------------------------------------|
-| errorCode        | [CareErrorCode](#carterrorcode) | Typ chyby košíku                                                                       |
-| errorDescription | řetězec                                 | Popis chyby včetně všech poznámek o podporovaných hodnotách, výchozích hodnotách nebo omezeních. |
+| Errorcode        | [CareErrorCode](#carterrorcode) | Typ chyby košíku                                                                       |
+| Popis chyby | řetězec                                 | Popis chyby, včetně všech poznámek k podporovaným hodnotám, výchozím hodnotám nebo omezením |
 
 
 ## <a name="carterrorcode"></a>CartErrorCode
 
-Typy chyb košíku.
+Typy chyb košíku
 
 | Name                             | ErrorCode   | Description
 |----------------------------------|-------------|-----------------------------------------------------------------------------------------------|
-| CurrencyIsNotSupported           | 10000   | Měna není pro daný trh podporovaná.  |
-| CatalogItemIdIsNotValid          | 10001   | ID položky katalogu je neplatné.  |
-| QuotaNotAvailable                | 10002   | Není k dispozici dostatečná kvóta.  |
-| InventoryNotAvailable            | 10003   | Inventář není pro vybranou nabídku k dispozici.  |
-| ParticipantsIsNotSupportedForPartner  | 10004   | Nastavení účastníků není pro partnera podporováno.  |
-| UnableToProcessCartLineItem      | 10006   | Nelze zpracovat položku řádku košíku.  |
-| SubscriptionIsNotValid           | 10007   | Předplatné je neplatné.  |
-| SubscriptionIsNotEnabledForRI    | 10008   | U předplatného není povolený nákup na rezervované instance.  |
-| SandboxLimitExceeded             | 10009   | Překročil se limit izolovaného prostoru (sandbox).  |
-| InvalidInput                     | 10010   | Obecný vstup není platný.  |
-| SubscriptionNotRegistered        | 10011   | Předplatné je neplatné.  |
-| AttestationNotAccepted           | 10012   | Ověření identity nebylo přijato.  |
+| CurrencyIsNotSupported           | 10000   | Měna se pro daný trh nepodporuje.  |
+| CatalogItemIdIsNotValid          | 10001   | ID položky katalogu není platné.  |
+| QuotaNotAvailable                | 10002   | Není k dispozici dostatek kvóty  |
+| InventoryNotAvailable            | 10003   | Pro vybranou nabídku není k dispozici inventář  |
+| ÚčastníciIsNotSupportedForPartner  | 10004   | Nastavení účastníků se pro partnery nepodporuje  |
+| UnableToProcessCartLineItem      | 10006   | Řádeková položka košíku se nepodařilo zpracovat.  |
+| PředplatnéIsNotValid           | 10007   | Předplatné není platné.  |
+| PředplatnéIsNotEnabledForRI    | 10008   | Pro nákup RI není povolené předplatné.  |
+| SandboxLimitExceeded             | 10009   | Limit sandboxu byl překročen.  |
+| Neplatný vstup                     | 10010   | Obecný vstup není platný.  |
+| Předplatné není zaregistrováno        | 10011   | Předplatné není platné.  |
+| AttestationNotAccepted           | 10012   | Ověření se nepřijalo.  |
 | Neznámý                          | 0   | Výchozí hodnota   |
 
 ## <a name="cartcheckoutresult"></a>CartCheckoutResult
 
-Představuje výsledek rezervace košíku.
+Představuje výsledek pokladny košíku.
 
 | Vlastnost    | Typ                                              | Description                     |
 |-------------|---------------------------------------------------|---------------------------------|
-| orders      | Seznam objektů [objednávky](order-resources.md#order)         | Kolekce objednávek.       |
-| orderErrors | Seznam objektů [OrderError](#ordererror) | Kolekce chyb pořadí. |
+| orders      | Seznam objektů [Order](order-resources.md#order)         | Kolekce objednávek.       |
+| orderErrors | Seznam objektů [OrderError](#ordererror) | Kolekce chyb objednávek. |
 
 ## <a name="ordererror"></a>OrderError
 
-Představuje chybu, ke které dojde během rezervace košíku při vytvoření objednávky.
+Představuje chybu, ke které dochází při pokladně košíku při vytvoření objednávky.
 
 | Vlastnost     | Typ   | Description                                     |
 |--------------|--------|-------------------------------------------------|
-| orderGroupId | řetězec | ID skupiny objednávek objednávky s chybou. |
+| ID skupiny objednávek | řetězec | ID skupiny objednávek objednávky s chybou. |
 | kód         | int    | Kód chyby                                 |
 | description  | řetězec | Popis chyby.                   |

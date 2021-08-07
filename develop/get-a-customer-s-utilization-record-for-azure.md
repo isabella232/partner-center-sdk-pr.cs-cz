@@ -4,12 +4,12 @@ description: Rozhraní API využití Azure můžete použít k získání zázna
 ms.date: 04/19/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7024bc65976a9b43a62b66c529d271519181ab23
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: e8d02ed047aa8edf574d728180100369dc1072f8cd501c153255e9b9382642e0
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874920"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992921"
 ---
 # <a name="get-a-customers-utilization-records-for-azure"></a>Získání záznamů o využití Azure zákazníkem
 

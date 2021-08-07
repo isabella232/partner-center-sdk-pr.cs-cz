@@ -4,12 +4,12 @@ description: Partner vytvoří převod, když zákazník chce, aby jeho předpla
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 544b9682bb0e1428fad088c818a62492198897b2
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: 3103c0e9f8e6850336d663a5a38274ce7391e30edd433d08f44071de31b5fc5e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530136"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115990201"
 ---
 # <a name="transferentity-resources"></a>Prostředky TransferEntity
 
@@ -41,7 +41,7 @@ Představuje jednu položku obsaženou v transferEntity.
 
 | Vlastnost             | Typ                             | Description                                                                                             |
 |----------------------|----------------------------------|---------------------------------------------------------------------------------------------------------|
-| id                   | řetězec                           | Jedinečný identifikátor položky řádku převodu. Použije se při úspěšném vytvoření transferEntity.   |
+| id                   | řetězec                           | Jedinečný identifikátor položky řádku přenosu. Použije se při úspěšném vytvoření transferEntity.   |
 | subscriptionId       | řetězec                           | Identifikátor předplatného.                                                                            |
 | quantity             | int                              | Počet licencí nebo instancí                                                                    |
 | billingCycle         | Objekt                           | Typ fakturačního cyklu nastavený pro aktuální období                                                   |
@@ -58,35 +58,35 @@ Představuje výsledek přijetí přenosu.
 
 | Vlastnost          | Typ                                                  | Description                        |
 |-------------------|-------------------------------------------------------|------------------------------------|
-| orders            | Seznam objektů [objednávky](order-resources.md#order)    | Kolekce objednávek.          |
-| transferErrors    | Seznam objektů [TransferError](#transfererror)      | Kolekce chyb přenosu. |
+| orders            | Seznam objektů [Order](order-resources.md#order)    | Kolekce objednávek.          |
+| transferErrors    | Seznam objektů [TransferError](#transfererror)      | Shromažďování chyb přenosu. |
 
-## <a name="transfererror"></a>TransferError
+## <a name="transfererror"></a>Chyba přenosu
 
-Představuje chybu, ke které dojde při přijetí přenosu.
+Představuje chybu, ke které dochází při přijetí přenosu.
 
 | Vlastnost          | Typ   | Description                                     |
 |-------------------|--------|-------------------------------------------------|
-| transferGroupId   | řetězec | ID skupiny objednávek objednávky s chybou. |
+| id skupiny přenosu   | řetězec | ID skupiny objednávek objednávky s chybou. |
 | kód              | int    | Kód chyby                                 |
 | description       | řetězec | Popis chyby.                   |
-| Položky řádku         | Seznam objektů **TransferLineItem** | Kolekce položek transferEntity řádků, které jsou součástí chyby přenosu.|
+| položky řádku         | Seznam objektů **TransferLineItem** | Kolekce řádových položek transferEntity, které jsou součástí chyby přenosu.|
 
 ## <a name="transfererrorcode"></a>TransferErrorCode
 
-[Enum/dotnet/API/System. Enum) s hodnotami, které označují typ chyby pořadí.
+[Enum/dotnet/api/system.enum) s hodnotami, které označují typ chyby pořadí.
 
 | Hodnota | Pozice | Description |
 | --- | --- | --- |
-| PartnerTokenMissing | 800001 | V kontextu požadavku chybí token partnera. |
-| InvalidInput | 800002 | Neplatný vstup žádosti |
-| ServiceException | 800003 | Neočekávaná chyba služby |
-| InvalidOfferId | 800004 | Neplatné ID nabídky |
+| PartnerTokenMissing | 800001 | V kontextu žádosti chybí token partnera. |
+| Neplatný vstup | 800002 | Neplatný vstup požadavku. |
+| ServiceException | 800003 | Neočekávaná chyba služby. |
+| Id nabídky InvalidOfferId | 800004 | Neplatné ID nabídky. |
 | CreateOrderError | 800005 | Vytvoření objednávky není úspěšné. |
 | MpnIdNotFound | 800015 | ID MPN se nenašlo. |
-| NotValidIndirectResellerMpnId | 800016 | ID MPN není platný nepřímý prodejce. |
-| TransferIdNotFound | 900100   | Požadavek na přenos nebyl nalezen.   |
-| TransferNotAllowedIfStatusIsInProgress | 900101 | Požadavek na přenos již probíhá.|
-| TransferNotAllowedIfStatusIsCompleted | 900102 | Žádost o přenos je už dokončená.|
-| TransferCreateOrderError | 900103 | Pořadí přenosů neproběhlo úspěšně.|
-| TransferProcessedByAnotherRequest | 900104 | Přenos se zpracovává jiným požadavkem.|
+| NotValidIndirectResellerMpnId | 800016 | ID MPN není platným nepřímým prodejcem. |
+| TransferIdNotFound | 900100   | Žádost o převod se nenašla.   |
+| PřenosNotAllowedIfStatusIsInProgress | 900101 | Žádost o převod už probíhá.|
+| TransferNotAllowedIfStatusIsCompleted | 900102 | Žádost o převod je už dokončená.|
+| TransferCreateOrderError | 900103 | Objednávka převodu není úspěšná.|
+| TransferProcessedByAnotherRequest | 900104 | Převod se zpracovává jinou žádostí.|
