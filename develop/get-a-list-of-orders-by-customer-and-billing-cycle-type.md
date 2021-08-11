@@ -1,38 +1,38 @@
 ---
 title: Získání seznamu objednávek podle typu fakturačního cyklu a zákazníka
-description: Získá kolekci prostředků objednávky pro zadaný typ zákazníka a fakturačního cyklu.
+description: Získá kolekci prostředků objednávek pro zadaný typ zákazníka a fakturačního cyklu.
 ms.date: 06/19/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: c52a556887dba065c4ccd1a82d6223624d0ad1f2
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 1c11779ee2ac80539a36db92f1ec811b054c858bf72d5ffbcce4d0bd86eed93e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874223"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994604"
 ---
 # <a name="get-a-list-of-orders-by-customer-and-billing-cycle-type"></a>Získání seznamu objednávek podle typu fakturačního cyklu a zákazníka
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Získá kolekci prostředků objednávky, které odpovídají danému typu zákazníka a fakturačního cyklu. Mezi časem odeslání objednávky a jejím zobrazením v kolekci objednávek zákazníka dojde k prodlevě až 15 minut.
+Získá kolekci prostředků objednávky, které odpovídají danému typu zákazníka a fakturačního cyklu. Mezi časem, kdy je objednávka odeslána a kdy se objeví v kolekci objednávek zákazníka, je zpoždění až 15 minut.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
 Získání kolekce objednávek zákazníka:
 
-1. Použijte svou kolekci [**IAggregatePartner. Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a zavolejte metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s vybraným ID zákazníka.
+1. Použijte kolekci [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) a zavolejte metodu [**ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s vybraným ID zákazníka.
 
-2. Zavolejte vlastnost [**Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) a metodu **ByBillingCycleType ()** s vaším zadaným  [**BillingCycleType**](product-resources.md#billingcycletype).
-3. Zavolejte metodu [**Get ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) nebo [**GetAsync ()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync) .
+2. Zavolejte [**vlastnost Orders**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders) a **metodu ByBillingCycleType()** se zadaným [**typem BillingCycleType.**](product-resources.md#billingcycletype)
+3. Volejte [**metodu Get()**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.get) nebo [**GetAsync().**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.getasync)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -42,13 +42,13 @@ Získání kolekce objednávek zákazníka:
 var orders = partnerOperations.Customers.ById(selectedCustomerId).Orders.ByBillingCycleType(selectedBillingCycleType).Get();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                    |
 |---------|--------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Orders? billingType = {účtování-cyklus-typ} HTTP/1.1  |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/orders?billingType={typ_fakturačního_cyklu} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -56,12 +56,12 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání kol
 
 | Název                   | Typ     | Vyžadováno | Popis                                               |
 |------------------------|----------|----------|-----------------------------------------------------------|
-| Customer-tenant-ID     | řetězec   | Yes      | Řetězec ve formátu GUID odpovídající zákazníkovi.    |
-| fakturace-cyklus – typ     | řetězec   | No       | Řetězec odpovídající typu fakturačního cyklu.         |
+| customer-tenant-id     | řetězec   | Yes      | Řetězec ve formátu GUID odpovídající zákazníkovi.    |
+| typ fakturačního cyklu     | řetězec   | No       | Řetězec odpovídající typu fakturačního cyklu.         |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -80,11 +80,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků [Order](order-resources.md) v těle odpovědi.
+V případě úspěchu tato metoda vrátí kolekci [prostředků Order](order-resources.md) v textu odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

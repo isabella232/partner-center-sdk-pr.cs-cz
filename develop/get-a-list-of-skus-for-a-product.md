@@ -1,41 +1,41 @@
 ---
 title: Získání seznamu skladových položek pro produkt (podle země)
-description: Můžete získat a filtrovat kolekci SKU podle země pro produkt pomocí rozhraní API partnerského centra.
+description: Kolekci SKU pro produkt můžete získat a filtrovat podle země pomocí Partnerské centrum API.
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 27a2391a22a9439461fb53764b87c1cafa68b875
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 1f15ecaa7d84f4c68c6221e459d9977a79cffd9fa19d32ccbd7e6bec6444a93c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873883"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995437"
 ---
 # <a name="get-a-list-of-skus-for-a-product-by-country"></a>Získání seznamu skladových položek pro produkt (podle země)
 
-Můžete získat kolekci SKU dostupných v zemi pro určitý produkt pomocí rozhraní API partnerského centra.
+Kolekci SKU dostupných v zemi pro konkrétní produkt můžete získat pomocí Partnerské centrum API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 - Identifikátor produktu.
 
 ## <a name="c"></a>C\#
 
-Získání seznamu SKU pro produkt:
+Získání seznamu skladových položek pro produkt:
 
-1. Pomocí postupu v části [získání produktu podle ID](get-a-product-by-id.md)Získejte rozhraní pro konkrétní operace produktu.
+1. Rozhraní pro operace konkrétního produktu získáte podle kroků v části [Získání produktu podle ID](get-a-product-by-id.md).
 
-2. Z rozhraní vyberte vlastnost **SKU** a získejte rozhraní s dostupnými operacemi pro skladové položky.
+2. V rozhraní vyberte vlastnost **Skus** a získejte rozhraní s dostupnými operacemi pro skladové položky.
 
-3. Zavolejte metodu **Get ()** nebo **GetAsync ()** pro načtení kolekce dostupných SKU pro daný produkt.
+3. Voláním **metody Get()** nebo **GetAsync()** načtěte kolekci dostupných SKU pro produkt.
 
-4. Volitelné Vyberte rozsah rezervace pomocí metody **ByReservationScope ()** .
+4. (Volitelné) Vyberte rozsah rezervace pomocí metody **ByReservationScope().**
 
-5. Volitelné Použijte metodu **ByTargetSegment ()** pro filtrování SKU podle cílového segmentu před voláním metody **Get ()** nebo **GetAsync ()**.
+5. (Volitelné) Před voláním metody **Get()** nebo **GetAsync()** použijte metodu **ByTargetSegment()** k filtrování skladových měr podle cílového segmentu.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -63,15 +63,15 @@ var skus = partnerOperations.Products.ByCountry(countryCode).ById(productIdForAz
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Získání seznamu SKU pro produkt:
+Získání seznamu skladových položek pro produkt:
 
-1. Pomocí postupu v části [získání produktu podle ID](get-a-product-by-id.md)Získejte rozhraní pro konkrétní operace produktu.
+1. Rozhraní pro operace konkrétního produktu získáte podle kroků v části [Získání produktu podle ID](get-a-product-by-id.md).
 
-2. Z rozhraní vyberte funkci **GetSku** pro získání rozhraní s dostupnými operacemi pro skladové položky.
+2. V rozhraní vyberte funkci **getSkus** a získejte rozhraní s dostupnými operacemi pro skladové položky.
 
-3. Voláním funkce **Get ()** načtěte kolekci dostupných SKU pro daný produkt.
+3. Voláním **funkce get()** načtete kolekci dostupných skladových cen pro produkt.
 
-4. Volitelné Použijte funkci **byTargetSegment ()** pro filtrování SKU podle cílového segmentu před voláním funkce **Get ()** .
+4. (Volitelné) Před voláním funkce **get()** použijte funkci **byTargetSegment()** k filtrování skladových měr podle cílového segmentu.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -91,11 +91,11 @@ var segmentSkus = partnerOperations.getProducts().byCountry(countryCode).byId(pr
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Získání seznamu SKU pro produkt:
+Získání seznamu skladových položek pro produkt:
 
-1. Spusťte příkaz [**Get-PartnerProductSku**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductSku.md) .
+1. Spusťte příkaz [**Get-PartnerProductSku.**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProductSku.md)
 
-2. Volitelné Určete parametr **segmentu** pro filtrování SKU podle cílového segmentu.
+2. (Volitelné) Zadáním **parametru Segment** můžete skladové hodnoty filtrovat podle cílového segmentu.
 
 ```powershell
 # $productId
@@ -108,28 +108,28 @@ Get-PartnerProductSku -ProductId $productId
 Get-PartnerProductSku -ProductId $productId -Segment $targetSegment
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}/skus? Country = {Country-code} &targetSegment = {Target-segment} HTTP/1.1  |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{id_produktu}/skus?country={kód_země}&targetSegment={target-segment} HTTP/1.1  |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-K získání seznamu SKU pro produkt použijte následující cestu a parametry dotazu.
+K získání seznamu skladových položek pro produkt použijte následující cestu a parametry dotazu.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| ID produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
+| id produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
 | kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
-| cíl – segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý pro filtrování. |
-| reservationScope | řetězec   | No | Při dotazování na seznam SKU pro produkt rezervované instance Azure určete, `reservationScope=AzurePlan` že se má získat seznam SKU, které platí pro AzurePlan. vyloučením tohoto parametru získáte seznam sku pro rezervované produkty Azure, které platí pro předplatná Microsoft Azure (MS-AZR-0145P).  |
+| target-segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý k filtrování. |
+| reservationScope | řetězec   | No | Při dotazování na seznam skladových položek pro produkt rezervace Azure zadejte , abyste získali seznam skladových položek `reservationScope=AzurePlan` použitelných pro AzurePlan. Tento parametr vyloučíte, pokud chcete získat seznam skladových položek pro produkty rezervací Azure, které se vztahují k předplatným Microsoft Azure (MS-AZR-0145P).  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -137,7 +137,7 @@ Další informace najdete v tématu [záhlaví REST partnerského centra](header
 
 ### <a name="request-examples"></a>Příklady požadavků
 
-Získat seznam SKU pro daný produkt:
+Získání seznamu skladových položek pro daný produkt:
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BPS6/skus?country=US HTTP/1.1
@@ -147,7 +147,7 @@ MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d
 MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 ```
 
-Získejte seznam SKU pro produkt rezervované instance Azure. zahrnout jenom sku, které platí pro plány Azure Microsoft Azure a předplatné AZR (MS--0145P):
+Získejte seznam skladových položek pro produkt Azure Reservation. Zahrnovat pouze skladové prostředky, které se vztahují k plánům Azure, Microsoft Azure předplatná MS-AZR-0145P:
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ5S/skus?country=US&reservationScope=AzurePlan HTTP/1.1
@@ -157,7 +157,7 @@ MS-RequestId: 18b41adf-29b5-48eb-b14f-c9683a4e5b7d
 MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 ```
 
-Získejte seznam SKU pro produkt rezervované instance Azure. zahrnout jenom sku, které platí pro předplatná Microsoft Azure (MS-AZR-0145P) a ne plány Azure:
+Získejte seznam skladových položek pro produkt Azure Reservation. Zahrnovat pouze SKU, které se vztahují na předplatná Microsoft Azure (MS-AZR-0145P), a ne na plány Azure:
 
 ```http
 GET http://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ5S/skus?country=US HTTP/1.1
@@ -169,18 +169,18 @@ MS-CorrelationId: e75c1060-852e-4b49-92b0-cd15167a0d51
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [SKU](product-resources.md#sku) .
+V případě úspěchu bude text odpovědi obsahovat kolekci prostředků [SKU.](product-resources.md#sku)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
-Tato metoda vrací následující kódy chyb:
+Tato metoda vrátí následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Přístup k požadovanému targetSegment není povolený.                                                     |
-| 404                  | 400013       | Nadřazený produkt nebyl nalezen.                                                                         |
+| 404                  | 400013       | Nadřazený produkt se nenašel.                                                                         |
 
 ### <a name="response-example"></a>Příklad odpovědi
 

@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: aarzh-AaronZhang
 ms.author: v-aarzh
-ms.openlocfilehash: 36a81c7b235c68e49bb425b5bd0d4615882f88ef
-ms.sourcegitcommit: 07b9a11f5c615ed1e716081392032cea2124bd98
+ms.openlocfilehash: 9974237f7d4234b782a5b17a65fd52b9024315f848b721c73f4e1d59b69b2930
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/04/2021
-ms.locfileid: "115104206"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994791"
 ---
 # <a name="enabling-the-secure-application-model-framework"></a>Povolení architektury zabezpečeného aplikačního modelu
 
@@ -246,7 +246,7 @@ Další informace o tomto procesu najdete v dokumentaci k nástroji PowerShell p
     ```
 
     > [!NOTE]
-    > Parametr **ServicePrincipal** se používá v příkazu **New-PartnerAccessToken** , protože se používá aplikace Azure AD s typem **webu nebo rozhraní API** . Tento typ aplikace vyžaduje, aby byl v žádosti o přístupový token zahrnutý identifikátor klienta a tajný klíč. Po vyvolání příkazu **Get-Credential** se zobrazí výzva k zadání uživatelského jména a hesla. Jako uživatelské jméno zadejte identifikátor aplikace. Jako heslo zadejte tajný klíč aplikace. Po vyvolání příkazu **New-PartnerAccessToken** se zobrazí výzva k zadání přihlašovacích údajů znovu. Zadejte pověření pro účet služby, který používáte. Tento účet služby by měl být partnerským účtem s příslušnými oprávněními.
+    > Parametr **ServicePrincipal** se používá v příkazu **New-PartnerAccessToken** , protože se používá aplikace Azure AD s typem **webu nebo rozhraní API** . Tento typ aplikace vyžaduje, aby byl v žádosti o přístupový token zahrnutý identifikátor klienta a tajný klíč. Po vyvolání příkazu **Get-Credential** se zobrazí výzva k zadání uživatelského jména a hesla. Jako uživatelské jméno zadejte identifikátor aplikace. Jako heslo zadejte tajný klíč aplikace. Po vyvolání **příkazu New-PartnerAccessToken** se zobrazí výzva k zadání přihlašovacích údajů. Zadejte přihlašovací údaje pro účet služby, který používáte. Tento účet služby by měl být partnerský účet s příslušnými oprávněními.
 
 3. Zkopírujte hodnotu obnovovacího tokenu.
 
@@ -254,4 +254,4 @@ Další informace o tomto procesu najdete v dokumentaci k nástroji PowerShell p
     $token.RefreshToken | clip
     ```
 
-Hodnotu obnovovacího tokenu byste měli uložit do zabezpečeného úložiště, například Azure Key Vault. Další informace o tom, jak použít modul zabezpečení aplikace pomocí prostředí PowerShell, najdete v článku [Multi-Factor Authentication](/powershell/partnercenter/multi-factor-auth) .
+Hodnotu obnovovacího tokenu byste měli uložit v zabezpečeném úložišti, například Azure Key Vault. Další informace o tom, jak využít modul zabezpečených aplikací pomocí PowerShellu, najdete v článku o [vícefaktorové ověřování.](/powershell/partnercenter/multi-factor-auth)

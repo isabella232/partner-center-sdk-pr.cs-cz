@@ -1,29 +1,29 @@
 ---
 title: Získání cen pro partnerské sdílené služby Microsoft Azure
-description: Jak získat ceníkovou kartu Azure s cenami pro Microsoft Azure partnerskými sdílenými službami
+description: jak získat kartu Azure Rate s cenami za Microsoft Azure sdílené služby partnerských služeb
 ms.date: 09/17/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0008d7474f7e57bbbd765afdf2487ee279848ac3
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 33ee82bb966dee459cdeef6691c5e86eb7369fc7f76117f9360ac51d6cb3da22
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548800"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995811"
 ---
 # <a name="get-prices-for-microsoft-azure-partner-shared-services"></a>Získání cen pro partnerské sdílené služby Microsoft Azure
 
-**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Jak získat [ceníkovou](azure-rate-card-resources.md) kartu Azure s cenami pro Microsoft Azure partnerských služeb.
+jak získat [kartu Azure Rate](azure-rate-card-resources.md) s cenami za Microsoft Azure sdílené služby partnerských služeb
 
-Ceny se liší podle trhu a měny a toto rozhraní API bere v úvahu umístění. Ve výchozím nastavení rozhraní API používá nastavení profilu partnera v Partnerské centrum a v jazyce prohlížeče a tato nastavení jsou přizpůsobitelná. Povědomí o umístění je zvlášť důležité, pokud spravujete prodeje na několika trzích z jedné centralizované kanceláře.
+Ceny se liší podle trhu a měny a toto rozhraní API bere v úvahu umístění. Ve výchozím nastavení používá rozhraní API nastavení partnerského profilu v partnerském centru a v jazyce prohlížeče a tato nastavení jsou přizpůsobitelná. Povědomí o poloze je obzvláště důležité, pokud spravujete prodej na více trzích z jedné centrálně centralizované kanceláře.
 
 ## <a name="example-code"></a>Příklad kódu
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat kartu sazeb Azure, zavolejte metodu [**IAzureRateCard.GetShared,**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) která vrátí prostředek [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) obsahující ceny Azure.
+Pokud chcete získat kartu Azure Rate, zavolejte metodu [**IAzureRateCard. Getshared**](/dotnet/api/microsoft.store.partnercenter.ratecards.iazureratecard.getshared) , která vrátí prostředek [**AzureRateCard**](/dotnet/api/microsoft.store.partnercenter.models.ratecards.azureratecard) , který obsahuje ceny Azure.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -35,7 +35,7 @@ var azureRateCard = partner.RateCards.Azure.GetShared();
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Pokud chcete získat kartu sazeb Azure, zavolejte **funkci IAzureRateCard.getShared,** která vrátí podrobnosti o ceníkové kartě, která obsahuje ceny Azure.
+Pokud chcete získat kartu Azure Rate, zavolejte funkci **IAzureRateCard. Getshared** , která vrátí podrobnosti o sazbách, které obsahují ceny Azure.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -47,32 +47,32 @@ AzureRateCard azureRateCard = partner.getRateCards().getAzure().getShared();
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Pokud chcete získat kartu Azure, spusťte příkaz [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) a zadáním parametru **SharedServices** vraťte podrobnosti o kartě sazby, která obsahuje ceny Azure.
+Pokud chcete získat kartu Azure, spusťte příkaz [**Get-PartnerAzureRateCard**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerAzureRateCard.md) a zadejte parametr **SharedServices** , který vrátí podrobnosti o sazbách, které obsahují ceny Azure.
 
 ```powershell
 Get-PartnerAzureRateCard -SharedServices
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                               |
 |---------|---------------------------------------------------------------------------|
-| **Dostat** | *{baseURL}*/v1/ratecards/azure-shared?currency={currency}&region={region} |
+| **Čtěte** | *{baseURL}*/v1/ratecards/Azure-Shared? Currency = {currency} &oblast = {region} |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
 | Název     | Typ   | Vyžadováno | Popis                                                                                                                                                                               |
 |----------|--------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| currency | řetězec | No       | Volitelný třípísmenný kód ISO pro měnu, ve které budou uvedeny sazby prostředků (například `EUR` ). Výchozí hodnota je měna přidružená k trhu v profilu partnera. |
-| oblast   | řetězec | No       | Volitelný dvoupísmenný kód ISO země/oblasti, který označuje trh, na kterém je nabídka zakoupená (například `FR` ). Výchozí hodnota je kód země/oblasti nastavený v profilu partnera.        |
+| currency | řetězec | No       | Volitelná tři písmena ISO kódu pro měnu, ve které se budou poskytovat sazby za prostředky (například `EUR` ). Výchozí hodnota je měna přidružená k trhu v partnerském profilu. |
+| oblast   | řetězec | No       | Volitelné dvoumístné číslo země/oblasti ISO, které označuje uvedení na trh, na který byla nabídka koupena (například `FR` ). Výchozím nastavením je kód země nebo oblasti nastavený v partnerském profilu.        |
 
-Pokud je v požadavku zahrnutá volitelná hlavička X-Locale, jeho hodnota určuje jazyk použitý pro podrobnosti v odpovědi.
+Pokud je v požadavku zahrnutá volitelná hlavička X-locale, její hodnota určuje jazyk použitý pro podrobnosti v odpovědi.
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -93,11 +93,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-Pokud je požadavek úspěšný, vrátí prostředek [Azure Rate Card.](azure-rate-card-resources.md)
+Pokud je požadavek úspěšný, vrátí prostředek [Azure Rate karta](azure-rate-card-resources.md) .
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

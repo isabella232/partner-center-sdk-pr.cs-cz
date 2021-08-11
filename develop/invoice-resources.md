@@ -4,12 +4,12 @@ description: Přes rozhraní API partnerského centra jsou k dispozici více pro
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b07b7ad14c136eac988eeb12391c24a6cf996b39
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: d2e801dc3b082411e140b88cd495807b1381ef915e8f5f06803d64ca2cca1c6b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548417"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996542"
 ---
 # <a name="invoice-resources"></a>Fakturovat prostředky
 
@@ -113,120 +113,120 @@ Představuje řádkovou položku fakturace faktury pro licencovaná předplatná
 | Název_domény               | řetězec                                                         | Získá nebo nastaví název domény.                                             |
 | durableOfferId           | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor trvalé nabídky.                     |
 | invoiceLineItemType      | řetězec                                                         | Získá typ řádkové položky faktury.                                   |
-| ID mpn                    | číslo                                                         | Získá nebo nastaví ID MPN přidružené k této položce řádku. U přímých prodejců se jedná o ID MPN prodejce. U nepřímých prodejců se jedná o ID MPN přidané hodnoty pro prodejce (VAR).                                   |
-| Hodnotami OfferId                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor nabídky.                             |
-| offerName                | řetězec                                                         | Získá nebo nastaví název nabídky.                                          |
-| Seskup                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor objednávky.                             |
-| partnerId                | řetězec                                                         | Získá nebo nastaví ID tenanta partnerského služby Azure Active Directory.            |
+| ID mpn                    | číslo                                                         | Získá nebo nastaví ID MPN přidružené k této položce řádku. U přímých prodejců se jedná o ID MPN prodejce. U nepřímých prodejců se jedná o ID MPN prodejce value added reseller (VAR).                                   |
+| ID nabídky                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor nabídky.                             |
+| název_nabídky                | řetězec                                                         | Získá nebo nastaví název nabídky.                                          |
+| Kódobjednávky                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor objednávky.                             |
+| ID partnera                | řetězec                                                         | Získá nebo nastaví ID tenanta Azure Active Directory partnera.            |
 | quantity                 | číslo                                                         | Získá nebo nastaví počet jednotek přidružených k této položce řádku.      |
-| subscriptionDescription  | řetězec                                                         | Získá nebo nastaví popis předplatného.                            |
-| subscriptionEndDate      | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví datum vypršení platnosti předplatného.                      |
+| Popis předplatného  | řetězec                                                         | Získá nebo nastaví popis předplatného.                            |
+| subscriptionEndDate      | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví datum vypršení platnosti předplatného.                      |
 | subscriptionId           | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor předplatného.                      |
 | subscriptionName         | řetězec                                                         | Získá nebo nastaví název předplatného.                                   |
-| subscriptionStartDate    | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví datum, kdy se předplatné spustí.                   |
-| Jedna                 | číslo                                                         | Získá nebo nastaví hodnotu po slevě.                               |
+| subscriptionStartDate    | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví datum zahájení odběru.                   |
+| Dílčí součet                 | číslo                                                         | Získá nebo nastaví částku po slevě.                               |
 | syndicationPartnerSubscriptionNumber | řetězec                                             | Získá nebo nastaví číslo předplatného partnera syndikace.             |
-| daňových                      | číslo                                                         | Získá nebo nastaví poplatky za daň.                                       |
-| tier2MpnId               | číslo                                                         | Získá nebo nastaví ID MPN partnera vrstvy 2 přidruženého k této položce řádku. |
+| Daňové                      | číslo                                                         | Získá nebo nastaví účtované daně.                                       |
+| tier2MpnId               | číslo                                                         | Získá nebo nastaví ID MPN partnera vrstvy 2 přidruženého k této řádkové položce. |
 | totalForCustomer         | číslo                                                         | Získá nebo nastaví celkovou částku po slevě a dani.                 |
 | totalOtherDiscount       | číslo                                                         | Získá nebo nastaví slevu přidruženou k tomuto nákupu.              |
 | unitPrice                | číslo                                                         | Získá nebo nastaví jednotkovou cenu.                                          |
 
 ## <a name="usagebasedlineitem"></a>UsageBasedLineItem
 
-Představuje položku řádku fakturace faktury pro odběry založené na využití.
+Představuje položku řádku fakturace faktury pro předplatná založená na využití.
 
 | Vlastnost                 | Typ                                                           | Description                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
 | atributy               | řetězec                                                         | Získá atributy.                                                  |
 | billingCycleType         | řetězec                                                         | Získá nebo nastaví typ fakturačního cyklu.                                  |
 | billingProvider          | řetězec                                                         | Získá poskytovatele fakturace.                                            |
-| chargeEndDate            | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví koncové datum pro poplatek.                             |
-| chargeStartDate          | řetězec ve formátu data a času standardu UTC                                 | Získá nebo nastaví počáteční datum pro poplatek.                           |
-| chargeType               | řetězec                                                         | Získá nebo nastaví typ poplatků.                                      |
+| chargeEndDate            | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví koncové datum poplatku.                             |
+| chargeStartDate          | řetězec ve formátu data a času UTC                                 | Získá nebo nastaví počáteční datum poplatku.                           |
+| chargeType               | řetězec                                                         | Získá nebo nastaví typ poplatku.                                      |
 | consumedQuantity         | číslo                                                         | Získá nebo nastaví celkový počet spotřebovaných jednotek.                                |
 | consumptionDiscount      | řetězec                                                         | Získá nebo nastaví slevu na spotřebu.                             |
 | consumptionPrice         | řetězec                                                         | Získá nebo nastaví cenu spotřebovaného množství.                          |
-| currency                 | řetězec                                                         | Získá nebo nastaví měnu spojenou s cenami.                 |
-| customerName             | řetězec                                                         | Získá nebo nastaví název zákazníka.                                       |
+| currency                 | řetězec                                                         | Získá nebo nastaví měnu přidruženou k cenám.                 |
+| customerName             | řetězec                                                         | Získá nebo nastaví jméno zákazníka.                                       |
 | customerId               | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor zákazníka.                          |
-| detailLineItemId         | číslo                                                         | Získá nebo nastaví ID položky řádku podrobností. Jednoznačně identifikuje řádkové položky pro případy, kdy se kalkulace liší pro spotřebované jednotky. Příklad: celkové spotřebované = 1338, 1024 se účtuje s jednou sazbou, cena za 314 se účtuje s jinou sazbou.        |
-| domainName               | řetězec                                                         | Získá nebo nastaví název domény.                                             |
-| includedQuantity         | číslo                                                         | Získá nebo nastaví jednotky zahrnuté v objednávce.                         |
-| invoiceLineItemType      | řetězec                                                         | Získá typ položky řádku faktury.                                   |
+| detailLineItemId         | číslo                                                         | Získá nebo nastaví ID položky řádku podrobností. Jednoznačně identifikuje řádkové položky pro případy, kdy se výpočet pro spotřebované jednotky liší. Příklad: Celkové spotřebované = 1338, 1024 se účtuje jednou sazbou, 314 se účtuje s jinou sazbou.        |
+| Název_domény               | řetězec                                                         | Získá nebo nastaví název domény.                                             |
+| includedQuantity         | číslo                                                         | Získá nebo nastaví jednotky zahrnuté v pořadí.                         |
+| invoiceLineItemType      | řetězec                                                         | Získá typ řádkové položky faktury.                                   |
 | invoiceNumber            | řetězec                                                         | Získá nebo nastaví číslo faktury.                                      |
-| listPrice                | číslo                                                         | Získá nebo nastaví cenu každé jednotky.                                  |
-| mpnId                    | číslo                                                         | Získá nebo nastaví ID MPN přidružené k této položce řádku. U přímých prodejců se jedná o ID MPN prodejce. U nepřímých prodejců se jedná o ID MPN přidané hodnoty pro prodejce (VAR).                                   |
-| Seskup                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor objednávky.                             |
+| Listprice                | číslo                                                         | Získá nebo nastaví cenu každé jednotky.                                  |
+| ID mpn                    | číslo                                                         | Získá nebo nastaví ID MPN přidružené k této položce řádku. U přímých prodejců se jedná o ID MPN prodejce. U nepřímých prodejců se jedná o ID MPN prodejce value added reseller (VAR).                                   |
+| Kódobjednávky                  | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor objednávky.                             |
 | overageQuantity          | číslo                                                         | Získá nebo nastaví množství spotřebované nad povoleným využitím.               |
-| partnerBillableAccountId | řetězec                                                         | Získá nebo nastaví fakturační ID účtu partnera.                         |
-| partnerId                | řetězec                                                         | Získá nebo nastaví ID tenanta partnerského služby Azure Active Directory.            |
-| partnerName              | řetězec                                                         | Získá nebo nastaví název partnera.                                      |
-| postTaxEffectiveRate     | číslo                                                         | Získá nebo nastaví platnou cenu po zdanění.                         |
-| postTaxTotal             | číslo                                                         | Získá nebo nastaví celkové poplatky po dani. Poplatky za Pretax a daňové částky |
-| preTaxCharges            | číslo                                                         | Získá nebo nastaví cenu účtovanou před zdaněním.                          |
-| preTaxEffectiveRate      | číslo                                                         | Získá nebo nastaví platnou cenu před zdaněním.                        |
+| partnerBillableAccountId | řetězec                                                         | Získá nebo nastaví ID fakturovatelného účtu partnera.                         |
+| ID partnera                | řetězec                                                         | Získá nebo nastaví ID tenanta Azure Active Directory partnera.            |
+| název partnera              | řetězec                                                         | Získá nebo nastaví název partnera.                                      |
+| postTaxEffectiveRate     | číslo                                                         | Získá nebo nastaví efektivní cenu po daních.                         |
+| postTaxTotal             | číslo                                                         | Získá nebo nastaví celkové poplatky po dani. Poplatky před zdaněním a částka daně |
+| preTaxCharges            | číslo                                                         | Získá nebo nastaví cenu účtované před daněmi.                          |
+| preTaxEffectiveRate      | číslo                                                         | Získá nebo nastaví efektivní cenu před daněmi.                        |
 | oblast                   | řetězec                                                         | Získá nebo nastaví oblast přidruženou k instanci prostředku.        |
-| resourceGuid             | řetězec                                                         | Získá nebo nastaví identifikátor prostředku.                                 |
-| resourceName             | řetězec                                                         | Získá nebo nastaví název prostředku. Příklad: databáze (GB/měsíc).         |
-| serviceName              | řetězec                                                         | Získá nebo nastaví název služby. Příklad: Azure Data Service.           |
-| serviceType              | řetězec                                                         | Získá nebo nastaví typ služby. příklad: Azure SQL Azure DB.           |
-| skladové                      | řetězec                                                         | Získá nebo nastaví SKU služby.                                         |
-| subscriptionDescription  | řetězec                                                         | Získá nebo nastaví popis předplatného.                            |
+| resourceGuid (identifikátor GUID prostředku)             | řetězec                                                         | Získá nebo nastaví identifikátor prostředku.                                 |
+| resourceName             | řetězec                                                         | Získá nebo nastaví název prostředku. Příklad: Databáze (GB/měsíc).         |
+| Název_služby              | řetězec                                                         | Získá nebo nastaví název služby. Příklad: Azure Data Service.           |
+| Servicetype              | řetězec                                                         | Získá nebo nastaví typ služby. Příklad: Azure SQL Azure DB.           |
+| Sku                      | řetězec                                                         | Získá nebo nastaví SKU služby.                                         |
+| Popis předplatného  | řetězec                                                         | Získá nebo nastaví popis předplatného.                            |
 | subscriptionId           | řetězec                                                         | Získá nebo nastaví jedinečný identifikátor předplatného.                      |
 | subscriptionName         | řetězec                                                         | Získá nebo nastaví název předplatného.                                   |
-| taxAmount                | číslo                                                         | Získá nebo nastaví částku daně, která se účtuje.                               |
-| tier2MpnId               | číslo                                                         | Získá nebo nastaví ID MPN partnera vrstvy 2 přidruženého k této položce řádku. |
-| unit                     | řetězec                                                         | Získá nebo nastaví měrnou jednotku využití Azure.                     |
+| taxAmount                | číslo                                                         | Získá nebo nastaví výši účtované daně.                               |
+| tier2MpnId               | číslo                                                         | Získá nebo nastaví ID MPN partnera vrstvy 2 přidruženého k této řádkové položce. |
+| unit                     | řetězec                                                         | Získá nebo nastaví měrnou jednotku pro využití Azure.                     |
 
 ## <a name="invoicestatement"></a>InvoiceStatement
 
-Představuje operace dostupné v příkazu faktury v Application/PDF.
+Představuje operace dostupné na výpisu faktury v souboru application/pdf.
 
 | Vlastnost                 | Typ                                                           | Description                                                           |
 |--------------------------|----------------------------------------------------------------|-----------------------------------------------------------------------|
-| httpResponseMessage      | object                                                         | ByteArrayContent s contentType = Application/PDF.                  |
+| httpResponseMessage      | object                                                         | ByteArrayContent s contentType = application/pdf.                  |
 
 ## <a name="onetimeinvoicelineitem"></a>OneTimeInvoiceLineItem
 
-Představuje položku fakturačního řádku faktury pro odběry na základě licencí.
+Představuje řádkovou položku fakturace faktury pro licencovaná předplatná.
 
 | Vlastnost | Typ | Description |
 | --- | --- | --- |
-| PartnerId | řetězec | Získá nebo nastaví ID tenanta partnera. |
+| ID partnera | řetězec | Získá nebo nastaví ID partnerského tenanta. |
 | CustomerId | řetězec | Získá nebo nastaví ID tenanta zákazníka. |
-| CustomerName | řetězec | Získá nebo nastaví jméno zákazníka. |
+| CustomerName | řetězec | Získá nebo nastaví název zákazníka. |
 | CustomerDomainName | řetězec | Získá nebo nastaví název domény zákazníka. |
 | CustomerCountry | řetězec | Získá nebo nastaví zemi zákazníka. |
 | InvoiceNumber | řetězec | Získá nebo nastaví číslo faktury. |
-| ID mpn | řetězec | Získá nebo nastaví ID MPN přidružené k této položce řádku. |
+| MpnId | řetězec | Získá nebo nastaví ID MPN přidružené k této položce řádku. |
 | ResellerMpnId | int | Získá nebo nastaví jedinečný identifikátor objednávky. |
-| OrderDate | DateTime | Získá nebo nastaví datum vytvoření objednávky. |
+| OrderDate | DateTime | Získá nebo nastaví datum, kdy se pořadí vytvořilo. |
 | ProductId | řetězec | Získá nebo nastaví jedinečný identifikátor produktu. |
-| ID SKU | řetězec | Získá nebo nastaví jedinečný identifikátor SKU. |
-| ID dostupnosti | řetězec | Získá nebo nastaví jedinečný identifikátor dostupnosti. |
+| SkuId | řetězec | Získá nebo nastaví jedinečný identifikátor SKU. |
+| AvailabilityId | řetězec | Získá nebo nastaví jedinečný identifikátor dostupnosti. |
 | ProductName | řetězec | Získá nebo nastaví název produktu. |
 | SkuName | řetězec | Získá nebo nastaví název SKU. |
-| ChargeType | řetězec | Získá nebo nastaví typ poplatku. |
+| ChargeType | řetězec | Získá nebo nastaví typ poplatků. |
 | UnitPrice | decimal | Získá nebo nastaví jednotkovou cenu. |
 | EffectiveUnitPrice | decimal | Získá nebo nastaví efektivní jednotkovou cenu. |
-| Unittype | řetězec | Získá nebo nastaví typ jednotky. |
+| Jednotkách UnitType | řetězec | Získá nebo nastaví typ jednotky. |
 | Množství | int | Získá nebo nastaví počet jednotek přidružených k této položce řádku. |
-| Mezisoučet | decimal | Získá nebo nastaví částku po slevě. |
-| TaxTotal | decimal | Získá nebo nastaví účtované daně. |
+| Mezisoučet | decimal | Získá nebo nastaví hodnotu po slevě. |
+| TaxTotal | decimal | Získá nebo nastaví poplatky za daň. |
 | TotalForCustomer | decimal | Získá nebo nastaví celkovou částku po slevě a dani. |
 | Měna | řetězec | Získá nebo nastaví měnu použitou pro tuto položku řádku. |
-| Název vydavatele | řetězec | Získá nebo nastaví název vydavatele přidružený k tomuto nákupu. |
-| PublisherId | řetězec | Získá nebo nastaví ID vydavatele přidružené k tomuto nákupu. |
-| Popis předplatného | řetězec | Získá nebo nastaví popis předplatného přidružený k tomuto nákupu. |
-| SubscriptionId | řetězec | Získá nebo nastaví ID předplatného přidružené k tomuto nákupu. |
-| ChargeStartDate | DateTime | Získá nebo nastaví počáteční datum poplatku spojené s tímto nákupem. |
-| ChargeEndDate | DateTime | Získá nebo nastaví koncové datum poplatku spojené s tímto nákupem. |
-| TermAndBillingCycle | řetězec | Získá nebo nastaví období a fakturační cyklus související s tímto nákupem. |
-| Alternativní ID | řetězec | Získá nebo nastaví alternativní ID (ID nabídky). |
-| Popis vlastnosti PriceAdjustment | řetězec | Získá nebo nastaví popis úpravy ceny. |
+| Název vydavatele | řetězec | Získá nebo nastaví název vydavatele přidruženého k tomuto nákupu. |
+| PublisherId | řetězec | Získá nebo nastaví ID vydavatele přidruženého k tomuto nákupu. |
+| SubscriptionDescription | řetězec | Získá nebo nastaví popis předplatného přidružený k tomuto nákupu. |
+| SubscriptionId | řetězec | Získá nebo nastaví ID předplatného přidruženého k tomuto nákupu. |
+| ChargeStartDate | DateTime | Získá nebo nastaví počáteční datum poplatku přidružené k tomuto nákupu. |
+| ChargeEndDate | DateTime | Získá nebo nastaví datum ukončení poplatku přidružené k tomuto nákupu. |
+| TermAndBillingCycle | řetězec | Získá nebo nastaví termín a fakturační cyklus spojený s tímto nákupem. |
+| AlternateId | řetězec | Získá nebo nastaví alternativní ID (ID nabídky). |
+| PriceAdjustmentDescription | řetězec | Získá nebo nastaví popis úpravy ceny. |
 | CreditReasonCode | řetězec | Získá nebo nastaví kód důvodu kreditu. |
-| DiscountDetails | řetězec |  **Zastaralé .** Získá nebo nastaví podrobnosti slevy spojené s tímto nákupem. |
+| DiscountDetails | řetězec |  **Zastaralé**. Získá nebo nastaví podrobnosti slevy spojené s tímto nákupem. |
 | PricingCurrency | řetězec | Získá nebo nastaví kód cenové měny. |
 | PCToBCExchangeRate | decimal | Získá nebo nastaví ceníkovou měnu na směnný kurz fakturační měny. |
 | PCToBCExchangeRateDate | DateTime | Získá nebo nastaví datum směnného kurzu, ve kterém byla určená měna ceníku pro směnný kurz fakturační měny. |

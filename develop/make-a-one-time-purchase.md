@@ -1,28 +1,28 @@
 ---
 title: Provedení jednorázového nákupu
-description: Použití rozhraní API partnerského centra pro jednorázovou koupi softwaru a rezervací produktů, jako jsou odběry softwaru, trvalá verze softwaru a rezervované instance virtuálních počítačů Azure.
+description: Způsob jednorázového nákupu softwaru a rezervačních produktů, jako jsou předplatná softwaru, časově neomezeného softwaru a služby Azure Reserved Virtual Machine (VM) Instances, pomocí rozhraní Partnerské centrum API.
 ms.date: 10/09/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1ca2d5b7ad6ba1196d74a8cdb748ab808192d569
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: baf0b5d4aaa8957874ab019359aca2662a76194387e0cd06999b0bb329076c80
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548375"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994434"
 ---
 # <a name="make-a-one-time-purchase"></a>Provedení jednorázového nákupu
 
-**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud for US Government
 
-Použití rozhraní API partnerského centra pro jednorázovou koupi softwaru a rezervací produktů, jako jsou odběry softwaru, trvalá verze softwaru a rezervované instance virtuálních počítačů Azure.
+Způsob jednorázového nákupu softwaru a rezervačních produktů, jako jsou předplatná softwaru, časově neomezeného softwaru a služby Azure Reserved Virtual Machine (VM) Instances, pomocí rozhraní Partnerské centrum API.
 
 > [!NOTE]
-> Odběry softwaru nejsou k dispozici na následujících trzích:
+> Předplatná softwaru nejsou k dispozici na následujících trzích:
 >
 > | Nedostupné trhy            | Nedostupné trhy (pokračování...) | Nedostupné trhy (pokračování...)      |
 > |--------------------------------|-----------------------------------|------------------------------------------|
-> | Ostrovy Aland                  | Grónsko                         | Papua-Nová Guinea                         |
+> | Ålandské ostrovy                  | Grónsko                         | Papua-Nová Guinea                         |
 > | Americká Samoa                 | Grenada                           | Pitcairnovy ostrovy                         |
 > | Andorra                        | Guadeloupe                        | Réunion                                  |
 > | Anguilla                       | Guam                              | Ruská federace                       |
@@ -34,7 +34,7 @@ Použití rozhraní API partnerského centra pro jednorázovou koupi softwaru a 
 > | Bonaire                        | Heardův ostrov a McDonaldovy ostrovy | Svatý Vincenc a Grenadiny         |
 > | Bouvetův ostrov                  | Ostrov Man                       | Samoa                                    |
 > | Brazílie                         | Jan Mayen                         | San Marino                               |
-> | Britské indickooceánské území | Jersey                            | Svatý Tomáš a Princův ostrov                    |
+> | Britské indickooceánské území | Jersey                            | Sâo Tomé a Můžetencipe                    |
 > | Britské Panenské ostrovy         | Kiribati                          | Seychely                               |
 > | Burkina Faso                   | Kosovo                            | Sierra Leone                             |
 > | Burundi                        | Laos                              | Svatý Eustach                           |
@@ -43,7 +43,7 @@ Použití rozhraní API partnerského centra pro jednorázovou koupi softwaru a 
 > | Čad                           | Madagaskar                        | Somálsko                                  |
 > | Čína                          | Malawi                            | Jižní Georgie a Jižní Sandwichovy ostrovy |
 > | Vánoční ostrov               | Maledivy                          | Jižní Súdán                              |
-> | Kokosové ostrovy        | Mali                              | Svatá Helena, Ascension a Tristan da Cunha   |
+> | Kokosové ostrovy        | Mali                              | St Kaň, Ascension, Tristan da Çha   |
 > | Komory                        | Marshallovy ostrovy                  | Surinam                                 |
 > | Kongo                          | Martinik                        | Špicberky                                 |
 > | Konžská demokratická republika                    | Mauritánie                        | Svazijsko                                |

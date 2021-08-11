@@ -4,12 +4,12 @@ description: Jak získat seznam převodů zákazníka
 ms.date: 04/10/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a5892e25953bc2eec4451bdbbd5accea008828b8
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 3392977c8a39d4002aa5502d5a50f81312af4fc32714259d3d0d525b94541f3d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760228"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996117"
 ---
 # <a name="get-a-customers-transfers"></a>Získání převodů zákazníka
 

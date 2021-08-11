@@ -4,12 +4,12 @@ description: Jak obnovit odstraněného uživatele podle ID zákazníka a ID už
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 23caf91c6b29b292c2638b4a1ad208c606c47492
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 04cca2f7c99023ef277f0f265a755be3e4692fa5e786ce37939b6aebd32a3ba3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445710"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996899"
 ---
 # <a name="restore-a-deleted-user-for-a-customer"></a>Obnovení odstraněného uživatele pro zákazníka
 

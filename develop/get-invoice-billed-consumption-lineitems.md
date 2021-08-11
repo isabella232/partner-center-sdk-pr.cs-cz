@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 285b6fbda774c9396dee8947550ed774d52bf901
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 915a6b40a835b0b8d8ded6d49244aede8bbf079334890ccc8b3ef50782dec2dd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446220"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994519"
 ---
 # <a name="get-invoice-billed-commercial-consumption-line-items"></a>Získání fakturovaných řádkových položek komerční spotřeby na faktuře
 

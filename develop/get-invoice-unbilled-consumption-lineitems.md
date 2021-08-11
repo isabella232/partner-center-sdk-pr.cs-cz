@@ -4,12 +4,12 @@ description: Pomocí rozhraní API pro fakturaci můžete získat kolekci nefakt
 ms.date: 01/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f7c74bedfd6412fc5954ed2ddc1388936e418fa3
-ms.sourcegitcommit: 722992eea6f8ea366dc088e5dd1ee63c17d56f61
+ms.openlocfilehash: 32944f7e1d30cec2e898d68619b882f3fe5c17124ae90e69b01761dbac459189
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114224764"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994740"
 ---
 # <a name="get-invoice-unbilled-commercial-consumption-line-items"></a>Získání nefakturovaných řádkových položek komerční spotřeby na faktuře
 
@@ -337,7 +337,7 @@ Následující podrobnosti se vztahují k tomuto příkladu:
 - **Period**: **Previous**
 - **SeekOperation:** **Next**
 
-#### <a name="request-example-2"></a>Příklad požadavku 2
+#### <a name="request-example-2"></a>Příklad žádosti 2
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/invoices/unbilled/lineitems?provider=onetime&invoiceLineItemType=usagelineitems&currencyCode=usd&period=previous&size=2000&seekoperation=next HTTP/1.1

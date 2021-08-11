@@ -4,12 +4,12 @@ description: Pomocí prostředku MeterUsageRecord můžete v aktuálním faktura
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9eb9eea856d6adb59577bdc694e8fb5f0e5a3a0a
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 1df4ceda801b93d2716028c515e0978ca3cbc39e37a3eafd20b8123cf81d795b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446628"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994332"
 ---
 # <a name="meter-usage-record-resource"></a>Prostředek záznamu využití měřiče
 

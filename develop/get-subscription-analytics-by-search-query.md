@@ -1,57 +1,57 @@
 ---
-title: Získat analýzy předplatných pomocí vyhledávacího dotazu
-description: Jak získat informace o analýze předplatného filtrované vyhledávacím dotazem.
+title: Získání analýzy předplatného pomocí vyhledávacího dotazu
+description: Jak získat analytické informace o předplatném filtrované podle vyhledávacího dotazu
 ms.date: 05/10/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 8df777b9a88206f8b22579f0f445c54d80f7cd64
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: dc6ef8d2136c5ffac3278a372980e9a601ef49bb485ef54187865fc9431b3404
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111548732"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995675"
 ---
 # <a name="get-subscription-analytics-information-filtered-by-a-search-query"></a>Získání analytických informací o předplatných filtrovaných podle vyhledávacího dotazu
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Jak získat informace o analýze předplatných pro zákazníky filtrované pomocí vyhledávacího dotazu.
+Jak získat analytické informace o předplatném pro zákazníky filtrované pomocí vyhledávacího dotazu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pouze s přihlašovacími údaji uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů uživatele.
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti |
 |--------|-------------|
-| **Čtěte** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/Analytics/Subscriptions? Filter = {filter_string} |
+| **Dostat** | [*\{ baseURL \}*](partner-center-rest-urls.md)/partner/v1/analytics/subscriptions?filter={filter_string} |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Pomocí následujícího parametru cesty Identifikujte vaši organizaci a filtrujte hledání.
+Pomocí následujícího parametru požadované cesty identifikujte svou organizaci a vyfiltrujte hledání.
 
 | Název | Typ | Vyžadováno | Popis |
 |------|------|----------|-------------|
-| filter_string | řetězec | Yes | Filtr, který se má použít pro analýzu předplatného Viz část filtru a pole filtru pro syntaxi, pole a operátory pro použití v tomto parametru. |
+| filter_string | řetězec | Yes | Filtr, který se použije pro analýzu předplatného. Syntaxi, pole a operátory, které se mají použít v tomto parametru, najdete v částech Syntaxe filtru a Filtrovat pole. |
 
 ### <a name="filter-syntax"></a>Syntaxe filtru
 
-Parametr Filter musí být složen jako řada kombinací polí, hodnot a operátorů. Více kombinací lze kombinovat pomocí **`and`** **`or`** operátorů or.
+Parametr filter se musí skládat jako řada kombinací polí, hodnot a operátorů. Pomocí operátorů nebo lze kombinovat **`and`** více **`or`** kombinací.
 
-Nekódovaný příklad vypadá takto:
+Nekódovaný příklad vypadá jako tento:
 
-- Řetezce `?filter=Field operator 'Value'`
-- Datového `?filter=Field operator Value`
-- Zobrazí `?filter=contains(field,'value')`
+- Řetězec: `?filter=Field operator 'Value'`
+- Boolean: `?filter=Field operator Value`
+- Obsahuje `?filter=contains(field,'value')`
 
-### <a name="filter-fields"></a>Filtrovat pole
+### <a name="filter-fields"></a>Filtrování polí
 
-Parametr filtru požadavku obsahuje jeden nebo více příkazů, které filtrují řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, která je spojena s **`eq`** **`ne`** operátory OR. Některá pole také podporují **`contains`** operátory, **`gt`** ,, a **`lt`** **`ge`** **`le`** . Příkazy lze kombinovat pomocí **`and`** **`or`** operátorů or.
+Parametr filter požadavku obsahuje jeden nebo více příkazů, které filtruje řádky v odpovědi. Každý příkaz obsahuje pole a hodnotu, které jsou přidruženy k **`eq`** operátorům **`ne`** nebo . Některá pole také podporují **`contains`** operátory , **`gt`** , , **`lt`** a **`ge`** **`le`** . Příkazy lze kombinovat pomocí **`and`** operátorů **`or`** nebo .
 
-Následují příklady řetězců filtru:
+Tady jsou příklady řetězců filtru:
 
 ```http
 autoRenewEnabled eq true
@@ -59,35 +59,35 @@ autoRenewEnabled eq true
 autoRenewEnabled eq true and customerMarket eq 'US'
 ```
 
-V následující tabulce je uveden seznam podporovaných polí a operátorů podpory pro parametr Filter. Řetězcové hodnoty musí být obklopeny jednoduchými uvozovkami.
+Následující tabulka obsahuje seznam podporovaných polí a operátorů podpory pro parametr filtru. Řetězcové hodnoty musí být v jednoduchých uvozovkách.
 
 | Parametr | Podporované operátory | Description |
 |-----------|---------------------|-------------|
-| autoRenewEnabled | `eq`, `ne` | Hodnota, která označuje, jestli se předplatné obnovuje automaticky. |
-| commitmentEndDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum ukončení předplatného |
-| creationDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum vytvoření odběru. |
+| autoRenewEnabled | `eq`, `ne` | Hodnota, která určuje, jestli se předplatné obnovuje automaticky. |
+| datum ukončení závazku | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum, kdy odběr skončí. |
+| datum vytvoření | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum vytvoření předplatného |
 | currentStateEndDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum, kdy se změní aktuální stav předplatného. |
-| customerMarket | `eq`, `ne` | Země nebo oblast, ve které má zákazník obchodní oddělení |
+| customerMarket | `eq`, `ne` | Země nebo oblast, ve které zákazník obchoduje. |
 | customerName | `contains` | Jméno zákazníka. |
 | customerTenantId | `eq`, `ne` | Řetězec ve formátu GUID, který identifikuje tenanta zákazníka. |
-| deprovisionedDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum zrušení zřízení předplatného. Výchozí hodnotou je hodnota null. |
-| effectiveStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum, kdy se předplatné spustí. |
-| friendlyName | `contains` | Název předplatného. |
-| id | `eq`, `ne` | Řetězec ve formátu GUID, který identifikuje odběr. |
-| lastRenewalDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum poslední obnovy odběru Výchozí hodnotou je hodnota null. |
+| deprovisionedDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum, kdy bylo zrušeno zřízení předplatného. Výchozí hodnotou je hodnota null. |
+| effectiveStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum zahájení odběru |
+| Friendlyname | `contains` | Název předplatného. |
+| id | `eq`, `ne` | Řetězec formátovaný identifikátorem GUID, který identifikuje odběr. |
+| lastRenewalDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum posledního prodloužení platnosti předplatného Výchozí hodnotou je hodnota null. |
 | lastUsageDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum posledního použití předplatného Výchozí hodnotou je hodnota null. |
-| partnerId | `eq`, `ne` | ID MPN U přímého prodejce bude tato hodnota ID MPN partnera. Pro nepřímý prodejce bude tato hodnota ID MPN nepřímého prodejce. |
-| partnerName | řetězec | Název partnera, pro kterého se předplatné zakoupilo |
-| NázevVýrobku | `contains`, `eq`, `ne` | Název produktu. |
-| providerName | řetězec | Pokud je transakce předplatného určena pro nepřímý prodejce, jméno poskytovatele je nepřímým poskytovatelem, který si zakoupil předplatné.|
-| status | `eq`, `ne` | Stav předplatného. Podporovány jsou následující hodnoty: "aktivní", "pozastaveno" nebo "zrušení zřízení". |
-| subscriptionType | `eq`, `ne` | Typ předplatného. **Poznámka**: Toto pole rozlišuje velká a malá písmena. podporované hodnoty jsou: "Office", "Azure", "Microsoft365", "Dynamics", "EMS". |
-| trialStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum, kdy se začalo zkušební období předplatného. Výchozí hodnotou je hodnota null. |
-| trialToPaidConversionDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum, kdy se předplatné převede ze zkušební verze na placené. Výchozí hodnotou je hodnota null. |
+| ID partnera | `eq`, `ne` | ID MPN. Pro přímého prodejce bude tato hodnota ID MPN partnera. Pro nepřímého prodejce bude tato hodnota ID MPN nepřímého prodejce. |
+| název partnera | řetězec | Název partnera, pro kterého bylo předplatné zakoupeno |
+| Productname | `contains`, `eq`, `ne` | Název produktu. |
+| Providername | řetězec | Pokud je transakce předplatného zprostředkovatelem nepřímého prodejce, název poskytovatele je nepřímý poskytovatel, který předplatné zakoupil.|
+| status | `eq`, `ne` | Stav předplatného Podporované hodnoty: AKTIVNÍ, POZASTAVENO nebo ZRUŠENO ZŘÍZENÍ. |
+| typ předplatného | `eq`, `ne` | Typ předplatného. **Poznámka:** V tomto poli se rozlišují malá a velká písmena. Podporované hodnoty: "Office", "Azure", "Microsoft365", "Dynamics", "EMS". |
+| trialStartDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le` | Datum zahájení zkušebního období předplatného Výchozí hodnotou je hodnota null. |
+| trialToPaidConversionDate | `eq`, `ne`, `gt`, `lt`, `ge`, `le`  | Datum převodu předplatného ze zkušební verze na placenou verzi. Výchozí hodnotou je hodnota null. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 

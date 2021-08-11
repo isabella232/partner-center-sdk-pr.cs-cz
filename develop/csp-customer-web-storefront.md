@@ -1,49 +1,49 @@
 ---
 title: Webová výkladní skříň pro zákazníky CSP
-description: Tento ukázkový kód webu ukazuje fungující online obchod pro zákazníky, kteří si kupují předplatná produktů Microsoftu.
+description: Tento ukázkový kód webu ukazuje pracovní online obchod pro zákazníky, kteří si můžou koupit předplatné produktů Microsoftu.
 ms.date: 05/29/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d68f17d707731f426cb980a566b6478790d3507c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 07020c365db2ad578e7ff75602519d06eabb2a3bebf0913899fcd8b5345a0365
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973328"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995199"
 ---
 # <a name="csp-customer-web-storefront"></a>Webová výkladní skříň pro zákazníky CSP
 
-**Platí pro:** Partnerské centrum
+**Platí pro**: partnerské Centrum
 
-**Neplatí pro: Partnerské centrum** Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+Nevztahuje **se na**: Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Tato ukázková aplikace se vztahuje pouze na globální instanci Partnerské centrum.
+Tato ukázková aplikace se vztahuje jenom na globální instanci partnerského centra.
 
-Webová [Partnerské centrum je ukázkový](https://github.com/Microsoft/Partner-Center-Storefront)  web pro online obchod, který zákazníci mohou použít k nákupu předplatných produktů Microsoftu. Tento vzorový kód **můžete upravit** pro vlastní použití a nakonfigurovat [nabídky,](#configure-offers)přidat [značku](#configure-branding)a přidat [způsob platby](#configure-payment-types).
+[Partnerský prezentace](https://github.com/Microsoft/Partner-Center-Storefront) je **ukázkový web** pro online obchod, který můžou zákazníci použít k nákupu předplatných produktů Microsoftu. Tento **vzorový kód** můžete upravit pro vlastní použití, abyste mohli [Konfigurovat nabídky](#configure-offers), [Přidat branding](#configure-branding)a [Přidat způsob platby](#configure-payment-types).
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Stáhněte [si Partnerské centrum kódu z GitHub.](https://github.com/Microsoft/Partner-Center-Storefront)
+Stáhněte si [vzorový kód prezentace partnerského centra](https://github.com/Microsoft/Partner-Center-Storefront) z GitHub.
 
 ## <a name="configure-authentication"></a>Konfigurace ověřování
 
-Před sestavením aplikace aktualizujte následující hodnoty v souboru Web.config tak, aby odrážely ověřovací informace Azure AD, které jste vytvořili [v Partnerské centrum ověřování.](partner-center-authentication.md) Nastavení účtu sandboxu pro integraci byste měli použít během raného vývoje nebo testování v produkčním prostředí (TiP).
+Než sestavíte aplikaci, aktualizujte následující hodnoty v souboru Web.config tak, aby odrážely ověřovací informace Azure AD, které jste vytvořili v [partnerském centru](partner-center-authentication.md). Měli byste použít nastavení účtu izolovaného prostoru pro integraci při prvotním vývoji nebo pro testování v produkčním prostředí (TiP).
 
-- **partnerCenter.applicationId**
+- **partnerCenter. applicationId**
 - **partnerCenter.applicationSecret**
-- **partnerCenter.domain**
-- **webPortal.clientId**
-- **webPortal.clientSecret**
-- **webPortal.domain**
-- **webPortal.azureStorageConnectionString**
+- **partnerCenter. Domain**
+- **webportes. clientId**
+- **webportes. clientSecret**
+- **webportes. Domain**
+- **webportes. azureStorageConnectionString**
 
-## <a name="configure-offers"></a>Konfigurace nabídek
+## <a name="configure-offers"></a>Konfigurovat nabídky
 
-Sadu nabídek (**MicrosoftOffer**) můžete nakonfigurovat v **modelu OfferCatalogViewModel.**
+V **OfferCatalogViewModel** můžete nakonfigurovat sadu nabídek (**MicrosoftOffer**).
 
 ## <a name="configure-branding"></a>Konfigurace brandingu
 
-Tento ukázkový web sleduje následující informace o společnosti a značce v *brandinguConfiguration.cs* a *PortalBranding.cs:*
+Tento ukázkový web sleduje následující informace společnosti a značky v *BrandingConfiguration. cs* a *PortalBranding. cs*:
 
 - Název organizace
 - Logo organizace
@@ -56,4 +56,4 @@ Tento ukázkový web sleduje následující informace o společnosti a značce v
 
 ### <a name="configure-payment-types"></a>Konfigurace typů plateb
 
-Aplikace aktuálně používá bránu PayPal, která je implementovaná v *souboru PayPalGateway.cs.*
+aplikace aktuálně používá PayPal bránu, která je implementovaná v *PayPalGateway. cs*.

@@ -4,12 +4,12 @@ description: Jak načíst seznam nepřímých prodejců přihlášených partner
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 58f5c3378b5b941fdc9dafcf28f5efbc58c29c7c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 901bf045d1de29744114bb58ed445f9eb17f70a4744786fd4617da9697e7c683
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446560"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996915"
 ---
 # <a name="retrieve-a-list-of-indirect-resellers"></a>Načtení seznamu nepřímých prodejců
 

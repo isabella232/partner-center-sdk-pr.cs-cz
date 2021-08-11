@@ -1,38 +1,38 @@
 ---
 title: Získání seznamu zásad zákazníka
-description: Jak načíst kolekci zadaných zásad konfigurace zákazníka.
+description: Jak načíst kolekci zásad konfigurace zadaného zákazníka.
 ms.date: 07/25/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: bf6ace0d2425e28d80c4f2310878c2d2a9e2a876
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: c4104e91328e7ffc8581459f3696b9f0fa991bc4871a564140d0764facaf27d3
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874580"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995403"
 ---
 # <a name="get-a-list-of-a-customers-policies"></a>Získání seznamu zásad zákazníka
 
-**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud (Německo)
+**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
 
-Tento článek popisuje, jak načíst kolekci zadaných zásad konfigurace zákazníka.
+Tento článek popisuje, jak načíst kolekci zásad konfigurace zadaného zákazníka.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Seznam všech zásad zákazníka získáte tak, že:
+Seznam všech zásad zákazníka získáte v těchto zásadách:
 
-1. Voláním [**metody IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka načtěte rozhraní pro operace u zadaného zákazníka.
+1. Zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, aby se načetlo rozhraní pro operace zadaného zákazníka.
 
-2. [**Načtěte vlastnost ConfigurationPolicies,**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) abyste získali rozhraní pro operace shromažďování zásad konfigurace.
-3. Voláním [**metody Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) načtěte kolekci zásad.
+2. Načte vlastnost [**ConfigurationPolicies**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.configurationpolicies) , aby se získalo rozhraní pro operace shromažďování zásad konfigurace.
+3. Pro načtení kolekce zásad zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.iconfigurationpolicycollection.getasync) .
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -41,31 +41,31 @@ string selectedCustomerId;
 var configPolicies = partnerOperations.Customers.ById(selectedCustomerId).ConfigurationPolicies.Get();
 ```
 
-Příklad najdete v následujícím příkladu:
+Příklad naleznete v následujících tématech:
 
-- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
-- Project: **SDK pro Partnerské centrum ukázky**
-- Třída: **GetAllConfigurationPolicies.cs**
+- Ukázka: [aplikace testů konzoly](console-test-app.md)
+- Project: **ukázky sady SDK pro partnerských Center**
+- Třída: **GetAllConfigurationPolicies. cs**
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                                              |
 |---------|------------------------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/policies HTTP/1.1 |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/policies HTTP/1.1 |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
-Při vytváření požadavku použijte následující parametr cesty:
+Při vytváření žádosti použít následující parametr cesty:
 
 | Název        | Typ   | Vyžadováno | Popis                                           |
 |-------------|--------|----------|-------------------------------------------------------|
-| id zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| ID zákazníka | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -86,11 +86,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude tělo odpovědi obsahovat kolekci prostředků [ConfigurationPolicy.](device-deployment-resources.md#configurationpolicy)
+V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [ConfigurationPolicy](device-deployment-resources.md#configurationpolicy) .
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu Partnerské centrum [kódy chyb REST.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

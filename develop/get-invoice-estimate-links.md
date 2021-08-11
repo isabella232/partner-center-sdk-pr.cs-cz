@@ -7,12 +7,12 @@ ms.subservice: partnercenter-sdk
 ms.assetid: ''
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 719becd3fac5605c4ad48ab86d483ba7903d65d8
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 9bbfc7bf239535ac44879827118eba274bf3cb784e5b8de34f879fe3445a414d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549140"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994468"
 ---
 # <a name="get-invoice-estimate-links"></a>Získání odkazů na odhad faktury
 

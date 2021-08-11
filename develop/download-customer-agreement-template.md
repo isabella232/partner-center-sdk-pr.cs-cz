@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: fccb9e3d4a837f3e8043f8c7ae1e3911d819afd7
-ms.sourcegitcommit: d20e7d572fee09a83a4b23a92da7ff09cfebe75a
+ms.openlocfilehash: 7757cd6a92c168e4209d2d3ac49746e4a0907021d260a7b49603a3706e8cfa5c
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111906523"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994808"
 ---
 # <a name="get-a-download-link-for-the-microsoft-customer-agreement-template"></a>Získání odkazu ke stažení Smlouva se zákazníkem Microsoftu šablony
 
@@ -229,181 +229,181 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 | Salvador | SV | en-US, es-ES |
 | Rovníková Guinea | Gq | en-US |
 | Eritrea | ER | en-US |
-| Estonsko | EE | EN-US, et-EE |
-| eSwatini | SZ | en-US |
+| Estonsko | EE | en-US, et-EE |
+| eSwa entita | SZ | en-US |
 | Etiopie | ET | en-US |
-| Falklandské ostrovy | FK | en-US |
+| Falklandské ostrovy | Fk | en-US |
 | Faerské ostrovy | FO | en-US |
 | Fidži | FJ | en-US |
-| Finsko | FI | EN-US, Fi-FI |
-| Francie | FR | EN-US, fr-FR |
-| Francouzská Guyana | GF | EN-US, fr-FR  |
+| Finsko | FI | en-US, fi-FI |
+| Francie | FR | en-US, fr-FR |
+| Francouzská Guyana | GF | en-US, fr-FR  |
 | Francouzská Polynésie | PF | en-US |
-| Francouzská jižní území | TF | en-US |
+| Francouzská jižní území | Tf | en-US |
 | Gabon | GA | en-US |
 | Gambie | GM | en-US |
 | Gruzie | GE | en-US |
-| Německo | DE | EN-US, de-DE |
+| Německo | DE | en-US, de-DE |
 | Ghana | GH | en-US |
-| Gibraltar | DŽI | en-US |
-| Řecko | GR | EN-US, El-GR |
-| Grónsko | GL | en-US |
-| Grenada | GD | en-US |
+| Gibraltar | Gi | en-US |
+| Řecko | GR | en-US, el-GR |
+| Grónsko | Gl | en-US |
+| Grenada | Gd | en-US |
 | Guadeloupe | GP | en-US |
 | Guam | GU | en-US |
-| Guatemala | GT | EN-US, ES-ES |
-| Guernsey | GG | en-US |
+| Guatemala | GT | en-US, es-ES |
+| Guernsey | Gg | en-US |
 | Guinea | GN | en-US |
-| Guinea-Bissau | GW | en-US |
+| Guinea-Bissau | Gw | en-US |
 | Guyana | GY | en-US |
 | Haiti | HT | en-US |
-| Heardův ostrov a McDonaldovy ostrovy | HM | en-US |
-| Honduras | HN | EN-US, ES-ES |
-| Hongkong – zvláštní administrativní oblast | HK | EN-US, zh-HK |
-| Maďarsko | HU | EN-US, hu-HU |
+| Heardův ostrov a McDonaldovy ostrovy | Hm | en-US |
+| Honduras | HN | en-US, es-ES |
+| Hongkong – zvláštní administrativní oblast | HK | en-US, zh-HK |
+| Maďarsko | HU | en-US, hu-HU |
 | Island | IS | en-US |
-| Indie | IN | en-US, hi-IN |
-| Indonésie | ID | en-US, id-ID |
-| Irák | IQ | en-US, ar-SA |
+| Indie | IN | EN-US, dobrý den |
+| Indonésie | ID | EN-US, ID-ID |
+| Irák | IQ | EN-US, ar – SA |
 | Irsko | IE | en-US |
 | Ostrov Man | IM | en-US |
-| Izrael | IL | en-US, he-IL |
-| Itálie | IT | en-US, it-IT |
+| Izrael | IL | EN-US, he-IL |
+| Itálie | IT | EN-US, IT |
 | Jamajka | JM | en-US |
-| Jan Mayen | Xj | en-US |
-| Japonsko | JP | en-US, ja-JP |
-| Jersey | JE (Je) | en-US |
-| Jordánsko | JO | en-US, ar-SA |
-| Kazachstán | KZ | en-US, kk-KZ |
+| Jan Mayen | XJ | en-US |
+| Japonsko | JP | EN-US, ja-JP |
+| Jersey | VARIABILNÍ | en-US |
+| Jordánsko | JO | EN-US, ar – SA |
+| Kazachstán | KZ | EN-US, KK-KZ |
 | Keňa | KE | en-US |
 | Kiribati | KI | en-US |
-| Jižní Korea | KR | en-US, ko-KR |
-| Kosovo | Xk | en-US |
-| Kuvajt | KW | en-US, ar-SA |
-| Kyrgyzstán | KG | en-US, ru-RU |
+| Jižní Korea | KR | EN-US, ko-KR |
+| Kosovo | XK | en-US |
+| Kuvajt | KW | EN-US, ar – SA |
+| Kyrgyzstán | KG | EN-US, ru-RU |
 | Laos | LA | en-US |
-| Lotyšsko | LV | en-US, lv-LV |
-| Libanon | LB | en-US, ar-SA |
+| Lotyšsko | LV | EN-US, LV-LV |
+| Libanon | LB | EN-US, ar – SA |
 | Lesotho | LS | en-US |
 | Libérie | LR | en-US |
-| Libye | LY | en-US, ar-SA |
-| Lichtenštejnsko | LI | en-US, de-DE |
-| Litva | LT | en-US, lt-LT |
-| Lucembursko | LU | en-US, fr-FR |
-| Macao – zvláštní administrativní oblast | MO | en-US, zh-HK |
-| Bývalá republika Bývalá Republika | MK | en-US |
+| Libye | LY | EN-US, ar – SA |
+| Lichtenštejnsko | LI | EN-US, de-DE |
+| Litva | LT | EN-US, lt-LT |
+| Lucembursko | LU | EN-US, fr-FR |
+| Macao – zvláštní administrativní oblast | MO | EN-US, zh-HK |
+| Makedonie – BRJ | MK | en-US |
 | Madagaskar | MG | en-US |
 | Malawi | MW | en-US |
-| Malajsie | MY | EN-US, MS-MY |
+| Malajsie | MY | en-US, ms-MY |
 | Maledivy | MV | en-US |
 | Mali | ML | en-US |
 | Malta | MT | en-US |
 | Marshallovy ostrovy | MH | en-US |
 | Martinik | MQ | en-US |
 | Mauritánie | MR | en-US |
-| Mauricius | SAMOHLÁSK | EN-US, ar – SA |
+| Mauricius | Mu | en-US, ar-SA |
 | Mayotte | YT | en-US |
-| Mexiko | MX | EN-US, ES-ES |
+| Mexiko | MX | en-US, es-ES |
 | Mikronésie | FM | en-US |
-| Moldavsko | MD | EN-US, RO-RO |
-| Monako | MC | EN-US, fr-FR |
+| Moldavsko | MD | en-US, ro-RO |
+| Monako | MC | en-US, fr-FR |
 | Mongolsko | MN | en-US |
 | Černá Hora | ME | en-US |
 | Montserrat | MS | en-US |
-| Maroko | MA | EN-US, fr-FR, en-US |
+| Maroko | MA | en-US, fr-FR, en-US |
 | Mosambik | MZ | en-US |
 | Myanmar | MM | en-US |
 | Namibie | NA | en-US |
 | Nauru | NR | en-US |
 | Nepál | NP | en-US |
-| Nizozemsko | NL | EN-US, nl – NL |
+| Nizozemsko | NL | en-US, nl-NL |
 | Nová Kaledonie | NC | en-US |
 | Nový Zéland | NZ | en-US |
-| Nikaragua | NI | EN-US, ES-ES |
+| Nikaragua | NI | en-US, es-ES |
 | Niger | NE | en-US |
 | Nigérie | NG | en-US |
 | Niue | NU | en-US |
-| Norfolk | NF | en-US |
+| Norfolk | Nf | en-US |
 | Severní Mariany | MP | en-US |
-| Norsko | NO | EN-US, NB-NO |
-| Omán | OM | EN-US, ar – SA |
+| Norsko | NO | en-US, nb-NO |
+| Omán | OM | en-US, ar-SA |
 | Pákistán | PK | en-US |
 | Palau | PW | en-US |
 | Palestinská samospráva | PS | en-US |
-| Panama | PA | EN-US, ES-ES |
-| Papua-Nová Guinea | STRÁNKY | en-US |
-| Paraguay | PY | EN-US, ES-ES |
-| Peru | PE | EN-US, ES-ES |
+| Panama | PA | en-US, es-ES |
+| Papua-Nová Guinea | Str | en-US |
+| Paraguay | PY | en-US, es-ES |
+| Peru | PE | en-US, es-ES |
 | Filipíny | PH | en-US |
-| Pitcairnovy ostrovy | PN | en-US |
-| Polsko | PL | EN-US, pl-PL |
-| Portugalsko | PT | EN-US, pt-PT |
-| Portoriko | PR | EN-US, en-US |
-| Katar | QA | EN-US, ar – SA |
+| Pitcairnovy ostrovy | Pn | en-US |
+| Polsko | PL | en-US, pl-PL |
+| Portugalsko | PT | en-US, pt-PT |
+| Portoriko | PR | en-US, en-US |
+| Katar | QA | en-US, ar-SA |
 | Réunion | RE | en-US |
-| Rumunsko | RO | EN-US, RO-RO |
-| Rusko | RU | EN-US, ru-RU |
-| Rwanda | RW | EN-US, fr-FR |
-| Svatý Tomáš a Princův ostrov | ST | EN-US, fr-FR |
-| Saba | X | en-US |
+| Rumunsko | RO | en-US, ro-RO |
+| Rusko | RU | en-US, ru-RU |
+| Rwanda | RW | en-US, fr-FR |
+| Sâo Tomé a Můžetencipe | ST | en-US, fr-FR |
+| Saba | Xs | en-US |
 | Saint-Barthélemy | BL | en-US |
 | Svatý Kryštof a Nevis | KN | en-US |
-| Svatá Lucie | LC | EN-US, en-US |
-| Svatý Martin (Francie) | MF | EN-US, en-US |
+| Svatá Lucie | Lc | en-US, en-US |
+| Svatý Martin (Francie) | Mf | en-US, en-US |
 | Saint Pierre a Miquelon | PM | en-US |
 | Svatý Vincenc a Grenadiny | VC | en-US |
 | Samoa | WS | en-US |
-| San Marino | SM | en-US |
+| San Marino | Sm | en-US |
 | Saúdská Arábie | SA | en-US |
-| Senegal | SN | EN-US, fr-FR |
-| Srbsko | RS | EN-US, SR-Latn-RS, en-US |
+| Senegal | SN | en-US, fr-FR |
+| Srbsko | RS | en-US, sr-Latn-RS, en-US |
 | Seychely | SC | en-US |
 | Sierra Leone | SL | en-US |
-| Singapur | SG | EN-US, zh-SG |
-| Svatý Eustach | XE | en-US |
-| Svatý Martin (Nizozemsko) | SX | EN-US, en-US |
-| Slovensko | SK | EN-US, SK-SK |
-| Slovinsko | SI | EN-US, SL-SI |
-| Šalamounovy ostrovy | SB | en-US |
+| Singapur | SG | en-US, zh-SG |
+| Svatý Eustach | Xe | en-US |
+| Svatý Martin (Nizozemsko) | Sx | en-US, en-US |
+| Slovensko | SK | en-US, sk-SK |
+| Slovinsko | SI | en-US, sl-SI |
+| Šalamounovy ostrovy | Sb | en-US |
 | Somálsko | SO | en-US |
 | Jižní Afrika | ZA | en-US |
-| Jižní Georgie a Jižní Sandwichovy ostrovy | GS | en-US |
+| Jižní Georgie a Jižní Sandwichovy ostrovy | Gs | en-US |
 | Jižní Súdán | SS | en-US |
-| Španělsko | ES | EN-US, ES-ES, en-US, en-US |
+| Španělsko | ES | en-US, es-ES, en-US, en-US |
 | Srí Lanka | LK | en-US |
-| Svatá Helena, Ascension a Tristan da Cunha | SH | en-US |
+| St Kaň, Ascension, Tristan da Çha | SH | en-US |
 | Surinam | SR | en-US |
-| Špicberky | SJ | en-US |
-| Švédsko | SE | EN-US, sv-SE |
-| Švýcarsko | CH | EN-US, fr-FR, en-US, en-US |
-| Tchaj-wan | TW | EN-US, zh-HK |
-| Tádžikistán | TJ | en-US |
+| Špicberky | Sj | en-US |
+| Švédsko | SE | en-US, sv-SE |
+| Švýcarsko | CH | en-US, fr-FR, en-US, en-US |
+| Tchaj-wan | TW | en-US, zh-HK |
+| Tádžikistán | Tj., tj. | en-US |
 | Tanzanie | TZ | en-US |
-| Thajsko | TH | EN-US, th-TH |
+| Thajsko | TH | en-US, th-TH |
 | Timor Leste | TL | en-US |
 | Togo | TG | en-US |
-| Tokelau | TK | en-US |
+| Tokelau | Tk | en-US |
 | Tonga | TO | en-US |
 | Trinidad a Tobago | TT | en-US |
-| Tunisko | TN | EN-US, fr-FR, en-US |
-| Turecko | TR | EN-US, tr-TR |
+| Tunisko | TN | en-US, fr-FR, en-US |
+| Turecko | TR | en-US, tr-TR |
 | Turkmenistán | TM | en-US |
 | Ostrovy Turks a Caicos | TC | en-US |
 | Tuvalu | TV | en-US |
-| Odlehlé ostrovy USA | UM | en-US |
+| Odlené ostrovy USA | UM | en-US |
 | Americké Panenské ostrovy | VI | en-US |
 | Uganda | UG | en-US |
-| Ukrajina | UA | EN-US, Spojené království – UA |
-| Spojené arabské emiráty | AE | EN-US, ar – SA |
+| Ukrajina | UA | en-US, uk-UA |
+| Spojené arabské emiráty | AE | en-US, ar-SA |
 | Spojené království | GB | en-US |
 | USA | USA | en-US |
-| Uruguay | UY | EN-US, ES-ES |
-| Uzbekistán | UZ | EN-US, ru-RU |
-| Vanuatu | VU | en-US |
+| Uruguay | UY | en-US, es-ES |
+| Uzbekistán | UZ | en-US, ru-RU |
+| Vanuatu | Vu | en-US |
 | Vatikán | VA | en-US |
-| Venezuela | VE | EN-US, ES-ES |
-| Vietnam | VN | EN-US, VI – VN |
+| Venezuela | VE | en-US, es-ES |
+| Vietnam | VN | en-US, vi-VN |
 | Wallis a Futuna | WF | en-US |
-| Jemen | JE | EN-US, ar – SA |
+| Jemen | YE (Ye) | en-US, ar-SA |
 | Zambie | ZM | en-US |
 | Zimbabwe | ZW | en-US |

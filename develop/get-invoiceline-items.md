@@ -4,12 +4,12 @@ description: Pomocí rozhraní API partnerského centra můžete získat podrobn
 ms.date: 01/27/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 944dddef64ec980d92c292a7f5b9f5eb4e7cecb6
-ms.sourcegitcommit: 15c6cfe72284cf5d4ea3535120e83e473c33f5ec
+ms.openlocfilehash: 10e43127e5f44f76ed9be8b9aa638e982259602ad57709ecee55cb62d8d7d59e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112443168"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996026"
 ---
 # <a name="get-invoice-line-items"></a>Získání řádkových položek faktury
 

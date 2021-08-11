@@ -1,30 +1,30 @@
 ---
 title: Získání informací o využití licencí pro partnery
-description: Jak získat agregované informace o využití partnerských licencí, aby zahrnovaly všechny zákazníky.
+description: Jak získat informace o využití licencí partnerů agregované tak, aby zahrnovaly všechny zákazníky.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f3d05d61ac4f2c90b0d8a4bfd93fe24e94bd5c1b
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: 0f91ec414da26951c91f6d498f89323340bf32f3e5127c067b4b4d454e13d417
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445591"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995760"
 ---
 # <a name="get-partner-licenses-usage-information"></a>Získání informací o využití licencí pro partnery
 
-Jak získat agregované informace o využití partnerských licencí, aby zahrnovaly všechny zákazníky.
+Jak získat informace o využití licencí partnerů agregované tak, aby zahrnovaly všechny zákazníky.
 
 > [!NOTE]
-> Tento scénář je nahrazen [informacemi o využití licencí získat](get-licenses-usage-information.md).
+> Tento scénář nahrazuje možnost Získat [informace o využití licencí.](get-licenses-usage-information.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
 ## <a name="c"></a>C\#
 
-Chcete-li načíst agregovaná data při nasazení licencí, nejprve z vlastnosti [**IAggregatePartner. Analytics**](/dotnet/api/microsoft.store.partnercenter.ipartner.analytics) Získejte rozhraní k operacím shromažďování na úrovni partnera úrovně Analytics. Pak z vlastnosti [**licence**](/dotnet/api/microsoft.store.partnercenter.analytics.ipartneranalyticscollection.licenses) načtěte rozhraní pro kolekci Analytics License licenses Analytics. Nakonec zavolejte metodu [**Usage. Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) , která získá agregovaná data o využití licencí. Pokud je metoda úspěšná, získáte kolekci objektů [**PartnerLicensesUsageInsights**](/dotnet/api/microsoft.store.partnercenter.models.analytics.partnerlicensesusageinsights) .
+Pokud chcete načíst agregovaná data při nasazení licencí, nejprve z vlastnosti [**IAggregatePartner.Analytics**](/dotnet/api/microsoft.store.partnercenter.ipartner.analytics) získejte rozhraní pro operace shromažďování analýz na úrovni partnera. Pak z vlastnosti Licence načtěte rozhraní do analytické kolekce licencí na [**úrovni**](/dotnet/api/microsoft.store.partnercenter.analytics.ipartneranalyticscollection.licenses) partnera. Nakonec zavolejte [**metodu Usage.Get**](/dotnet/api/microsoft.store.partnercenter.genericoperations.ientireentitycollectionretrievaloperations-2.get) a získejte agregovaná data o využití licencí. Pokud je metoda úspěšná, získáte kolekci objektů [**PartnerLicensesUsageInsights.**](/dotnet/api/microsoft.store.partnercenter.models.analytics.partnerlicensesusageinsights)
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -32,17 +32,17 @@ Chcete-li načíst agregovaná data při nasazení licencí, nejprve z vlastnost
 var partnerLicensesUsageAnalytics = partnerOperations.Analytics.Licenses.Usage.Get();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                      |
 |---------|----------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Analytics/licenses/Usage HTTP/1.1 |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/analytics/licenses/usage HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -62,11 +62,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [PartnerLicensesUsageInsights](analytics-resources.md#partnerlicensesusageinsights) , které poskytují informace o použitých licencích.
+V případě úspěchu text odpovědi obsahuje kolekci [prostředků PartnerLicensesUsageInsights,](analytics-resources.md#partnerlicensesusageinsights) které poskytují informace o použitých licencích.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

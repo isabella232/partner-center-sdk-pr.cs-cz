@@ -1,55 +1,55 @@
 ---
-title: Zdroje informací o samoobslužných zásadách
-description: Partner pro zákazníka nastaví samoobslužné zásady.
+title: Prostředky zásad samoobslužné obsluhy
+description: Partner pro zákazníka nastaví zásady samoobslužného poskytování.
 ms.date: 04/13/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e44581b805e076132984b67280699314e274ca94
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: ffca78481572e201d3ef9f488e7d594a9c1176249b4415a347b488f4b9b81c51
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446713"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996763"
 ---
 # <a name="selfservepolicy-resource"></a>Prostředek SelfServePolicy
 
-Partner pro zákazníka nastaví samoobslužné zásady.
+Partner pro zákazníka nastaví zásady samoobslužného poskytování.
 
-## <a name="selfservepolicy"></a>Samoobslužné zásady
+## <a name="selfservepolicy"></a>SelfServePolicy
 
 Popisuje košík.
 
 | Vlastnost              | Typ             | Description                                                                                            |
 |-----------------------|------------------|--------------------------------------------------------------------------------------------------------|
-| id                    | řetězec           | Identifikátor samoobslužné zásady, který se dodá po úspěšném vytvoření samoobslužných zásad.     |
-| Samoobslužná rezervace       | Samoobslužná rezervace  | Samoobslužná entita, které je udělen přístup.                                                     |
-| Grantor               | Grantor          | Grantor, který uděluje přístup.                                                                    |
-| Oprávnění           | Pole oprávnění| Pole prostředků [oprávnění.](#permission)                                                                     |
+| id                    | řetězec           | Identifikátor zásady, který se poskytuje po úspěšném vytvoření zásady samoobslužné obsluhy.     |
+| SelfServeEntity       | SelfServeEntity  | Entita, která má udělen přístup k sobě.                                                     |
+| Udělovatel               | Udělovatel          | Uděluje udělení přístupu.                                                                    |
+| Oprávnění           | Pole oprávnění| Pole prostředků [oprávnění](#permission)                                                                     |
 
-## <a name="selfserveentity"></a>Samoobslužná rezervace
+## <a name="selfserveentity"></a>SelfServeEntity
 
-Představuje entitu s udělenou oprávněními.
+Představuje entitu udělenou oprávnění.
 
 | Vlastnost             | Typ|Description|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| SelfServeEntityType  | řetězec                           | Entita, ke které se uděluje přístup, přijaté hodnoty: Zákazník.                                 |
-| ID tenanta             | řetězec                           | Identifikátor tenanta entity, ke které se uděluje přístup.                                   |
+| SelfServeEntityType  | řetězec                           | Entita, která má udělený přístup, přijaté hodnoty: zákazník                                 |
+| TenantID             | řetězec                           | Identifikátor tenanta entity, která má udělený přístup                                   |
 
-## <a name="grantor"></a>Grantor
+## <a name="grantor"></a>Udělovatel
 
 Představuje udělení oprávnění.
 
 | Vlastnost             | Typ|Description|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| Typ grantoru          | řetězec                           | Udělení přístupu, přijaté hodnoty: BillToPartner.                               |
-| ID tenanta             | řetězec                           | Identifikátor tenanta entity udělující přístup.                                       |
+| GrantorType          | řetězec                           | Uděluje udělení přístupu, přijatelné hodnoty: BillToPartner.                               |
+| TenantID             | řetězec                           | Identifikátor tenanta entity, která uděluje přístup                                       |
 
 
 ## <a name="permission"></a>Oprávnění
 
-Představuje oprávnění v zásadách samoobslužné služby.
+Představuje oprávnění v zásadách samoobslužné obsluhy.
 
 | Vlastnost             | Typ|Description|
 |----------------------|----------------------------------|--------------------------------------------------------------------------------------------|
-| Prostředek             | řetězec                           | Uděluje se také přístup k prostředkům: AzureReservedInstances.                          |
-| Akce               | řetězec                           | Přístup k akci se uděluje pro: Koupit                                           |
+| Prostředek             | řetězec                           | Přístup k prostředkům se uděluje moc: AzureReservedInstances.                          |
+| Akce               | řetězec                           | Přístup k akci je udělován pro: nákup                                           |

@@ -4,12 +4,12 @@ description: Jak odstranit účet zákazníka z karantény integrace v produkčn
 ms.date: 06/20/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b9d9e44ac9c40bd4e3c7e1a9e04253f853dfd96c
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 9b0fa05055f49100ac80f3bc6897b3fbd0a47e32a06806ecfdc8e386e31ae1b9
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973124"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995080"
 ---
 # <a name="delete-a-customer-account-from-the-integration-sandbox"></a>Odstranění zákaznického účet ze sandboxu pro integraci
 

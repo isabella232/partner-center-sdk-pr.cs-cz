@@ -1,58 +1,58 @@
 ---
-title: Odstranit nepřímý prodejce v izolovaném prostoru
-description: Poskytuje informace o odstranění nepřímých prodejců izolovaného prostoru (sandbox) a povolení komplexního testování pomocí rozhraní API.
+title: Odstranění nepřímého prodejce v Sandboxu
+description: Poskytuje informace o odstraňování nepřímých prodejců sandboxu a povolení koncového testování pomocí rozhraní API.
 ms.date: 5/24/2021
 ms.author: vijvala
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: ba1fd002ac62aba4e414d263b33ecc8153054602
-ms.sourcegitcommit: ad8082bee01fb1f57da423b417ca1ca9c0df8e45
+ms.openlocfilehash: 708fedd4e34b2242aae6e6e0ac673ce77524d448dcee4a05877d37b5266e44c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111973005"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994927"
 ---
-# <a name="delete-indirect-reseller-in-sandbox"></a>Odstranit nepřímý prodejce v izolovaném prostoru
+# <a name="delete-indirect-reseller-in-sandbox"></a>Odstranění nepřímého prodejce v Sandboxu
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud (Německo)
 
-Tento dokument ukazuje, jak odstranit nepřímé poskytovatele izolovaného prostoru (sandbox) a jak povolit komplexní testování pomocí rozhraní API.
+Tento dokument ukazuje, jak odstranit nepřímé poskytovatele sandboxu a povolit koncové testování pomocí rozhraní API.
 
 > [!Important]
-> Tento dokument popisuje funkce, které jsou povoleny pouze v prostředí izolovaného prostoru pro prostředí nepřímých modelů.
+> Tento dokument popisuje funkce, které jsou povolené jenom v prostředí sandboxu pro prostředí nepřímých modelů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
 
-## <a name="sandbox-indirect-provider--delete-sandbox-indirect-reseller"></a>Nepřímý poskytovatel izolovaného prostoru – odstranění nepřímého prodejce izolovaného prostoru 
+## <a name="sandbox-indirect-provider--delete-sandbox-indirect-reseller"></a>Nepřímý poskytovatel sandboxu – Odstranění nepřímého prodejce sandboxu 
 
-Tato funkce je k dispozici pouze v izolovaném prostoru (sandbox) a poskytuje nepřímým poskytovatelům izolovaného prostoru možnost vytvářet nepřímé prodejce izolovaného prostoru.
+Tato funkce je dostupná jenom v sandboxu a dává nepřímým poskytovatelům sandboxu možnost vytvářet nepřímé prodejce sandboxu.
 
-1. Předpoklady pro odstranění nepřímého prodejce izolovaného prostoru
-    1. Pozastavit odběry pro každého zákazníka nepřímého prodejce izolovaného prostoru
-    2. Odstranit všechny zákazníky nepřímého prodejce
-2. Limit pěti nepřímých prodejců v izolovaném prostoru (sandbox) povolených pro nepřímý poskytovatel izolovaného prostoru Po odstranění nepřímého prodejce izolovaného prostoru (sandbox) bude kvóta resetována.
+1. Požadavky na odstranění nepřímého prodejce sandboxu
+    1. Pozastavení předplatných pro každého zákazníka nepřímého prodejce sandboxu
+    2. Odstranění všech zákazníků nepřímého prodejce
+2. Povolený limit pěti nepřímých prodejců sandboxu na nepřímého poskytovatele sandboxu. Po odstranění nepřímého prodejce sandboxu se kvóta resetuje.
 
-## <a name="delete-sandbox-indirect-reseller-through-api"></a>Odstranění nepřímého prodejce izolovaného prostoru prostřednictvím rozhraní API
+## <a name="delete-sandbox-indirect-reseller-through-api"></a>Odstranění nepřímého prodejce sandboxu prostřednictvím rozhraní API
 
-### <a name="rest-request"></a>Žádost REST
+### <a name="rest-request"></a>Požadavek REST
 
-#### <a name="request-syntax"></a>Syntaxe žádosti
+#### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti                                                                             |
 |------------|-------------------------------------------------------------------------------------|
-| **DSTRANIT** | [*{baseURL}*](partner-center-rest-urls.md)/v1//sandboxIndirectReseller/{resellerId} |
+| **Odstranit** | [*{baseURL}*](partner-center-rest-urls.md)/v1//sandboxIndirectReseller/{resellerId} |
 
 #### <a name="request-headers"></a>Hlavičky požadavku
 
-- Toto rozhraní API se idempotentní (nepřinese se mu jiný výsledek, pokud ho zavoláte víckrát).
-- Vyžaduje se ID žádosti a ID korelace.
-- Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md) .
+- Toto rozhraní API je idempotentní (pokud ho zavoláte vícekrát, nepřidá jiný výsledek).
+- Vyžaduje se ID požadavku a ID korelace.
+- Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
 
 ### <a name="request-example"></a>Příklad požadavku
 
-DSTRANIT https://api.partnercenter.microsoft.com/v1/sandboxIndirectReseller/{resellerID}
+Odstranit https://api.partnercenter.microsoft.com/v1/sandboxIndirectReseller/{resellerID}
 
 ```http
 Authorization: Bearer
@@ -71,15 +71,15 @@ MS-RequestId: 655890ba-4d2b-4d09-a95f-4ea1348686a5
 Date: Wed, 16 Feb 2021 00:43:02 GMT
 ```
 
-#### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+#### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď obsahuje stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
-Tato metoda vrací následující stavové kódy a chyby:
+Tato metoda vrátí následující stavové kódy úspěchů a chyb:
 
 | Stavový kód HTTP                     | Kód chyby     | Description                                      |
 |--------------------------------------|----------------|--------------------------------------------------|
-| 401                                  | 6002           | Neoprávněný token nebo účet poskytovatele tipů |
-| 403                                  | 6003           | Odstranění izolovaného prostoru (sandbox) se nepovoluje.                 |
-| 403                                  | 6004           | Operace vytvoření izolovaného prostoru (sandbox) není povolená.          |
+| 401                                  | 6002           | Neautorizovaný token nebo účet poskytovatele tipů |
+| 403                                  | 6003           | Odstranění sandboxu IR není povolené                 |
+| 403                                  | 6004           | Operace vytvoření sandboxu IR není povolená          |
 | 409                                  | 1003           | Konflikt při vytváření tenanta                   |

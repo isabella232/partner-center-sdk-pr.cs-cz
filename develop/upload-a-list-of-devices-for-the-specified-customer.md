@@ -1,49 +1,49 @@
 ---
 title: Nahrání seznamu zařízení do stávající dávky pro konkrétního zákazníka
-description: Jak nahrát seznam informací o zařízeních do existující dávky pro zadaného zákazníka. Tím se zařízení přidruží k již vytvořené dávce zařízení.
+description: Postup nahrání seznamu informací o zařízeních do existující dávky pro zadaného zákazníka Tím se zařízení přidruží k již vytvořené dávce zařízení.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 3fa9cff39113130c54cecfaef1f8ca28e0ac5adf
-ms.sourcegitcommit: 4275f9f67f9479ce27af6a9fda96fe86d0bc0b44
+ms.openlocfilehash: d83812f32312d5742fd69c43456cb3ba64dca56bc0c81fe6eedb14d2c010a7fc
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2021
-ms.locfileid: "111530306"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115995471"
 ---
 # <a name="upload-a-list-of-devices-to-an-existing-batch-for-the-specified-customer"></a>Nahrání seznamu zařízení do stávající dávky pro konkrétního zákazníka
 
-**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud (Německo)
 
-Jak nahrát seznam informací o zařízeních do existující dávky pro zadaného zákazníka. Tím se zařízení přidruží k již vytvořené dávce zařízení.
+Postup nahrání seznamu informací o zařízeních do existující dávky pro zadaného zákazníka Tím se zařízení přidruží k již vytvořené dávce zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- Identifikátor dávky zařízení
+- Identifikátor dávky zařízení.
 
 - Seznam prostředků zařízení, které poskytují informace o jednotlivých zařízeních.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete nahrát seznam zařízení do existující dávky zařízení, nejdřív vytvořte instanci nového objektu [list/dotnet/API/System. Collections. Generic. list -1) typu [**Device**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) a naplňte seznam pomocí zařízení. Pro identifikaci každého zařízení se vyžadují minimálně následující kombinace naplněných vlastností:
+Pokud chcete nahrát seznam zařízení do existující dávky zařízení, nejprve vytvořte instanci nového typu [List/dotnet/api/system.collections.generic.list-1) typu Zařízení a naplňte seznam zařízeními. [](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device) Pro identifikaci jednotlivých zařízení se vyžaduje minimálně následující kombinace naplněných vlastností:
 
-- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey).
+- [**Hardwarováhash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey).
 
-- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**Sériové**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
+- [**Hardwarováhash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**SerialNumber**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
 
-- [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)  +  [**Sériové**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
+- [**Hardwarováhash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)  +  [**Klíč produktu**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)  +  [**SerialNumber**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber).
 
-- Pouze [**HardwareHash**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash) .
+- [**Pouze HardwareHash.**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.hardwarehash)
 
-- Pouze [**ProductKey**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey) .
+- [**Jenom ProductKey.**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.productkey)
 
-- [**Sériové**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber)  +  [**OemManufacturerName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.oemmanufacturername)  +  [**Model**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.modelname).
+- [**Sériové číslo**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.serialnumber)  +  [**OemManufacturerName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.oemmanufacturername)  +  [**ModelName**](/dotnet/api/microsoft.store.partnercenter.models.devicesdeployment.device.modelname).
 
-Pak zavolejte metodu [**IAggregatePartner. Customer. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka, aby bylo možné načíst rozhraní k operacím zadaného zákazníka. V dalším kroku zavolejte metodu [**DeviceBatches. ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) s identifikátorem dávky zařízení, aby se získalo rozhraní pro operaci pro zadanou dávku. Nakonec zavolejte metodu [**Devices. Create**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.createasync) pomocí seznamu zařízení, aby se zařízení přidala do dávky zařízení.
+Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka a načtěte rozhraní pro operace v zadaném zákazníkovi. Dále zavolejte [**metodu DeviceBatches.ById**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicesbatchcollection.byid) s identifikátorem dávky zařízení, abyste získali rozhraní pro operace pro zadanou dávku. Nakonec zavolejte [**metodu Devices.Create**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.devicesdeployment.idevicecollection.createasync) se seznamem zařízení a přidejte zařízení do dávky zařízení.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -71,39 +71,39 @@ var trackingLocation =
     partnerOperations.Customers.ById(selectedCustomerId).DeviceBatches.ById(selectedDeviceBatchId).Devices.Create(devicesToBeUploaded);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: CreateDevices. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** CreateDevices.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                                            |
 |----------|------------------------------------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/deviceBatches/{devicebatch-ID}/Devices HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/deviceBatches/{ID_nácrtu_zařízení}/http/1.1 zařízení |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Při vytváření žádosti použijte následující cestu a parametry dotazu.
+Při vytváření požadavku použijte následující cestu a parametry dotazu.
 
 | Název           | Typ   | Vyžadováno | Popis                                           |
 |----------------|--------|----------|-------------------------------------------------------|
-| ID zákazníka    | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
-| devicebatch-ID | řetězec | Yes      | Identifikátor řetězce identifikující dávku zařízení. |
+| id zákazníka    | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| devicebatch-id | řetězec | Yes      | Identifikátor řetězce, který identifikuje dávku zařízení. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tělo žádosti musí obsahovat pole objektů [zařízení](device-deployment-resources.md#device) . Jsou přijaty následující kombinace polí pro identifikaci zařízení:
+Text požadavku musí obsahovat pole [objektů](device-deployment-resources.md#device) Zařízení. Akceptují se následující kombinace polí pro identifikaci zařízení:
 
 - hardwareHash + productKey.
-- hardwareHash + sériové.
-- hardwareHash + productKey + sériové.
-- pouze hardwareHash.
-- pouze productKey.
-- Sériové + oemManufacturerName + model.
+- hardwareHash + serialNumber.
+- hardwareHash + productKey + serialNumber.
+- Pouze hardwareHash.
+- Jenom productKey.
+- serialNumber + oemManufacturerName + modelName.
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -150,11 +150,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-Pokud je úspěšná, odpověď obsahuje hlavičku **umístění** s identifikátorem URI, který se dá použít k načtení stavu nahrávání zařízení. Uložte tento identifikátor URI pro použití s dalšími souvisejícími rozhraními REST API.
+V případě úspěchu odpověď obsahuje **hlavičku Location** s identifikátorem URI, který je možné použít k načtení stavu nahrávání zařízení. Uložte si tento identifikátor URI pro použití s dalšími souvisejícími rozhraními REST API.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

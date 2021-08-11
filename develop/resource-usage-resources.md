@@ -4,12 +4,12 @@ description: Prostředek ResourceUsageRecord můžete použít k popisu odhadova
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: eb626b9d4cb4c57a07f45bcf7b914f534e62ab68
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b330c49518bc12a63f2be731eef5c57884f5b15b706ce4007bbdf1a7bb8fab0e
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446577"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996933"
 ---
 # <a name="resource-usage-record-resources"></a>Prostředky záznamů o využití prostředků
 

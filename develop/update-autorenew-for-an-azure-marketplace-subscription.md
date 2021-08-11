@@ -4,30 +4,30 @@ description: Aktualizujte vlastnost autorenew pro prostředek předplatného, kt
 ms.date: 08/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: cc0b4c4bff5e8762ffcc2552b2e9e36bcf93686c
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: b83c225a8b6fa11bdd5db5bcca9dd277fcfc4ed56769f1a7a272a388a1c93ab5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111446662"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996593"
 ---
 # <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Aktualizace automatického obnovení pro předplatné na komerčním marketplace
 
-Aktualizujte vlastnost autorenew pro zdroj [předplatného](subscription-resources.md) komerčního tržiště, který odpovídá ID zákazníka a předplatného.
+Aktualizujte vlastnost autorenew pro prostředek předplatného [komerčního](subscription-resources.md) marketplace, který odpovídá ID zákazníka a předplatného.
 
-Na řídicím panelu partnerského centra se tato operace provádí prvním [výběrem zákazníka](get-a-customer-by-name.md). Pak vyberte předplatné, které chcete aktualizovat. Nakonec přepněte možnost **automatického obnovení** a pak vyberte **Odeslat**.
+Na řídicím Partnerské centrum se tato operace provede tak, že nejprve [vyberete zákazníka](get-a-customer-by-name.md). Pak vyberte předplatné, které chcete aktualizovat. Nakonec přepněte možnost **Automatické prodloužení** platnosti a pak vyberte **Odeslat.**
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete aktualizovat předplatné zákazníka, nejdřív [získejte předplatné](get-a-subscription-by-id.md)a pak nastavte vlastnost [**autoRenewEnabled**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.autoRenewEnabled) tohoto předplatného. Po provedení změny použijte svou kolekci **IAggregatePartner. Customers** a zavolejte metodu **ById ()** . Poté zavolejte vlastnost [**Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a potom metodu [**ById ()**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) . Potom dokončete voláním metody **patch ()** .
+Pokud chcete aktualizovat předplatné zákazníka, [nejprve získejte](get-a-subscription-by-id.md)předplatné a pak nastavte vlastnost [**autoRenewEnabled předplatného.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.subscription.autoRenewEnabled) Po změně použijte kolekci **IAggregatePartner.Customers** a zavolejte **metodu ById().** Potom zavolejte [**vlastnost Subscriptions**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.subscriptions) a pak [**metodu ById().**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptioncollection.byid) Potom dokončete voláním **metody Patch().**
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,32 +39,32 @@ selectedSubscription.AutoRenewEnabled = false;
 var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(selectedSubscription.Id).Patch(selectedSubscription);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSample **třída**: UpdateSubscription. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSample **– třída:** UpdateSubscription.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro pozastavení předplatného.
+Tato tabulka uvádí požadovaný parametr dotazu pro pozastavení odběru.
 
 | Název                    | Typ     | Vyžadováno | Popis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Customer-tenant-ID**  | **HLAVNÍCH** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID pro předplatné** | **HLAVNÍCH** | Y        | Identifikátor GUID, který odpovídá předplatnému. |
+| **customer-tenant-id**  | **Identifikátor guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
+| **id-for-subscription** | **Identifikátor guid** | Y        | Identifikátor GUID odpovídající předplatnému. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V textu žádosti se vyžaduje kompletní prostředek **odběru** komerčního tržiště. Ujistěte se, že se vlastnost **AutoRenewEnabled** aktualizovala.
+V textu žádosti se **vyžaduje** úplný prostředek předplatného komerčního marketplace. Ujistěte se, že byla aktualizována vlastnost **AutoRenewEnabled.**
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -112,11 +112,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí aktualizované vlastnosti prostředku [předplatného](subscription-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda [v](subscription-resources.md) textu odpovědi aktualizované vlastnosti prostředku předplatného.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

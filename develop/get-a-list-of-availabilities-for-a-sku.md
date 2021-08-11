@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: b29c005e74ad8a4da547a888b78e4599e74ebd02
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 89ffa4156490bd321055f12a1c8c385800b65d8d9e5a460df0cc41edda5c1a27
+ms.sourcegitcommit: f5e2d3e2ad5447b99d339662e00b2ac3a03d7d04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874529"
+ms.lasthandoff: 08/10/2021
+ms.locfileid: "116998495"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Získání seznamu dostupností pro skladovou položku (podle země)
 
@@ -76,9 +76,9 @@ Pomocí následující cesty a parametrů dotazu získejte seznam dostupnosti pr
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| id produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
-| sku-id                 | řetězec   | Yes      | Řetězec, který identifikuje SKU.                               |
-| kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
+| id produktu             | řetězec   | Ano      | Řetězec, který identifikuje produkt.                           |
+| sku-id                 | řetězec   | Ano      | Řetězec, který identifikuje SKU.                               |
+| kód země           | řetězec   | Ano      | ID země nebo oblasti.                                            |
 | target-segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý k filtrování. |
 | reservationScope | řetězec   | No | Při dotazování na seznam dostupnosti pro SKU rezervace Azure zadejte , abyste získali seznam dostupnosti, které se vztahují `reservationScope=AzurePlan` na AzurePlan. Tento parametr vyloučíte, pokud chcete získat seznam dostupnosti, které se vztahují Microsoft Azure předplatná MS-AZR-0145P.  |
 
@@ -121,7 +121,7 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 Postupujte podle tohoto příkladu a získejte seznam dostupnosti pro rezervace virtuálních počítače Azure podle země, které se vztahují na předplatná Microsoft Azure (MS-AZR-0145P).
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/productsDZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureAzureReservationsVM HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureAzureReservationsVM HTTP/1.1
 Authorization: Bearer
 Accept: application/json
 MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
@@ -138,7 +138,7 @@ Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspě
 
 Tato metoda vrátí následující kódy chyb:
 
-| Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
+| Stavový kód HTTP     | Kód chyby   | Popis                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Přístup k **požadovanému targetSegment** není povolený.                                                     |
 

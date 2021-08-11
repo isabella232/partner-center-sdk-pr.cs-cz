@@ -4,12 +4,12 @@ description: Pozastaví prostředek předplatného, který se shoduje s ID záka
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 7dae7c3422a403c48a2b10424c4ae5dbdbc498ea
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: a64a6e806abd7ee91f11c799dcc14ed856337633f2e7b08558995755a01f6535
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547338"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115996729"
 ---
 # <a name="suspend-a-subscription"></a>Pozastavení předplatného
 
