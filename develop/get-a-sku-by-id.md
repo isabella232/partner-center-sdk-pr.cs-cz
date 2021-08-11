@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 9516a87a438a0a84a6f6069c1f9b2a2e97e90fba
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 3be496b694d9e0e34619807e85ed8fe63879f3561a404ebc7361dcedc4479612
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111873849"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994179"
 ---
 # <a name="get-a-sku-by-id"></a>Získání skladové položky podle ID
 
@@ -19,7 +19,7 @@ Získá SKU pro zadaný produkt pomocí zadaného ID SKU.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
 - ID produktu.
 
@@ -27,7 +27,7 @@ Získá SKU pro zadaný produkt pomocí zadaného ID SKU.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat podrobnosti o konkrétní SKU, začněte podle kroků v části [získání produktu podle ID](get-a-product-by-id.md) a získejte rozhraní pro konkrétní operace produktu. Z výsledného rozhraní vyberte vlastnost **SKU** a získejte rozhraní s dostupnými operacemi SKU. Předejte ID skladové položky metodě **ById ()** a voláním metody **Get ()** nebo **GetAsync ()** načtěte podrobnosti SKU.
+Pokud chcete získat podrobnosti o konkrétní SKU, začněte postupem v tématu Získání produktu podle [ID a](get-a-product-by-id.md) získejte rozhraní pro operace konkrétního produktu. Ve výsledném rozhraní vyberte vlastnost **Skus** a získejte rozhraní s dostupnými operacemi pro skladové položky. Předejte ID skladové položky metodě **ById()** a voláním **metody Get()** nebo **GetAsync()** načtěte podrobnosti o SKU.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -39,27 +39,27 @@ string skuId;
 var sku = partnerOperations.Products.ByCountry(countryCode).ById(productId).Skus.ById(skuId).Get();
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                         |
 |---------|---------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}/skus/{SKU-ID}? Country = {Country-Code} HTTP/1.1   |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{id_produktu}/skus/{id_SKU}?country={kód_země} HTTP/1.1   |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K získání SKU pro zadaný produkt pomocí zadaného ID SKU použijte následující cestu a parametry dotazu.
+Pomocí následující cesty a parametrů dotazu získejte SKU pro zadaný produkt pomocí zadaného ID SKU.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| ID produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
-| SKU – ID                 | řetězec   | Yes      | Řetězec, který identifikuje SKU.                               |
+| id produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
+| sku-id                 | řetězec   | Yes      | Řetězec, který identifikuje SKU.                               |
 | kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -81,18 +81,18 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu obsahuje tělo odpovědi prostředek [SKU](product-resources.md#sku) .
+V případě úspěchu bude tělo odpovědi obsahovat [prostředek SKU.](product-resources.md#sku)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
 
-Tato metoda vrací následující kódy chyb:
+Tato metoda vrátí následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
-| 404                  | 400013       | Produkt nebyl nalezen.                                                                                    |
-| 404                  | 400018       | SKU se nepovedlo najít.                                                                                        |
+| 404                  | 400013       | Produkt se nenašel.                                                                                    |
+| 404                  | 400018       | SKU se nenašla.                                                                                        |
 
 ### <a name="response-example"></a>Příklad odpovědi
 

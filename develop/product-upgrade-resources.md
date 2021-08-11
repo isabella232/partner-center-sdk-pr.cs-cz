@@ -4,12 +4,12 @@ description: Můžete použít více prostředků souvisejících s Partnerské 
 ms.date: 11/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c995ac44dbe22000f7bc86991cb973ed31a5c018
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: a251168dbe1e153365beec212feca6fafddaef1700ad8651ec9d459aebf24600
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445336"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997392"
 ---
 # <a name="product-upgrade-resources"></a>Prostředky pro upgrade produktů
 

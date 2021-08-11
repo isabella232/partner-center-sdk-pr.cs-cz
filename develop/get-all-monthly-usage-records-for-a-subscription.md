@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: ee4bd413eec7d5a2dddbe3803df8839589ab7504
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 62cbca9fada5e6935aea647e76097eb73bb3f8f3a5f355f4b43a64e21831070b
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760279"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993992"
 ---
 # <a name="get-all-monthly-usage-records-for-a-subscription"></a>Získání všech záznamů o měsíčním využití pro předplatné
 

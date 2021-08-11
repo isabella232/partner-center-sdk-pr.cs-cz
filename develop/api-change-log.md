@@ -1,43 +1,43 @@
 ---
 title: Protokol změn rozhraní REST API pro Partnerské centrum
-description: Tato stránka obsahuje seznam změn v rozhraních PARTNERSKÉ CENTRUM REST API.
+description: Tato stránka obsahuje seznam změn v rozhraních REST API partnerského centra.
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.topic: reference
 ms.date: 12/15/2020
-ms.openlocfilehash: d4f7f034a36a26b6219086ca952b189f7a313ef7
-ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
+ms.openlocfilehash: f74f59969bf8d73c6e6e8b39900a53c337a2af715c168b59009792beddf43159
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113571991"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993278"
 ---
-# <a name="december-2020-changes-to-partner-center-rest-apis"></a>Změny rozhraní REST API z prosince 2020 Partnerské centrum 2020
+# <a name="december-2020-changes-to-partner-center-rest-apis"></a>Z prosince 2020 změny rozhraní REST API pro partnerský Center
 
-Změny v rozhraních REST API Partnerské centrum tady.
+Tady najdete změny rozhraní REST API pro partnerské Centrum.
 
-## <a name="enhancements-to-education-pricing-eligibility-apis"></a>Vylepšení cen pro nárok na rozhraní API pro vzdělávací instituce
+## <a name="enhancements-to-education-pricing-eligibility-apis"></a>Vylepšení rozhraní API pro nárok na ceny pro vzdělávání
 
 
 
 ### <a name="what-has-changed"></a>Co se změnilo?
 
-V současné době Partnerské centrum API získalo kvalifikaci GET a PUT pro ověření způsobilosti zákazníků v oblasti vzdělávání. Rozhraní GET Qualification API se nezmění. Do rozhraní PUT Qualification API jsme ale přidali případ vrácení.
+V současné době má rozhraní API partnerského centra získat a dát kvalifikaci k ověření nároku na vzdělávání zákazníků. Rozhraní API pro získání kvalifikace nebude nijak nijak měnit. Přidali jsme ale návratový případ do rozhraní API kvalifikace PUT.
 
-- GET – nezmění se.
-- PUT – přidá se případ vrácení.
+- ZÍSKAT změny.
+- Přidá se případ vrácení vložení.
 
-Tato rozhraní API se na konci února 2021 vyřazena, aby byla nahrazena novými rozhraními API, jak je popsáno níže.
+Tato rozhraní API budou vyřazena na konci února 2021, která budou nahrazena novými rozhraními API, jak je popsáno níže.
 
 ### <a name="scenarios-impacted"></a>Ovlivněné scénáře:
 
-Nárok zákazníka na ceny za vzdělávání pro vybrané skladové položky
+Nárok zákazníků na ceny pro vzdělávání na vybraných SKU
 
-### <a name="detail-descriptions"></a>Podrobné popisy
+### <a name="detail-descriptions"></a>Popisy podrobností
 
-Budou zavedena dvě nová rozhraní API pro kvalifikace GET a POST. Nová rozhraní API budou používat **kvalifikace,** nikoli **kvalifikace**. Rozhraní API budou k dispozici pro testování ve FY21 Q2.
+Budou zavedena dvě nová rozhraní API GET a POST. Nová rozhraní API budou používat **kvalifikaci**, nikoli **kvalifikaci**. Rozhraní API budou k dispozici pro testování v FY21 Q2.
 
-#### <a name="get-qualifications"></a>GET – kvalifikace
+#### <a name="get-qualifications"></a>ZÍSKAT kvalifikaci
 
 ```http
 GET {customer_id}/qualifications
@@ -56,18 +56,18 @@ GET {customer_id}/qualifications
 
 #### <a name="response-fields"></a>Pole odpovědi: 
 
-- Hodnoty VettingStatus: Approved, Denied, InReview atd.
+- Hodnoty VettingStatus: schváleno, zamítnuto, inrevize atd.
 
-- Hodnoty VettingReason:
-   - Není zákazníkem v oblasti vzdělávání
-   - Už není zákazníkem v oblasti vzdělávání
-   - Není zákazníkem v oblasti vzdělávání – po dokončení revize
-   - Omezená možnost být zákazníkem v oblasti vzdělávání
-   - Není to academic domain
-   - Není oprávněná knihovna
-   - Není oprávněným kachlem
+- VettingReason hodnoty:
+   - Nejedná se o zákazníka vzdělávání.
+   - Už není zákazník pro vzdělávání.
+   - Nejedná se o zákazníka vzdělávání – po kontrole
+   - Omezené na zákazníka vzdělávání
+   - Nejedná se o akademickou doménu.
+   - Neoprávněná knihovna
+   - Nejedná se o opravňující Museum
  
-#### <a name="post-qualifications"></a>Kvalifikace POST
+#### <a name="post-qualifications"></a>Vystavení kvalifikace
 
 ```http
 POST {customer_id}/qualifications

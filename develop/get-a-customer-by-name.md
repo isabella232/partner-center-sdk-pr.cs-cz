@@ -1,37 +1,37 @@
 ---
 title: Získání seznamu zákazníků filtrovaných podle vyhledávacího pole
-description: Získá kolekci prostředků zákazníka, které odpovídají filtru. Volitelně můžete nastavit velikost stránky. Můžete filtrovat podle názvu společnosti, domény, nepřímého prodejce nebo nepřímého poskytovatele cloudových řešení (CSP).
+description: Získá kolekci zákaznických prostředků, které odpovídají filtru. Volitelně můžete nastavit velikost stránky. Můžete filtrovat podle názvu společnosti, domény, nepřímého prodejce nebo poskytovatele nepřímých cloudových řešení (CSP).
 ms.date: 07/22/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: dineshvu
 ms.author: dineshvu
-ms.openlocfilehash: 663b8509d8704f9c443796d9fbcf72fb9c5b7fb2
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 4e77edd3e7d94711ad18796c0afb4db30c50abf0bc9636335b413a5d41dff9c8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874954"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993091"
 ---
 # <a name="get-a-list-of-customers-filtered-by-a-search-field"></a>Získání seznamu zákazníků filtrovaných podle vyhledávacího pole
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Získá kolekci prostředků [zákazníka,](customer-resources.md#customer) které odpovídají filtru. Volitelně můžete nastavit velikost stránky. Můžete filtrovat podle názvu společnosti, domény, nepřímého prodejce nebo nepřímého poskytovatele cloudových řešení (CSP).
+Získá kolekci [zákaznických](customer-resources.md#customer) prostředků, které odpovídají filtru. Volitelně můžete nastavit velikost stránky. Můžete filtrovat podle názvu společnosti, domény, nepřímého prodejce nebo poskytovatele nepřímých cloudových řešení (CSP).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
-- Uživatelem vytvořený filtr.
+- Filtr vytvořený uživatelem.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat kolekci zákazníků, kteří odpovídají filtru, vytvořte nejprve instanci objektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) a vytvořte filtr. Budete muset předat řetězec, který obsahuje [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield), a určit typ operace filtru [**jako FieldFilterOperation.StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). To je jediná operace filtru polí podporovaná koncovým bodem zákazníků. Budete také muset zadat řetězec, podle který chcete filtrovat.
+Pro získání kolekce zákazníků, které odpovídají filtru, nejprve vytvořte instanci objektu [**SimpleFieldFilter**](/dotnet/api/microsoft.store.partnercenter.models.query.simplefieldfilter) , abyste vytvořili filtr. Budete muset předat řetězec, který obsahuje [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield), a označit typ operace filtru jako [**FieldFilterOperation. StartsWith**](/dotnet/api/microsoft.store.partnercenter.models.query.fieldfilteroperation). To je jediná operace filtru pole podporovaná koncovým bodem zákazníků. Také budete muset zadat řetězec, podle kterého se má filtrovat.
 
-Dále vytvořte instanci objektu [**iQuery,**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) který se má předat dotazu voláním metody [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) a předáním filtru. BuildSimplyQuery je pouze jedním z typů dotazů podporovaných [**třídou QueryFactory.**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory)
+Dále vytvořte instanci objektu [**iQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.iquery) , který se předá dotazu, voláním metody [**BuildSimpleQuery**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory.buildsimplequery) a předáním filtru. BuildSimplyQuery je pouze jeden z typů dotazu podporovaných třídou [**QueryFactory**](/dotnet/api/microsoft.store.partnercenter.models.query.queryfactory) .
 
-Nakonec spusťte filtr a získejte výsledek tak, že nejprve pomocí [**IAggregatePartner.Customers**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) získáte rozhraní pro operace zákazníků partnera. Potom zavolejte [**metodu Query**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) nebo [**QueryAsync.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync)
+Nakonec, pokud chcete spustit filtr a získat výsledek, nejdřív použijte [**IAggregatePartner. zákazníci**](/dotnet/api/microsoft.store.partnercenter.ipartner.customers) , aby získali rozhraní pro zákaznické operace partnera. Pak zavolejte [**dotaz**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.query) nebo metodu [**QueryAsync**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.queryasync) .
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -52,15 +52,15 @@ var myQuery = QueryFactory.Instance.BuildSimpleQuery(fieldFilter);
 var customers = partnerOperations.Customers.Query(myQuery);
 ```
 
-**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** FilterCustomers.cs
+**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: FilterCustomers. cs
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers?size={size}&filter={filter} HTTP/1.1 |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers? size = {size} &Filter = {Filter} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -68,14 +68,14 @@ Použijte následující parametry dotazu.
 
 | Název   | Typ   | Vyžadováno | Popis                                                                    |
 |--------|--------|----------|--------------------------------------------------------------------------------|
-| size   | int    | No       | Počet výsledků, které se zobrazí najednou Tento parametr je volitelný. |
-| filter | filter | Yes      | Filtr, který se má použít pro zákazníky. Musí to být zakódovaný řetězec.              |
+| size   | int    | No       | Počet výsledků, které se mají zobrazit v jednom okamžiku. Tento parametr je volitelný. |
+| filter | filter | Yes      | Filtr, který se má použít pro zákazníky Musí se jednat o kódovaný řetězec.              |
 
 ### <a name="filter-syntax"></a>Syntaxe filtru
 
-Parametr filtru musíte vytvořit jako řadu párů klíč-hodnota oddělených čárkami. Každý klíč a hodnota musí být jednotlivě uvozené a oddělené dvojtečkou. Celý filtr musí být kódovaný.
+Parametr Filter je nutné vytvořit jako řadu párů klíč-hodnota oddělené čárkami. Každý klíč a hodnota musí být jednotlivě kotované a oddělené dvojtečkou. Celý filtr musí být kódovaný.
 
-Nekódovaný příklad vypadá jako tento:
+Nekódovaný příklad vypadá takto:
 
 ```http
 ?filter{"Field":"CompanyName","Value":"cont","Operator":"starts_with"}
@@ -85,13 +85,13 @@ Následující tabulka popisuje požadované páry klíč-hodnota:
 
 | Klíč      | Hodnota                                                                                                                    |
 |----------|--------------------------------------------------------------------------------------------------------------------------|
-| Pole    | Pole, které chcete filtrovat. Platné hodnoty najdete v [**customerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
-| Hodnota    | Hodnota, podle které se má filtrovat. Případ hodnoty se ignoruje.                                                                |
-| Operátor | Operátor, který se má použít. Jediná podporovaná hodnota pro tento zákaznický scénář je "začíná \_ na".                            |
+| Pole    | Pole, které se má filtrovat Platné hodnoty najdete v [**CustomerSearchField**](/dotnet/api/microsoft.store.partnercenter.models.customers.customersearchfield). |
+| Hodnota    | Hodnota, podle které se má filtrovat Případ hodnoty je ignorován.                                                                |
+| Operátor | Operátor, který se má použít Jediná podporovaná hodnota pro tento scénář zákazníka je "začíná na \_ ".                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -112,11 +112,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí tato [](customer-resources.md#customer) metoda v textu odpovědi kolekci odpovídajících prostředků zákazníka.
+V případě úspěchu tato metoda vrátí kolekci vyhovujících [zákaznických](customer-resources.md#customer) prostředků v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

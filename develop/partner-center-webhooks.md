@@ -1,66 +1,66 @@
 ---
 title: Webhooky Partnerského centra
-description: Webhooky umožňují partnerům registrovat události změny prostředků.
+description: Webhooky umožňují partnerům registrovat se na události změny prostředků.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 74d5981436ba29ea4f6f93a5693ec6da82777eb4
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: cf063579b447601fa1050d6b03e0c46f6ef64abef9bb500598a047ac40ddaa1d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547729"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997545"
 ---
 # <a name="partner-center-webhooks"></a>Webhooky Partnerského centra
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Rozhraní API Partnerské centrum webhooku umožňují partnerům registrovat události změny prostředků. Tyto události se doručí do registrované adresy URL partnera ve formě požadavků HTTP. Aby partneři mohli přijímat události Partnerské centrum, budou hostovat zpětné volání, Partnerské centrum může událost změny prostředku POST. Událost bude digitálně podepsaná, aby partner mohl ověřit, že se odeslala z Partnerské centrum.
+Rozhraní API Webhooku partnerského centra umožňují partnerům registrovat se na události změny prostředků. Tyto události se doručí ve formě příspěvků HTTP na registrovanou adresu URL partnera. Aby partneři mohli získat událost z partnerského centra, bude hostovat zpětné volání, které může partnerské Centrum publikovat událost změny prostředku. Událost bude digitálně podepsaná, aby partner mohl ověřit, že byla odeslána z partnerského centra.
 
-Partneři si mohou vybrat z událostí webhooku, jako jsou následující příklady, které podporuje Partnerské centrum.
+Partneři můžou vybírat z událostí Webhooku, jako jsou následující příklady, které jsou podporované partnerským centrem.
 
-- **Testovací událost ("test-created")**
+- **Testovací událost ("test-Created")**
 
-    Tato událost vám umožní registraci sama onboardovat a otestovat tak, že si vyžádáte testovací událost a pak budete sledovat její průběh. Uvidíte zprávy o selhání, které microsoft přijímá při pokusu o doručení události. Toto omezení se vztahuje pouze na události vytvořené testem. Data starší než sedm dnů se vyprázdní.
+    Tato událost umožňuje samoobslužné zprovoznění a testování registrace tím, že požaduje testovací událost a pak sleduje jeho průběh. Při pokusu o doručení události můžete zobrazit zprávy o chybách, které jsou přijímány od společnosti Microsoft. Toto omezení se vztahuje pouze na události "vytvořené testem". Data starší než sedm dní se vyprázdní.
 
-- **Událost aktualizace předplatného (aktualizace předplatného)**
+- **Událost aktualizace předplatného (předplatné-Aktualizováno)**
 
-    Tato událost se vyvolala při změně předplatného. Tyto události se vygenerují v případě, že dojde k interní změně kromě toho, že se změny provádí prostřednictvím Partnerské centrum API.
+    Tato událost se vyvolá při změně předplatného. Tyto události budou vygenerovány v případě, že dojde k vnitřní změně kromě změny prostřednictvím rozhraní API partnerského centra.
 
     >[!NOTE]
-    >Mezi změnou předplatného a aktivací události Aktualizace předplatného je zpoždění až 48 hodin.
+    >Mezi časem změny předplatného a aktivací události aktualizace předplatného dojde k prodlevě až 48 hodin.
 
-- **Událost překročení prahové hodnoty (usagerecords-thresholdExceeded)**
+- **Událost překročení prahové hodnoty ("usagerecords-thresholdExceeded")**
 
-    Tato událost se nastane, když výše Microsoft Azure využití u všech zákazníků překročí rozpočet útraty za využití (jejich prahovou hodnotu). Další informace najdete v tématu [Nastavení rozpočtu útraty Azure pro zákazníky/partnerské centrum/set-an-azure-spending-budget-for-your-customers).
+    tato událost se vyvolá v případě, že množství využití Microsoft Azure pro každého zákazníka přesáhne rozpočet výdajů na využití (jejich prahovou hodnotu). Další informace najdete v tématu [nastavení rozpočtu útraty Azure pro vaše zákazníky/partnery – Center/set-a-Azure-útraty-rozpočet-pro zákazníky).
 
-- **Událost vytvoření referenčního seznamu ("vytvoření referenčního seznamu")**
+- **Událost vytvořená odkazem (odkaz – vytvořeno)**
 
-    Tato událost se vyvolala při vytvoření referenčního odkazu.
+    Tato událost je aktivována při vytvoření odkazu.
 
-- **Aktualizovaná událost referenčního seznamu (aktualizace referenčních seznamu)**
+- **Událost aktualizovaného odkazu (odkaz-Aktualizováno)**
 
-    Tato událost se vyvolala při aktualizaci referenčního odkazu.
+    Tato událost je aktivována při aktualizaci odkazu.
 
-- **Událost připravenou na fakturu (připravenou k fakturaci)**
+- **Událost připravena k faktuře ("faktura-připravena")**
 
-    Tato událost se vyvolala, když je nová faktura připravená.
+    Tato událost se vyvolá, když je nová faktura připravena.
 
-Budoucí události webhooku budou přidány pro prostředky, které se mění v systému, nad který partner nemá kontrolu, a budou provedeny další aktualizace, aby se tyto události dostaly co nejvíce do "v reálném čase". Názory partnerů na to, které události přidávají do své firmy přidanou hodnotu, budou užitečné při určování nových událostí, které se mají přidat.
+Další události Webhooku se přidají pro prostředky, které se změní v systému, který partner neovládá, a provede se další aktualizace, aby se tyto události dostaly co nejblíže "reálnému času". Názory partnerů, na kterých události přidávají hodnotu do jejich podnikání, budou užitečné při určování nových událostí, které se mají přidat.
 
-Úplný seznam událostí webhooku podporovaných webhookem podporovaných Partnerské centrum najdete [v Partnerské centrum událostí webhooku.](partner-center-webhook-events.md)
+Úplný seznam událostí Webhooku podporovaných partnerským centrem najdete v tématu [události Webhooku partnerského centra](partner-center-webhook-events.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
-## <a name="receiving-events-from-partner-center"></a>Příjem událostí z Partnerské centrum
+## <a name="receiving-events-from-partner-center"></a>Příjem událostí z partnerského centra
 
-Pokud chcete přijímat události Partnerské centrum, musíte zveřejnit veřejně přístupný koncový bod. Vzhledem k tomu, že je tento koncový bod vystavený, musíte ověřit, že komunikace pochází z Partnerské centrum. Všechny události webhooku, které obdržíte, jsou digitálně podepsané certifikátem, který se zřetězuje s kořenem Microsoftu. Bude také poskytnut odkaz na certifikát použitý k podepsání události. To umožní obnovení certifikátu bez nutnosti opětovného nasazení nebo překonfigurování služby. Partnerské centrum 10 pokusů o doručení události. Pokud se událost ani po 10 pokusech doručí, přesune se do offline fronty a žádné další pokusy nebudou provedeny při doručení.
+Pokud chcete přijímat události z partnerského centra, musíte zveřejnit veřejně přístupný koncový bod. Vzhledem k tomu, že je tento koncový bod vystavený, musíte ověřit, jestli je komunikace z partnerského centra. Všechny události Webhooku, které jste obdrželi, jsou digitálně podepsané certifikátem, který je zřetězený do kořenového adresáře společnosti Microsoft. Bude také k dispozici odkaz na certifikát použitý k podepsání události. Tím umožníte prodloužení platnosti certifikátu, aniž byste museli službu znovu nasazovat nebo překonfigurovat. Partnerským centrem se 10 pokusí o doručení události. Pokud se událost ještě doručí po 10 pokusech, přesune se do offline fronty a žádné další pokusy se neuskuteční při doručení.
 
-Následující příklad ukazuje událost z webu Partnerské centrum.
+Následující ukázka ukazuje událost zveřejněnou z partnerského centra.
 
 ```http
 POST /webhooks/callback
@@ -82,48 +82,48 @@ Content-Length: 195
 ```
 
 >[!NOTE]
->Autorizační hlavička má schéma Podpis. Jedná se o signaturu obsahu s kódováním Base64.
+>Autorizační hlavička má schéma "signatura". Toto je signatura s kódováním base64 obsahu.
 
 ## <a name="how-to-authenticate-the-callback"></a>Ověření zpětného volání
 
-Pokud chcete ověřit událost zpětného volání přijatou z Partnerské centrum, postupujte takto:
+K ověření události zpětného volání přijatého z partnerského centra použijte následující postup:
 
-1. Ověřte, že jsou k dispozici požadované hlavičky (Authorization, x-ms-certificate-url, x-ms-signature-algorithm).
+1. Ověřte, zda jsou k dispozici požadovaná záhlaví (autorizace, x-MS-Certificate-URL, x-MS-Signature-Algorithm).
 
-2. Stáhněte si certifikát použitý k podepsání obsahu (x-ms-certificate-url).
+2. Stáhněte si certifikát použitý k podepsání obsahu (x-MS-Certificate-URL).
 
 3. Ověřte řetěz certifikátů.
 
-4. Ověřte organizaci certifikátu.
+4. Ověřte "organizaci" certifikátu.
 
-5. Načtěte obsah s kódováním UTF8 do vyrovnávací paměti.
+5. Přečtěte si obsah s kódováním UTF8 do vyrovnávací paměti.
 
-6. Vytvořte zprostředkovatele kryptografických služeb RSA.
+6. Vytvořte poskytovatele kryptografických služeb RSA.
 
-7. Ověřte, že data odpovídají tomu, co bylo podepsáno zadaným hashovacím algoritmem (například SHA256).
+7. Ověřte, že data odpovídají údajům, které byly podepsány zadaným algoritmem hash (například SHA256).
 
-8. Pokud ověření proběhne úspěšně, zpracujte zprávu.
+8. Pokud je ověření úspěšné, zpracujte zprávu.
 
 > [!NOTE]
-> Ve výchozím nastavení se token podpisu odesílá v autorizační hlavičce. Pokud ve své registraci nastavíte **SignatureTokenToMsSignatureHeader** na true, token podpisu se místo toho odesílá v hlavičce x-ms-signature.
+> Ve výchozím nastavení se token podpisu pošle v autorizační hlavičce. Pokud jste v registraci nastavili **SignatureTokenToMsSignatureHeader** na hodnotu true, token podpisu se místo toho pošle v hlavičce x-MS-Signature.
 
 ## <a name="event-model"></a>Model událostí
 
-Následující tabulka popisuje vlastnosti události Partnerské centrum.
+Následující tabulka popisuje vlastnosti události partnerského centra.
 
 ### <a name="properties"></a>Vlastnosti
 
 | Název                      | Description                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------|
-| **EventName**             | Název události. Ve tvaru {resource}-{action}. Například "test-created".  |
-| **Identifikátor URI prostředku**           | Identifikátor URI prostředku, který se změnil.                                                 |
-| **Název prostředku**          | Název prostředku, který se změnil.                                                |
-| **AuditUrl**              | Nepovinný parametr. Identifikátor URI záznamu Auditu.                                                |
-| **ResourceChangeUtcDate** | Datum a čas ve formátu UTC, kdy došlo ke změně prostředku                  |
+| **EventName**             | Název události. Ve formátu {Resource} – {Action}. Například "test-Created".  |
+| **ResourceUri**           | Identifikátor URI prostředku, který se změnil.                                                 |
+| **ResourceName**          | Název prostředku, který se změnil.                                                |
+| **AuditUrl**              | Nepovinný parametr. Identifikátor URI záznamu auditu                                                |
+| **ResourceChangeUtcDate** | Datum a čas ve formátu UTC, kdy došlo ke změně prostředků.                  |
 
 ### <a name="sample"></a>Ukázka
 
-Následující příklad ukazuje strukturu události Partnerské centrum.
+Následující příklad ukazuje strukturu události partnerského centra.
 
 ```http
 {
@@ -135,15 +135,15 @@ Následující příklad ukazuje strukturu události Partnerské centrum.
 }
 ```
 
-## <a name="webhook-apis"></a>Rozhraní API webhooků
+## <a name="webhook-apis"></a>Rozhraní API Webhooku
 
 ### <a name="authentication"></a>Authentication
 
-Všechna volání rozhraní API webhooku se ověřují pomocí tokenu Bearer v autorizační hlavičce. Získání přístupového tokenu pro přístup k `https://api.partnercenter.microsoft.com` . Tento token je stejný token, který se používá pro přístup ke zbývajícím Partnerské centrum API.
+Všechna volání rozhraní API Webhooku se ověřují pomocí nosných tokenů v autorizační hlavičce. Získání přístupového tokenu pro přístup `https://api.partnercenter.microsoft.com` . Tento token je stejný token, který se používá pro přístup ke zbytkům rozhraní API partnerského centra.
 
-### <a name="get-a-list-of-events"></a>Získání seznamu událostí
+### <a name="get-a-list-of-events"></a>Získat seznam událostí
 
-Vrátí seznam událostí, které jsou aktuálně podporovány rozhraními API webhooku.
+Vrátí seznam událostí, které jsou aktuálně podporovány rozhraními API Webhooku.
 
 ### <a name="resource-url"></a>Adresa URL prostředku
 
@@ -219,7 +219,7 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="view-a-registration"></a>Zobrazení registrace
+### <a name="view-a-registration"></a>Zobrazit registraci
 
 Vrátí registraci události webhooků pro tenanta.
 
@@ -301,12 +301,12 @@ MS-RequestId: f04b1b5e-87b4-4d95-b087-d65fffec0bd2
 }
 ```
 
-### <a name="send-a-test-event-to-validate-your-registration"></a>Odeslat testovací událost pro ověření vaší registrace
+### <a name="send-a-test-event-to-validate-your-registration"></a>Odeslání testovací události pro ověření registrace
 
-Vygeneruje testovací událost pro ověření registrace webhooků. Tento test je určen k ověření, že můžete přijímat události z partnerského centra. Data pro tyto události budou odstraněna sedm dní od vytvoření počáteční události. Před odesláním události ověření musíte být registrováni pro událost vytvářenou pomocí registračního rozhraní API.
+Vygeneruje testovací událost pro ověření registrace webhooků. Účelem tohoto testu je ověřit, že můžete přijímat události z Partnerské centrum. Data pro tyto události se odstraní sedm dní po vytvoření počáteční události. Před odesláním události ověření musíte být zaregistrovaní k události vytvoření testu pomocí registračního rozhraní API.
 
 >[!NOTE]
->Při odesílání události ověření existuje omezení počtu 2 požadavků za minutu.
+>Při odesílání události ověření platí limit 2 požadavků za minutu.
 
 #### <a name="resource-url"></a>Adresa URL prostředku
 
@@ -342,7 +342,7 @@ X-Locale: en-US
 
 ### <a name="verify-that-the-event-was-delivered"></a>Ověření doručení události
 
-Vrátí aktuální stav události ověření. Toto ověření může být užitečné při řešení problémů s doručováním událostí. Odpověď obsahuje výsledek pro každý pokus, který je proveden pro doručení události.
+Vrátí aktuální stav události ověření. Toto ověření může být užitečné při řešení potíží s doručováním událostí. Odpověď obsahuje výsledek každého pokusu o doručení události.
 
 #### <a name="resource-url"></a>Adresa URL prostředku
 
@@ -386,9 +386,9 @@ X-Locale: en-US
 }
 ```
 
-## <a name="example-for-signature-validation"></a>Příklad pro ověřování podpisů
+## <a name="example-for-signature-validation"></a>Příklad ověření podpisu
 
-### <a name="sample-callback-controller-signature-aspnet"></a>Ukázkový podpis kontroleru zpětného volání (ASP.NET)
+### <a name="sample-callback-controller-signature-aspnet"></a>Podpis kontroleru vzorového zpětného volání (ASP.NET)
 
 ``` csharp
 [AuthorizeSignature]
@@ -398,7 +398,7 @@ public IHttpActionResult Post(PartnerResourceChangeCallBack callback)
 
 ### <a name="signature-validation"></a>Ověření podpisu
 
-Následující příklad ukazuje, jak přidat autorizační atribut do kontroleru, který přijímá zpětná volání z událostí Webhooku.
+Následující příklad ukazuje, jak přidat autorizační atribut do kontroleru, který přijímá zpětná volání z událostí webhooku.
 
 ``` csharp
 namespace Webhooks.Security

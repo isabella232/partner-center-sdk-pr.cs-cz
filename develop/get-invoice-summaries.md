@@ -1,38 +1,38 @@
 ---
 title: Získání přehledu faktur
-description: K zobrazení zůstatku a celkovému počtu poplatků za periodické i jednorázové poplatky můžete použít prostředek souhrnu faktury pro každý typ měny.
+description: Pomocí prostředku souhrnů faktur pro každý typ měny můžete zobrazit zůstatek a celkové poplatky pro opakované i jedno časové poplatky.
 ms.date: 09/24/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: fb6ff839c56c7b0b77a9904abf05d95ca0500b00
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 8bc01ba57571dec2b9e8fb84452e0dd2485efc06483ba2cf6964a42543334fc5
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549106"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993244"
 ---
 # <a name="get-invoice-summaries"></a>Získání přehledu faktur
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Můžete použít **InvoiceSummaries** k načtení souhrnu faktury, který ukazuje zůstatek a celkové poplatky za periodické i jednorázové poplatky. Prostředek **InvoiceSummaries** obsahuje souhrn faktury pro každý typ měny.
+Souhrny faktur **můžete použít** k načtení souhrnu faktur, který zobrazuje zůstatek a celkové poplatky pro opakované i jedno časové poplatky. Prostředek **InvoiceSummaries** obsahuje souhrn faktur pro každý typ měny.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- Platný identifikátor faktury
+- Platný identifikátor faktury.
 
 ## <a name="c"></a>C\#
 
-Načtení kolekce [**InvoiceSummaries**](invoice-resources.md#invoicesummaries) obsahující [**InvoiceSummary**](invoice-resources.md#invoicesummary) pro každý typ měny:
+Načtení kolekce [**InvoiceSummaries,**](invoice-resources.md#invoicesummaries) která obsahuje [**InvoiceSummary**](invoice-resources.md#invoicesummary) pro každý typ měny:
 
-1. Pomocí kolekce **IAggregatePartner. faktur** volejte vlastnost **souhrny** .
+1. Kolekci **IAggregatePartner.Invoices** použijte k volání **vlastnosti Summaries.**
 
-2. Zavolejte metodu **Get ()** .
-3. Chcete-li získat rovnováhu jednotlivého [**InvoiceSummary**](invoice-resources.md#invoicesummary), přístup k vlastnosti **BalanceAmount** pro daného člena kolekce.
+2. Zavolejte **metodu Get().**
+3. Pokud chcete získat zůstatek jednotlivých [**součet faktur,**](invoice-resources.md#invoicesummary)získejte přístup k vlastnosti **BalanceAmount** pro tohoto člena kolekce.
 
 ``` csharp
 // IAggregatePartner scopedPartnerOperations;
@@ -44,19 +44,19 @@ var invoiceSummaries = scopedPartnerOperations.Invoices.Summaries.Get();
 Console.Out.WriteLine("Current Account Balance:  {0:C}", invoiceSummaries[0].BalanceAmount);
 ```
 
-Další informace naleznete v následujícím ukázkovém kódu:
+Další informace najdete v následujícím příkladu kódu:
 
-- Ukázka: [aplikace testů konzoly](console-test-app.md)
-- Project: **PartnerSDK. FeatureSample**
-- Třída: **GetInvoiceSummaries. cs**
+- Ukázka: [Konzolová testovací aplikace](console-test-app.md)
+- Project: **PartnerSDK.FeatureSample**
+- Třída: **GetInvoiceSummaries.cs**
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                   |
 |---------|-------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/summaries HTTP/1.1     |
+| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/summaries HTTP/1.1     |
 
 #### <a name="uri-parameter"></a>Parametr URI
 
@@ -64,7 +64,7 @@ Další informace naleznete v následujícím ukázkovém kódu:
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -83,11 +83,11 @@ Connection: Keep-Alive
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek [**InvoiceSummaries**](invoice-resources.md#invoicesummaries) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi prostředek [**InvoiceSummaries.**](invoice-resources.md#invoicesummaries)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

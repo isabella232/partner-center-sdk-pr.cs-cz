@@ -1,32 +1,32 @@
 ---
 title: Aktualizace kvalifikace zákazníka
-description: Provede asynchronní aktualizace kvalifikací zákazníka, včetně adresy přidružené k profilu.
+description: Asynchronně aktualizuje kvalifikace zákazníka, včetně adresy přidružené k profilu.
 ms.date: 03/23/2021
 ms.service: partner-dashboard
 author: JoeyBytes
 ms.author: jobiesel
-ms.openlocfilehash: d7dd3593894ce91ddc7b96d604b80153d41d3a67
-ms.sourcegitcommit: 51237e7e98d71a7e0590b4d6a4034b6409542126
+ms.openlocfilehash: 6d46d6a170e4ebcd441e678c482469c4041b2435bf7ee946dc91db554ec4932a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113572093"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997953"
 ---
-# <a name="update-a-customers-qualifications-asynchronously"></a>Asynchronní aktualizace kvalifikací zákazníka
+# <a name="update-a-customers-qualifications-asynchronously"></a>Asynchronní aktualizace kvalifikace zákazníka
 
-Asynchronně aktualizuje kvalifikace zákazníka.
+Aktualizuje kvalifikace zákazníka asynchronně.
 
-Partner může provést asynchronní aktualizaci kvalifikací zákazníka, pokud jde o "vzdělávání" nebo "GovernmentCommunityCloud". Další hodnoty, "none" a "neziskové" nelze nastavit.
+Partner může asynchronně aktualizovat kvalifikace zákazníka tak, aby byla "Vzdělávání" nebo "GovernmentCommunityCloud". Ostatní hodnoty None (Žádný) a Nonprofit (Neziskové organizace) nelze nastavit.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Chcete-li vytvořit kvalifikaci zákazníka pro "vzdělávání", nejprve vytvořte objekt reprezentující typ kvalifikace. Pak zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak pomocí vlastnosti [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Nakonec zavolejte `CreateQualifications()` nebo `CreateQualificationsAsync()` s typem kvalifikace Object jako vstupní parametr.
+Pokud chcete vytvořit kvalifikaci zákazníka pro "Vzdělávání", nejprve vytvořte objekt představující typ kvalifikace. Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Potom pomocí [**vlastnosti Kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Nakonec zavolejte `CreateQualifications()` nebo `CreateQualificationsAsync()` s objektem typu kvalifikace jako vstupním parametrem.
 
 ``` csharp
 var qualificationToCreate = "education";    // can also be "StateOwnedEntity" or "GovernmentCommunityCloud". See GCC example below.
@@ -34,9 +34,9 @@ var qualificationType = { Qualification = qualificationToCreate };
 var eduCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType);
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project**: **třída** SdkSamples: CreateCustomerQualification. cs
+**Ukázka:** [Konzolová ukázková aplikace](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples **– třída:** CreateCustomerQualification.cs
 
-Pokud chcete aktualizovat kvalifikaci zákazníka tak, aby se **GovernmentCommunityCloud** na stávajícího zákazníkovi bez kvalifikace, partner taky musí zahrnovat [**ValidationCode**](utility-resources.md#validationcode)zákazníka. Nejprve vytvořte objekt reprezentující typ kvalifikace. Pak zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak pomocí vlastnosti [**kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) . Nakonec volejte `CreateQualifications()` nebo `CreateQualificationsAsync()` s objektem typu kvalifikace a ověřovacím kódem jako vstupní parametry.
+Pokud chcete aktualizovat kvalifikace zákazníka na **GovernmentCommunityCloud** u stávajícího zákazníka bez kvalifikace, musí partner také zahrnout ověřovací kód [**zákazníka.**](utility-resources.md#validationcode) Nejprve vytvořte objekt představující typ kvalifikace. Potom zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Potom pomocí [**vlastnosti Kvalifikace**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.qualification) načtěte rozhraní [**ICustomerQualification.**](/dotnet/api/microsoft.store.partnercenter.qualification.icustomerqualification) Nakonec zavolejte metodu nebo s objektem typu kvalifikace a `CreateQualifications()` `CreateQualificationsAsync()` ověřovacím kódem jako vstupními parametry.
 
 ``` csharp
 // GCC validation is type ValidationCode
@@ -44,15 +44,15 @@ var qualificationType = { Qualification = "GovernmentCommunityCloud" };
 var gccCustomerQualification = partnerOperations.Customers.ById(existingCustomer.Id).Qualification.CreateQualifications(qualificationType, gccValidation);
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project**: **třída** SdkSamples: CreateCustomerQualificationWithGCC. cs
+**Ukázka:** [Konzolová ukázková aplikace](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples **– třída:** CreateCustomerQualificationWithGCC.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                             |
 |---------|---------------------------------------------------------------------------------------------------------|
-| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer_ID}/Qualifications? kód = {VALIDATIONCODE} HTTP/1.1 |
+| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customer_id}/qualifications?code={validationCode} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -60,12 +60,12 @@ K aktualizaci kvalifikace použijte následující parametr dotazu.
 
 | Název                   | Typ | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | Identifikátor GUID | Yes      | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
-| **validationCode**     | int  | No       | Je potřeba jenom pro Government Community Cloud.                                                                                                            |
+| **customer-tenant-id** | Identifikátor GUID | Yes      | Hodnota je IDENTIFIKÁTOR GUID naformátovaný jako **customer-tenant-id,** který umožňuje prodejci filtrovat výsledky pro daného zákazníka, který patří k prodejci. |
+| **validationCode (kód ověření)**     | int  | No       | Je potřeba jenom pro Government Community Cloud.                                                                                                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -73,7 +73,7 @@ Tato tabulka popisuje objekt kvalifikace v textu požadavku.
 
 Vlastnost | Typ | Vyžadováno | Popis
 -------- | ---- | -------- | -----------
-Qualification | řetězec | Yes | Hodnota řetězce z výčtu [**CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification) .
+Qualification | řetězec | Yes | Řetězcová hodnota z [**výčtu CustomerQualification**](/dotnet/api/microsoft.store.partnercenter.models.customers.customerqualification)
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -92,11 +92,11 @@ MS-RequestId: 037db222-6d8e-4d7f-ba78-df3dca33fb68
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí objekt kvalifikace v těle odpovědi. Níže je uveden příklad volání **post** na zákazníka (s předchozí kvalifikací **none**) s kvalifikací **vzdělávání** .
+V případě úspěchu vrátí tato metoda v textu odpovědi objekt kvalifikace. Níže je příklad volání **POST** na zákazníka (s předchozí **kvalifikaceí None**) s **kvalifikaceí Education.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

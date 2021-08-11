@@ -1,29 +1,29 @@
 ---
 title: Aktualizace uživatelských účtů pro zákazníka
-description: Aktualizujte podrobnosti v existujícím uživatelském účtu pro zákazníka.
+description: Aktualizujte podrobnosti v existujícím uživatelském účtu zákazníka.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 6ebfdbb5df1d56416835af771fd6b70190776012
-ms.sourcegitcommit: 0b2a62af1765a447addd9c4340c28bc42fdc2747
+ms.openlocfilehash: e652e8dcbf9075fe22507230029c9703f88abef179337b8958d219c996c6e6cd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111445268"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115998004"
 ---
 # <a name="update-user-accounts-for-a-customer"></a>Aktualizace uživatelských účtů pro zákazníka
 
-Aktualizujte podrobnosti v existujícím uživatelském účtu pro zákazníka.
+Aktualizujte podrobnosti v existujícím uživatelském účtu zákazníka.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Chcete-li aktualizovat podrobnosti pro zadaného uživatele zákazníka, napřed si načtěte zadané ID zákazníka a uživatele, které chcete aktualizovat. Pak v novém objektu **CustomerUser** vytvořte aktualizovanou verzi uživatele. Pak použijte svou kolekci **IAggregatePartner. Customers** a zavolejte metodu **ById ()** . Pak zavolejte vlastnost **Users** , metodu **ById ()** následovanou metodou **patch ()** .
+Pokud chcete aktualizovat podrobnosti o zadaném uživateli zákazníka, nejprve načtěte zadané ID zákazníka a uživatele, který chcete aktualizovat. Pak v novém objektu **CustomerUser** vytvořte aktualizovanou verzi uživatele. Pak použijte kolekci **IAggregatePartner.Customers** a zavolejte **metodu ById().** Potom **zavolejte vlastnost Users,** **metodu ById()** a pak **metodu Patch().**
 
 ``` csharp
 // string selectedCustomerId;
@@ -46,28 +46,28 @@ User updatedCustomerUserInfo = partnerOperations.Customers.ById(selectedCustomer
 
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: PartnerSDK. FeatureSamples **třída**: CustomerUserUpdate. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** PartnerSDK.FeatureSamples **– třída:** CustomerUserUpdate.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                  |
 |-----------|----------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Users HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/uživatelé HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
-K identifikaci správného zákazníka použijte následující parametr dotazu.
+Pomocí následujícího parametru dotazu identifikujte správného zákazníka.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                                                                                                            |
 |------------------------|----------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Hodnota je identifikátor **zákazníka** , který je ve formátu GUID, který umožňuje prodejci filtrovat výsledky pro daného zákazníka, kteří patří prodejci. |
-| **ID uživatele**            | **guid** | Y        | Hodnota je **ID uživatele** FORMÁTOVANÉho identifikátorem GUID, který patří k jednomu uživatelskému účtu.                                                                       |
+| **customer-tenant-id** | **guid** | Y        | Hodnota je IDENTIFIKÁTOR GUID naformátovaný jako **customer-tenant-id,** který umožňuje prodejci filtrovat výsledky pro daného zákazníka, který patří k prodejci. |
+| **ID uživatele**            | **guid** | Y        | Hodnota je ID uživatele ve **formátu** GUID, které patří jednomu uživatelskému účtu.                                                                       |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -92,9 +92,9 @@ MS-CorrelationId: 8a53b025-d5be-4d98-ab20-229d1813de76
 
 V případě úspěchu vrátí tato metoda uživatelský účet s aktualizovanými informacemi.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

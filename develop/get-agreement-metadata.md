@@ -1,43 +1,43 @@
 ---
 title: Získání metadat smluv pro Smlouvu o službách Microsoft Cloud
-description: Tento článek vysvětluje, jak získat metadata smlouvy pro Microsoft Cloud smlouvu.
+description: Tento článek vysvětluje, jak získat metadata smlouvy pro Smlouva o službách Microsoft Cloud.
 ms.date: 02/12/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: 2588327e72a13de75eb9e02675edbd535491adc4
-ms.sourcegitcommit: d4b0c80d81f1d5bdf3c4c03344ad639646ae6ab9
+ms.openlocfilehash: 55a09752844f74caaf878f1e2dcfe3d8a70a283c5e0e9daefba89c558405690a
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111760789"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115994111"
 ---
 # <a name="get-agreement-metadata-for-microsoft-cloud-agreement"></a>Získání metadat smluv pro Smlouvu o službách Microsoft Cloud
 
-**Platí pro**: partnerské Centrum
+**Platí pro:** Partnerské centrum
 
-Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Prostředek **AgreementMetaData** je aktuálně podporovaný partnerským centrem jenom ve veřejném cloudu Microsoftu.
+Prostředek **AgreementMetaData** aktuálně podporuje Partnerské centrum ve veřejném cloudu Microsoftu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud používáte sadu SDK partnerského centra .NET, verze 1,9 nebo novější je povinná.
+- Pokud používáte sadu .NET SDK Partnerské centrum, vyžaduje se verze 1.9 nebo novější.
 
-- Pokud používáte sadu SDK pro partnerský Center Java, verze 1,8 nebo novější je povinná.
+- Pokud používáte sadu Java SDK Partnerské centrum, vyžaduje se verze 1.8 nebo novější.
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](./partner-center-authentication.md). Tento scénář podporuje ověřování aplikací a uživatelů.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](./partner-center-authentication.md) Tento scénář podporuje ověřování aplikací a uživatelů.
 
-## <a name="net-version-114-or-newer"></a>.NET (verze 1,14 nebo novější)
+## <a name="net-version-114-or-newer"></a>.NET (verze 1.14 nebo novější)
 
-Načtení metadat smlouvy pro Microsoft Cloud smlouvu:
+Načtení metadat smlouvy pro Smlouva o službách Microsoft Cloud:
 
-1. Nejdřív načtěte kolekci **IAggregatePartner. AgreementDetails** .
+1. Nejprve načtěte **kolekci IAggregatePartner.AgreementDetails.**
 
-2. Zavolejte metodu **ByAgreementType** pro filtrování kolekce do smlouvy Microsoft Cloud.
+2. Voláním **metody ByAgreementType** vyfiltrujte kolekci, Smlouva o službách Microsoft Cloud.
 
-3. Nakonec volejte metodu **Get** nebo **GetAsync** .
+3. Nakonec zavolejte **metodu Get** **nebo GetAsync.**
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -47,13 +47,13 @@ string agreementType = "MicrosoftCloudAgreement";
 var microsoftCloudAgreementDetails = partnerOperations.AgreementDetails.ByAgreementType(agreementType).Get().Items.Single();
 ```
 
-Kompletní ukázku najdete ve třídě [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) z projektu [testovací aplikace konzoly](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples) .
+Úplnou ukázku najdete ve třídě [GetAgreementDetails](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples/blob/master/Source/Partner%20Center%20SDK%20Samples/Agreements/GetAgreementDetails.cs) z projektu [konzolové testovací aplikace.](https://github.com/PartnerCenterSamples/Partner-Center-SDK-Samples)
 
-## <a name="net-version-19---113"></a>.NET (verze 1,9 – 1,13)
+## <a name="net-version-19---113"></a>.NET (verze 1.9 – 1.13)
 
-Postup načtení metadat smlouvy pro Microsoft Cloud smlouvu:
+Načtení metadat smlouvy pro Smlouva o službách Microsoft Cloud:
 
-Nejprve načtěte kolekci **IAggregatePartner. AgreementDetails** a poté zavolejte metody **Get** nebo **GetAsync** . Pak vyhledejte položku v kolekci, která odpovídá Microsoft Cloud smlouvě:
+Nejprve načtěte **kolekci IAggregatePartner.AgreementDetails** a potom zavolejte **metody Get** nebo **GetAsync.** Pak vyhledejte položku v kolekci , která odpovídá Smlouva o službách Microsoft Cloud:
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -67,9 +67,9 @@ AgreementMetaData microsoftCloudAgreement = agreements.Items.FirstOrDefault (agr
 
 [!INCLUDE [Partner Center Java SDK support details](../includes/java-sdk-support.md)]
 
-Postup načtení metadat smlouvy pro Microsoft Cloud smlouvu:
+Načtení metadat smlouvy pro Smlouva o službách Microsoft Cloud:
 
-Nejprve zavolejte funkci **IAggregatePartner. getAgreementDetails** a poté zavolejte funkci **Get** . Pak vyhledejte položku v kolekci, která odpovídá Microsoft Cloud smlouvě:
+Nejprve **zavolejte funkci IAggregatePartner.getAgreementDetails** a potom zavolejte **funkci get.** Pak vyhledejte položku v kolekci , která odpovídá Smlouva o službách Microsoft Cloud:
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -87,33 +87,33 @@ for (AgreementMetaData metadata : agreements)
 }
 ```
 
-Kompletní ukázku najdete ve třídě [GetAgreementDetails](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetAgreementDetails.java) z projektu [testovací aplikace konzoly](https://github.com/Microsoft/Partner-Center-Java-Samples) .
+Úplnou ukázku najdete ve třídě [GetAgreementDetails](https://github.com/microsoft/Partner-Center-Java-Samples/blob/master/sdk/src/main/java/com/microsoft/store/partnercenter/samples/agreements/GetAgreementDetails.java) z projektu [konzolové testovací aplikace.](https://github.com/Microsoft/Partner-Center-Java-Samples)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [Partner Center PowerShell module support details](../includes/powershell-module-support.md)]
 
-Postup načtení metadat smlouvy pro Microsoft Cloud smlouvu:
+Načtení metadat smlouvy pro Smlouva o službách Microsoft Cloud:
 
-Použijte příkaz [**Get-PartnerAgreementDetail**](/powershell/module/partnercenter/get-partneragreementdetail) . Pak vyhledejte položku v kolekci, která odpovídá Microsoft Cloud smlouvě:
+Použijte příkaz [**Get-PartnerAgreementDetail.**](/powershell/module/partnercenter/get-partneragreementdetail) Pak vyhledejte položku v kolekci , která odpovídá Smlouva o službách Microsoft Cloud:
 
 ```powershell
 Get-PartnerAgreementDetail | Where-Object {$_.AgreementType -eq 'MicrosoftCloudAgreement'} | Select-Object -First 1
 ```
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-Pokud chcete načíst metadata smlouvy pro Microsoft Cloud smlouvu, nejdřív vytvořte žádost REST pro načtení kolekce **AgreementMetaData** . Pak vyhledejte položku v kolekci, která odpovídá Microsoft Cloud smlouvě.
+Pokud chcete načíst metadata smlouvy Smlouva o službách Microsoft Cloud, nejprve vytvořte požadavek REST pro načtení kolekce **AgreementMetaData.** Pak vyhledejte položku v kolekci, která odpovídá Smlouva o službách Microsoft Cloud.
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda | Identifikátor URI žádosti                                                         |
 |--------|---------------------------------------------------------------------|
-| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Agreements HTTP/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/agreements HTTP/1.1 |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -131,11 +131,11 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí kolekci prostředků **AgreementMetaData** v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi kolekci prostředků **AgreementMetaData.**
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 
@@ -168,4 +168,4 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 }
 ```
 
-Pro identifikaci prostředku v odpovědi, která odpovídá Microsoft Cloud smlouvě, vyhledejte prostředek, jehož vlastnost **agreemtntype** má hodnotu "MicrosoftCloudAgreement".
+Pokud chcete v odpovědi identifikovat prostředek, který odpovídá Smlouva o službách Microsoft Cloud, vyhledejte prostředek, jehož vlastnost **agreementType** má hodnotu MicrosoftCloudAgreement.

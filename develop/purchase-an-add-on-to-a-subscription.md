@@ -1,51 +1,51 @@
 ---
 title: Nákup doplňku k předplatnému
-description: Jak zakoupit doplněk do stávajícího předplatného.
+description: Jak zakoupit doplněk k existujícímu předplatnému
 ms.date: 11/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: d8b700a2ad41a37ca0ad745f3e7767449974b18a
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 5227b917faf663c129b1abed1d10318620667e9b47524eb8c91867fb6b453ee8
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547678"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997358"
 ---
 # <a name="purchase-an-add-on-to-a-subscription"></a>Nákup doplňku k předplatnému
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud for US Government
 
-Jak zakoupit doplněk do stávajícího předplatného.
+Jak zakoupit doplněk k existujícímu předplatnému
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
-- ID předplatného. Toto je stávající předplatné, pro které se má koupit nabídka doplňku.
+- ID předplatného. Jedná se o stávající předplatné, pro které si můžete koupit nabídku doplňku.
 
-- ID nabídky, která identifikuje nabídku doplňku k nákupu.
+- ID nabídky, které identifikuje nabídku doplňku k nákupu.
 
-## <a name="purchasing-an-add-on-through-code"></a>Nákup doplňku prostřednictvím kódu
+## <a name="purchasing-an-add-on-through-code"></a>Zakoupení doplňku prostřednictvím kódu
 
-Při nákupu doplňku k předplatnému se aktualizuje původní pořadí předplatného s pořadím pro doplněk. V následujícím seznamu je KódZákazníka ID zákazníka, subscriptionId je ID předplatného a addOnOfferId je ID nabídky pro doplněk.
+Když zakoupíte doplněk k předplatnému, aktualizujete původní objednávku předplatného pomocí objednávky doplňku. V následujícím příkladu je customerId ID zákazníka, subscriptionId je ID předplatného a addOnOfferId je ID nabídky pro doplněk.
 
 Tady je postup:
 
-1.  Získejte rozhraní pro operace pro předplatné.
+1.  Získejte rozhraní pro operace předplatného.
 
     ``` csharp
     var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
     ```
 
-2.  Pomocí tohoto rozhraní můžete vytvořit instanci objektu předplatného. Tím získáte podrobnosti o nadřazeném předplatném, včetně ID objednávky.
+2.  Pomocí tohoto rozhraní můžete vytvořit instanci objektu předplatného. Tím se zobrazí podrobnosti nadřazeného předplatného, včetně ID objednávky.
 
     ``` csharp
     var parentSubscription = subscriptionOperations.Get();
     ```
 
-3.  Vytvoří instanci objektu New [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) . Tato instance objednávky se používá k aktualizaci původního pořadí používaného k zakoupení předplatného. Přidejte do pořadí, který představuje doplněk, jednu položku s jedním řádkem.
+3.  Vytvořte instanci nového [**objektu Order.**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) Tato instance objednávky slouží k aktualizaci původní objednávky použité k nákupu předplatného. Přidejte jedno řádkové položky do pořadí, které představuje doplněk.
     ``` csharp
     var orderToUpdate = new Order()
     {
@@ -64,16 +64,16 @@ Tady je postup:
     };
     ```
 
-4.  Aktualizuje původní pořadí pro předplatné s novým pořadím pro doplněk.
+4.  Aktualizujte původní objednávku předplatného o novou objednávku doplňku.
     ``` csharp
     Order updatedOrder = partnerOperations.Customers.ById(customerId).Orders.ById(parentSubscription.OrderId).Patch(orderToUpdate);
     ```
 
 ## <a name="c"></a>C\#
 
-Chcete-li zakoupit doplněk, Začněte získáním rozhraní pro operace předplatného voláním metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, který identifikuje zákazníka, a pomocí metody [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) pro identifikaci předplatného, které obsahuje nabídku doplňku. Použijte toto [**rozhraní**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) k načtení podrobností o předplatném voláním [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Podrobnosti o předplatném obsahují ID objednávky pořadí předplatného, což je pořadí, v jakém se má doplněk aktualizovat.
+Pokud si chcete koupit doplněk, začněte tím, že získáte rozhraní pro operace s předplatným voláním metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, abyste zákazníka identifikovali, a metodu [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) k identifikaci předplatného, které má nabídku doplňku. Pomocí tohoto [**rozhraní**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) můžete načíst podrobnosti o předplatném voláním [**get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get). Podrobnosti o předplatném obsahují ID objednávky předplatného, což je objednávka, která se má aktualizovat pomocí doplňku.
 
-Dále vytvořte instanci objektu New [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) a naplňte ji jednou instancí [**LineItem**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) , která obsahuje informace pro identifikaci doplňku, jak je znázorněno v následujícím fragmentu kódu. Pomocí tohoto nového objektu aktualizujete pořadí předplatného pomocí doplňku. Nakonec zavolejte metodu [**patch**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.patch) a aktualizujte pořadí předplatného, a to po prvním identifikaci zákazníka pomocí [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) a ORDER by Order [**. ById**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid).
+Dále vytvořte instanci nového objektu [**Order**](/dotnet/api/microsoft.store.partnercenter.models.orders.order) a naplňte ho jedinou instancí [**LineItem,**](/dotnet/api/microsoft.store.partnercenter.models.orders.orderlineitem) která obsahuje informace pro identifikaci doplňku, jak je znázorněno v následujícím fragmentu kódu. Tento nový objekt použijete k aktualizaci objednávky předplatného pomocí doplňku. Nakonec zavolejte metodu [**Patch,**](/dotnet/api/microsoft.store.partnercenter.orders.iorder.patch) která aktualizuje objednávku předplatného, a to po první identifikaci zákazníka pomocí [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) a objednávky [**s Orders.ById**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.byid).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -109,15 +109,15 @@ var orderToUpdate = new Order()
 Order updatedOrder = partnerOperations.Customers.ById(customerId).Orders.ById(parentSubscription.OrderId).Patch(orderToUpdate);
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** microsoft Partner SDK samples: AddSubscriptionAddOn. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class:** AddSubscriptionAddOn.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda    | Identifikátor URI žádosti                                                                                              |
 |-----------|----------------------------------------------------------------------------------------------------------|
-| **POUŽITA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Orders/{Order-ID} HTTP/1.1 |
+| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/orders/{ID_objednávky} HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -125,33 +125,33 @@ K identifikaci zákazníka a objednávky použijte následující parametry.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                                        |
 |------------------------|----------|----------|------------------------------------------------------------------------------------|
-| **Customer-tenant-ID** | **guid** | Y        | Hodnota je identifikátor **zákazníka (zákazníka** ), který identifikuje zákazníka. |
+| **customer-tenant-id** | **guid** | Y        | Hodnota je IDENTIFIKÁTOR GUID **naformátovaný jako customer-tenant-id,** který identifikuje zákazníka. |
 | **ID objednávky**           | **guid** | Y        | Identifikátor objednávky.                                                              |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V následujících tabulkách jsou popsány vlastnosti v textu požadavku.
+Následující tabulky popisují vlastnosti v textu požadavku.
 
 ## <a name="order"></a>Objednávka
 
 | Název                | Typ             | Vyžadováno | Popis                                          |
 |---------------------|------------------|----------|------------------------------------------------------|
 | Id                  | řetězec           | N        | ID objednávky                                        |
-| ReferenceCustomerId | řetězec           | Y        | ID zákazníka.                                     |
-| Položky řádku           | pole objektů | Y        | Pole objektů [OrderLineItem](#orderlineitem) |
-| CreationDate        | řetězec           | N        | Datum vytvoření objednávky ve formátu data a času. |
+| ReferenčníCustomerId | řetězec           | Y        | ID zákazníka.                                     |
+| Položky řádku           | pole objektů | Y        | Pole objektů [OrderLineItem.](#orderlineitem) |
+| Datum vytvoření        | řetězec           | N        | Datum vytvoření objednávky ve formátu data a času. |
 | Atributy          | object           | N        | Obsahuje "ObjectType": "Order".                      |
 
-## <a name="orderlineitem"></a>OrderLineItem
+## <a name="orderlineitem"></a>OrderLineItem (PoložkaŘádku Objednávky)
 
 | Název                 | Typ   | Vyžadováno | Popis                                                  |
 |----------------------|--------|----------|--------------------------------------------------------------|
 | LineItemNumber       | číslo | Y        | Číslo položky řádku začínající na 0.                       |
-| Hodnotami OfferId              | řetězec | Y        | ID nabídky doplňku                                  |
+| ID nabídky              | řetězec | Y        | ID nabídky doplňku.                                  |
 | SubscriptionId       | řetězec | N        | ID zakoupeného předplatného doplňku.                 |
 | ID nadřazeného odběru | řetězec | Y        | ID nadřazeného předplatného, které má nabídku doplňku. |
 | Friendlyname         | řetězec | N        | Popisný název této řádkové položky.                        |

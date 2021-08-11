@@ -1,30 +1,30 @@
 ---
 title: Adresy URL rozhraní REST pro Partnerské centrum
-description: Partnerské centrum je dostupné v různých zemích a oblastech. Seznamte se s koncovými body partnerského centra a základními adresami URL REST, které vaše aplikace by měly používat ke správné práci
+description: Partnerské centrum je k dispozici v různých zemích a oblastech. Zjistěte, Partnerské centrum koncové body a základní adresy URL REST, které by vaše aplikace měly používat ke správnému fungování.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: 715ec7dda252cf096b2ec2bd1745d8afee7c8310
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 56da318398dbd7fadbfa9f4a13cc3a3be1c7ab8072cfe8920192b5d04c2b9583
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547848"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997613"
 ---
-# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Jiné koncové body adresy URL REST partnerského centra pro použití v určitých zemích nebo oblastech
+# <a name="different-partner-center-rest-url-end-points-for-use-in-certain-countries-or-regions"></a>Různé Partnerské centrum koncové body adresy URL REST pro použití v určitých zemích nebo oblastech
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partnerské centrum je dostupné v různých zemích a oblastech po celém světě. Některé verze partnerského centra můžou pro správné fungování aplikací vyžadovat různé koncové body.
+Partnerské centrum je k dispozici v různých zemích a oblastech po celém světě. Některé verze Partnerské centrum můžou vyžadovat různé koncové body, aby vaše aplikace fungovaly správně.
 
-Následující tabulka popisuje základní adresy URL pro použití s různými verzemi partnerského centra:
+Následující tabulka popisuje základní adresy URL pro použití s různými verzemi Partnerské centrum:
 
-| Verze partnerského centra  | Základní adresa URL  |
+| Partnerské centrum verze  | Základní adresa URL  |
 |---------|---------|
 |Partnerské centrum</br>Partnerské centrum pro Microsoft Cloud pro Německo</br>Partnerské centrum pro Microsoft Cloud for US Government     | `https://api.partnercenter.microsoft.com`        |
 |Partnerské centrum provozované společností 21Vianet  |  `https://partner.partnercenterapi.microsoftonline.cn`       |
 
 >[!NOTE]
->Autorita tokenu pro partnerského centra pro Microsoft Cloud Německo Azure AD Library je: https://login.microsoftonline.de .
+>Autorita tokenu pro Partnerské centrum Microsoft Cloud Germany Azure AD Library je: https://login.microsoftonline.de .

@@ -4,12 +4,12 @@ description: rezervace azure můžete koupit pro zákazníka pomocí rozhraní A
 ms.date: 11/01/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 0b9ce4a808ac12c32bd67888fc92808baeb0e575
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: ed8aa12117e9f13f84f39c97fc87e2c8844b223bd913cbaebf870d7022959dbd
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547763"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997290"
 ---
 # <a name="purchase-azure-reservations"></a>Nákup rezervací Azure
 
@@ -167,24 +167,24 @@ Následující scénáře ukazují, jak programově zobrazit [](invoice-resource
 
 ### <a name="balance-and-payment"></a>Zůstatek a platba
 
-Pokud chcete získat aktuální zůstatek účtu ve výchozím typu měny, který je zůstatek na opakujících se i časových poplatcích (rezervace Azure), podívejte se na část Získání aktuálního zůstatku [účtu.](get-the-reseller-s-current-account-balance.md)
+Pokud chcete získat aktuální zůstatek k účtu ve vašem výchozím typu měny, který je vyrovnaný z poplatků za periodické i jednorázové (rezervace Azure), přečtěte si téma [získání aktuálního zůstatku účtu](get-the-reseller-s-current-account-balance.md) .
 
-### <a name="multi-currency-balance-and-payment"></a>Zůstatek a platba ve více měnách
+### <a name="multi-currency-balance-and-payment"></a>Zůstatek a platba na více měn
 
-Pokud chcete získat zůstatek aktuálního účtu a kolekci souhrnů faktur obsahujících souhrn faktur s opakovanými i časovými poplatky pro jednotlivé typy měn zákazníka, podívejte se na část Získání souhrnů [faktur.](get-invoice-summaries.md)
+K získání aktuálního zůstatku účtu a shromáždění souhrnů faktury, které obsahují souhrn faktury s pravidelným i jednorázovým poplatkem pro každý typ měny vašeho zákazníka, najdete informace v tématu [získání souhrnů faktury](get-invoice-summaries.md).
 
 ### <a name="invoices"></a>Faktury
 
-Pokud chcete získat kolekci faktur, které zobrazují opakované i jedno časové poplatky, podívejte se na část [Získání kolekce faktur.](get-a-collection-of-invoices.md) 
+Chcete-li získat kolekci faktur, které zobrazují jak opakující se, tak jednorázové časové poplatky, přečtěte si téma [získání kolekce faktur](get-a-collection-of-invoices.md). 
 
 ### <a name="single-invoice"></a>Jedna faktura
 
-Pokud chcete načíst konkrétní fakturu pomocí ID faktury, podívejte se [na stránku Získání faktury podle ID](get-invoice-by-id.md).  
+Pokud chcete načíst konkrétní fakturu pomocí ID faktury, přečtěte si téma [získání faktury podle ID](get-invoice-by-id.md).  
 
-### <a name="reconciliation"></a>Odsouhlasení
+### <a name="reconciliation"></a>Párován
 
-Pokud chcete získat kolekci podrobností o řádkové položce faktury (položky řádku odsouhlasení) pro konkrétní ID faktury, podívejte se na část [Získání položek řádku faktury.](get-invoiceline-items.md)  
+Chcete-li získat kolekci podrobností o položce řádku faktury (položky řádku odsouhlasení) pro konkrétní ID faktury, přečtěte si téma [získání položek řádků faktury](get-invoiceline-items.md).  
 
-### <a name="download-an-invoice-as-a-pdf"></a>Stažení faktury ve formátu PDF
+### <a name="download-an-invoice-as-a-pdf"></a>Stažení faktury jako PDF
 
-Pokud chcete načíst výpis faktury ve formuláři PDF pomocí ID faktury, podívejte se na [stránku Získání výpisu faktury.](get-invoice-statement.md)
+Chcete-li načíst výpis faktury ve formátu PDF pomocí ID faktury, přečtěte si téma [získání výpisu faktury](get-invoice-statement.md).

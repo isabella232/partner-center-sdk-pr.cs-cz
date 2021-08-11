@@ -1,95 +1,95 @@
 ---
 title: Pokyny k omezování rozhraní API
-description: Pro partnery, kteří volají rozhraní API partnerského centra, se dozvíte, která rozhraní API mají vliv na omezování a osvědčené postupy rozhraní Microsoft API, abyste zabránili omezení nebo lepšímu omezování procesů.
+description: V případě partnerů, kteří Partnerské centrum rozhraní API, zjistěte, která rozhraní API ovlivňuje omezování rozhraní API Microsoftu, a osvědčené postupy, jak se vyhnout omezování nebo je lépe zvládat.
 ms.date: 04/14/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: vijvala
 ms.author: vijvala
-ms.openlocfilehash: f18518e88b9bb08d4fd248922f4ce2fefdde004f
-ms.sourcegitcommit: c7dd3f92cade7f127f88cf6d4d6df5e9a05eca41
+ms.openlocfilehash: 4eead16c5bb2b01f0fba85e30ea35fbcdae9d5a6682872eecfeeb9e47f43d324
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112025645"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993754"
 ---
-# <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>Pokyny k omezování rozhraní API pro partnery, kteří volají rozhraní API partnerského centra 
+# <a name="api-throttling-guidance-for-partners-calling-partner-center-apis"></a>Pokyny k omezování rozhraní API pro partnery, kteří Partnerské centrum rozhraní API 
 
-Microsoft implementuje omezování rozhraní API, které umožňuje zajistit jednotnější výkon v časovém intervalu pro partnery, kteří volají rozhraní API partnerského centra. Omezování omezuje počet požadavků na službu v časovém intervalu, aby nedocházelo k nadměrnému využití prostředků. I když je partnerské Centrum navrženo tak, aby zpracovával velký počet požadavků, pokud se k zahlcení počtu požadavků vychází z několika partnerů, omezování pomáhá udržet optimální výkon a spolehlivost pro všechny partnery.  
+Microsoft provádí implementaci omezování rozhraní API, aby partnerům volajícím rozhraní API Partnerské centrum konzistentnější výkon. Omezování omezuje počet požadavků na službu v časovém intervalu, aby se zabránilo přílišnému využívání prostředků. Přestože Partnerské centrum je navržená tak, aby zvládla velké množství požadavků, pokud dochází k obrovskému počtu požadavků několika partnerů, omezování pomáhá udržovat optimální výkon a spolehlivost pro všechny partnery.  
 
-Omezení omezování se liší v závislosti na scénáři. Pokud například provádíte velký objem zápisů, je možnost omezování větší než v případě, že provádíte pouze čtení.
+Limity omezování se liší v závislosti na scénáři. Pokud například provádíte velký objem zápisů, je možnost omezování vyšší než v případě, že provádíte pouze čtení.
 
 ## <a name="what-happens-when-throttling-occurs"></a>Co se stane, když dojde k omezování? 
 
-Po překročení prahové hodnoty omezuje Partnerská centra všechny další požadavky od tohoto klienta po určitou dobu. Chování omezování závisí na typu a počtu požadavků.   
+Při překročení prahové hodnoty omezování Partnerské centrum všechny další požadavky od tohoto klienta na určitou dobu. Chování při omezování závisí na typu a počtu požadavků.   
 
 ### <a name="common-throttling-scenarios"></a>Běžné scénáře omezování 
 
-Mezi nejběžnější příčiny omezení klientů patří: 
+Mezi nejběžnější příčiny omezování klientů patří: 
 
-- **Velký počet žádostí o rozhraní API na ID tenanta partnera**: u některých rozhraní API partnerského centra se omezování určuje podle ID partnerského tenanta. příliš mnoho volání těchto rozhraní API na stejném ID partnerského tenanta bude mít za následek překročení prahové hodnoty omezování.  
+- Velký počet požadavků na rozhraní API na **ID partnerského tenanta:** U některých rozhraní API Partnerské centrum se omezování určuje podle ID tenanta partnera. Příliš mnoho volání těchto rozhraní API se stejným ID partnerského tenanta bude mít za následek překročení prahové hodnoty omezení.  
 
-- **Velký počet požadavků pro rozhraní API na ID tenanta partnera na ID tenanta zákazníka**: u jiných rozhraní API se omezování určuje podle ID partnerského tenanta/kombinace ID tenanta zákazníka; v těchto případech dojde k tomu, že provedení příliš velkého počtu volání proti stejnému ID tenanta zákazníka bude mít za následek omezení, zatímco volání jiných zákazníků budou úspěšná.
+- Velký počet požadavků na rozhraní API na ID tenanta partnera na **ID tenanta** zákazníka: Pro jiná rozhraní API se omezování určuje podle kombinace ID tenanta partnera a ID tenanta zákazníka. V těchto případech bude příliš mnoho volání se stejným ID tenanta zákazníka mít za následek omezování , zatímco volání vůči jiným zákazníkům mohou být úspěšná.
 
-## <a name="best-practices-to-avoid-throttling"></a>Osvědčené postupy pro zamezení omezování 
+## <a name="best-practices-to-avoid-throttling"></a>Osvědčené postupy pro zabránění omezování 
  
-Postupy programování, jako je průběžné cyklické dotazování prostředku pro kontrolu aktualizací a pravidelné prohledávání kolekcí prostředků pro kontrolu nových nebo odstraněných prostředků, mají větší vliv na omezování a sníží celkový výkon. Souběžná volání rozhraní API mohou vést k vysokému počtu požadavků za jednotku času, což způsobí také omezení požadavků. Místo toho byste měli použít sledování změn a oznámení změn. Kromě toho byste měli být schopni používat protokoly aktivit k detekci změn. Další informace najdete v tématu [protokoly aktivit partnerského centra](get-a-record-of-partner-center-activity-by-user.md).  Důrazně doporučujeme, aby partneři zvážili použití rozhraní API protokolu aktivit pro zajištění vyšší efektivity a zabránili omezování. Viz také příklad použití protokolů aktivit níže.
+Programovací postupy, jako je průběžné dotazování prostředku, aby kontroloval aktualizace a pravidelně kontroloval kolekce prostředků a kontroloval nové nebo odstraněné prostředky, s větší pravděpodobností vedou k omezování a zhoršují celkový výkon. Souběžná volání rozhraní API mohou vést k vysokému počtu požadavků za jednotku času, což také způsobí omezování požadavků. Místo toho byste měli používat sledování změn a oznámení o změně. Kromě toho byste měli být schopni používat protokoly aktivit ke zjišťování změn. Další informace najdete v tématu [Partnerské centrum aktivit.](get-a-record-of-partner-center-activity-by-user.md)  Důrazně doporučujeme partnerům zvážit použití rozhraní API protokolu aktivit, abyste se vyhnuli omezování. Podívejte se také na příklad použití protokolů aktivit níže.
 
 ## <a name="best-practices-to-handle-throttling"></a>Osvědčené postupy pro zpracování omezování
 
-Níže jsou uvedené osvědčené postupy pro omezení zpracování: 
+Tady jsou osvědčené postupy pro zpracování omezování: 
 
 - Snižte stupeň paralelismu. 
 - Snižte frekvenci volání. 
-- Vyhněte se okamžitým opakovaným pokusům, protože všechny požadavky se budou nacházet oproti omezením využití. 
+- Vyhněte se okamžitému opakování, protože všechny požadavky narůstá do limitů využití. 
 
-Při implementaci zpracování chyb k detekci omezování využijte kód chyby HTTP 429. Neúspěšná odpověď zahrnuje hlavičku Retry-After odpovědi. Zálohování požadavků pomocí opakovaného zpoždění je nejrychlejší způsob, jak obnovit omezení. 
+Při implementaci zpracování chyb k detekci omezování využijte kód chyby HTTP 429. Neúspěšná odpověď zahrnuje hlavičku Retry-After odpovědi. Obnovení požadavků pomocí zpoždění Opakování po je nejrychlejší způsob, jak se zotavit z omezování. 
 
-Pokud chcete použít prodlevu po opakování, udělejte toto: 
+Pokud chcete použít zpoždění Opakování po, proveďte následující: 
 
-1. Počkejte, než bude stanovený počet sekund v hlavičce Retry-After. 
+1. Počkejte počet sekund zadaný v záhlaví Retry-After souboru. 
 
-2. Opakujte požadavek.  
+2. Zkuste požadavek zopakovat.  
 
-3. Pokud se žádost znovu nepovede s kódem chyby 429, pořád se vám omezí. Zkuste to znovu s exponenciálním omezení rychlosti, použijte doporučené zpoždění Retry-After a zkuste požadavek zopakovat, dokud to neproběhne úspěšně.
+3. Pokud požadavek znovu selže s kódem chyby 429, stále dochází k omezování. Zkuste to znovu s exponenciálním zpomalováním, použijte doporučené Retry-After prodlevu a zkuste požadavek zopakovat, dokud nebude úspěšný.
 
-4. Pokud používáte sadu SDK, obdržíte výjimku se stavovým kódem 429, když se vaše žádost omezuje. Ve výjimce použijte vlastnost RetryAfter a opakujte požadavek po uplynutí této doby.
+4. Pokud používáte sadu SDK, při omezování požadavku se zobrazí výjimka se stavový kódem 429. Ve výjimce použijte vlastnost RetryAfter a po uplynutí doby zkuste požadavek zopakovat.
 
 
-## <a name="apis-currently-impacted-by-throttling"></a>Rozhraní API, která v současnosti ovlivňují omezování
+## <a name="apis-currently-impacted-by-throttling"></a>Omezení aktuálně ovlivňuje rozhraní API
 
-Na konci se omezí všechna rozhraní API pro jedno Partnerské centrum, které volá koncový bod "api.partnercenter.microsoft.com/". V současné době se omezení omezování uplatní jenom na rozhraních API uvedených níže. Partnerské centrum bude shromažďovat telemetrii na každé z rozhraní API a bude dynamicky upravovat limity omezování. V následující tabulce jsou uvedena rozhraní API, kde je omezování aktuálně vynutilo.  
+Na konci bude omezení každého rozhraní API Partnerské centrum, které api.partnercenter.microsoft.com/ koncového bodu. V současné době se limity omezení vynucují pouze u níže uvedených rozhraní API. Partnerské centrum bude shromažďovat telemetrii jednotlivých rozhraní API a dynamicky upravovat limity omezování. Následující tabulka uvádí rozhraní API, u kterých se v současné době vynucuje omezování.  
 
 
 |**Operace**| **Dokumentace k Partnerskému centru**|
 |------------------------|----------------------------|
-|{baseURL}/v1/Customers/{customer_id}/Orders|[vytvoření objednávky](create-an-order.md)|
-|{baseURL}/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription}/upgrades|[převod předplatného](transition-a-subscription.md)|
-|{baseURL}/v1/Customers/{Customer-tenant-ID}/Orders/{Order-ID}|[zakoupení doplňku k předplatnému](purchase-an-add-on-to-a-subscription.md)|
-|{baseURL}/v1/Customers/{Customer-ID}/carts/{Cart-ID}|[Vytvoření košíku](create-a-cart.md)|
-|{baseURL}/v1/Customers/{Customer-ID}/carts/{Cart-ID}/Checkout|[rezervace košíku](checkout-a-cart.md)|
-|{baseURL}/v1/Customers/{Customer-ID}/carts/{Cart-ID}|[aktualizace košíku](update-a-cart.md)|
-|{baseURL}/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/registrations|[registrace předplatného](register-a-subscription.md)|
-|{baseURL}/v1/productupgrades|[vytvořit entitu upgradu produktu](create-product-upgrade-entity.md)|
-|{baseURL}/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/Conversions |[převod zkušebního předplatného na placené](convert-a-trial-subscription-to-paid.md)|
-|{baseURL}/v1/Customers/{Customer-tenant-ID}|[získat zákazníka podle ID](get-a-customer-by-id.md)|
-|{baseURL}/v1/productUpgrades/eligibility|[získat nárok na upgrade produktu](get-eligibility-for-product-upgrade.md)|
-|{baseURL}/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription} |[Spravovat předplatné](manage-orders.md#manage-a-subscription)|
-|{baseURL}/v1/Customers/{customer_id}/Subscriptions |[Get-All-of-Customer](get-all-of-a-customer-s-subscriptions.md)|
-|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}|[Získání předplatného podle ID](get-a-subscription-by-id.md)|
-|{baseURL}/v1/Customers/{customer_id}/Orders|[Získat všechny zákaznické objednávky](get-all-of-a-customer-s-orders.md)|
-|{baseURL}/v1/Customers/{customer_id}/Orders/{order_id}|[Získání objednávky podle ID](get-an-order-by-id.md)|
-|{baseURL}/v1/Customers/{customer_id}/Orders/{order_id}/provisioningstatus|[Získání stavu zřizování předplatných](get-subscription-provisioning-status.md)|
-|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}|[Správa objednávek a Správa předplatného](manage-orders.md#manage-a-subscription)|
-|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}/addons|[Získání seznamu doplňků pro předplatné](get-a-list-of-add-ons-for-a-subscription.md)|
-|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}/azureEntitlements|[Získat seznam nároků na Azure pro předplatné](get-a-list-of-azure-entitlements-for-subscription.md)|
-|{baseURL}/v1/Customers/{customer_id}/Subscriptions/{subscription_id}/registrationstatus|[Získání stavu registrace předplatných](get-subscription-registration-status.md)|
-|{baseURL}/v1/Customers/{Customer-tenant-ID}/Transfers|[Získat všechny přenosy zákazníka](get-all-of-a-customer-s-transfers.md)|
-|{baseURL}/v1/productUpgrades/{upgrade-id}/status|[Získání stavu upgradu produktů](get-product-upgrade-status.md)|
-|{baseURL}/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/Conversions|[Získání seznamu nabídek převod zkušebních verzí](get-a-list-of-trial-conversion-offers.md)|
+|{baseURL}/v1/customers/{customer_id}/orders|[vytvoření objednávky](create-an-order.md)|
+|{baseURL}/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné}/upgrady|[převod předplatného](transition-a-subscription.md)|
+|{baseURL}/v1/customers/{ID_tenanta_zákazníka}/orders/{ID_objednávky}|[nákup doplňku k předplatnému](purchase-an-add-on-to-a-subscription.md)|
+|{baseURL}/v1/customers/{ID_zákazníka}/carts/{ID_košíku}|[vytvoření košíku](create-a-cart.md)|
+|{baseURL}/v1/customers/{ID_zákazníka}/carts/{ID_košíku}/pokladna|[pokladna košíku](checkout-a-cart.md)|
+|{baseURL}/v1/customers/{ID_zákazníka}/carts/{ID_košíku}|[aktualizace košíku](update-a-cart.md)|
+|{baseURL}/v1/customers/{ID_zákazníka}/předplatná/{ID_předplatného}/registrace|[registrace předplatného](register-a-subscription.md)|
+|{baseURL}/v1/productupgrades|[vytvoření entity upgradu produktu](create-product-upgrade-entity.md)|
+|{baseURL}/v1/customers/{ID_zákazníka}/předplatná/{ID_předplatného}/převody |[Převod zkušebního předplatného na placené](convert-a-trial-subscription-to-paid.md)|
+|{baseURL}/v1/customers/{ID_tenanta_zákazníka}|[získání zákazníka podle ID](get-a-customer-by-id.md)|
+|{baseURL}/v1/productUpgrades/eligibility|[získání způsobilosti pro upgrade produktu](get-eligibility-for-product-upgrade.md)|
+|{baseURL}/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} |[správa předplatného](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions |[získání všech předplatných zákazníka](get-all-of-a-customer-s-subscriptions.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}|[Získání předplatného podle ID](get-a-subscription-by-id.md)|
+|{baseURL}/v1/customers/{customer_id}/orders|[Získání všech objednávek zákazníků](get-all-of-a-customer-s-orders.md)|
+|{baseURL}/v1/customers/{customer_id}/orders/{order_id}|[Získání objednávky podle ID](get-an-order-by-id.md)|
+|{baseURL}/v1/customers/{customer_id}/orders/{order_id}/provisioningstatus|[Získání stavu zřizování předplatných](get-subscription-provisioning-status.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}|[Správa objednávek a správa předplatného](manage-orders.md#manage-a-subscription)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/addons|[Získání seznamu doplňků pro předplatné](get-a-list-of-add-ons-for-a-subscription.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/azureEntiments|[Získání seznamu oprávnění Azure pro předplatné](get-a-list-of-azure-entitlements-for-subscription.md)|
+|{baseURL}/v1/customers/{customer_id}/subscriptions/{subscription_id}/registrationstatus|[Získání stavu registrace předplatných](get-subscription-registration-status.md)|
+|{baseURL}/v1/customers/{ID_tenanta_zákazníka}/transfers|[Získání všech převodů zákazníka](get-all-of-a-customer-s-transfers.md)|
+|{baseURL}/v1/productUpgrades/{id_upgradu}/status|[Získání stavu upgradu produktů](get-product-upgrade-status.md)|
+|{baseURL}/v1/customers/{ID_zákazníka}/předplatná/{ID_předplatného}/převody|[Získání seznamu nabídek převod zkušebních verzí](get-a-list-of-trial-conversion-offers.md)|
 
 
-### <a name="error-code-response"></a>Odpověď kódu chyby:
+### <a name="error-code-response"></a>Odpověď s kódem chyby:
 ```http
 HTTP/1.1 429 Too Many Requests 
 
@@ -106,21 +106,21 @@ Date: Tue, 21 Jul 2020 04:10:58 GMT
 
 ## <a name="example-of-activity-log"></a>Příklad protokolu aktivit
 
-Osvědčeným postupem při analýze každodenních změn doporučujeme zadat dotaz na záznam auditu pro určitý den. 
+Pro osvědčené postupy při analýze denních změn doporučujeme dotazovat se na záznam auditu pro konkrétní den. 
 
-V odpovědi se zobrazí výsledek se změnami konkrétního typu operace.Můžete filtrovat podle toho, o jakou operaci máte starosti. Pokud vás například zajímá nově vytvořeného zákazníka, můžete se podívat na typem operace OperationType = "add_customer".  
+V odpovědi získáte výsledek se změnami konkrétního typu operace.Můžete filtrovat podle operace, o kterou vám jde. Pokud vás například zajímá nově vytvořený zákazník, můžete se podívat na operationType = "add_customer".  
 
-Seznam typem operace OperationType/prostředků najdete níže v dokumentaci k rozhraní API.  
+Seznam typů operací a prostředků najdete v následujících dokumentacích k rozhraní API.  
 
 - [Auditování prostředků](auditing-resources.md)  
 
-- [Získání záznamu o aktivitě Partnerské centrum podle uživatele](get-a-record-of-partner-center-activity-by-user.md)  
+- [Získání záznamu aktivity partnerského centra podle uživatele](get-a-record-of-partner-center-activity-by-user.md)  
 
 
 
 ### <a name="response-example"></a>Příklad odpovědi
 
-**Požadavek:**  
+**Požadavek**:  
 ```http
 Http Get call:  https://api.partnercenter.microsoft.com/v1/auditrecords?startDate=2020-09-02&endDate=2020-09-02&size=50 
 
@@ -139,7 +139,7 @@ Host: api.partnercenter.microsoft.com
 Connection: Keep-Alive 
 ```
 
-**Odpověď:**    
+**Odpověď**:    
 ```http
 { 
 

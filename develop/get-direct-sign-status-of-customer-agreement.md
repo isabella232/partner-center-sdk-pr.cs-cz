@@ -1,37 +1,37 @@
 ---
-title: Získejte stav přímého podepisování zákazníka pro zákaznickou smlouvu Microsoftu.
-description: Pomocí prostředku DirectSignedCustomerAgreementStatus můžete získat stav přímého podepisování zákazníka (přímé přijetí) smlouvy o zákaznících Microsoftu.
+title: Získejte stav přímého podepsání zákazníka pro Smlouva se zákazníkem Microsoftu.
+description: Pomocí prostředku DirectSignedCustomerAgreementStatus můžete získat stav přímého podepisování zákazníka (přímé přijetí) Smlouva se zákazníkem Microsoftu.
 ms.date: 02/11/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: khpavan
 ms.author: sakhanda
-ms.openlocfilehash: a17775614b4eb328514b2b32b4cac1e513019cff
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: 544965ab05e3956aa5b7b6fa2ef9656ff33990ef9c8d91422797132a814b85f1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111549174"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993345"
 ---
-# <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Získání stavu přímého podepisování zákazníka (přímé přijetí) smlouvy o zákaznících Microsoftu
+# <a name="get-the-status-of-a-customers-direct-signing-direct-acceptance-of-microsoft-customer-agreement"></a>Získání stavu přímého podepsání zákazníka (přímé přijetí) Smlouva se zákazníkem Microsoftu
 
-**Platí pro**: partnerské Centrum
+**Platí pro:** Partnerské centrum
 
-Nevztahuje **se na**: partnerské Centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Nevztahuje se na**: Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partner Center v současné době podporuje prostředek **DirectSignedCustomerAgreementStatus** jenom ve veřejném cloudu Microsoftu.
+Prostředek **DirectSignedCustomerAgreementStatus** je aktuálně podporován Partnerské centrum ve veřejném cloudu Microsoftu.
 
-Tento článek vysvětluje, jak můžete načíst stav přímého přijetí smlouvy o zákaznících Microsoftu v rámci zákazníka.
+Tento článek vysvětluje, jak můžete načíst stav přímého přijetí služby zákazníkem Smlouva se zákazníkem Microsoftu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Pokud chcete načíst stav přímého souhlasu zákazníka s zákaznickou smlouvou Microsoftu, zavolejte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Pak použijte vlastnost [**smlouvy**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) pro načtení rozhraní [**ICustomerAgreementCollection**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) . Nakonec zavolejte `GetDirectSignedCustomerAgreementStatus()` nebo `GetDirectSignedCustomerAgreementStatusAsync()` pro načtení stavu.
+Pokud chcete načíst stav přímého přijetí požadavku zákazníkem, Smlouva se zákazníkem Microsoftu [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s identifikátorem zákazníka. Potom pomocí [**vlastnosti Agreements**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.agreements) načtěte rozhraní [**ICustomerAgreementCollection.**](/dotnet/api/microsoft.store.partnercenter.agreements.icustomeragreementcollection) Nakonec zavolejte `GetDirectSignedCustomerAgreementStatus()` nebo `GetDirectSignedCustomerAgreementStatusAsync()` a načtěte stav.
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,31 +39,31 @@ Pokud chcete načíst stav přímého souhlasu zákazníka s zákaznickou smlouv
 var customerDirectSigningStatus = partnerOperations.Customers.ById(selectedCustomerId).Agreements.GetDirectSignedCustomerAgreementStatus();
 ```
 
-**Ukázka**: [ukázková aplikace konzoly](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project**: **třída** SdkSamples: GetDirectSignedCustomerAgreementStatus. cs
+**Ukázka:** [Konzolová ukázková aplikace](https://github.com/microsoft/Partner-Center-DotNet-Samples). **Project:** SdkSamples **– třída:** GetDirectSignedCustomerAgreementStatus.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-Pokud chcete načíst stav přímého souhlasu zákazníka s zákaznickou smlouvou Microsoftu, vytvořte žádost REST, která načte [DirectSignedCustomerAgreementStatus](./customer-agreement-direct-sign-status-resource.md) pro zákazníka.
+Pokud chcete načíst stav přímého přijetí žádosti zákazníka Smlouva se zákazníkem Microsoftu, vytvořte požadavek REST pro načtení [DirectSignedCustomerAgreementStatus](./customer-agreement-direct-sign-status-resource.md) pro zákazníka.
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
-Použijte následující syntaxi žádosti:
+Použijte následující syntaxi požadavku:
 
 | Metoda | Identifikátor URI žádosti                                                                                      |
 |--------|--------------------------------------------------------------------------------------------------|
-| GET    | [*\{ BASEURL \}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/directSignedMicrosoftCustomerAgreementStatus HTTP/1.1 |
+| GET    | [*\{ baseURL \}*](partner-center-rest-urls.md)/v1/customers/{id_tenanta_zákazníka}/directSignedMicrosoftCustomerAgreementStatus HTTP/1.1 |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-S vaším požadavkem můžete použít následující parametry identifikátoru URI:
+S požadavkem můžete použít následující parametry identifikátoru URI:
 
 | Název             | Typ | Vyžadováno | Popis                                                                               |
 |------------------|------|----------|-------------------------------------------------------------------------------------------|
-| Customer-tenant-ID | Identifikátor GUID | Yes | Hodnota je **CustomerTenantId** ve formátu GUID, který umožňuje určit ID tenanta zákazníka. |
+| customer-tenant-id | Identifikátor GUID | Yes | Hodnota je **CustomerTenantId** ve formátu GUID, která umožňuje zadat ID tenanta zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -81,19 +81,19 @@ MS-CorrelationId: ab993325-1605-4cf4-bac4-fb584142a31b
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek [ **DirectSignedCustomerAgreementStatus**](./customer-agreement-direct-sign-status-resource.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi prostředek [ **DirectSignedCustomerAgreementStatus.**](./customer-agreement-direct-sign-status-resource.md)
 
-Prostředek má vlastnost **podepsatelných** , která označuje stav přímého podepisování (přímého přijetí) zákazníka.
+Prostředek má vlastnost **isSigned,** která označuje stav přímého podepsání (přímého přijetí) zákazníka.
 
-- Hodnota **true** označuje, že smlouva byla podepsána (přijata) přímo zákazníkem.
+- Hodnota true **znamená,** že zákazník smlouvu podepsal (přijal) přímo.
 
-- Hodnota **false** znamená, že *smlouva nebyla* podepsána (přijata) přímo zákazníkem.
+- Hodnota false **znamená,** že  zákazník smlouvu přímo nepodepsal (nepřijal).
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění.
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění.
 
-Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

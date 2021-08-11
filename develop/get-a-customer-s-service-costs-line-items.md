@@ -4,12 +4,12 @@ description: Získá položky řádku s náklady na službu zákazníka za zadan
 ms.date: 07/12/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 1bc2914d7c8d41c6d806131444fdc241aa1feb90
-ms.sourcegitcommit: b1d6fd0ca93d8a3e30e970844d3164454415f553
+ms.openlocfilehash: 66ede79958e7e218ba59492ea9019d209a5d00dfae331622eceba78963048491
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111874937"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115992955"
 ---
 # <a name="get-a-customers-service-costs-line-items"></a>Získání řádkových položek nákladů na služby zákazníka
 

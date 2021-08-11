@@ -1,45 +1,45 @@
 ---
-title: Partnerské centrum události webhooku
-description: Naučte se testovat a používat události webhooku k poznámce, kdy se odběry a další události v Partnerské centrum.
+title: Události Webhooku partnerského centra
+description: Naučte se testovat a používat události Webhooku, abyste poznamenali, kdy se předplatné a další události mění v partnerském centru.
 ms.date: 04/10/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: cychua
 ms.author: cychua
-ms.openlocfilehash: e5e363a2f928dd38304887547bdc0e5d652728d6
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f329f7aa59ee5127c8275c7c9d8c59e5ea2cf12e9c888419f1ce35e2db3604d1
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547736"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997562"
 ---
-# <a name="partner-center-webhook-events"></a>Partnerské centrum události webhooku
+# <a name="partner-center-webhook-events"></a>Události Webhooku partnerského centra
 
-**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partnerské centrum webhooku jsou události změny prostředků doručené ve formě HTTP POST na zaregistrovanou adresu URL. Pokud chcete přijímat události z Partnerské centrum, hostíte zpětné volání, Partnerské centrum může událost POST. Událost je digitálně podepsaná, abyste mohli ověřit, že se odeslala z Partnerské centrum.
+Události Webhooku partnerského centra jsou události změny prostředků doručené ve formě příspěvků HTTP na registrovanou adresu URL. Pokud chcete získat událost z partnerského centra, můžete hostovat zpětné volání, které může partnerské Centrum publikovat událost. Událost je digitálně podepsaná, abyste mohli ověřit, že byla odeslána z partnerského centra.
 
-Informace o tom, jak přijímat události, ověřovat zpětné volání a používat rozhraní API webhooku Partnerské centrum k vytvoření, zobrazení a aktualizaci registrace události, najdete v [tématu Partnerské centrum Webhooky.](partner-center-webhooks.md)
+Informace o tom, jak přijímat události, ověřovat zpětné volání a používat rozhraní API Webhooku partnerského centra k vytvoření, zobrazení a aktualizaci registrace události, najdete v tématu [Webhooky partnerského centra](partner-center-webhooks.md).
 
 ## <a name="supported-events"></a>Podporované události
 
-Následující události webhooku jsou podporovány Partnerské centrum.
+Partnerské centrum podporuje následující události Webhooku.
 
 ### <a name="test-event"></a>Testovací událost
 
-Tato událost vám umožní registraci sama onboardovat a otestovat tak, že si vyžádáte testovací událost a pak budete sledovat její průběh. Uvidíte zprávy o selhání, které microsoft přijímá při pokusu o doručení události. To platí jenom pro události vytvořené testem a data starší než sedm dnů se vyprázdní.
+Tato událost umožňuje samoobslužné zprovoznění a testování registrace tím, že požaduje testovací událost a pak sleduje jeho průběh. Při pokusu o doručení události budete moci zobrazit zprávy o chybách, které jsou přijímány od společnosti Microsoft. Tato možnost bude platit jenom pro události "vytvořené testem" a data starší než sedm dní se vyprázdní.
 
 >[!NOTE]
->Při odesílání události vytvořené testem platí limit 2 požadavků za minutu.
+>Při odesílání události vytvořené testem je omezení dvou požadavků za minutu.
 
 #### <a name="properties"></a>Vlastnosti
 
 | Vlastnost                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | řetězec                             | Název události. Ve tvaru {resource}-{action}. Pro tuto událost je hodnota "test-created".                                          |
-| Identifikátor URI prostředku               | Identifikátor URI                                | Identifikátor URI pro získání prostředku. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/registration/validationEvents/{{CorrelationId}}" |
-| ResourceName              | řetězec                             | Název prostředku, který aktivuje událost. Pro tuto událost je hodnota "test".                                  |
-| AuditUri                  | Identifikátor URI                                | (Volitelné) Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| EventName                 | řetězec                             | Název události. Ve formátu {Resource} – {Action}. Pro tuto událost je hodnota "test-Created".                                          |
+| ResourceUri               | Identifikátor URI                                | Identifikátor URI pro získání prostředku Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/Registration/validationEvents/{{CorrelationId}}. |
+| ResourceName              | řetězec                             | Název prostředku, který spustí událost. Pro tuto událost je hodnota "test".                                  |
+| AuditUri                  | Identifikátor URI                                | Volitelné Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}}. |
 | ResourceChangeUtcDate     | řetězec ve formátu data a času UTC | Datum a čas, kdy došlo ke změně prostředku                                                         |
 
 #### <a name="example"></a>Příklad
@@ -56,19 +56,19 @@ Tato událost vám umožní registraci sama onboardovat a otestovat tak, že si 
 
 ### <a name="subscription-updated-event"></a>Událost aktualizace předplatného
 
-Tato událost se vyvolala při změně zadaného předplatného. Událost Aktualizace předplatného se vygeneruje v případě, že dojde k interní změně kromě toho, kdy se změny provádí prostřednictvím Partnerské centrum API.  Tato událost se vygeneruje jenom v případě, že dojde ke změnám na úrovni obchodu, například když se změní počet licencí a stav předplatného. Při vytváření prostředků v rámci předplatného se nevygeneruje.
+Tato událost se vyvolá, když se změní zadané předplatné. Událost aktualizace předplatného se vygeneruje, když se kromě změn provedených prostřednictvím rozhraní API partnerského centra provede nějaká interní změna.  Tato událost bude vygenerována pouze v případě, že dojde ke změnám úrovně Commerce, například při změně počtu licencí a změně stavu předplatného. Při vytváření prostředků v rámci předplatného nebude vygenerována.
 
 >[!NOTE]
->Mezi změnou předplatného a aktivací události Aktualizace předplatného je zpoždění až 48 hodin.
+>Mezi časem změny předplatného a aktivací události aktualizace předplatného dojde k prodlevě až 48 hodin.
 
 #### <a name="properties"></a>Vlastnosti
 
 | Vlastnost                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | řetězec                             | Název události. Ve tvaru {resource}-{action}. Pro tuto událost je hodnota subscription-updated.                                  |
-| Identifikátor URI prostředku               | Identifikátor URI                                | Identifikátor URI pro získání prostředku. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/{{CustomerId}}/subscriptions/{{SubscriptionId}}" |
-| ResourceName              | řetězec                             | Název prostředku, který aktivuje událost. Pro tuto událost je hodnota "subscription".                          |
-| AuditUri                  | Identifikátor URI                                | (Volitelné) Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| EventName                 | řetězec                             | Název události. Ve formátu {Resource} – {Action}. Pro tuto událost je hodnota "předplatné-aktualizováno".                                  |
+| ResourceUri               | Identifikátor URI                                | Identifikátor URI pro získání prostředku Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/Customers/{{CustomerID}}/Subscriptions/{{SubscriptionId}}. |
+| ResourceName              | řetězec                             | Název prostředku, který spustí událost. Pro tuto událost je hodnota "předplatné".                          |
+| AuditUri                  | Identifikátor URI                                | Volitelné Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}}. |
 | ResourceChangeUtcDate     | řetězec ve formátu data a času UTC | Datum a čas, kdy došlo ke změně prostředku                                                         |
 
 #### <a name="example"></a>Příklad
@@ -83,18 +83,18 @@ Tato událost se vyvolala při změně zadaného předplatného. Událost Aktual
 }
 ```
 
-### <a name="threshold-exceeded-event"></a>Prahová hodnota překročena – událost
+### <a name="threshold-exceeded-event"></a>Událost překročení prahové hodnoty
 
-Tato událost se nastane, když výše Microsoft Azure využití u všech zákazníků překročí rozpočet útraty za využití (jejich prahovou hodnotu). Další informace najdete v tématu [Nastavení rozpočtu útraty Azure pro zákazníky/partnerské centrum/set-an-azure-spending-budget-for-your-customers).
+tato událost se vyvolá v případě, že množství využití Microsoft Azure pro každého zákazníka přesáhne rozpočet výdajů na využití (jejich prahovou hodnotu). Další informace najdete v tématu [nastavení rozpočtu útraty Azure pro vaše zákazníky/partnery – Center/set-a-Azure-útraty-rozpočet-pro zákazníky).
 
 #### <a name="properties"></a>Vlastnosti
 
 | Vlastnost                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | řetězec                             | Název události. Ve tvaru {resource}-{action}. Pro tuto událost je hodnota usagerecords-thresholdExceeded.                                  |
-| Identifikátor URI prostředku               | Identifikátor URI                                | Identifikátor URI pro získání prostředku. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/customers/usagerecords |
-| ResourceName              | řetězec                             | Název prostředku, který aktivuje událost. Pro tuto událost je hodnota "usagerecords".                          |
-| AuditUri                  | Identifikátor URI                                | (Volitelné) Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| EventName                 | řetězec                             | Název události. Ve formátu {Resource} – {Action}. Pro tuto událost je hodnota "usagerecords-thresholdExceeded".                                  |
+| ResourceUri               | Identifikátor URI                                | Identifikátor URI pro získání prostředku Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/webhooks/v1/Customers/usagerecords. |
+| ResourceName              | řetězec                             | Název prostředku, který spustí událost. Pro tuto událost je hodnota "usagerecords".                          |
+| AuditUri                  | Identifikátor URI                                | Volitelné Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}}. |
 | ResourceChangeUtcDate     | řetězec ve formátu data a času UTC | Datum a čas, kdy došlo ke změně prostředku                                                         |
 
 #### <a name="example"></a>Příklad
@@ -109,18 +109,18 @@ Tato událost se nastane, když výše Microsoft Azure využití u všech zákaz
 }
 ```
 
-### <a name="referral-created-event"></a>Událost vytvoření referenčního odkazu
+### <a name="referral-created-event"></a>Událost vytvořená odkazem
 
-Tato událost se vyvolala při vytvoření referenčního odkazu.
+Tato událost je aktivována při vytvoření odkazu.
 
 #### <a name="properties"></a>Vlastnosti
 
 | Vlastnost                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | řetězec                             | Název události. Ve tvaru {resource}-{action}. Pro tuto událost je hodnota "referral-created" (vytvoření referenčního seznamu).                                  |
-| Identifikátor URI prostředku               | Identifikátor URI                                | Identifikátor URI pro získání prostředku. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
-| ResourceName              | řetězec                             | Název prostředku, který aktivuje událost. Pro tuto událost je hodnota referenčního seznamu.                          |
-| AuditUri                  | Identifikátor URI                                | (Volitelné) Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| EventName                 | řetězec                             | Název události. Ve formátu {Resource} – {Action}. Pro tuto událost je hodnota "odkaz-vytvořeno".                                  |
+| ResourceUri               | Identifikátor URI                                | Identifikátor URI pro získání prostředku Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/Engagements/v1/Referrals/{{ReferralID}}. |
+| ResourceName              | řetězec                             | Název prostředku, který spustí událost. Pro tuto událost je tato hodnota "Reference".                          |
+| AuditUri                  | Identifikátor URI                                | Volitelné Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}}. |
 | ResourceChangeUtcDate     | řetězec ve formátu data a času UTC | Datum a čas, kdy došlo ke změně prostředku                                                         |
 
 #### <a name="example"></a>Příklad
@@ -135,18 +135,18 @@ Tato událost se vyvolala při vytvoření referenčního odkazu.
 }
 ```
 
-### <a name="referral-updated-event"></a>Aktualizovaná událost referenčního odkazu
+### <a name="referral-updated-event"></a>Událost aktualizovaného odkazu
 
-Tato událost se vyvolala při aktualizaci referenčního odkazu.
+Tato událost je aktivována při aktualizaci odkazu.
 
 #### <a name="properties"></a>Vlastnosti
 
 | Vlastnost                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName                 | řetězec                             | Název události. Ve tvaru {resource}-{action}. Pro tuto událost je hodnota "referenční seznam aktualizován".                                  |
-| Identifikátor URI prostředku               | Identifikátor URI                                | Identifikátor URI pro získání prostředku. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/engagements/v1/referrals/{{ReferralID}}" |
-| ResourceName              | řetězec                             | Název prostředku, který aktivuje událost. Pro tuto událost je hodnota referenčního seznamu.                          |
-| AuditUri                  | Identifikátor URI                                | (Volitelné) Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}" |
+| EventName                 | řetězec                             | Název události. Ve formátu {Resource} – {Action}. Pro tuto událost je hodnota "odkaz-aktualizováno".                                  |
+| ResourceUri               | Identifikátor URI                                | Identifikátor URI pro získání prostředku Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/Engagements/v1/Referrals/{{ReferralID}}. |
+| ResourceName              | řetězec                             | Název prostředku, který spustí událost. Pro tuto událost je tato hodnota "Reference".                          |
+| AuditUri                  | Identifikátor URI                                | Volitelné Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}}. |
 | ResourceChangeUtcDate     | řetězec ve formátu data a času UTC | Datum a čas, kdy došlo ke změně prostředku                                                         |
 
 #### <a name="example"></a>Příklad
@@ -161,16 +161,16 @@ Tato událost se vyvolala při aktualizaci referenčního odkazu.
 }
 ```
 
-### <a name="invoice-ready-event"></a>Událost připravenou na fakturu
+### <a name="invoice-ready-event"></a>Událost připravena k faktuře
 
-Tato událost se vyvolala, když je nová faktura připravená.
+Tato událost se vyvolá, když je nová faktura připravena.
 
 | Vlastnost                  | Typ                               | Description                                                                                                  |
 |---------------------------|------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| EventName | řetězec | Název události. Ve tvaru {resource}-{action}. Pro tuto událost je hodnota "invoice-ready" (připraveno na fakturu). |
-| Identifikátor URI prostředku | Identifikátor URI | Identifikátor URI pro získání prostředku. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/v1/invoices/{{InvoiceId}}" |
-| ResourceName | řetězec | Název prostředku, který aktivuje událost. Pro tuto událost je hodnotou "invoice". |
-| AuditUri |  Identifikátor URI | (Volitelné) Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/auditrecords/{{AuditId}}") |
+| EventName | řetězec | Název události. Ve formátu {Resource} – {Action}. Pro tuto událost je hodnota "faktura-připravena". |
+| ResourceUri | Identifikátor URI | Identifikátor URI pro získání prostředku Používá syntaxi [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{{InvoiceId}}. |
+| ResourceName | řetězec | Název prostředku, který spustí událost. Pro tuto událost je hodnota "Invoice". |
+| AuditUri |  Identifikátor URI | Volitelné Identifikátor URI pro získání záznamu auditu, pokud existuje. Používá syntaxi:[*{baseURL}*](partner-center-rest-urls.md)/auditactivity/v1/AuditRecords/{{AuditId}} ") |
 | ResourceChangeUtcDate | řetězec ve formátu data a času UTC | Datum a čas, kdy došlo ke změně prostředku |
 
 #### <a name="example"></a>Příklad

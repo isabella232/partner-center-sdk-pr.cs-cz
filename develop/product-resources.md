@@ -1,33 +1,33 @@
 ---
-title: Prostředky produktů
-description: Prostředky představující kupní zboží nebo služby. Zahrnuje prostředky pro popis typu produktu a tvaru (SKU) a pro kontrolu dostupnosti produktu v inventáři.
+title: Zdroje informací o produktech
+description: Prostředky, které představují nákupní zboží nebo služby. Obsahuje zdroje informací pro popis typu a tvaru produktu (SKU) a pro kontrolu dostupnosti produktu v inventáři.
 ms.date: 04/01/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 2e68df1f6955fb7feb9770377621c2d649b74e4a
-ms.sourcegitcommit: 59950cf131440786779c8926be518c2dc4bc4030
+ms.openlocfilehash: b0269b55810a57dc3a4897027a9817baaebc8ed5f4e98dc66e2eadfa210f362f
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2021
-ms.locfileid: "115009116"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115997443"
 ---
-# <a name="products-resources"></a>Prostředky produktů
+# <a name="products-resources"></a>Zdroje informací o produktech
 
-Prostředky představující kupní zboží nebo služby. Zahrnuje prostředky pro popis typu produktu a tvaru (SKU) a pro kontrolu dostupnosti produktu v inventáři.
+Prostředky, které představují nákupní zboží nebo služby. Obsahuje zdroje informací pro popis typu a tvaru produktu (SKU) a pro kontrolu dostupnosti produktu v inventáři.
 
 ## <a name="product"></a>Produkt
 
-Představuje službu, která je k nebo platná. Produkt sám o sobě není položkou, která je k nákupu.
+Představuje nákupní zboží nebo službu. Samotný produkt není položka, kterou je možné zakoupit.
 
 | Vlastnost           | Typ                          | Description                                                              |
 |--------------------|-------------------------------|--------------------------------------------------------------------------|
-| id                 | řetězec                        | ID pro tento produkt                                                 |
+| id                 | řetězec                        | ID pro tento produkt.                                                 |
 | title              | řetězec                        | Název produktu                                                       |
 | description        | řetězec                        | Popis produktu                                                 |
-| productType        | [ItemType](#itemtype)         | Objekt, který popisuje kategorizaci typů tohoto produktu.     |
-| isMicrosoftProduct | bool                          | Označuje, zda se jedná o produkt společnosti Microsoft.                          |
-| publisherName      | řetězec                        | Název vydavatele produktu, pokud je k dispozici                          |
-| odkazy              | [ProductLinks](#productlinks) | Odkazy na prostředky obsažené v produktu.                         |
+| productType        | [Itemtype](#itemtype)         | Objekt, který popisuje kategorizaci typů tohoto produktu.     |
+| isMicrosoftProduct | bool                          | Určuje, jestli se jedná o produkt Microsoftu.                          |
+| publisherName      | řetězec                        | Název vydavatele produktu, pokud je k dispozici.                          |
+| Odkazy              | [Odkazy na produkty](#productlinks) | Odkazy na prostředky obsažené v rámci produktu.                         |
 
 ## <a name="itemtype"></a>ItemType
 
@@ -36,34 +36,34 @@ Představuje typ produktu.
 | Vlastnost        | Typ                          | Description                                                                          |
 |-----------------|-------------------------------|--------------------------------------------------------------------------------------|
 | id              | řetězec                        | Identifikátor typu.                                                                 |
-| displayName     | řetězec                        | Zobrazovaný název pro tento typ.                                                      |
-| Podtyp         | [ItemType](#itemtype)         | Nepovinný parametr. Objekt, který popisuje kategorizaci podtypu pro tento typ položky.     |
+| displayName     | řetězec                        | Zobrazovaný název tohoto typu.                                                      |
+| Podtypu         | [Itemtype](#itemtype)         | Nepovinný parametr. Objekt, který popisuje kategorizaci podtypu pro tento typ položky.     |
 
-## <a name="productlinks"></a>ProductLinks
+## <a name="productlinks"></a>Odkazy na produkty
 
-Obsahuje seznam odkazů na [produkt](#product).
+Obsahuje seznam odkazů pro [produkt](#product).
 
 | Vlastnost        | Typ                                                          | Description                                          |
 |-----------------|---------------------------------------------------------------|------------------------------------------------------|
-| SKU            | [Propojit](utility-resources.md#link)                             | Odkaz pro přístup k podkladovým skladovým položkám          |
-| odkazy           | [ResourceLinks](utility-resources.md#resourcelinks)           | Odkazy na prostředky obsažené v rámci tohoto prostředku.   |
+| Sku            | [Odkaz](utility-resources.md#link)                             | Odkaz pro přístup k podkladovým skladovým cenovým cenovým cenovým cenům          |
+| Odkazy           | [Odkazy na prostředky](utility-resources.md#resourcelinks)           | Odkazy na prostředky obsažené v tomto prostředku.   |
 
 ## <a name="sku"></a>Skladová jednotka (SKU)
 
-Představuje kupní jednotku (SKU), která je v produktu k disměrné jednotce. Tyto prvky jsou znázorněny v různých tvarech produktu.
+Představuje nákupní skladovou jednotku (SKU) v rámci produktu. Ty představují různé tvary produktu.
 
 | Vlastnost               | Typ             | Description                                                                           |
 |------------------------|------------------|---------------------------------------------------------------------------------------|
-| id                     | řetězec           | ID této SKU Toto ID je jedinečné jenom v rámci kontextu jeho nadřazeného produktu. |
-| title                  | řetězec           | Název SKU.                                                                 |
-| description            | řetězec           | Popis SKU.                                                           |
-| productId              | řetězec           | ID nadřazeného [produktu](#product) , který obsahuje tuto sku                      |
-| minimumQuantity        | int              | Minimální množství, které je povoleno pro nákup.                                            |
-| maximumQuantity        | int              | Maximální povolené množství k nákupu.                                            |
-| Zkušební verze                | bool             | Označuje, zda je tato SKU položkou zkušební verze.                                           |
-| supportedBillingCycles | pole řetězců | Seznam podporovaných fakturačních cyklů pro tuto skladovou jednotku. Podporované hodnoty jsou názvy členů nalezené v [BillingCycleType](#billingcycletype). |
-| purchasePrerequisites  | pole řetězců | Seznam požadovaných kroků nebo akcí, které jsou nutné před nákupem této položky. Podporované hodnoty jsou:<br/>  "InventoryCheck" – Určuje, že před pokusem o zakoupení této položky je nutné vyhodnotit inventář položky.<br/> "AzureSubscriptionRegistration" – označuje, že je potřeba předplatné Azure, a před tím, než se pokusíte koupit tuto položku, musí být zaregistrované.  |
-| inventoryVariables     | pole řetězců | Seznam proměnných potřebných ke spuštění kontroly inventáře u této položky. Podporované hodnoty jsou:<br/> "CustomerId" – ID zákazníka, pro kterého se má koupit.<br/> "AzureSubscriptionId" – ID předplatného Azure, které se použije při nákupu rezervací Azure.</br> "ArmRegionName" – oblast, pro kterou chcete ověřit inventář. Tato hodnota musí odpovídat hodnotě "ArmRegionName" z DynamicAttributes SKU. |
+| id                     | řetězec           | ID této SKU. Toto ID je jedinečné pouze v kontextu svého nadřazeného produktu. |
+| title                  | řetězec           | Název SKU                                                                 |
+| description            | řetězec           | Popis SKU                                                           |
+| productId              | řetězec           | ID nadřazeného [produktu,](#product) který obsahuje tuto SKU.                      |
+| minimumQuantity        | int              | Minimální povolené množství pro nákup.                                            |
+| maximumQuantity        | int              | Maximální povolené množství pro nákup.                                            |
+| isTrial (aplikace isTrial)                | bool             | Určuje, jestli se jedná o položku zkušební verze.                                           |
+| supportedBillingCycles | pole řetězců | Seznam podporovaných fakturačních cyklů pro tuto SKU. Podporované hodnoty jsou názvy členů, které najdete v [části BillingCycleType](#billingcycletype). |
+| purchasePrerequisites  | pole řetězců | Seznam požadovaných kroků nebo akcí, které jsou potřeba před nákupem této položky. Podporované hodnoty jsou:<br/>  "InventoryCheck" – Označuje, že se má inventář položky vyhodnotit před pokusem o nákup této položky.<br/> AzureSubscriptionRegistration – Označuje, že předplatné Azure je potřeba a musí být zaregistrované, než se pokusíte koupit tuto položku.  |
+| inventoryVariables     | pole řetězců | Seznam proměnných potřebných k provedení kontroly inventáře pro tuto položku. Podporované hodnoty jsou:<br/> "CustomerId" – ID zákazníka, pro kterého se má koupit.<br/> "AzureSubscriptionId" – ID předplatného Azure, které se použije při nákupu rezervací Azure.</br> "ArmRegionName" – oblast, pro kterou chcete ověřit inventář. Tato hodnota musí odpovídat hodnotě "ArmRegionName" z DynamicAttributes SKU. |
 | provisioningVariables  | pole řetězců | Seznam proměnných, které musí být poskytnuty do kontextu zřizování [položky řádku košíku](cart-resources.md#cartlineitem) při nákupu této položky. Podporované hodnoty jsou:<br/> Rozsah – rozsah nákupu rezervace Azure: "Single", "Shared".<br/> SubscriptionId – ID předplatného Azure, které se použije pro nákup rezervace Azure.<br/> "Doba trvání" – doba trvání rezervace Azure: "1Year", "3Year".  |
 | dynamicAttributes      | páry klíč/hodnota  | Slovník dynamických vlastností, které se vztahují na tuto položku. Vlastnosti v tomto slovníku jsou dynamické a můžou se měnit bez předchozího upozornění. Neměli byste vytvářet silné závislosti na konkrétních klíčích existujících v hodnotě této vlastnosti.    |
 | odkazy                  | [ResourceLinks](utility-resources.md#resourcelinks) | Odkazy na prostředky obsažené v této SKU.                   |

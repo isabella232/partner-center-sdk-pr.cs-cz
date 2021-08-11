@@ -1,48 +1,48 @@
 ---
-title: Prostředky žádosti o služby
-description: Partneři můžou podávat žádosti o služby prostřednictvím spisu jménem svých partnerů, aby nahlásily služby, které společnost Microsoft poskytuje, nebo aby požádaly o jinou technickou podporu, že nepodporují poskytování.
+title: Prostředky žádostí o služby
+description: Partneři mohou za své partnery zažádat o služby, aby nahlásit přerušení služeb poskytovaných Microsoftem nebo požádat o jinou technickou podporu, kterou nejsou schopní poskytovat.
 ms.date: 12/15/2017
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 02a02e6a873ad8785150368f3d4b89af2b588529
-ms.sourcegitcommit: b307fd75e305e0a88cfd1182cc01d2c9a108ce45
+ms.openlocfilehash: f919b3c34ff179a7a6cd0541f34c53737ec4148e44791419d2252fae64b0658d
+ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111547355"
+ms.lasthandoff: 08/06/2021
+ms.locfileid: "115993227"
 ---
-# <a name="service-request-resources"></a>Prostředky žádosti o služby
+# <a name="service-request-resources"></a>Prostředky žádostí o služby
 
-**Platí pro**: partnerské Centrum | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Partneři můžou podávat žádosti o služby prostřednictvím spisu jménem svých partnerů, aby nahlásily služby, které společnost Microsoft poskytuje, nebo aby požádaly o jinou technickou podporu, že nepodporují poskytování.
+Partneři mohou za své partnery zažádat o služby, aby nahlásit přerušení služeb poskytovaných Microsoftem nebo požádat o jinou technickou podporu, kterou nejsou schopní poskytovat.
 
-## <a name="servicerequest"></a>ServiceRequest
+## <a name="servicerequest"></a>Požadavek na službu
 
-Popisuje žádost o službu podanou partnerem, včetně toho, jak probíhá požadavek.
+Popisuje žádost o službu, kterou podá partner, včetně toho, jak tato žádost postupuje.
 
 | Vlastnost         | Typ                                                          | Description                                                                          |
 |------------------|---------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | Nadpis            | řetězec                                                        | Název žádosti o službu.                                                           |
-| Description      | řetězec                                                        | Popis.                                                                     |
-| Závažnost         | řetězec                                                        | Závažnost: "neznámá", "kritická", "střední" nebo "Minimal".                       |
-| SupportTopicId   | řetězec                                                        | ID tématu podpory                                                         |
-| SupportTopicName | řetězec                                                        | Název tématu podpory                                                       |
+| Description      | řetězec                                                        | Popis                                                                     |
+| Závažnost         | řetězec                                                        | Závažnost: "neznámý", "kritický", "střední" nebo "minimální".                       |
+| SUPPORTTopicId   | řetězec                                                        | ID tématu podpory.                                                         |
+| SupportTopicName | řetězec                                                        | Název tématu podpory.                                                       |
 | Id               | řetězec                                                        | ID žádosti o službu.                                                       |
-| Status           | řetězec                                                        | Stav žádosti o službu: "žádné", "otevřeno", "uzavřeno" nebo " \_ nutná pozornost". |
-| Organizace     | [ServiceRequestOrganization](#servicerequestorganization)     | Organizace, pro kterou je vytvořen požadavek služby.                               |
-| PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Primární kontakt na žádost o službu                                              |
-| LastUpdatedBy    | [ServiceRequestContact](#servicerequestcontact)               | "Poslední aktualizace": kontaktuje změny žádosti o službu.                        |
+| Status           | řetězec                                                        | Stav žádosti o službu: none( žádný), open (otevřený), closed (uzavřeno) nebo "attention needed" (potřeba \_ pozornosti). |
+| Organizace     | [ServiceRequestOrganization](#servicerequestorganization)     | Organizace, pro kterou je žádost o službu vytvořena.                               |
+| PrimaryContact   | [ServiceRequestContact](#servicerequestcontact)               | Primární kontakt v žádosti o služby.                                              |
+| LastUpdatedBy    | [ServiceRequestContact](#servicerequestcontact)               | Kontakt "Poslední aktualizace", který se týká změn v žádosti o služby.                        |
 | ProductName      | řetězec                                                        | Název produktu, který odpovídá žádosti o služby.                     |
 | ProductId        | řetězec                                                        | ID produktu.                                                               |
-| CreatedDate      | date                                                          | Datum vytvoření žádosti o službu.                                          |
-| LastModifiedDate. | date                                                          | Datum poslední změny žádosti o službu.                                 |
-| LastClosedDate   | date                                                          | Datum poslední uzavření žádosti o službu.                                   |
-| Odkazy na připojení        | pole prostředků [FileInfo](utility-resources.md#fileinfo) | Kolekce odkazů na soubory, které se vztahují k žádosti o službu.                    |
-| NewNote          | [ServiceRequestNote](#servicerequestnote)                     | Do existující žádosti o službu je možné přidat poznámku.                                  |
-| Poznámky            | pole [ServiceRequestNotes](#servicerequestnote)           | Kolekce poznámek přidaných do žádosti o službu.                                  |
-| CountryCode      | řetězec                                                        | Země odpovídající žádosti o službu.                                    |
-| Atributy       | ResourceAttributes                                            | Atributy metadat odpovídající žádosti o službu.                        |
+| CreatedDate      | date                                                          | Datum vytvoření žádosti o služby                                          |
+| LastModifiedDate. | date                                                          | Datum poslední změny žádosti o služby                                 |
+| LastClosedDate   | date                                                          | Datum, kdy byla žádost o služby naposledy uzavřena.                                   |
+| Odkazy na soubor        | pole prostředků [FileInfo](utility-resources.md#fileinfo) | Kolekce odkazů na soubory, které se týkají žádosti o služby.                    |
+| NewNote          | [ServiceRequestNote](#servicerequestnote)                     | Poznámku je možné přidat k existující žádosti o služby.                                  |
+| Poznámky            | pole [ServiceRequestNotes](#servicerequestnote)           | Kolekce poznámek přidaných k žádosti o služby.                                  |
+| CountryCode      | řetězec                                                        | Země, která odpovídá žádosti o služby.                                    |
+| Atributy       | Atributy prostředků                                            | Atributy metadat odpovídající žádosti o službu.                        |
 
 ## <a name="servicerequestcontact"></a>ServiceRequestContact
 
@@ -50,12 +50,12 @@ Popisuje kontakt, který vytvoří nebo upraví žádost o služby.
 
 | Vlastnost     | Typ                                                      | Description                                            |
 |--------------|-----------------------------------------------------------|--------------------------------------------------------|
-| Organizace | [ServiceRequestOrganization](#servicerequestorganization) | Organizace, pro kterou je vytvořen požadavek služby. |
-| ContactId    | řetězec                                                    | Jedinečné ID kontaktu                               |
-| LastName     | řetězec                                                    | Příjmení kontaktu                          |
-| FirstName    | řetězec                                                    | Křestní jméno kontaktu                         |
+| Organizace | [ServiceRequestOrganization](#servicerequestorganization) | Organizace, pro kterou je žádost o službu vytvořena. |
+| Contactid    | řetězec                                                    | Jedinečné ID kontaktu.                               |
+| LastName     | řetězec                                                    | Příjmení kontaktu.                          |
+| FirstName    | řetězec                                                    | Jméno kontaktu                         |
 | E-mail        | řetězec                                                    | E-mail kontaktu                              |
-| PhoneNumber  | řetězec                                                    | Telefonní číslo kontaktu                       |
+| PhoneNumber  | řetězec                                                    | Telefonní číslo kontaktu.                       |
 
 ## <a name="servicerequestnote"></a>ServiceRequestNote
 
