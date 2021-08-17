@@ -4,12 +4,12 @@ description: Přečtěte si, jak ověřit identifikátor ID Microsoft Partner Ne
 ms.date: 09/29/2018
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 223f0da94f5a1c12b4f6de32184296b88ab5f443a69feac89152acc1aa9ccbd6
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 471a94153ab4baffe45d43bee473bf68230106ad
+ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115995913"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122208054"
 ---
 # <a name="verify-a-partner-mpn-id-via-c-or-the-partner-center-rest-api"></a>Ověření ID MPN partnera prostřednictvím jazyka C \# nebo partnerského centra REST API
 
@@ -52,7 +52,7 @@ Zadejte následující parametr dotazu pro identifikaci partnera. Pokud tento pa
 
 | Název   | Typ | Vyžadováno | Popis                                                 |
 |--------|------|----------|-------------------------------------------------------------|
-| MPN – ID | int  | No       | ID Microsoft Partner Network, které identifikuje partnera. |
+| MPN – ID | int  | Ne       | ID Microsoft Partner Network, které identifikuje partnera. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
