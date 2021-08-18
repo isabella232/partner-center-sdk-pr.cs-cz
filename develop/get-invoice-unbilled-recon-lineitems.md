@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 3e461367eb41c180dd1004ab2548ca24c4b891976ef53d852bb7933ff23fae65
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 846d2fb0009dd39ed232569a9c8f41104afece1b
+ms.sourcegitcommit: 00d5b934048fcec95efc70f5063e86426636d244
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115993873"
+ms.lasthandoff: 08/16/2021
+ms.locfileid: "122228440"
 ---
 # <a name="get-invoices-unbilled-reconciliation-line-items"></a>Získat neúčtované položky řádku odsouhlasení faktury
 
@@ -119,9 +119,9 @@ V závislosti na vašem případu použití můžete pro požadavek REST použí
 
  | Metoda  | Identifikátor URI žádosti            | Popis případu použití syntaxe                                                                                |
 |---------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&CurrencyCode = {currencycode} &perioda = {period} HTTP/1.1                              | Pomocí této syntaxe vrátíte úplný seznam všech položek řádku pro danou fakturu. |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} HTTP/1.1  | Pro velké faktury použijte tuto syntaxi se zadanou velikostí a 0 posunem na základě posunutí stránkovaného seznamu položek řádků. |
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/{Invoice-ID}/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next                               | Tuto syntaxi použijte k získání další stránky položek řádku odsouhlasení pomocí `seekOperation = "Next"` . |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&CurrencyCode = {currencycode} &perioda = {period} HTTP/1.1                              | Pomocí této syntaxe vrátíte úplný seznam všech položek řádku pro danou fakturu. |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} HTTP/1.1  | Pro velké faktury použijte tuto syntaxi se zadanou velikostí a 0 posunem na základě posunutí stránkovaného seznamu položek řádků. |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Invoices/unbilled/LineItems? Provider = jednorázová&invoicelineitemtype = billinglineitems&CurrencyCode = {currencycode} &period = {period} &size = {size} &SeekOperation = Next                               | Tuto syntaxi použijte k získání další stránky položek řádku odsouhlasení pomocí `seekOperation = "Next"` . |
 
 #### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -129,13 +129,12 @@ Při vytváření žádosti použijte následující identifikátor URI a parame
 
 | Název                   | Typ   | Vyžadováno | Popis                                                                     |
 |------------------------|--------|----------|---------------------------------------------------------------------------------|
-| ID faktury             | řetězec | Yes      | Řetězec, který identifikuje fakturu. K získání nefakturovaných odhadů použijte příkaz unfakturováno. |
-| Zprostředkovatel               | řetězec | Yes      | Zprostředkovatel: "jednorázová".                                                |
-| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "BillingLineItems".               |
-| hasPartnerEarnedCredit | bool   | No       | Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu. Poznámka: Tento parametr bude použit pouze v případě, že typ zprostředkovatele je jednorázová a InvoiceLineItemType je UsageLineItems.
-| currencyCode           | řetězec | Yes      | Kód měny pro nefakturovatelné položky řádku                                  |
-| period                 | řetězec | Yes      | Období pro nefakturované rekognoskaci. Příklad: Current, Previous.                      |
-| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                     |
+| Zprostředkovatel               | řetězec | Ano      | Zprostředkovatel: "jednorázová".                                                |
+| faktura-line-Item-Type | řetězec | Ano      | Typ podrobností o faktuře: "BillingLineItems".               |
+| hasPartnerEarnedCredit | bool   | Ne       | Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu. Poznámka: Tento parametr bude použit pouze v případě, že typ zprostředkovatele je jednorázová a InvoiceLineItemType je UsageLineItems.
+| currencyCode           | řetězec | Ano      | Kód měny pro nefakturovatelné položky řádku                                  |
+| period                 | řetězec | Ano      | Období pro nefakturované rekognoskaci. Příklad: Current, Previous.                      |
+| size                   | číslo | Ne       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                     |
 | seekOperation          | řetězec | No       | Nastavte seekOperation = Next pro získání další stránky rekognoskaci položek řádků.                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
@@ -162,11 +161,11 @@ Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úsp�
 
 Následující podrobnosti se vztahují na tento příklad:
 
-- Poskytovatel: **OneTime**
+- Zprostředkovatel: **jednorázová**
 - InvoiceLineItemType: **BillingLineItems**
 - Období: **Předchozí**
 
-#### <a name="request-example-1"></a>Příklad požadavku 1
+#### <a name="request-example-1"></a>Příklad žádosti 1
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1//invoices/unbilled/lineitems?provider=onetime&invoicelineitemtype=billinglineitems&currencycode=usd&period=previous&size=2000 HTTP/1.1
