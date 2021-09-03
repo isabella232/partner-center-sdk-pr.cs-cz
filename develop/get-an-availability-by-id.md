@@ -1,17 +1,17 @@
 ---
 title: Získání dostupnosti podle ID
 description: Získá dostupnost pro zadaný produkt a SKU pomocí ID dostupnosti.
-ms.date: 09/17/2019
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: fccd566e83dab8994280fdee072c0d6f27b690d5292ed3973427088f46b30d6b
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 5bbbfdfeb81a915e5399bf2a89f99a70b509476d
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115993550"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456150"
 ---
 # <a name="get-the-availability-by-id"></a>Získání dostupnosti podle ID
 
@@ -29,7 +29,7 @@ Získá dostupnost pro zadaný produkt a SKU pomocí ID dostupnosti.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat podrobnosti o konkrétní [dostupnosti,](product-resources.md#availability)začněte postupem v tématu Získání [SKU podle ID](get-a-sku-by-id.md) a získejte rozhraní pro operace [konkrétní SKU.](product-resources.md#sku) Ve výsledném rozhraní vyberte vlastnost **Availabilities** a získejte rozhraní s dostupnými operacemi pro dostupnost. Potom předejte ID dostupnosti metodě **ById(),** abyste získali operace pro tuto konkrétní dostupnost, a potom zavoláte **Get()** nebo **GetAsync()** a načtete podrobnosti o dostupnosti.
+Pokud chcete získat podrobnosti o konkrétní [dostupnosti,](product-resources.md#availability)začněte postupem v tématu Získání [SKU podle ID](get-a-sku-by-id.md) a získejte rozhraní pro operace [konkrétní SKU.](product-resources.md#sku) Ve výsledném rozhraní vyberte vlastnost **Availabilities** a získejte rozhraní s dostupnými operacemi pro dostupnost. Potom předejte ID dostupnosti metodě **ById(),** abyste získali operace pro tuto konkrétní dostupnost, a pak zavoláte **Get()** nebo **GetAsync()** a načtete podrobnosti o dostupnosti.
 
 ```csharp
 IAggregatePartner partnerOperations;
@@ -75,7 +75,7 @@ Get-PartnerProductAvailability -Product $productId -SkuId $skuId -AvailabilityId
 
 | Metoda  | Identifikátor URI žádosti |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{ID_produktu}/skus/{ID_SKU}/availabilities/{ID_dostupnosti}?country={kód_země} HTTP/1.1         |
+| **DOSTAT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{ID_produktu}/skus/{ID_SKU}/availabilities/{ID_dostupnosti}?country={kód_země} HTTP/1.1         |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -125,7 +125,7 @@ Tato metoda vrátí následující kódy chyb:
 | 404                  | 400018       | SKU se nenašla.                                                                                        |
 | 404                  | 400019       | Dostupnost se nenašla.                                                                                   |
 
-### <a name="response-example"></a>Příklad odpovědi
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Příklad odpovědi na rezervace virtuálních počítače Azure (plán Azure)
 
 ```http
 HTTP/1.1 200 OK
@@ -161,6 +161,82 @@ Content-Length: 440
     "links": {
         "self": {
             "uri": "/products/DZH318Z0BQ3Q/skus/0001/availabilities/DZH318XZXPHL?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    }
+}
+```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Příklad odpovědi pro nové komerční služby založené na licencích
+
+> [!Note] 
+> Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58,83b644b5-e54a-4bdc-b354-f96c525b3c58
+MS-RequestId: 70324727-62d8-4195-8f99-70ea25058d02,70324727-62d8-4195-8f99-70ea25058d02
+X-Locale: en-US,en-US
+X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcbWFtZW5kZVxkZXZcZHBzLXJwZVxSUEUuUGFydG5lci5TZXJ2aWNlLkNhdGFsb2dcV2ViQXBpc1xDYXRhbG9nU2VydmljZS5WMi5XZWJcdjFccHJvZHVjdHNcRFpIMzE4WjBCUTNRXHNrdXNcMDAwMVxhdmFpbGFiaWxpdGllcw==?=
+X-Powered-By: ASP.NET
+Date: Wed, 14 Mar 2018 22:19:37 GMT
+Content-Length: 808
+
+{
+    "id": "CFQ7TTC0K971",
+    "productId": "CFQ7TTC0LH18",
+    "skuId": "0001",
+    "catalogItemId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "defaultCurrency": {
+        "code": "USD",
+        "symbol": "$"
+    },
+    "segment": "commercial",
+    "country": "US",
+    "isPurchasable": true,
+    "isRenewable": true, 
+    "renewalInstructions": [
+        {
+            "applicableTermIds": [
+                "5aeco6mffyxo"
+            ],
+            "renewalOptions": [
+                {
+                    "renewToId": "CFQ7TTC0LH18:0001",
+                    "isAutoRenewable": true
+                }
+            ]
+        },
+     …
+    ],
+    "terms": [
+        {
+            "id": "5aeco6mffyxo",
+            "duration": "P1Y",
+            "description": "One-Year commitment for monthly/yearly billing",
+            "billingCycle": "Annual",
+            "cancellationPolicies": [
+                {
+                    "refundOptions": [
+                        {
+                            "sequenceId": 0,
+                            "type": "Full",
+                            "expiresAfter": "P1D"
+                        }
+                    ]
+                }
+            ]
+        },
+       …
+    ],
+    "product": { ... },
+    "sku": { ... },
+    "links": {
+        "self": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
             "method": "GET",
             "headers": []
         }

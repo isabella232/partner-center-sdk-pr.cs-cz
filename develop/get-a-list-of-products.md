@@ -1,17 +1,17 @@
 ---
 title: Získání seznamu produktů (podle země)
 description: Pomocí prostředku produktu můžete získat kolekci produktů podle země zákazníka.
-ms.date: 11/01/2019
+ms.date: 02/16/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 6ec3a642006a100ef85c0af9eeddd9daf00cc1cd981eabd5dddb77e60e15111f
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 601fc2c8012d92d6964f0aaa29a3a46d732df300
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115989436"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456048"
 ---
 # <a name="get-a-list-of-products-by-country"></a>Získání seznamu produktů (podle země)
 
@@ -109,7 +109,7 @@ K získání seznamu produktů použijte následující cestu a parametry dotazu
 | Název                   | Typ     | Vyžadováno | Popis                                                             |
 |------------------------|----------|----------|-------------------------------------------------------------------------|
 | country                | řetězec   | Yes      | ID země nebo oblasti                                                  |
-| targetView             | řetězec   | Yes      | Určuje cílové zobrazení katalogu. Podporované hodnoty jsou: <br/><br/>**Azure**, který zahrnuje všechny položky Azure<br/><br/>**AzureReservations**, která zahrnuje všechny položky rezervace Azure<br/><br/>**AzureReservationsVM**, která zahrnuje všechny položky rezervace virtuálních počítačů (VM)<br/><br/>**AzureReservationsSQL**, která zahrnuje všechny položky rezervace SQL<br/><br/>**AzureReservationsCosmosDb**, která zahrnuje všechny položky rezervace Cosmos databáze<br/><br/>**MicrosoftAzure**, která zahrnuje položky pro předplatná Microsoft Azure (**MS-AZR-0145P**) a plány Azure<br/><br/>**OnlineServices**, která zahrnuje všechny online položky služeb (včetně produktů z komerčního tržiště)<br/><br/>**Software**, který zahrnuje všechny softwarové položky<br/><br/>**SoftwareSUSELinux**, která zahrnuje všechny položky softwaru SUSE Linux<br/><br/>**SoftwarePerpetual**, která zahrnuje všechny trvalé softwarové položky<br/><br/>**SoftwareSubscriptions**, která zahrnuje všechny položky předplatného softwaru    |
+| targetView             | řetězec   | Yes      | Určuje cílové zobrazení katalogu. Podporované hodnoty jsou: <br/><br/>**Azure**, který zahrnuje všechny položky Azure<br/><br/>**AzureReservations**, která zahrnuje všechny položky rezervace Azure<br/><br/>**AzureReservationsVM**, která zahrnuje všechny položky rezervace virtuálních počítačů (VM)<br/><br/>**AzureReservationsSQL**, která zahrnuje všechny položky rezervace SQL<br/><br/>**AzureReservationsCosmosDb**, která zahrnuje všechny položky rezervace Cosmos databáze<br/><br/>**MicrosoftAzure**, která zahrnuje položky pro předplatná Microsoft Azure (**MS-AZR-0145P**) a plány Azure<br/><br/>**OnlineServices**, která zahrnuje všechny online položky služeb. Tato targetView zahrnuje komerční tržiště, tradiční služby založené na licencích a nové služby založené na licencích pro Commerce.<br/><br/>**Software**, který zahrnuje všechny softwarové položky<br/><br/>**SoftwareSUSELinux**, která zahrnuje všechny položky softwaru SUSE Linux<br/><br/>**SoftwarePerpetual**, která zahrnuje všechny trvalé softwarové položky<br/><br/>**SoftwareSubscriptions**, která zahrnuje všechny položky předplatného softwaru    |
 | targetSegment          | řetězec   | No       | Identifikuje cílový segment. Zobrazení pro různé cílové skupiny. Podporované hodnoty jsou: <br/><br/>**prodejn**<br/>**školení**<br/>**schod**<br/>**neziskové**  |
 | reservationScope | řetězec   | No | Při dotazování na seznam produktů pro Azure Reservations určete, že se `reservationScope=AzurePlan` má získat seznam produktů, které se vztahují k plánům Azure. vyloučením tohoto parametru získáte seznam produktů pro rezervace Azure, které se vztahují na předplatná Microsoft Azure (**MS-AZR-0145P**).  |
 
@@ -159,6 +159,21 @@ MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
 MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 ```
 
+#### <a name="new-commerce-license-based-services"></a>Nové obchodní služby založené na licencích
+
+> [!Note] 
+> Nové obchodní změny jsou momentálně dostupné jenom pro partnery, kteří jsou součástí M365/D365 New Commerce Experience Technical Preview.
+
+Podle tohoto příkladu Získejte seznam produktů podle země pro nové služby založené na licencích na licencování jako součást nového prostředí pro obchod s Technical Preview. Nové služby založené na licencích pro Commerce Services se identifikují podle ID a displayNames hodnot **OnlineServicesNCE**. Viz příklad odpovědi níže.
+
+```http
+GET https://api.partnercenter.microsoft.com/v1/products?country=US&targetView=OnlineServices HTTP/1.1
+Authorization: Bearer
+Accept: application/json
+MS-RequestId: 031160b2-b0b0-4d40-b2b1-aaa9bb84211d
+MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
+```
+
 ## <a name="rest-response"></a>Odpověď REST
 
 V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [**produktu**](product-resources.md#product) .
@@ -174,7 +189,7 @@ Tato metoda vrací následující kódy chyb:
 | 403                  | 400030       | Přístup k požadovanému targetSegment není povolený.                                                     |
 | 403                  | 400036       | Přístup k požadovanému objektu targetView není povolený.                                                        |
 
-### <a name="response-example"></a>Příklad odpovědi
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Příklad odpovědi na rezervace virtuálních počítače Azure (plán Azure)
 
 ```http
 {
@@ -221,3 +236,50 @@ Tato metoda vrací následující kódy chyb:
     }
 }
 ```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Příklad odpovědi pro nové komerční služby založené na licencích
+
+> [!Note] 
+> Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview
+
+```http
+{
+  "totalCount": 19,
+  "items": [{
+      "id": "CFQ7TTC0LH18",
+      "title": "Microsoft 365 Business Basic",
+      "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+      "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+      },
+      "isMicrosoftProduct": true,
+      "publisherName": "Microsoft Corporation",
+      "links": {
+        "skus": {
+          "uri": "/products/CFQ7TTC0LH18/skus?country=US",
+          "method": "GET",
+          "headers": []
+        },
+        "self": {
+          "uri": "/products/CFQ7TTC0LH18?country=US",
+          "method": "GET",
+          "headers": []
+        }
+      }
+    },
+    ...
+  ],
+  "links": {
+    "self": {
+      "uri": "/products?country=US&targetView=OnlineServices",
+      "method": "GET",
+      "headers": []
+    }
+  },
+  "attributes": {
+    "objectType": "Collection"
+  }
+}
+```
+

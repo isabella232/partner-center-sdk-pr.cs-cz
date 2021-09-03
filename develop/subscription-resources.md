@@ -1,15 +1,15 @@
 ---
 title: Prostředky předplatného
 description: Prostředky předplatného můžou poskytovat další informace o předplatných v průběhu životního cyklu, jako je podpora, refundace, nároky na Azure.
-ms.date: 11/01/2019
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: e48927b9d8606f8d78ed8e4b5eb12da61f7a7d27f16316bca124f896a24a6638
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: c898f9673525cf0ba32619b7c7b16f91311a81c7
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115997970"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456804"
 ---
 # <a name="subscription-resources"></a>Prostředky předplatného
 
@@ -36,8 +36,8 @@ Prostředek **předplatného** představuje životní cyklus předplatného a ob
 | parentSubscriptionId | řetězec                                                        | Získá nebo nastaví nadřazený identifikátor předplatného.                                                                                                                              |
 | creationDate         | řetězec                                                        | Získá nebo nastaví datum vytvoření ve formátu data a času.                                                                                                                          |
 | effectiveStartDate   | řetězec ve formátu data a času UTC                                | Získá nebo nastaví platné počáteční datum pro toto předplatné ve formátu data a času. Používá se k datu zálohování migrovaného předplatného nebo k jeho zarovnávání jiným.                |
-| commitmentEndDate    | řetězec ve formátu data a času UTC                                | Koncové datum závazku pro toto předplatné ve formátu data a času. U předplatných, která nejsou automaticky obnovitelné, to představuje datum v budoucnosti.       |
-| status               | řetězec                                                        | Stav předplatného: "none", "Active", "pending", "Suspended" nebo "Deleted".                                                                                                         |
+| commitmentEndDate    | řetězec ve formátu data a času UTC                                | Koncové datum závazku pro toto předplatné ve formátu data a času. U předplatných, která nejsou automaticky obnovitelné, představuje datum v budoucnosti.       |
+| status               | řetězec                                                        | Stav předplatného: "žádná", "aktivní", "čeká", "pozastaveno", "prošlo" nebo "odstraněno".                                                                                                         |
 | autoRenewEnabled     | boolean                                                       | Načte hodnotu, která označuje, jestli se předplatné obnovuje automaticky.                                                                                                    |
 | billingType          | řetězec                                                        | Určuje, jak se má předplatné fakturovat: "none", "Usage" nebo "License".                                                                                                      |
 | billingCycle         | řetězec                                                        | Určuje četnost, s jakou se má partner fakturovat v této objednávce. Podporované hodnoty jsou názvy členů nalezené v [**BillingCycleType**](product-resources.md#billingcycletype). |
@@ -55,6 +55,7 @@ Prostředek **předplatného** představuje životní cyklus předplatného a ob
 | termDuration         | řetězec                                                        | Reprezentace doby trvání období podle STANDARDu ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc), **P1Y** (1 rok) a **P3Y** (3 roky).                                                        |
 | atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající předplatnému.                                                                                                                    |
 | renewalTermDuration  | řetězec                                                        | Reprezentace doby trvání období podle STANDARDu ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc) a **P1Y** (1 rok).                                                        |
+| Typ produktu  | [Itemtype](product-resources.md#itemtype)                             | Jen pro čtení. Typ produktu, pro který se předplatné používá.     |
 
 ## <a name="subscriptionlinks"></a>Odkazy na předplatné
 
@@ -111,7 +112,7 @@ Prostředek **RegisterSubscription** vrátí odkaz, který můžete použít k d
 
 | Vlastnost                | Typ                               | Description                                                                           |
 |-------------------------|------------------------------------|---------------------------------------------------------------------------------------|
-| httpResponseMessage     | object                             | Vrátí stavový kód HTTP 202 "přijato" s hlavičkou umístění obsahující odkaz na dotaz na stav registrace. Například `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"`. |
+| httpResponseMessage     | object                             | Vrátí stavový kód HTTP 202 Přijato s hlavičkou Location obsahující odkaz na dotaz na stav registrace. Například `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"`. |
 
 ## <a name="refundoption"></a>RefundOption
 
@@ -119,16 +120,16 @@ Prostředek **RefundOption** představuje možnou možnost refundace pro předpl
 
 | Vlastnost          | Typ | Description                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
-| typ | řetězec | Typ refundace. Podporované hodnoty jsou "částečné" a "úplné". |
-| expiresAfter      | řetězec ve formátu data a času UTC | Časové razítko, kdy tato možnost vyprší Pokud má hodnotu null, znamená to, že nemá žádné vypršení platnosti. |
+| typ | řetězec | Typ refundace Podporované hodnoty jsou Partial (Částečná) a Full (Úplné). |
+| expiresAfter      | řetězec ve formátu data a času UTC | Časové razítko, kdy vyprší platnost této možnosti. Pokud má hodnotu null, znamená to, že nemá žádné vypršení platnosti. |
 
-## <a name="azureentitlement"></a>AzureEntitlement
+## <a name="azureentitlement"></a>AzureEnti pro správu
 
-Prostředek **AzureEntitlement** představuje nároky Azure na předplatné.
+Prostředek **AzureEnti pro předplatné** představuje nároky Azure.
 
 | Vlastnost          | Typ | Description                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
 | id | řetězec | Identifikátor nároku |
-| friendlyName      | řetězec | Popisný název oprávnění |
-| status | řetězec | Stav oprávnění. |
-| subscriptionId | řetězec | Identifikátor předplatného, ke kterému oprávnění patří. |
+| Friendlyname      | řetězec | Popisný název nároku. |
+| status | řetězec | Stav nároku |
+| subscriptionId | řetězec | Identifikátor předplatného, do které nárok patří. |

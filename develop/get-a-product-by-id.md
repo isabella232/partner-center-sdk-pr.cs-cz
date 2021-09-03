@@ -1,31 +1,31 @@
 ---
 title: Získání produktu podle ID
-description: Získá zadaný prostředek produktu pomocí ID produktu.
-ms.date: 09/17/2019
+description: Získá zadaný produkt prostředku s použitím ID produktu.
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: rbars
 ms.author: rbars
-ms.openlocfilehash: 0e8abc8cf33d12140a084e83580f20bb0b9d295eda7ab8cc7279c89043c81992
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 95821b0f3678d38c75e2f684f7ad629b82f9b43b
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115994536"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456095"
 ---
 # <a name="get-a-product-by-id"></a>Získání produktu podle ID
 
-Získá zadaný prostředek produktu pomocí ID produktu.
+Získá zadaný produkt prostředku s použitím ID produktu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
 
 - ID produktu.
 
 ## <a name="c"></a>C\#
 
-Pokud chcete vyhledat konkrétní produkt podle ID, použijte kolekci **IAggregatePartner.Products,** vyberte zemi pomocí metody **ByCountry()** a pak zavolejte metodu **ById().** Nakonec zavolejte **metodu Get()** nebo **GetAsync(),** která vrátí produkt.
+Chcete-li najít konkrétní produkt podle ID, použijte kolekci **IAggregatePartner. Products** , vyberte zemi pomocí metody **ByCountry ()** a potom zavolejte metodu **ById ()** . Nakonec voláním metody **Get ()** nebo **GetAsync ()** vraťte produkt.
 
 ```csharp
 // IAggregatePartner partnerOperations;
@@ -37,7 +37,7 @@ Product productDetail = partnerOperations.Products.ByCountry("US").ById("DZH318Z
 
 [!INCLUDE [Partner Center Java SDK support details](<../includes/java-sdk-support.md>)]
 
-Pokud chcete vyhledat konkrétní produkt podle ID, použijte funkci **IAggregatePartner.getProducts,** vyberte zemi pomocí funkce **byCountry()** a potom zavolejte funkci **byId().** Nakonec zavolejte funkci **get(),** která vrátí produkt.
+Chcete-li najít konkrétní produkt podle ID, použijte funkci **IAggregatePartner. GetProducts** , vyberte zemi pomocí funkce **byCountry ()** a potom zavolejte funkci **byId ()** . Nakonec zavolejte funkci **Get ()** , která vrátí produkt.
 
 ```java
 // IAggregatePartner partnerOperations;
@@ -49,19 +49,19 @@ Product productDetail = partnerOperations.getProducts().byCountry("US").byId("DZ
 
 [!INCLUDE [Partner Center PowerShell module support details](<../includes/powershell-module-support.md>)]
 
-Pokud chcete najít konkrétní produkt podle ID, spusťte příkaz [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) a zadejte parametr **ProductId.** Parametr **CountryCode** je možnost, pokud není zadaný, použije se země přidružená k prodejci.
+Chcete-li najít konkrétní produkt podle ID, spusťte příkaz [**Get-PartnerProduct**](https://github.com/Microsoft/Partner-Center-PowerShell/blob/master/docs/help/Get-PartnerProduct.md) a zadejte parametr **ProductID** . Parametr **CountryCode** je možností, pokud není zadaný, použije se země přidružená k prodejci.
 
 ```powershell
 Get-PartnerProduct -ProductId 'DZH318Z0BQ3Q'
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda  | Identifikátor URI žádosti                                                                                   |
 |---------|-----------------------------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{ID_produktu}?country={země} HTTP/1.1  |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Products/{Product-ID}? Country = {Country} HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -69,12 +69,12 @@ K získání zadaného produktu použijte následující parametry cesty.
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| id produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
+| ID produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
 | country                | řetězec   | Yes      | ID země nebo oblasti.                                            |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -92,19 +92,19 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude text odpovědi obsahovat [prostředek Product.](product-resources.md#product)
+V případě úspěchu obsahuje tělo odpovědi [produktový](product-resources.md#product) prostředek.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
 
-Tato metoda vrátí následující kódy chyb:
+Tato metoda vrací následující kódy chyb:
 
 | Stavový kód HTTP     | Kód chyby   | Description                                                                |
 |----------------------|--------------|----------------------------------------------------------------------------|
-| 404                  | 400013       | Produkt se nenašel.                                                     |
+| 404                  | 400013       | Produkt nebyl nalezen.                                                     |
 
-### <a name="response-example"></a>Příklad odpovědi
+### <a name="response-example-for-azure-vm-reservation-azure-plan"></a>Příklad odpovědi pro rezervaci virtuálních počítačů Azure (plán Azure)
 
 ```http
 HTTP/1.1 200 OK
@@ -136,6 +136,36 @@ Date: Tue, 23 Jan 2018 23:13:01 GMT
         },
         "self": {
             "uri": "/products/DZH318Z0BQ3Q?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    }
+}
+```
+### <a name="response-example-for-new-commerce-license-based-product"></a>Příklad odpovědi pro nový produkt založený na licenci Commerce
+
+> [!Note] 
+> Nové obchodní změny jsou momentálně dostupné jenom pro partnery, kteří jsou součástí M365/D365 New Commerce Experience Technical Preview.
+
+```http
+{
+    "id": "CFQ7TTC0LH18",
+    "title": "Microsoft 365 Business Basic",
+    "description": "Best for businesses that need professional email, cloud file storage, and online meetings & chat. Desktop versions of Office apps like Excel, Word, and PowerPoint not included. For businesses with up to 300 employees.",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "isMicrosoftProduct": true,
+    "publisherName": "Microsoft Corporation",
+    "links": {
+        "skus": {
+            "uri": "/products/CFQ7TTC0LH18/skus?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+        "uri": "/products/CFQ7TTC0LH18?country=US",
             "method": "GET",
             "headers": []
         }

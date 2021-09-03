@@ -1,19 +1,24 @@
 ---
-title: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
-description: Aktualizujte vlastnost autorenew pro prostředek předplatného, který odpovídá ID zákazníka a předplatného.
-ms.date: 08/16/2019
+title: Aktualizace autorenew pro komerční marketplace a nová obchodní předplatná
+description: Aktualizujte vlastnost autorenew pro prostředek předplatného, který odpovídá zákazníkovi a ID předplatného.
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: b83c225a8b6fa11bdd5db5bcca9dd277fcfc4ed56769f1a7a272a388a1c93ab5
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 6d533a41c58b05ec449b76394466dd4608abc65a
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115996593"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455723"
 ---
-# <a name="update-autorenew-for-a-commercial-marketplace-subscription"></a>Aktualizace automatického obnovení pro předplatné na komerčním marketplace
+# <a name="update-autorenew-for-a-commercial-marketplace-subscription-or-new-commerce-subscriptions"></a>Aktualizace autorenew pro předplatné komerčního marketplace nebo nová komerční předplatná
 
-Aktualizujte vlastnost autorenew pro prostředek předplatného [komerčního](subscription-resources.md) marketplace, který odpovídá ID zákazníka a předplatného.
+**Platí pro:** Partnerské centrum
+
+> [!Note] 
+> Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview.
+
+Aktualizujte vlastnost autorenew pro komerční [](subscription-resources.md) marketplace nebo nový prostředek komerčního předplatného, který odpovídá ID zákazníka a předplatného.
 
 Na řídicím Partnerské centrum se tato operace provede tak, že nejprve [vyberete zákazníka](get-a-customer-by-name.md). Pak vyberte předplatné, které chcete aktualizovat. Nakonec přepněte možnost **Automatické prodloužení** platnosti a pak vyberte **Odeslat.**
 
@@ -21,7 +26,7 @@ Na řídicím Partnerské centrum se tato operace provede tak, že nejprve [vybe
 
 - Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka nevíte, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
@@ -47,7 +52,7 @@ var updatedSubscription = partnerOperations.Customers.ById(selectedCustomerId).S
 
 | Metoda    | Identifikátor URI žádosti                                                                                                                |
 |-----------|----------------------------------------------------------------------------------------------------------------------------|
-| **Oprava** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} HTTP/1.1 |
+| **OPRAVA** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -55,8 +60,8 @@ Tato tabulka uvádí požadovaný parametr dotazu pro pozastavení odběru.
 
 | Název                    | Typ     | Vyžadováno | Popis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **customer-tenant-id**  | **Identifikátor guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
-| **id-for-subscription** | **Identifikátor guid** | Y        | Identifikátor GUID odpovídající předplatnému. |
+| **customer-tenant-id**  | **IDENTIFIKÁTOR GUID** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
+| **id-for-subscription** | **IDENTIFIKÁTOR GUID** | Y        | Identifikátor GUID odpovídající předplatnému. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -64,9 +69,9 @@ Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-V textu žádosti se **vyžaduje** úplný prostředek předplatného komerčního marketplace. Ujistěte se, že byla aktualizována vlastnost **AutoRenewEnabled.**
+V textu požadavku **se** vyžaduje úplný prostředek předplatného komerčního marketplace. Ujistěte se, že byla aktualizována vlastnost **AutoRenewEnabled.**
 
-### <a name="request-example"></a>Příklad požadavku
+### <a name="request-example-for-commercial-marketplace-subscription"></a>Příklad žádosti o předplatné komerčního marketplace
 
 ```http
 PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
@@ -107,6 +112,86 @@ Connection: Keep-Alive
     "publisherName": "publisher Name",
     "orderId": "ImxjLNL4_fOc-2KoyOxGTZcrlIquzls11",
     "attributes": {"objectType": "Subscription"},
+}
+```
+
+### <a name="request-example-for-new-commerce-subscription"></a>Příklad žádosti o nové komerční předplatné
+
+> [!Note] 
+> Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview.
+
+```http
+PATCH https://api.partnercenter.microsoft.com/v1/customers/<customer-tenant-id>/subscriptions/<id-for-subscription> HTTP/1.1
+Authorization: Bearer <token>
+Accept: application/json
+MS-RequestId: ca7c39f7-1a80-43bc-90d8-ee7d1cad3831
+MS-CorrelationId: ec8f62e5-1d92-47e9-8d5d-1924af105f2c
+If-Match: <etag>
+Content-Type: application/json
+Content-Length: 1029
+Expect: 100-continue
+Connection: Keep-Alive
+
+ {
+    "id": "a4c1340d-6911-4758-bba3-0c4c6007d161",
+    "offerId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "offerName": "Microsoft 365 Business Basic",
+    "friendlyName": "Microsoft 365 Business Basic",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "quantity": 1, 
+    "unitType": "Licenses",
+    "hasPurchasableAddons": false,
+    "creationDate": "2021-01-14T16:57:15.0966728Z",
+    "effectiveStartDate": "2021-01-14T16:57:14.498252Z",
+    "commitmentEndDate": "2022-01-13T00:00:00Z",
+    "status": "active",
+    "autoRenewEnabled": false, // original value = true
+    "isTrial": false,
+    "billingType": "license",
+    "billingCycle": "monthly",
+    "termDuration": "P1Y",
+    "renewalTermDuration": "",
+    "refundOptions": [
+        {
+            "type": "Full",
+            "expiresAt": "2021-01-15T00:00:00Z"
+        }
+    ],
+    "isMicrosoftProduct": true,
+    "partnerId": "",
+    "attentionNeeded": false,
+    "actionTaken": false,
+    "contractType": "subscription",
+    "links": {
+        "product": {
+            "uri": "/products/CFQ7TTC0LH18?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "sku": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "availability": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/customers/d8202a51-69f9-4228-b900-d0e081af17d7/subscriptions/a4c1340d-6911-4758-bba3-0c4c6007d161",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "publisherName": "Microsoft Corporation",
+    "orderId": "34b37d7340cc",
+    "attributes": {
+        "objectType": "Subscription"
+    }
 }
 ```
 

@@ -1,35 +1,35 @@
 ---
 title: Získání předplatného podle ID
 description: Získá prostředek předplatného, který odpovídá ID zákazníka a ID předplatného.
-ms.date: 12/15/2017
+ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 0dc65c629984c299bfde0b801b0415ffb1ba661462e2473ad051f169d6357d3a
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 26825084d89648affe904b9415d3143b3e65ebae
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115991051"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455980"
 ---
 # <a name="get-a-subscription-by-id"></a>Získání předplatného podle ID
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro**: Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Získá prostředek [předplatného](subscription-resources.md) , který odpovídá ID zákazníka a ID předplatného.
+Získá prostředek [předplatného,](subscription-resources.md) který odpovídá ID zákazníka a ID předplatného.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného.
 
 ## <a name="c"></a>C\#
 
-Chcete-li získat předplatné podle ID, Začněte získáním rozhraní pro operace předplatného voláním metody [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, který identifikuje zákazníka, a [**předplatným metodu. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) pro identifikaci předplatného. Použijte toto [**rozhraní**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) k načtení podrobností o předplatném voláním [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get).
+Pokud chcete získat předplatné podle ID, začněte tím, že získáte rozhraní pro operace s předplatným voláním metody [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka, abyste zákazníka identifikovali, a metodu [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) k identifikaci předplatného. Pomocí tohoto [**rozhraní**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription) můžete načíst podrobnosti o předplatném voláním [**get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.get).
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -39,15 +39,15 @@ Chcete-li získat předplatné podle ID, Začněte získáním rozhraní pro ope
 var subscriptionDetails = partnerOperations.Customers.ById(selectedCustomerId).Subscriptions.ById(subscriptionID).Get();
 ```
 
-**Ukázka**: [aplikace testů konzoly](console-test-app.md). **Project**: **třída** samples SDK pro partnery: getsubscription. cs
+**Ukázka:** [Konzolová testovací aplikace](console-test-app.md). **Project:** SDK pro Partnerské centrum Samples **Class**: GetSubscription.cs
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                |
 |---------|----------------------------------------------------------------------------------------------------------------------------|
-| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/Subscriptions/{ID-for-Subscription} HTTP/1.1 |
+| **DOSTAT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/subscriptions/{id-pro-předplatné} HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -55,12 +55,12 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro získání př
 
 | Název                    | Typ     | Vyžadováno | Popis                               |
 |-------------------------|----------|----------|-------------------------------------------|
-| **Customer-tenant-ID**  | **guid** | Y        | Identifikátor GUID, který odpovídá zákazníkovi.     |
-| **ID pro předplatné** | **guid** | Y        | Identifikátor GUID, který odpovídá předplatnému. |
+| **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající zákazníkovi.     |
+| **id-for-subscription** | **guid** | Y        | Identifikátor GUID odpovídající předplatnému. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -80,13 +80,13 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek [odběru](subscription-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda [v](subscription-resources.md) textu odpovědi prostředek předplatného.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
-### <a name="response-example-for-a-standard-subscription"></a>Příklad odpovědi pro standardní předplatné
+### <a name="response-example-for-a-microsoft-azure-subscription"></a>Příklad odpovědi pro Microsoft Azure předplatného
 
 ```http
 HTTP/1.1 200 OK
@@ -135,7 +135,7 @@ Date: Fri, 27 Jan 2017 21:51:40 GMT
 
 ### <a name="response-example-for-an-add-on-subscription"></a>Příklad odpovědi pro předplatné doplňku
 
-Odpověď pro předplatné doplňku obsahuje ID nadřazeného předplatného v textu a v odkazech.
+Odpověď pro předplatné doplňku obsahuje ID nadřazeného předplatného v textu a na odkazech.
 
 ```http
 HTTP/1.1 200 OK
@@ -182,6 +182,83 @@ Date: Fri, 27 Jan 2017 00:12:53 GMT
     "orderId": "CF3B0E37-BE0B-4CDD-B584-D1A97D98A922",
     "attributes": {
         "etag": "eyJpZCI6Ijk2OGJhMWNmLWMxNDYtNGFkZi1hMzAwLTMwOGRjZjcxOGVlZSIsInZlcnNpb24iOjF9",
+        "objectType": "Subscription"
+    }
+}
+```
+### <a name="response-example-for-a-new-commerce-subscription"></a>Příklad odpovědi pro nové komerční předplatné
+
+> [!Note] 
+> Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview.
+
+```http
+HTTP/1.1 200 OK
+Content-Length: 1132
+Content-Type: application/json; charset=utf-8
+MS-CorrelationId: 4ercec93-852d-4167-9d96-c57809bea7ed
+MS-RequestId: 54sfd0fb-d1e6-4a8f-aa1a-124b7c820d80
+MS-CV: cmde2DtbuUWi8JLq.0
+MS-ServerId: 201022015
+Date: Fri, 19 Feb 2021 00:14:53 GMT
+
+{
+    "id": "a4c1340d-6911-4758-bba3-0c4c6007d161",
+    "offerId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "offerName": "Microsoft 365 Business Basic",
+    "friendlyName": "Microsoft 365 Business Basic",
+    "productType": {
+        "id": "OnlineServicesNCE",
+        "displayName": "OnlineServicesNCE"
+    },
+    "quantity": 1, 
+    "unitType": "Licenses",
+    "hasPurchasableAddons": false,
+    "creationDate": "2021-01-14T16:57:15.0966728Z",
+    "effectiveStartDate": "2021-01-14T16:57:14.498252Z",
+    "commitmentEndDate": "2022-01-13T00:00:00Z",
+    "status": "expired", 
+    "autoRenewEnabled": false, 
+    "isTrial": false,
+    "billingType": "license",
+    "billingCycle": "monthly",
+    "termDuration": "P1Y",
+    "renewalTermDuration": "",
+    "refundOptions": [
+        {
+            "type": "Full",
+            "expiresAt": "2021-01-15T00:00:00Z"
+        }
+    ],
+    "isMicrosoftProduct": true,
+    "partnerId": "",
+    "attentionNeeded": false,
+    "actionTaken": false,
+    "contractType": "subscription",
+    "links": {
+        "product": {
+            "uri": "/products/CFQ7TTC0LH18?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "sku": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "availability": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        },
+        "self": {
+            "uri": "/customers/d8202a51-69f9-4228-b900-d0e081af17d7/subscriptions/a4c1340d-6911-4758-bba3-0c4c6007d161",
+            "method": "GET",
+            "headers": []
+        }
+    },
+    "publisherName": "Microsoft Corporation",
+    "orderId": "34b37d7340cc",
+    "attributes": {
         "objectType": "Subscription"
     }
 }

@@ -1,17 +1,17 @@
 ---
 title: Získání seznamu dostupností pro skladovou položku (podle země)
 description: Jak získat kolekci dostupnosti pro zadaný produkt a SKU podle země zákazníka.
-ms.date: 11/01/2019
+ms.date: 02/16/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: amitravat
 ms.author: amrava
-ms.openlocfilehash: 8e5fe9bae436d8b7f237b9039c66b369f0e32109
-ms.sourcegitcommit: b0534995c36d644cc5f7bdf31b2afd5355cf7149
+ms.openlocfilehash: 763a116cf120aaeeea7fddc1be7b2931f4a513e6
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122208071"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123455997"
 ---
 # <a name="get-a-list-of-availabilities-for-a-sku-by-country"></a>Získání seznamu dostupností pro skladovou položku (podle země)
 
@@ -68,7 +68,7 @@ var availabilities = partnerOperations.Products.ByCountry(countryCode).ById(prod
 
 | Metoda  | Identifikátor URI žádosti                                                                                                                              |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{id_produktu}/skus/{id_SKU}/availabilities?country={kód_země}&targetSegment={target-segment} HTTP/1.1     |
+| **DOSTAT** | [*{baseURL}*](partner-center-rest-urls.md)/v1/products/{id_produktu}/skus/{id_SKU}/availabilities?country={kód_země}&targetSegment={target-segment} HTTP/1.1     |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
@@ -76,15 +76,15 @@ Pomocí následující cesty a parametrů dotazu získejte seznam dostupnosti pr
 
 | Název                   | Typ     | Vyžadováno | Popis                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-| id produktu             | řetězec   | Ano      | Řetězec, který identifikuje produkt.                           |
-| sku-id                 | řetězec   | Ano      | Řetězec, který identifikuje SKU.                               |
-| kód země           | řetězec   | Ano      | ID země nebo oblasti.                                            |
+| id produktu             | řetězec   | Yes      | Řetězec, který identifikuje produkt.                           |
+| sku-id                 | řetězec   | Yes      | Řetězec, který identifikuje SKU.                               |
+| kód země           | řetězec   | Yes      | ID země nebo oblasti.                                            |
 | target-segment         | řetězec   | No       | Řetězec, který identifikuje cílový segment použitý k filtrování. |
 | reservationScope | řetězec   | No | Při dotazování na seznam dostupnosti pro SKU rezervace Azure zadejte , abyste získali seznam dostupnosti, které se vztahují `reservationScope=AzurePlan` na AzurePlan. Tento parametr vyloučíte, pokud chcete získat seznam dostupnosti, které se vztahují Microsoft Azure předplatná MS-AZR-0145P.  |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
+Další informace najdete v Partnerské centrum [REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -118,7 +118,7 @@ MS-CorrelationId: 7c1f6619-c176-4040-a88f-2c71f3ba4533
 
 #### <a name="availabilities-for-vm-reservations-for-microsoft-azure-ms-azr-0145p-subscriptions"></a>Dostupnost rezervací virtuálních Microsoft Azure předplatných (MS-AZR-0145P)
 
-Postupujte podle tohoto příkladu a získejte seznam dostupnosti pro rezervace virtuálních počítače Azure podle země, které se vztahují na předplatná Microsoft Azure (MS-AZR-0145P).
+Postupujte podle tohoto příkladu a získejte seznam dostupnosti podle země pro rezervace virtuálních počítače Azure, které se vztahují na předplatná Microsoft Azure (MS-AZR-0145P).
 
 ```http
 GET https://api.partnercenter.microsoft.com/v1/products/DZH318Z0BQ3Q/skus/0001/availabilities?country=US&targetView=AzureAzureReservationsVM HTTP/1.1
@@ -138,11 +138,11 @@ Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspě
 
 Tato metoda vrátí následující kódy chyb:
 
-| Stavový kód HTTP     | Kód chyby   | Popis                                                                                               |
+| Stavový kód HTTP     | Kód chyby   | Description                                                                                               |
 |----------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | 403                  | 400030       | Přístup k **požadovanému targetSegment** není povolený.                                                     |
 
-### <a name="response-example"></a>Příklad odpovědi
+### <a name="response-example-for-azure-vm-reservations-azure-plan"></a>Příklad odpovědi na rezervace virtuálních počítače Azure (plán Azure)
 
 ```http
 HTTP/1.1 200 OK
@@ -196,6 +196,93 @@ Content-Length: 808
     },
     "attributes": {
         "objectType": "Collection"
+    }
+}
+```
+
+### <a name="response-example-for-new-commerce-license-based-services"></a>Příklad odpovědi pro nové komerční služby založené na licencích
+
+> [!Note] 
+> Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Server: Microsoft-IIS/10.0
+MS-CorrelationId: 83b644b5-e54a-4bdc-b354-f96c525b3c58,83b644b5-e54a-4bdc-b354-f96c525b3c58
+MS-RequestId: 70324727-62d8-4195-8f99-70ea25058d02,70324727-62d8-4195-8f99-70ea25058d02
+X-Locale: en-US,en-US
+X-SourceFiles: =?UTF-8?B?QzpcVXNlcnNcbWFtZW5kZVxkZXZcZHBzLXJwZVxSUEUuUGFydG5lci5TZXJ2aWNlLkNhdGFsb2dcV2ViQXBpc1xDYXRhbG9nU2VydmljZS5WMi5XZWJcdjFccHJvZHVjdHNcRFpIMzE4WjBCUTNRXHNrdXNcMDAwMVxhdmFpbGFiaWxpdGllcw==?=
+X-Powered-By: ASP.NET
+Date: Wed, 14 Mar 2018 22:19:37 GMT
+Content-Length: 808
+
+{
+    "id": "CFQ7TTC0K971",
+    "productId": "CFQ7TTC0LH18",
+    "skuId": "0001",
+    "catalogItemId": "CFQ7TTC0LH18:0001:CFQ7TTC0K971",
+    "defaultCurrency": {
+        "code": "USD",
+        "symbol": "$"
+    },
+    "segment": "commercial",
+    "country": "US",
+    "isPurchasable": true,
+    "isRenewable": true, 
+    "renewalInstructions": [
+        {
+            "applicableTermIds": [
+                "5aeco6mffyxo"
+            ],
+            "renewalOptions": [
+                {
+                    "renewToId": "CFQ7TTC0LH18:0001",
+                    "isAutoRenewable": true
+                }
+            ]
+        },
+     …
+    ],
+    "terms": [
+        {
+            "id": "5aeco6mffyxo",
+            "duration": "P1Y",
+            "description": "One-Year commitment for monthly/yearly billing",
+            "billingCycle": "Annual",
+            "cancellationPolicies": [
+                {
+                    "refundOptions": [
+                        {
+                            "sequenceId": 0,
+                            "type": "Full",
+                            "expiresAfter": "P1D"
+                        }
+                    ]
+                }
+            ]
+        },
+       …
+    ],
+    "links": {
+        "self": {
+            "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities/CFQ7TTC0K971?country=US",
+            "method": "GET",
+            "headers": []
+        }
+    },
+        "links": {
+            "availabilities": {
+                "uri": "/products/CFQ7TTC0LH18/skus/0001/availabilities?country=US",
+                "method": "GET",
+                "headers": []
+            },
+            "self": {
+                "uri": "/products/CFQ7TTC0LH18/skus/0001?country=US",
+                "method": "GET",
+                "headers": []
+            }
+        }
     }
 }
 ```

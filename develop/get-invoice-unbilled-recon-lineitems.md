@@ -1,17 +1,17 @@
 ---
 title: Získat neúčtované položky řádku odsouhlasení faktury
 description: Pomocí rozhraní API partnerského centra můžete získat souhrn nefakturovaných podrobností o položkách řádků odsouhlasení pro zadané období.
-ms.date: 01/27/2020
+ms.date: 02/18/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: sourishdeb
 ms.author: sodeb
-ms.openlocfilehash: 846d2fb0009dd39ed232569a9c8f41104afece1b
-ms.sourcegitcommit: 00d5b934048fcec95efc70f5063e86426636d244
+ms.openlocfilehash: 7ece2d387bdeb04267f0878603e52f3a0f5bc93e
+ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122228440"
+ms.lasthandoff: 09/03/2021
+ms.locfileid: "123456821"
 ---
 # <a name="get-invoices-unbilled-reconciliation-line-items"></a>Získat neúčtované položky řádku odsouhlasení faktury
 
@@ -129,12 +129,12 @@ Při vytváření žádosti použijte následující identifikátor URI a parame
 
 | Název                   | Typ   | Vyžadováno | Popis                                                                     |
 |------------------------|--------|----------|---------------------------------------------------------------------------------|
-| Zprostředkovatel               | řetězec | Ano      | Zprostředkovatel: "jednorázová".                                                |
-| faktura-line-Item-Type | řetězec | Ano      | Typ podrobností o faktuře: "BillingLineItems".               |
-| hasPartnerEarnedCredit | bool   | Ne       | Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu. Poznámka: Tento parametr bude použit pouze v případě, že typ zprostředkovatele je jednorázová a InvoiceLineItemType je UsageLineItems.
-| currencyCode           | řetězec | Ano      | Kód měny pro nefakturovatelné položky řádku                                  |
-| period                 | řetězec | Ano      | Období pro nefakturované rekognoskaci. Příklad: Current, Previous.                      |
-| size                   | číslo | Ne       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                     |
+| Zprostředkovatel               | řetězec | Yes      | Zprostředkovatel: "jednorázová".                                                |
+| faktura-line-Item-Type | řetězec | Yes      | Typ podrobností o faktuře: "BillingLineItems".               |
+| hasPartnerEarnedCredit | bool   | No       | Hodnota, která označuje, zda se mají vracet položky řádku s použitím realizovaného kreditu. Poznámka: Tento parametr bude použit pouze v případě, že typ zprostředkovatele je jednorázová a InvoiceLineItemType je UsageLineItems.
+| currencyCode           | řetězec | Yes      | Kód měny pro nefakturovatelné položky řádku                                  |
+| period                 | řetězec | Yes      | Období pro nefakturované rekognoskaci. Příklad: Current, Previous.                      |
+| size                   | číslo | No       | Maximální počet položek, které se mají vrátit. Výchozí velikost je 2000.                     |
 | seekOperation          | řetězec | No       | Nastavte seekOperation = Next pro získání další stránky rekognoskaci položek řádků.                |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
@@ -413,7 +413,7 @@ MS-ServerId: 202010406
 Date: Wed, 20 Feb 2019 19:59:27 GMT
 
 {
-   "totalCount": 3,
+    "totalCount": 2,
     "items": [
         {
             "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
@@ -572,9 +572,54 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
-        }
-    ]
-}
+        },
+        {
+           "partnerId": "0c924e8d-4852-4692-a4d7-7dd0dc09ad80",
+            "customerId": "org:d7f565f5-5367-492f-a465-9e2057c5e3c3",
+            "customerName": "TEST_TEST_GTM1",
+            "customerDomainName": "TESTTESTGTM1.ccsctp.net",
+            "customerCountry": "US",
+            "invoiceNumber": "",
+            "mpnId": "123456",
+            "resellerMpnId": 0,
+            "orderId": "VdqkP11Bu4DlcjP5rLeQabcdefg-1234",
+            "orderDate": "2021-01-29T19:50:13.9869095Z",
+            "productId": "CFQ7TTC01234",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0ABCD",
+            "productName": "Office 365 E3",
+            "skuName": "Office 365 E3",
+            "chargeType": "new",
+            "unitPrice": 16,
+            "effectiveUnitPrice": 16,
+            "unitType": "",
+            "quantity": 1,
+            "subtotal": 16,
+            "taxTotal": 1.61,
+            "totalForCustomer": 17.61,
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "2ae795eb-f76d-ce69-cba0-123456789000",
+            "chargeStartDate": "2021-01-29T00:00:00Z",
+            "chargeEndDate": "2021-02-27T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "priceAdjustmentDescription": "[\"1 month billing\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Yearly Duration\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": 1,
+            "pcToBCExchangeRateDate": "0001-01-01T00:00:00",
+            "billableQuantity": 1,
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "e770c049-89c7-4ec1-b366-123456789000",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time",
+             "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+       } 
     ],
     "links": {
         "self": {
@@ -616,7 +661,7 @@ MS-ServerId: 202010406
 Date: Wed, 20 Feb 2019 19:59:27 GMT
 
 {
-    "totalCount": 3,
+    "totalCount": 2,
     "items": [
         {
             "partnerId": "934f3416-bc2f-47f3-b492-77e517d4e572",
@@ -775,9 +820,54 @@ Date: Wed, 20 Feb 2019 19:59:27 GMT
             "attributes": {
                 "objectType": "OneTimeInvoiceLineItem"
             }
-        }
-    ]
-}
+        },
+        {
+           "partnerId": "0c924e8d-4852-4692-a4d7-7dd0dc09ad80",
+            "customerId": "org:d7f565f5-5367-492f-a465-9e2057c5e3c3",
+            "customerName": "TEST_TEST_GTM1",
+            "customerDomainName": "TESTTESTGTM1.ccsctp.net",
+            "customerCountry": "US",
+            "invoiceNumber": "",
+            "mpnId": "123456",
+            "resellerMpnId": 0,
+            "orderId": "VdqkP11Bu4DlcjP5rLeQabcdefg-1234",
+            "orderDate": "2021-01-29T19:50:13.9869095Z",
+            "productId": "CFQ7TTC01234",
+            "skuId": "0001",
+            "availabilityId": "CFQ7TTC0ABCD",
+            "productName": "Office 365 E3",
+            "skuName": "Office 365 E3",
+            "chargeType": "new",
+            "unitPrice": 16,
+            "effectiveUnitPrice": 16,
+            "unitType": "",
+            "quantity": 1,
+            "subtotal": 16,
+            "taxTotal": 1.61,
+            "totalForCustomer": 17.61,
+            "currency": "USD",
+            "publisherName": "Microsoft Corporation",
+            "publisherId": "",
+            "subscriptionDescription": "",
+            "subscriptionId": "2ae795eb-f76d-ce69-cba0-123456789000",
+            "chargeStartDate": "2021-01-29T00:00:00Z",
+            "chargeEndDate": "2021-02-27T00:00:00Z",
+            "termAndBillingCycle": "One-Year commitment for monthly/yearly billing",
+            "priceAdjustmentDescription": "[\"1 month billing\",\"You are getting a discount for being a partner.\",\"You are getting a price guarantee for your price.\",\"Yearly Duration\"]",
+            "discountDetails": "",
+            "pricingCurrency": "USD",
+            "pcToBCExchangeRate": 1,
+            "pcToBCExchangeRateDate": "0001-01-01T00:00:00",
+            "billableQuantity": 1,
+            "meterDescription": "",
+            "billingFrequency": "Monthly",
+            "reservationOrderId": "e770c049-89c7-4ec1-b366-123456789000",
+            "invoiceLineItemType": "billing_line_items",
+            "billingProvider": "one_time",
+             "attributes": {
+                "objectType": "OneTimeInvoiceLineItem"
+            }
+       } 
     ],
     "links": {
         "self": {
