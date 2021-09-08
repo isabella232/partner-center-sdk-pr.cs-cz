@@ -1,15 +1,15 @@
 ---
 title: Vytvoření objednávky zákazníka
 description: Naučte se používat Partnerské centrum API k vytvoření objednávky pro zákazníka. Článek obsahuje požadavky, kroky a příklady.
-ms.date: 07/12/2019
+ms.date: 09/06/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: f8a18ef4a6fbdfcd659e6ec1c11bc6bd61c80472
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 232888ee798b4579246bbfd787e049f9f6e2e8a3
+ms.sourcegitcommit: 5f27733d7c984c29f71c8b9c8ba5f89753eeabc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456031"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123557248"
 ---
 # <a name="create-an-order-for-a-customer-using-partner-center-apis"></a>Vytvoření objednávky pro zákazníka pomocí Partnerské centrum API
 
@@ -40,6 +40,97 @@ Vytvoření objednávky pro zákazníka:
 3. Získání rozhraní pro řazení operací. Nejprve zavolejte [**metodu IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a identifikujte zákazníka. Dále načtěte rozhraní z [**vlastnosti Orders.**](/dotnet/api/microsoft.store.partnercenter.customers.icustomer.orders)
 
 4. Zavolejte [**metodu Create**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.orders.iordercollection.createasync) a předejte [**objekt Order.**](order-resources.md)
+
+5. Pokud chcete dokončit ověření a zahrnout další prodejce, projděte si následující ukázky požadavků a odpovědí:
+
+### <a name="request-example"></a>Příklad požadavku
+
+``` csharp
+{
+    "PartnerOnRecordAttestationAccepted":true, 
+    "lineItems": [
+        {
+            "offerId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "quantity": 1,
+            "lineItemNumber": 0,
+            "PartnerIdOnRecord": "873452",
+            "AdditionalPartnerIdsOnRecord":["4847383","873452"]
+        }
+    ],
+    "billingCycle": "monthly"
+}
+```
+
+### <a name="response-example"></a>Příklad odpovědi
+
+``` csharp
+{
+    "id": "5cf72f146967",
+    "alternateId": "5cf72f146967",
+    "referenceCustomerId": "f81d98dd-c2f4-499e-a194-5619e260344e",
+    "billingCycle": "monthly",
+    "currencyCode": "USD",
+    "currencySymbol": "$",
+    "lineItems": [
+        {
+            "lineItemNumber": 0,
+            "offerId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+            "subscriptionId": "fcddfa52-1da8-4529-d347-50ea51e1e7be",
+            "termDuration": "P1M",
+            "transactionType": "New",
+            "friendlyName": "AI Builder Capacity add-on",
+            "quantity": 1,
+            "partnerIdOnRecord": "873452",
+            "additionalPartnerIdsOnRecord": [
+                "4847383",
+                "873452"
+            ],
+            "links": {
+                "product": {
+                    "uri": "/products/CFQ7TTC0LH0Z?country=US",
+                    "method": "GET",
+                    "headers": []
+                },
+                "sku": {
+                    "uri": "/products/CFQ7TTC0LH0Z/skus/0001?country=US",
+                    "method": "GET",
+                    "headers": []
+                },
+                "availability": {
+                    "uri": "/products/CFQ7TTC0LH0Z/skus/0001/availabilities/CFQ7TTC0K18P?country=US",
+                    "method": "GET",
+                    "headers": []
+                }
+            }
+        }
+    ],
+    "creationDate": "2021-08-17T18:13:11.3122226Z",
+    "status": "pending",
+    "transactionType": "UserPurchase",
+    "links": {
+        "self": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/5cf72f146967",
+            "method": "GET",
+            "headers": []
+        },
+        "provisioningStatus": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/5cf72f146967/provisioningstatus",
+            "method": "GET",
+            "headers": []
+        },
+        "patchOperation": {
+            "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/5cf72f146967",
+            "method": "PATCH",
+            "headers": []
+        }
+    },
+    "client": {},
+    "attributes": {
+        "objectType": "Order"
+    }
+}
+
+```
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -107,29 +198,32 @@ Tato tabulka popisuje [vlastnosti Order](order-resources.md) v textu požadavku.
 | datum vytvoření         | datetime                    | No                              | Jen pro čtení. Datum vytvoření objednávky ve formátu data a času. Použije se při úspěšném vytvoření objednávky.                                   |
 | status               | řetězec                      | No                              | Jen pro čtení. Stav objednávky  Podporované hodnoty jsou názvy členů, které najdete v [OrderStatus](order-resources.md#orderstatus).        |
 | Odkazy                | [OrderLinks](utility-resources.md#resourcelinks)              | No                              | Propojení prostředků odpovídající objednávce |
-| atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | No                              | Atributy metadat odpovídající order. |
+| atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | No                              | Atributy metadat odpovídající pořadí. |
+| PartnerOnRecordAttestationAccepted | Logická hodnota | Yes | Potvrdí dokončení ověření identity. |
 
-#### <a name="orderlineitem"></a>OrderLineItem (PoložkaŘádku Objednávky)
+
+#### <a name="orderlineitem"></a>OrderLineItem
 
 Tato tabulka popisuje vlastnosti [OrderLineItem](order-resources.md#orderlineitem) v textu požadavku.
 
 >[!NOTE]
->Záznam partnerIdOnRecord by měl být poskytnut pouze v případě, že nepřímý poskytovatel zadá objednávku jménem nepřímého prodejce. Slouží k uložení ID Microsoft Partner Network nepřímého prodejce (nikdy ID nepřímého poskytovatele).
+>PartnerIdOnRecord by měla být poskytnuta pouze v případě, že nepřímý poskytovatel umístí objednávku jménem nepřímého prodejce. Slouží k ukládání Microsoft Partner Network ID nepřímých prodejců (nikdy ID nepřímého poskytovatele).
 
 | Název                 | Typ   | Vyžadováno | Popis                                                                                                                                                                                                                                |
 |----------------------|--------|----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| lineItemNumber       | int    | Yes      | Každá položka řádku v kolekci získá jedinečné číslo řádku, počítá se od 0 do count-1.                                                                                                                                                 |
-| ID nabídky              | řetězec | Yes      | Identifikátor nabídky.                                                                                                                                                                                                                      |
+| lineItemNumber       | int    | Yes      | Každá položka řádku v kolekci získá jedinečné číslo řádku, počítáno od 0 do Count-1.                                                                                                                                                 |
+| Hodnotami OfferId              | řetězec | Yes      | Identifikátor nabídky                                                                                                                                                                                                                      |
 | subscriptionId       | řetězec | No       | Identifikátor předplatného.                                                                                                                                                                                                               |
-| PARENTSubscriptionId | řetězec | No       | Nepovinný parametr. ID nadřazeného předplatného v nabídce doplňku. Platí jenom pro PATCH.                                                                                                                                                     |
-| Friendlyname         | řetězec | No       | Nepovinný parametr. Popisný název předplatného definovaného partnerem, který pomáhá jednoznačně rozpoznat.                                                                                                                                              |
+| parentSubscriptionId | řetězec | No       | Nepovinný parametr. ID nadřazeného odběru v nabídce doplňku Platí pouze pro opravu.                                                                                                                                                     |
+| friendlyName         | řetězec | No       | Nepovinný parametr. Popisný název předplatného definovaného partnerem, který vám umožní určit nejednoznačnost.                                                                                                                                              |
 | quantity             | int    | Yes      | Počet licencí pro předplatné založené na licencích.                                                                                                                                                                                   |
-| id partneraZáznam    | řetězec | No       | Když nepřímý poskytovatel zadá objednávku jménem nepřímého prodejce, zadejte do tohoto pole pouze ID MPN nepřímého prodejce **(nikdy** ID nepřímého poskytovatele). Tím se zajistí správné účtování pobídek. |
-| provisioningContext  | Slovníkový<řetězec, řetězec>                | No       |  Informace vyžadované pro zřizování některých položek v katalogu. Vlastnost provisioningVariables ve SKU určuje, které vlastnosti jsou požadovány pro konkrétní položky v katalogu.                  |
-| Odkazy                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | No       |  Jen pro čtení. Propojení prostředků odpovídající položce řádku Order (Objednávka).  |
-| atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | No       | Atributy metadat odpovídající OrderLineItem. |
-| renewsTo             | Pole objektů                          | No    |Pole prostředků [RenewsTo.](order-resources.md#renewsto)                                                                            |
-| AttestationAccepted             | bool                 | No   |  Označuje smlouvu s nabídkou nebo podmínkami SKU. Vyžaduje se jenom pro nabídky nebo SKU, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu True.          |
+| partnerIdOnRecord    | řetězec | No       | Když nepřímý poskytovatel umístí objednávku jménem nepřímého prodejce, naplňte toto pole do ID MPN **nepřímého prodejce** (nikdy ID nepřímého poskytovatele). To zajišťuje správné účetnictví pro motivaci. |
+| provisioningContext  | Řetězec<slovníku, řetězec>                | No       |  Informace požadované pro zřizování některých položek v katalogu. Vlastnost provisioningVariables v SKU indikuje, které vlastnosti jsou požadovány pro konkrétní položky v katalogu.                  |
+| odkazy                | [OrderLineItemLinks](order-resources.md#orderlineitemlinks) | No       |  Jen pro čtení. Odkazy na prostředky odpovídající položce řádku objednávky.  |
+| atributy           | [ResourceAttributes](utility-resources.md#resourceattributes) | No       | Atributy metadat odpovídající OrderLineItem. |
+| renewsTo             | Pole objektů                          | No    |Pole prostředků [RenewsTo](order-resources.md#renewsto)                                                                            |
+| AttestationAccepted             | bool                 | No   |  Označuje smlouvu o nabídkách nebo podmínkách SKU. Vyžaduje se jenom pro nabídky nebo skladové položky, kde SkuAttestationProperties nebo OfferAttestationProperties enforceAttestation má hodnotu true.          |
+| AdditionalPartnerIdsOnRecord | Řetězec | No | Když nepřímý poskytovatel umístí objednávku jménem nepřímého prodejce, naplňte toto pole do ID MPN **dalšího nepřímého prodejce** (nikdy ID nepřímého poskytovatele). Pro tyto další prodejce nelze použít pobídky. Je možné zadat maximálně 5 nepřímých prodejců. Toto jsou pouze partneři, kteří se týkají v zemích EU/ESVO. |
 
 ##### <a name="renewsto"></a>RenewsTo
 
@@ -137,7 +231,7 @@ Tato tabulka popisuje vlastnosti [RenewsTo](order-resources.md#renewsto) v textu
 
 | Vlastnost              | Typ             | Vyžadováno        | Popis |
 |-----------------------|------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------|
-| termDuration          | řetězec           | No              | Reprezentace doby trvání období prodloužení podle ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc) a **P1Y** (1 rok). |
+| termDuration          | řetězec           | No              | ISO 8601 představuje dobu trvání období obnovy. Aktuální podporované hodnoty jsou **P1M** (1 měsíc) a **P1Y** (1 rok). |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -169,11 +263,11 @@ Content-Type: application/json
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu vrátí metoda v textu odpovědi prostředek [Order.](order-resources.md)
+V případě úspěchu metoda vrátí zdroj [objednávky](order-resources.md) v těle odpovědi.
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 

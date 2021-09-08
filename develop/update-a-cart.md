@@ -1,15 +1,15 @@
 ---
 title: Aktualizace košíku
 description: Jak aktualizovat objednávku zákazníka v košíku
-ms.date: 10/11/2019
+ms.date: 09/06/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 79dcd58e5a967aad9160777805102683087becc74c655b2de990cd1bfd4ef3c8
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 48fec2d9fb72d1a58fe79969e48ccd39a32c5ccc
+ms.sourcegitcommit: 5f27733d7c984c29f71c8b9c8ba5f89753eeabc4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115990150"
+ms.lasthandoff: 09/07/2021
+ms.locfileid: "123557282"
 ---
 # <a name="update-a-cart"></a>Aktualizace košíku
 
@@ -41,6 +41,113 @@ cart.LineItems.ToArray()[0].Quantity++;
 var updatedCart = partnerOperations.Customers.ById(customerId).Cart.ById(cartId).Put(cart);
 ```
 
+Informace o dokončení ověření a zahrnutí dalších prodejců najdete v následující ukázce.
+
+### <a name="api-sample---check-out-cart"></a>Ukázka rozhraní API – pokladna
+
+``` csharp
+{
+    "orders": [
+        {
+            "id": "f76c6b7f449d",
+            "alternateId": "f76c6b7f449d",
+            "referenceCustomerId": "f81d98dd-c2f4-499e-a194-5619e260344e",
+            "billingCycle": "monthly",
+            "currencyCode": "USD",
+            "currencySymbol": "$",
+            "lineItems": [
+                {
+                    "lineItemNumber": 0,
+                    "offerId": "CFQ7TTC0LH0Z:0001:CFQ7TTC0K18P",
+                    "subscriptionId": "ebc0beef-7ffb-4044-c074-16f324432139",
+                    "termDuration": "P1M",
+                    "transactionType": "New",
+                    "friendlyName": "AI Builder Capacity add-on",
+                    "quantity": 1,
+                    "links": {
+                        "product": {
+                            "uri": "/products/CFQ7TTC0LH0Z?country=US",
+                            "method": "GET",
+                            "headers": []
+                        },
+                        "sku": {
+                            "uri": "/products/CFQ7TTC0LH0Z/skus/0001?country=US",
+                            "method": "GET",
+                            "headers": []
+                        },
+                        "availability": {
+                            "uri": "/products/CFQ7TTC0LH0Z/skus/0001/availabilities/CFQ7TTC0K18P?country=US",
+                            "method": "GET",
+                            "headers": []
+                        }
+                    }
+                },
+                {
+                    "lineItemNumber": 1,
+                    "offerId": "CFQ7TTC0LFLS:0002:CFQ7TTC0KDLJ",
+                    "subscriptionId": "261bac40-7d88-4327-dfa3-dacd09222d62",
+                    "termDuration": "P1Y",
+                    "transactionType": "New",
+                    "friendlyName": "Azure Active Directory Premium P1",
+                    "quantity": 2,
+                    "partnerIdOnRecord": "517285",
+                    "additionalPartnerIdsOnRecord": 
+                        "5357564",
+                        "5357563"
+                    ],
+                 
+   "links": {
+                        "product": {
+                            "uri": "/products/CFQ7TTC0LFLS?country=US",
+                            "method": "GET",
+                            "headers": []
+                        },
+                        "sku": {
+                            "uri": "/products/CFQ7TTC0LFLS/skus/0002?country=US",
+                            "method": "GET",
+                            "headers": []
+                        },
+                        "availability": {
+                            "uri": "/products/CFQ7TTC0LFLS/skus/0002/availabilities/CFQ7TTC0KDLJ?country=US",
+                            "method": "GET",
+                            "headers": []
+                        }
+                    }
+                }
+            ],
+            "creationDate": "2021-08-18T07:52:23.1921872Z",
+            "status": "pending",
+            "transactionType": "UserPurchase",
+            "links": {
+                "self": {
+                    "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/f76c6b7f449d",
+                    "method": "GET",
+                    "headers": []
+                },
+                "provisioningStatus": {
+                    "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/f76c6b7f449d/provisioningstatus",
+                    "method": "GET",
+                    "headers": []
+                },
+                "patchOperation": {
+                    "uri": "/customers/f81d98dd-c2f4-499e-a194-5619e260344e/orders/f76c6b7f449d",
+                    "method": "PATCH",
+                    "headers": []
+                }
+            },
+            "client": {},
+            "attributes": {
+                "objectType": "Order"
+            }
+        }
+    ],
+    "attributes": {
+        "objectType": "CartCheckoutResult"
+    }
+}
+
+```
+
 ## <a name="rest-request"></a>Požadavek REST
 
 ### <a name="request-syntax"></a>Syntaxe požadavku
@@ -60,7 +167,7 @@ Pomocí následujících parametrů cesty identifikujte zákazníka a zadejte ko
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -83,12 +190,13 @@ Tato tabulka popisuje vlastnosti [CartLineItem](cart-resources.md#cartlineitem) 
 | id katalogu            | řetězec                      | Yes          | Identifikátor položky katalogu.                                                                       |
 | Friendlyname         | řetězec                      | No           | Nepovinný parametr. Popisný název položky definované partnerem, který pomáhá jednoznačně rozpoznat.              |
 | quantity             | int                         | Yes          | Počet licencí nebo instancí     |
-| currencyCode         | řetězec                      | No           | Kód měny.                                                                                 |
-| billingCycle         | Objekt                      | Yes          | Typ fakturačního cyklu nastaveného pro aktuální období.                                              |
-| členům         | Seznam párů řetězců objektů | No           | Kolekce účastníků na nákupu                                                      |
-| provisioningContext  | Řetězec<slovníku, řetězec>  | No           | Kontext použitý ke zřízení nabídky.                                                          |
-| pořadí           | řetězec                      | No           | Skupina, která označuje, které položky lze umístit dohromady.                                            |
-| error                | Objekt                      | No           | Používá se po vytvoření košíku v případě chyby.                                                 |
+| currencyCode         | řetězec                      | No           | Kód měny                                                                                 |
+| billingCycle         | Objekt                      | Yes          | Typ fakturačního cyklu nastavený pro aktuální období.                                              |
+| Účastníci         | Seznam párů řetězců objektů | No           | Kolekce účastníků nákupu.                                                      |
+| provisioningContext  | Slovníkový<řetězec, řetězec>  | No           | Kontext používaný ke zřízení nabídky.                                                          |
+| orderGroup           | řetězec                      | No           | Skupina, která označuje, které položky lze umístit dohromady.                                            |
+| error                | Objekt                      | No           | Použije se po vytvoření košíku v případě chyby.                                                 |
+| AdditionalPartnerIdsOnRecord | Řetězec | No | Když nepřímý poskytovatel zadá objednávku jménem nepřímého prodejce, zadejte do tohoto pole ID MPN pouze dodatečného nepřímého prodejce **(nikdy** ID nepřímého poskytovatele). Pobídky se u těchto dalších prodejců neakusí. Je možné zadat maximálně 5 nepřímých prodejců. Jedná se pouze o příslušné partnery, kteří provádí transakce v rámci zemí EU/EFTA.  |
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -132,11 +240,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek vyplněné [vozíku](cart-resources.md) v těle odpovědi.
+V případě úspěchu vrátí tato metoda v textu odpovědi naplněný prostředek [Cart.](cart-resources.md)
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 
