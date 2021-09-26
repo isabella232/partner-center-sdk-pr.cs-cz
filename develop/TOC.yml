@@ -362,6 +362,8 @@
           href: get-a-list-of-products.md
         - name: Získání seznamu produktů (podle zákazníka)
           href: get-a-list-of-products-by-customer.md
+        - name: Získání seznamu propagačních akcí
+          href: get-promotions.md
         - name: Získání seznamu skladových položek pro produkt (podle země)
           href: get-a-list-of-skus-for-a-product.md
         - name: Získání seznamu skladových položek pro produkt (podle zákazníka)
@@ -372,6 +374,8 @@
           href: get-a-list-of-trial-conversion-offers.md
         - name: Získání produktu podle ID
           href: get-a-product-by-id.md
+        - name: Získat promoakci podle ID
+          href: get-promotion-by-id.md
         - name: Získání skladové položky podle ID
           href: get-a-sku-by-id.md
         - name: Získání předplatného podle ID
@@ -412,7 +416,9 @@
           href: update-a-cart.md
         - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
           href: update-autorenew-for-an-azure-marketplace-subscription.md
-    - name: Správa výplat
+        - name: Ověřit nárok na zvýšení úrovně
+          href: verify-promotion-eligibility.md
+    - name: Spravovat výběry
       href: manage-payouts.md
     - name: Poskytování podpory
       href: provide-support.md
@@ -431,7 +437,7 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox pro integraci
   items:
-    - name: Možnosti sandboxu pro vztah prodejce
+    - name: Možnosti izolovaného prostoru pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
@@ -443,7 +449,7 @@
       href: activate-sandbox-subscription-azure-marketplace-products.md
     - name: Vytvoření nepřímého prodejce v Sandboxu
       href: create-indirect-reseller-in-sandbox.md
-    - name: Odstranění nepřímého prodejce v Sandboxu
+    - name: Odstranit nepřímý prodejce v izolovaném prostoru
       href: delete-indirect-reseller-in-sandbox.md
 - name: Reference
   href: /partner/develop/referrals
@@ -476,7 +482,7 @@
       href: get-api-request-details.md
 - name: Referenční informace k rozhraní REST API pro Partnerské centrum
   items:
-    - name: Partnerské centrum REST API úvod
+    - name: Úvodní REST API partnerského centra
       href: partner-center-rest-api-reference.md
     - name: Protokol změn rozhraní REST API pro Partnerské centrum
       href: api-change-log.md
@@ -533,6 +539,8 @@
           href: profile-resources.md
         - name: Produkty
           href: product-resources.md
+        - name: Reklama
+          href: promotion-resources.md
         - name: Relace
           href: relationships-resources.md
         - name: Samoobslužné zásady
