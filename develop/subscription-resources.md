@@ -1,15 +1,17 @@
 ---
 title: Prostředky předplatného
 description: Prostředky předplatného můžou poskytovat další informace o předplatných v průběhu životního cyklu, jako je podpora, refundace, nároky na Azure.
-ms.date: 02/23/2021
+ms.date: 10/01/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c898f9673525cf0ba32619b7c7b16f91311a81c7
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+author: BrentSerbus
+ms.author: brserbus
+ms.openlocfilehash: e1b95165eeb335c5426df876cbade3190dd447ac
+ms.sourcegitcommit: 856c14b6b351697e3b3d33f1fe376adbb80517c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123456804"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129378740"
 ---
 # <a name="subscription-resources"></a>Prostředky předplatného
 
@@ -56,6 +58,7 @@ Prostředek **předplatného** představuje životní cyklus předplatného a ob
 | atributy           | [Atributy prostředků](utility-resources.md#resourceattributes) | Atributy metadat odpovídající předplatnému.                                                                                                                    |
 | renewalTermDuration  | řetězec                                                        | Reprezentace doby trvání období podle STANDARDu ISO 8601. Aktuální podporované hodnoty jsou **P1M (1** měsíc) a **P1Y** (1 rok).                                                        |
 | Typ produktu  | [Itemtype](product-resources.md#itemtype)                             | Jen pro čtení. Typ produktu, pro který se předplatné používá.     |
+| consumptionType (typ spotřeby)  | pole prostředků [nadage](subscription-resources.md#overage)   | Získá nebo nastaví nadage pro daného zákazníka.     |
 
 ## <a name="subscriptionlinks"></a>Odkazy na předplatné
 
@@ -64,7 +67,7 @@ Prostředek **SubscriptionLinks** popisuje kolekci odkazů připojených k prost
 | Vlastnost           | Typ                               | Description                           |
 |--------------------|------------------------------------|---------------------------------------|
 | offer              | [Odkaz](utility-resources.md#link) | Získá nebo nastaví nabídku.               |
-| parentSubscription (nadřazenépředřazení) | [Odkaz](utility-resources.md#link) | Získá nebo nastaví nadřazené předplatné. |
+| parentSubscription | [Odkaz](utility-resources.md#link) | Získá nebo nastaví nadřazené předplatné. |
 | product            | [Odkaz](utility-resources.md#link) | Získá produkt přidružený k předplatnému. |
 | Sku                | [Odkaz](utility-resources.md#link) | Získá SKU produktu přidružené k předplatnému. |
 | dostupnosti       | [Odkaz](utility-resources.md#link) | Získá dostupnost SKU produktu přidruženou k předplatnému. |
@@ -79,10 +82,10 @@ Prostředek **SubscriptionProvisioningStatus** poskytuje informace o stavu zřiz
 
 | Vlastnost   | Typ                                                           | Description                                                          |
 |------------|----------------------------------------------------------------|----------------------------------------------------------------------|
-| ID SKU      | řetězec                                                         | Řetězec ve formátu GUID, který identifikuje SKU produktu.             |
+| ID SKU      | řetězec                                                         | Řetězec formátovaný identifikátorem GUID, který identifikuje SKU produktu.             |
 | status     | řetězec                                                         | Označuje stav zřizování: "success", "pending" nebo "failed". |
 | quantity   | číslo                                                         | Poskytuje množství předplatných po zřízení.               |
-| Enddate    | řetězec ve formátu data a času UTC                                 | Koncové datum odběru.                                    |
+| Enddate    | řetězec ve formátu data a času UTC                                 | Koncové datum předplatného.                                    |
 | atributy | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat.                                             |
 
 ## <a name="subscriptionregistrationstatus"></a>Stav registrace předplatného
@@ -104,15 +107,30 @@ Prostředek **SupportContact** představuje kontakt podpory pro předplatné zá
 | supportMpnId    | řetězec                                                         | Identifikátor MPN (Microsoft Partner Network) kontaktu.                       |
 | name            | řetězec                                                         | Název kontaktu podpory.                                                |
 | Odkazy           | [Odkazy na prostředky](utility-resources.md#resourcelinks)            | Odkazy související s kontaktem podpory.                                              |
-| atributy      | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat. Obsahuje objectType: SupportContact.              |
+| atributy      | [Atributy prostředků](utility-resources.md#resourceattributes)  | Atributy metadat. Obsahuje "objectType": "SupportContact".              |
+
+## <a name="overage"></a>Překročení
+
+Prostředek  nadlimitního využití představuje nadlimitní využití předplatného, které se dá přiřadit, a to bez ohledu na to, jestli je přiřazený, a přiřazený prodejce.
+
+| Vlastnost        | Typ               | Description                                                                     |
+|-----------------|--------------------|---------------------------------------------------------------------------------|
+| azureEntitlementId | řetězec       | Řetězec ve formátu GUID, který označuje identifikátor předplatného spotřeby. |
+| partnerId    | řetězec            | Identifikátor Microsoft Partner Network (MPN) prodejce přidruženého k předplatnému.        |
+| typ    | řetězec       | Typ nadlimitního využití může být "PhoneServices".       |
+| nadlimitní            | boolean      | Hodnota, která označuje, zda se jedná o zkušební předplatné.       |
+| odkazy           | [ResourceLinks](utility-resources.md#resourcelinks)            | Odkazy související s kontaktem podpory.                          |
+| atributy      | [ResourceAttributes](utility-resources.md#resourceattributes)  | Atributy metadat. Obsahuje "objectType": "nadlimitní".  |
+
+
 
 ## <a name="registersubscription"></a>RegisterSubscription
 
-Prostředek **RegisterSubscription** vrátí odkaz, který můžete použít k dotazování stavu registrace předplatného. Stav registrace se vrátí v textu odpovědi úspěšného přijatého požadavku na registraci předplatného Azure.
+Prostředek **RegisterSubscription** vrátí odkaz, který se dá použít k dotazování na stav registrace předplatného. Stav registrace se vrátí v těle odpovědi úspěšně přijaté žádosti o registraci předplatného Azure.
 
 | Vlastnost                | Typ                               | Description                                                                           |
 |-------------------------|------------------------------------|---------------------------------------------------------------------------------------|
-| httpResponseMessage     | object                             | Vrátí stavový kód HTTP 202 Přijato s hlavičkou Location obsahující odkaz na dotaz na stav registrace. Například `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"`. |
+| httpResponseMessage     | object                             | Vrátí stavový kód HTTP 202 "přijato" s hlavičkou umístění obsahující odkaz na dotaz na stav registrace. Například `"/customers/{customer-id}/subscriptions/{subscription-id}/registrationstatus"`. |
 
 ## <a name="refundoption"></a>RefundOption
 
@@ -120,16 +138,16 @@ Prostředek **RefundOption** představuje možnou možnost refundace pro předpl
 
 | Vlastnost          | Typ | Description                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
-| typ | řetězec | Typ refundace Podporované hodnoty jsou Partial (Částečná) a Full (Úplné). |
-| expiresAfter      | řetězec ve formátu data a času UTC | Časové razítko, kdy vyprší platnost této možnosti. Pokud má hodnotu null, znamená to, že nemá žádné vypršení platnosti. |
+| typ | řetězec | Typ refundace. Podporované hodnoty jsou "částečné" a "úplné". |
+| expiresAfter      | řetězec ve formátu data a času UTC | Časové razítko, kdy tato možnost vyprší Pokud má hodnotu null, znamená to, že nemá žádné vypršení platnosti. |
 
-## <a name="azureentitlement"></a>AzureEnti pro správu
+## <a name="azureentitlement"></a>AzureEntitlement
 
-Prostředek **AzureEnti pro předplatné** představuje nároky Azure.
+Prostředek **AzureEntitlement** představuje nároky Azure na předplatné.
 
 | Vlastnost          | Typ | Description                                                                         |
 |-------------------|--------|-------------------------------------------------------------------------------------|
 | id | řetězec | Identifikátor nároku |
-| Friendlyname      | řetězec | Popisný název nároku. |
-| status | řetězec | Stav nároku |
-| subscriptionId | řetězec | Identifikátor předplatného, do které nárok patří. |
+| friendlyName      | řetězec | Popisný název oprávnění |
+| status | řetězec | Stav oprávnění. |
+| subscriptionId | řetězec | Identifikátor předplatného, ke kterému oprávnění patří. |

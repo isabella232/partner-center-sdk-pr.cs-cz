@@ -390,6 +390,8 @@
           href: get-an-offer-by-id.md
         - name: Získání objednávky podle ID
           href: get-an-order-by-id.md
+        - name: Získat nadlimitní předplatné
+          href: get-subscription-overage.md
         - name: Získání stavu zřizování předplatných
           href: get-subscription-provisioning-status.md
         - name: Získání stavu registrace předplatných
@@ -410,15 +412,17 @@
           href: suspend-a-subscription.md
         - name: Převod předplatného
           href: transition-a-subscription.md
-        - name: Přechod na nové předplatné obchodu
+        - name: Převod nového komerčního předplatného
           href: transition-a-new-commerce-subscription.md
         - name: Aktualizace košíku
           href: update-a-cart.md
         - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
           href: update-autorenew-for-an-azure-marketplace-subscription.md
-        - name: Ověřit nárok na zvýšení úrovně
+        - name: Aktualizace nadplatných předplatných
+          href: update-subscription-overage.md
+        - name: Ověření způsobilosti pro povýšení
           href: verify-promotion-eligibility.md
-    - name: Spravovat výběry
+    - name: Správa výplat
       href: manage-payouts.md
     - name: Poskytování podpory
       href: provide-support.md
@@ -437,7 +441,7 @@
           href: update-a-subscription-s-support-contact.md
 - name: Sandbox pro integraci
   items:
-    - name: Možnosti izolovaného prostoru pro vztah prodejce
+    - name: Možnosti sandboxu pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
@@ -449,7 +453,7 @@
       href: activate-sandbox-subscription-azure-marketplace-products.md
     - name: Vytvoření nepřímého prodejce v Sandboxu
       href: create-indirect-reseller-in-sandbox.md
-    - name: Odstranit nepřímý prodejce v izolovaném prostoru
+    - name: Odstranění nepřímého prodejce v Sandboxu
       href: delete-indirect-reseller-in-sandbox.md
 - name: Reference
   href: /partner/develop/referrals
@@ -482,7 +486,7 @@
       href: get-api-request-details.md
 - name: Referenční informace k rozhraní REST API pro Partnerské centrum
   items:
-    - name: Úvodní REST API partnerského centra
+    - name: Partnerské centrum REST API úvod
       href: partner-center-rest-api-reference.md
     - name: Protokol změn rozhraní REST API pro Partnerské centrum
       href: api-change-log.md
@@ -539,7 +543,7 @@
           href: profile-resources.md
         - name: Produkty
           href: product-resources.md
-        - name: Reklama
+        - name: Propagační akce
           href: promotion-resources.md
         - name: Relace
           href: relationships-resources.md
