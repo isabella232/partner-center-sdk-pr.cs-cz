@@ -6,12 +6,12 @@ ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: BrentSerbus
 ms.author: brserbus
-ms.openlocfilehash: 62c2e3192be547b1239fea69bc48c9c80553421c
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 65859e0805397efb0c9db2f5bf566ca1b6deba49
+ms.sourcegitcommit: 3ee00d9fe9da6b9df0fb7027ae506e2abe722770
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123457304"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129417266"
 ---
 # <a name="get-transitions"></a>Získání přechodů
 
@@ -31,14 +31,14 @@ Slouží k získání historie přechodů pro daného zákazníka a předplatné
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka nevíte, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Jedno ID předplatného pro přemísněné předplatné.
 
 ## <a name="rest-request"></a>Požadavek REST
-[GET] customers/{customerId}/subscriptions/{subscriptionId}/transitions
+[GET] customers/{customer-tenant-id}/subscriptions/{subscription-id}/transitions
 ### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda   | Identifikátor URI žádosti                                                                                                                         |
@@ -52,11 +52,11 @@ K vrácení oprávněných přechodů použijte následující parametry dotazu.
 | Název                    | Typ     | Vyžadováno | Popis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
 | **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající tenantovi zákazníka.             |
-| **id dolního indexu** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
+| **id předplatného** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -65,7 +65,7 @@ Další informace najdete v Partnerské centrum [REST.](headers.md)
 ### <a name="request-example"></a>Příklad požadavku
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/customers/{customer-tenant-id}/subscriptions/{subscription-Id}/transitions HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/transitions HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 18752a69-1aa1-4ef7-8f9d-eb3681b2d70a
@@ -75,11 +75,11 @@ X-Locale: en-US
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato historie metod přechodů.
+V případě úspěchu se vrátí historie přechodů pro zadané předplatné.
 
 ### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. Ke čtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
 
 ### <a name="response-example"></a>Příklad odpovědi
 

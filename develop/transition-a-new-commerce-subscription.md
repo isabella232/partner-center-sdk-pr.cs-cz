@@ -1,17 +1,17 @@
 ---
 title: Převod nového komerčního předplatného
-description: Upgradují nové předplatné zákazníka na zadané cílové předplatné.
+description: Upgraduje nové komerční předplatné zákazníka na zadané cílové předplatné.
 ms.date: 02/23/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 author: BrentSerbus
 ms.author: brserbus
-ms.openlocfilehash: 2bbf2f63cec416e4d4b4a671d2e2b2914b5f5713
-ms.sourcegitcommit: e1db965e8c7b4fe3aaa0ecd6cefea61973ca2232
+ms.openlocfilehash: 97ecb104de68b6da0a0588d3b60671de756af5a2
+ms.sourcegitcommit: 3ee00d9fe9da6b9df0fb7027ae506e2abe722770
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123457292"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129417215"
 ---
 # <a name="transition-a-new-commerce-subscription"></a>Převod nového komerčního předplatného
 
@@ -25,7 +25,7 @@ ms.locfileid: "123457292"
 > [!Note] 
 > Nové obchodní změny jsou aktuálně dostupné jenom pro partnery, kteří jsou součástí nového komerčního prostředí M365/D365 technical preview.
 
-Slouží k upgradu nového předplatného zákazníka na cílové předplatné. Nejprve získejte oprávněné přechody a získejte skladové(a) skladové (SKU) dostupné pro upgrade. Pak přechod proveďte po přechodu. Tyto metody podporují tradiční i nová zdrojová předplatná.  
+Slouží k upgradu nového komerčního předplatného zákazníka na cílové předplatné. K převodu předplatných je potřeba 2 požadavky rozhraní API. Nejprve **získejte způsobilé přechody** GET a získejte skladové(a) skladové (SKU) dostupné pro upgrade. Pak **přechod POST** proveďte. Tyto metody podporují tradiční i nová zdrojová předplatná.  
 
 ## <a name="get-transition-eligibilities"></a>Získání způsobilosti pro přechod
 
@@ -35,7 +35,7 @@ Vrátí seznam oprávněných přechodů pro daného zákazníka, předplatné a
 
 - Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka nevíte, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Jedno ID předplatného pro počáteční předplatné.
 
@@ -54,12 +54,12 @@ K vrácení oprávněných přechodů použijte následující parametry dotazu.
 | Název                    | Typ     | Vyžadováno | Popis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
 | **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající tenantovi zákazníka.             |
-| **id dolního indexu** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
-| **typ způsobilosti**       | **řetězec** | Y        | Popisuje, kdy se má převod provést, může být okamžitý nebo naplánovaný.  |
+| **id předplatného** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
+| **typ způsobilosti**       | **řetězec** | N        | Popisuje, kdy se má přechod provést. může být okamžité nebo naplánované. Výchozí je `Immediate`.  |
 
 #### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
 
 #### <a name="request-body"></a>Text požadavku
 
@@ -68,7 +68,7 @@ Další informace najdete v Partnerské centrum [REST.](headers.md)
 #### <a name="request-example"></a>Příklad požadavku
 
 ```http
-GET https://api.partnercenter.microsoft.com/v1/customers/{customer-tenant-id}/subscriptions/{subscription-Id}/transitionEligibilities?eligibilityType=immediate HTTP/1.1
+GET https://api.partnercenter.microsoft.com/v1/customers/{customer-tenant-id}/subscriptions/{subscription-id}/transitionEligibilities?eligibilityType=immediate HTTP/1.1
 Authorization: Bearer <token>
 Accept: application/json
 MS-RequestId: 18752a69-1aa1-4ef7-8f9d-eb3681b2d70a
@@ -78,7 +78,7 @@ X-Locale: en-US
 
 ### <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí seznam oprávněných přechodů v textu odpovědi.
+V případě úspěchu tato metoda vrátí seznam oprávněných přechodů pro dané předplatné v textu odpovědi.
 
 #### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
@@ -165,13 +165,13 @@ Date: Fri, 26 Feb 2021 20:42:26 GMT
 
 ## <a name="post-transition"></a>Po přechodu
 
-Odešle žádost o převod pro daného zákazníka a předplatné. Vrátí přechod s inciálním stavem.
+Odešle žádost o převod pro daného zákazníka a předplatné. Vrátí přechod s počátečním stavem.
 
 ### <a name="prerequisites"></a>Požadavky
 
 - Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka nevíte, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - Jedno ID předplatného pro počáteční předplatné.
 
@@ -191,7 +191,7 @@ K provedení přechodu použijte následující parametry dotazu.
 | Název                    | Typ     | Vyžadováno | Popis                                       |
 |-------------------------|----------|----------|---------------------------------------------------|
 | **customer-tenant-id**  | **guid** | Y        | Identifikátor GUID odpovídající tenantovi zákazníka.             |
-| **id dolního indexu** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
+| **id předplatného** | **guid** | Y        | Identifikátor GUID odpovídající počátečnímu předplatnému. |
 
 #### <a name="request-headers"></a>Hlavičky požadavku
 
@@ -221,7 +221,7 @@ X-Locale: en-US
 
 ### <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu tato metoda vrátí prostředek Přechod s počátečními událostmi.
+V případě úspěchu tato metoda vrátí prostředek Přechod se svým počátečním stavem.
 
 #### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
