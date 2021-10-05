@@ -414,6 +414,12 @@
           href: transition-a-subscription.md
         - name: Převod nového komerčního předplatného
           href: transition-a-new-commerce-subscription.md
+        - name: Ověření předplatného pro migraci
+          href: validate-subscription-for-migration.md
+        - name: Vytvoření nové obchodní migrace
+          href: create-migration.md
+        - name: Získání nové obchodní migrace
+          href: get-new-commerce-migration.md
         - name: Aktualizace košíku
           href: update-a-cart.md
         - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
