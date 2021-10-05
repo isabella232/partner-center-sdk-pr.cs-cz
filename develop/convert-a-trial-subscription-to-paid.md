@@ -1,66 +1,69 @@
 ---
 title: Převod zkušební verze předplatného na placenou
-description: Naučte se používat Partnerské centrum API k převodu zkušebního předplatného na placené.
+description: Naučte se používat rozhraní API partnerského centra k převedení zkušebního předplatného na placené předplatné.
 ms.date: 05/23/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: a805264315e35c7576248630396da1e34a66cc55ac87dd07452f1615edbc0af4
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 7cee9b9afddb12137bb66b57250a9487bd4902f5
+ms.sourcegitcommit: f112efee7344d739bdbf385adba0c554ea2a63e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115991850"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129439323"
 ---
-# <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Převod zkušebního předplatného na placené pomocí Partnerské centrum API
+# <a name="convert-a-trial-subscription-to-paid-using-partner-center-apis"></a>Převod zkušebního předplatného na placené pomocí rozhraní API partnerského centra
+
+> [!NOTE]
+> Tyto kroky se nevztahují na nové produkty pro obchod. Přečtěte si, jak přejít na novou dokumentaci k **předplatnému pro obchod** pro převod nových zkušebních verzí na placené předplatné
 
 Zkušební předplatné můžete převést na placené.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pouze pomocí přihlašovacích údajů aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování jenom pomocí přihlašovacích údajů pro aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID předplatného pro aktivní zkušební předplatné.
 
-- Dostupná nabídka převodu.
+- Dostupná nabídka pro převod.
 
 ## <a name="convert-a-trial-subscription-to-a-paid-subscription-through-code"></a>Převod zkušebního předplatného na placené předplatné prostřednictvím kódu
 
-Pokud chcete zkušební předplatné převést na placené, musíte nejprve získat kolekci dostupných převodů zkušební verze. Pak musíte zvolit nabídku převodu, kterou chcete koupit.
+K převedení zkušebního předplatného na placené předplatné musíte nejdřív získat kolekci zkušebních verzí, které jsou k dispozici. Pak je nutné zvolit nabídku pro převod, kterou chcete koupit.
 
-Nabídky převodu budou zadat množství, které ve výchozím nastavení určuje stejný počet licencí jako zkušební předplatné. Toto množství můžete změnit nastavením vlastnosti [**Quantity**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) na počet licencí, které chcete zakoupit.
+Nabídka převodů určí množství, které se ve výchozím nastavení shoduje se stejným počtem licencí jako zkušební předplatné. Toto množství můžete změnit nastavením vlastnosti [**množství**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion.quantity) na počet licencí, které chcete koupit.
 
 > [!NOTE]
-> Bez ohledu na počet zakoupených licencí se ID předplatného zkušební verze znovu použije pro zakoupené licence. Výsledkem je, že platnost zkušební verze zmizí a nákup se nahradí.
+> Bez ohledu na počet zakoupených licencí se ID předplatného zkušební verze znovu použije pro zakoupené licence. V důsledku toho se zkušební verze v tomto případě zmizí a její nákup se nahradí.
 
-K převodu zkušebního předplatného prostřednictvím kódu použijte následující postup:
+K převedení zkušebního předplatného prostřednictvím kódu použijte následující postup:
 
-1. Získejte rozhraní pro dostupné operace předplatného. Musíte identifikovat zákazníka a zadat identifikátor předplatného zkušebního předplatného.
+1. Získat rozhraní k dispozici pro operace odběru. Musíte identifikovat zákazníka a zadat identifikátor předplatného zkušebního předplatného.
 
     ``` csharp
     var subscriptionOperations = partnerOperations.Customers.ById(customerId).Subscriptions.ById(subscriptionId);
     ```
 
-2. Získejte kolekci dostupných nabídek převodu. Další informace a podrobnosti o požadavku a odpovědi pro tuto metodu najdete v tématu Získání seznamu nabídek [převodu zkušební verze.](get-a-list-of-trial-conversion-offers.md)
+2. Získá kolekci dostupných nabídek převodu. Další informace a podrobnosti o žádosti a odpovědi pro tuto metodu najdete v tématu [získání seznamu nabídek pro převod zkušební verze](get-a-list-of-trial-conversion-offers.md).
 
     ``` csharp
     var conversions = subscriptionOperations.Conversions.Get();
     ```
 
-3. Zvolte nabídku převodu. Následující kód zvolí první nabídku převodu v kolekci.
+3. Vyberte nabídku pro převod. Následující kód zvolí první nabídku převodu v kolekci.
 
     ``` csharp
     var selectedConversion = conversions.Items.ToList()[0];
     ```
 
-4. Volitelně můžete zadat počet licencí k nákupu. Výchozí hodnota je počet licencí ve zkušebním předplatném.
+4. Volitelně zadejte počet licencí, které se mají koupit. Výchozí hodnota je počet licencí ve zkušebním předplatném.
 
     ``` csharp
     selectedConversion.Quantity = 10;
     ```
 
-5. Pokud chcete [**převést**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) zkušební předplatné na placené, zavolejte metodu Create nebo [**CreateAsync.**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync)
+5. Voláním metody [**Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) převeďte zkušební předplatné na placené.
 
     ``` csharp
     var convertResult = subscriptionOperations.Conversions.Create(selectedConversion);
@@ -70,17 +73,17 @@ K převodu zkušebního předplatného prostřednictvím kódu použijte násled
 
 Převod zkušebního předplatného na placené předplatné:
 
-1. K identifikaci zákazníka použijte metodu [**IAggregatePartner.Customers.ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka.
+1. K identifikaci zákazníka použijte metodu [**IAggregatePartner. Customers. ById**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka.
 
-2. Získejte rozhraní pro operace předplatného voláním metody [**Subscriptions.ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) s ID zkušebního předplatného. Uložte odkaz na rozhraní operací předplatného do místní proměnné.
+2. Přičtěte si rozhraní k operacím předplatného voláním metody [**Subscriptions. ById**](/dotnet/api/microsoft.store.partnercenter.customerusers.icustomerusercollection.byid) s ID zkušebního předplatného. Uložte odkaz na rozhraní operace odběru v místní proměnné.
 
-3. Pomocí vlastnosti [**Převody**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) získejte rozhraní pro dostupné operace převodů a potom zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) nebo [**GetAsync,**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) která načte kolekci dostupných [**nabídek převodu.**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion) Musíte vybrat jednu možnost. Následující příklad ve výchozím nastavení používá první dostupný převod.
+3. Použijte vlastnost [**převody**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) k získání rozhraní k dostupným operacím pro převody a potom zavolejte metodu [**Get**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.get) nebo [**GetAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionconversioncollection.getasync) pro načtení kolekce dostupných nabídek [**převodu**](/dotnet/api/microsoft.store.partnercenter.models.subscriptions.conversion) . Musíte zvolit jednu z nich. Následující příklad je výchozím nastavením prvního dostupného převodu.
 
-4. Použijte odkaz na rozhraní operací předplatného, které jste uložili do místní proměnné, a vlastnost [**Převody**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) k získání rozhraní pro dostupné operace převodů.
+4. Použijte odkaz na rozhraní operace předplatného, které jste uložili v místní proměnné a vlastnost [**převody**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscription.conversions) , abyste získali rozhraní k dostupným operacím pro převody.
 
-5. Předejte vybraný objekt nabídky převodu [**metodě Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) a pokuste se o převod zkušební verze.
+5. Předejte vybraný objekt nabídky pro převod do metody [**Create**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.create) nebo [**CreateAsync**](/dotnet/api/microsoft.store.partnercenter.subscriptions.isubscriptionupgradecollection.createasync) k pokusu o převod zkušební verze.
 
-### <a name="c-example"></a>Příklad \# jazyka C
+### <a name="c-example"></a>\#Příklad C
 
 ``` csharp
 // IAggregatePartner partnerOperations;
@@ -109,13 +112,13 @@ else
 }
 ```
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda   | Identifikátor URI žádosti                                                                                                                 |
 |----------|-----------------------------------------------------------------------------------------------------------------------------|
-| **Příspěvek** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_zákazníka}/subscriptions/{ID_předplatného}/převody HTTP/1.1 |
+| **SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-ID}/Subscriptions/{Subscription-ID}/Conversions HTTP/1.1 |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -123,16 +126,16 @@ K identifikaci zákazníka a zkušebního předplatného použijte následujíc�
 
 | Název            | Typ   | Vyžadováno | Popis                                                     |
 |-----------------|--------|----------|-----------------------------------------------------------------|
-| id zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.           |
-| id předplatného | řetězec | Yes      | Řetězec formátovaný identifikátorem GUID, který identifikuje zkušební předplatné. |
+| ID zákazníka     | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka.           |
+| ID předplatného | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zkušební předplatné. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
-Vyplněný [prostředek Převod](conversions-resources.md#conversion) musí být součástí textu požadavku.
+V textu žádosti musí být zahrnutý prostředek pro [Převod](conversions-resources.md#conversion) .
 
 ### <a name="request-example"></a>Příklad požadavku
 
@@ -162,11 +165,11 @@ Expect: 100-continue
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude tělo odpovědi obsahovat [prostředek ConversionResult.](conversions-resources.md#conversionresult)
+V případě úspěchu obsahuje tělo odpovědi prostředek [ConversionResult](conversions-resources.md#conversionresult) .
 
-#### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+#### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb partnerského centra](error-codes.md).
 
 #### <a name="response-example"></a>Příklad odpovědi
 
