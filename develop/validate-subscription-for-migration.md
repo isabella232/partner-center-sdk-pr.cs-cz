@@ -1,37 +1,37 @@
 ---
 title: Ověření předplatného pro migraci
-description: Jak ověřit, jestli má předplatné nárok na migraci
+description: Jak ověřit, jestli je předplatné vhodné pro migraci
 ms.date: 10/04/2021
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: c8d2ae596901a45a794230c79cfb54815963e300
-ms.sourcegitcommit: 856b0baa4824960e13ee9672817a2d2e713fdf43
+ms.openlocfilehash: d085093b8adc3750d1b8d95963fc9d74c4209e00
+ms.sourcegitcommit: 53980dc43fb2277878bf61a15a86013b8b1c2574
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129528698"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129609992"
 ---
 # <a name="validate-a-subscription-for-migration"></a>Ověření předplatného pro migraci
 
-**Platí pro**: partnerské Centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Německo | Partnerské centrum pro Microsoft Cloud for US Government
+**Platí pro:** Partnerské centrum | Partnerské centrum provozovaný společností 21Vianet | Partnerské centrum pro Microsoft Cloud Germany | Partnerské centrum pro Microsoft Cloud for US Government
 
-Ověření předplatného pro migraci na nové prostředí pro obchod
+Ověření předplatného pro migraci do nového komerčního prostředí
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí samostatné aplikace a přihlašovacích údajů uživatele a aplikace.
+- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí samostatných přihlašovacích údajů aplikace i aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte ID **Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 - ID aktuálního předplatného
 
-## <a name="rest-request"></a>Žádost REST
+## <a name="rest-request"></a>Požadavek REST
 
-### <a name="request-syntax"></a>Syntaxe žádosti
+### <a name="request-syntax"></a>Syntaxe požadavku
 
 | Metoda  | Identifikátor URI žádosti                                                                                                            |
 |---------|------------------------------------------------------------------------------------------------------------------------|
-|**SPUŠTĚNÍ** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{Customer-tenant-ID}/migrations/newcommerce/Validate HTTP/1.1  |
+|**PŘÍSPĚVEK** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{ID_tenanta_zákazníka}/migrations/nový obchod/ověření HTTP/1.1  |
 
 ### <a name="uri-parameter"></a>Parametr URI
 
@@ -39,15 +39,15 @@ Tato tabulka obsahuje seznam požadovaných parametrů dotazu pro ověření př
 
 | Název               | Typ   | Vyžadováno | Popis                                           |
 |--------------------|--------|----------|-------------------------------------------------------|
-| Customer-tenant-ID | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
+| customer-tenant-id | řetězec | Yes      | Řetězec ve formátu GUID, který identifikuje zákazníka. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
+Další informace najdete v tématu [Partnerské centrum hlavičky REST.](headers.md)
 
 ### <a name="request-body"></a>Text požadavku
 
-Tato tabulka popisuje vlastnosti [odběru](subscription-resources.md) v textu požadavku.
+Tato tabulka popisuje [vlastnosti předplatného](subscription-resources.md) v textu požadavku.
 
 | Vlastnost              | Typ             | Vyžadováno        | Popis |
 |-----------------------|------------------|-----------------|-----------------------------------------------------------------------------------------------------------|
@@ -61,11 +61,11 @@ Tato tabulka popisuje vlastnosti [odběru](subscription-resources.md) v textu po
 
 ## <a name="rest-response"></a>Odpověď REST
 
-Pokud je tato metoda úspěšná, vrátí v těle odpovědi "" oprávněnou "logickou hodnotu, která označuje, jestli má aktuální předplatné nárok na migraci do nového obchodu.
+V případě úspěchu vrátí tato metoda v textu odpovědi logickou hodnotu "isEligible", která označuje, jestli je aktuální předplatné vhodné pro migraci na nové obchodování.
 
-### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
+### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
 
-Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb REST partnerského centra](error-codes.md).
+Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Partnerské centrum kódy chyb REST.](error-codes.md)
 
 ### <a name="response-examples"></a>Příklady odpovědí
 
@@ -81,11 +81,13 @@ Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úsp�
             }
         ]
     }
+```
 
+```http
 2. 
     {
         "currentSubscriptionId": "9beb6319-6889-4d28-a155-68ca9c783842",
         "isEligible": true,
-    "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV",
+        "catalogItemId": "CFQ7TTC0LF8S:0002:CFQ7TTC0KSVV"
     }
 ```
