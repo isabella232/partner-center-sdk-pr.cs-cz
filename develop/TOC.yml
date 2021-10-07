@@ -412,23 +412,23 @@
           href: suspend-a-subscription.md
         - name: Převod předplatného
           href: transition-a-subscription.md
-        - name: Převod nového komerčního předplatného
+        - name: Přechod na nové předplatné obchodu
           href: transition-a-new-commerce-subscription.md
         - name: Ověření předplatného pro migraci
           href: validate-subscription-for-migration.md
-        - name: Vytvoření nové obchodní migrace
+        - name: Vytvořit novou migraci pro obchod
           href: create-migration.md
-        - name: Získání nové obchodní migrace
+        - name: Získat novou migraci do obchodu
           href: get-new-commerce-migration.md
         - name: Aktualizace košíku
           href: update-a-cart.md
         - name: Aktualizace automatického obnovení pro předplatné na komerčním marketplace
           href: update-autorenew-for-an-azure-marketplace-subscription.md
-        - name: Aktualizace nadplatných předplatných
+        - name: Aktualizovat nadlimitní předplatné
           href: update-subscription-overage.md
-        - name: Ověření způsobilosti pro povýšení
+        - name: Ověřit nárok na zvýšení úrovně
           href: verify-promotion-eligibility.md
-    - name: Správa výplat
+    - name: Spravovat výběry
       href: manage-payouts.md
     - name: Poskytování podpory
       href: provide-support.md
@@ -445,9 +445,18 @@
           href: update-a-service-request.md
         - name: Aktualizace kontaktu podpory pro předplatné
           href: update-a-subscription-s-support-contact.md
+    - name: Zobrazit okraje
+      href: view-margins.md
+      items:
+        - name: Získat okraje
+          href: get-margins.md
+        - name: Stáhnout okraje
+          href: download-margins.md
+        - name: Prostředky okraje
+          href: margin-resources.md
 - name: Sandbox pro integraci
   items:
-    - name: Možnosti sandboxu pro vztah prodejce
+    - name: Možnosti izolovaného prostoru pro vztah prodejce
       href: sandbox-scenario.md
     - name: Testování a ladění sandboxu
       href: test-and-debug.md
@@ -459,7 +468,7 @@
       href: activate-sandbox-subscription-azure-marketplace-products.md
     - name: Vytvoření nepřímého prodejce v Sandboxu
       href: create-indirect-reseller-in-sandbox.md
-    - name: Odstranění nepřímého prodejce v Sandboxu
+    - name: Odstranit nepřímý prodejce v izolovaném prostoru
       href: delete-indirect-reseller-in-sandbox.md
 - name: Reference
   href: /partner/develop/referrals
@@ -492,7 +501,7 @@
       href: get-api-request-details.md
 - name: Referenční informace k rozhraní REST API pro Partnerské centrum
   items:
-    - name: Partnerské centrum REST API úvod
+    - name: Úvodní REST API partnerského centra
       href: partner-center-rest-api-reference.md
     - name: Protokol změn rozhraní REST API pro Partnerské centrum
       href: api-change-log.md
@@ -549,7 +558,7 @@
           href: profile-resources.md
         - name: Produkty
           href: product-resources.md
-        - name: Propagační akce
+        - name: Reklama
           href: promotion-resources.md
         - name: Relace
           href: relationships-resources.md

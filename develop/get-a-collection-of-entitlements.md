@@ -1,29 +1,29 @@
 ---
 title: Získání kolekce nároků
-description: Jak získat kolekci nároků
+description: Jak získat kolekci nároků.
 ms.date: 01/28/2019
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
-ms.openlocfilehash: 9248f2ef97afe7a2cefff5759028da12dc9c3936f2e14cee18063c0428699c81
-ms.sourcegitcommit: 63ef5995314ef22f29768132dff2acf45914ea84
+ms.openlocfilehash: 5247346fef4a5c49e04918efb9098d7a93cc413d
+ms.sourcegitcommit: deb3207935fb5a74df515ed0fd4ffec90e6a143c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2021
-ms.locfileid: "115993669"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129646257"
 ---
 # <a name="get-a-collection-of-entitlements"></a>Získání kolekce nároků
 
-Jak získat kolekci nároků
+Jak získat kolekci nároků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlašovací údaje, jak je [popsáno Partnerské centrum ověřování.](partner-center-authentication.md) Tento scénář podporuje ověřování pomocí přihlašovacích údajů aplikace a uživatele.
+- Přihlašovací údaje popsané v [partnerském centru ověřování](partner-center-authentication.md). Tento scénář podporuje ověřování pomocí přihlašovacích údajů pro aplikace a uživatele.
 
-- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáme, můžete ho na řídicím panelu [Partnerské centrum.](https://partner.microsoft.com/dashboard) V nabídce Partnerské centrum vyberte **CSP** a pak **Zákazníci.** V seznamu zákazníků vyberte zákazníka a pak vyberte **Účet.** Na stránce Účtu zákazníka vyhledejte **ID Microsoftu** v části **Informace o účtu** zákazníka. Id Microsoftu je stejné jako ID zákazníka ( `customer-tenant-id` ).
+- ID zákazníka ( `customer-tenant-id` ). Pokud ID zákazníka neznáte, můžete ho vyhledat na [řídicím panelu](https://partner.microsoft.com/dashboard)partnerského centra. V nabídce partnerského centra klikněte na **CSP** a potom na **zákazníci**. Vyberte zákazníka ze seznamu Zákazník a pak vyberte možnost **účet**. Na stránce účet zákazníka vyhledejte v části **informace o účtu zákazníka** **ID Microsoftu** . ID společnosti Microsoft je stejné jako ID zákazníka ( `customer-tenant-id` ).
 
 ## <a name="c"></a>C\#
 
-Pokud chcete získat kolekci nároků pro zákazníka, [](entitlement-resources.md#entitlement) získejte rozhraní pro operace nároků voláním metody [**IAggregatePartner.Customers.ById()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka a identifikujte zákazníka. Potom načtěte rozhraní z vlastnosti **Entitlements** a voláním metody **Get()** nebo **GetAsync()** načtěte kolekci oprávnění.
+Chcete-li získat kolekci nároků pro zákazníka, Získejte rozhraní pro udělení [**operací**](entitlement-resources.md#entitlement) voláním metody  [**IAggregatePartner. Customers. ById ()**](/dotnet/api/microsoft.store.partnercenter.customers.icustomercollection.byid) s ID zákazníka pro identifikaci zákazníka. Pak načtěte rozhraní z vlastnosti **oprávnění** a zavolejte metodu **Get ()** nebo **GetAsync ()** pro načtení kolekce nároků.
 
 ``` csharp
 IAggregatePartner partnerOperations;
@@ -33,32 +33,32 @@ string customerId;
 var entitlements = partnerOperations.Customers.ById(customerId).Entitlements.Get();
 ```
 
-Pokud chcete naplnit data vypršení platnosti pro nároky, která se mají načíst, volejte výše uvedené metody a nastavte volitelný logický parametr **showExpiry** na true **Get(true)** nebo **GetAsync(true)**. To znamená, že se vyžaduje datum vypršení platnosti nároků (pokud je to potřeba).
+Chcete-li naplnit data vypršení platnosti pro získání nároků, zavolejte stejné metody výše a nastavte volitelný logický parametr **showExpiry** na hodnotu true **Get (true)** nebo **GetAsync (true)**. To znamená, že se vyžadují data vypršení platnosti nároku (Pokud je to možné).
 
 > [!IMPORTANT]
-> Typy místních nároků nemají data vypršení platnosti.
+> Místní typy nároků nemají datum vypršení platnosti.
 
-## <a name="rest-request"></a>Požadavek REST
+## <a name="rest-request"></a>Žádost REST
 
-### <a name="request-syntax"></a>Syntaxe požadavku
+### <a name="request-syntax"></a>Syntaxe žádosti
 
 | Metoda | Identifikátor URI žádosti |
 |--------|-------------|
-| **Dostat** | [*{baseURL}*](partner-center-rest-urls.md)/v1/customers/{customerId}/entitlements HTTP/1.1                            |
+| **Čtěte** | [*{baseURL}*](partner-center-rest-urls.md)/v1/Customers/{customerId}/Entitlements HTTP/1.1                            |
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-Při vytváření požadavku použijte následující cestu a parametry dotazu.
+Při vytváření žádosti použijte následující cestu a parametry dotazu.
 
 | Název | Typ | Vyžadováno | Popis |
 |------|------|----------|-------------|
-| customerId | řetězec | Yes | Identifikátor GUID naformátovaný jako customerId, který identifikuje zákazníka. |
-| entitlementType (typ nároku) | řetězec | No | Lze použít k určení typu oprávnění, která se mají načíst (**software** nebo **reservedInstance** ). Pokud není nastavené, načítá se všechny typy. |
-| showExpiry | boolean | No | Volitelný příznak, který určuje, jestli se vyžaduje datum vypršení platnosti nároků. |
+| customerId | řetězec | Yes | Identifikátor ID zákazníka ve formátu GUID, který identifikuje zákazníka. |
+| entitlementType | řetězec | No | Dá se použít k určení typu nároků, které se mají načíst (**software** nebo **reservedInstance** ). Pokud není nastavené, načtou se všechny typy. |
+| showExpiry | boolean | No | Volitelný příznak, který označuje, jestli se vyžadují data vypršení platnosti nároků. |
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Další informace najdete v Partnerské centrum [REST.](headers.md)
+Další informace najdete v tématu [záhlaví REST partnerského centra](headers.md).
 
 ### <a name="request-body"></a>Text požadavku
 
@@ -78,11 +78,11 @@ Host: api.partnercenter.microsoft.com
 
 ## <a name="rest-response"></a>Odpověď REST
 
-V případě úspěchu bude text odpovědi obsahovat kolekci [prostředků](entitlement-resources.md#entitlement) nároku.
+V případě úspěchu obsahuje tělo odpovědi kolekci prostředků [nároků](entitlement-resources.md#entitlement) .
 
-### <a name="response-success-and-error-codes"></a>Kódy chyb a úspěšné odpovědi
+### <a name="response-success-and-error-codes"></a>Úspěšné odpovědi a chybové kódy
 
-Každá odpověď má stavový kód HTTP, který indikuje úspěch nebo neúspěch a další informace o ladění. K přečtení tohoto kódu, typu chyby a dalších parametrů použijte nástroj pro trasování sítě. Úplný seznam najdete v tématu [Kódy chyb.](error-codes.md)
+Každá odpověď je dodávána se stavovým kódem HTTP, který označuje úspěch nebo selhání a další informace o ladění. Použijte nástroj pro trasování sítě ke čtení tohoto kódu, typu chyby a dalších parametrů. Úplný seznam najdete v tématu [kódy chyb](error-codes.md).
 
 ### <a name="response-example"></a>Příklad odpovědi
 
@@ -171,11 +171,11 @@ Date: Mon, 19 Mar 2018 07:42:51 GMT
 
 ## <a name="additional-examples"></a>Další příklady
 
-Následující příklad ukazuje, jak načíst konkrétní typ nároků spolu s daty vypršení platnosti (pokud je k dispozici).
+Následující příklad ukazuje, jak načíst konkrétní typ nároků spolu s daty vypršení platnosti (je-li k dispozici).
 
-### <a name="c-example"></a>Příklad \# jazyka C
+### <a name="c-example"></a>\#Příklad C
 
-Pokud chcete načíst konkrétní typ oprávnění, získejte z rozhraní **Entitlements** rozhraní **ByEnti mimementType** a použijte metody **Get()** nebo **GetAsync().**
+Chcete-li načíst konkrétní typ oprávnění, Získejte rozhraní **ByEntitlementType** z rozhraní **nároků** a použijte metody **Get ()** nebo **GetAsync ()** .
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("software").Get(true);
@@ -297,13 +297,13 @@ Date: Mon, 28 Jan 2019 18:31:43 GMT
 }
 ```
 
-Následující příklady ukazují, jak načíst informace o produktech a rezervacích z nároku.
+Následující příklady vám ukážou, jak načíst informace o produktech a rezervacích od nároku.
 
-### <a name="retrieve-virtual-machine-reservation-details-from-an-entitlement-by-using-sdk-v18"></a>Načtení podrobností rezervace virtuálního počítače z nároku pomocí sady SDK verze 1.8
+### <a name="retrieve-virtual-machine-reservation-details-from-an-entitlement-by-using-sdk-v18"></a>Načíst podrobnosti rezervace virtuálních počítačů z nároku pomocí sady SDK V 1.8
 
-### <a name="c-example"></a>Příklad \# jazyka C
+### <a name="c-example"></a>\#Příklad C
 
-Pokud chcete načíst další podrobnosti související s rezervacemi virtuálních počítačů z nároku, vyvolat identifikátor URI vystavený v rámci entitledArtifacts.link s artifactType = virtual_machine_reserved_instance.
+Chcete-li získat další podrobnosti týkající se rezervací virtuálních počítačů od nároku, vyvolejte identifikátor URI vystavený v rámci entitledArtifacts.link s artifactType = virtual_machine_reserved_instance.
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("VirtualMachineReservedInstance").Get();
@@ -351,11 +351,11 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 }
 ```
 
-### <a name="retrieve-reservation-details-from-an-entitlement-by-using-sdk-v19"></a>Načtení podrobností rezervace z nároku pomocí sady SDK verze 1.9
+### <a name="retrieve-reservation-details-from-an-entitlement-by-using-sdk-v19"></a>Načtení podrobností o rezervacích z nároku pomocí sady SDK V 1.9
 
-### <a name="c-example"></a>Příklad \# jazyka C
+### <a name="c-example"></a>\#Příklad C
 
-Pokud chcete načíst další podrobnosti související s rezervacemi z nároku na rezervovanou instanci, vyvolat identifikátor URI vystavený pomocí ```entitledArtifacts.link``` ```artifactType = reservedinstance``` .
+Chcete-li získat další podrobnosti týkající se rezervací z rezervované instance, vyvolejte identifikátor URI vystavený v ```entitledArtifacts.link``` rámci ```artifactType = reservedinstance``` .
 
 ``` csharp
 ResourceCollection<Entitlement> entitlements = partnerOperations.Customers.ById(selectedCustomerId).Entitlements.ByEntitlementType("ReservedInstance").Get();
@@ -403,6 +403,6 @@ Date: Mon, 19 Mar 2018 07:45:14 GMT
 }
 ```
 
-### <a name="api-consumers"></a>Spotřebiteli rozhraní API
+### <a name="api-consumers"></a>Příjemci rozhraní API
 
-Partneři, kteří používají rozhraní API k dotazování oprávnění rezervovaných instancí virtuálních počítačů, aktualizují identifikátor URI požadavku z **/customers/{customerId}/entitlements na /customers/{customerId}/entitlements?entitlementType=virtualmachinereservedinstance,** aby se zachovala zpětná kompatibilita. Pokud chcete využívat virtuální počítač nebo Azure SQL s rozšířeným kontraktem, aktualizujte identifikátor URI požadavku **na /customers/{customerId}/entitlements?entitlementType=reservedinstance**.
+Partneři, kteří používají rozhraní API k dotazování na nároky na rezervované instance virtuálního počítače – aktualizujte identifikátor URI požadavku z **/Customers/{customerId}/Entitlements na/Customers/{customerId}/Entitlements? entitlementType = virtualmachinereservedinstance** , aby se zachovala zpětná kompatibilita. pokud chcete využívat virtuální počítač nebo Azure SQL se zdokonalenou smlouvou, aktualizujte identifikátor URI žádosti na **/customers/{customerId}/entitlements? entitlementType = reservedinstance**.
